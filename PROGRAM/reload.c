@@ -228,11 +228,11 @@ int Reload(aref reload_group, string locator_name, string current_location)
 	{
 		if(!CheckAttribute(mc, "todeck"))
 		{
-			SendMessage(&reload_fader, "ls",FADER_PICTURE,"loading\seaStand.tga");
+			SendMessage(&reload_fader, "ls",FADER_PICTURE0,"loading\seaStand.tga");
 		}
 		else
 		{
-			SendMessage(&reload_fader, "ls",FADER_PICTURE,"loading\cabine.tga");
+			SendMessage(&reload_fader, "ls",FADER_PICTURE0,"loading\cabine.tga");
 		}
 	}
 	else
@@ -245,11 +245,11 @@ int Reload(aref reload_group, string locator_name, string current_location)
 			{
 				if (sGlobalTemp == "afterFDsink")
 				{
-					SendMessage(&reload_fader, "ls",FADER_PICTURE,"loading\rescue.tga");
+					SendMessage(&reload_fader, "ls",FADER_PICTURE0,"loading\rescue.tga");
 					sGlobalTemp = "";
 				}
 				else
-					SendMessage(&reload_fader, "ls", FADER_PICTURE, Locations[loc_pict_index].image);
+					SendMessage(&reload_fader, "ls", FADER_PICTURE0, Locations[loc_pict_index].image);
 			}
 		}
 	}

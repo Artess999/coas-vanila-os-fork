@@ -441,7 +441,7 @@ void Sea_MapLoad()
 	CreateEntity(&SeaFader, "fader");
 	SendMessage(&SeaFader, "lfl", FADER_OUT, 0.7, true);
 	SendMessage(&SeaFader, "l", FADER_STARTFRAME);
-	SendMessage(&SeaFader, "ls", FADER_PICTURE, "loading\sea.tga");
+	SendMessage(&SeaFader, "ls", FADER_PICTURE0, "loading\sea.tga");
 
 	bSkipSeaLogin = true;
 
@@ -465,7 +465,7 @@ void Land_MapLoad()
 	CreateEntity(&SeaFader, "fader");
 	SendMessage(&SeaFader, "lfl", FADER_OUT, 0.7, true);
 	SendMessage(&SeaFader, "l", FADER_STARTFRAME);
-	SendMessage(&SeaFader, "ls", FADER_PICTURE, "loading\sea.tga");
+	SendMessage(&SeaFader, "ls", FADER_PICTURE0, "loading\sea.tga");
 
 	bSkipSeaLogin = true;
 
