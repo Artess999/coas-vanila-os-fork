@@ -18,7 +18,7 @@
 
 bool GetShipRemovable(ref _refCharacter)
 {
-	if( CheckAttribute(_refCharacter,"ShipRemovable") && sti(_refCharacter.ShipRemovable) == false ) 
+	if( CheckAttribute(_refCharacter,"ShipRemovable") && sti(_refCharacter.ShipRemovable) == false )
 	{
 		return false;
 	}
@@ -27,7 +27,7 @@ bool GetShipRemovable(ref _refCharacter)
 
 bool GetShipRemovableEx(ref _refCharacter)
 {
-	if(GetShipRemovable(_refCharacter) == false && _refCharacter.id != pchar.id) 
+	if(GetShipRemovable(_refCharacter) == false && _refCharacter.id != pchar.id)
 	{
 		return false;
 	}
@@ -105,7 +105,7 @@ int GetCargoLoadEx(ref _refCharacter, int addGoods, int iGoods)
 	iGoodsQ = GetGoodWeightByType(iGoods, iGoodsQ);//addGoods / sti(Goods[iGoods].units);
 
 	int iLoad;
-	
+
 	if(addGoods < 0)
 	{
 		iLoad = GetCargoLoad(_refCharacter) - iGoodsQ;
@@ -178,7 +178,7 @@ int GetSquadronFreeSpace(ref _refCharacter,int _Goods)
 				retVal = retVal + unitQ*(GetCargoFreeSpace(chref)/weight);
 			//}
 		}
-	}	
+	}
 	if (retVal < 0) retVal = 0; // fix
 	return retVal;
 }
@@ -336,7 +336,7 @@ int GetIntactCannonQuantity(ref refCharacter)
 	int nShipType = GetCharacterShipType(refCharacter);
 	if(nShipType==SHIP_NOTUSED) return 0;
 	ref refBaseShip = GetRealShip(nShipType);
-	
+
 	int canQ = GetBortIntactCannonsNum(refCharacter, "cannonf", sti(refBaseShip.fcannon)) + GetBortIntactCannonsNum(refCharacter, "cannonb", sti(refBaseShip.bcannon)) + GetBortIntactCannonsNum(refCharacter, "cannonl", sti(refBaseShip.lcannon)) + GetBortIntactCannonsNum(refCharacter, "cannonr", sti(refBaseShip.rcannon));
 	return canQ;
 }
@@ -364,7 +364,7 @@ int GetCharacterShipType(ref _refCharacter)
 			{
 				return iShipType;
 			}
-			if(iRealShipType >=0 && iRealShipType < SHIP_TYPES_QUANTITY_WITH_FORT)	
+			if(iRealShipType >=0 && iRealShipType < SHIP_TYPES_QUANTITY_WITH_FORT)
 			{
 				return iShipType;
 			} */
@@ -392,7 +392,7 @@ float GetCharacterShipSP(ref _refCharacter)
 string GetShipTypeName(ref _refCharacter)
 {
 	int nShipType = GetCharacterShipType(_refCharacter);
-	if(nShipType==SHIP_NOTUSED) 
+	if(nShipType==SHIP_NOTUSED)
 	{
 		return SHIP_NOTUSED_TYPE_NAME;
 	}
@@ -453,7 +453,7 @@ int GetCrewQuantity(ref _refCharacter)
 {
 	if(!CheckAttribute(_refCharacter,"Ship.Crew.Quantity")) return 0;
 	if (sti(_refCharacter.Ship.Crew.Quantity) < 0) _refCharacter.Ship.Crew.Quantity = 0; // boal FIX 21.04.05
-	
+
 	return sti(_refCharacter.Ship.Crew.Quantity);
 }
 int SetCrewQuantity(ref _refCharacter,int num)
@@ -557,27 +557,27 @@ float GetHullRPD(ref _refCharacter) // процент ремонта корпу�
 float GetSailSPP(ref _refCharacter) // количество парусины на один процент починки
 {
 	float ret = 8-GetCharacterShipClass(_refCharacter);
-	
+
 	if (CheckOfficersPerk(_refCharacter, "Builder"))
 	{
 		ret = ret * 0.9; // потребность ниже
 	}
-	
+
 	return ret;
 }
 float GetHullPPP(ref _refCharacter) // количество досок на один процент починки
 {
 	float ret = 8-GetCharacterShipClass(_refCharacter);
-	
+
 	float HPpercent = GetCharacterShipHP(_refCharacter) / 700.0;
-	
+
 	if (HPpercent > ret) ret = HPpercent;
-	
+
 	if (CheckOfficersPerk(_refCharacter, "Builder"))
 	{
 		ret = ret * 0.9; // потребность ниже
 	}
-	
+
 	return ret;
 }
 // расчет починки корпуса
@@ -585,7 +585,7 @@ float GetHullRepairDay(ref _refCharacter, bool _qty) // процент ремо�
 {
     float repPercent = 0.0;
     float matQ, tmpf;
-    
+
     matQ = 0;
 	if (GetHullPercent(_refCharacter)<100.0 )
 	{
@@ -612,9 +612,9 @@ float GetSailRepairDay(ref _refCharacter, bool _qty)			// расчет почи�
 {
     float repPercent = 0.0;
     float matQ, tmpf;
-    
+
     matQ = 0;
-    
+
 	if (GetSailPercent(_refCharacter)<100.0 )
 	{
 		repPercent = GetSailRPD(_refCharacter);
@@ -625,7 +625,7 @@ float GetSailRepairDay(ref _refCharacter, bool _qty)			// расчет почи�
 			if (tmpf < matQ)
 			{
                 matQ = tmpf;
-				repPercent = tmpf/GetSailSPP(_refCharacter);  
+				repPercent = tmpf/GetSailSPP(_refCharacter);
 			}
         }
 	}
@@ -652,7 +652,7 @@ int GetOfficerPassengerQuantity(ref _refCharacter)
 	int cn;
 	int how = 0;
 	bool ok;
-	
+
 	for (int i=0; i<psgQuant; i++)
 	{
 		cn = GetPassenger(_refCharacter,i);
@@ -711,14 +711,14 @@ int GetNotQuestPassengersQuantity(ref _refCharacter)
 {
 	int result, idx;
 	bool bOk;
-	
+
 	result = 0;
 	idx = 0;
 	if(!CheckAttribute(_refCharacter,"Fellows.Passengers.Quantity")) return 0;
 	for (int i=0; i <sti(_refCharacter.Fellows.Passengers.Quantity); i++)
 	{
 		idx = GetPassenger( _refCharacter,i);
-		
+
 		bOk =  CheckAttribute(&characters[idx], "prisoned") && sti(characters[idx].prisoned) == true;
 		if (!bOk && !CheckAttribute(&characters[idx], "isquest"))
 		{
@@ -769,11 +769,11 @@ int GetPassenger(ref _refCharacter,int idx)
 
 int GetPassengerEx(ref _refCharacter,int idx)
 {
-	if(idx < 0) 
+	if(idx < 0)
 	{
 		return -1;
 	}
-	if(idx > GetPassengersQuantity(_refCharacter)) 
+	if(idx > GetPassengersQuantity(_refCharacter))
 	{
 		return -1;
 	}
@@ -782,7 +782,7 @@ int GetPassengerEx(ref _refCharacter,int idx)
 		return nMainCharacterIndex;
 	}
 	string PsgAttrName = "id" + (idx);
-	if(!CheckAttribute(_refCharacter,"Fellows.Passengers."+PsgAttrName)) 
+	if(!CheckAttribute(_refCharacter,"Fellows.Passengers."+PsgAttrName))
 	{
 		return -1;
 	}
@@ -959,7 +959,7 @@ int FindFellowtravellers(ref _refCharacter,ref _refFindCharacter)
 	}
 	for(i=1;i<COMPANION_MAX;i++)
 	{
-		if( GetCompanionIndex(_refCharacter,i)==sti(_refFindCharacter.index) )	
+		if( GetCompanionIndex(_refCharacter,i)==sti(_refFindCharacter.index) )
 		{
 			return FELLOWTRAVEL_COMPANION;
 		}
@@ -987,7 +987,7 @@ int SetCompanionIndex(ref _refCharacter,int _CompanionNum, int _CompanionIdx)
 {
   if(_CompanionNum == -1)
 	{
-		for(int i = 1; i < COMPANION_MAX; i++)	
+		for(int i = 1; i < COMPANION_MAX; i++)
 		{
 			if (GetCompanionIndex(_refCharacter, i) == -1)
 			{
@@ -1052,15 +1052,15 @@ int RemoveCharacterCompanion(ref _refCharacter, ref refCompanion)
 }
 int GetCompanionIndex(ref _refCharacter,int _CompanionNum)
 {
-	if(_CompanionNum < 0) 
+	if(_CompanionNum < 0)
 	{
 		return -1;
 	}
-	if(_CompanionNum > (COMPANION_MAX - 1)) 
+	if(_CompanionNum > (COMPANION_MAX - 1))
 	{
 		return -1;
 	}
-	if(_CompanionNum==0) 
+	if(_CompanionNum==0)
 	{
 		if (!CheckAttribute(_refCharacter,"index"))
 		{
@@ -1071,7 +1071,7 @@ int GetCompanionIndex(ref _refCharacter,int _CompanionNum)
 	}
 
 	string compName = "id"+_CompanionNum;
-	if(!CheckAttribute(_refCharacter, "Fellows.Companions."+compName)) 
+	if(!CheckAttribute(_refCharacter, "Fellows.Companions."+compName))
 	{
 		return -1;
 	}
@@ -1165,7 +1165,7 @@ int SetOfficersIndex(ref _refCharacter,int _OfficerNum, int _OfficerIdx)
 	int i;
     if(_OfficerNum == -1)
 	{
-		for(i=1; i<4; i++)	
+		for(i=1; i<4; i++)
 		{
 			if(GetOfficersIndex(_refCharacter, i) == -1)
 			{
@@ -1280,7 +1280,7 @@ void SetBaseShipData(ref refCharacter)
 			trace ("ship have not HP.");
 			return;
 		}
-		
+
 		refShip.HP = refBaseShip.HP;
 		refShip.SP = refBaseShip.SP;
 
@@ -1293,23 +1293,23 @@ void SetBaseShipData(ref refCharacter)
 		if (CheckAttribute(refShip, "Cannons.Borts.cannonb.damages")) { DeleteAttribute(refShip, "Cannons.Borts.cannonb.damages"); }
 		if (CheckAttribute(refShip, "Cannons.Borts.cannonl.damages")) { DeleteAttribute(refShip, "Cannons.Borts.cannonl.damages"); }
 		if (CheckAttribute(refShip, "Cannons.Borts.cannonr.damages")) { DeleteAttribute(refShip, "Cannons.Borts.cannonr.damages"); }
-		
+
 		refShip.Cannons.Charge.Type = GOOD_BALLS;
 
-		if (!CheckAttribute(refShip,"Cannons.Type")) 
-		{ 
-			refShip.Cannons.Type = MakeInt(refBaseShip.Cannon); 
+		if (!CheckAttribute(refShip,"Cannons.Type"))
+		{
+			refShip.Cannons.Type = MakeInt(refBaseShip.Cannon);
 		}
 
-		if (!CheckAttribute(refShip,"Crew.Morale"))	
-		{ 
-			refShip.Crew.Morale = 20 + rand(79);	
+		if (!CheckAttribute(refShip,"Crew.Morale"))
+		{
+			refShip.Crew.Morale = 20 + rand(79);
 		}
-		if (!CheckAttribute(refShip,"Crew.Quantity")) 
-		{ 
-			refShip.Crew.Quantity = refBaseShip.OptCrew; // оптимальная команда 
+		if (!CheckAttribute(refShip,"Crew.Quantity"))
+		{
+			refShip.Crew.Quantity = refBaseShip.OptCrew; // оптимальная команда
 		}
-        
+
 		SetGoodsInitNull(refCharacter); // boal пееренс в метод
 		// новый опыт
         if(!CheckAttribute(refCharacter, "ship.crew.Exp"))
@@ -1334,9 +1334,9 @@ void SetBaseShipData(ref refCharacter)
 			}
 		}
 		// boal <--
-		// bombs		
+		// bombs
 		i = GetCharacterFreeSpace(refCharacter,GOOD_BOMBS) / 42;
-		if(i>0) 
+		if(i>0)
 		{
 			if(i > 600)
 			{
@@ -1354,7 +1354,7 @@ void SetBaseShipData(ref refCharacter)
 
 		// grapes
 		i = GetCharacterFreeSpace(refCharacter,GOOD_GRAPES) / 60;
-		if(i>0) 
+		if(i>0)
 		{
 			if(i > 200)
 			{
@@ -1372,7 +1372,7 @@ void SetBaseShipData(ref refCharacter)
 
 		// knippels
 		i = GetCharacterFreeSpace(refCharacter,GOOD_KNIPPELS) / 60;
-		if(i>0) 
+		if(i>0)
 		{
 			if(i > 200)
 			{
@@ -1390,7 +1390,7 @@ void SetBaseShipData(ref refCharacter)
 
 		// cannonballs
 		i = GetCharacterFreeSpace(refCharacter,GOOD_BALLS) / 42;
-		if(i>0) 
+		if(i>0)
 		{
 			if(i > 800)
 			{
@@ -1408,7 +1408,7 @@ void SetBaseShipData(ref refCharacter)
 
 		//food
 		i = GetCharacterFreeSpace(refCharacter,GOOD_FOOD) / 20;
-		if(i>0) 
+		if(i>0)
 		{
             if(i > 300)
 			{
@@ -1425,7 +1425,7 @@ void SetBaseShipData(ref refCharacter)
 		}
 		//GOOD_WEAPON
 		i = GetCharacterFreeSpace(refCharacter,GOOD_WEAPON) / 60;
-		if(i>0) 
+		if(i>0)
 		{
             if(i > 300)
 			{
@@ -1442,7 +1442,7 @@ void SetBaseShipData(ref refCharacter)
 		}
 		//
 		i = GetCharacterFreeSpace(refCharacter,GOOD_MEDICAMENT) / 100;
-		if(i>0) 
+		if(i>0)
 		{
             if(i > 300)
 			{
@@ -1464,7 +1464,7 @@ void SetGoodsInitNull(ref refCharacter)
 {
     string goodsName;
     int i;
-    
+
 	refCharacter.Ship.Cargo.Load = 0;
 	for (i=0; i<GOODS_QUANTITY; i++)
 	{
@@ -1616,7 +1616,7 @@ int GetIslandIdxByLocationIdx(int locIdx)
 	return -1;
 }
 
-int GetCurrentLocationNation() 
+int GetCurrentLocationNation()
 {
 	int curLocNum = FindLocation(Characters[GetMainCharacterIndex()].location);
 	if(curLocNum<0) return -1;
@@ -1628,7 +1628,7 @@ void SetRandomNameToCharacter(ref rCharacter)
 	int iNation = sti(rCharacter.nation);
 	if (iNation == -1) iNation = PIRATE;
 	while (iNation == PIRATE) { iNation = rand(MAX_NATIONS - 2); }
-	
+
 	ref rNames, rLastNames;
     // fix -->
     rNames = &sEnManNames;
@@ -1672,7 +1672,7 @@ string GenerateRandomName(int iNation, string sSex)
 {
 	if (iNation == -1) iNation = PIRATE;
 	while (iNation == PIRATE) { iNation = rand(MAX_NATIONS - 2); }
-	
+
 	ref rNames, rLastNames;
 
 	switch(iNation)
@@ -1706,7 +1706,7 @@ string GenerateRandomName(int iNation, string sSex)
 
 	string sname = GetRandSubString(rNames[rand(GetArraySize(rNames) - 2)]);
 	string slastname = GetRandSubString(rLastNames[rand(GetArraySize(rLastNames) - 2)]);
-	
+
 	sname = sname + " " + slastName;
 	return sName;
 }
@@ -1974,7 +1974,7 @@ void SetEquipedItemToCharacter(ref chref, string groupID, string itemID)
 		if(CheckAttribute(arItm,"Weight")) //eddy.при загрузки локации если у ГГ нет оружия - ошибка
 		{
 			LAi_BladeEnergyType(chref, GetEnergyBladeDrain(stf(arItm.Weight)) );  // энергоемкость от веса
-		}		
+		}
 		// boal <--
 	break;
 	}
@@ -1996,7 +1996,7 @@ void EquipCharacterByItem(ref chref, string itemID)
 	string groupName = arItm.groupID;
 	string oldItemID = GetCharacterEquipByGroup(chref, groupName);
 	if(oldItemID==itemID) return;
-	
+
 	if (chref.model.animation == "mushketer")
 	{
 		if (groupName == BLADE_ITEM_TYPE && itemID != "unarmed") return;
@@ -2226,32 +2226,32 @@ int GetCharacterReputation(aref chr, int iNation)
 		case 0:
 			iVal = sti(chr.reputation.england);
 		break;
-		
+
 		case 1:
 			iVal = sti(chr.reputation.france);
 		break;
-		
+
 		case 2:
 			iVal = sti(chr.reputation.spain);
 		break;
-		
+
 		case 3:
 			iVal = sti(chr.reputation.holland);
 		break;
-		
+
 		case 4:
 			iVal = sti(chr.reputation.pirate);
 		break;
-		
+
 		case 5:
 			iVal = sti(chr.reputation.smuggler);
 		break;
-		
+
 		case 6:
 			iVal = sti(chr.reputation.trader);
 		break;
 	}
-	
+
 	return iVal;
 }
 

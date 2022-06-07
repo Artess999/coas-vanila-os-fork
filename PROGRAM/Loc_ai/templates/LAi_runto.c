@@ -205,7 +205,7 @@ void LAi_tmpl_runto_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_runto_IsFire(aref chr)
-{	
+{
 	return false;
 }
 

@@ -17,7 +17,7 @@ void wdmReloadToSea()
 	Siege_DailyUpdate();//homo осады 05/11/06
 	SaveCurrentQuestDateParam("WordMapEncounters_DailyUpdate"); //homo карта 25/03/07
 	// расчеты <--
-	
+
 	wdmLockReload = true;
 	//Обновим текст перегрузки
 	SetReloadNextTipsImage();
@@ -43,7 +43,7 @@ void wdmReloadToSea()
 	SetEventHandler("FaderEvent_EndFade", "WdmEndFade", 0);
 	wdm_fader.thisWorldMapFader = "";
 	CreateEntity(&wdm_fader, "fader");
-	if(IsEntity(wdm_fader) == 0) Trace("Fader not created!!!");	
+	if(IsEntity(wdm_fader) == 0) Trace("Fader not created!!!");
 	float fadeOutTime = 0.5;
 	SendMessage(&wdm_fader, "lfl", FADER_OUT, fadeOutTime, true);
 	SendMessage(&wdm_fader, "l", FADER_STARTFRAME);
@@ -84,7 +84,7 @@ void WdmEndFade()
 	//Delete EventHandler
 	DelEventHandler("FaderEvent_EndFade", "WdmEndFade");
 	//Switch to sea
-	ReloadProgressStart();	
+	ReloadProgressStart();
 	SeaLogin(&wdmLoginToSea);
 	LayerAddObject(SEA_REALIZE, &reload_fader, -1);
 	ReloadProgressEnd();
@@ -97,7 +97,7 @@ void QuitFromWorldMap()
 	SetEventHandler("FaderEvent_EndFade", "WdmEndFadeA", 0);
 	wdm_fader.thisWorldMapFader = "";
 	CreateEntity(&wdm_fader, "fader");
-	if(IsEntity(wdm_fader) == 0) Trace("Fader not created!!!");	
+	if(IsEntity(wdm_fader) == 0) Trace("Fader not created!!!");
 	float fadeOutTime = 0.5;
 	SendMessage(&wdm_fader, "lfl", FADER_OUT, fadeOutTime, true);
 	SendMessage(&wdm_fader, "l", FADER_STARTFRAME);
@@ -163,7 +163,7 @@ void WdmAddPlayerGroup()
 		float iz = MakeFloat(worldMap.island.z);
 		int scale = WDM_MAP_TO_SEA_SCALE;
 		if (worldMap.island == "Cuba1" || worldMap.island == "Cuba2" || worldMap.island == "Beliz" || worldMap.island == "SantaCatalina"
-			|| worldMap.island == "PortoBello" || worldMap.island == "Cartahena" || worldMap.island == "Maracaibo" 
+			|| worldMap.island == "PortoBello" || worldMap.island == "Cartahena" || worldMap.island == "Maracaibo"
 			|| worldMap.island == "Caracas" || worldMap.island == "Cumana")
 		{
 			scale = 25;
@@ -232,7 +232,7 @@ bool WdmAddEncountersData()
 			encStringID = worldMap.encounter.id;
 			encStringID = "encounters." + encStringID;
 			if(CheckAttribute(&worldMap, encStringID + ".quest") == 0)
-			{			
+			{
 				worldMap.(encStringID).needDelete = "Reload delete non quest encounter";
 			}
 		}
@@ -260,5 +260,5 @@ void WdmStormEncounter()
 			encStringID = "encounters." + encStringID;
 			worldMap.(encStringID).needDelete = "Reload delete storm";
 		}
-	}	
+	}
 }

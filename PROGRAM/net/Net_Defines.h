@@ -38,7 +38,7 @@
 #define DST_ALL							65535
 
 // =================================================================================
-// NET MESSAGES CODES 
+// NET MESSAGES CODES
 // =================================================================================
 #define NC_CONNECT						0
 #define NC_DISCONNECT					1
@@ -94,7 +94,7 @@
 // NC_WEATHER
 #define NSC_WEATHER_ADD_LIGHTNING		0
 
-// NC_COMMAND	
+// NC_COMMAND
 #define NSC_COMMAND_STARTGAME			0
 #define NSC_COMMAND_RESTARTGAME			1
 #define NSC_COMMAND_VOTE_KICK			2

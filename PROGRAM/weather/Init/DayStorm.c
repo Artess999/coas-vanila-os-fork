@@ -47,7 +47,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -55,7 +55,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.IslandDensity = 0.005;
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,50,60,65);
-	
+
 	Weathers[n].Rain.NumDrops = 50000;
 	Weathers[n].Rain.Color = argb(0,23,23,23);
 	Weathers[n].Rain.DropLength = 2.12;
@@ -153,13 +153,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 2.0; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.6; 
+	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.1;
 
 	Weathers[n].Sea2.Amp1 = 40.0; //амплитуда 1 волны
@@ -180,7 +180,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 15.0;
 	Weathers[n].Wind.Speed.Max = 18.0;
-	
+
 	n++;
 
 // ====================================================================
@@ -229,7 +229,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -238,7 +238,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,100,95,85);
 	//athers[n].Fog.Color = argb(0,100,95,85);
-	
+
 	Weathers[n].Rain.NumDrops = 50000;
 	Weathers[n].Rain.Color = argb(0,13,13,13);
 	Weathers[n].Rain.DropLength = 4.12;
@@ -337,13 +337,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 0.3; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 50, 65, 70);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.8;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.3; 
+	Weathers[n].Sea2.Frenel = 0.3;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
 	Weathers[n].Sea2.Amp1 = 100.0; //амплитуда 1 волны
@@ -364,7 +364,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 12.0;
 	Weathers[n].Wind.Speed.Max = 14.0;
-	
+
 	n++;
 
 // ====================================================================
@@ -413,7 +413,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -421,7 +421,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.IslandDensity = 0.005;
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,50,50,50);
-	
+
 	Weathers[n].Rain.NumDrops = 50000;
 	Weathers[n].Rain.Color = argb(0,33,33,33);
 	Weathers[n].Rain.DropLength = 2.12;
@@ -520,13 +520,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 0.8; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 85, 105, 100);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.2;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.6; 
+	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.2;
 
 	Weathers[n].Sea2.Amp1 = 70.0; //амплитуда 1 волны
@@ -543,12 +543,12 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.FoamV = 12.0;//высота с которой начинается пена
 	Weathers[n].Sea2.FoamUV = 0.3; //тайлинг пены
 	Weathers[n].Sea2.FoamTexDisturb = 0.7;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
-	
+
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 13.0;
 	Weathers[n].Wind.Speed.Max = 16.0;
-	
+
 	n++;
 
 // ====================================================================
@@ -597,7 +597,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -605,7 +605,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.IslandDensity = 0.0025;
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,40,40,30);
-	
+
 	Weathers[n].Rain.NumDrops = 25000;
 	Weathers[n].Rain.Color = argb(0,43,43,33);
 	Weathers[n].Rain.DropLength = 3.12;
@@ -704,13 +704,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 2.0; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 65, 60);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.7;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.6; 
+	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.2;
 
 	Weathers[n].Sea2.Amp1 = 100.0; //амплитуда 1 волны
@@ -727,12 +727,12 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.FoamV = 12.0;//высота с которой начинается пена
 	Weathers[n].Sea2.FoamUV = 0.2; //тайлинг пены
 	Weathers[n].Sea2.FoamTexDisturb = 0.7;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
-	
+
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 12.0;
 	Weathers[n].Wind.Speed.Max = 17.0;
-	
+
 	n++;
 
 // ====================================================================
@@ -784,7 +784,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -792,7 +792,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.IslandDensity = 0.005;
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,50,60,65);
-	
+
 	Weathers[n].Rain.NumDrops = 50000;
 	Weathers[n].Rain.Color = argb(0,23,23,23);
 	Weathers[n].Rain.DropLength = 2.12;
@@ -890,13 +890,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 2.0; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 70, 80);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.5;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.6; 
+	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.1;
 
 	Weathers[n].Sea2.Amp1 = 50.0; //амплитуда 1 волны
@@ -917,7 +917,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 15.0;
 	Weathers[n].Wind.Speed.Max = 18.0;
-	
+
 	n++;
 
 // ====================================================================
@@ -967,7 +967,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -976,7 +976,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,100,95,85);
 	//athers[n].Fog.Color = argb(0,100,95,85);
-	
+
 	Weathers[n].Rain.NumDrops = 50000;
 	Weathers[n].Rain.Color = argb(0,13,13,13);
 	Weathers[n].Rain.DropLength = 4.12;
@@ -1075,13 +1075,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 0.3; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 50, 65, 70);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.8;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.3; 
+	Weathers[n].Sea2.Frenel = 0.3;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
 	Weathers[n].Sea2.Amp1 = 50.0; //амплитуда 1 волны
@@ -1102,7 +1102,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 12.0;
 	Weathers[n].Wind.Speed.Max = 14.0;
-	
+
 	n++;
 
 // ====================================================================
@@ -1152,7 +1152,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -1160,7 +1160,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.IslandDensity = 0.005;
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,50,50,50);
-	
+
 	Weathers[n].Rain.NumDrops = 50000;
 	Weathers[n].Rain.Color = argb(0,33,33,33);
 	Weathers[n].Rain.DropLength = 2.12;
@@ -1259,13 +1259,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 0.8; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 85, 105, 100);
 	Weathers[n].Sea2.SkyColor = argb(0, 155, 155, 155);
 
 	Weathers[n].Sea2.Reflection = 0.2;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.6; 
+	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.2;
 
 	Weathers[n].Sea2.Amp1 = 50.0; //амплитуда 1 волны
@@ -1282,12 +1282,12 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.FoamV = 12.0;//высота с которой начинается пена
 	Weathers[n].Sea2.FoamUV = 0.3; //тайлинг пены
 	Weathers[n].Sea2.FoamTexDisturb = 0.7;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
-	
+
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 13.0;
 	Weathers[n].Wind.Speed.Max = 16.0;
-	
+
 	n++;
 
 // ====================================================================
@@ -1337,7 +1337,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -1345,7 +1345,7 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Fog.IslandDensity = 0.0025;
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,40,40,30);
-	
+
 	Weathers[n].Rain.NumDrops = 25000;
 	Weathers[n].Rain.Color = argb(0,43,43,33);
 	Weathers[n].Rain.DropLength = 3.12;
@@ -1444,13 +1444,13 @@ int Whr_InitDayStorm(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //МЕЛКИЕ ВОЛНЫ
 	Weathers[n].Sea2.PosShift = 2.0; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 60, 65, 60);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.7;
 	Weathers[n].Sea2.Transparency = 0.05;
-	Weathers[n].Sea2.Frenel = 0.6; 
+	Weathers[n].Sea2.Frenel = 0.6;
 	Weathers[n].Sea2.Attenuation = 0.2;
 
 	Weathers[n].Sea2.Amp1 = 50.0; //амплитуда 1 волны
@@ -1467,12 +1467,12 @@ int Whr_InitDayStorm(int n)
 	Weathers[n].Sea2.FoamV = 12.0;//высота с которой начинается пена
 	Weathers[n].Sea2.FoamUV = 0.2; //тайлинг пены
 	Weathers[n].Sea2.FoamTexDisturb = 0.7;//сдвиг по нормали. х.з. что это надо поюзать. значение от 0.0 до 1.0
-	
+
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 12.0;
 	Weathers[n].Wind.Speed.Max = 17.0;
-	
+
 	n++;
 
 	return n;

@@ -106,8 +106,8 @@ void NetServer_Ship2ShipCollision()
 	ref rOurClient = NetServer_GetClient(sti(arOurClient.ID));
 	ref rEnemyClient = NetServer_GetClient(sti(arEnemyClient.ID));
 
-	if (fPower > 1.0) 
-	{ 
+	if (fPower > 1.0)
+	{
 		int iLastCollTime1 = sti(rOurClient.LastCollisionShip);
 		int iLastCollTime2 = sti(rEnemyClient.LastCollisionShip);
 		if ((iServerTime - iLastCollTime1 >= 800) && (iServerTime - iLastCollTime2 >= 800))
@@ -127,7 +127,7 @@ void NetServer_Ship2ShipCollision()
 	}
 
 	float fHP = (1.0 - fSlide) * fPower * 3.0;
-	
+
 	if (NetServer_IsClientDead(rEnemyClient))
 		{ NetServer_ShipApplyHullHitpoints(rOurClient, fHP, NETKILL_BY_TOUCH_DEAD, sti(rEnemyClient.ID));	}
 	else
@@ -146,7 +146,7 @@ void NetServer_Ship2IslandCollision()
 
 	ref rOurClient = NetServer_GetClient(sti(arClient.ID));
 
-	if (fPower > 1.0) 
+	if (fPower > 1.0)
 	{
 		int iLastCollTime = sti(rOurClient.LastCollisionIsland);
 		if (iServerTime - iLastCollTime >= 800)
@@ -197,7 +197,7 @@ float NetServer_OnShipMastDamage()
 				case "Knippels":	fDamage = fDamage + 0.25; break;
 				case "Bombs":		fDamage = fDamage + 0.15; break;
 			}
-			
+
 			// statistic
 			ref rBallClient = NetServer_GetCLient(wBallClientID);
 			rBallClient.Stat.Hits = sti(rBallClient.Stat.Hits) + 1;
@@ -220,8 +220,8 @@ float NetServer_OnShipMastDamage()
 	NetServer_SendMessage(DST_ALL, iSMsg, false);
 	NMDelete(iSMsg);
 
-	if (fDamage >= 1.0) 
-	{ 
+	if (fDamage >= 1.0)
+	{
 		iSMsg = NMCreate();
 		NMAddByte(iSMsg, NC_SHIP);
 		NMAddByte(iSMsg, NSC_SHIP_MAST_FALL);
@@ -248,7 +248,7 @@ void NetServer_StartRepair(int wNetClientID)
 
 	rClient.Skills.Repair.Active = 30;
 	rClient.Skills.Repair.Cooldown = iServerTime;
-	
+
 	Event("NetServer_OnShipRepair", "l", wNetClientID);
 }
 
@@ -305,7 +305,7 @@ void NetServer_OnShipHullHit()
 	int		wOurClientID = GetEventData();
 
 	ref	rOurClient = NetServer_GetCLient(wOurClientID);
-	ref	rBallClient = NetServer_GetCLient(wBallClientID);	
+	ref	rBallClient = NetServer_GetCLient(wBallClientID);
 
 	//rOurClient.Ship.LastBallCharacter = wBallClientID;
 
@@ -315,7 +315,7 @@ void NetServer_OnShipHullHit()
 	float	y = GetEventData();
 	float	z = GetEventData();
 
-	int		iFirePlaceIndex = GetEventData();   
+	int		iFirePlaceIndex = GetEventData();
 	float	fFirePlaceDistance = GetEventData();
 
 	bool	bDead = NetServer_IsClientDead(rOurClient);
@@ -356,7 +356,7 @@ void NetServer_OnShipHullHit()
 		//float fRigDamage = stf(rBall.DamageRig) * fCannonDamageMultiply * AIShip_isPerksUse(aBallClient.Perks.SailsDamageUp, 1.0, 1.15);
 
 		if (bSeriousBoom)
-		{ 
+		{
 			fCrewDamage = fCrewDamage * 4.0;
 			fHP = fCannonDamageMultiply * stf(rBall.DamageHull) * (16.0 + frnd() * 8.0);
 			NetServer_ShipApplyHullHitpoints(rOurClient, fHP, NETKILL_BY_BALL, wBallClientID);
@@ -364,9 +364,9 @@ void NetServer_OnShipHullHit()
 			if (!bTeam) { NetServer_AddClientExp(rBallClient, 150); }
 		}
 		else
-		{ 
+		{
 			fHP = fCannonDamageMultiply * stf(rBall.DamageHull);
-			NetServer_ShipApplyHullHitpoints(rOurClient, fHP, NETKILL_BY_BALL, wBallClientID); 
+			NetServer_ShipApplyHullHitpoints(rOurClient, fHP, NETKILL_BY_BALL, wBallClientID);
 			if (!bTeam) { NetServer_AddClientExp(rBallClient, 20); }
 		}
 
@@ -389,7 +389,7 @@ void NetServer_OnShipHullHit()
 	if (bInflame == true && fFirePlaceDistance < 4.0 && iFirePlaceIndex >= 0)
 	{
 		int iRandStartTime = 100 + rand(1000);
-		float fTotalFireTime = NetServer_ShipGetTotalFireTime(rOurClient); 
+		float fTotalFireTime = NetServer_ShipGetTotalFireTime(rOurClient);
 
 		NMAddByte(iSMsg, true);		// true - activate fire place
 		NMAddWord(iSMsg, iFirePlaceIndex);
@@ -408,10 +408,10 @@ void NetServer_OnShipHullHit()
 
 	float fTmpCannonDamage = fCannonDamageMultiply * stf(rBall.DamageHull);
 
-	if (bSeriousBoom == true) 
-	{ 
+	if (bSeriousBoom == true)
+	{
 		fTmpCannonDamage = fTmpCannonDamage * 4.0;
-	}	
+	}
 
 	//SendMessage(&AISea, "laffff", AI_MESSAGE_CANNONS_BOOM_CHECK, rOurClient, fTmpCannonDamage, x, y, z);
 
@@ -432,7 +432,7 @@ void NetServer_ShipFireDamage()
 	float fHP = (8 - stf(rShip.Class)) * (0.5 + frnd() * 0.5);
 	int iTime = 1000 + rand(500);
 
-	NetServer_ShipApplyHullHitpoints(rOurClient, fHP, NETKILL_BY_BALL, wBallClientID); 
+	NetServer_ShipApplyHullHitpoints(rOurClient, fHP, NETKILL_BY_BALL, wBallClientID);
 	fTotalFireTime = fTotalFireTime - MakeFloat(iTime) / 1000.0;
 
 	if (fTotalFireTime > 0.0)
@@ -510,15 +510,15 @@ void NetServer_SetClientDead(ref rOurClient, int iKillStatus, int wKillerClientI
 
 	rOurClient.Stat.Wreck = 1;
 
-	if (bKillerClient) 
-	{ 
-		int iExp = 2 * MakeInt(stf(rOurClient.Ship.MaxHP) * stf(rKillerBaseShip.Class) / stf(rBaseShip.Class)); 
+	if (bKillerClient)
+	{
+		int iExp = 2 * MakeInt(stf(rOurClient.Ship.MaxHP) * stf(rKillerBaseShip.Class) / stf(rBaseShip.Class));
 		NetServer_AddClientExp(rKillerClient, iExp);
 	}
 
 	bool bDetonate = false;
-	if (rand(10) >= 6 && sti(rBaseShip.Class) <= 6) 
-	{ 
+	if (rand(10) >= 6 && sti(rBaseShip.Class) <= 6)
+	{
 		switch (iKillStatus)
 		{
 			case NETKILL_BY_BALL: if (rand(2) == 1) { bDetonate = true; } break;
@@ -591,8 +591,8 @@ void NetServer_ShipUpdateParameters()
 	// calculate MaxSpeedZ
 		float fTRFromSkill = Bring2Range(0.1, 1.0, 0.0, 2.0, 2.0 * stf(rClient.Skills.Sailing) / NETSKILL_MAX);
 		fTRFromSKill = 0.7 + fTRFromSkill / 3.34;
-		//float fSpeedPerk = NetServer_IsPerkUse(rClient.Perks.ShipSpeedUp, 1.0, 1.15); 
-		//fSpeedPerk = NetServer_IsPerkUse(rClient.Perks.SailingProfessional, fSpeedPerk, 1.20); 
+		//float fSpeedPerk = NetServer_IsPerkUse(rClient.Perks.ShipSpeedUp, 1.0, 1.15);
+		//fSpeedPerk = NetServer_IsPerkUse(rClient.Perks.SailingProfessional, fSpeedPerk, 1.20);
 
 		float	fTRFromWeight = Clampf(1.0 - stf(rShip.TurnDependWeight) * fLoad);
 		float	fTRFromSpeed = 1.0 - stf(rShip.TurnDependSpeed) * (1.0 - Clampf(fCurrentSpeedZ / fMaxSpeedZ));
@@ -617,9 +617,9 @@ void NetServer_ShipUpdateParameters()
 		}
 		fTRResult = Bring2Range(0.1, 1.0, 0.00001, 1.0, fTRFromWeight * fTRFromSpeed * fTRFromSkill * fTRFromPeople * fTRFromSailDamage * fTRFromSailState * fSpeedFromHp);
 
-		//float fTurnPerk = NetServer_IsPerkUse(rClient.Perks.ShipTurnRateUp, 1.0, 1.15); 
-		//fTurnPerk = NetServer_IsPerkUse(rClient.Perks.SailingProfessional, fTurnPerk, 1.20); 
-		//float fFastTurn180 = NetServer_IsPerkUse(rClient.Perks.Turn180, 1.0, 8.0); 
+		//float fTurnPerk = NetServer_IsPerkUse(rClient.Perks.ShipTurnRateUp, 1.0, 1.15);
+		//fTurnPerk = NetServer_IsPerkUse(rClient.Perks.SailingProfessional, fTurnPerk, 1.20);
+		//float fFastTurn180 = NetServer_IsPerkUse(rClient.Perks.Turn180, 1.0, 8.0);
 		rClient.Ship.MaxSpeedY = fGameSpeed * 2.0 * fTRResult * fMaxSpeedY;// * fTurnPerk * fFastTurn180;
 
 	//rClient.Ship.MaxSpeedZ = 30.0;
@@ -653,8 +653,8 @@ void NetServer_ShipUpdateParameters()
 	NMAddWord(iSMsg, sti(rClient.Ship.HP));		// HP
 
 	NMAddWord(iSMsg, sti(rClient.Ship.Crew.Quantity));			// Crew quantity
-	NMAddWord(iSMsg, sti(rClient.Ship.Goods.(sBallName)));		// current charge quantity 
-	
+	NMAddWord(iSMsg, sti(rClient.Ship.Goods.(sBallName)));		// current charge quantity
+
 	NMAddWord(iSMsg, sti(rClient.Stat.Hits));
 	NMAddWord(iSMsg, sti(rClient.Stat.Misses));
 	NMAddFloat(iSMsg, stf(rClient.Stat.DamageInflicted));
@@ -683,9 +683,9 @@ void NetServer_ShipUpdateParameters()
 		aref arBorts; makearef(arBorts, rClient.Ship.Cannons.Borts);
 
 		string sCurBort = sNetBortNames[i];
-		NMAddWord(iSMsg, makeint(stf(arBorts.(sCurBort).MaxFireDistance))); 
-		NMAddByte(iSMsg, makeint(stf(arBorts.(sCurBort).ChargeRatio) * 255.0)); 
-		NMAddByte(iSMsg, makeint(stf(arBorts.(sCurBort).DamageRatio) * 255.0)); 
+		NMAddWord(iSMsg, makeint(stf(arBorts.(sCurBort).MaxFireDistance)));
+		NMAddByte(iSMsg, makeint(stf(arBorts.(sCurBort).ChargeRatio) * 255.0));
+		NMAddByte(iSMsg, makeint(stf(arBorts.(sCurBort).DamageRatio) * 255.0));
 	}
 	NetServer_SendMessage(wOurClientID, iSMsg, false);
 	NMDelete(iSMsg);
@@ -700,8 +700,8 @@ void NetServer_CalculateReloadTime(ref rClient)
 
 	float fCannonSkill = stf(rClient.Skills.Cannons) / NETSKILL_MAX;
 
-	float fMultiply = (6.0 - NetServer_GetSpeedModifier()) / 5.0; // NetServer_IsPerkUse(rClient.Perks.FastReload, 1.0, 0.8); 
-	//fMultiply = NetServer_IsPerkUse(rClient.Perks.ImmediateReload, fMultiply, 0.5); 
+	float fMultiply = (6.0 - NetServer_GetSpeedModifier()) / 5.0; // NetServer_IsPerkUse(rClient.Perks.FastReload, 1.0, 0.8);
+	//fMultiply = NetServer_IsPerkUse(rClient.Perks.ImmediateReload, fMultiply, 0.5);
 	//if (!bArcadeCannonsReload) { fMultiply = fMultiply * 12.0; }
 
 	float fCrewQ = sti(rClient.Ship.Crew.Quantity);
@@ -719,10 +719,10 @@ void NetServer_CalculateFireTime(ref rClient)
 	ref rShip = Net_GetShipByIndex(sti(rClient.Ship.Type));
 
 	// make 10 seconds random delay between fire from fort cannons
-	if (sti(rClient.ID) == NET_FORTCLIENT) 
-	{ 
+	if (sti(rClient.ID) == NET_FORTCLIENT)
+	{
 		rClient.Ship.Cannons.FireTime = frnd() * 12.0;
-		return; 
+		return;
 	}
 
 	float fMultiply = 6.0 - NetServer_GetSpeedModifier();
@@ -747,7 +747,7 @@ void NetServer_ShipChangeCharge(int wNetClientID, string sNewCharge)
 	rClient.Ship.Cannons.Charge.Type = sti(rGood.index);
 	NetServer_CannonRecalculateParameters(rClient);
 
-	// 
+	//
 	int iSMSg = NMCreate();
 	NMAddByte(iSMsg, NC_SHIP);
 	NMAddByte(iSMsg, NSC_SHIP_CHANGE_CHARGE);

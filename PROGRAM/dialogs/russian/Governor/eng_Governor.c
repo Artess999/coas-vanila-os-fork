@@ -9,7 +9,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = RandPhraseSimple("Я передумал...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 		break;
-		
+
 		case "work_1":  // работа на благо короны - линейка нации
 			if (CheckAttribute(npchar, "notQuestLine"))
 			{
@@ -24,7 +24,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                                          "Я жду вашего доклада о выполнении ответственного поручения, а не пустых разговоров!");
             link.l1 = RandPhraseSimple("Приступаю немедленно.", "Я уже в процессе выполнения...");
             link.l1.go = "exit";
-            
+
 			switch (pchar.questTemp.State)   // что делаем в данный момент
             {
                 case "empty":   // Нет взятых квестов
@@ -416,7 +416,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             ChangeCharacterAddressGroup(&characters[GetCharacterIndex("Albermal")], "PortRoyal_RoomTownhall", "goto", "goto3");
             AddQuestRecord("Eng_Line_1_Albermal", "1");
         break;
-            
+
         case "Step_1_4":
             dialog.text = "Думаю, да. Но впредь будьте более тщательны в исполнении моих заданий. Вы - английский капер. Интересы Англии превыше всего!";
             link.l1 = "Вы правы, сэр. Вы можете твердо рассчитывать на то, что я буду более исполнителен.";
@@ -430,7 +430,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             SaveCurrentQuestDateParam("questTemp");
             TakeItemFromCharacter(pchar, "letter_Albermal");
 			AddCharacterExpToSkill(pchar, "Leadership", -70);
-			//слухи			
+			//слухи
 			AddSimpleRumour("Вы знаете, капитан " + GetFullName(pchar) + " сумел выполнить очень опасное задание Мэдифорда. Ему нужно было доставить в безопасное место его герцога Альбермаля... Вы не знаете, кто такой Альбермаль?! Скажу я вам по секрету, что только благодаря ему сэр Томас Мэдифорд исполняет обязанности губернатора Ямайки... Только капитан со сроками подвел.", ENGLAND, 5, 1);
         break;
 
@@ -446,7 +446,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1 = "Приступаю немедленно, сэр.";
             link.l1.go = "Step_2_21";
         break;
-        
+
         case "Step_2_21":
             dialog.text = "И отдельно я бы хотел поговорить о Моргане. Дело в том, что его дом на Антигуа представляет из себя настоящую крепость. Так просто туда не попасть. Вам надлежит пробраться в дом через подземелье, находящееся под Сент-Джонсом.";
             link.l1 = "Я понял, сэр. Спасибо за предупреждение. Полагаю, разберусь, что к чему.";
@@ -470,7 +470,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sld.greeting = "Gr_HeadPirates";
             LAi_NoRebirthDisable(sld);
 			LAi_RebirthOldName(sld);
-			sld.RebirthPhantom = true; //не тереть фантома после смерти.  
+			sld.RebirthPhantom = true; //не тереть фантома после смерти.
            	LAi_SetHuberType(sld);
         	LAi_SetLoginTime(sld, 0.0, 24.0);
         	LAi_SetHP(sld, 180.0, 180.0);
@@ -538,7 +538,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			SetQuestHeader("Eng_Line_4_Intelligence_Curacao");
 			AddQuestRecord("Eng_Line_4_Intelligence_Curacao", "1");
 			SaveCurrentQuestDateParam("questTemp");
-		break; 
+		break;
 
         case "Step_4_1":
             dialog.text = "Это очень плохо, я в вас разочарован. Вы можете появиться здесь позже, когда мне удастся все-таки получить нужную информацию.";
@@ -622,7 +622,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Говорят, вы устроили в Виллемстаде хорошую заварушку...", ENGLAND, 5, 1);
         break;
-        
+
         case "Step_5_1":
             dialog.text = "Что ж, теперь мы имеем информацию о том, что голландцы спешно пытаются укрепить свое поселение на Ямайке - Форт Оранж. В принципе, то, что они поселились на другом конце острова - для меня проблемы не составляло, но только пока не началась торговая война.\n"+
                           "Теперь мой долг разорить голландское поселение на английской территории. Я поручаю это вам.\n"+
@@ -673,7 +673,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             LAi_LocationFightDisable(&Locations[FindLocation("FortOrange_townhall")], true);
 			//--> огонь и пламень убираем
 			DeleteAttribute(&locations[FindLocation("FortOrange_town")], "hidden_effects");
-			DeleteAttribute(&locations[FindLocation("FortOrange_ExitTown")], "hidden_effects");	
+			DeleteAttribute(&locations[FindLocation("FortOrange_ExitTown")], "hidden_effects");
 			//<-- огонь и пламень
 			locations[FindLocation("FortOrange_townhall")].models.day.charactersPatch = "SmallResidence_patch";
 			AddCharacterExpToSkill(pchar, "Pistol", 250);
@@ -684,7 +684,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("То, что вы устроили в Форте Оранж - это, знаете ли, впечатляет... Несчастные голландцы...", ENGLAND, 5, 1);
         break;
-        
+
         case "Step_6_1":
             dialog.text = "Что ж, это хорошо. Так вот, он идет после удачного похода на испанцев, в его трюме груз красного дерева, серебра и индиго.\n"+
                           "Ему нужно продать трофеи, пусть заходит для этих целей в Порт Рояль. Передайте ему лично мое разрешение на продажу приза в английской колонии.\n"+
@@ -754,7 +754,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             pchar.questTemp.State = "MorrisWillams_ArrestedToUsurer";
             AddQuestRecord("Eng_Line_6_MorrisWillams", "17");
         break;
-        
+
         case "Step_7_1":
             dialog.text = "Дело в том, что английские корсары перестали заходить с призовым товаром, захваченным у испанцев. Они теперь заходят только на ремонт с минимально необходимым количеством денег.\n"+
                           "Надеюсь, вам не нужно объяснять, сколько Англия теряет каждый месяц на неоплатах десятипроцентной пошлины от размера захваченного груза, а сколько теряют ямайские негоцианты!!!\n"+
@@ -926,7 +926,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1 = "Сэр, вы меня спросили - я вам ответил как есть. Прошу меня извинить.";
             link.l1.go = "exit";
         break;
- 
+
         case "Step_7_10":
 			dialog.text = "Хм, таким тоном выражать здесь свои мысли я вам не рекомендую. Я разочарован вами и налагаю на вас штраф!\nБолее я вас не задерживаю, вы можете идти.";
             link.l1 = "Сожалею, что доставил вам неудобство, сэр.";
@@ -970,7 +970,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             SetLocationCapturedState("LaVega_town", true);
 			//--> огонь и пламень
 			locations[FindLocation("LaVega_town")].hidden_effects = true;
-			locations[FindLocation("LaVega_ExitTown")].hidden_effects = true;	
+			locations[FindLocation("LaVega_ExitTown")].hidden_effects = true;
 			//<-- огонь и пламень
             Log_QuestInfo("Форт буканьеров пуст и горит.");
         break;
@@ -1003,7 +1003,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             SetLocationCapturedState("LaVega_town", false);
 			//--> огонь и пламень убираем
 			DeleteAttribute(&locations[FindLocation("LaVega_town")], "hidden_effects");
-			DeleteAttribute(&locations[FindLocation("LaVega_ExitTown")], "hidden_effects");	
+			DeleteAttribute(&locations[FindLocation("LaVega_ExitTown")], "hidden_effects");
 			//<-- огонь и пламень
             // ==> Мэнсфилд убит, теперь он будет Алистером Гудом.
             sld = characterFromID("Edward Mansfield");
@@ -1024,7 +1024,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Ходят слухи, что поселение буканьеров на Эспаньоле разорено испанцами...", ENGLAND, 5, 1);
 		break;
-        
+
         case "Step_9_1":
             pchar.questTemp.State = "AttackSantiago_GoOn";
             if (!CheckAttribute(npchar, "TempQuest.KindResult")) // письмо не получено, но в курсе нападения испанцев
@@ -1096,7 +1096,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Капитан, все только о том и говорят, что вы привезли в Порт Рояль пленного испанского губернатора! Вы настоящие герой, капитан...", ENGLAND, 5, 1);
         break;
-        
+
         case "Step_10_1":
             dialog.text = "Испанцы решили просто покончить с нами. Собрать такое количество линейных кораблей здесь - это просто невероятно! Но мы справились с ними!";
             link.l1 = "Да, сэр. Хоть это и было в крайней степени сложно, тем не менее, горожане могут вздохнуть спокойно. А испанцы, полагаю, вряд ли оправятся от такого удара...";
@@ -1124,7 +1124,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Капитан, вы просто спасли нас всех. Жители города как один признательны вам за ваш подвиг.", ENGLAND, 10, 6);
         break;
-        
+
         case "Step_11_1":
             dialog.text = "Ответом на нападение испанцев на Порт Рояль будет наше нападение на испанские города.\n"+
                           "Рядом с Тринидадом на континенте находится два испанских города: Кумана и Каракас. Захватите эти города и приведите население к присяге Его Величеству Карлу II Стюарту.\n"+
@@ -1161,7 +1161,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Капитан, похоже, что скоро вам дадут прозвище " + pchar.name + "-Завоеватель!", ENGLAND, 5, 1);
         break;
-        
+
         case "Step_12_1":
             dialog.text = "Что-то необычное происходит в Сент-Джонсе. Я не получаю положенных уведомлений о состоянии дел от губернатора города.\n"+
                           "Вы являетесь моим доверенным лицом, поэтому я прошу вас отправиться в резиденцию Сент-Джонса и прояснить ситуацию у губернатора.";
@@ -1214,7 +1214,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 					{
 						LAi_NoRebirthEnable(sld);
 						LAi_CharacterReincarnation(sld, false, false);
-						LAi_group_MoveCharacter(sld, "EnemyFight");						
+						LAi_group_MoveCharacter(sld, "EnemyFight");
 					}
 				}
 			}
@@ -1262,8 +1262,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             pchar.questTemp.State = "EndOfQuestLine";
 			bWorldAlivePause   = false; // Конец линейки
         break;
-        
-        
+
+
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
 }

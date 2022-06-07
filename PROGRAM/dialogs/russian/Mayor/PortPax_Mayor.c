@@ -13,7 +13,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 				dialog.text = "Капитан, весь город должен вам по гроб жизни! Вы просто спасли нас...";
 				link.l1 = "Барон, сударь. Я - барон, не просто капитан!.. Ну, а по этому поводу - да, спас, и весьма рад этому обстоятельству...";
-				link.l1.go = "exit";			
+				link.l1.go = "exit";
 			}
 		break;
 
@@ -46,7 +46,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             Statistic_AddValue(Pchar, NationShortName(sti(NPChar.nation)) + "_TakeTown", 1);
             SetReturn_Gover_Dialog_Exit(NPChar);
             chrDisableReloadToLocation = false;
-            AddDialogExitQuestFunction("LaunchColonyInfoScreen"); // табличка 
+            AddDialogExitQuestFunction("LaunchColonyInfoScreen"); // табличка
         break;
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод

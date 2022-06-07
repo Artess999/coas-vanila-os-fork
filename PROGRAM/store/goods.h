@@ -66,7 +66,7 @@ int FindGood(string sGood)
 
 ref GetGoodByID(string sGood)
 {
-	for (int i=0; i<GOODS_QUANTITY; i++) { 
+	for (int i=0; i<GOODS_QUANTITY; i++) {
 		if (Goods[i].Name == sGood) {return &Goods[i];}
 	}
 	trace("WARNING! Goods ID (" + sGood +") not found!");

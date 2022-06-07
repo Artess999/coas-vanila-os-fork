@@ -32,12 +32,12 @@ void ActiveF7Control()
     Log_SetStringToLog("Прошло дней: " + iTimer);
     Log_SetStringToLog("Состояние квеста: " + pchar.questTemp.State);
     Log_SetStringToLog("Счетчик текущего квеста: " + pchar.questTemp.CurQuestNumber);
-    Log_SetStringToLog("Ждем дней до получения следующего квеста: " + pchar.questTemp.Waiting_time);    
+    Log_SetStringToLog("Ждем дней до получения следующего квеста: " + pchar.questTemp.Waiting_time);
 	Log_SetStringToLog("pchar.questTemp.NationQuest: " + pchar.questTemp.NationQuest);
 	Log_SetStringToLog("Состояние квеста Изабеллы: " + Pchar.RomanticQuest);
 	Log_SetStringToLog("CheckBudgetMoney: " + IsabellaCheckBudgetMoney());*/
 	/*Log_SetStringToLog("Pchar.locator: " + Pchar.location.locator);
-	Log_SetStringToLog("Pchar.location.from_sea: " + Pchar.location.from_sea);	
+	Log_SetStringToLog("Pchar.location.from_sea: " + Pchar.location.from_sea);
 	Log_SetStringToLog("Нация ГГ: " + pchar.nation);
 	Log_SetStringToLog("Базовая Нация ГГ: " + GetBaseHeroNation());*/
     /*Log_SetStringToLog("Состояние квеста Аскольда: " + pchar.questTemp.Ascold);
@@ -53,11 +53,11 @@ void ActiveF7Control()
             /*sld = GetCharacter(NPC_GenerateCharacter("SoleiRoyalCaptain", "off_fra_2", "man", "man", 35, FRANCE, -1, true));
             FantomMakeCoolSailor(sld, SHIP_MANOWAR, "Солей Руаяль", CANNON_TYPE_CANNON_LBS42, 95, 80, 90);
             FantomMakeCoolFighter(sld, 35, 80, 70, BLADE_LONG, "pistol3", 100);*/
-	
-			//GiveNationLicence(ENGLAND, 30);   
+
+			//GiveNationLicence(ENGLAND, 30);
 			//WaitDate("", 0, 0, 43, 1, 0);
-	
-			//Log_SetEternalString("бухта: " +  pchar.chr_ai.type); 
+
+			//Log_SetEternalString("бухта: " +  pchar.chr_ai.type);
 
 			/*sld = &locations[FindLocation(pchar.location)];
 			dumpattributes(sld);*/
@@ -69,8 +69,8 @@ void ActiveF7Control()
 			dumpattributes(ssld);
 
 
-	/*sld = GetCharacter(NPC_GenerateCharacter("SoleiRoyalCaptain2", "Danielle", "woman", "woman", 35, ENGLAND, -1, true));	
-	FantomMakeCoolFighter(sld, sti(pchar.rank), 90, 90, "toporAZ", "pistol4", 120);	
+	/*sld = GetCharacter(NPC_GenerateCharacter("SoleiRoyalCaptain2", "Danielle", "woman", "woman", 35, ENGLAND, -1, true));
+	FantomMakeCoolFighter(sld, sti(pchar.rank), 90, 90, "toporAZ", "pistol4", 120);
 	sld.dialog.filename = "quest\MagicCity.c";
 	sld.dialog.currentnode = "DanAbordage";
 	LAi_SetCitizenType(sld);
@@ -121,7 +121,7 @@ void ActiveF10Control()
 void ActiveF12Control()
 {
     ref mainCh = GetMainCharacter();
-    
+
     //Найти ближайшего видимого персонажа в заданном радиусе
     int res = LAi_FindNearestVisCharacter(mainCh, 15);
     if (res != -1)
@@ -231,7 +231,7 @@ void TestGoodsLiquidity()
 {
 	int i, j, idx;
 	float fMaxCost;
-	
+
 	for (i = 0; i< GOODS_QUANTITY; i++)
 	{
 		SetCharacterGoods(pchar, i, sti(Goods[i].Units));
@@ -240,21 +240,21 @@ void TestGoodsLiquidity()
 	for (j = 0; j< GOODS_QUANTITY; j++)
 	{
 		fMaxCost = 0;
-		idx = -1; 
+		idx = -1;
 		for (i = 0; i< GOODS_QUANTITY; i++)
 		{
 			if (GetCargoGoods(pchar, i) > 0)
 			{
-				if (fMaxCost < stf(Goods[i].Cost)/stf(Goods[i].Weight)) 
+				if (fMaxCost < stf(Goods[i].Cost)/stf(Goods[i].Weight))
 				{
 					fMaxCost = stf(Goods[i].Cost)/stf(Goods[i].Weight);
 					idx = i;
-				} 
+				}
 			}
 		}
 		if (fMaxCost > 0)
 		{
-			SetCharacterGoods(pchar, idx, 0);	
+			SetCharacterGoods(pchar, idx, 0);
 			trace(Goods[idx].Name + " = " + fMaxCost);
 			Log_info(Goods[idx].Name + " = " + fMaxCost);
 		}

@@ -4,7 +4,7 @@ void SeaHunterCheck()
 	int    j, i;
 	string typeHunter, sGroup, sCapId;
 	ref    sld;
-	
+
 	SetTimerCondition("SeaHunterCheck", 0, 0, 6+rand(20), true);
     for (j=0; j< MAX_NATIONS; j++)
     {
@@ -17,7 +17,7 @@ void SeaHunterCheck()
         {
             sCapId = typeHunter + "Hunter0";
             sGroup = "Sea_" + sCapId + "1";
-            
+
 			Group_DeleteGroup(sGroup);
 			Group_FindOrCreateGroup(sGroup);
             for (i = 1; i <= 7; i++)
@@ -33,9 +33,9 @@ void SeaHunterCheck()
                 sld.mapEnc.Name = "Охотники за головами";
 				//sld.mapEnc.worldMapShip = "Manowar_gold";
                 Group_AddCharacter(sGroup, sCapId + i);
-                
+
                 if (i == 1 || GetCharacterShipClass(sld) == 1) SetRandGeraldSail(sld, sti(sld.Nation));
-                
+
                 if (abs(ChangeCharacterNationReputation(pchar, j, 0)) < (i * 15)) break; // добавим капитана только когда положенно
             }
 
@@ -72,7 +72,7 @@ void SetShipHunter(ref Hunter)
     hcrew = GetMaxCrewQuantity(Hunter);
     SetCrewQuantity(Hunter, hcrew);
     SetCrewQuantityFull(Hunter); // to_do
-    
+
     DeleteAttribute(Hunter,"ship.sails");
     DeleteAttribute(Hunter,"ship.masts");
     DeleteAttribute(Hunter,"ship.blots");
@@ -95,18 +95,18 @@ void LandHunterReactionResult(ref loc)  // отработает после вх�
 	string typeHunter, sTemp, sCapId;
 	ref    sld;
 	bool   ok;
-	
+
 	//if (actLoadFlag) return; // идет лоад
 	if (LAi_IsCapturedLocation) return;
 	if (chrDisableReloadToLocation) return; // идет некий другой квест с запретом выхода
-	if (loc.type != "town" && loc.type != "seashore" && loc.type != "port") return;   
-	if (CheckAttribute(Pchar, "GenQuest.Hunter2Pause")) 
+	if (loc.type != "town" && loc.type != "seashore" && loc.type != "port") return;
+	if (CheckAttribute(Pchar, "GenQuest.Hunter2Pause"))
 	{
 		DeleteAttribute(Pchar, "GenQuest.Hunter2Pause");
-		return; 
+		return;
 	}
 	if (LAi_grp_alarmactive == true)  return;  // уже ГГ кто-то бьет
-	
+
 	//if (GetQuestPastDayParam("Land_HunterTimerHasBeen") == 0) return; // сегодня уже были
 	for (j=0; j< MAX_NATIONS; j++)
     {
@@ -121,7 +121,7 @@ void LandHunterReactionResult(ref loc)  // отработает после вх�
 	        {
 	            Log_QuestInfo("LandHunterReactionResult " + typeHunter);
 				sCapId = typeHunter + "LandHunter0";
-	            sTemp = "LAND_HUNTER"; 
+	            sTemp = "LAND_HUNTER";
 				ok = true;
 				arrayNPCModelHow = 0;
 	            for (i = 1; i <= 8; i++)
@@ -134,7 +134,7 @@ void LandHunterReactionResult(ref loc)  // отработает после вх�
 	                sld.dialog.filename = "Hunter_dialog.c";
 	                sld.greeting = "Gr_HUNTER";
 	                sld.location = "none"; // вот где порылась собака!!!!!!!!!!!
-	
+
 	                SetModelPirate(sld);
 	                k = 0;
 					while (!CheckNPCModelUniq(sld) && k < 10)
@@ -156,12 +156,12 @@ void LandHunterReactionResult(ref loc)  // отработает после вх�
 	                LAi_group_MoveCharacter(sld, sTemp);
 	                if (abs(ChangeCharacterNationReputation(pchar, j, 0)) < (i * 9)) break; // число от НЗГ
 	            }
-	            
+
 				LAi_group_SetRelation(sTemp, LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL);
 				LAi_group_SetRelation(sTemp, LAI_GROUP_PLAYER_OWN, LAI_GROUP_NEITRAL);
-				
+
 				LAi_group_ClearAllTargets();
-				LAi_SetFightModeForOfficers(false); 
+				LAi_SetFightModeForOfficers(false);
 				if (ok)
 	            {
 	                pchar.HunterCost = abs(ChangeCharacterNationReputation(pchar, j, 0));

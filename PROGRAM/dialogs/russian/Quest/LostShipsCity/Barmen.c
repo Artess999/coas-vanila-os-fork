@@ -15,7 +15,7 @@ void ProcessDialogEvent()
 	string NodeName = Dialog.CurrentNode;
 	string NodePrevName = "";
 	if (CheckAttribute(NextDiag, "PrevNode")) NodePrevName = NextDiag.PrevNode;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -37,7 +37,7 @@ void ProcessDialogEvent()
 					link.l1 = "Да уж, повезло просто фатально!.. Меня зовут " + GetFullName(pchar) + ". Я был капитаном...";
 					link.l1.go = "FS_1";
 				}
-				else				
+				else
 				{
 					dialog.Text = "А-а-а, так это твой корабль разбился последним? Ну что же, добро пожаловать! Я здесь содержу таверну, зовут меня " + GetFullName(npchar) + ". Так что заходи, ежели что...";
 					Link.l1 = "Хорошо, " + npchar.name + ". Приятно познакомиться, так сказать... А меня зовут " + GetFullName(pchar) + ".";
@@ -54,7 +54,7 @@ void ProcessDialogEvent()
 					link.l4.go = "TizerCellar";
 					PChar.quest.LSC_returnBarmen.over = "yes"; //снимаем таймер на опоздание, разговор состоялся
 					break;
-				}	
+				}
 				//после завала Хилла Брюннера
 				if (pchar.questTemp.LSC == "barmenIsDead" && !CheckAttribute(npchar, "quest.HillNB_1"))
 				{
@@ -92,7 +92,7 @@ void ProcessDialogEvent()
 				Link.l1.go = "int_quests";
 				link.l2 = "Мне нужно переночевать.";
 				link.l2.go = "room";
-				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", 
+				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?",
 					"Что нового в Городе?", "Эх, с удовольствием послушал бы последние сплетни...");
 				link.l3.go = "rumours_LSC";
 				Link.l4 = "Увы, я уже ухожу, " + NPChar.name + ". До встречи.";
@@ -681,17 +681,17 @@ void ProcessDialogEvent()
 		break;
 
 		case "NarvalRing_1":
-			dialog.text = NPCStringReactionRepeat("Отлично! Теперь дуй к адмиралу и расскажи, что нашел его в каюте 'Протектора'.", 
-				"Я это понял. Не мне, а адмиралу его надо показывать.", 
+			dialog.text = NPCStringReactionRepeat("Отлично! Теперь дуй к адмиралу и расскажи, что нашел его в каюте 'Протектора'.",
+				"Я это понял. Не мне, а адмиралу его надо показывать.",
 				"Слушай, это уже не смешно. Дуй к адмиралу!",
                 "Ну, ты тупой, однако...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Понял.", 
+			link.l1 = HeroStringReactionRepeat("Понял.",
 				"Да, конечно...",
-                "Ага, обязательно!", 
+                "Ага, обязательно!",
 				"Да, таким уродился. Все чего-то делаю одно и тоже. На что рассчитываю - непонятно...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;
-	
+
 		case "AfterNarvalDesrt_1":
 			dialog.text = "Да ну!";
 			link.l1 = "Точно! При помощи амулета я сумел доказать Капперу, что убийство милиционера совершили 'нарвалы'. Адмирал поверил и послал меня уничтожить их всех. Что я и сделал.";
@@ -790,13 +790,13 @@ void ProcessDialogEvent()
 		break;
 
 		case "Result":
-			dialog.text = NPCStringReactionRepeat("Пока нет, но я стараюсь. Жди.", 
-				"Я уже говорил тебе, чтобы ты продолжал ждать. Пока ничего нового.", 
+			dialog.text = NPCStringReactionRepeat("Пока нет, но я стараюсь. Жди.",
+				"Я уже говорил тебе, чтобы ты продолжал ждать. Пока ничего нового.",
 				"В третий раз повторяю - жди.",
                 "Не надоело еще?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Хорошо.", 
+			link.l1 = HeroStringReactionRepeat("Хорошо.",
 				"Да-да, я понял.",
-                "Понял, будут ждать.", 
+                "Понял, будут ждать.",
 				"Не-е, я такой, настырный.", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
@@ -905,13 +905,13 @@ void ProcessDialogEvent()
 		break;
 		//поиск товаров на корвет
 		case "SeekGoods":
-			dialog.text = NPCStringReactionRepeat("Что именно?", 
-				"Ты уже спрашивал об этом.", 
+			dialog.text = NPCStringReactionRepeat("Что именно?",
+				"Ты уже спрашивал об этом.",
 				"Уже спрашивал...",
                 "Ты уже спрашивал меня об этих товарах. Ничего я не знаю!", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Мне нужны бомбы, книппеля, провиант, порох, оружие, лекарства...", 
+			link.l1 = HeroStringReactionRepeat("Мне нужны бомбы, книппеля, провиант, порох, оружие, лекарства...",
 				"Да... Извини, запамятовал.",
-                "А-а, ну да.", 
+                "А-а, ну да.",
 				"Понял, понял...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekGoods_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -922,13 +922,13 @@ void ProcessDialogEvent()
 		break;
 		//найм команды
 		case "SeekCrew":
-			dialog.text = NPCStringReactionRepeat("Какую команду?", 
-				"Мы уже говорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("Какую команду?",
+				"Мы уже говорили об этом.",
 				"Это уже обсуждено, второй раз повторяю.",
                 "Хватит, утомил...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("На корабль. Я ухожу из Города.", 
+			link.l1 = HeroStringReactionRepeat("На корабль. Я ухожу из Города.",
 				"Да... Извини, запамятовал.",
-                "Как знаешь...", 
+                "Как знаешь...",
 				"Ну, ладно...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekCrew_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;

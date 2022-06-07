@@ -31,7 +31,7 @@
 
 #define PLAYER_GROUP	"OurGroup"
 
-int	sCurrentSeaExecute = EXECUTE; 
+int	sCurrentSeaExecute = EXECUTE;
 int	sCurrentSeaRealize = REALIZE;
 
 int		iAITemplatesNum;
@@ -136,7 +136,7 @@ void DeleteSeaEnvironment()
 	DeleteClass(&AISea);
 
 	DeleteAnimals();
-	
+
 	// delete masts fall modules
 		DeleteEntitiesByType("mast");
 
@@ -149,7 +149,7 @@ void DeleteSeaEnvironment()
 	// delete fantom and dead groups
 		Group_DeleteUnusedGroup();
 
-	// 
+	//
 		LanguageCloseFile(iSeaSectionLang); iSeaSectionLang = -1;
 
 	//
@@ -160,7 +160,7 @@ void DeleteSeaEnvironment()
 void CreateSeaEnvironment()
 {
 	if (IsEntity(&Sea)) { Trace("ERROR: CreateSeaEnvironment Sea Already Loaded!!!"); return; } //fix
-	
+
 	sCurrentSeaExecute = SEA_EXECUTE;
 	sCurrentSeaRealize = SEA_REALIZE;
 
@@ -178,7 +178,7 @@ void CreateSeaEnvironment()
 	LayerFreeze(SEA_REFLECTION2, false);
 
 	InterfaceStates.Buttons.Resume.enable = true;
-	
+
 	bSeaActive = true;
 
 	//LayerCreate(SEA_REALIZE, 1);
@@ -191,7 +191,7 @@ void CreateSeaEnvironment()
 
 	CreateSea(SEA_EXECUTE, SEA_REALIZE);			ReloadProgressUpdate();
 	CreateWeather(SEA_EXECUTE, SEA_REALIZE);		ReloadProgressUpdate();
-	
+
 	CreateEntity(&AISea, "sea_ai");					ReloadProgressUpdate();
 	LayerAddObject(SEA_EXECUTE, &AISea, 1);
 	LayerAddObject(SEA_REALIZE, &AISea, -1);
@@ -280,7 +280,7 @@ string Sea_FindNearColony()
 }
 // boal <--
 void Sea_LandLoad()
-{	
+{
 	string sColony = Sea_FindNearColony(); // boal
 	int iColony = FindColony(sColony);
 	if(iColony != -1)
@@ -307,7 +307,7 @@ void Sea_LandLoad()
 	}
 	pchar.CheckEnemyCompanionType = "Sea_LandLoad"; // откуда вход
     if (!CheckEnemyCompanionDistance2GoAway(true)) return; // && !bBettaTestMode  табличка выхода из боя
-    
+
 	bSeaReloadStarted = true;
 	PauseAllSounds();
 	//ResetSoundScheme();
@@ -390,7 +390,7 @@ void Sea_MapLoad()
             }       */
             // рассчет времени на карте от скорости кораблей <--
 			if (!GetRemovable(chref)) continue;
-			
+
             if (GetCargoLoad(chref) > GetCargoMaxSpace(chref))
             {
                 ok = false;
@@ -404,12 +404,12 @@ void Sea_MapLoad()
 	                Log_SetStringToLog(xiStr("MSG_sea_3") +  chref.Ship.Name + xiStr("MSG_sea_4"));
 	            }
 			}
-			
+
             if (GetMaxCrewQuantity(chref) < GetCrewQuantity(chref))
             {
                 ok = false;
                 Log_SetStringToLog(xiStr("MSG_sea_3") +  chref.Ship.Name + xiStr("MSG_sea_5"));
-            }  
+            }
         }
     }
     if (!ok)
@@ -428,13 +428,13 @@ void Sea_MapLoad()
     // рассчет времени на карте от скорости кораблей <--
     pchar.CheckEnemyCompanionType = "Sea_MapLoad"; // откуда вход
     if (!CheckEnemyCompanionDistance2GoAway(true)) return; // && !bBettaTestMode  табличка выхода из боя
-    
+
 	bSeaReloadStarted = true;
 	PauseAllSounds();
 
  	//ResetSoundScheme();
 	ResetSound(); // new
-		
+
 	SetEventHandler("FaderEvent_StartFade", "Sea_MapStartFade", 0);
 	SetEventHandler("FaderEvent_EndFade", "Sea_MapEndFade", 0);
 
@@ -478,14 +478,14 @@ string	sTaskList[2];
 
 void Sea_FreeTaskList()
 {
-	ref rMassive; 
+	ref rMassive;
 	makeref(rMassive, sTaskList);
 	SetArraySize(rMassive, 2);
 }
 
 void Sea_AddGroup2TaskList(string sGroupID)
 {
-	ref rMassive; 
+	ref rMassive;
 	makeref(rMassive, sTaskList);
 	int iSize = GetArraySize(rMassive);
 	SetArraySize(rMassive, iSize + 1);
@@ -507,7 +507,7 @@ void SeaLogin(ref Login)
 	float	x, y, z, ay;
 	ref		rCharacter, rGroup, rEncounter;
 	aref	rRawGroup;
-	aref	arQCGroups; 
+	aref	arQCGroups;
 	string	sGName;
 	int		iNumQCGroups;
 
@@ -528,17 +528,17 @@ void SeaLogin(ref Login)
 	fSeaExp = 0.0;
 	fSeaExpTimer = 0.0;
 
-	Sea_FreeTaskList();	
-	
+	Sea_FreeTaskList();
+
 	Encounter_DeleteDeadQuestMapEncounters();
 
 	// weather parameters
-	WeatherParams.Tornado = false; 
-	WeatherParams.Storm = false; 
-	if (CheckAttribute(&Login,"Storm")) { WeatherParams.Storm = Login.Storm; } 
-	if (CheckAttribute(&Login,"Tornado")) { WeatherParams.Tornado = Login.Tornado; } 
+	WeatherParams.Tornado = false;
+	WeatherParams.Storm = false;
+	if (CheckAttribute(&Login,"Storm")) { WeatherParams.Storm = Login.Storm; }
+	if (CheckAttribute(&Login,"Tornado")) { WeatherParams.Tornado = Login.Tornado; }
 	bStorm = sti(WeatherParams.Storm);
-	bTornado = sti(WeatherParams.Tornado); 
+	bTornado = sti(WeatherParams.Tornado);
 	if (bStorm)
 	{
 		iStormLockSeconds = 60;
@@ -549,7 +549,7 @@ void SeaLogin(ref Login)
 	//Trace("Island id = " + Login.Island + ", Island index = " + iIslandIndex);
 	string sIslandID = "";
 	if (iIslandIndex != -1) { sIslandID = Islands[iIslandIndex].id; }
-	
+
 	// main character
 	pchar.Ship.Stopped = false;
 	pchar.Ship.POS.Mode = SHIP_SAIL;
@@ -613,16 +613,16 @@ void SeaLogin(ref Login)
 
 	// login island if exist
 	Sea_LoadIsland(sIslandID);
-	
+
 	AISea.Island = sIslandID;
 
 	// clear some of group attributes
-	for (i=0; i<MAX_SHIP_GROUPS; i++) 
+	for (i=0; i<MAX_SHIP_GROUPS; i++)
 	{
 		rGroup = Group_GetGroupByIndex(i);
-		if (CheckAttribute(rGroup, "AlreadyLoaded")) 
-		{ 
-			DeleteAttribute(rGroup, "AlreadyLoaded"); 
+		if (CheckAttribute(rGroup, "AlreadyLoaded"))
+		{
+			DeleteAttribute(rGroup, "AlreadyLoaded");
 		}
 	}
 
@@ -647,9 +647,9 @@ void SeaLogin(ref Login)
 		for (i=1; i<COMPANION_MAX; i++)
 		{
 			iCompanionIndex = GetCompanionIndex(&Characters[nMainCharacterIndex],i);
-			if (iCompanionIndex == -1) 
-			{ 
-				continue; 
+			if (iCompanionIndex == -1)
+			{
+				continue;
 			}
 			DeleteAttribute(&Characters[iCompanionIndex], "SeaAI"); // сброс для кэпов офов из пленных
 			Characters[iCompanionIndex].SeaAI.Group.Name = PLAYER_GROUP;
@@ -681,12 +681,12 @@ void SeaLogin(ref Login)
 	ReloadProgressUpdate();
 	if (sIslandID != "")
 	{
-		for (i=0; i<MAX_SHIP_GROUPS; i++) 
+		for (i=0; i<MAX_SHIP_GROUPS; i++)
 		{
 			rGroup = Group_GetGroupByIndex(i);
-			if (!CheckAttribute(rGroup,"AlreadyLoaded")) 
-			{ 
-				DeleteAttribute(rGroup,"AlreadyLoaded");	
+			if (!CheckAttribute(rGroup,"AlreadyLoaded"))
+			{
+				DeleteAttribute(rGroup,"AlreadyLoaded");
 			}
 
 			if (!CheckAttribute(rGroup, "id")) { continue; }
@@ -697,7 +697,7 @@ void SeaLogin(ref Login)
 		}
 	}
 
-	// login quest groups to sea 
+	// login quest groups to sea
 	if (CheckAttribute(&Login, "QuestGroups"))
 	{
 		arQCGroups; makearef(arQCGroups, Login.QuestGroups);
@@ -720,13 +720,13 @@ void SeaLogin(ref Login)
 			Sea_LoginGroup(GetAttributeValue(GetAttributeN(arQCGroups, i)));
 		}
 	}
-	
+
 	ReloadProgressUpdate();
-		
+
 
 	//if (!bStorm) //убираем по требованию продюсеров
 	//{
-	// login fantom groups		
+	// login fantom groups
 	aref arEncounters;
 	makearef(arEncounters,Login.Encounters);
 	int iNumGroups = GetAttributesNum(arEncounters);
@@ -737,12 +737,12 @@ void SeaLogin(ref Login)
 
 		rRawGroup = GetAttributeN(arEncounters, i);
 		rEncounter = GetMapEncounterRef(sti(rRawGroup.type));
-		
+
 		if (!CheckAttribute(rEncounter, "RealEncounterType")) // boal проверка на лажу
 		{
 			trace("Для случайки не указан RealEncounterType, игнорируем её");
 			continue;
-		}		
+		}
 		int iEncounterType = sti(rEncounter.RealEncounterType);
 		//trace ("RealEncounterType is " + iEncounterType);
 
@@ -758,15 +758,15 @@ void SeaLogin(ref Login)
 		if (iEncounterType == ENCOUNTER_TYPE_ALONE)
 		{
 			iAloneCharIndex = GetCharacterIndex(rEncounter.CharacterID);
-			if (iAloneCharIndex < 0) 
-			{ 
-				continue; 
+			if (iAloneCharIndex < 0)
+			{
+				continue;
 			}
 			sGName = "Sea_" + rEncounter.CharacterID; //boal для удобства манипулирования в др методах "EncTypeAlone_" + iAloneCharIndex;
 			// можно задать группу их 10 кораблей или всего 4 компаньона - работает и так, и так. И даже задать и то, и то. Будут вместе.
 
 			Group_AddCharacter(sGName, rEncounter.CharacterID);
-			
+
 			iCompanionsQ = GetCompanionQuantity(&Characters[iAloneCharIndex]);
 			if(iCompanionsQ > 1)
 			{
@@ -798,7 +798,7 @@ void SeaLogin(ref Login)
 			Group_SetAddressNone(rEncounter.qID);
 			Group_SetXZ_AY(rEncounter.qID, x, z, ay);
 			Sea_LoginGroup(rEncounter.qID);
-			
+
 			continue;
 		}
 
@@ -814,15 +814,15 @@ void SeaLogin(ref Login)
 		Group_DeleteAtEnd(sGName);
 
 		// copy task attributes from map encounter to fantom group
-		if (CheckAttribute(rEncounter, "Task"))							
-		{ 
-			rGroup.Task = rEncounter.Task; 
+		if (CheckAttribute(rEncounter, "Task"))
+		{
+			rGroup.Task = rEncounter.Task;
 		}
-		if (CheckAttribute(rEncounter, "Task.Target"))					
-		{ 
-			rGroup.Task.Target = rEncounter.Task.Target; 
+		if (CheckAttribute(rEncounter, "Task.Target"))
+		{
+			rGroup.Task.Target = rEncounter.Task.Target;
 		}
-		if (CheckAttribute(rEncounter, "Task.Pos")) 
+		if (CheckAttribute(rEncounter, "Task.Pos"))
 		{
 			rGroup.Task.Target.Pos.x = rEncounter.Task.Pos.x;
 			rGroup.Task.Target.Pos.z = rEncounter.Task.Pos.z;
@@ -869,7 +869,7 @@ void SeaLogin(ref Login)
 		//Trace("Set group : " + sGName + ", x = " + x + ", z = " + z);
 
 		// load ship to sea
-		if (iNumFantomShips) 
+		if (iNumFantomShips)
 		{
 			for (j=0; j<iNumFantomShips; j++)
 			{
@@ -882,11 +882,11 @@ void SeaLogin(ref Login)
 				// boal 26.02.2004 <--
 				// set commander to group
 				if (j==0) { Group_SetGroupCommander(sGName, Characters[iFantomIndex].id); }
-				
+
 				// set random character and ship names, face id
 				rFantom.sex = "man";
 				rFantom.model.animation = "man";
-				rFantom.Nation = rEncounter.Nation; 
+				rFantom.Nation = rEncounter.Nation;
 				// boal разговор в море -->
                 rFantom.reputation = 5+rand(84);
                 rFantom.EncType      = rEncounter.Type; // тип  war, trade pirate
@@ -905,10 +905,10 @@ void SeaLogin(ref Login)
                     SetCaptanModelByEncType(rFantom, rEncounter.Type);
                 }
                 // boal разговор в море <--
-				
+
 				SetRandomNameToCharacter(rFantom);
 				SetRandomNameToShip(rFantom);
-				
+
 				SetSeaFantomParam(rFantom, rEncounter.Type); // все там
 
 				Fantom_SetCannons(rFantom, rEncounter.Type);
@@ -928,17 +928,17 @@ void SeaLogin(ref Login)
 					SetRandGeraldSail(rFantom, sti(rFantom.Nation));
 				}
                 // boal герб на флагман <--
-                
+
 				// add fantom
 				Group_AddCharacter(sGName, rFantom.id);
-				
+
 				// add to sea
 				Ship_Add2Sea(iFantomIndex, 0, rEncounter.Type);
 			}
 		}
 	}
 	//}
-	
+
 	ReloadProgressUpdate();
 
 	// set tasks 2 all groups
@@ -947,8 +947,8 @@ void SeaLogin(ref Login)
 		string sGroupID = sTaskList[i];
 
 		rGroup = Group_GetGroupByID(sGroupID);
-		
-		// set task 
+
+		// set task
 		switch (sti(rGroup.Task))
 		{
 			case AITASK_RUNAWAY:
@@ -970,7 +970,7 @@ void SeaLogin(ref Login)
 				}
 			break;
 		}
-		
+
 		rCharacter = Group_GetGroupCommanderR(rGroup);
 		int iRelation = GetRelation(nMainCharacterIndex, sti(rCharacter.index));
 
@@ -984,14 +984,14 @@ void SeaLogin(ref Login)
 		}
 	}
 
-	// update AISea 
+	// update AISea
 	AISea.DistanceBetweenGroupShips = 250.0;
 	AISea.isDone = "";
-	
+
 	InitBattleInterface();							ReloadProgressUpdate();
 	StartBattleInterface();							ReloadProgressUpdate();
 	RefreshBattleInterface();						ReloadProgressUpdate();
-	
+
 	/*CreateEntity(&SeaOperator, "SEA_OPERATOR");
 	LayerAddObject(SEA_EXECUTE, &SeaOperator, -1);
 	LayerAddObject(SEA_REALIZE, &SeaOperator, 3);*/
@@ -999,7 +999,7 @@ void SeaLogin(ref Login)
 	SendMessage(&Telescope, "leee", MSG_TELESCOPE_INIT_ARRAYS, &Nations, &RealShips, &Goods);
 
 	PostEvent(SHIP_CHECK_RELOAD_ENABLE, 1);
-	
+
 	SetSchemeForSea();								ReloadProgressUpdate();
 	sSeaStartMusicName = oldMusicName;
 
@@ -1009,14 +1009,14 @@ void SeaLogin(ref Login)
 
 	pchar.space_press = "0";
 	DeleteAttribute(pchar, "SkipEshipIndex");// boal
-	
+
 	/*if (checkattribute(pchar, "sneak"))
 	{
 		string sgroup = pchar.sneak.group;
 		LAi_group_NotFightPlayerVSGroup(sgroup);
 		deleteAttribute(pchar, "sneak");
 	}*/
-	
+
 	PostEvent("Sea_FirstInit", 1);
 }
 
@@ -1030,7 +1030,7 @@ void Sea_LoginGroup(string sGroupID)
 		return;
 	}
 
-	ref rGroup = Group_GetGroupByID(sGroupID); 
+	ref rGroup = Group_GetGroupByID(sGroupID);
 	if (!CheckAttribute(rGroup, "Quest"))			{ Trace("Error: Sea_LoginGroup sGroupID = " + sGroupID + ", but group doesn't contain any quest ships!"); return; }
 	if (CheckAttribute(rGroup, "AlreadyLoaded"))	{ Trace("Error: Group sGroupID = " + sGroupID + ", already loaded... check for duplicate group login"); return; }
 	if (Group_GetGroupCommanderIndexR(rGroup) < 0)
@@ -1095,18 +1095,18 @@ void Sea_LoginGroup(string sGroupID)
 	}
 	Group_SetGroupCommander(sGroupID, rGroupCommander.id);
 
-	// set location near 
-	if (CheckAttribute(rGroup, "location.neargroup"))			
+	// set location near
+	if (CheckAttribute(rGroup, "location.neargroup"))
 	{
 		Group_SetPursuitGroup(sGroupID, rGroup.location.neargroup);
 	}
-	
+
 	// load group ships
 	int iNumDeadCharacters = 0;
 	for (int i=0; i<iNumQuestShips; i++) //? homo;
 	{
 		aref arShip;
-		
+
 		arShip = GetAttributeN(arQuestShips, i);
 		int itmp = GetCharacterIndex(GetAttributeValue(arShip));  // homo fix 29/09/06
 		if (itmp != -1)
@@ -1183,7 +1183,7 @@ void Sea_LoginGroup(string sGroupID)
 }
 
 void Sea_FirstInit()
-{ 
+{
 	bSeaLoaded = true;
 	RefreshBattleInterface();
 	if( SeaCameras.Camera == "SeaDeckCamera" ) {
@@ -1194,7 +1194,7 @@ void Sea_FirstInit()
 	LayerAddObject(SEA_EXECUTE, &Seafoam, -1);
 	LayerAddObject(SEA_REALIZE, &Seafoam, -1);
 	if (Whr_IsStorm()) { Seafoam.storm = "true"; }
-	
+
 	QuestsCheck(); // boal 26/05/06 тут ему место
 }
 
@@ -1210,13 +1210,13 @@ void Sea_Reload()
 	Login.PlayerGroup.z = 0.0;
 	Login.Island = pchar.location;
 
-	SeaLogin(&Login);	
+	SeaLogin(&Login);
 }
 
 void Sea_ReloadStart()
 {
 	if (!bSeaActive) { return; }
-	ShipsInit();	
+	ShipsInit();
 	//characters[1].ship.type = GenerateShip(SHIP_barque, 1);
 	DeleteSeaEnvironment();
 	SetEventHandler("Sea_Reload", "Sea_Reload", 0);
@@ -1242,16 +1242,16 @@ float SetMaxSeaHeight(int islandIdx)
 
 	float  fMaxViewDist;
     int    i, iQty;
-	
+
 	if (CheckAttribute(Islands[islandIdx], "MaxSeaHeight")) return stf(Islands[islandIdx].MaxSeaHeight);
 
 	// поиск мин расстояния до городов по фортам -->
     //fMaxViewDist = 2000; // послужит временно дистанцией
-	
-	aref arReloadLoc, arLocator;	
+
+	aref arReloadLoc, arLocator;
 	makearef(arReloadLoc, Islands[islandIdx].reload);
 	string  sLabel;
-	iQty = GetAttributesNum(arReloadLoc); 
+	iQty = GetAttributesNum(arReloadLoc);
     //Log_TestInfo("Sea.MaxSeaHeight " + Sea.MaxSeaHeight);
 	for (i=0; i<iQty; i++)
 	{
@@ -1272,7 +1272,7 @@ float SetMaxSeaHeight(int islandIdx)
 			}
 		}
 		//расстояние до форта
-		if (findsubstr(sLabel, "Fort" , 0) != -1)  
+		if (findsubstr(sLabel, "Fort" , 0) != -1)
 		{
 			if (CheckAttribute(pchar, "Ship.Pos.x") && CheckAttribute(arLocator, "x"))  // fix кривых локаторов у острова, правка должна быть в модели to_do
 			{
@@ -1282,7 +1282,7 @@ float SetMaxSeaHeight(int islandIdx)
 			else
 			{
 				trace("Error: проблема определения SetMaxSeaHeight для " + sLabel);
-			}				
+			}
 		}
 		//расстояние до порта
 		if (findsubstr(sLabel, "Port" , 0) != -1)
@@ -1372,12 +1372,12 @@ void Sea_LoadIsland(string sIslandID)
 		//<-- eddy. да будет свет на маяке
 		bIslandLoaded = true;
 		SendMessage(&SeaLocatorShow, "a", &Islands[iIslandIndex]);
-		Fort_Login(iIslandIndex);	
+		Fort_Login(iIslandIndex);
 		SetTexturePath(0, "");
 
 		CreateCoastFoamEnvironment(sIslandID, SEA_EXECUTE, SEA_REALIZE);
 		//eddy. запишем в переменные координаты форта
-		aref arReloadFort;	
+		aref arReloadFort;
 		makearef(arReloadFort, Islands[iIslandIndex].reload.l2);
 		if (!CheckAttribute(arReloadFort, "colonyname")) return;
 		string sTest = arReloadFort.colonyname + " Fort";
@@ -1391,7 +1391,7 @@ void Sea_LoadIsland(string sIslandID)
 			//следить за фортом только, если он жив
 			if (!CheckAttribute(&characters[iFortCommander], "Fort.Mode") || sti(characters[iFortCommander].Fort.Mode) != FORT_DEAD)
 			{
-				bIsFortAtIsland = true; 
+				bIsFortAtIsland = true;
 			}
 		}
 	}
@@ -1412,11 +1412,11 @@ void Sea_Load()
 	SendMessage(&Telescope, "leee", MSG_TELESCOPE_INIT_ARRAYS, &Nations, &RealShips, &Goods);
 
 	PostEvent(SHIP_CHECK_RELOAD_ENABLE, 1);
-	
+
 	SetSchemeForSea();
 
 	PostEvent("Sea_FirstInit", 1);
-	
+
 	// clear save attribute
 	DeleteAttribute(&oSeaSave, "");
 	bSeaLoad = false;

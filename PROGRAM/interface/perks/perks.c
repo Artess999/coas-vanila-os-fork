@@ -28,14 +28,14 @@ bool SetCharacterPerk(ref chref, string perkName)
 	{
 		/*case "HPPlus":
 			LAi_SetHP(chref, LAi_GetCharacterHP(chref) + 20, LAi_GetCharacterMaxHP(chref) + 20);
-			return true; // нужен рефрешь	
+			return true; // нужен рефрешь
 		break;
-		
+
 		case "EnergyPlus":
 			SetEnergyToCharacter(chref);
-			return true; // нужен рефрешь		
+			return true; // нужен рефрешь
 		break; */
-		
+
 		case "Grus":
 			return true; // нужен рефрешь
 		break;
@@ -65,7 +65,7 @@ void ActivateCharacterPerk(ref chref, string perkName)
 	}
     // boal fix
     // иначе после применения давался ГГ
-	
+
     int cn;
     if (!CheckCharacterPerk(chref, perkName))
     {
@@ -99,8 +99,8 @@ bool GetCharacterPerkUsing(ref chref, string perkName)
 
 bool GetOfficersPerkUsing(ref chref, string perkName)
 { // boal препишем внутрянку под новых офов, че в к3 не было? не ведаю.
-	string  sOfficerType;	
-	ref   offc;	   
+	string  sOfficerType;
+	ref   offc;
 	bool  ok = false; // boal fix 25.03.05 проверка на запрет
 	bool  okDelay = true;
 	int   cn;
@@ -159,7 +159,7 @@ void CharacterPerkOff(ref chref, string perkName)
 		chref.Tmp.SpeedRecall = 0; // чтоб маневр применить
 	}
 	DeleteAttribute(chref,"perks.list."+perkName+".active");
-	Event("eSwitchPerks","l",sti(chref.index));	 
+	Event("eSwitchPerks","l",sti(chref.index));
 	// fix boal всегда для ГГ
 	Event("eSwitchPerks","l", GetMainCharacterIndex());
 	if (sti(chref.index) == nMainCharacterIndex || isOfficerInShip(chref, false)) // наследие перка от офа boal 30.06.06
@@ -270,7 +270,7 @@ void EnableUsingAbility(ref chref,string perkName)
         chref = GetCharacter(cn);
     }
     // <--
-    
+
 	Event("evntChrPerkDelay","sl",perkName, sti(chref.index));
 }
 
@@ -309,10 +309,10 @@ void ClearActiveChrPerks(ref chref)
 {
 	int i,cn;
     ref offc; // boal
-    string  sOfficerType;	
-    
-    if (bAbordageStarted || bSeaReloadStarted) return; 
-	
+    string  sOfficerType;
+
+    if (bAbordageStarted || bSeaReloadStarted) return;
+
 	ClearActive(chref); // босс отдельно
 	if (CheckAttribute(chref, "Fellows.Passengers")) // не у всех есть
 	{
@@ -331,9 +331,9 @@ void ClearActive(ref offic)
 {
 	aref arPerksRoot, arPerk;
 	int i,n;
-	
+
 	makearef(arPerksRoot, offic.perks.list);
-		
+
 	n = GetAttributesNum(arPerksRoot);
 	for (i=0; i<n; i++)
 	{
@@ -360,7 +360,7 @@ void AcceptWindCatcherPerk(ref refCharacter)
 
 	refRealShip = GetRealShip(nShipType);
 	refBaseShip = GetShipByType(sti(refRealShip.BaseType));
-		
+
 	if (CheckOfficersPerk(refCharacter, "WindCatcher"))
 	{
 		refRealShip.InertiaAccelerationX	= stf(refBaseShip.InertiaAccelerationX) + stf(refBaseShip.InertiaAccelerationX) / 10.0;

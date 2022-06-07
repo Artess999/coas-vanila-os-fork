@@ -13,20 +13,20 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 dialog.Text = "Я вас слушаю.";
     			link.l1 = "Не заходило ли в порт судно 'Пять ран Христовых'?";
     			Link.l1.go = "RomanticQuest_1";
-			}			
+			}
 		break;
 		// ==> Квест Изабеллы, розыск кэпа брига "раны"
 		case "RomanticQuest_1":
 			dialog.Text = "Как же, сеньор, заходило. Они попали в шторм, потеряли грот-мачту, пришлось им вернуться сюда.";
 			link.l1 = "А где мне найти капитана?.";
 			Link.l1.go = "RomanticQuest_2";
-		break;		
+		break;
 		case "RomanticQuest_2":
 			dialog.Text = "Мне показалось, он ушел в таверну совсем недавно";
 			link.l1 = "Спасибо.";
 			Link.l1.go = "exit";
 			DeleteAttribute(pchar, "RomanticQuest.ShipToCumana");
-			Pchar.RomanticQuest.ShipToCumanaTavenrn = true;			
+			Pchar.RomanticQuest.ShipToCumanaTavenrn = true;
 			ref rChar = GetCharacter(NPC_GenerateCharacter("BrigCaptain", "shipowner_13", "man", "man", 20, SPAIN, -1, false));
             rChar.Dialog.Filename = "Quest\Isabella\BrigCaptain.c";
             FreeSitLocator("Cumana_tavern", "sit3");  // очистим стул
@@ -42,7 +42,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
-		
+
 		case "town":
         // заменить на описание как пройти, по квестам
 			dialog.text = "Я вам что справочная? Не знаю. Ничего не ведаю.";

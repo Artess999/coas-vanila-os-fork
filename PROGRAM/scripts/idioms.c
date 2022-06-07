@@ -119,7 +119,7 @@ string FindRussianDaysString(int idays)
 	string sDays = idays;
 	int iLen1 = strlen(&sDays) - 1;
 	int iLen2 = strlen(&sDays) - 2;
-	
+
 	string sChar1 = GetSymbol(&sDays, iLen1);
 	string sChar2 = GetSymbol(&sDays, iLen2);
 
@@ -257,10 +257,10 @@ string FindRussianMoneyString(int imoney)
 	string sMoney = imoney;
 	int iLen1 = strlen(&sMoney) - 1;
 	int iLen2 = strlen(&sMoney) - 2;
-	
+
 	string sChar1 = GetSymbol(&sMoney, iLen1);
 	string sChar2 = GetSymbol(&sMoney, iLen2);
-	
+
 	if(LanguageGetLanguage() != "Russian")
 	{
 		if(imoney == 1 || imoney == 0)
@@ -439,7 +439,7 @@ string GetTextOnShipsQuantity(int iShips)
 	string sShips = iShips;
 	int iLen1 = strlen(&sShips) - 1;
 	int iLen2 = strlen(&sShips) - 2;
-	
+
 	string sChar1 = GetSymbol(&sShips, iLen1);
 	string sChar2 = GetSymbol(&sShips, iLen2);
 
@@ -578,7 +578,7 @@ string GetTextOnSecondShipsQuantity(int iShips)
  string sShips = iShips;
 	int iLen1 = strlen(&sShips) - 1;
 	int iLen2 = strlen(&sShips) - 2;
-	
+
 	string sChar1 = GetSymbol(&sShips, iLen1);
 	string sChar2 = GetSymbol(&sShips, iLen2);
 
@@ -718,7 +718,7 @@ string FindRussianPeoplesString(int iPeoples, string sCase)
 	string sPeoplesAcc;
 	int iLen1 = strlen(&sPeoples) - 1;
 	int iLen2 = strlen(&sPeoples) - 2;
-	
+
 	string sChar1 = GetSymbol(&sPeoples, iLen1);
 	string sChar2 = GetSymbol(&sPeoples, iLen2);
 	if(LanguageGetLanguage() != "Russian")
@@ -899,7 +899,7 @@ string FindRussianSlavesString(int iPeoples, string sCase)
 	string sPeoplesAcc;
 	int iLen1 = strlen(&sPeoples) - 1;
 	int iLen2 = strlen(&sPeoples) - 2;
-	
+
 	string sChar1 = GetSymbol(&sPeoples, iLen1);
 	string sChar2 = GetSymbol(&sPeoples, iLen2);
 	if(sChar2 == "1")

@@ -1,21 +1,21 @@
 object NetGoods[6];
 int iNetGoodsNum = 0;
 
-ref Net_GetGoodByName(string sGood) 
-{ 
+ref Net_GetGoodByName(string sGood)
+{
 	for (int i=0; i<iNetGoodsNum; i++) { if (sGood == NetGoods[i].Name) return &NetGoods[i]; }
 	trace("ERROR! Can't find NetGood " + sGood);
 }
 ref Net_GetGoodByIndex(int iIndex) { return &NetGoods[iIndex]; }
 int Net_GetGoodsNum() { return iNetGoodsNum; }
-int Net_GetGoodIndex(string sName) 
-{ 
-	for (int i=0; i<iNetGoodsNum; i++) 
+int Net_GetGoodIndex(string sName)
+{
+	for (int i=0; i<iNetGoodsNum; i++)
 	{
 		if (NetGoods[i].Name == sName) { return i; }
 	}
 	Trace("ERROR: Can't find NetGood " + sName);
-	return -1; 
+	return -1;
 }
 
 int Net_GetGoodCost(int iGoodIndex, int iGoodNum)
@@ -29,7 +29,7 @@ void Net_InitGoods()
 	int n = 0;
 
 	// BALLS
-	makeref(rG, NetGoods[n]); 
+	makeref(rG, NetGoods[n]);
 	rG.Name = "Balls";
 	rG.Index = n;
 	rG.Cost = 100;
@@ -41,7 +41,7 @@ void Net_InitGoods()
 	rG.DamageCrew = 0.25;
 
 	// GRAPES
-	n++; 
+	n++;
 	makeref(rG, NetGoods[n]);
 	rG.Name = "Grapes";
 	rG.Index = n;
@@ -54,7 +54,7 @@ void Net_InitGoods()
 	rG.DamageCrew = 2.0;
 
 	// KNIPPELS
-	n++; 
+	n++;
 	makeref(rG, NetGoods[n]);
 	rG.Name = "Knippels";
 	rG.Index = n;
@@ -67,8 +67,8 @@ void Net_InitGoods()
 	rG.DamageCrew = 0.35;
 
 	// BOMBS
-	n++; 
-	makeref(rG, NetGoods[n]); 
+	n++;
+	makeref(rG, NetGoods[n]);
 	rG.Name = "Bombs";
 	rG.Index = n;
 	rG.Cost = 500;
@@ -80,8 +80,8 @@ void Net_InitGoods()
 	rG.DamageCrew = 0.5;
 
 	// PLANKS
-	n++; 
-	makeref(rG, NetGoods[n]); 
+	n++;
+	makeref(rG, NetGoods[n]);
 	rG.Name = "Planks";
 	rG.Index = n;
 	rG.Cost = 1500;
@@ -89,8 +89,8 @@ void Net_InitGoods()
 	rG.Units = 10;
 
 	// SAILCLOTH
-	n++; 
-	makeref(rG, NetGoods[n]); 
+	n++;
+	makeref(rG, NetGoods[n]);
 	rG.Name = "Sailcloth";
 	rG.Index = n;
 	rG.Cost = 2000;

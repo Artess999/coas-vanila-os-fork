@@ -133,7 +133,7 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
-		break;		
+		break;
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -222,13 +222,13 @@ void ProcessDialogEvent()
 		break;
 		//найм команды
 		case "SeekCrew":
-			dialog.text = NPCStringReactionRepeat("Какую команду?", 
-				"Мы уже говорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("Какую команду?",
+				"Мы уже говорили об этом.",
 				"Это уже обсуждено, второй раз повторяю.",
                 "Хватит, утомил...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("На мой корабль. Я ухожу из Города.", 
+			link.l1 = HeroStringReactionRepeat("На мой корабль. Я ухожу из Города.",
 				"Да... Извини, запамятовал.",
-                "Как знаешь...", 
+                "Как знаешь...",
 				"Ну, ладно...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekCrew_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -278,7 +278,7 @@ void ProcessDialogEvent()
 			dialog.text = "Приятель, благотворительностью занимаются в церкви, я у меня бизнес. Так что, даже не проси - бесполезно.";
 			link.l1 = "А-ать, черт!..";
 			link.l1.go = "exit";
-			npchar.quest.takeMap = "notTrade"; //поговорили о том, что не торгуется 
+			npchar.quest.takeMap = "notTrade"; //поговорили о том, что не торгуется
 		break;
 		case "tekeMap_on":
             if (CheckNPCQuestDate(npchar, "Item_date"))
@@ -297,7 +297,7 @@ void ProcessDialogEvent()
 		case "tekeMap_on_1":
 			dialog.text = "Давай продецуру купли-продажи проводить в означенной форме. Не люблю я самодеятельности.";
 			link.l1 = "Хорошо, как скажешь.";
-			link.l1.go = "exit"; 
+			link.l1.go = "exit";
 			npchar.quest.takeMap = "changePrice"; //снизить цену
 		break;
 

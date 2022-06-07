@@ -51,7 +51,7 @@ int NetServer_GetNumTeams()
 	int i;
 	int iTeams[4];
 	int iNumNetTeams = 0;
-	
+
 	for (i=0; i<4; i++) { iTeams[i] = 0; }
 	for (i=0; i<NET_MAXCLIENTS; i++)
 	{
@@ -60,7 +60,7 @@ int NetServer_GetNumTeams()
 		int iTeam = sti(NSClients[i].Team);
 		iTeams[iTeam] = iTeams[iTeam] + 1;
 	}
-	for (i=0; i<4; i++) { if (iTeams[i] > 0) { iNumNetTeams++; } } 
+	for (i=0; i<4; i++) { if (iTeams[i] > 0) { iNumNetTeams++; } }
 
 	return iNumNetTeams;
 }

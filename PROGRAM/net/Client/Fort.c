@@ -78,8 +78,8 @@ void NetClient_OnFort(int iMsg)
 
 	switch (iSubCode)
 	{
-		case NSC_FORT_CANNON_DESTROY:		
-			NetClient_OnFortCannonDestroy(iMsg); 		
+		case NSC_FORT_CANNON_DESTROY:
+			NetClient_OnFortCannonDestroy(iMsg);
 		break;
 	}
 }

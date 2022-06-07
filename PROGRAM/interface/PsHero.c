@@ -3,7 +3,7 @@ string totalInfo = "";
 void InitInterface(string iniName)
 {
  	StartAboveForm(true);
-	
+
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
     SetFormatedText("MAP_CAPTION", XI_ConvertString("titlePsHero"));
@@ -41,7 +41,7 @@ void ProcCommand()
 {
 	string comName = GetEventData();
 	string nodName = GetEventData();
-	
+
 	switch(nodName)
 	{
 
@@ -60,8 +60,8 @@ void FillTable()
 	ref chr;
 	int i, n;
 	string row;
-	
-	
+
+
 	n = 1;
 	// шапка -->
     GameInterface.TABLE_HERO.select = 0;
@@ -88,7 +88,7 @@ void FillTable()
 		//if (!sti(chr.PGGAi.IsPGG)) continue;
 		//помер, нефиг мертвых качать.
 		//if (LAi_IsDead(chr)) continue;
-		
+
 		row = "tr" + n;
 		GameInterface.TABLE_HERO.(row).td1.icon.texture = "INTERFACES\PORTRAITS\128\face_" + chr.faceId + ".tga";
 		GameInterface.TABLE_HERO.(row).td1.icon.uv = "0,0,1,1";

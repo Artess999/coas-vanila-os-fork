@@ -8,7 +8,7 @@ bool NetServer_CheckForBan(int dwIP, int wPort, int iMsg)
 		// check for time, maybe unBan?
 
 		// check for code CONNECT
-		if (NMGetByte(iMsg) == NC_CONNECT) 
+		if (NMGetByte(iMsg) == NC_CONNECT)
 		{
 			int iSMsg = NMCreate();
 			NMAddByte(iSMsg, NC_CONNECT);
@@ -43,7 +43,7 @@ void NetServer_OnNetMessage()
 		NMAddWord(iSMsg, iPacketIndex);
 		NetServer_SendMessageDirect(dwIP, wPort, iSMsg);
 		NMDelete(iSMsg);
-	
+
 		if (wNetClientID != DST_INVALID)
 		{
 			rClient = NetServer_GetClient(wNetClientID);

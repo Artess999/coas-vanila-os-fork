@@ -9,7 +9,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -47,9 +47,9 @@ void ProcessDialogEvent()
 		break;
 		case "PiratesMan1_2":
 			DialogExit();
-			NextDiag.CurrentNode = "Tavern_1"; 
-			chrDisableReloadToLocation = true; 
-			bDisableFastReload = true; 
+			NextDiag.CurrentNode = "Tavern_1";
+			chrDisableReloadToLocation = true;
+			bDisableFastReload = true;
 			FreeSitLocator("PuertoPrincipe_tavern", "sit3");
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload5", "PuertoPrincipe_tavern", "sit", "sit3", "PiratesLine_toTavern", -1);
@@ -177,7 +177,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 			LAi_SetActorType(npchar);
-			LAi_ActorRunToLocation(npchar, "reload", "sea", "none", "", "", "", 5.0);	
+			LAi_ActorRunToLocation(npchar, "reload", "sea", "none", "", "", "", 5.0);
 		break;
 		case "JohnBolton_inWay":
 			dialog.text = "Мы еще не добрались до Порт Рояля, а я спешу, приятель...";
@@ -198,8 +198,8 @@ void ProcessDialogEvent()
 		break;
 		case "ArrestInPR_2":
 			AddQuestRecord("Pir_Line_1_JohnBolton", "3");
-			chrDisableReloadToLocation = false; 
-			bDisableFastReload = false; 
+			chrDisableReloadToLocation = false;
+			bDisableFastReload = false;
 			LocatorReloadEnterDisable("Portroyal_town", "houseS1", false); //закроем дом Моргана
 			DialogExit();
 			AddDialogExitQuestFunction("PiratesLine_q1_toPrison");
@@ -266,7 +266,7 @@ void ProcessDialogEvent()
 			npchar.lifeDay = 0;
 			pchar.quest.PiratesLine_q3_loginSeaWolf.win_condition.l1 = "location";
 			pchar.quest.PiratesLine_q3_loginSeaWolf.win_condition.l1.location = "Cumana";
-			pchar.quest.PiratesLine_q3_loginSeaWolf.function = "PiratesLine_q3_loginSeaWolf";	
+			pchar.quest.PiratesLine_q3_loginSeaWolf.function = "PiratesLine_q3_loginSeaWolf";
 		break;
 		//Эдвард Лоу в каюте Морского Волка
 		case "SeaWolf":
@@ -303,7 +303,7 @@ void ProcessDialogEvent()
 			LAi_SetCurHPMax(npchar);
             QuestAboardCabinDialogExitWithBattle("");
             DialogExit();
-			AddDialogExitQuest("MainHeroFightModeOn");			
+			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		// -------------------------------------- квест №5 -------------------------------------------------
 		case "PQ5CapGoodly":
@@ -555,7 +555,7 @@ void ProcessDialogEvent()
 			LAi_SetCurHPMax(npchar);
             QuestAboardCabinDialogExitWithBattle("");
             DialogExit();
-			AddDialogExitQuest("MainHeroFightModeOn");	
+			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 		//поход на Панаму, пираты в городе
 		case "PQ8_PirInPan":
@@ -697,7 +697,7 @@ void ProcessDialogEvent()
 			link.l1.go = "PL_Q8_QFackMorgan_11";
 		break;
 		case "PL_Q8_QFackMorgan_11":
-			chrDisableReloadToLocation = false;	
+			chrDisableReloadToLocation = false;
 			LAi_LocationFightDisable(&Locations[FindLocation("PortRoyal_houseS1")], true);
 			SetTimerFunction("PQ8_openPanama_2", 0, 0, 30);
 			pchar.questTemp.piratesLine = "Panama_backToShip";

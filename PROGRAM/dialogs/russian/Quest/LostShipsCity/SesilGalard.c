@@ -15,7 +15,7 @@ void ProcessDialogEvent()
 	string NodeName = Dialog.CurrentNode;
 	string NodePrevName = "";
 	if (CheckAttribute(NextDiag, "PrevNode")) NodePrevName = NextDiag.PrevNode;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -54,7 +54,7 @@ void ProcessDialogEvent()
 				link.l1.go = "SeekCitizen";
 				link.l2 = "Я хотел задать вам вопрос.";
 				link.l2.go = "int_quests";
-				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", 
+				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажете?",
 					"Что нового в Городе?", "Эх, с удовольствием послушал бы последние сплетни...");
 				link.l3.go = "rumours_LSC";
 				//поиски команды на корвет
@@ -103,7 +103,7 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
-		break;		
+		break;
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -174,9 +174,9 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Простите, но я совершенно не понимаю, о ком вы говорите. Чтобы вам помочь, мне нужны имя и фамилия.";
 				Link.l1 = "Хм. Давайте я попробую еще раз их назвать.";
-				Link.l1.go = "SeekCitizen_Choice_2";				
+				Link.l1.go = "SeekCitizen_Choice_2";
 				Link.l2 = "Благодарю вас, но лучше я сам поищу.";
-				Link.l2.go = "exit";	
+				Link.l2.go = "exit";
 			}
 			else
 			{
@@ -186,12 +186,12 @@ void ProcessDialogEvent()
 					link.l1 = "Надо же!";
 					link.l1.go = "exit";
 					break;
-				}				
+				}
 				if (sld.sex == "man")
 				{
 					dialog.text = GetFullName(sld) + ", вы его имеете ввиду?";
 					Link.l1 = "Именно его.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, я имел ввиду другого.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -199,7 +199,7 @@ void ProcessDialogEvent()
 				{
 					dialog.text = GetFullName(sld) + ", вы о ней говорили?";
 					Link.l1 = "Точно, именно о ней.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о ней. Может, я еще раз попробую назвать?";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -237,8 +237,8 @@ void ProcessDialogEvent()
 			{
 				if (sld.sex == "man")
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str1 = npchar.location.locator;
 						string Str2 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str1, 0, 5) == strcut(Str2, 0, 5))
@@ -266,8 +266,8 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str3 = npchar.location.locator;
 						string Str4 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str3, 0, 5) == strcut(Str4, 0, 5))
@@ -294,7 +294,7 @@ void ProcessDialogEvent()
 					link.l1.go = "exit";
 				}
 			}
-		break;	
+		break;
 		//вопросы
 		case "int_quests":
 			dialog.text = "Внимательно вас слушаю.";
@@ -344,7 +344,7 @@ void ProcessDialogEvent()
 			link.l1 = "Хм, я пока никого не вижу.";
 			link.l1.go = "exit";
 			npchar.quest.meeting = "1";
-			AddDialogExitQuestFunction("LSC_SaveSesilGalard_2");		
+			AddDialogExitQuestFunction("LSC_SaveSesilGalard_2");
 		break;
 
 		case "AfterFight":
@@ -400,7 +400,7 @@ void ProcessDialogEvent()
 		break;
 		case "AfterFight_10":
 			dialog.text = "Ну, а как это еще можно назвать? Думаю, что адмирал держит Хенрика в изоляции специально. Все дело в том, что Механик - необыкнованно талантливый человек в плане смастерить что-нибудь. Одно время начал он рассказывать об какой-то опасности, грозящей нам всем. Говорил о том, что мы должны покинуть Город, пока не поздно\n"+
-				"Но вы знаете, чудаковатых людей воспринимают несерьезно, вот и над его байками хохотали только. А потом вышел Закон о недопущении строительства плавательных средств, и сразу же касперы заняли Сан Габриэль. Ну и о нашем чудаке как-то неприлично стало вспоминать, да и небезопасно.";	
+				"Но вы знаете, чудаковатых людей воспринимают несерьезно, вот и над его байками хохотали только. А потом вышел Закон о недопущении строительства плавательных средств, и сразу же касперы заняли Сан Габриэль. Ну и о нашем чудаке как-то неприлично стало вспоминать, да и небезопасно.";
 			link.l1 = "Что значит, небезопасно?";
 			link.l1.go = "AfterFight_11";
 		break;
@@ -435,7 +435,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("ISS_MainLine", "31");
 			pchar.quest.LSC_enterCasper.win_condition.l1 = "location";
 			pchar.quest.LSC_enterCasper.win_condition.l1.location = "SanGabrielMechanic";
-			pchar.quest.LSC_enterCasper.function = "LSC_enterCasper"; 
+			pchar.quest.LSC_enterCasper.function = "LSC_enterCasper";
 			sld = characterFromID("Casper_head");
 			LAi_SetImmortal(sld, false);
 			for (int i=1; i<=11; i++)
@@ -448,16 +448,16 @@ void ProcessDialogEvent()
 		break;
 		//найм команды
 		case "SeekCrew":
-			dialog.text = NPCStringReactionRepeat("Интересное предложение...", 
-				"Мы уже говорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("Интересное предложение...",
+				"Мы уже говорили об этом.",
 				"Это уже обсуждено, второй раз повторяю.",
                 "Хватит, вы меня утомили...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Да, и своевременное, к тому же. На Город надвигается страшная буря.", 
+			link.l1 = HeroStringReactionRepeat("Да, и своевременное, к тому же. На Город надвигается страшная буря.",
 				"Да... Извините, запамятовал.",
-                "Как знаеште...", 
+                "Как знаеште...",
 				"Ну, ладно...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekCrew_1", "", "", "", npchar, Dialog.CurrentNode);
-		break;	
+		break;
 		case "SeekCrew_1":
 			dialog.text = "Да что вы говорите? И кто это вам сказал?";
 			link.l1 = "Не кто иной, как прекрасно знакомый вам Хенрик Ведекер.";
@@ -467,7 +467,7 @@ void ProcessDialogEvent()
 			dialog.text = "Хм... Вы знаете, а я рискну и останусь здесь. Я уже слишком стара для морских путешествий.";
 			link.l1 = "Вы уверены в своем решении? Я не для того спасал вас от 'касперов', чтобы вы так бездарно рисковали своей жизнью теперь.";
 			link.l1.go = "SeekCrew_3";
-		break;		
+		break;
 		case "SeekCrew_3":
 			dialog.text = "Согласитесь, капитан, что я имею на это право.";
 			link.l1 = "Бесспорно.";

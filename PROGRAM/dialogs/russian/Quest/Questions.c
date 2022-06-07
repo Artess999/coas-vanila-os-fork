@@ -17,20 +17,20 @@ void ProcessDialogEvent()
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
-		break;	
-		case "exit_over":			
+		break;
+		case "exit_over":
 			npchar.lifeDay = 0;
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
-		break;	
+		break;
 		case "good_all":
-			dialog.text = NPCStringReactionRepeat("Рад" + NPCharSexPhrase(npchar, "","а") + " видеть вас снова. Вы что-то еще хотели?", 
-				"О-о, опять вы? Сегодня у нас уже был разговор. Что-то изменилось?", 
+			dialog.text = NPCStringReactionRepeat("Рад" + NPCharSexPhrase(npchar, "","а") + " видеть вас снова. Вы что-то еще хотели?",
+				"О-о, опять вы? Сегодня у нас уже был разговор. Что-то изменилось?",
 				"Хм, может, хватит надоедать мне без дела?!",
                 "Бр-р-р, тошнит уже от твоей физиономии...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Нет, ничего такого...", 
+			link.l1 = HeroStringReactionRepeat("Нет, ничего такого...",
 				"Нет, все нормально.",
-                "Да, конечно, извини...", 
+                "Да, конечно, извини...",
 				"Хм, ну это вы зря, физиономия у меня что надо. Горжусь ею!", npchar, Dialog.CurrentNode);
 			link.l1.go = "Exit";
 			NextDiag.TempNode = "good_all";
@@ -52,7 +52,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "PortSpein";
 			dialog.text = "Здравствуйте, капитан. Не хотите поговорить о том, что вас, без сомнения, интересует?";
 			link.l1 = "Нет, не хочу.";
-			link.l1.go = "exit_over";			
+			link.l1.go = "exit_over";
 			link.l2 = "А откуда ты знаешь, что может меня заинтересовать?";
 			link.l2.go = "PortSpein_1";
 			DeleteAttribute(npchar, "talker");
@@ -81,7 +81,7 @@ void ProcessDialogEvent()
 			dialog.text = "В таком случае, слушайте вопрос. " + NullCharacter.questions.(sTemp);
 			Link.l1.edit = 1;
 			Link.l1 = "";
-			Link.l1.go = "PortSpein_check";	
+			Link.l1.go = "PortSpein_check";
 		break;
 		case "PortSpein_check":
 			sTemp = "a" + npchar.quest.numQuestion;
@@ -169,7 +169,7 @@ void ProcessDialogEvent()
 			dialog.text = "Очень хорошо. Итак, капитан, вот мой вопрос. " + NullCharacter.questions.(sTemp);
 			Link.l1.edit = 1;
 			Link.l1 = "";
-			Link.l1.go = "Villemstad_check";	
+			Link.l1.go = "Villemstad_check";
 		break;
 		case "Villemstad_check":
 			sTemp = "a" + npchar.quest.numQuestion;
@@ -256,7 +256,7 @@ void ProcessDialogEvent()
 			dialog.text = "Очень хорошо. Итак, капитан, вот мой вопрос. " + NullCharacter.questions.(sTemp);
 			Link.l1.edit = 1;
 			Link.l1 = "";
-			Link.l1.go = "PortPax_check";	
+			Link.l1.go = "PortPax_check";
 		break;
 		case "PortPax_check":
 			sTemp = "a" + npchar.quest.numQuestion;
@@ -343,7 +343,7 @@ void ProcessDialogEvent()
 			dialog.text = "Очень хорошо. Итак, капитан, вот мой вопрос. " + NullCharacter.questions.(sTemp);
 			Link.l1.edit = 1;
 			Link.l1 = "";
-			Link.l1.go = "SanJuan_check";	
+			Link.l1.go = "SanJuan_check";
 		break;
 		case "SanJuan_check":
 			sTemp = "a" + npchar.quest.numQuestion;
@@ -402,7 +402,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Cumana";
 			dialog.text = "Приветствую вас, капитан! У меня к вам есть небольшое дельце. Вы не уделите мне минуту внимания?";
 			link.l1 = "Нет, не уделю.";
-			link.l1.go = "exit_over";			
+			link.l1.go = "exit_over";
 			link.l2 = "Да без проблем, минута твоя.";
 			link.l2.go = "Cumana_1";
 			DeleteAttribute(npchar, "talker");
@@ -431,7 +431,7 @@ void ProcessDialogEvent()
 			dialog.text = "Хех, на один вопрос вы уже ответили правильно. А теперь главное событие этого дня! Слушайте вопрос. " + NullCharacter.questions.(sTemp);
 			Link.l1.edit = 1;
 			Link.l1 = "";
-			Link.l1.go = "Cumana_check";	
+			Link.l1.go = "Cumana_check";
 		break;
 		case "Cumana_check":
 			sTemp = "a" + npchar.quest.numQuestion;
@@ -484,7 +484,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "PortRoyal";
 			dialog.text = "Добрый день, капитан. Послушайте, мне кажется, что вы именно тот, кто мне нужен...";
 			link.l1 = "А вот я так не думаю.";
-			link.l1.go = "exit_over";			
+			link.l1.go = "exit_over";
 			link.l2 = "В чем дело, " + GetAddress_FormToNPC(NPChar) + "?";
 			link.l2.go = "PortRoyal_1";
 			DeleteAttribute(npchar, "talker");
@@ -513,7 +513,7 @@ void ProcessDialogEvent()
 			dialog.text = "Ну, вопрос достаточно прост. " + NullCharacter.questions.(sTemp);
 			Link.l1.edit = 1;
 			Link.l1 = "";
-			Link.l1.go = "PortRoyal_check";	
+			Link.l1.go = "PortRoyal_check";
 		break;
 		case "PortRoyal_check":
 			sTemp = "a" + npchar.quest.numQuestion;
@@ -566,7 +566,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Santiago";
 			dialog.text = "Приветствую вас в Сантьяго, капитан! Я хотел с вами поговорить по одному маленькому дельцу. Вы не против?";
 			link.l1 = "Не желаю разговаривать.";
-			link.l1.go = "exit_over";			
+			link.l1.go = "exit_over";
 			link.l2 = "Ни в коей мере. Я к вашим услугам.";
 			link.l2.go = "Santiago_1";
 			DeleteAttribute(npchar, "talker");
@@ -595,7 +595,7 @@ void ProcessDialogEvent()
 			dialog.text = "Замечательно! Итак, слушайте, пожалуйста, мой вопрос. " + NullCharacter.questions.(sTemp);
 			Link.l1.edit = 1;
 			Link.l1 = "";
-			Link.l1.go = "Santiago_check";	
+			Link.l1.go = "Santiago_check";
 		break;
 		case "Santiago_check":
 			sTemp = "a" + npchar.quest.numQuestion;

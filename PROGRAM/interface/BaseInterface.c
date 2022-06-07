@@ -59,7 +59,7 @@ void InitBaseInterfaces_main()
 	InterfaceStates.BattleShow.Navigator	= true;
 	InterfaceStates.BattleShow.Command		= true;
 	InterfaceStates.BattleShow.Alarm		= true;
-	
+
 
 	InterfaceStates.doUnFreeze = true;
 	InterfaceStates.Launched = false;
@@ -124,10 +124,10 @@ void InitInterfaceTables()
 	// boal -->
 	Interfaces[INTERFACE_FOR_TEST].SectionName = "interface\for_test.c";
 	Interfaces[INTERFACE_FOR_TEST].IniFile     = "RESOURCE\INI\INTERFACES\for_test.ini";
-	
+
 	Interfaces[INTERFACE_NATION_LEGEND].SectionName = "interface\NationLegend.c";
     Interfaces[INTERFACE_NATION_LEGEND].IniFile = "RESOURCE\INI\INTERFACES\NationLegend.ini";
-    
+
     Interfaces[INTERFACE_COLONY_CAPTURE].SectionName = "interface\ColonyCapture.c";
     Interfaces[INTERFACE_COLONY_CAPTURE].IniFile = "RESOURCE\INI\INTERFACES\ColonyCapture.ini";
 	// boal <--
@@ -171,7 +171,7 @@ void InitInterfaceTables()
 	//Interfaces[INTERFACE_RANSACK_MAIN].IniFile = "RESOURCE\INI\INTERFACES\ransack_main.ini";
 	Interfaces[INTERFACE_RANSACK_MAIN].SectionName = "interface\transfer_main.c";
 	Interfaces[INTERFACE_RANSACK_MAIN].IniFile = "RESOURCE\INI\INTERFACES\transfer_main.ini"; // теперь это одна форма, но разные вызовы, тк проверка на море и абордаж нужна
-	
+
 	Interfaces[INTERFACE_TRANSFER_MAIN].SectionName = "interface\transfer_main.c";
 	Interfaces[INTERFACE_TRANSFER_MAIN].IniFile = "RESOURCE\INI\INTERFACES\transfer_main.ini";
 
@@ -192,25 +192,25 @@ void InitInterfaceTables()
 	// boal -->
 	Interfaces[INTERFACE_DEBUGER].SectionName = "interface\debuger.c";
 	Interfaces[INTERFACE_DEBUGER].IniFile     = "RESOURCE\INI\INTERFACES\debuger.ini";
-	
+
 	Interfaces[INTERFACE_BOAL_BETA].SectionName = "interface\boal_beta.c";
 	Interfaces[INTERFACE_BOAL_BETA].IniFile = "RESOURCE\INI\INTERFACES\boal_beta.ini";
-	
+
 	Interfaces[INTERFACE_CARDSGAME].SectionName = "interface\boal_cards.c";
 	Interfaces[INTERFACE_CARDSGAME].IniFile = "RESOURCE\INI\INTERFACES\boal_cards.ini";
-	
+
 	Interfaces[INTERFACE_DICE_GAME].SectionName = "interface\boal_dice.c";
 	Interfaces[INTERFACE_DICE_GAME].IniFile = "RESOURCE\INI\INTERFACES\boal_dice.ini";
-	
+
 	Interfaces[INTERFACE_FRAMEFORM].SectionName = "interface\boal_frame.c";
 	Interfaces[INTERFACE_FRAMEFORM].IniFile     = "RESOURCE\INI\INTERFACES\boal_frame.ini";
-	
+
 	Interfaces[INTERFACE_PS_HERO].SectionName = "interface\PsHero.c";
 	Interfaces[INTERFACE_PS_HERO].IniFile = "RESOURCE\INI\INTERFACES\PsHero.ini";
-	
+
 	Interfaces[INTERFACE_LEAVE_BATTLE].SectionName = "interface\LeaveBattle.c";
 	Interfaces[INTERFACE_LEAVE_BATTLE].IniFile = "RESOURCE\INI\INTERFACES\LeaveBattle.ini";
-	
+
 	Interfaces[INTERFACE_ABOUT].SectionName = "interface\about.c";
 	Interfaces[INTERFACE_ABOUT].IniFile = "RESOURCE\INI\INTERFACES\about.ini";
 	// boal <--

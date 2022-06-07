@@ -9,7 +9,7 @@ void NetServer_WhrCreateLightningEnvironment()
 {
 	aref aCurWeather = NetServer_GetCurrentWeather();
 	aref aLightning; makearef(aLightning, aCurWeather.Lightning);
-	
+
 	if (sti(aLightning.Enable) != true) return;
 
 	SetEventHandler("NetServer_Lightning_DoIt", "NetServer_Lightning_DoIt", 0);
@@ -28,7 +28,7 @@ void NetServer_Lightning_DoIt()
 
 	// next lightning
 	PostEvent("NetServer_Lightning_DoIt", iNextTimeLightning);
-	
+
 	aref aCurWeather = NetServer_GetCurrentWeather();
 
 	// FIX-ME : about all client ships center
@@ -63,8 +63,8 @@ void NetServer_Lightning_DoIt()
 	for (int i=0; i<NET_MAXCLIENTS; i++)
 	{
 		if (!sti(NSClients[i].Use)) { continue; }
-		ref rClient, rShip; 
-		aref arCShip; 
+		ref rClient, rShip;
+		aref arCShip;
 
 		rClient = NetServer_GetClient(i);
 		makearef(arCShip, rClient.Ship);

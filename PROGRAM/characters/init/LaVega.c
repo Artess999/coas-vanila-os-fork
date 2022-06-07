@@ -2,7 +2,7 @@
 int CreateLaVegaCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -14,7 +14,7 @@ int CreateLaVegaCharacters(int n)
 	ch.model	= "Mansfield";
     ch.rank     = 35;
 	ch.sex = "man";
-    ch.model.animation = "man"; 
+    ch.model.animation = "man";
 	ch.City = "LaVega";
 	ch.location	= "LaVega_townhall";
 	ch.location.group = "sit";

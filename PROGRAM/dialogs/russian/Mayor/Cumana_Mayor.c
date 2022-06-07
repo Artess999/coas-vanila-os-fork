@@ -15,7 +15,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 				dialog.text = RandPhraseSimple("Сеньор, весь город благодарен вам по гроб жизни. Если бы не вы, даже страшно себе представить, что могло произойти...", "Весь город наблюдал за сражением - это была великая битва. Мы вам очень благодарны за спасение от грязных пиратов.");
 				link.l1 = RandPhraseSimple("Да уж, от ладронов пощады ждать не приходится...", "Этих ладронов нужно уничтожать повсеместно...");
-				link.l1.go = "exit";			
+				link.l1.go = "exit";
 			}
 		break;
 
@@ -25,7 +25,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1.go = "exit";
             NextDiag.TempNode = "Cupture_after";
 		break;
-		//************************** Квестовые штрумы ************************	
+		//************************** Квестовые штрумы ************************
         //==> Одиннадцатый квест англ.линейки: захват Каракаса и Куманы.
         case "EngLine11Quest_OccupyMein":
 			dialog.text = "Все, мы прекратили сопротивление. Город ваш. Что теперь будет?";
@@ -48,7 +48,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             Statistic_AddValue(Pchar, NationShortName(sti(NPChar.nation)) + "_TakeTown", 1);
 			SetReturn_Gover_Dialog_Exit(NPChar);
             chrDisableReloadToLocation = false;
-            AddDialogExitQuestFunction("LaunchColonyInfoScreen"); // табличка  
+            AddDialogExitQuestFunction("LaunchColonyInfoScreen"); // табличка
         break;
         //==> Шестой квест фр.линейки: захват Куманы с Олоне.
  		case "FraLine6Quest_Attack":
@@ -57,7 +57,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "Step_F6_1";
 			group_DeleteGroup("Spa_Attack");
 			AfterTownBattle();
-		break;		
+		break;
 		case "Step_F6_1":
             dialog.text = "Хм, понятно... А если я скажу, что денег нет?";
 			link.l1 = "Послушайте, сеньор, вы знаете кто такой Франсуа Олоне?";
@@ -94,9 +94,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
         break;
 		case "Step_F6_exit":
 			for (i=0; i<3; i++)
-			{				
+			{
 				if (i==0)	sld = characterFromID("Olone");
-				else	sld = characterFromID("Captain_"+i); 
+				else	sld = characterFromID("Captain_"+i);
 				RemoveCharacterCompanion(pchar, sld);
 				sld.dialog.currentnode = "First time";
 				LAi_SetStayType(sld);

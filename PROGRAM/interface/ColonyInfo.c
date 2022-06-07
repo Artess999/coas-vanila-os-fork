@@ -8,7 +8,7 @@ void InitInterface(string iniName)
     StartAboveForm(true);
     // лочим квест и карту
     bQuestCheckProcessFreeze = true;
-    
+
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
     if (CheckAttribute(Pchar, "GenQuestFort.ColonySiegeId"))
@@ -18,7 +18,7 @@ void InitInterface(string iniName)
 		iNation  = sti(pchar.GenQuestFort.ColonySiegeNation);
 		DeleteAttribute(Pchar, "GenQuestFort.ColonySiegeId");
 		DeleteAttribute(Pchar, "GenQuestFort.ColonySiegeNation");
-		
+
 		if (CheckAttribute(Pchar, "GenQuestFort.ColonySiegeEnd"))
 		{// конец осады
             DeleteAttribute(Pchar, "GenQuestFort.ColonySiegeEnd");
@@ -59,7 +59,7 @@ void ProcessCancelExit()
 void IDoExit(int exitCode)
 {
     EndAboveForm(true);
-    
+
 	DelEventHandler("InterfaceBreak","ProcessBreakExit");
 	DelEventHandler("exitCancel","ProcessCancelExit");
 	DelEventHandler("ievnt_command","ProcCommand");
@@ -89,7 +89,7 @@ void ProcCommand()
 void CalculateEndSiegeCity()
 {
     string sTemp =  GetNationNameByType(iNation);
-    
+
 	totalInfo = "Город " + GetCityName(sCity) + " захвачен войсками " + XI_ConvertString(sTemp + "Gen") + ".";
 
     SetNewGroupPicture("Nat1", "NATIONS",  sTemp);
@@ -99,7 +99,7 @@ void CalculateEndSiegeCity()
 void CalculateSiegeCity()
 {
     string sTemp =  GetNationNameByType(iNation);
-    
+
 	if (!isCityHasFort(sCity)) // сухопутный город
 	{
 	    totalInfo = "Десант "+XI_ConvertString(sTemp + "Gen")+" осадил город "+GetCityName(sCity)+". У вас есть "+FindRussianDaysString(iDay)+" для снятия осады.";

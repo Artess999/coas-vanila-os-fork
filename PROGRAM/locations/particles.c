@@ -117,7 +117,7 @@ void CreateParticles(ref Location)
 	aref locator;
 	int n;
 	int num;
-	
+
 	// DumpAttributes(Location);
 
 	if(!CheckAttribute(Location, "locators")) return;
@@ -131,10 +131,10 @@ void CreateParticles(ref Location)
 		for(n = 0; n < num; n++)
 		{
 			locator = GetAttributeN(locator_group, n);
-			//if(frnd() < 0.3 ) 
+			//if(frnd() < 0.3 )
 			CreateParticleSystem("signstar",stf(locator.x),stf(locator.y),stf(locator.z),-1.57,0,0,0);
-			
-			
+
+
 
 		}
 	}*/
@@ -161,8 +161,8 @@ void CreateParticles(ref Location)
 		{
 			locator = GetAttributeN(locator_group, n);
 			CreateParticleSystem("ship_foam",stf(locator.x),stf(locator.y),stf(locator.z),-1.57,0,0,0);
-			
-			
+
+
 
 		}
 	}
@@ -246,7 +246,7 @@ void CreateParticles(ref Location)
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
 		}
 	}
-	
+
 		if(CheckAttribute(Location, "locators.fishblue"))
 	{
 		makearef(locator_group, location.locators.fishblue);
@@ -258,7 +258,7 @@ void CreateParticles(ref Location)
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
 		}
 	}
-	
+
 		{
 		makearef(locator_group, location.locators.shadowstar);
 		num = GetAttributesNum(locator_group);
@@ -269,7 +269,7 @@ void CreateParticles(ref Location)
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
 		}
 	}
-	
+
 //Ursus
 
 
@@ -299,7 +299,7 @@ void CreateParticles(ref Location)
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
 		}
 	}
-	
+
 	if(CheckAttribute(Location, "locators.Waterfog"))
 	{
 		makearef(locator_group, location.locators.waterfog);
@@ -380,7 +380,7 @@ void CreateParticles(ref Location)
 			CreateParticleSystem("torch",stf(locator.x),stf(locator.y) - 0.07,stf(locator.z),-1.57,0,0,0);
 		}
 	}
-	
+
 	if(CheckAttribute(Location, "locators.fortfire_s"))
 	{
 		makearef(locator_group, location.locators.fortfire_s);
@@ -429,7 +429,7 @@ void CreateParticles(ref Location)
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
 		}
 	} */
-	
+
 	if(CheckAttribute(Location, "locators.torch_deck"))
 	{
 		makearef(locator_group, location.locators.torch_deck);
@@ -480,7 +480,7 @@ void CreateParticles(ref Location)
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z), 0);
 			CreateParticleSystemX("torch",stf(locator.x),stf(locator.y),stf(locator.z),
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z),0);
-			SendMessage(Sound, "lsllllllfff", MSG_SOUND_PLAY, "torch_deck", SOUND_WAV_3D, VOLUME_FX, 
+			SendMessage(Sound, "lsllllllfff", MSG_SOUND_PLAY, "torch_deck", SOUND_WAV_3D, VOLUME_FX,
 				0, 1, 0, 0, stf(locator.x), stf(locator.y), stf(locator.z));
 
 		}
@@ -495,7 +495,7 @@ void CreateParticles(ref Location)
 			locator = GetAttributeN(locator_group, n);
 			CreateParticleSystemX("shipfire",stf(locator.x),stf(locator.y),stf(locator.z),
 				stf(locator.vz.x),stf(locator.vz.y),stf(locator.vz.z), 0);
-			SendMessage(Sound, "lsllllllfff", MSG_SOUND_PLAY, "fortfire", SOUND_WAV_3D, VOLUME_FX, 
+			SendMessage(Sound, "lsllllllfff", MSG_SOUND_PLAY, "fortfire", SOUND_WAV_3D, VOLUME_FX,
 				0, 1, 0, 0, stf(locator.x), stf(locator.y), stf(locator.z));
 
 		}
@@ -516,7 +516,7 @@ void CreateHeaters(aref Location)
 	aref locator_group;
 	int num;
 	aref locator;
-	
+
 	if(CheckAttribute(Location, "locators.heaters_p"))
 	{
 		bool isHeatersEnable = true;
@@ -558,7 +558,7 @@ void LaunchCananada()
 	int num;
 	aref locator;
 	aref locator_group;
-	
+
 	if(CheckAttribute(Location, "locators.Cannon_explode"))
 	{
 		bool isHeatersEnable = true;

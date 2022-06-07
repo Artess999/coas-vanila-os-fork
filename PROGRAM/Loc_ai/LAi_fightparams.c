@@ -39,10 +39,10 @@ float LAi_CalcDamageForBlade(aref attack, aref enemy, string attackType, bool is
 	{
 		bladeDmg = bladeDmg * (1.0 + 0.7 * (aSkill - eSkill));
 	}
-	
+
 	//Коэфициент в зависимости от удара
 	float kAttackDmg = 1.0;
-	
+
 	// TO_DO оптимизация на ветку параметров
 	//if (sti(attack.index) == GetMainCharacterIndex()) Log_Info(attackType);
 	switch(attackType)
@@ -83,7 +83,7 @@ float LAi_CalcDamageForBlade(aref attack, aref enemy, string attackType, bool is
 				kAttackDmg = 3.0;
 			}
 		break;
-		
+
 		case "feintc":  // фикс после изучения ядра //Атакующие продолжение финта
 			if(isBlocked)
 			{
@@ -92,7 +92,7 @@ float LAi_CalcDamageForBlade(aref attack, aref enemy, string attackType, bool is
 				kAttackDmg = 0.8;
 			}
 		break;
-		
+
 		case "feint":
 			if(isBlocked)
 			{
@@ -106,22 +106,22 @@ float LAi_CalcDamageForBlade(aref attack, aref enemy, string attackType, bool is
 	{
 		//Результирующий демедж
 		float dmg = bladeDmg * kAttackDmg; // *kArcadeDmg * kSkillDmg
-		if(CheckCharacterPerk(attack, "HardHitter"))  
+		if(CheckCharacterPerk(attack, "HardHitter"))
 		{
 			if(CheckAttribute(enemy, "chr_ai.energy"))
 			{
 				enemy.chr_ai.energy = (stf(enemy.chr_ai.energy) * 0.9); //fix
 			}
 		}
-		// упрощение игры новичкам 
-		/*if (MOD_SKILL_ENEMY_RATE == 1 && CheckAttribute(enemy, "chr_ai.group"))	
+		// упрощение игры новичкам
+		/*if (MOD_SKILL_ENEMY_RATE == 1 && CheckAttribute(enemy, "chr_ai.group"))
 		{
-			if (enemy.chr_ai.group == LAI_GROUP_PLAYER) 
+			if (enemy.chr_ai.group == LAI_GROUP_PLAYER)
 			{
 				dmg = dmg * 0.5;
 			}
 		}  */
-		if (MOD_SKILL_ENEMY_RATE < 5 && sti(enemy.index) == GetMainCharacterIndex())	
+		if (MOD_SKILL_ENEMY_RATE < 5 && sti(enemy.index) == GetMainCharacterIndex())
 		{
 			dmg = dmg * (4.0 + MOD_SKILL_ENEMY_RATE) / 10.0;
 		}
@@ -193,7 +193,7 @@ float LAi_CalcUseEnergyForBlade(aref character, string actionType)
 		//case "feint":
 		//	energy = 7.0;
 		//break;
-		//case "parry": 
+		//case "parry":
 		//	energy = 20.0;
 		//break;
 		case "hit_parry":  // boal fix эту энергию тратит не атакующий, а атакуемый в анимации fgt_hit_parry
@@ -229,7 +229,7 @@ float Lai_UpdateEnergyPerDltTime(aref chr, float curEnergy, float dltTime)
 	{
 		fMultiplier = fMultiplier * 1.5;
 	}
-	if(CheckCharacterPerk(chr, "Tireless")) 
+	if(CheckCharacterPerk(chr, "Tireless"))
 	{
 		fMultiplier = fMultiplier * 1.15;
 	}
@@ -241,7 +241,7 @@ float Lai_UpdateEnergyPerDltTime(aref chr, float curEnergy, float dltTime)
 	}
 	*/
 	float fEnergy;
-	fEnergy = curEnergy + dltTime * fMultiplier; 
+	fEnergy = curEnergy + dltTime * fMultiplier;
 
 	return fEnergy;
 }
@@ -302,22 +302,22 @@ float LAi_GunCalcDamage(aref attack, aref enemy)
 	//Учитываем скилы
 	float aSkill = LAi_GetCharacterGunLevel(attack);
 	float eSkill = LAi_GetCharacterLuckLevel(enemy); // good luck
-	
+
 	float dmg = min + (max - min)*frandSmall(aSkill);
 	//Модифицировать повреждение от pistol с учетом скилов
     if(aSkill < eSkill)
 	{
 		dmg = dmg * (1.0 + 0.7 * (aSkill - eSkill));
 	}
-	// упрощение игры новичкам 
-	/*if (MOD_SKILL_ENEMY_RATE == 1 && CheckAttribute(enemy, "chr_ai.group"))	
+	// упрощение игры новичкам
+	/*if (MOD_SKILL_ENEMY_RATE == 1 && CheckAttribute(enemy, "chr_ai.group"))
 	{
-		if (enemy.chr_ai.group == LAI_GROUP_PLAYER) 
+		if (enemy.chr_ai.group == LAI_GROUP_PLAYER)
 		{
 			dmg = dmg * 0.5;
 		}
 	}   */
-	if (MOD_SKILL_ENEMY_RATE < 5 && sti(enemy.index) == GetMainCharacterIndex())	
+	if (MOD_SKILL_ENEMY_RATE < 5 && sti(enemy.index) == GetMainCharacterIndex())
 	{
 		dmg = dmg * (4.0 + MOD_SKILL_ENEMY_RATE) / 10.0;
 	}
@@ -540,13 +540,13 @@ void LAi_ApplyCharacterAttackDamage(aref attack, aref enemy, string attackType, 
 	{
 		exp = 0.0;
 	}
-	
+
 	if (!noExp)
     {
         //AddCharacterExp(attack, MakeInt(exp*0.5 + 0.5));
         AddCharacterExpToSkill(attack, LAi_GetBladeFencingType(attack), Makefloat(exp*0.2));
     }
-	
+
 }
 //boal 19.09.05 -->
 void LAi_SetResultOfDeath(ref attack, ref enemy, bool isSetBalde)
@@ -599,7 +599,7 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 	//Вероятность поподания
 	float p = LAi_GunCalcProbability(attack, kDist);
 	//Если промахнулись, то выйдем
-	if(rand(10000) > p*10000) return;	  
+	if(rand(10000) > p*10000) return;
 	// boal брон работает всегда, а не токо в блоке 23.05.2004 -->
 	if(CheckAttribute(enemy, "cirassId"))
 	{
@@ -624,7 +624,7 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 	}
 	if(damage > 0.0)
 	{
-		LAi_ApplyCharacterDamage(enemy, MakeInt(damage + 0.5));	
+		LAi_ApplyCharacterDamage(enemy, MakeInt(damage + 0.5));
 		//Проверим на смерть
 		LAi_CheckKillCharacter(enemy);
 	}
@@ -673,7 +673,7 @@ void LAi_ApplyCharacterFireDamage(aref attack, aref enemy, float kDist)
 		// boal statistic info 17.12.2003 -->
         Statistic_KillChar(attack, enemy, "_g");
         // boal statistic info 17.12.2003 <--
-        
+
         //Начислим за убийство
 		/*exp = exp + */
         //LAi_CalcDeadExp(attack, enemy); // начисляем только за удар и смерть
@@ -832,7 +832,7 @@ float LAi_NPC_GetFireActive()
 		}
 	}
 	//if (npc_return_tmp > 0.5) npc_return_tmp = 0.5;
-	
+
 	return npc_return_tmp;
 }
 

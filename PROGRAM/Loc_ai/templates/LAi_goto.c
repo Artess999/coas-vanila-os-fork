@@ -132,7 +132,7 @@ void LAi_tmpl_goto_EndGoToPoint(aref chr)
 {
 	//если тип нпс грузчик
 	if (chr.chr_ai.type == LAI_TYPE_CARRY)
-	{		
+	{
 		ChangeCharacterAddressGroup(chr, chr.location, "reload", "gate");
 	}
 	//закончить таск goto и перевести в stay (с сохранением текущего темплейта!)
@@ -230,7 +230,7 @@ void LAi_tmpl_goto_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_goto_IsFire(aref chr)
-{	
+{
 	return false;
 }
 
@@ -278,7 +278,7 @@ void LAi_tmpl_goto_ColThreshold(aref chr)
 		else
 			LAI_TYPE_LSCout_Stay(chr);
 	}
-	else LAi_tmpl_goto_Restart(chr); 
+	else LAi_tmpl_goto_Restart(chr);
 }
 
 
@@ -313,7 +313,7 @@ void LAi_tmpl_goto_Restart(aref chr)
 					}else{
 						chr.chr_ai.tmpl.state = "falure";
 						SetCharacterTask_Stay(chr);
-					}				
+					}
 				}
 			}else{
 				SetCharacterTask_Stay(chr);

@@ -118,7 +118,7 @@ void NetClient_OnCamera(int iSMsg)
 
 	switch (iSubCode)
 	{
-		case NSC_DECK_CAMERA_UPDATE: 
+		case NSC_DECK_CAMERA_UPDATE:
 			NCDeckCamera.IsCanFire = NMGetByte(iSMsg);
 			NCDeckCamera.CurrentTargetRelation = NMGetByte(iSMsg);
 		break;
@@ -143,7 +143,7 @@ void NetClient_SetDieCamera(int wKillerID)
 {
 	SetEventHandler("NetClient_SetDieCameraEvent", "NetClient_SetDieCameraEvent", 0);
 	PostEvent("NetClient_SetDieCameraEvent", 10000, "l", wKillerID);
-	
+
 	NetClient_SetShipCameraOn();
 }
 
@@ -172,9 +172,9 @@ void NetClient_CameraSwitch()
 	}
 
 	if (sti(NCDeckCamera.On))
-		{ 
+		{
 			Telescope_Off();
-			NetClient_SetShipCameraOn(); 
+			NetClient_SetShipCameraOn();
 		}
 	else
 		{ NetClient_SetDeckCameraOn(); }

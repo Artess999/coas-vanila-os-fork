@@ -7,7 +7,7 @@ ref Fantom_GetNextFantom()
 	return &Characters[FANTOM_CHARACTERS + iNumFantoms];
 }
 
-int Fantom_GenerateEncounter(string sGroupName, object oResult, int iEType, int iNumWarShips, int iNumMerchantShips) 
+int Fantom_GenerateEncounter(string sGroupName, object oResult, int iEType, int iNumWarShips, int iNumMerchantShips)
 {
 	aref	aWar, aMerchant;
 	ref		rEnc;
@@ -20,10 +20,10 @@ int Fantom_GenerateEncounter(string sGroupName, object oResult, int iEType, int 
 
 	//iNumMerchantShips = MakeInt(aMerchant.ShipsMin) + rand(MakeInt(aMerchant.ShipsMax) - MakeInt(aMerchant.ShipsMin));
 	//iNumWarShips = MakeInt(aWar.ShipsMin) + rand(MakeInt(aWar.ShipsMax) - MakeInt(aWar.ShipsMin));
-	
+
 	int iRank = sti(pchar.Rank);
 	Encounter_GetClassesFromRank(iEType, iRank, &iMerchantClassMin, &iMerchantClassMax, &iWarClassMin, &iWarClassMax);
-	
+
 	int iFantomIndex, iShipType;
 
 	for (i=0; i<iNumMerchantShips; i++)
@@ -57,7 +57,7 @@ int Fantom_GetShipType(int iClassMin, int iClassMax, string sShipType)
 			trace ("bad ship is: " + rship.name);
 		}
 		int iClass = MakeInt(rShip.Class);
-		
+
 		if (iClass > iClassMin) { continue; }
 		if (iClass < iClassMax) { continue; }
 		if (sti(rShip.CanEncounter) != true) { continue; }
@@ -66,7 +66,7 @@ int Fantom_GetShipType(int iClassMin, int iClassMax, string sShipType)
 		iShips[iShipsNum] = i;
 		iShipsNum++;
 	}
-	if (iShipsNum==0) 
+	if (iShipsNum==0)
 	{
 		Trace("Can't find ship type '" + sShipType + "' with ClassMin = " + iClassMin + " and ClassMax = " + iClassMax);
 		return INVALID_SHIP_TYPE;
@@ -93,25 +93,25 @@ void Fantom_AddFantomCharacter(string sGroupName, int iShipType, string sFantomT
 
 	/*rFantom.fame = rand(70);
 
-	
+
 	int iNation = sti(rFantom.nation);
 	//trace("Nation of Fantom is " + GetNationNameByType(iNation));
 	iNation = FindEnemyNation2NationWithoutPirates(iNation);
 	if(iNation != -1)
 	{
 		string sNation = GetNationNameByType(iNation);
-		
+
 		rFantom.reputation.(sNation) = 10;
-		
+
 		//trace("Nation of Enemy of Fantom is " + sNation);
 		rFantom.bounty.(sNation).money = sti(rFantom.fame)*rand(500);
-	}	
+	}
 	*/
 	rFantom.SeaAI.Group.Name = sGroupName;
 	rFantom.Ship.Type = iShipType;
 	rFantom.Ship.Mode = sFantomType;
 	rFantom.Charge.Type = GOOD_BALLS;
-	
+
 	iNumFantoms++;
 }
 // на деле этот метод бесполезен, тк золото в сундуке генерится в др месте, а то что, в к3 тут были распределения опыта и команды вообще позорище.
@@ -122,10 +122,10 @@ void Fantom_SetRandomMoney(ref rFantom, string sFantomType)
 
 	//GenerateBootyItems(rFantom); // to_do del
 	if (!CheckAttribute(rFantom, "ship.type")) return; // fix
-	
+
     int iShip = sti(rFantom.ship.type);
 	if (iShip == SHIP_NOTUSED) return; // fix
-	
+
 	// clear money from character
 	rFantom.Money = 0;
 
@@ -172,7 +172,7 @@ int Fantom_CalcSkill(ref rMainCharacter, string sSkill, int iShipClass, int iSki
 		case 7: minSkillLevel =  iSClass7; break;
 	}
 	minSkillLevel = minSkillLevel*10; // приведение скила к 1-100
-	
+
     if (iSkill < minSkillLevel)	iSkill = minSkillLevel;
     // boal 15.03.04 <--
 	if (iSkill < 1)		    	iSkill = 1;
@@ -392,7 +392,7 @@ void Fantom_SetGoods(ref rFantom, string sFantomType)
     	iRandMultiply = rand(6) - 2;  // 0..4 пушки
     	if (iRandMultiply > 0)
     	{
-    		Fantom_SetCharacterGoods(rFantom, iMultiply, iRandMultiply);	
+    		Fantom_SetCharacterGoods(rFantom, iMultiply, iRandMultiply);
     	}
     }
     // есть еще осталось место, то дать запасных орудий в трюм <--
@@ -417,10 +417,10 @@ int Fantom_SetCharacterGoods(ref rFantom, int iGoods, int iQuantity)
 void Fantom_SetRandomCrewExp(ref rFantom, string sFantomType)
 {
     if (!CheckAttribute(rFantom, "ship.type")) return; // fix
-    
+
 	int iShip = sti(rFantom.ship.type);
 	if (iShip == SHIP_NOTUSED) return; // fix
-	
+
 	// ship class
 	int iSClass = GetCharacterShipClass(rFantom);
 
@@ -472,7 +472,7 @@ void SetShipToFantom(ref _chr, string _type, bool _setgoods)
 			if (Rank < 4)
 			{
 				ShipType = SHIP_LUGGER;
-			}			
+			}
 			if (Rank >= 4 && Rank < 11)
 			{
 				ShipType = RandFromThreeDight(SHIP_SLOOP, SHIP_SCHOONER, SHIP_BRIG);

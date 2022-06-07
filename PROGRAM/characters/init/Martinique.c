@@ -2,7 +2,7 @@
 int CreateMartiniqueCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -195,7 +195,7 @@ int CreateMartiniqueCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
     //============== LeFransua ===============
 
 	makeref(ch,Characters[n]);			//Губернатор
@@ -220,7 +220,7 @@ int CreateMartiniqueCharacters(int n)
 	LAi_group_MoveCharacter(ch, "PIRATE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);		// ОФициантка
 	ch.id		= "LeFransua_waitress";
 	ch.model	= "girl_4";
@@ -255,7 +255,7 @@ int CreateMartiniqueCharacters(int n)
 	LAi_group_MoveCharacter(ch, "PIRATE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);			//Торговец
 	ch.id		= "LeFransua_trader";
 	ch.model	= "trader_8";

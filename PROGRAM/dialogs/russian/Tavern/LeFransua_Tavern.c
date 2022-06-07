@@ -22,13 +22,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//пиратка, квест №2, черная метка для Лоу
 		case "PL_Q2_1":
-			dialog.text = NPCStringReactionRepeat("Проживает.", 
-				"Я уже говорил, что проживает.", 
+			dialog.text = NPCStringReactionRepeat("Проживает.",
+				"Я уже говорил, что проживает.",
 				"Проживает, проживает...",
                 "Утомил...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Не подскажешь, как мне его найти?", 
+			link.l1 = HeroStringReactionRepeat("Не подскажешь, как мне его найти?",
 				"Да-да, я понял...",
-                "Понял...", 
+                "Понял...",
 				"...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("PL_Q2_2", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
 		break;
@@ -40,13 +40,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//пиратка, квест №3, поиски Лоу
 		case "PL_Q3_1":
-			dialog.text = NPCStringReactionRepeat("Э-э-э, опоздал ты, приятель. Он ушел из города, совсем ушел.", 
-				"Уже говорил тебе, что Лоу ушел из города.", 
+			dialog.text = NPCStringReactionRepeat("Э-э-э, опоздал ты, приятель. Он ушел из города, совсем ушел.",
+				"Уже говорил тебе, что Лоу ушел из города.",
 				"Ушел он, ушел...",
                 "Ох, и до чего же ты надоедливый!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Куда ушел?", 
+			link.l1 = HeroStringReactionRepeat("Куда ушел?",
 				"Да, я помню.",
-                "Да, запамятовал...", 
+                "Да, запамятовал...",
 				"Понял, ухожу...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("PL_Q3_2", "", "", "", npchar, Dialog.CurrentNode);
 		break;

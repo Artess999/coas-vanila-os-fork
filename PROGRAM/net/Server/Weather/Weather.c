@@ -22,7 +22,7 @@ void NetServer_DeleteWeatherEnvironment()
 
 aref NetServer_GetCurrentWeather()
 {
-	aref arWeather; 
+	aref arWeather;
 	makearef(arWeather, Weathers[iServerCurWeatherNum]);
 	return arWeather;
 }
@@ -35,7 +35,7 @@ void NetServer_CreateWeatherEnvironment(int iSMsg)
 
 	iServerCurWeatherNum = -1;
 
-	for (int i=0; i<iTotalNumWeathers; i++) 
+	for (int i=0; i<iTotalNumWeathers; i++)
 	{
 		if (sWeatherID == Weathers[i].id)
 		{
@@ -49,7 +49,7 @@ void NetServer_CreateWeatherEnvironment(int iSMsg)
 		Trace("NSError: Can't find weather with id " + sWeatherID);
 		iServerCurWeatherNum = 0;
 	}
-	
+
 	aref aCurWeather = NetServer_GetCurrentWeather();
 
 	sServerLightingPath = Whr_GetString(aCurWeather,"Lighting");
@@ -71,7 +71,7 @@ void NetServer_CreateWeatherEnvironment(int iSMsg)
 	fServerWeatherDelta = 0.0;
 	fServerWeatherAngle = stf(NSWeather.WindAngle);
 	fServerWeatherSpeed = stf(NSWeather.WindSpeed);
-	
+
 	NetServer_WhrCreateLightningEnvironment();
 	NetServer_WhrCreateSeaEnvironment();
 	//if (bServerWhrTornado) { NetServer_WhrCreateTornadoEnvironment(); }

@@ -22,7 +22,7 @@ void NetServer_CreateIslandEnvironment(int iSMsg)
 		SendMessage(&NSIsland, "lsss", MSG_ISLAND_LOAD_GEO, "islands", Islands[iIslandIndex].filespath.models, Islands[iIslandIndex].model);
 		LayerAddObject("mast_island_trace", &NSIsland, 1);
 
-		//Fort_Login(iIslandIndex);	
+		//Fort_Login(iIslandIndex);
 		SetTexturePath(0, "");
 	}
 

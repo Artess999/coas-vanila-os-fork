@@ -18,7 +18,7 @@ void NetServer_OnFile(int wNetClientID, int iMsg)
 void NetServer_OnFileData(int wNetClientID, int iFileID1, int iFileID2, int iMsg)
 {
 	int iIndex = NMGetDword(iMsg);
-	
+
 	NFRReceiveData(iFileID1, iIndex, iMsg);
 
 	int iSMsg = NMCreate();
@@ -34,7 +34,7 @@ void NetServer_OnFileData(int wNetClientID, int iFileID1, int iFileID2, int iMsg
 void NetServer_OnFileDataACK(int wNetClientID, int iFileID1, int iFileID2, int iMsg)
 {
 	int iIndex = NMGetDword(iMsg);
-	
+
 	NFSDataACK(iFileID1, iIndex);
 }
 
@@ -53,7 +53,7 @@ void NetServer_OnFileGetFile(int wNetClientID, int iFileID1, int iFileID2, int i
 	}
 	else
 	{
-		// Create Send File 
+		// Create Send File
 		iFileID1 = NFSCreateFile(wNetClientID, iFileID2, sFileName);
 	}
 	NMDelete(iSMsg);

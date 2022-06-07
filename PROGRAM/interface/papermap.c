@@ -26,7 +26,7 @@ void InitInterface(string iniName)
 		{
 			sPic = "Pirate";
 		}
-	
+
 		if(sPic != "select_nation")
 		{
 			GameInterface.MAP.imagelist.(sColony).group = "MAIN_ICONS";
@@ -37,7 +37,7 @@ void InitInterface(string iniName)
 			GameInterface.MAP.imagelist.(sColony).height = 12;
 		}
 	}
-	
+
 	x = sti(worldMap.playerShipX)/1.66;
 	x = 1024 + x - 5;
 	y = sti(worldMap.playerShipZ)/1.66;
@@ -57,7 +57,7 @@ void InitInterface(string iniName)
 
 	//SendMessage(&GameInterface,"lsllff",MSG_INTERFACE_MSG_TO_NODE, "MAP", -1, 10, x, y);
 
-  
+
 	CreateString(true,"MapsListCaption",XI_ConvertString("MapsList"),FONT_CAPTION,COLOR_NORMAL,714,55,SCRIPT_ALIGN_CENTER,1.0);
 
 	SetEventHandler("InterfaceBreak","ProcessBreakExit",0);
@@ -184,7 +184,7 @@ void SelectColony(int iColony)
 
 	sText = " " + XI_ConvertString("Population");
 	SendMessage(&GameInterface,"lsle",MSG_INTERFACE_MSG_TO_NODE,"COLONY_INFO_TEXT", 0,&sText);
-	
+
 	sText = " " + XI_ConvertString("Gold");
 	SendMessage(&GameInterface,"lsle",MSG_INTERFACE_MSG_TO_NODE,"COLONY_INFO_TEXT", 0,&sText);
 
@@ -229,7 +229,7 @@ void SelectColony(int iColony)
 	sText = XI_ConvertString("ColonyLevel" + Colonies[iColony].colonylevel);
 	sText = sText + " ";
 	SendMessage(&GameInterface,"lsle",MSG_INTERFACE_MSG_TO_NODE,"COLONY_INFO", 0,&sText);
-	
+
 	sText = Colonies[iColony].fort;
 	sText = sText + " ";
 	SendMessage(&GameInterface,"lsle",MSG_INTERFACE_MSG_TO_NODE,"COLONY_INFO", 0,&sText);
@@ -294,11 +294,11 @@ void SelectColony(int iColony)
 	iGood = Colonies[iColony].Trade.Import.id2;
 	sGood = goods[iGood].name;
 	SetNewGroupPicture("IMPORT2_PICTURE", "GOODS", sGood);
-	
+
 	sGood = XI_ConvertString(sGood);
 	SendMessage(&GameInterface,"lsle",MSG_INTERFACE_MSG_TO_NODE,"IMPORT_INFO", 0,&sGood);
 	SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"IMPORT_INFO", 8,-1,iColor);
-	
+
 	iGood = Colonies[iColony].Trade.Import.id3;
 	sGood = goods[iGood].name;
 	SetNewGroupPicture("IMPORT3_PICTURE", "GOODS", sGood);
@@ -324,7 +324,7 @@ void SelectColony(int iColony)
 	sGood = XI_ConvertString(sGood);
 	SendMessage(&GameInterface,"lsle",MSG_INTERFACE_MSG_TO_NODE,"EXPORT_INFO", 0,&sGood);
 	SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"EXPORT_INFO", 8,-1,iColor);
-	
+
 	iGood = Colonies[iColony].Trade.Export.id3;
 	sGood = goods[iGood].name;
 	SetNewGroupPicture("EXPORT3_PICTURE", "GOODS", sGood);

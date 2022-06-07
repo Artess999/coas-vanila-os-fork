@@ -26,7 +26,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestRecord("Pir_Line_7_Soukins", "2");
 			pchar.quest.PQ7_FriendLinney.win_condition.l1 = "location";
 			pchar.quest.PQ7_FriendLinney.win_condition.l1.location = "Hispaniola1";
-			pchar.quest.PQ7_FriendLinney.function = "PQ7_FriendLinney";	
+			pchar.quest.PQ7_FriendLinney.function = "PQ7_FriendLinney";
 		break;
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод

@@ -12,13 +12,13 @@
 void LAi_NPC_Equip(ref chr, int rank, bool isWeapons, bool isGun)
 {
 	// boal не нужно - ранг и так точно расчитан r = rank + rand(3) - 1;
-	
+
 	DeleteAttribute(chr, "equip");
 	DeleteAttribute(chr, "perks.list"); // FIX 101104 убрать накопивщиеся умения
 	DelBakSkillAttr(chr); // fix
-	
+
 	if (chr.model.animation == "mushketer") return;
-	
+
 	if (CheckAttribute(chr, "quest.officertype"))
 	{
 		// наши офицеры
@@ -28,7 +28,7 @@ void LAi_NPC_Equip(ref chr, int rank, bool isWeapons, bool isGun)
 	{
 		LAi_NPC_EquipPerk(chr, "fantom");
 	}
-	
+
 	//Подберём саблю
 	if(isWeapons)
 	{
@@ -41,10 +41,10 @@ void LAi_NPC_Equip(ref chr, int rank, bool isWeapons, bool isGun)
 		{
             blade = LAi_NPC_EquipBladeSelection(sti(chr.rank));
 		}
-		
+
 		DeleteAttribute(chr, "items"); // это можно не делать, но так наверняка (идет проверка на колво предметов, и сабель может стать вагон)
 		//DeleteAttribute(chr, "cirassId"); // трем броню
-		
+
 		GiveItem2Character(chr, blade);
 		EquipCharacterByItem(chr, blade);
 		// boal -->
@@ -317,7 +317,7 @@ void LAi_NPC_EquipPerk(ref chr, string kind)
 			PerkTemplates[PERK_TEMPLATE_MELEE] = makeint((rank + rand(1)) / 2.0 + 1);
 		break;
 
-		case "fantom" : 
+		case "fantom" :
 			PerkTemplates[PERK_TEMPLATE_MELEE]       = makeint((rank + rand(4)) / 4.0);
 			PerkTemplates[PERK_TEMPLATE_SAILING]     = makeint((rank + rand(5)) / 8.0);
 			PerkTemplates[PERK_TEMPLATE_GRAPPLING]   = makeint((rank + rand(7)) / 9.0);
@@ -325,7 +325,7 @@ void LAi_NPC_EquipPerk(ref chr, string kind)
 			PerkTemplates[PERK_TEMPLATE_CANNONS]     = makeint((rank + rand(2)) / 5.0);
 			PerkTemplates[PERK_TEMPLATE_SHIPDEFENCE] = makeint((rank + rand(4)) / 7.0);
 		break;
-    } 
+    }
 
 	NumPerks[PERK_TEMPLATE_SHIPDEFENCE] = 3;
 	NumPerks[PERK_TEMPLATE_REPAIR]      = 4;
@@ -377,8 +377,8 @@ void LAi_NPC_EquipPerk(ref chr, string kind)
 				chr.perks.list.Doctor2 = "1";
 			}
 			if (PerkTemplates[PERK_TEMPLATE_SHIPDEFENCE] == 3)
-			{	
-				chr.perks.list.BasicBattleState = "1";			
+			{
+				chr.perks.list.BasicBattleState = "1";
 			}
 		}
 		else
@@ -551,7 +551,7 @@ void LAi_NPC_EquipPerk(ref chr, string kind)
 			if (PerkTemplates[PERK_TEMPLATE_MELEE] >= 4)
 			{
 				chr.perks.list.Gunman = "1";
-			}	
+			}
 			if (PerkTemplates[PERK_TEMPLATE_MELEE] >= 5)
 			{
 				chr.perks.list.HardHitter = "1";

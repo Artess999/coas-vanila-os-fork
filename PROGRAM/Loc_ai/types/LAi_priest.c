@@ -1,5 +1,5 @@
 /*
-Тип: стоячий, всегда стоит, отвечает на диалоги, никогда не боится. А еще он молится у стойки, базарит с подходящими 
+Тип: стоячий, всегда стоит, отвечает на диалоги, никогда не боится. А еще он молится у стойки, базарит с подходящими
 прихожанами, ходит по локаторам группы "barmen" и боится врагов. Тока надо было доделать.
 
 	Используемые шаблоны:
@@ -79,8 +79,8 @@ void LAi_type_priest_CharacterUpdate(aref chr, float dltTime)
 					LAi_type_priest_RestoreAngle(chr);
 					if(time > 200.0)
 					{
-						chr.chr_ai.type.time = "0";					
-					}				
+						chr.chr_ai.type.time = "0";
+					}
 				}
 			}else{
 				//Боимся
@@ -200,7 +200,7 @@ void LAi_type_priest_Fire(aref attack, aref enemy, float kDist, bool isFindedEne
 //Персонаж атакован
 void LAi_type_priest_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 //Проиграть анимацию зазывания покупанелей

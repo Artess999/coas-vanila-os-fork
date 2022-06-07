@@ -1,4 +1,4 @@
-// Set task attack for SeaAI 
+// Set task attack for SeaAI
 void AIAttack_GroupAttack(string sGroupAttacker, string sGroupAttacked, bool bAttackedTask)
 {
 	ref rG1 = Group_GetGroupByID(sGroupAttacker);
@@ -16,7 +16,7 @@ void AIAttack_GroupAttack(string sGroupAttacker, string sGroupAttacked, bool bAt
     //fix вылетов - проверки -->
     if (!CheckAttribute(rG1, "Task")) { return; }
     //fix вылетов - проверки <--
-    
+
 	// check for already attack
 	if (sti(rG1.Task) == AITASK_ATTACK)
 	{
@@ -46,13 +46,13 @@ void AIAttack_GroupAttack(string sGroupAttacker, string sGroupAttacked, bool bAt
 				int iCharacterVictim = -1;
 				while (iCharacterVictim < 0)
 				{
-					iCharacterVictim = Group_GetCharacterIndexR(rG2, iIndex); 
+					iCharacterVictim = Group_GetCharacterIndexR(rG2, iIndex);
 					if (iCharacterVictim < 0) { iIndex = 0; continue; }
 					if (LAi_IsDead(&Characters[iCharacterVictim])) { iCharacterVictim = -1; }
 					iIndex++;
 				}
                 if (CheckAttribute(&Characters[iCharacterIndex], "ShipTaskLock"))  { continue; } // boal eddy
-				//eddy. здесь тоже надо проверять. 
+				//eddy. здесь тоже надо проверять.
 				if (CheckAttribute(&Characters[iCharacterIndex], "AnalizeShips"))
 				{
 					//если только что свалил от форта - не перебивать таск, а отправить в АИ на такты
@@ -62,13 +62,13 @@ void AIAttack_GroupAttack(string sGroupAttacker, string sGroupAttacked, bool bAt
 						Characters[iCharacterIndex].Ship.LastBallCharacter = iCharacterVictim;
 					}
 					else
-					{	
+					{
 						//форты ни при чем
 						if (stf(Characters[iCharacterIndex].ship.hp) > (stf(Characters[iCharacterVictim].ship.hp) / 2) || GetCrewQuantity(&Characters[iCharacterIndex]) > GetCrewQuantity(&Characters[iCharacterVictim]))
 						{	//если есть шанс победить, то проверим количественное соотношение - не лезть на большие эскадры
 							if (((iCharactersNum2 - iDeadCharactersNum2) / iCharactersNum1) >= 2.0 && sti(RealShips[sti(characters[iCharacterIndex].ship.type)].Class) > sti(RealShips[sti(characters[iCharacterVictim].ship.type)].Class))
-							{							
-								Ship_SetTaskRunaway(SECONDARY_TASK, iCharacterIndex, iCharacterVictim);								
+							{
+								Ship_SetTaskRunaway(SECONDARY_TASK, iCharacterIndex, iCharacterVictim);
 							}
 							else
 							{
@@ -93,17 +93,17 @@ void AIAttack_GroupAttack(string sGroupAttacker, string sGroupAttacked, bool bAt
 					Ship_SetTaskAttack(SECONDARY_TASK, iCharacterIndex, iCharacterVictim);
 				}
 				// boal это моя строка, нужно ее тестить SetCharacterRelationBoth(iCharacterVictim, iCharacterIndex, RELATION_ENEMY); //fix
-			}	
+			}
 		}
 	}
 	// ====================================================== set attack task to ships
 	bool bTaskLock = false;
 
 	if (sGroupAttacked == PLAYER_GROUP) { return; }
-	if (!bAttackedTask) { return; } 
+	if (!bAttackedTask) { return; }
 
-	if (Group_isTaskLockR(rG2)) 
-	{ 
+	if (Group_isTaskLockR(rG2))
+	{
         //fix вылетов - проверки -->
 	    if (!CheckAttribute(rG2, "Task")) { return; }
 	    //fix вылетов - проверки <--
@@ -156,7 +156,7 @@ void AIAttack_CheckTask(string sGroupID)
 {
 	ref rG1 = Group_GetGroupByID(sGroupID);
 	ref rG2;
-    
+
 	string sGroupType1 = Group_GetTypeR(rG1);
 
 	ref rCharacter1 = Group_GetGroupCommanderR(rG1);
@@ -166,7 +166,7 @@ void AIAttack_CheckTask(string sGroupID)
 
 	// if group task is lock, check for task complete, if not - continue task
 	float fAng = frnd() * PIm2;
-	
+
 	// boal проверка на наличие врага (вылеты от разборки наций) -->
 	string rG2name = "none_group_1"; // нет такой группы
 	if (CheckAttribute(rG1, "Task.Target"))
@@ -202,7 +202,7 @@ void AIAttack_CheckTask(string sGroupID)
     // boal проверка на наличие врага (вылеты от разборки наций) <--
 	/*if (!Group_isTaskLockR(rG1))
 	{
-		// to_Do сомнительная логика - мерять НР кораблей 
+		// to_Do сомнительная логика - мерять НР кораблей
 		float fHP1 = Group_GetPowerHP_R(rG1);
 		float fHP2 = Group_GetPowerHP_R(rG2);
 		float fAHP1 = Group_GetAttackHPDistance_R(rG1, 300.0);
@@ -255,7 +255,7 @@ void AIAttack_CheckTask(string sGroupID)
 		int iCharacterVictim = -1;
 		while (iCharacterVictim < 0)
 		{
-			iCharacterVictim = Group_GetCharacterIndexR(rG2, iIndex); 
+			iCharacterVictim = Group_GetCharacterIndexR(rG2, iIndex);
 			if (iCharacterVictim < 0) { iIndex = 0; continue; }
 			if (LAi_IsDead(&Characters[iCharacterVictim])) { iCharacterVictim = -1; }
 			iIndex++;

@@ -10,7 +10,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "Exit":
@@ -75,9 +75,9 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HouseMan";
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = PCharRepPhrase(LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"), 
+       			dialog.text = PCharRepPhrase(LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"),
 					LinkRandPhrase("Что тебе нужно, негодяй?! Городская стража уже взяла твой след, далеко тебе не уйти, грязный пират!", "Грязный убийца! Стража!!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
-				link.l1 = PCharRepPhrase(RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
+				link.l1 = PCharRepPhrase(RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"),
 					RandPhraseSimple("Отправляйся в ад!", "Хех, жить тебе осталось несколько секунд..."));
 				link.l1.go = PCharRepPhrase("exit_setOwner", "fight");
 				break;
@@ -101,25 +101,25 @@ void ProcessDialogEvent()
 			{
 				if (IsDay())
 				{
-					dialog.text = NPCStringReactionRepeat("Рад приветствовать вас в моем доме. Вы по делу ко мне?", 
-						"Чем я могу вам помочь?", 
+					dialog.text = NPCStringReactionRepeat("Рад приветствовать вас в моем доме. Вы по делу ко мне?",
+						"Чем я могу вам помочь?",
 						"Хм, что я могу сделать для вас?",
 						"Простите, если я вам не нужен, я попрошу вас меня не беспокоить...", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat("Нет, просто осматриваю город, знакомлюсь с жителями...", 
+					link.l1 = HeroStringReactionRepeat("Нет, просто осматриваю город, знакомлюсь с жителями...",
 						"Да так, ничем особенным...",
-						"Ничего...", 
+						"Ничего...",
 						"Хорошо, как скажешь.", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("HouseMan_1", "exit_setOwner", "exit_setOwner", "exit_setOwner", npchar, Dialog.CurrentNode);
 				}
 				else
 				{
-					dialog.text = NPCStringReactionRepeat("Простите, вы не вовремя появились у меня дома - ночь на дворе. Я прошу вас покинуть мой дом!", 
-						"Я уже говорил, что время позднее. Прошу вас уйти.", 
+					dialog.text = NPCStringReactionRepeat("Простите, вы не вовремя появились у меня дома - ночь на дворе. Я прошу вас покинуть мой дом!",
+						"Я уже говорил, что время позднее. Прошу вас уйти.",
 						"Не хочу показаться грубым, но я настаиваю, чтобы вы немедленно покинули мой дом!",
 						"Черт возьми, что это такое?! Стража, воры!!!", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat("Хорошо, я понимаю...", 
+					link.l1 = HeroStringReactionRepeat("Хорошо, я понимаю...",
 						"Да, сейчас...",
-						"Ладно, не кипятись.", 
+						"Ладно, не кипятись.",
 						"Заткнись, какие воры?!", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("exit_close", "exit_setOwner", "exit_setOwner", "fight", npchar, Dialog.CurrentNode);
 				}
@@ -141,9 +141,9 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HouseWoman";
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = PCharRepPhrase(LinkRandPhrase("Предупреждаю, что скоро домой явится мой муж! Шли бы вы из моего дома...", "Не думаю, что вам удаться сбежать. И знайте, что скоро домой должен прийти мой муж!", "Мой муж скоро будет дома, вам немедленно нужно уйти отсюда!"), 
+       			dialog.text = PCharRepPhrase(LinkRandPhrase("Предупреждаю, что скоро домой явится мой муж! Шли бы вы из моего дома...", "Не думаю, что вам удаться сбежать. И знайте, что скоро домой должен прийти мой муж!", "Мой муж скоро будет дома, вам немедленно нужно уйти отсюда!"),
 					LinkRandPhrase("Эх, жаль, мужа нет дома... Убирайся!!!", "Грязный убийца, вон из моего дома! Стража!!", "Каков мерзавец... Скоро придет мой муж и посмотрит, какого цвета у тебя кровь!"));
-				link.l1 = PCharRepPhrase(RandPhraseSimple("Муж, объелся груш...", "Хех, мужем меня не напугаешь, киска..."), 
+				link.l1 = PCharRepPhrase(RandPhraseSimple("Муж, объелся груш...", "Хех, мужем меня не напугаешь, киска..."),
 					RandPhraseSimple("Заткни свой ротик, а не то кишки выпущу...", "Я останусь здесь только, сколько захочу. А ты сиди тихо, не то хуже будет..."));
 				link.l1.go = "exit_setOwner";
 				break;
@@ -157,7 +157,7 @@ void ProcessDialogEvent()
 					link.l1.go = "exit";
 				}
 				else
-				{					
+				{
 					dialog.text = "Что тебе надо в моем доме, негодяй?! Если ты не уберешься через десять секунд, то я позову стражу!";
 					link.l1 = "Вот дура...";
 					link.l1.go = "exit_GoOut";
@@ -167,25 +167,25 @@ void ProcessDialogEvent()
 			{
 				if (IsDay())
 				{
-					dialog.text = NPCStringReactionRepeat("Я рада вас видеть в нашем доме. Меня зовут " + GetFullName(npchar) + ". Чем я могу вам помочь?", 
-						"Вы еще здесь?", 
+					dialog.text = NPCStringReactionRepeat("Я рада вас видеть в нашем доме. Меня зовут " + GetFullName(npchar) + ". Чем я могу вам помочь?",
+						"Вы еще здесь?",
 						"Хм, простите, но вам не кажется, что вы уже засиделись у нас?",
 						"Я прошу вас не злоупотреблять нашим гостеприимством.", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat( GetFullName(pchar) + " к вашим услугам. К вам зашел без конкретного дела, познакомиться.", 
+					link.l1 = HeroStringReactionRepeat( GetFullName(pchar) + " к вашим услугам. К вам зашел без конкретного дела, познакомиться.",
 						"Еще здесь.",
-						"Ну, как сказать...", 
+						"Ну, как сказать...",
 						"Хорошо.", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("HouseWoman_1", "exit_setOwner", "exit_setOwner", "exit_setOwner", npchar, Dialog.CurrentNode);
 				}
 				else
 				{
-					dialog.text = NPCStringReactionRepeat("Ах, господи, что же это вы врываетесь в дом в такое время! Прямо испугали меня... Прошу вас уйти, приходите к нам завтра.", 
-						"Уйдите же, прошу вас! Я замужняя женщина!", 
+					dialog.text = NPCStringReactionRepeat("Ах, господи, что же это вы врываетесь в дом в такое время! Прямо испугали меня... Прошу вас уйти, приходите к нам завтра.",
+						"Уйдите же, прошу вас! Я замужняя женщина!",
 						"Я последний раз добром прошу вас покинуть наш дом!",
 						"Да что же это делается?!!", "block", 1, npchar, Dialog.CurrentNode);
-					link.l1 = HeroStringReactionRepeat("Не бойтесь, я ничего плохого вам не сделаю.", 
+					link.l1 = HeroStringReactionRepeat("Не бойтесь, я ничего плохого вам не сделаю.",
 						"Хорошо, не надо волноваться...",
-						"Ухожу.", 
+						"Ухожу.",
 						"В чем дело?", npchar, Dialog.CurrentNode);
 					link.l1.go = DialogGoNodeRepeat("exit_close", "exit_setOwner", "exit_setOwner", "HouseWoman_2", npchar, Dialog.CurrentNode);
 				}
@@ -210,17 +210,17 @@ void ProcessDialogEvent()
 			link.l1.go = "exit_setOwner";
 			LAi_group_Attack(NPChar, Pchar);
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
-		break; 
+		break;
 		//--------------------------------- завсклад ---------------------------------
 		case "SkladMan":
 			NextDiag.TempNode = "SkladMan";
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("В городе поднята тревога. Похоже, и мне пора браться за оружие...", "Уж не за тобой ли носится вся городская стража?.. Ко мне, солдаты!!!", "У меня приюта ты не найдешь. Зато найдешь несколько дюймов холодной стали под ребро!"),
 					LinkRandPhrase("Что тебе нужно, негодяй?! Городская стража уже взяла твой след, далеко тебе не уйти, грязный пират!", "Грязный убийца! Стража!!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"), 
+					RandPhraseSimple("Похоже, тебе жить надоело...", "Хех, и не живется же спокойно мирным гражданам " + XI_ConvertString("Colony" + npchar.city + "Gen") + "!"),
 					RandPhraseSimple("Отправляйся в ад!", "Хех, жить тебе осталось несколько секунд..."));
 				link.l1.go = NPCharRepPhrase("exit_setOwner", "fight");
 				break;
@@ -233,13 +233,13 @@ void ProcessDialogEvent()
 			}
 			else
 			{
-				dialog.text = NPCStringReactionRepeat("Приветсвую вас! Меня зовут " + GetFullName(npchar) + ". Я здесь заведую всем, так что не вздумай прихватить что-то с собой...", 
-					"Веди себя прилично. И помни, что я смотрю за тобой.", 
+				dialog.text = NPCStringReactionRepeat("Приветсвую вас! Меня зовут " + GetFullName(npchar) + ". Я здесь заведую всем, так что не вздумай прихватить что-то с собой...",
+					"Веди себя прилично. И помни, что я смотрю за тобой.",
 					"Пока ты не лезешь в сундуки - все в порядке, можешь находиться здесь. Одному мне скучно...",
 					RandPhraseSimple("Эх, тоска тут смертная!", "Эх, черт возьми, чем бы заняться?.."), "block", 3, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Хорошо, не переживай.", 
+				link.l1 = HeroStringReactionRepeat("Хорошо, не переживай.",
 					"Конечно!",
-					"Понимаю...", 
+					"Понимаю...",
 					"Да, проблемы у тебя серьезные...", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("exit", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
 				//открывание двери верфи по квесту промышленного шпионажа

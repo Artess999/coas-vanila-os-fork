@@ -29,14 +29,14 @@ void ProcessDialogEvent()
 				//если ГГ начал мочить бродяг -->
 				if (pchar.questTemp.LSC == "PoorMurderBegin")
 				{
-					dialog.text = LinkRandPhrase("Я слышал, что ты убивал нищих в других городах. Зачем ты это делаешь?", 
-						"Мне кажется, я знаю, кто ты. Зачем ты убиваешь нас?", 
+					dialog.text = LinkRandPhrase("Я слышал, что ты убивал нищих в других городах. Зачем ты это делаешь?",
+						"Мне кажется, я знаю, кто ты. Зачем ты убиваешь нас?",
 						"Что тебе нужно от нас? Что мы тебе сделали? Зачем убивать безобидных нищих?");
 					link.l1 = LinkRandPhrase("Все дело в деньгах...", "Мне пообещали за эту работу оч-ч-чень большое вознаграждение!", "Такова жизнь... А вообще, все дело в корысти, друг мой.");
 					link.l1.go = "exit";
 					break;
 				}
-				//<-- если ГГ начал мочить бродяг 
+				//<-- если ГГ начал мочить бродяг
 				//зачарованный город -->
 				if (pchar.questTemp.MC == "toCaracas" && npchar.city == "Caracas")
 				{
@@ -52,29 +52,29 @@ void ProcessDialogEvent()
 					link.l1.go = "exit";
 					break;
 				}
-				//<-- зачарованный город 
-				dialog.text = LinkRandPhrase("Здравствуйте. Меня зовут " + GetFullName(npchar) + ". Не думаю, что вам было бы приятно со мной познакомиться, но, возможно, вы запомните мое имя...", 
-					"Приветствую вас, " + GetAddress_Form(NPChar) +  ". Меня зовут " + GetFullName(npchar) + ".", 
+				//<-- зачарованный город
+				dialog.text = LinkRandPhrase("Здравствуйте. Меня зовут " + GetFullName(npchar) + ". Не думаю, что вам было бы приятно со мной познакомиться, но, возможно, вы запомните мое имя...",
+					"Приветствую вас, " + GetAddress_Form(NPChar) +  ". Меня зовут " + GetFullName(npchar) + ".",
 					"Мое имя - " + GetFullName(npchar) + ", " + GetAddress_Form(NPChar) + ". Рад с вами познакомиться.");
 				link.l1 = RandPhraseSimple("Приветствую.", "Здравствуйте.");
 				link.l1.go = "First time";
 				npchar.quest.meeting = "1";
-			}			
+			}
 			else
 			{
 				//если ГГ начал мочить бродяг -->
 				if (pchar.questTemp.LSC == "PoorMurderBegin")
 				{
-					dialog.text = LinkRandPhrase("Я слышал, что ты убивал нищих в других городах. Зачем ты это делаешь?", 
-						"Мне кажется, я знаю, кто ты. Зачем ты убиваешь нас?", 
+					dialog.text = LinkRandPhrase("Я слышал, что ты убивал нищих в других городах. Зачем ты это делаешь?",
+						"Мне кажется, я знаю, кто ты. Зачем ты убиваешь нас?",
 						"Что тебе нужно от нас? Что мы тебе сделали? Зачем убивать безобидных нищих?");
 					link.l1 = LinkRandPhrase("Все дело в деньгах...", "Мне пообещали за эту работу оч-ч-чень большое вознаграждение!", "Такова жизнь... А вообще, все дело в корысти, друг мой.");
 					link.l1.go = "exit";
 					break;
 				}
 				//<-- если ГГ начал мочить бродяг
-				dialog.text = NPCStringReactionRepeat("Эх, вот видишь, до чего докатился...", 
-					"Жить подаянием непросто...", 
+				dialog.text = NPCStringReactionRepeat("Эх, вот видишь, до чего докатился...",
+					"Жить подаянием непросто...",
 					"Хотелось бы мне вырваться из нищеты!",
 					"Опять ты?..", "block", 1, npchar, Dialog.CurrentNode);
 				//разговарием с нищими о наезде
@@ -83,7 +83,7 @@ void ProcessDialogEvent()
 					if (CheckAttribute(pchar, "questTemp.LSC.qtyTalk.headPoormanId") && pchar.questTemp.LSC.qtyTalk.headPoormanId == npchar.id)
 					{
 						link.l1 = "Я слышал, что ты хотел поговорить со мной.";
-						link.l1.go = "PoorHeadMan"; 
+						link.l1.go = "PoorHeadMan";
 						npchar.quest.talk = true; //больше не говорить
 						break;
 					}
@@ -115,14 +115,14 @@ void ProcessDialogEvent()
 					}
 				}
 				//----------------------------------------------------------------
-				link.l1 = HeroStringReactionRepeat("Вижу. Ну, ничего страшного.", 
+				link.l1 = HeroStringReactionRepeat("Вижу. Ну, ничего страшного.",
 					"Оно и понятно. На эти деньги не разгуляешься, поди...",
-					"Тогда тебе нужно не протирать здесь штаны, а что-то делать для этого.", 
+					"Тогда тебе нужно не протирать здесь штаны, а что-то делать для этого.",
 					"Ага. Неужели надоел?", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("exit", "exit", "exit", "pester", npchar, Dialog.CurrentNode);
 				link.l2 = RandPhraseSimple("Что тебе нужно?", "Чего ты хочешь?");
 				link.l2.go = "Whants";
-				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", 
+				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?",
 					"Что нового в городе?", "Эх, с удовольствием послушал бы последние сплетни...");
 				link.l3.go = "rumours_poor";
 				// --------------- линейка ГПК ---------------
@@ -142,7 +142,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 		break;
 		case "pester":
-			dialog.text = RandPhraseSimple("Да нет, почему сразу надоел? Я не особо занят, как ты сам видишь...", 
+			dialog.text = RandPhraseSimple("Да нет, почему сразу надоел? Я не особо занят, как ты сам видишь...",
 				"Не надоел, но порядком утомил. Я хоть и нищий, но тоже человек.");
 			link.l1 = "Хех, ясно...";
 			link.l1.go = "exit";
@@ -172,7 +172,7 @@ void ProcessDialogEvent()
 		break;
 		case "Whants_1":
 			dialog.text = "И от гроша ломаного не откажусь, " + GetAddress_Form(NPChar) + ". Сколько вам позволят ваши кошелек и милосердие...";
-			Link.l1.edit = 2;			
+			Link.l1.edit = 2;
 			link.l1 = "";
 			link.l1.go = "Whants_2";
 		break;
@@ -235,7 +235,7 @@ void ProcessDialogEvent()
 				ChangeCharacterReputation(pchar, -2);
 			}
 		break;
-		//линейка ГПК, разговоры по душам с нищими после заказа 
+		//линейка ГПК, разговоры по душам с нищими после заказа
 		case "GoodTalk_1":
 			dialog.text = "К-хе, к-хе... Чего?!!";
 			link.l1 = "Ну-у-у, как тебе сказать... В общем, есть тут люди, которым вы как кость в горле.";
@@ -473,13 +473,13 @@ void ProcessDialogEvent()
 		break;
 		//базар с основным после завала Оливера Траста
 		case "GoLSC":
-			dialog.text = NPCStringReactionRepeat("Отлично! Ну, расскажи, в чем все дело?", 
-				"Мы уже говорили на эту тему.", 
+			dialog.text = NPCStringReactionRepeat("Отлично! Ну, расскажи, в чем все дело?",
+				"Мы уже говорили на эту тему.",
 				"Хм, пообщались уже...",
                 "Послушай, долгие расставания - это для женщин.", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Знаешь, ты оказался прав в предположении, которые высказал в самом начале нашего общения. Все дело действительно в Тизере Дэне и его Острове.", 
+			link.l1 = HeroStringReactionRepeat("Знаешь, ты оказался прав в предположении, которые высказал в самом начале нашего общения. Все дело действительно в Тизере Дэне и его Острове.",
 				"Да, верно.",
-                "Точно!", 
+                "Точно!",
 				"Хм, ты прав...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("GoLSC_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -516,7 +516,7 @@ void ProcessDialogEvent()
 			ChangeItemDescribe("keyQuestLSC", "itmdescr_keyQuestLSC_Tizer");
 			sld = ItemsFromID("keyQuestLSC");
 			DeleteAttribute(sld, "shown");
-			GiveItem2Character(pchar, "keyQuestLSC");			
+			GiveItem2Character(pchar, "keyQuestLSC");
 		break;
 	}
 }

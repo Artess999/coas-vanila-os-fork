@@ -12,7 +12,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -35,7 +35,7 @@ void ProcessDialogEvent()
     			link.l1.go = "Step_F1_3";
     			link.l2 = "А мы уже пришли! Я решил, что твои денежки мне самому пригодятся.";
     			link.l2.go = "Step_F1_5";
-            } 
+            }
             //Квест №2, доставка письма на Тортугу
 			if (pchar.questTemp.State == "Fr2Letter_SeekProblems")// квест №2, странные типы в таверне
             {
@@ -83,7 +83,7 @@ void ProcessDialogEvent()
             {
 				dialog.text = NPCStringReactionRepeat("Сеньор, вы уже второй раз спасаете мою жизнь. Знайте, что в моем лице вы обрели верного друга.",
 					         "Здравствуйте снова, капитан. Рада вас видеть.", "И еще раз здравствуйте капитан...", "Который раз на дню: здравствуйте, капитан...", "block", 0, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Сеньора, совершенно случайно близ Гаваны мне встретились два кастильских дворянина, и знали бы вы, как они о вас выражались... По всему видать, донна Анна, что память о вас бережно хранится в Кастилии.", 
+				link.l1 = HeroStringReactionRepeat("Сеньора, совершенно случайно близ Гаваны мне встретились два кастильских дворянина, и знали бы вы, как они о вас выражались... По всему видать, донна Анна, что память о вас бережно хранится в Кастилии.",
 					      "И я вас рад видеть так же.", "И еще раз я рад вас видеть...", "Здравствуйте, сеньора...", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("Step_F5_8", "none", "none", "none", npchar, Dialog.CurrentNode);
 
@@ -92,7 +92,7 @@ void ProcessDialogEvent()
             {
 				dialog.text = NPCStringReactionRepeat("Сеньор, вы уже второй раз спасаете мою жизнь. Знайте, что в моем лице вы обрели верного друга.",
 					         "Здравствуйте снова, капитан. Рада вас видеть.", "И еще раз здравствуйте капитан...", "Который раз на дню: здравствуйте, капитан...", "block", 0, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Сеньора, совершенно случайно близ Гаваны мне встретились два кастильских дворянина, и знали бы вы, как они о вас выражались... По всему видать, донна Анна, что память о вас бережно хранится в Кастилии.", 
+				link.l1 = HeroStringReactionRepeat("Сеньора, совершенно случайно близ Гаваны мне встретились два кастильских дворянина, и знали бы вы, как они о вас выражались... По всему видать, донна Анна, что память о вас бережно хранится в Кастилии.",
 					      "И я вас рад видеть так же.", "И еще раз я рад вас видеть...", "Здравствуйте, сеньора...", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("Step_F5_8", "none", "none", "none", npchar, Dialog.CurrentNode);
             }
@@ -100,7 +100,7 @@ void ProcessDialogEvent()
             {
 				dialog.text = NPCStringReactionRepeat("Сударь, вас что, поучить хорошим манерам?! Ко мне в дом без приглашения не смеет входить никто!",
 					         "Мы вроде бы все обсудили...", "Еще что-то?", "Опять то же самое, сколько можно?!", "block", 0, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Мое приглашение при мне. Вот оно - это срочный пакет от генерал-губернатора д'Ожерона.", 
+				link.l1 = HeroStringReactionRepeat("Мое приглашение при мне. Вот оно - это срочный пакет от генерал-губернатора д'Ожерона.",
 					      "Да, точно...", "Да нет, все нормально...", "Да ладно тебе, не кипятись...", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("Step_F6_1", "none", "none", "none", npchar, Dialog.CurrentNode);
             }
@@ -124,7 +124,7 @@ void ProcessDialogEvent()
     			link.l1 = "Капитан " + GetFullName(pchar) + ". Я прибыл к вам по распоряжению генерал-губернатора д`Ожерона.";
     			link.l1.go = "Step_F8_1";
             }
-			if (npchar.id == "Bonrepo" && pchar.questTemp.State == "Fr8ThreeCorsairs_toSeek") 
+			if (npchar.id == "Bonrepo" && pchar.questTemp.State == "Fr8ThreeCorsairs_toSeek")
             {
     			dialog.text = "Итак, как успешно продвигается ваша миссия?";
     			if (sti(pchar.questTemp.Count) == 3)
@@ -241,7 +241,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Step_F2_4";
 		break;
  		case "Step_F2_4":
-			chrDisableReloadToLocation = true; 
+			chrDisableReloadToLocation = true;
             GetCharacterPos(pchar, &locx, &locy, &locz);
             for (i=1; i<=2; i++)
             {
@@ -325,7 +325,7 @@ void ProcessDialogEvent()
     		link.l1.go = "Step_F3_3";
 		break;
  		case "Step_F3_3":
-			LAi_LocationFightDisable(loadedLocation, false); 
+			LAi_LocationFightDisable(loadedLocation, false);
 			SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY);
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
@@ -341,7 +341,7 @@ void ProcessDialogEvent()
 			link.l1 = "Мадам, вы можете рассчитывать на меня.";
     		link.l1.go = "exit";
     		pchar.questTemp.State = "Fr5AnnaHant_toHavana";
-			AddQuestRecord("Fra_Line_5_KillAnnaHanters", "2");			
+			AddQuestRecord("Fra_Line_5_KillAnnaHanters", "2");
 			sld = GetCharacter(NPC_GenerateCharacter("InesDeLasCierras", "girl_8", "woman", "towngirl", 10, SPAIN, -1, false));
 			sld.Dialog.Filename = "Quest\FraLineNpc_2.c";
 			sld.name = "Инес";
@@ -378,10 +378,10 @@ void ProcessDialogEvent()
  		case "Step_F5_7":
 			LAi_LocationDisableOfficersGen("Mayak10", false); //офицеров пускать
 			pchar.questTemp.State = "Fr5AnnaHant_GoodWork";
-			LAi_LocationFightDisable(&Locations[FindLocation("Mayak10")], false); 			
+			LAi_LocationFightDisable(&Locations[FindLocation("Mayak10")], false);
 			LAi_group_Delete("EnemyFight");
 			for (i=1; i<=2; i++)
-            {				
+            {
 				LAi_group_MoveCharacter(characterFromId("DeLeivaBrother_"+i), "EnemyFight");
 			}
 			LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -471,7 +471,7 @@ void ProcessDialogEvent()
 			link.l1 = "Очень хорошо, начинаем...";
     		link.l1.go = "Step_F6_GoOn";
 		break;
-		case "Step_F6_GoOn": 
+		case "Step_F6_GoOn":
 			//==> формируем эскадру
             LAi_SetActorType(NPChar);
             LAi_ActorSetStayMode(NPChar);
@@ -482,19 +482,19 @@ void ProcessDialogEvent()
                 FantomMakeCoolSailor(sld, SHIP_CORVETTE, "", CANNON_TYPE_CANNON_LBS24, 70, 80, 40);
                 FantomMakeCoolFighter(sld, 20, 90, 70, BLADE_LONG, "pistol4", 120);
 				sld.Dialog.Filename = "Quest\FraLineNpc_2.c";
-				sld.CompanionEnemyEnable = false; 
+				sld.CompanionEnemyEnable = false;
 				sld.Abordage.Enable = false; // НЕЛЬЗЯ!
-				sld.RebirthPhantom = true; 
+				sld.RebirthPhantom = true;
                 SetCompanionIndex(pchar, -1, sti(sld.index));
 				sld.DeckDialogNode = "HaveHotBussines";
 				SetCharacterRemovable(sld, false);
 				LAi_LoginInCaptureTown(sld, true);
 			}
             // ==> текущая дата, у генерал-губернатора Куманы потом сверим
-            SaveCurrentQuestDateParam("questTemp");            
+            SaveCurrentQuestDateParam("questTemp");
             pchar.TempPerks.QuestTroopers = true; //перк квестового десанта
             // ==> капитулянтская нода губернатору Куманы
-			characters[GetCharacterIndex("Cumana_Mayor")].dialog.captureNode = "FraLine6Quest_Attack"; 
+			characters[GetCharacterIndex("Cumana_Mayor")].dialog.captureNode = "FraLine6Quest_Attack";
 			npchar.DeckDialogNode = "HaveHotBussines";
 			AddQuestRecord("Fra_Line_6_Olone", "3");
 			DialogExit();
@@ -541,7 +541,7 @@ void ProcessDialogEvent()
 			LAi_group_Delete("EnemyFight");
 			AddQuestRecord("Fra_Line_6_Olone", "4");
 		break;
- 		case "Step_F6_fight":			
+ 		case "Step_F6_fight":
 			NPChar.LifeDay = 0;
 			DeleteAttribute(NPChar, "RebirthPhantom");
 			for (i=1; i<=2; i++)
@@ -572,7 +572,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Деньги ты нашел, а у тебя их нет в наличии. Хитрить вздумал?!";
 				link.l1 = "Да ты что, Франсуа?!";
-    			link.l1.go = "Step_F6_17";			
+    			link.l1.go = "Step_F6_17";
 			}
 		break;
  		case "Step_F6_15":
@@ -589,7 +589,7 @@ void ProcessDialogEvent()
 			{
 				iTemp = GetCharacterIndex("Captain_"+i)
 				if (iTemp > 0)
-				{				
+				{
 					sld = &characters[iTemp];
 					sld.LifeDay = 0;
 					DeleteAttribute(sld, "RebirthPhantom");
@@ -607,7 +607,7 @@ void ProcessDialogEvent()
 			link.l1 = "Схватка?";
     		link.l1.go = "Step_F6_18";
 		break;
- 		case "Step_F6_18":			
+ 		case "Step_F6_18":
 			dialog.text = "Именно так. Крысу надо наказать...";
 			link.l1 = "Ну ладно, ты сам напросился.";
     		link.l1.go = "Step_F6_fight";
@@ -619,10 +619,10 @@ void ProcessDialogEvent()
 			{
 				iTemp = GetCharacterIndex("Captain_"+i)
 				if (iTemp > 0)
-				{				
+				{
 					sld = &characters[iTemp];
 					LAi_SetWarriorType(sld);
-					ChangeCharacterAddress(sld, "Cumana_town", LAi_FindRandomLocator("goto"));	
+					ChangeCharacterAddress(sld, "Cumana_town", LAi_FindRandomLocator("goto"));
 					LAi_group_MoveCharacter(sld, "EnemyFight");
 				}
 			}
@@ -642,12 +642,12 @@ void ProcessDialogEvent()
 			{
 				iTemp = GetCharacterIndex("Captain_"+i)
 				if (iTemp > 0)
-				{				
+				{
 					sld = &characters[iTemp];
 					sld.LifeDay = 0;
 					DeleteAttribute(sld, "RebirthPhantom");
 					LAi_SetWarriorType(sld);
-					ChangeCharacterAddress(sld, "Cumana_town", LAi_FindRandomLocator("goto"));	
+					ChangeCharacterAddress(sld, "Cumana_town", LAi_FindRandomLocator("goto"));
 					LAi_group_MoveCharacter(sld, "EnemyFight");
 				}
 			}
@@ -735,7 +735,7 @@ void ProcessDialogEvent()
             sld = GetCharacter(NPC_GenerateCharacter("John Morris", "bocman", "man", "man", 38, PIRATE, -1, false));
         	sld.name 	= "Джон";
         	sld.lastname = "Моррис";
-            sld.Dialog.Filename = "Quest\JohnMorris.c"; 
+            sld.Dialog.Filename = "Quest\JohnMorris.c";
 			sld.greeting = "Gr_HeadPirates";
            	LAi_SetHuberType(sld);
 			LAi_group_MoveCharacter(sld, "PeaceGroup");
@@ -814,7 +814,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Fra_Line_12_EndOfWar", "2");
 			CloseQuestHeader("Fra_Line_12_EndOfWar");
             DeleteAttribute(pchar, "questTemp.Waiting_time");
-			//==> в течение месяца Солей Руаяль можно взять себе.			
+			//==> в течение месяца Солей Руаяль можно взять себе.
 			sld = characterFromId("SoleiRoyalCaptain");
 			RemoveCharacterCompanion(pchar, sld);
 			SetCrewQuantityFull(sld);

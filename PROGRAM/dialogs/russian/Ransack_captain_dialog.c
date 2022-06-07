@@ -14,7 +14,7 @@ void ProcessDialogEvent()
     int i, cn;
     int qty;
     string attrLoc;
-    
+
 	switch(Dialog.CurrentNode)
 	{
 		// -----------------------------------Диалог первый - первая встреча
@@ -30,7 +30,7 @@ void ProcessDialogEvent()
 			    dialog.text = RandSwear() + "Я ваш пленник, " + GetAddress_Form(NPChar) + ". " + NationNameNominative(sti(NPChar.nation)) + " заплатит хорошую сумму за мою свободу.";
 			}
 			attrLoc = Sea_FindNearColony();
-			if (attrLoc != "none") 
+			if (attrLoc != "none")
 			{
                 link.l1 = "Мы сейчас близ города " + GetConvertStr(attrLoc +" Town", "LocLables.txt") + ". Я мог бы тебя тут высадить.";
 			    link.l1.go = "free_withoutFee";
@@ -48,7 +48,7 @@ void ProcessDialogEvent()
 			link.l99.go = "exit";
 			NextDiag.TempNode = "first time";
 		break;
-		
+
 		case "PunishmentAction":
             DialogExit();
             NextDiag.CurrentNode = "first time";
@@ -59,7 +59,7 @@ void ProcessDialogEvent()
             AddCharacterExpToSkill(Pchar, "Leadership", -150);
             ChangeCharacterReputation(pchar, -0.2);
         break;
-		
+
         case "Slave_1":
 			dialog.text = "Но " + GetAddress_Form(NPChar) + ", я же сдался на вашу милость в бою и достоин лучшей участи.";
             link.l1 = "Что!? Это мое дело решать твою участь. Быть тебе рабом!";
@@ -67,7 +67,7 @@ void ProcessDialogEvent()
 			link.l99 = "Э... Ну ладно, сиди пока в трюме.";
 			link.l99.go = "exit";
 		break;
-		
+
 		case "Slave_2":
             OfficersReaction("bad");
             if (rand(5) == 1)
@@ -99,7 +99,7 @@ void ProcessDialogEvent()
     			}
 			}
 		break;
-		
+
 		case "Slave_3":
             ReleasePrisoner(NPChar); // освободили пленника
         	LAi_SetActorType(NPChar);
@@ -108,7 +108,7 @@ void ProcessDialogEvent()
         	DialogExit();
         	AddCharacterGoodsSimple(pchar, GOOD_SLAVES, 1);
         break;
-        
+
         case "free_in_sea":
 			dialog.text = "Но, " + GetAddress_Form(NPChar) + ", мы же в открытом море!!! Куда я пойду?";
             link.l1 = "А мне-то что! Я сказал. Ты свободен. Убирайся прочь!";
@@ -116,7 +116,7 @@ void ProcessDialogEvent()
 			link.l99 = "Э... ну ладно, сиди пока в трюме.";
 			link.l99.go = "exit";
 		break;
-		
+
 		case "free_in_sea_2":
 			dialog.text = "Это же равносильно моей казни. Вы просто хотите бросить меня на корм акулам?";
             link.l1 = "Мне плевать, доплывешь ты до берега или нет! Вон с моего корабля!";
@@ -156,10 +156,10 @@ void ProcessDialogEvent()
     			}
 			}
 		break;
-		
+
 		case "free_in_sea_battle_1":
             ReleasePrisoner(NPChar); // освободили пленника
-        	
+
         	LAi_LocationFightDisable(&Locations[FindLocation("My_Deck")], false);
             LAi_SetFightMode(Pchar, true);
             LAi_SetWarriorType(NPChar);
@@ -171,7 +171,7 @@ void ProcessDialogEvent()
             LAi_group_SetRelation(LAI_GROUP_TmpEnemy, "Prisoner", LAI_GROUP_NEITRAL);
         	DialogExit();
         break;
-        
+
         case "free_in_sea_battle_all":
             for(i=0; i < GetPassengersQuantity(pchar); i++)
             {
@@ -196,12 +196,12 @@ void ProcessDialogEvent()
 			LAi_group_SetHearRadius(LAI_GROUP_TmpEnemy, 100.0);
             LAi_group_FightGroupsEx(LAI_GROUP_TmpEnemy, LAI_GROUP_PLAYER, true, Pchar, -1, false, false);
             LAi_group_SetRelation(LAI_GROUP_TmpEnemy, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
-	            
+
             LAi_group_SetCheck(LAI_GROUP_TmpEnemy, "My_Deck_Battle_End");
 
         	DialogExit();
         break;
-        
+
 		case "free_in_sea_4":
         	ReleasePrisoner(NPChar); // освободили пленника
             ChangeCharacterReputation(pchar, -2);
@@ -209,7 +209,7 @@ void ProcessDialogEvent()
 	        LAi_KillCharacter(NPChar);
         	DialogExit();
         break;
-        
+
         case "free_in_sea_5":
             ReleasePrisoner(NPChar); // освободили пленника
         	LAi_SetActorType(NPChar);
@@ -217,7 +217,7 @@ void ProcessDialogEvent()
         	ChangeCharacterReputation(pchar, -2);
         	DialogExit();
         break;
-        
+
 		case "free_withoutFee":
 			dialog.text = "О, " + GetAddress_Form(NPChar) + ", вы столь добры, что отпускаете меня без выкупа?";
             link.l1 = "Да, отпускаю. Ты свободен, " + GetFullName(NPChar);
@@ -225,14 +225,14 @@ void ProcessDialogEvent()
 			link.l99 = "Хм... да, ты прав! Я не столь щедр, что бы выкидывать живые деньги. Посиди-ка в трюме еще.";
 			link.l99.go = "exit";
 		break;
-		
+
 		case "free_withoutFee_2":
 			dialog.text = "Спасибо, "+GetFullName(PChar) + "!!!";
             link.l1 = "Ладно, проваливай, пока я не передумал.";
 			link.l1.go = "free_withoutFee_3";
 			OfficersReaction("good");
 		break;
-		
+
 		case "free_withoutFee_3":
             ReleasePrisoner(NPChar); // освободили пленника
         	LAi_SetActorType(NPChar);
@@ -240,7 +240,7 @@ void ProcessDialogEvent()
         	ChangeCharacterReputation(pchar, 2);
         	DialogExit();
         break;
-        
+
         case "free_to_officer":
             if (rand(12) > GetSummonSkillFromNameToOld(PChar, SKILL_LEADERSHIP) || FindFreeRandomOfficer() < 0)
             {
@@ -286,11 +286,11 @@ void ProcessDialogEvent()
 			Npchar.Fellows.Passengers.cannoner = "-1";
 			Npchar.Fellows.Passengers.treasurer = "-1";
 			Npchar.Fellows.Passengers.carpenter = "-1";
-            
+
 			AddDialogExitQuestFunction("LandEnc_OfficerHired");
 			DialogExit();
         break;
-        	
+
 		case "Exit":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;

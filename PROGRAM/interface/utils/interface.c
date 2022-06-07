@@ -18,7 +18,7 @@ void EI_CreateFrame(string sNodeName, int x1, int y1, int x2, int y2)
 	SendMessage(&GameInterface, "lslslllll", MSG_INTERFACE_MSG_TO_NODE, sNodeName, 0, "BORDER_CENTER", argb(255, 128, 128, 128), x1 + 9, y1, x2 - 9, y1 + 5);
 	// DOWN
 	SendMessage(&GameInterface, "lslslllll", MSG_INTERFACE_MSG_TO_NODE, sNodeName, 0, "BORDER_CENTER", argb(255, 128, 128, 128), x1 + 9, y2 - 5, x2 - 9, y2);
-	
+
 }
 
 void EI_CreateFrameWithBack(string sBackNodeName, string sFrameNodeName, string sBackImage, int x1, int y1, int x2, int y2)

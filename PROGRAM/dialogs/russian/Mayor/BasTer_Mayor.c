@@ -13,7 +13,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 				dialog.text = "Я слушаю вас, капитан.";
 				link.l1 = "Сударь, генерал-губернатором Тортуги мне поручено сопроводить линейный корабль первого класса 'Солей Руаяль' до острова Доминика. Там меня должна была ожидать эскадра Гваделупы, но ее не оказалось на месте. Вы можете как-то прояснить ситуацию?";
-				link.l1.go = "Step_F4_1";		
+				link.l1.go = "Step_F4_1";
 			}
 		break;
 		//************************** Фр.линкейка, квест №4. Солей Руаяль ************************
@@ -54,7 +54,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             NextDiag.TempNode = "Cupture_after";
 		break;
 		//Квест Аскольда, штурм в обличие мумии
-        case "Ascold_MummyAttack":         
+        case "Ascold_MummyAttack":
 			dialog.text = "А-а-а-а!!!";
 			Link.l1 = "Хватит орать, идиот. Я здесь по делу и не причиню тебе вреда.";
 			Link.l1.go = "Step_Asc1";
@@ -74,7 +74,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             Locations[FindLocation(pchar.location)].box1.items.sculMa2 = 1;
             Locations[FindLocation(pchar.location)].box1.items.sculMa3 = 1;
             Locations[FindLocation(pchar.location)].box1.items.indian22 = 1;
-            pchar.questTemp.Ascold = "Ascold_MummyFoundItems"; 
+            pchar.questTemp.Ascold = "Ascold_MummyFoundItems";
 			chrDisableReloadToLocation = false;
 			SetReturn_Gover_Dialog_Exit(NPChar);
         break;

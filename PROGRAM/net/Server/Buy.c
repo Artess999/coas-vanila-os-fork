@@ -34,7 +34,7 @@ void NetServer_OnBuy(int wNetClientID, int iMsg)
 			return;
 		break;
 	}
-}	
+}
 
 void NetServer_OnBuy_TeamChangeRequest(int wNetClientID, int iMsg)
 {
@@ -75,7 +75,7 @@ void NetServer_OnBuy_Ready(int wNetClientID)
 
 	ref rClient = NetServer_GetCLient(wNetClientID);
 	rClient.BuyReady = true;
-	
+
 	int iSMsg = NMCreate();
 	NMAddByte(iSMsg, NC_PLAYERINFO);
 	NMAddByte(iSMsg, NSC_PLAYERINFO_BUYREADY);
@@ -93,7 +93,7 @@ void NetServer_OnBuy_Ready(int wNetClientID)
 	// if team game and only one team here - dont start countdown
 	if ((!NET_DEBUG) && sti(NetServer.GameType) != NETGAME_DEATHMATCH && NetServer_GetNumTeams() <= 1) { return; }
 
-	if (NET_DEBUG) 
+	if (NET_DEBUG)
 		{ iSecondsToStartGame = 3; }
 	else
 		{ iSecondsToStartGame = 10; }
@@ -151,7 +151,7 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 
 	ref rClient = NetServer_GetCLient(wNetClientID);
 
-	// receive and calculates all 
+	// receive and calculates all
 	int iShipType = NMGetWord(iMsg);
 	int iShipUpgradeHull = NMGetByte(iMsg);
 	int iShipUpgradeRigging = NMGetByte(iMsg);
@@ -162,25 +162,25 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 	int iSkills[5], iPerks[6], iGoods[6];
 
 	// add skills money
-	for (i=0; i<5; i++) 
-	{ 
-		iSkills[i] = NMGetByte(iMsg); 
+	for (i=0; i<5; i++)
+	{
+		iSkills[i] = NMGetByte(iMsg);
 		iCredit = iCredit + Net_GetSkillCost(i, iSkills[i]);
 	}
 
 	// add perks money
-	for (i=0; i<6; i++) 
-	{ 
-		iPerks[i] = NMGetByte(iMsg); 
+	for (i=0; i<6; i++)
+	{
+		iPerks[i] = NMGetByte(iMsg);
 		if (iPerks[i]) { iCredit = iCredit + Net_GetPerkCost(i); }
 	}
 
 	// add goods money
-	for (i=0; i<6; i++) 
-	{ 
-		iGoods[i] = NMGetWord(iMsg); 
+	for (i=0; i<6; i++)
+	{
+		iGoods[i] = NMGetWord(iMsg);
 		iCredit = iCredit + Net_GetGoodCost(i, iGoods[i]);
-		
+
 		ref rGood = Net_GetGoodByIndex(i);
 		string sGood = rGood.Name;
 		rClient.Ship.Goods.(sGood) = iGoods[i];
@@ -221,8 +221,8 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 
 	// check for all clients ready
 	bool bAllClientsReady = true;
-	for (i=0; i<NET_MAXCLIENTS; i++) 
-	{ 
+	for (i=0; i<NET_MAXCLIENTS; i++)
+	{
 		if (sti(NSClients[i].Use) && !sti(NSClients[i].StartReady))
 		{
 			bAllClientsReady = false;
@@ -230,7 +230,7 @@ void NetServer_OnBuy_FullInfo(int wNetClientID, int iMsg)
 		}
 	}
 
-	// send message to all 
+	// send message to all
 	int iSMsg = NMCreate();
 	NMAddByte(iSMsg, NC_PLAYERINFO);
 	NMAddByte(iSMsg, NSC_PLAYERINFO_STARTREADY);

@@ -141,7 +141,7 @@ int AddTimeToCurrent(int hour,int minute)
 	Environment.date.min = makeint(nexttime);
 	worldMap.date.min = makeint(nexttime);
     Weather.Time.time = GetTime(); // нова€ погода
-    
+
 	return addingDays; // boal верунть число дней, чтоб пон€ть, что новый наступил
 }
 void AddDataToCurrent(int addYear,int addMonth,int addDay)
@@ -204,7 +204,7 @@ int GetPastTime(string timeUnit,
 	{
 		return dmonth+dyear*12;
 	}
-	
+
 	int dayCount = dday + dyear*365;
 	for(int i=0; i<dmonth; i++)
 	{
@@ -262,7 +262,7 @@ int GetFuterTime(string timeUnit,
 	{
 		return dmonth+dyear*12;
 	}
-	
+
 	int dayCount = dday + dyear*365;
 	for(int i=0; i<dmonth; i++)
 	{

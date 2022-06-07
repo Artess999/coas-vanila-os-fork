@@ -115,8 +115,8 @@ void SetWeatherScheme(string scheme)
 					SetSoundScheme(scheme+"_day_storm");
 				}
 	}
-	else 
-	{ 
+	else
+	{
 		if (Whr_IsRain())
 		{
 			if (Whr_IsNight())
@@ -126,7 +126,7 @@ void SetWeatherScheme(string scheme)
 			else
 				{
 					SetSoundScheme(scheme+"_day_rain");
-				}					
+				}
 		}
 		else
 		{
@@ -159,7 +159,7 @@ void SetSchemeForLocation (ref loc)
     ref mchref = GetMainCharacter();
     mchref.GenQuest.God_hit_us = false; // нефиг воровать :)  (только в домах)
     int iColony = -1; //boal music
-    
+
     if(CheckAttribute(loc,"type"))
 	{
 		ResetSoundScheme();
@@ -195,18 +195,18 @@ void SetSchemeForLocation (ref loc)
 			SetWeatherScheme("seashore");
 			SetMusicAlarm("music_jungle");
 			break;
-		case "seashore": 
+		case "seashore":
 			ResetSoundScheme();
 			SetWeatherScheme("seashore");
 			SetMusicAlarm("music_jungle");
 			DeleteAttribute(pchar, "CheckStateOk"); // убрать флаг проверенности протектором
 			break;
-		case "cave": 
+		case "cave":
 			SetSoundScheme("cave");
 			SetMusicAlarm("music_cave");
 			bMonstersGen = false; //сбросить флаг монстров
 			break;
-		case "dungeon": 
+		case "dungeon":
 			SetSoundScheme("dungeon");
 			SetMusicAlarm("music_cave");
 			bMonstersGen = false; //сбросить флаг монстров
@@ -254,7 +254,7 @@ void SetSchemeForLocation (ref loc)
 			SetSoundScheme("shipyard");
 			SetMusicAlarm("music_shipyard");
 			break;
-		case "fort_attack": // атакуем форт, внутренняя локация			
+		case "fort_attack": // атакуем форт, внутренняя локация
 			SetSoundScheme("fort_attack");
 			SetMusicAlarm("music_bitva");
 			break;
@@ -365,7 +365,7 @@ void SetStaticSounds (ref loc)
 		//trace("Create 3D Sound <"+locatorType+ "> for locator <"+locatorName+ "> into pos:("+locator.x+","+locator.y+","+locator.z+")" );
 		SendMessage(Sound, "lsllllllfff", MSG_SOUND_PLAY, locatorType, SOUND_WAV_3D, VOLUME_FX, 0, 1, 0, 0, stf(locator.x), stf(locator.y), stf(locator.z));
 	}
-	
+
 }
 
 /*void SetSchemeForAbordage ()
@@ -389,8 +389,8 @@ void SetSchemeForSea ()
 				AddSoundScheme("sea_night_storm");
 				SetMusic("music_storm");
 			}
-			else 
-			{ 
+			else
+			{
 				SetMusic("music_spokplavanie");
 				if (Whr_IsRain())
 				{
@@ -409,8 +409,8 @@ void SetSchemeForSea ()
 				AddSoundScheme("sea_day_storm");
 				SetMusic("music_storm");
 			}
-			else 
-			{ 
+			else
+			{
 				SetMusic("music_spokplavanie");
 				if (Whr_IsRain())
 				{
@@ -471,7 +471,7 @@ void SetMusic(string name)
 	// fix поседнее - это громкость звука
 	musicID = SendMessage(Sound, "lslllllllf", MSG_SOUND_PLAY, name, SOUND_MP3_STEREO, VOLUME_MUSIC, true, true, false, 0, MUSIC_CHANGE_TIME, 1.0);
 	SendMessage(Sound, "lll", MSG_SOUND_RESUME, musicID, MUSIC_CHANGE_TIME);
-	
+
 	oldMusicName = musicName;
 	musicName = name;
 }
@@ -547,7 +547,7 @@ int oldAlarmed = 0;
 bool seaAlarmed = false;
 bool oldSeaAlarmed = false;
 void SetMusicAlarm(string name)
-{	
+{
 	if (alarmed == 0)
 	{
 		SetMusic(name);
@@ -555,7 +555,7 @@ void SetMusicAlarm(string name)
 	else
 	{
 		SetMusic("music_bitva");
-		
+
 		if (LAi_boarding_process != 0)
 		{
 			/*if (!CheckAttribute(loadedLocation, "CabinType") && !bBettaTestMode)//pchar.location != "CaptainCabine" && pchar.location != "CaptainCabineBig")
@@ -595,7 +595,7 @@ void Sound_OnAlarm(bool _alarmed)
 		SetMusic(oldMusicName);
 		/*
 		// данный звук отключаем когда открывается релоад в кабину капитана
-		if (boardM == 1) 
+		if (boardM == 1)
 			{
 				Trace("Выключить шума абордажа");
 				StopSound(abordageSoundID, 0);
@@ -626,7 +626,7 @@ void Sound_OnSeaAlarm(bool _seaAlarmed)
 void Sound_OnSeaAlarm555(bool _seaAlarmed, bool bHardAlarm)
 {
 	if (bHardAlarm) { oldSeaAlarmed = !_seaAlarmed; }
-	
+
 	Sound_OnSeaAlarm(_seaAlarmed);
 }
 

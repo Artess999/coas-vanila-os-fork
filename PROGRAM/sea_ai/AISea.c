@@ -178,7 +178,7 @@ void SeaAI_SetCompanionEnemy(ref rCharacter)
 	Group_SetGroupCommander(sGroupName, rCharacter.id);
 
 	SendMessage(&AISea, "la", AI_MESSAGE_SET_COMPANION_ENEMY, rCharacter);
-	
+
 	Group_SetTaskAttack(sGroupName, PLAYER_GROUP);
 	Group_DeleteAtEnd(sGroupName);
 
@@ -206,7 +206,7 @@ void SeaAI_SetCaptainFree(ref rCharacter, ref refEnemyCharacter)
 		}
 		SendMessage(&AISea, "laa", AI_MESSAGE_SET_OFFICER_2_SHIP, rCharacter, refEnemyCharacter);
 		// это мы назначили офа для ГГ, но он может бытьне оф по сути
-		
+
 		string	sGroupName = "cmpenemy_" + rCharacter.index;
 
         if (CheckAttribute(rCharacter, "SeaAI.Group.Name"))

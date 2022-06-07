@@ -50,7 +50,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
         break;
 //===================================== Голл. линейка, квест №3 =========================================
  	 	case "Step_H3_1":
-			dialog.text = NPCStringReactionRepeat("Знаю, как не знать. Он снял у меня комнату и заплатил за год вперед!", "Хей, не ты ли уже спрашивал меня об этом?", 
+			dialog.text = NPCStringReactionRepeat("Знаю, как не знать. Он снял у меня комнату и заплатил за год вперед!", "Хей, не ты ли уже спрашивал меня об этом?",
 				          "Хм, мы говорили уже о Пьере...", "Может ты не будешь меня отвлекать? Я могу послать за Пьером, если ты так желаешь его видеть.", "block", 0, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Вот это да! Видимо, с деньгами у него все в порядке...", "Спрашивал? Ну да, наверное...", "Да, точно, говорили, извини...", "Да нет, не стоит. Сам его найду...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("Step_H3_2", "none", "none", "none", npchar, Dialog.CurrentNode);
@@ -194,9 +194,9 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 pchar.questTemp.State.Sp6Ok = 1;
             }
         break;
-        
-        
-        
+
+
+
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
 }

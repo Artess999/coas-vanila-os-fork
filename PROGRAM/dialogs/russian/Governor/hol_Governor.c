@@ -14,13 +14,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
                 dialog.text = "Я слушаю вас.";
                 link.l1 = "Господин генерал-губернатор, мне поручено доставить вам письмо.";
-                link.l1.go = "Step_F2_1";			
+                link.l1.go = "Step_F2_1";
 			}
 			if (pchar.questTemp.State == "Fr2Letter_NiceResult")
 			{
                 dialog.text = "Опять вы? Опять пакет из Тортуги?";
                 link.l1 = "На этот раз нет, месье генерал-губернатор. У меня есть хорошие новости для вас.";
-                link.l1.go = "Step_F2_4";			
+                link.l1.go = "Step_F2_4";
 			}
 			if (pchar.questTemp.LSC == "toTalkStuvesant")
 			{
@@ -36,7 +36,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                                          "Я жду вашего доклада о выполнении моего ответственного поручения, но не бестолковых перетолков.");
             link.l1 = RandPhraseSimple("Приступаю немедленно, минхер", "Я уже в процессе выполнения...");
             link.l1.go = "exit";
-            
+
         	switch (pchar.questTemp.State)   // что делаем в данный момент
             {
                 case "empty":   // Нет взятых квестов
@@ -729,7 +729,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1.go = "exit";
 			//--> огонь и пламень убираем
 			DeleteAttribute(&locations[FindLocation("FortOrange_town")], "hidden_effects");
-			DeleteAttribute(&locations[FindLocation("FortOrange_ExitTown")], "hidden_effects");	
+			DeleteAttribute(&locations[FindLocation("FortOrange_ExitTown")], "hidden_effects");
 			//<-- огонь и пламень
 			DeleteAttribute(&locations[FindLocation("Shore35")], "DisableEncounters"); //энкаутеры вернем
             CloseQuestHeader("Hol_Line_4_DefenceOrange");
@@ -785,7 +785,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1.go = "exit";
 			//--> огонь и пламень убираем
 			DeleteAttribute(&locations[FindLocation("FortOrange_town")], "hidden_effects");
-			DeleteAttribute(&locations[FindLocation("FortOrange_ExitTown")], "hidden_effects");	
+			DeleteAttribute(&locations[FindLocation("FortOrange_ExitTown")], "hidden_effects");
 			//<-- огонь и пламень
 			DeleteAttribute(&locations[FindLocation("Shore35")], "DisableEncounters"); //энкаутеры вернем
             CloseQuestHeader("Hol_Line_4_DefenceOrange");
@@ -803,8 +803,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Pchar.quest.DefenceOrange_FightInExitTown.over = "yes";
 			//слухи
 			AddSimpleRumour("Говорят, что вы разгромили английскую эскару у форта Оранж, но в наземном бою англичане были сильней. Очень, очень жаль...", HOLLAND, 5, 1);
-        break;		
-		
+        break;
+
 		//********************** Квест №5, Сопроводить три флейта к Мэнсфилду ************************
         case "Step_5_1":
             dialog.text = "Это еще не все. Вы назначаетесь командиром эскадры. В вашу компетенцию входит продажа груза в магазине у флибустьеров и закупка у них же продовольствия. Туши, что они забивают сотнями, очень неплохого качества. Естественно, для того, чтобы сделка была выгодна, вы должны позаботиться о том, чтобы все флейты достигли берегов Эспаньолы в целости и сохранности.";
@@ -835,7 +835,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
         break;
 
         case "Step_5_4":
-            tempQty = sti(pchar.Ship.Cargo.Goods.Food);     
+            tempQty = sti(pchar.Ship.Cargo.Goods.Food);
 			for (i=1; i<=COMPANION_MAX; i++)
         	{
                 chComp = GetCompanionIndex(pchar,i);
@@ -843,7 +843,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
         		{
 					sld = GetCharacter(chComp);
 					iShip = sti(sld.ship.type);
-                    iBaseType = sti(RealShips[iShip].basetype); 
+                    iBaseType = sti(RealShips[iShip].basetype);
                     if (iBaseType == SHIP_FLEUT) tempQty = tempQty + sti(sld.Ship.Cargo.Goods.Food); //считаем только у флейтов
                 }
             }
@@ -1089,7 +1089,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Говорят, что капитан " + GetFullName(pchar) + " был буквально выставлен из резиденции генерал-губернатора...", HOLLAND, 5, 1);
         break;
-        
+
         case "Step_7_20":
             dialog.text = "И это более чем верно! Сейчас я прошу вас покинуть меня, у меня нет для вас никаких дел. Возможно, в будущем что-либо подвернется, но только не сейчас.";
             link.l1 = "Хорошо, минхер. Спасибо, минхер.";

@@ -1,25 +1,25 @@
 
 int LocationInitSantaCatalina(int n)
 {
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// ГОРОД
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	locations[n].id = "SantaCatalina_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "SantaCatalina";
-	
+
 	locations[n].townsack = "SantaCatalina";
 	locations[n].fastreload = "SantaCatalina";
 	locations[n].islandId = "Mein";
-	
+
 	locations[n].filespath.models = "locations\Town_SantaCatalina\Town\";
 	locations[n].image = "loading\Town.tga";
 	locations[n].citizens = true;
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
 	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
-	locations[n].questSeekCap = 4; 
+	locations[n].questSeekCap = 4;
 	//Sound
 	locations[n].type = "town";
 	LAi_LocationFantomsGen(&locations[n], true);
@@ -32,7 +32,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.seabed = "SantaCatalina_sb";
 	locations[n].models.always.locators = "SantaCatalina_locators";
 	locations[n].models.always.grassPatch = "SantaCatalina_grass";
-	
+
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
 
@@ -42,7 +42,7 @@ int LocationInitSantaCatalina(int n)
     locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
 	locations[n].models.always.Waterfall1.tech = "LocationWaterFall";
 	locations[n].models.always.Waterfall1.level = 50;
-	
+
 	locations[n].models.always.Waterfall2 = "fontain2";
 	locations[n].models.always.Waterfall2.uvslide.v0 = 0.2;
     locations[n].models.always.Waterfall2.uvslide.v1 = 0.0;
@@ -52,7 +52,7 @@ int LocationInitSantaCatalina(int n)
 	//WindMill Fan
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
-	Locations[n].models.always.MillFan.locator.name ="Fan";	
+	Locations[n].models.always.MillFan.locator.name ="Fan";
 	Locations[n].models.always.MillFan.rotate.x = 0.0;
 	Locations[n].models.always.MillFan.rotate.y = 0.0;
 	Locations[n].models.always.MillFan.rotate.z = 0.5;
@@ -144,7 +144,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.gate.emerge = "reload3";
 	locations[n].reload.gate.autoreload = "0";
 	locations[n].reload.gate.label = "ExitTown";
-	
+
     // --> Комоны, загрушки. Номера с начинаются с 20.
 	locations[n].reload.l20.name = "houseS4";
 	locations[n].reload.l20.go = "CommonStoneHouse";
@@ -193,7 +193,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l27.emerge = "reload1";
 	locations[n].reload.l27.autoreload = "0";
 	locations[n].reload.l27.label = "House";
-	
+
 	locations[n].reload.l28.name = "houseH1";
 	locations[n].reload.l28.go = "CommonRoom_MH4";
 	locations[n].reload.l28.emerge = "reload1";
@@ -453,7 +453,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.l1.level = 65538;
 	locations[n].models.always.window = "residence01_window";
 	locations[n].models.always.window.tech = "LocationWindows";
-	locations[n].models.always.window.level = 65539;	
+	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
 	//Day
@@ -692,12 +692,12 @@ int LocationInitSantaCatalina(int n)
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitT";
 	Locations[n].models.always.townExit = "townExitT";
 	Locations[n].models.always.townWalls = "townExitT_wood";
-	
+
 	Locations[n].models.always.locators = "townExitT_lSantaCatalina";
-		
+
 	Locations[n].models.always.grassPatch = "townExitT_gSantaCatalina";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -706,18 +706,18 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 
 	locations[n].models.always.well_small = "well_small";
 	Locations[n].models.always.well_small.locator.group = "reload";
-	Locations[n].models.always.well_small.locator.name ="reloadW_back";	
+	Locations[n].models.always.well_small.locator.name ="reloadW_back";
 	Locations[n].models.always.well_small.tech = "DLightModel";
 	//Day
 	locations[n].models.day.charactersPatch = "townExitT_pSantaCatalina";
 	locations[n].models.day.fonars = "townExitT_fd";
 	//Night
 	locations[n].models.night.charactersPatch = "townExitT_pSantaCatalina";
-	locations[n].models.night.fonars = "townExitT_fn";	
+	locations[n].models.night.fonars = "townExitT_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -763,10 +763,10 @@ int LocationInitSantaCatalina(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle4";
-	Locations[n].models.always.jungle = "jungle4";	
-	Locations[n].models.always.locators = "jungle4_locators";		
+	Locations[n].models.always.jungle = "jungle4";
+	Locations[n].models.always.locators = "jungle4_locators";
 	Locations[n].models.always.grassPatch = "jungle4_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -775,11 +775,11 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle4_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle4_patch";	
+	locations[n].models.night.charactersPatch = "jungle4_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -805,7 +805,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l3.label = "ExitTown";
 	locations[n].locators_radius.reload.reload3_back = 3;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Вход в пещеру
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -819,10 +819,10 @@ int LocationInitSantaCatalina(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
-	Locations[n].models.always.caveEnt1 = "caveEnt1";	
-	Locations[n].models.always.locators = "caveEnt1_locators";		
+	Locations[n].models.always.caveEnt1 = "caveEnt1";
+	Locations[n].models.always.locators = "caveEnt1_locators";
 	Locations[n].models.always.grassPatch = "caveEnt1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -831,12 +831,12 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	locations[n].models.night.charactersPatch = "caveEnt1_patch";
+	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
 	//Reload map
@@ -869,16 +869,16 @@ int LocationInitSantaCatalina(int n)
 	//Always
 	locations[n].filespath.models = "locations\inside\cavernMedium2";
 	locations[n].models.always.cavernMedium2 = "cavernMedium2";
-	locations[n].models.always.lamps = "cavernMedium2_lamps";	
-	locations[n].models.always.locators = "cavernMedium2_locators";	
+	locations[n].models.always.lamps = "cavernMedium2_lamps";
+	locations[n].models.always.locators = "cavernMedium2_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "cavernMedium2_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
 	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
+	Locations[n].models.always.rays.uvslide.v1 = -0.03;
 	//Day
 	locations[n].models.day.charactersPatch = "cavernMedium2_patch";
 	//Night
@@ -921,10 +921,10 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.shore09.sea_reflection = 1;
 	Locations[n].models.always.shore09seabed = "shore09_sb";
 	Locations[n].models.always.locators = "shore09_locators";
-		
+
 	Locations[n].models.always.grassPatch = "shore09_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -933,11 +933,11 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shore09_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shore09_patch";		
+	locations[n].models.night.charactersPatch = "shore09_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -979,7 +979,7 @@ int LocationInitSantaCatalina(int n)
 
 	Locations[n].models.always.grassPatch = "shore01_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -988,11 +988,11 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shore01_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shore01_patch";	
+	locations[n].models.night.charactersPatch = "shore01_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1034,7 +1034,7 @@ int LocationInitSantaCatalina(int n)
 
 	locations[n].models.always.plan1 = "plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
-	locations[n].models.always.plan1.level = 10;	
+	locations[n].models.always.plan1.level = 10;
 	locations[n].models.always.plan2 = "plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
 	locations[n].models.always.plan2.level = 9;
@@ -1048,7 +1048,7 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.Waterfall2.uvslide.v1 = 0.0;
 	Locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
 	Locations[n].models.always.Waterfall2.level = 49;
-	locations[n].models.always.locators = "grottoBig1_locators";	
+	locations[n].models.always.locators = "grottoBig1_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "grottoBig1_patch";
 	//Night
@@ -1087,10 +1087,10 @@ int LocationInitSantaCatalina(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle8\";
-	Locations[n].models.always.jungle = "jungle8";	
-	Locations[n].models.always.locators = "jungle8_locators";		
+	Locations[n].models.always.jungle = "jungle8";
+	Locations[n].models.always.locators = "jungle8_locators";
 	Locations[n].models.always.grassPatch = "jungle8_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1099,11 +1099,11 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle8_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle8_patch";	
+	locations[n].models.night.charactersPatch = "jungle8_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1136,10 +1136,10 @@ int LocationInitSantaCatalina(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle5";
-	Locations[n].models.always.jungle = "jungle5";	
-	Locations[n].models.always.locators = "jungle5_locators";		
+	Locations[n].models.always.jungle = "jungle5";
+	Locations[n].models.always.locators = "jungle5_locators";
 	Locations[n].models.always.grassPatch = "jungle5_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1148,11 +1148,11 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle5_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle5_patch";	
+	locations[n].models.night.charactersPatch = "jungle5_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1178,7 +1178,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l3.label = "Jungle";
 	locations[n].locators_radius.reload.Reload3_back = 2.0;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Джунгли
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1193,9 +1193,9 @@ int LocationInitSantaCatalina(int n)
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
-	Locations[n].models.always.locators = "jungle1_locators";		
+	Locations[n].models.always.locators = "jungle1_locators";
 	Locations[n].models.always.grassPatch = "jungle1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1204,11 +1204,11 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle1_patch";	
+	locations[n].models.night.charactersPatch = "jungle1_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1227,7 +1227,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l2.label = "Jungle";
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Вход в грот
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1241,10 +1241,10 @@ int LocationInitSantaCatalina(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
-	Locations[n].models.always.caveEnt1 = "caveEnt1";	
-	Locations[n].models.always.locators = "caveEnt1_locators";		
+	Locations[n].models.always.caveEnt1 = "caveEnt1";
+	Locations[n].models.always.locators = "caveEnt1_locators";
 	Locations[n].models.always.grassPatch = "caveEnt1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1253,12 +1253,12 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	locations[n].models.night.charactersPatch = "caveEnt1_patch";
+	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
 	//Reload map
@@ -1293,12 +1293,12 @@ int LocationInitSantaCatalina(int n)
 	locations[n].models.always.grotto2 = "grotto2";
 	locations[n].models.always.grotto2.sea_reflection = 1;
 	locations[n].models.always.grotto2alpha = "grotto2_alpha";
-	Locations[n].models.always.grotto2alpha.tech = "LocationWindows";	
-	locations[n].models.always.grotto2alpha.level = 65532;	
-	locations[n].models.always.locators = "grotto2_locators";	
+	Locations[n].models.always.grotto2alpha.tech = "LocationWindows";
+	locations[n].models.always.grotto2alpha.level = 65532;
+	locations[n].models.always.locators = "grotto2_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "grotto2_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
@@ -1320,7 +1320,7 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l1.label = "Cave entrance";
 	locations[n].locators_radius.reload.reload1_back = 2;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Вход в пещеру
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1334,10 +1334,10 @@ int LocationInitSantaCatalina(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt2";
-	Locations[n].models.always.caveEnt2 = "caveEnt2";	
-	Locations[n].models.always.locators = "caveEnt2_locators";		
+	Locations[n].models.always.caveEnt2 = "caveEnt2";
+	Locations[n].models.always.locators = "caveEnt2_locators";
 	Locations[n].models.always.grassPatch = "caveEnt2_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1349,11 +1349,11 @@ int LocationInitSantaCatalina(int n)
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
-	Locations[n].models.always.l4.tech = "LocationModelBlend";	
+	Locations[n].models.always.l4.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "caveEnt2_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "caveEnt2_patch";	
+	locations[n].models.night.charactersPatch = "caveEnt2_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1388,16 +1388,16 @@ int LocationInitSantaCatalina(int n)
 	locations[n].filespath.models = "locations\inside\cavernMedium1";
 	locations[n].models.always.cavernMedium1 = "cavernMedium1";
 	locations[n].models.always.cavernMedium1.sea_reflection = 1;
-	locations[n].models.always.lamps = "cavernMedium1_lamps";	
+	locations[n].models.always.lamps = "cavernMedium1_lamps";
 	locations[n].models.always.locators = "CavernMedium1_lSCPearls";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "cavernMedium1_raysPearls";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
 	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
+	Locations[n].models.always.rays.uvslide.v1 = -0.03;
 	//Day
 	locations[n].models.day.charactersPatch = "cavernMedium1_patch";
 	Locations[n].models.day.jumpPatch = "CavernMedium1_jump";
@@ -1419,6 +1419,6 @@ int LocationInitSantaCatalina(int n)
 	locations[n].reload.l2.go = "Pearl_CaveEntrance"; //выход на жемчужный промысел
 	locations[n].reload.l2.emerge = "reload1";
 	n = n + 1;
-	
+
 	return n;
 }

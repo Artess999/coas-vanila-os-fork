@@ -2,10 +2,10 @@ void NetServer_OnPing(int wNetClientID, int iMsg)
 {
 	int iSubCode = NMGetByte(iMsg);
 	int iPingCode = NMGetByte(iMsg);
-	
+
 	switch (iSubCode)
 	{
-		case NSC_PING: 
+		case NSC_PING:
 			int iSMsg = NMCreate();
 			NMAddByte(iSMsg, NC_PING);
 			NMAddByte(iSMsg, NSC_PONG);
@@ -18,7 +18,7 @@ void NetServer_OnPing(int wNetClientID, int iMsg)
 			rClient.LastPingTime = iPingTime;
 			//Trace("Server: got ping code = " + iPingCode + ", client = " + wNetClientID);
 		break;
-		case NSC_PONG:	
+		case NSC_PONG:
 			Trace("Server: got pong");
 		break;
 	}

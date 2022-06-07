@@ -11,7 +11,7 @@ void TEMP_ExitColony()
 void InitInterface_R(string iniName,ref captref)
 {
 	GameInterface.title = "titleColonyCapture";
-	
+
 	glob_captref = captref;
 
 	pchar.from_interface.fortCharacterIdx = captref.index;

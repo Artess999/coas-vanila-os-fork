@@ -22,7 +22,7 @@ void LAi_type_poor_Init(aref chr)
 	chr.chr_ai.type.GroundAfraid = false;
 	//‘лаги
 	chr.chr_ai.type.wait = 1.0;
-	LAi_SetDefaultStayAnimation(chr);	
+	LAi_SetDefaultStayAnimation(chr);
 	//нищий сидит или стоит. пропишем анимацию.
 	if (CheckAttribute(chr, "PoorSit") && sti(chr.PoorSit))
 	{
@@ -67,10 +67,10 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 						LAi_tmpl_stay_InitTemplate(chr);
 						chr.chr_ai.type.GroundAfraid = false;
 					}
-				}	
+				}
 				else
 				{
-					LAi_tmpl_goto_InitTemplate(chr);					
+					LAi_tmpl_goto_InitTemplate(chr);
 					if (rand(4) == 2)
 					{
 						LAi_tmpl_goto_SetLocator(chr, "reload", "gate_back", -1);
@@ -81,7 +81,7 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 						DeleteAttribute(chr, "chr_ai.type.StandAndGoExit");
 					}
 					chr.chr_ai.type.SitState = false; //теперь нпс будет сто€чим нищим
-				}				
+				}
 			}
 			else
 			{	//стоим
@@ -97,7 +97,7 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 		chr.chr_ai.type.wait = time;
 		return;
 	}
-	else 
+	else
 	{
 		else chr.chr_ai.type.wait = 2.0;
 	}
@@ -119,16 +119,16 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 			{
 				if (rand(1))
 				{
-					LAi_tmpl_ani_PlayAnimation(chr, "Ground_StandUp_Fast", -1.0);				
+					LAi_tmpl_ani_PlayAnimation(chr, "Ground_StandUp_Fast", -1.0);
 					chr.chr_ai.type.AttackIndex = idx;
 					LAi_SetDefaultStayAnimation(chr);
 				}
 				else
-				{			
+				{
 					LAi_tmpl_ani_PlayAnimation(chr, "Ground_Afraid", -1.0);
 					LAi_SetPoorAfraidGroundDead(chr);
 					chr.chr_ai.type.GroundAfraid = true;
-				}				
+				}
 			}
 			//нет врагов
 			else
@@ -142,7 +142,7 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 				{
 					if (rand(50) == 49)
 					{
-						LAi_tmpl_ani_PlayAnimation(chr, "Ground_StandUp", -1);			
+						LAi_tmpl_ani_PlayAnimation(chr, "Ground_StandUp", -1);
 						chr.chr_ai.type.StandAndGoExit = true; //и на релоад
 						LAi_SetDefaultStayAnimation(chr);
 					}
@@ -158,10 +158,10 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 				LAi_SetDefaultDead(chr);
 			}
 			if(chr.chr_ai.tmpl != LAI_TMPL_DIALOG)
-			{				
+			{
 				if (rand(50) == 49)
 				{
-					LAi_tmpl_ani_PlayAnimation(chr, "Ground_StandUp", -1);					
+					LAi_tmpl_ani_PlayAnimation(chr, "Ground_StandUp", -1);
 					chr.chr_ai.type.StandAndGoExit = true; //и на релоад
 					LAi_SetDefaultStayAnimation(chr);
 				}
@@ -171,7 +171,7 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 	// <-- сид€чий нищий
 	else
 	// --> сто€чий нищий
-	{	
+	{
 		//если боимс€
 		if(chr.chr_ai.tmpl == LAI_TMPL_AFRAID)
 		{
@@ -183,10 +183,10 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 				DeleteAttribute(chr, "chr_ai.type.StandAndGoExit");
 				LAi_tmpl_goto_InitTemplate(chr);
 				if (!CheckAttribute(chr, "forSit"))
-				{					
+				{
 					LAi_tmpl_goto_SetLocator(chr, "goto", LAi_FindRandomLocator("goto"), -1);
 				}
-				else 
+				else
 				{
 					sLoc = "locator" + rand(2);
 					LAi_tmpl_goto_SetLocator(chr, "goto", chr.forSit.(sLoc), -1);
@@ -218,21 +218,21 @@ void LAi_type_poor_CharacterUpdate(aref chr, float dltTime)
 				LAi_SetAfraidDead(chr);
 			}
 			else
-			{				
+			{
 				//команда идти и сесть в локатор
 				LAi_SetDefaultDead(chr);
 				chr.chr_ai.type.GoAndSit = true; //чтобы сработала анимаци€ садитьс€ в типе goto
 				DeleteAttribute(chr, "chr_ai.type.StandAndGoExit");
 				LAi_tmpl_goto_InitTemplate(chr);
 				if (!CheckAttribute(chr, "forSit"))
-				{					
+				{
 					LAi_tmpl_goto_SetLocator(chr, "goto", LAi_FindRandomLocator("goto"), -1);
 				}
-				else 
+				else
 				{
 					sLoc = "locator" + rand(2);
 					LAi_tmpl_goto_SetLocator(chr, "goto", chr.forSit.(sLoc), -1);
-				}				
+				}
 			}
 		}
 	}
@@ -297,7 +297,7 @@ void LAi_type_poor_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy
 //ѕерсонаж атакован
 void LAi_type_poor_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 int LAi_type_poor_FindNearEnemy(aref chr)
@@ -322,7 +322,7 @@ int LAi_type_poor_FindNearEnemy(aref chr)
 		for(i = 0; i < num; i++)
 		{
 			idx = sti(chrFindNearCharacters[i].index);
-			if(LAi_CheckFightMode(&Characters[idx])) return idx;	
+			if(LAi_CheckFightMode(&Characters[idx])) return idx;
 		}
 	}
 	return -1;

@@ -6,7 +6,7 @@ void InitInterface(string iniName)
     GameInterface.title = "titleBoal_SetupGame";
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-    
+
     SetNodeUsing("QuestLogShow",false);
     SetNodeUsing("BETTAMODE",false);
     SetNodeUsing("TestRansackCaptain",false);
@@ -16,7 +16,7 @@ void InitInterface(string iniName)
     SetNodeUsing("PGGLogShow",false);
     SetNodeUsing("CameraEnableFree",false);
     SetNodeUsing("WorldAlivePause",false);
-        
+
 	if (MOD_BETTATESTMODE == "On")
 	{
         SetNodeUsing("NoEatNoRats",true);
@@ -59,7 +59,7 @@ void ProcessCancelExit()
 	DelEventHandler("ievnt_command","ProcessCommandExecute");
 
     interfaceResultCommand = RC_INTERFACE_QUICK_SAVE;
-    
+
     EndCancelInterface(true);
 }
 
@@ -78,7 +78,7 @@ void ProcessCommandExecute()
     			TmpI_ShowQuestLogShow();
     		}
     	break;
-    	
+
     	case "TestRansackCaptain":
     		if(comName=="activate" || comName=="click")
     		{
@@ -86,7 +86,7 @@ void ProcessCommandExecute()
     			TmpI_ShowTestRansackCaptain();
     		}
     	break;
-    	
+
     	case "BETTAMODE":
     		if(comName=="activate" || comName=="click")
     		{
@@ -94,7 +94,7 @@ void ProcessCommandExecute()
     			TmpI_ShowBettaTestMode();
     		}
     	break;
-    	
+
     	case "LocatorShow":
     		if(comName=="activate" || comName=="click")
     		{
@@ -114,7 +114,7 @@ void ProcessCommandExecute()
     			}
     		}
     	break;
-    	
+
     	case "ExpLogShow":
     		if(comName=="activate" || comName=="click")
     		{
@@ -122,7 +122,7 @@ void ProcessCommandExecute()
     			TmpI_ShowExpLogShow();
     		}
     	break;
-    	
+
     	case "NoEatNoRats":
     		if(comName=="activate" || comName=="click")
     		{
@@ -130,7 +130,7 @@ void ProcessCommandExecute()
     			TmpI_ShowNoEatNoRats();
     		}
     	break;
-    	
+
     	case "PGGLogShow":
     		if(comName=="activate" || comName=="click")
     		{
@@ -138,7 +138,7 @@ void ProcessCommandExecute()
     			TmpI_ShowPGGLogShow();
     		}
     	break;
-    	
+
     	case "CameraEnableFree":
     		if(comName=="activate" || comName=="click")
     		{
@@ -146,7 +146,7 @@ void ProcessCommandExecute()
     			TmpI_ShowCameraEnableFree();
     		}
     	break;
-    	
+
     	case "WorldAlivePause":
     		if(comName=="activate" || comName=="click")
     		{

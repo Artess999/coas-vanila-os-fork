@@ -193,15 +193,15 @@ void AddToTable(int wClientID, aref arData)
 		aname = GetAttributeName( GetAttributeN(aroot,n) )
 		if( sScore!="" ) sScore += "\n";
 		sScore += aroot.(aname).charname + "\n" + aroot.(aname).shipname;
-		
-		// killed face 
+
+		// killed face
 		siname = "icon" + (n*2 + 1);
 		GameInterface.TABLE_LIST.(row).td6.(siname).offset = "0," + (4+n*30);
 		GameInterface.TABLE_LIST.(row).td6.(siname).width = 26;
 		GameInterface.TABLE_LIST.(row).td6.(siname).height = 26;
 		GameInterface.TABLE_LIST.(row).td6.(siname).texturepointer = aroot.(aname).facetexture;
 
-		// killed ship 
+		// killed ship
 		siname2 = "icon" + (n*2 + 2);
 		rShip = Net_GetShipByIndex(sti(arData.ShipType));
 		sShipGroup = "SHIPS_" + rShip.Name;

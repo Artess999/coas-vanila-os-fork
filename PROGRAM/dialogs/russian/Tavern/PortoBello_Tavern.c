@@ -19,13 +19,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Нет, меня никто не спрашивал.";
             link.l1 = "Понятно... Скажи, а комнату кто-нибудь снимает у тебя?";
 			link.l1.go = "Romantic_2";
-		break;	
+		break;
 		case "Romantic_2":
             dialog.text = "Сейчас нет, " + GetAddress_Form(pchar) + ", все пусто.";
             link.l1 = "Ясно... Ну что же, спасибо тебе.";
 			link.l1.go = "exit";
 			pchar.RomanticQuest = "ToRositaInBeliz";
-		break;	
+		break;
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
 }

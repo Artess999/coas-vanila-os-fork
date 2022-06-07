@@ -83,7 +83,7 @@ void wdmCreateMap(float x, float z, float ay)
 	float zeroZ = MakeFloat(worldMap.zeroZ);
 	//Находим новыве координаты на карте
 	int scale = WDM_MAP_TO_SEA_SCALE;
-	if (worldMap.island == "Cuba1" || worldMap.island == "Cuba2" || worldMap.island == "Beliz" || worldMap.island == "SantaCatalina" 
+	if (worldMap.island == "Cuba1" || worldMap.island == "Cuba2" || worldMap.island == "Beliz" || worldMap.island == "SantaCatalina"
 		|| worldMap.island == "PortoBello" || worldMap.island == "Cartahena" || worldMap.island == "Maracaibo"
 		|| worldMap.island == "Caracas" || worldMap.island == "Cumana")
 	{
@@ -141,7 +141,7 @@ void wdmCreateWorldMap()
 	worldMap.update = "";
 	//Фейдер
 	CreateEntity(&wdm_fader, "fader");
-	if(IsEntity(wdm_fader) == 0) Trace("Fader not created!!!");	
+	if(IsEntity(wdm_fader) == 0) Trace("Fader not created!!!");
 	float fadeInTime = 0.5;
 	SendMessage(&wdm_fader, "lfl", FADER_IN, fadeInTime, true);
 	SendMessage(&wdm_fader, "ls",FADER_PICTURE0,"loading\sea.tga");
@@ -150,7 +150,7 @@ void wdmCreateWorldMap()
 	//Сообщим, что загрузились
 	PostEvent("EventWorldMapInit", 830); //fix boal
 	ReloadProgressEnd();
-	PostEvent("EventTimeUpdate", 1000);	
+	PostEvent("EventTimeUpdate", 1000);
 	//Создаём накопившиеся квестовые энкоунтеры
 	worldMap.addQuestEncounters = "updateQuest";
 	InitWmInterface();

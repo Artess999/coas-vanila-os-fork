@@ -5,11 +5,11 @@ void InitInterface(string iniName)
 {
     InterfaceStack.SelectMenu_node = "LaunchItems"; // запоминаем, что звать по Ф2
 	GameInterface.title = "titleItems";
-	
+
 	xi_refCharacter = pchar;
-	
+
 	FillCharactersScroll();
-	
+
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
 	SetEventHandler("InterfaceBreak","ProcessExitCancel",0);
@@ -21,7 +21,7 @@ void InitInterface(string iniName)
 	SetEventHandler("TableSelectChange", "TableSelectChange", 0);
 	SetEventHandler("eTabControlPress","procTabChange",0);
 	SetEventHandler("ExitMapWindow","ExitMapWindow",0);
-    
+
     XI_RegistryExitKey("IExit_F2");
     SetVariable();
     SetNewGroupPicture("Weight_PIC", "ICONS_CHAR", "weight");
@@ -60,7 +60,7 @@ void ProcessCommandExecute()
 {
 	string comName = GetEventData();
 	string nodName = GetEventData();
-	
+
     switch(nodName)
 	{
 		case "EQUIP_BUTTON":
@@ -69,7 +69,7 @@ void ProcessCommandExecute()
 				EquipPress();
 			}
 		break;
-		
+
 		case "I_CHARACTER_2":
 			if(comName=="click")
 			{
@@ -136,7 +136,7 @@ void ProcessFrame()
 void SetButtonsState()
 {
 	string attributeName = "pic" + (nCurScrollNum+1);
-	
+
 	if(GameInterface.CHARACTERS_SCROLL.(attributeName).character != "0")
 	{
 		int iCharacter = sti(GameInterface.CHARACTERS_SCROLL.(attributeName).character);
@@ -180,7 +180,7 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальн
 	bool ok;
 	aref rootItems, arItem;
 	aref  curItem;
-	
+
 	GameInterface.TABLE_ITEMS.hr.td1.str = "Наименование предметов";
 	GameInterface.TABLE_ITEMS.hr.td1.scale = 0.8;
 	GameInterface.TABLE_ITEMS.hr.td2.str = "Вес шт.";
@@ -194,7 +194,7 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальн
 	n = 1;
 	idLngFile = LanguageOpenFile("ItemsDescribe.txt");
 	Table_Clear("TABLE_ITEMS", false, true, false);
-	
+
 	// Заполним вещами от нас
 	makearef(rootItems, xi_refCharacter.Items);
     for (i=0; i<GetAttributesNum(rootItems); i++)
@@ -210,11 +210,11 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальн
 			ok = ok || arItem.ItemType == "MAP";
 			if (_mode == 3 && ok) continue;
 			if (_mode == 4 && arItem.ItemType != "MAP") continue;
-			
+
 			if (GetCharacterItem(xi_refCharacter, sGood) > 0)
-			{		
+			{
 				GameInterface.TABLE_ITEMS.(row).index = arItem.index;
-				
+
 				GameInterface.TABLE_ITEMS.(row).td1.icon.group = arItem.picTexture;
 				GameInterface.TABLE_ITEMS.(row).td1.icon.image = "itm" + arItem.picIndex;
 				GameInterface.TABLE_ITEMS.(row).td1.icon.offset = "2, 0";
@@ -223,7 +223,7 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальн
 				GameInterface.TABLE_ITEMS.(row).td1.textoffset = "31,0";
 				GameInterface.TABLE_ITEMS.(row).td1.str = LanguageConvertString(idLngFile, arItem.name);
 				GameInterface.TABLE_ITEMS.(row).td1.scale = 0.85;
-				
+
 				GameInterface.TABLE_ITEMS.(row).td2.str   = FloatToString(stf(arItem.Weight), 1);
 				GameInterface.TABLE_ITEMS.(row).td2.scale = 0.9;
 				GameInterface.TABLE_ITEMS.(row).td3.str   = GetCharacterItem(xi_refCharacter, sGood);
@@ -231,10 +231,10 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальн
 				GameInterface.TABLE_ITEMS.(row).td4.str   = FloatToString(stf(arItem.Weight) * sti(GameInterface.TABLE_ITEMS.(row).td3.str), 1);
 				GameInterface.TABLE_ITEMS.(row).td4.scale = 0.9;
 				n++;
-			}	
+			}
 		}
     }
-    
+
 	Table_UpdateWindow("TABLE_ITEMS");
 	LanguageCloseFile(idLngFile);
 	if (_mode == 1)
@@ -243,11 +243,11 @@ void FillItemsTable(int _mode) // 1 - все 2 - оружие 3 - остальн
 	}
 }
 
-void FillItemsSelected() 
+void FillItemsSelected()
 {
 	int    i;
 	string sGood;
-	
+
 	SetNodeUsing("ITEM_1" , false);
 	SetNodeUsing("ITEM_2" , false);
 	SetNodeUsing("ITEM_3" , false);
@@ -255,13 +255,13 @@ void FillItemsSelected()
     for (i = 0; i< ITEMS_QUANTITY; i++)
 	{
 		sGood = Items[i].id;
-		
+
 		if (GetCharacterItem(xi_refCharacter, sGood) > 0)
-		{		
+		{
 			/// экипировка
 			if (IsEquipCharacterByItem(xi_refCharacter, sGood))
 			{
-				switch (Items[i].groupID) 
+				switch (Items[i].groupID)
 				{
 					case BLADE_ITEM_TYPE:
 						SetNewGroupPicture("ITEM_1", Items[i].picTexture, "itm" + Items[i].picIndex);
@@ -281,7 +281,7 @@ void FillItemsSelected()
 					break;
 				}
 			}
-		}			
+		}
 	}
 }
 
@@ -321,7 +321,7 @@ void TableSelectChange()
 	iSelected = GetEventData();
     CurTable = sControl;
     CurRow   =  "tr" + (iSelected);
-    
+
     // отрисовка инфы
     SetItemInfo();
 }
@@ -329,13 +329,13 @@ void TableSelectChange()
 void SetItemInfo()
 {
 	int iGoodIndex = sti(GameInterface.(CurTable).(CurRow).index);
-	
+
 	SetFormatedText("INFO_TEXT", GetItemDescribe(iGoodIndex));
 	SetNewGroupPicture("INFO_PIC", Items[iGoodIndex].picTexture, "itm" + Items[iGoodIndex].picIndex);
 	SetNodeUsing("INFO_TEXT", true);
 	SetNodeUsing("INFO_PIC", true);
 	SetVAligmentFormatedText("INFO_TEXT");
-	
+
 	SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, "#"+XI_ConvertString("Equip that"));
 	SetSelectable("EQUIP_BUTTON",ThisItemCanBeEquip(&Items[iGoodIndex]));
 }
@@ -407,7 +407,7 @@ void SetControlsTabMode(int nMode)
 			nColor4 = argb(255,255,255,255);
 		break;
 	}
-    
+
 	SetNewGroupPicture("TABBTN_1", "TABS", sPic1);
 	SetNewGroupPicture("TABBTN_2", "TABS", sPic2);
 	SetNewGroupPicture("TABBTN_3", "TABS", sPic3);
@@ -440,19 +440,19 @@ bool ThisItemCanBeEquip( aref arItem )
 	{
 		return false;
 	}
-	if (arItem.groupID == GUN_ITEM_TYPE) 
+	if (arItem.groupID == GUN_ITEM_TYPE)
 	{
 		if (!CheckAttribute(arItem,"chargeQ") )
 		{
 			return false;
 		}
 		int chrgQ = sti(arItem.chargeQ);
-	
+
 		if (chrgQ >= 2 && !IsCharacterPerkOn(xi_refCharacter,"Gunman") )
 		{
 			return false;
 		}
-	
+
 		if (chrgQ >= 4 && !IsCharacterPerkOn(xi_refCharacter,"GunProfessional") )
 		{
 			return false;
@@ -466,7 +466,7 @@ bool ThisItemCanBeEquip( aref arItem )
 			return false;
 		}
 	}
-    
+
     if (IsEquipCharacterByItem(xi_refCharacter, arItem.id))
 	{
 		SendMessage(&GameInterface,"lsls",MSG_INTERFACE_MSG_TO_NODE,"EQUIP_BUTTON",0, "#"+XI_ConvertString("Remove that"));
@@ -492,7 +492,7 @@ void EquipPress()
 	ref itmRef = &Items[iGoodIndex];
 	string totalInfo;
 	int  i;
-	
+
 	if (CheckAttribute(itmRef, "groupID"))
 	{
 		string itmGroup = itmRef.groupID;
@@ -578,7 +578,7 @@ void EquipPress()
 			SetSelectable("EQUIP_BUTTON",ThisItemCanBeEquip(&Items[iGoodIndex]));
 		}
 	}
-} 
+}
 
 void ExitMapWindow()
 {

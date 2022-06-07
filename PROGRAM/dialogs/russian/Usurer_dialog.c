@@ -19,7 +19,7 @@ void ProcessDialogEvent()
 	string lastspeak_date = iday + " " + iMonth;
 
 	NPC_Area = Npchar.City;
- 
+
 	// вызов диалога по городам -->
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Usurer\" + NPChar.City + "_Usurer.c";
     if (LoadSegment(NPChar.FileDialog2))
@@ -45,21 +45,21 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		
+
 		case "First time":
 			if (LAi_group_GetPlayerAlarm() > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, приятель, пока солдаты не сделали из тебя решето..."), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, приятель, пока солдаты не сделали из тебя решето..."),
 					LinkRandPhrase("Что тебе нужно, негодяй?! Городская стража уже взяла твой след, далеко тебе не уйти, грязный пират!", "Грязный убийца, вон из моего дома! Стража!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."),
 					RandPhraseSimple("Заткни свою пасть, " + GetWorkTypeOfMan(npchar, "") + ", а не то вырву твой поганый язык!", "Хех, " + GetWorkTypeOfMan(npchar, "") + ", а все туда же - пиратов ловить! Вот что я тебе скажу, приятель: сиди тихо и будешь жить..."));
 				link.l1.go = "fight";
 				break;
@@ -113,13 +113,13 @@ void ProcessDialogEvent()
 				break;
 			}
 			//<<-- дача квеста найти потерянный драгоценный камень
-			dialog.text = NPCStringReactionRepeat("Здравствуйте, " + GetAddress_Form(npchar) + ". Чем я могу вам помочь?", 
-				"О, это опять вы? Добро пожаловать, " + GetAddress_Form(npchar) + " Что вы хотите на этот раз?", 
+			dialog.text = NPCStringReactionRepeat("Здравствуйте, " + GetAddress_Form(npchar) + ". Чем я могу вам помочь?",
+				"О, это опять вы? Добро пожаловать, " + GetAddress_Form(npchar) + " Что вы хотите на этот раз?",
 				"Хм, снова вы, " + GetAddress_Form(npchar) + "... Ну что же, рад вас видеть который уже раз за день. Что вы желаете?",
                 "Эх, " + GetAddress_Form(npchar) + ", вы себе представить не можете, до чего порой бывают навязчивы клиенты... Что вам угодно?" , "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Ничем, я просто зашел посмотреть и поговорить.", 
+			link.l1 = HeroStringReactionRepeat("Ничем, я просто зашел посмотреть и поговорить.",
 				"Опять я. И опять просто так поговорить решил.",
-                "Ага, снова я. И снова без конкретного дела зашел поговорить.", 
+                "Ага, снова я. И снова без конкретного дела зашел поговорить.",
 				"Да-а-а, тяжело приходится ростовщикам порой... А мне от вас ничего не нужно, просто поболтать хотел...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			link.l2 = "Я хочу обсудить наши финансовые взаимоотношения.";
@@ -144,7 +144,7 @@ void ProcessDialogEvent()
 			//квесты мэра, проникновение во враждебный город
   			if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") //квест мэра - на связь с нашим шпионом
 			{
-				link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
+				link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".",
 					GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " прислал меня к вам. Я должен кое-что забрать...");
 				link.l7.go = "IntelligenceForAll";
 			}
@@ -214,7 +214,7 @@ void ProcessDialogEvent()
 			link.l1.go = "StepPL5First_3";
 		break;
 		case "StepPL5First_3":
-			pchar.questTemp.piratesLine.Q5.city_2 = GetQuestNationsCity(SPAIN); 
+			pchar.questTemp.piratesLine.Q5.city_2 = GetQuestNationsCity(SPAIN);
 			dialog.text = "Да вроде бы собирался на север Мейна курс держать, к испанцам. А куда точно - не ведаю... Хотя подождите, что-то он говорил о " + XI_ConvertString("Colony" + pchar.questTemp.piratesLine.Q5.city_2 + "Dat") + ". Но сами понимаете, что за достоверность не ручаюсь.";
 			link.l1 = "Понял. Спасибо.";
 			link.l1.go = "exit";
@@ -356,7 +356,7 @@ void ProcessDialogEvent()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////		Кредитный генератор Loan
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		case "LoanUsurer": 
+		case "LoanUsurer":
 			dialog.text = "Давайте обсудим. Внимательно вас слушаю.";
 			link.l1 = "Есть ли у вас дело, требующее сторонней помощи?";
 			link.l1.go = "Loan_GiveWork";
@@ -385,18 +385,18 @@ void ProcessDialogEvent()
 				if(makeint(PChar.money) >= makeint(Pchar.Quest.Loans.(NPC_Area).Result))
 				{
 					Link.l5 = "Я должен вам "+ FindRussianMoneyString(sti(Pchar.Quest.Loans.(NPC_Area).Result)) + LinkRandPhrase(". Я готов вернуть долг.", ". В данный момент я в состоянии выплатить вам долг.", ". Настало время, наконец, рассчитаться.");
-					Link.l5.go = "loan_return";	
+					Link.l5.go = "loan_return";
 					sTemp = "credit";
-				}					
+				}
 			}
 			else
 			{
 				Link.l6 = LinkRandPhrase("Я хочу занять денег.", "Мне срочно понадобилась пара-другая пиастров.", "Как насчет небольшого кредита?");
-				Link.l6.go = "loan";	
+				Link.l6.go = "loan";
 				if(makeint(Pchar.money) >= 100)
 				{
 					Link.l7 = LinkRandPhrase("Я бы хотел отдать деньги в рост.","Примете на хранение пиратскую добычу?", "Золотишко на черный день оставить можно?");
-					Link.l7.go = "deposit";				
+					Link.l7.go = "deposit";
 				}
 			}
 			if(CheckAttribute(Pchar, "Quest.Deposits." + (NPC_Area)) && makeint(Pchar.Quest.Deposits.(NPC_Area)) == true)
@@ -404,7 +404,7 @@ void ProcessDialogEvent()
 				iPastMonths = GetPastTime("Month", makeint(Pchar.Quest.Deposits.(NPC_Area).StartYear),makeint(Pchar.Quest.Deposits.(NPC_Area).StartMonth),makeint(Pchar.Quest.Deposits.(NPC_Area).StartDay), makefloat(Pchar.Quest.Deposits.(NPC_Area).StartTime), getDataYear(),getDataMonth(),GetDataDay(), GetTime());
 				Pchar.Quest.Deposits.(NPC_Area).Result = makeint(Pchar.Quest.Deposits.(NPC_Area).Sum) + ((makeint(Pchar.Quest.Deposits.(NPC_Area).Sum)/100)*makeint(Pchar.Quest.Deposits.(NPC_Area).Interest))*iPastMonths;
 				Link.l8 = LinkRandPhrase("Я хочу забрать свой вклад.", "Пришло время забрать мои деньги, что у вас хранятся.", "Мне нужно мое золото и набежавшие проценты.");
-				Link.l8.go = "Deposit_return";									
+				Link.l8.go = "Deposit_return";
 			}
 			//выход
 			if (sTemp == "credit")
@@ -419,7 +419,7 @@ void ProcessDialogEvent()
 			}
 		break;
 		//=============================  даем или не даем работу - сундуки и должники
-		case "Loan_GiveWork": 
+		case "Loan_GiveWork":
             // проверка на проф пригодность -->
             if (isBadReputation(pchar, 42))
             {
@@ -444,7 +444,7 @@ void ProcessDialogEvent()
                 {
                     case 0 : // найти должника
                         if (CheckAttribute(pchar, "GenQuest.Loan.FindCitizen")) break;
-                        
+
                         if (sti(Pchar.Ship.Type) == SHIP_NOTUSED && sti(npchar.quest.FindCitizenNoShip) < 2)
                         {
                             iNum = findCitizenMan(Npchar, true);
@@ -475,7 +475,7 @@ void ProcessDialogEvent()
 
                     case 1: // доставить сундуки
                         if (CheckAttribute(pchar, "GenQuest.LoanChest.TakeChest")) break;
-                        
+
                         iNum = findChestMan(Npchar);
                         if (iNum > 0)
                         {
@@ -489,7 +489,7 @@ void ProcessDialogEvent()
 							{
 								sTemp = ", что на " + XI_ConvertString(GetIslandByCityName(chr.city)+"Dat");
 							}
-                            dialog.text = "Мне нужен проверенный человек для важной миссии. Нужно доставить кредит - " + pchar.GenQuest.LoanChest.Chest + 
+                            dialog.text = "Мне нужен проверенный человек для важной миссии. Нужно доставить кредит - " + pchar.GenQuest.LoanChest.Chest +
 									" сундука с золотом в "+ XI_ConvertString("Colony"+chr.city+"Acc") + sTemp + " для человека по имени " +
 									GetFullName(chr) + ". Он местный " + GetWorkTypeOfMan(chr, "") +
 									". За работу получите " + FindRussianMoneyString(sti(pchar.GenQuest.LoanChest.Money)) + ". Это нужно сделать за " + FindRussianDaysString(sti(pchar.GenQuest.LoanChest.Time)) + ".";
@@ -512,8 +512,8 @@ void ProcessDialogEvent()
             pchar.GenQuest.Loan.FindCitizenNpcharId = Npchar.id;
             dialog.text = "Замечательно. Жду вас как можно скорее.";
 			link.l9 = "Не подведу!";
-			link.l9.go = "exit";			
-            chr = &Characters[sti(pchar.GenQuest.Loan.FindCitizenIdx)];     
+			link.l9.go = "exit";
+            chr = &Characters[sti(pchar.GenQuest.Loan.FindCitizenIdx)];
 			sTemp = "";
 			if (npchar.city != chr.city)
 			{
@@ -554,7 +554,7 @@ void ProcessDialogEvent()
             link.l3.go = "finish_work_cancel";
             link.l9 = "Нет. Ничего.";
 			link.l9.go = "exit";
-		break; 
+		break;
 
 		case "finish_work":
             if (sti(pchar.Money) >= sti(pchar.GenQuest.Loan.FindCitizenMoney))
@@ -568,7 +568,7 @@ void ProcessDialogEvent()
     			AddCharacterExpToSkill(Pchar, "Commerce", makeint(Pchar.rank) * 3);
     			AddCharacterExpToSkill(Pchar, "Leadership", makeint(Pchar.rank) * 6);
     			ChangeCharacterReputation(pchar, 1);
-    			OfficersReaction("good");    			
+    			OfficersReaction("good");
     			AddQuestRecord("Gen_LoanFindCitizen", "4");
                 CloseQuestHeader("Gen_LoanFindCitizen");
 			}
@@ -579,7 +579,7 @@ void ProcessDialogEvent()
     			link.l9.go = "exit";
     		}
 		break;
-		
+
 		case "finish_work_bad":
             dialog.text = "Очень и очень плохо! Вы не в состоянии делать свою работу!";
 			link.l9 = "Этот человек правда был не состоятелен, но вы правы - это моя работа.";
@@ -590,7 +590,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("Gen_LoanFindCitizen", "5");
             CloseQuestHeader("Gen_LoanFindCitizen");
 		break;
-		
+
 		case "finish_work_cancel":
             if (CheckAttribute(pchar, "GenQuest.Loan.FindCitizenDone") || CheckAttribute(pchar, "GenQuest.Loan.FindCitizenFalied"))
             {
@@ -622,13 +622,13 @@ void ProcessDialogEvent()
                 CloseQuestHeader("Gen_LoanFindCitizen");
             }
 		break;
-		
+
 		case "finish_work_bad_2":
             dialog.text = "Вы уже показали, что склонны ко лжи. Верните мои деньги!";
             link.l1 = "Да, вы правы, вот деньги.";
     		link.l1.go = "finish_work";
 		break;
-		
+
 		case "finish_work_lie":
             dialog.text = "Хм, точно?";
             link.l1 = "Конечно!";
@@ -636,7 +636,7 @@ void ProcessDialogEvent()
 		break;
 
 		//============== boal доставка сундуков ===============
-		case "LoanUsurer_ChestWork_1": 
+		case "LoanUsurer_ChestWork_1":
             pchar.GenQuest.LoanChest.TakeChest = true;
             pchar.GenQuest.LoanChest.ChestNpcharId = Npchar.id;
             dialog.text = "Я на вас очень рассчитываю.";
@@ -767,7 +767,7 @@ void ProcessDialogEvent()
 		case "Interest":
 			//Pchar.Quest.Loans.(NPC_Area).Interest = 16 - makeint(Pchar.skill.commerce);
 			Dialog.snd = "voice\USDI\USDI020";
-			dialog.text = Pchar.Quest.Loans.(NPC_Area).Interest + "% в месяц. Основываясь на том, что я о вас знаю, я не могу предложить вам сейчас лучших условий."; 
+			dialog.text = Pchar.Quest.Loans.(NPC_Area).Interest + "% в месяц. Основываясь на том, что я о вас знаю, я не могу предложить вам сейчас лучших условий.";
 			Link.l1 = "Меня это вполне устраивает. Осталось обговорить срок.";
 			Link.l1.go = "Period";
 			Link.l3 = "Думаю, мне лучше не влезать в долги. До свидания.";
@@ -775,9 +775,9 @@ void ProcessDialogEvent()
 		break;
 
 		case "Period":
-			Pchar.Quest.Loans.(NPC_Area).Period = makeint(makeint(Pchar.reputation)/20) + 1;			
+			Pchar.Quest.Loans.(NPC_Area).Period = makeint(makeint(Pchar.reputation)/20) + 1;
 			Dialog.snd = "voice\USDI\USDI021";
-			dialog.text =  "Учитывая то, что я о вас слышал, " + Pchar.name + ", я буду ждать возврата этого кредита " + FindRussianMonthString(sti(Pchar.Quest.Loans.(NPC_Area).Period)) + ". После чего, как вы понимаете, я приму меры."; 
+			dialog.text =  "Учитывая то, что я о вас слышал, " + Pchar.name + ", я буду ждать возврата этого кредита " + FindRussianMonthString(sti(Pchar.Quest.Loans.(NPC_Area).Period)) + ". После чего, как вы понимаете, я приму меры.";
 			Link.l1 = "Что же, я с удовольствием принимаю ваши условия... И ваши деньги.";
 			Link.l1.go = "LoanGranted";
 			Link.l3 = "Увы, мы с вами не договорились. До свидания.";
@@ -818,7 +818,7 @@ void ProcessDialogEvent()
 			if(makeint(PChar.money) >= 100)
 			{
 				Link.l2 = LinkRandPhrase("Я бы хотел отдать деньги в рост.","Примете на хранение пиратскую добычу?", "Золотишко на черный день оставить можно?");
-				Link.l2.go = "deposit";				
+				Link.l2.go = "deposit";
 			}
 			Link.l3 = "До свидания, " + NPchar.name + ".";
 			Link.l3.go = "ExitDelLoan1";
@@ -827,7 +827,7 @@ void ProcessDialogEvent()
 		case "deposit":
 			dialog.text = LinkRandPhrase("Я слышу разумного человека! Так сколько денег вы готовы отдать в рост?", "Хорошо. Поверьте мне, та сумма, что вы мне отдаете, будет ждать вас в целости и сохранности, и даже с процентами... А, кстати, какова эта сумма?", "Я смотрю, вы понимаете, что к чему в этой жизни. Сколько вы хотите отдать мне на хранение?");
 			link.l1.edit = 3;
-			link.l1 = "";	
+			link.l1 = "";
 			Link.l1.go = "result";
 		break;
 
@@ -881,7 +881,7 @@ void ProcessDialogEvent()
 				Link.l1.go = "Deposit_Exit";
 			}
 		break;
-		
+
 		case "Deposit_exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			Pchar.Quest.Deposits.(NPC_Area).Interest = sti(Pchar.QuestTemp.Deposits.(NPC_Area).Interest);
@@ -901,17 +901,17 @@ void ProcessDialogEvent()
 		case "Deposit_return":
 			Dialog.snd = "voice\USDI\USDI034";
 			dialog.text = "Исходя из процентов, которые мы оговорили в прошлый раз, и учитывая прошедшее время, я подсчитал, что должен вам " + FindRussianMoneyString(sti(Pchar.Quest.Deposits.(NPC_Area).Result)) + "... Вы уверены, что хотите забрать эти деньги";
-			Link.l1 = "Абсолютно. Давайте их сюда.";			
-			Link.l1.go = "Deposit_return_1";		
-			Link.l2 = "Знаете, вы правы. Пусть они еще немного полежат. Всего хорошего.";			
-			Link.l2.go = "Exit";		
+			Link.l1 = "Абсолютно. Давайте их сюда.";
+			Link.l1.go = "Deposit_return_1";
+			Link.l2 = "Знаете, вы правы. Пусть они еще немного полежат. Всего хорошего.";
+			Link.l2.go = "Exit";
 		break;
 
 		case "Deposit_return_1":
 			addMoneyToCharacter(Pchar, makeint(Pchar.Quest.Deposits.(NPC_Area).Result));
 			Dialog.snd = "voice\USDI\USDI035";
-			dialog.text = "Ох... Даже жаль с ними расставаться. Я к ним уже как-то привык. Что же - приходите ко мне еще.";			
-			Link.l1 = "Если понадобится - приду. Счастливо оставаться.";			
+			dialog.text = "Ох... Даже жаль с ними расставаться. Я к ним уже как-то привык. Что же - приходите ко мне еще.";
+			Link.l1 = "Если понадобится - приду. Счастливо оставаться.";
 			Link.l1.go = "Exit";
 			DeleteAttribute(Pchar, "quest.Deposits." + (NPC_Area));
 		break;
@@ -926,10 +926,10 @@ void ProcessDialogEvent()
 			Link.l2.go = "ExitDelLoan2";
 		break;
 
-		case "DeadMotherFucker_1":			
+		case "DeadMotherFucker_1":
 			Dialog.snd = "voice\USDI\USDI035";
-			dialog.text = "Убирайтесь из моего дома! Глаза мои вас бы не видели!";			
-			Link.l1 = "...";			
+			dialog.text = "Убирайтесь из моего дома! Глаза мои вас бы не видели!";
+			Link.l1 = "...";
 			Link.l1.go = "ExitDelLoan2";
             Dialog.TempNode = "DeadMotherFucker_1";
 		break;
@@ -946,12 +946,12 @@ void ProcessDialogEvent()
     			Link.l2.go = "LoanRestore_2";
 			}
 		break;
-		
+
 		case "LoanRestore_2":
 			dialog.text = "Это другое дело! С вами все же можно иметь дела.";
 			Link.l1 = "Спасибо. Больше не подведу.";
 			Link.l1.go = "ExitDelLoan2";
-			NextDiag.TempNode = "First time";			
+			NextDiag.TempNode = "First time";
 			addMoneyToCharacter(Pchar, -2*sti(Pchar.Quest.Loans.(NPC_Area).Result));
 			DeleteAttribute(PChar, "quest.Loans_" + NPC_Area);
 			DeleteAttribute(PChar, "quest.Loans." + NPC_Area);
@@ -971,7 +971,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(Pchar, "quest.Loans." + (NPC_Area));
 			DeleteAttribute(Pchar, "quest.Deposits." + (NPC_Area));
 		break;
-		
+
         case "LoanGranted_exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 
@@ -982,11 +982,11 @@ void ProcessDialogEvent()
 			Pchar.Quest.Loans.(NPC_Area).StartYear = getDataYear();
 			Pchar.Quest.Loans.(NPC_Area).StartTime = getTime();
 
-			sTemp = "Loans_" + NPC_Area;			
+			sTemp = "Loans_" + NPC_Area;
 			SetTimerCondition(sTemp, 0, makeint(Pchar.Quest.Loans.(NPC_Area).Period), 0, false);
 			pchar.quest.(sTemp).CityId = NPC_Area;
 			pchar.quest.(sTemp).win_condition = "LoansForAll";
-			
+
 			DialogExit();
 			npchar.quest.trade_date = lastspeak_date; // дыра с прокачкой была
 		break;
@@ -995,27 +995,27 @@ void ProcessDialogEvent()
 			sld = ItemsFromID("UsurersJew");
 			switch (rand(3))
 			{
-				case 0: 
-					sld.JevelType = "бриллиант";  
+				case 0:
+					sld.JevelType = "бриллиант";
 					sld.model = "Diamond";
 					sld.picIndex = 2;
 				break;
-				case 1: 
-					sld.JevelType = "рубин";  
+				case 1:
+					sld.JevelType = "рубин";
 					sld.model = "Ruby";
 					sld.picIndex = 3;
 				break;
-				case 2: 
-					sld.JevelType = "изумруд";  
+				case 2:
+					sld.JevelType = "изумруд";
 					sld.model = "Emerald";
 					sld.picIndex = 4;
 				break;
-				case 3: 
-					sld.JevelType = "сапфир";  
+				case 3:
+					sld.JevelType = "сапфир";
 					sld.model = "Sapphire";
 					sld.picIndex = 1;
 				break;
-			}			
+			}
 			dialog.text = "Вы знаете, со мной случилось огромное несчастье. Я потерял " + sld.JevelType + " прекрасной работы. Но самое неприятное даже не это. Самое плохое, что камень - не мой!";
 			link.l1 = "Ну и что? Купите другой " + sld.JevelType + " и дело с концом.";
 			link.l1.go = "usurersJewel_2";
@@ -1060,7 +1060,7 @@ void ProcessDialogEvent()
 			sld.startLocator = "item" + (rand(14)+1);
 			sld.CityName = XI_ConvertString("Colony" + npchar.city + "Gen");
 			Log_QuestInfo("Камень находится в локаторе " + sld.startLocator);
-			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты 
+			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты
 			sTitle = npchar.city + "UsurersJewel";
 			ReOpenQuestHeader(sTitle);
 			AddQuestRecordEx(sTitle, "SeekUsurersJewel", "1");
@@ -1091,13 +1091,13 @@ void ProcessDialogEvent()
 		break;
 
         //============== Линейка Блада =============== homo
-    	
+
 		case "CapBloodUsurer_1":
 			dialog.text = "Я не выдаю средств живой собственности полковника, сэр.";
 			link.l1 = "Тем не менее, вы это сделали.";
 			link.l1.go = "CapBloodUsurer_2";
 		break;
-		
+
 		case "CapBloodUsurer_2":
 			dialog.text = "Что?! О чем вы говорите?";
 			if (sti(pchar.money) >= 5000)
@@ -1111,8 +1111,8 @@ void ProcessDialogEvent()
     			link.l1.go = "CapBloodUsurer_4";
             }
 		break;
-		
-		
+
+
 		case "CapBloodUsurer_3":
             AddMoneyToCharacter(pchar, -5000);
             Pchar.questTemp.CapBloodLine.Ogl = true;
@@ -1122,7 +1122,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
-		
+
 		case "CapBloodUsurer_4":
 			dialog.text = "Вы принесли деньги за Огла?";
 			if (sti(pchar.money) >= 5000)
@@ -1137,13 +1137,13 @@ void ProcessDialogEvent()
     			NextDiag.TempNode = "CapBloodUsurer_4";
             }
 		break;
-		
+
 		case "CapBloodUsurer_5":
 			dialog.text = "Сегодня рано утром у меня взял заем человек из города. Дело в том, что... он меня обманул. Он назвался именем Рафаэля Гиннеса, который частенько ко мне заходит, и, признаться, немного на него похож. Я дал ему заем в размере 30 000 пиастров, но потом зашел Раф и...";
 			link.l1 = "Вы хотите, чтобы я нашел этого человека? Почему вы думаете, что он еще в городе?";
 			link.l1.go = "CapBloodUsurer_6";
 		break;
-		
+
 		case "CapBloodUsurer_6":
 			dialog.text = "Он в городе, уверяю вас. Сегодня еще никто не отплывал. А вы в качестве премии получите 10%, то есть - 3000 пиастров. Что скажете?";
 			link.l1 = "Знаете, пожалуй, я вам помогу.";
@@ -1153,15 +1153,15 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First time";
 			PChar.questTemp.CapBloodLine.QuestRaff = false;
 		break;
-		
+
 		case "CapBloodUsurer_7":
-		
+
             AddQuestRecord("UsurerQuest", "1");
             PChar.questTemp.CapBloodLine.QuestRaff = true;
             NextDiag.CurrentNode = "CapBloodUsurer_8";
 			DialogExit();
 		break;
-		
+
 		case "CapBloodUsurer_8":
 			dialog.text = "Ну что, тебе удалось?";
 			if (sti(pchar.money) >= 27000)
@@ -1195,29 +1195,29 @@ int findCitizenMan(ref NPChar, bool bCity)
 		ch = GetCharacter(NPC_GenerateCharacter("LoanFindingMan", "citiz_"+(rand(11)+1), "man", "man", 10, sti(npchar.nation), -1, false));
 		ch.dialog.filename = "Common_citizen.c";
 		ch.city = npchar.city;
-		ch.RebirthPhantom = true; 
+		ch.RebirthPhantom = true;
 		LAi_NoRebirthDisable(ch);
 		LAi_SetCitizenType(ch);
 		LAi_group_MoveCharacter(ch, GetNationNameByType(sti(npchar.nation)) + "_citizens");
 		PlaceCharacter(ch, "goto", npchar.city + "_town");
 	}
 	else
-	{		
+	{
 		for(n=0; n<MAX_COLONIES; n++)
-		{			
-			nation = GetNationRelation(sti(npchar.nation), sti(colonies[n].nation));	
+		{
+			nation = GetNationRelation(sti(npchar.nation), sti(colonies[n].nation));
 			if (nation != RELATION_ENEMY && colonies[n].nation != "none")
-			{           
+			{
 				storeArray[howStore] = n;
 				howStore++;
 			}
 		}
-		if (howStore == 0) return -1; 
+		if (howStore == 0) return -1;
 		nation = storeArray[cRand(howStore-1)];
 		ch = GetCharacter(NPC_GenerateCharacter("LoanFindingMan", "citiz_"+(rand(11)+1), "man", "man", 10, sti(colonies[nation].nation), -1, false));
 		ch.dialog.filename = "Common_citizen.c";
 		ch.city = colonies[nation].id;
-		ch.RebirthPhantom = true; 
+		ch.RebirthPhantom = true;
 		LAi_NoRebirthDisable(ch);
 		LAi_SetCitizenType(ch);
 		LAi_group_MoveCharacter(ch, GetNationNameByType(sti(colonies[nation].nation)) + "_citizens");
@@ -1282,7 +1282,7 @@ int findChestMan(ref NPChar)
             if (ch.location == "none") continue;
             storeArray[howStore] = n;
             howStore++;
-		}		
+		}
 		// ростовщики
 		if (sTemp == "usurer")
 		{

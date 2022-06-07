@@ -6,14 +6,14 @@ void ProcessDialogEvent()
 	aref Link, Diag;
 	string NPC_Meeting, TempInfoCharacterID_1, TempInfoCharacterID_2;
 	int DonationSize;
-    	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makeref(d, Dialog);
 	makearef(Diag, NPChar.Dialog);
-	
+
     ProcessCommonDialogRumors(NPChar, Link, Diag);//homo 25/06/06
     ProcessDuelDialog(NPChar, Link, Diag); //navy
 
@@ -23,7 +23,7 @@ void ProcessDialogEvent()
 	bool ok;
 	// boal 13.03.2004 <--
     ref sld;
-    
+
 	if (npchar.quest.Meeting != LastSpeakDate())
 	{
 		npchar.quest.last_theme = makeint(rand(1));
@@ -35,11 +35,11 @@ void ProcessDialogEvent()
             Dialog.CurrentNode = "Beta_test";
         }
 	}
-	
+
 	switch (Dialog.CurrentNode)
 	{
 		// -----------------------------------Диалог первый - первая встреча
-		
+
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;
 			DialogExit();
@@ -54,7 +54,7 @@ void ProcessDialogEvent()
 			link.l3 = "Игрок в кости";
 			link.l3.go = "Beta_test_dice";
 		break;
-		
+
 		case "Beta_test_alc":
             dialog.text = "Алкаш выбран";
 			link.l1 = "Продолжить";
@@ -62,7 +62,7 @@ void ProcessDialogEvent()
 			npchar.quest.last_theme = 0;
 		    npchar.quest.last_theme_game = 0;
 		break;
-		
+
 		case "Beta_test_card":
             dialog.text = "Игрок в карты (30%% что пошлет с первого раза)";
 			link.l1 = "Продолжить";
@@ -70,7 +70,7 @@ void ProcessDialogEvent()
 			npchar.quest.last_theme = 1;
 		    npchar.quest.last_theme_game = 0;
 		break;
-		
+
 		case "Beta_test_dice":
             dialog.text = "Игрок в кости (30%% что пошлет с первого раза)";
 			link.l1 = "Продолжить";
@@ -78,17 +78,17 @@ void ProcessDialogEvent()
 			npchar.quest.last_theme = 1;
 		    npchar.quest.last_theme_game = 1;
 		break;
-		
+
 		case "First time":
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = LinkRandPhrase("Я, может, и пьян, но в своем уме. Сейчас вот выпью с тобой, а солдаты и меня загребут! Не-е-ет...", "Я не враг городу, в котором живу. Не буду с тобой пить!" , "Приятель, тебе лучше бы убраться отсюда подобру-поздорову...");
-				link.l1 = RandPhraseSimple("Ну, как знаешь...", "Хех, больно надо глаза заливать! Не то время."); 
+				link.l1 = RandPhraseSimple("Ну, как знаешь...", "Хех, больно надо глаза заливать! Не то время.");
 				link.l1.go = "exit";
 				break;
 			}
             ok = CheckFreeSitFront(npchar); //checkAttribute(npchar, "Default.ToLocator"); // есть куда сесть
-            
+
             dialog.text = "Не загораживай мне свет, мух в кружке не видно!";
             link.l1 = "Уже отошел...";
 		    link.l1.go = "exit";
@@ -182,7 +182,7 @@ void ProcessDialogEvent()
 			}
 			Diag.TempNode = "First time";
 	    break;
-	    
+
 	    // карты -->
 	    case "Cards_Rule":
    			dialog.text = CARDS_RULE;
@@ -191,7 +191,7 @@ void ProcessDialogEvent()
 			link.l3 = "Нет, это не для меня...";
 			link.l3.go = "exit";
 		break;
-		
+
 		case "Cards_begin":
 			Diag.tempnode = "Cards_Node";
 			Diag.CurrentNode = Diag.TempNode;
@@ -211,7 +211,7 @@ void ProcessDialogEvent()
 			link.l3 = "Пожалуй, мне пора.";
 			link.l3.go = "exit_sit";
 		break;
-		
+
 		case "Cards_Node_100":
             if (!CheckCardsGameSmallRate())
 		    {
@@ -220,7 +220,7 @@ void ProcessDialogEvent()
 			    link.l1.go = "exit_sit";
 			    break;
 		    }
-		    
+
 			if (sti(pchar.Money) < 300)
 		    {
                 dialog.text = "Да ты, дружок, на мели. Приходи, когда разбогатеешь.";
@@ -242,7 +242,7 @@ void ProcessDialogEvent()
             pchar.GenQuest.Cards.iRate     = 100;
             pchar.GenQuest.Cards.SitType   = true;
 		break;
-		
+
 		case "Cards_Node_500":
             if (!CheckCardsGameSmallRate())
 		    {
@@ -260,7 +260,7 @@ void ProcessDialogEvent()
 			    link.l2.go = "exit_sit";
 			    break;
 		    }
-		    
+
 			if (sti(pchar.Money) < 1500)
 		    {
                 dialog.text = "Да ты, дружок, на мели. Приходи, когда разбогатеешь.";
@@ -282,7 +282,7 @@ void ProcessDialogEvent()
             pchar.GenQuest.Cards.iRate     = 500;
             pchar.GenQuest.Cards.SitType   = true;
 		break;
-		
+
 		case "Cards_begin_go":
             // анлим игры в день SetNPCQuestDate(npchar, "Card_date_begin");
 			Diag.CurrentNode = Diag.TempNode;
@@ -309,7 +309,7 @@ void ProcessDialogEvent()
 
 		case "Dice_Node":
 		    Diag.tempNode = "first time";
-		    
+
 			Dialog.text = "Давай определимся со ставкой.";
 			link.l1 = "Играем по 50 монет за кубик";
 			link.l1.go = "Dice_Node_100";
@@ -425,13 +425,13 @@ void ProcessDialogEvent()
 			link.l1 = "Да врешь, небось!";
 			link.l1.go = "GhostShip_Speak_1_2";
 		break;
-		
+
 		case "GhostShip_Speak_1_2":
 			dialog.text = "Я вру? И-ик! Да я вторую неделю пью, чтоб забыть, что видел... как он на черных рваных парусах входил в бухту...";
 			link.l1 = "И как же ты уцелел?";
 			link.l1.go = "GhostShip_Speak_1_3";
 		break;
-		
+
 		case "GhostShip_Speak_1_3":
 			dialog.text = "Да я как увидал, что они к берегу пристают, аж штаны испачкал. И-ик!.. А ты не смейся - сам бы испачкал! И бегом, значит, оттудова...";
 			link.l1 = "Н-да... врун ты изрядный, совсем голову пропил";
@@ -465,7 +465,7 @@ void ProcessDialogEvent()
 		case "GhostShip_Speak_3":
             npchar.GhostShip_Speak_Yet = true;
             pchar.GenQuest.GhostShip.lastspeak_date = LastSpeakDate();
-            
+
 			if (!CheckAttribute(pchar, "GenQuest.GhostShip.LastBattle") &&
                              CheckAttribute(pchar, "GenQuest.GhostShip.NeedCoins")  &&
                             !CheckAttribute(npchar, "quest.GhostShipHelp")          &&
@@ -519,7 +519,7 @@ void ProcessDialogEvent()
 			link.l2 = "Да ну тебя!";
 			link.l2.go = "exit";
 		break;
-		
+
 		case "talk_with_alchogol_song_2":
 			dialog.text = "Мелькают кружки, лица, каблуки... И-ик! И полом по башке. Я пью всегда со всеми и везде... И-ик! Где выпивка? Нужна!";
 			link.l1 = "А дальше?";
@@ -527,13 +527,13 @@ void ProcessDialogEvent()
 			link.l2 = "Да ну тебя!";
 			link.l2.go = "exit";
 		break;
-		
+
 		case "talk_with_alchogol_song_3":
 			dialog.text = "Когда на сердце тяжесть и холодно в груди, ты пару кружек рома на грудь себе прими! И без забот и фальши все станет вдруг вокруг. Поймешь ты, что я лучший тебе я самый друг!";
 			link.l1 = "Да ну тебя!";
 			link.l1.go = "exit";
 		break;
-		
+
 		case "talk_with_alchogol":
 			Diag.TempNode = "begin_sit";
 			Diag.CurrentNode = Diag.TempNode;
@@ -615,7 +615,7 @@ void ProcessDialogEvent()
 					link.l1 = "А? Что? Где? Показалось видать.";
 					link.l1.go = "sit_2";// to_do "sit_case_5_exit";
 				break;
-				
+
                 case 5:
                     if (!CheckAttribute(pchar , "GenQuest.GhostShip.LastBattleEnd") && !checkAttribute(npchar, "GhostShip_Speak_Yet") && pchar.GenQuest.GhostShip.lastspeak_date != LastSpeakDate())
 					{
@@ -716,7 +716,7 @@ bool CheckFreeSitFront(ref _npchar)
 	int n;
 
 	if (!CheckAttribute(_npchar, "Default.ToLocator")) return false;
-	
+
 	for (n=0; n<MAX_CHARACTERS; n++)
 	{
 		makeref(rCharacter, Characters[n]);

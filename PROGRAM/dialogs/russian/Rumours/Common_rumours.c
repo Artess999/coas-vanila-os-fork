@@ -5,7 +5,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
     string srum;
 	switch(Dialog.CurrentNode)
 	{
-	case "rumours_citizen":	
+	case "rumours_citizen":
 		NextDiag.CurrentNode = "rumours";
 		//------------- квестовые слухи горожан --------->>>>>>>>
 		//жемчужный генератор Шарпа
@@ -49,7 +49,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
             answ3 = RandPhraseSimple("Чего только не случается на свете. Мне жаль, но никаких новостей у меня нет. ",
                                  "Я немного спешу, так что как-нибудь в другой раз.");
             answ4 = "";
-        
+
         }
         else
         {
@@ -62,7 +62,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
             answ3 = RandPhraseSimple("Не думаю, что знаю что-то что, могло бы вас заинтересовать.",
                                  "Я с удовольствием что-нибудь расскажу, но как-нибудь в другой раз.");
             answ4 = "";
-        
+
         }
 		Dialog.Text = NPCStringReactionRepeat(srum,
                                                 srum+posrep1,
@@ -70,7 +70,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
                                                 RandPhraseSimple("К сожалению, больше я ничего не знаю, позвольте мне идти.",
                                                                     "Вы утомили меня своими расспросами, прошу меня простить, но меня ждут дела."),
                                                 "block", 1, npchar, Dialog.CurrentNode);
-		
+
 		//link.l1 = RandPhraseSimple(RandSwear() + "Это очень интересно! Вот что еще хотел спросить...",
         //                         "Еще вопрос.");
         link.l1 = HeroStringReactionRepeat(answ1,
@@ -182,7 +182,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
                 "Я готов рассказать все, что знаю. Но не бесплатно - 1000 золотых, на меньшее я не согласен."),
                 "Больше мне нечего добавить. А теперь прошу меня извинить, но дела не ждут.",
                 "", "", "block", 1, npchar, Dialog.CurrentNode);
-             
+
     			link.l1 = HeroStringReactionRepeat(RandPhraseSimple(RandSwear() + "Платить за пустую болтовню? Нет уж, поищи кого-нибудь другого.",
                                          "За такие деньги я сам все узнаю."), "Давай поговорим о чем-нибудь другом.", "Давай поговорим о чем-нибудь другом.", "Давай поговорим о чем-нибудь другом.", npchar, Dialog.CurrentNode);
                 link.l1.go = HeroStringReactionRepeat("rumours_tavern_no", "first time", "first time", "first time", npchar, Dialog.CurrentNode);//"rumours_tavern_no";
@@ -200,7 +200,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
     			}
 
 		break;
-		
+
 		case "rumours_tavern_yes":
 
 			//------------- квестовые слухи тавернщика --------->>>>>>>>
@@ -210,12 +210,12 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 				Dialog.Text =  "В последнее время стали часто пропадать корабли, причем, что странно, пропадают только курьерские люггеры и шлюпы. Поговаривают о появлении в водах Куманы какого-то брига... Так что будьте осторожны!";
 				link.l1 = "Только курьерские люггеры, говоришь? Очень интересно... А больше ничего примечательного не знаешь?";
 				link.l1.go = "rumours_tavern";
-				AddQuestRecord("Pir_Line_3_KillLoy", "14");		
+				AddQuestRecord("Pir_Line_3_KillLoy", "14");
 				pchar.questTemp.piratesLine = "KillLoy_toCumana_2";
 				break;
 			}
 			//<<<<<-------- квестовые слухи тавернщика -----------------
-		
+
             string RumText = SelectRumourEx("tavern", NPChar); //fix
             //SelectRumour();
 
@@ -261,7 +261,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 			link.l2 = LinkRandPhrase("Спасибо, должен откланяться.",
                                      "Всего хорошего","До свидания.");
 			link.l2.go = "Exit";
-		break;	
+		break;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         case "rumours_poor":
 			if (!CheckAttribute(NPChar, "quest.repeat.rumours_poor") || NPChar.quest.repeat.rumours_poor <= 1)
@@ -275,13 +275,13 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 				Link.l2.go = "exit";
 				NPChar.quest.repeat.rumours_poor = sti(NPChar.quest.repeat.rumours_poor) + 1;
 			}
-			else 
+			else
 			{
-				Dialog.Text = RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.", 
+				Dialog.Text = RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.",
 					"Больше я ничего не слышал, извините...");
 				Link.l1 = RandPhraseSimple("Понятно. Ну что же, всего хорошего.",
 										"Ясно. Ну, бывай, приятель...");
-				Link.l1.go = "exit";			
+				Link.l1.go = "exit";
 			}
             NPChar.talk_date = lastspeakdate();
 		break;
@@ -297,13 +297,13 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 				Link.l2.go = "exit";
 				NPChar.quest.repeat.rumours_poor = sti(NPChar.quest.repeat.rumours_poor) + 1;
 			}
-			else 
+			else
 			{
-				Dialog.Text = RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.", 
+				Dialog.Text = RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.",
 					"Больше я ничего не слышал, извините...");
 				Link.l1 = RandPhraseSimple("Понятно. Ну что же, всего хорошего.",
 										"Ясно. Ну, бывай, приятель...");
-				Link.l1.go = "exit";			
+				Link.l1.go = "exit";
 			}
 			NPChar.talk_date = lastspeakdate();
 		break;
@@ -318,12 +318,12 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 				Link.l1.go = "exit";
 				SetNPCQuestDate(NPChar, "quest.repeat.rumours");
 			}
-			else  
+			else
 			{
-				Dialog.Text = NPCharSexPhrase(npchar, RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.", "Больше я ничего не слышал, прошу прощения..."), 
+				Dialog.Text = NPCharSexPhrase(npchar, RandPhraseSimple("Не о чем говорить, все уже выболтал, что знал.", "Больше я ничего не слышал, прошу прощения..."),
 					RandPhraseSimple("Простите, но я вам уже все выболтала.", "Больше я ничего не слышала, извините..."));
 				Link.l1 = RandPhraseSimple("Я понял.", "Ну, всего хорошего.");
-				Link.l1.go = "exit";			
+				Link.l1.go = "exit";
 			}
 		break;
 
@@ -364,7 +364,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         			Link.l2 = "Замечательно, вот и отнеси все сам!";
         			Link.l2.go = "exit";
                 break;
-                
+
                 case 1 :
                     dialog.text = "Нет! Ничего я не отдам! А будете приставать, стражу позову.";
                     Link.l1 = "Ничего не знаю, с тебя " + FindRussianMoneyString(makeint(sti(pchar.GenQuest.Loan.FindCitizenMoney) + sti(pchar.GenQuest.Loan.FindCitizenPercent))) + ". А то можно поговорить и по-другому.";
@@ -372,7 +372,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         			Link.l2 = "Ну и не нужно!";
         			Link.l2.go = "LoanFindCitizenType_1_1";
                 break;
-                
+
                 case 2 :
                     dialog.text = "К сожалению, у меня нет всей суммы.";
                     Link.l1 = "Ничего не знаю, с тебя " + FindRussianMoneyString(makeint(sti(pchar.GenQuest.Loan.FindCitizenMoney) + sti(pchar.GenQuest.Loan.FindCitizenPercent))) + ". А то можно поговорить и по-другому.";
@@ -392,11 +392,11 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         	addMoneyToCharacter(Pchar, (sti(pchar.GenQuest.Loan.FindCitizenMoney) + sti(pchar.GenQuest.Loan.FindCitizenPercent)));
         	SetTimerCondition("LoanFindCitizenTimer", 0, 0, 30, false);
         	Log_SetStringToLog("У вас есть 30 дней, чтобы доложить работодателю и вернуть ему деньги.");
-        	AddCharacterExpToSkill(pchar, "COMMERCE", 20);        	
+        	AddCharacterExpToSkill(pchar, "COMMERCE", 20);
         	AddQuestRecord("Gen_LoanFindCitizen", "3");
 			npchar.LifeDay = 0;
 		break;
-		
+
 		case "LoanFindCitizenType_1_1":
             dialog.text = "Рад, что мы с вами договорились.";
 			Link.l1 = "Да ну тебя!";
@@ -407,7 +407,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         	AddQuestRecord("Gen_LoanFindCitizen", "2");
 			npchar.LifeDay = 0;
 		break;
-		
+
 		case "LoanFindCitizenType_1":
             dialog.text = "Стража!! Хулиганы зрения лишают!";
 			Link.l1 = "Замолчи!";
@@ -418,7 +418,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         	AddQuestRecord("Gen_LoanFindCitizen", "2");
 			npchar.LifeDay = 0;
 		break;
-		
+
 		case "LoanFindCitizenType_2":
             pchar.GenQuest.Loan.FindCitizenTempMoney = 10 + rand(makeint(sti(pchar.GenQuest.Loan.FindCitizenMoney) + sti(pchar.GenQuest.Loan.FindCitizenPercent) - 1000));
             dialog.text = "Только " + pchar.GenQuest.Loan.FindCitizenTempMoney + " золотых.";
@@ -428,7 +428,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 			Link.l2.go = "LoanFindCitizenType_2_1";
 			NPChar.quest.LoanFindCitizenType = rand(1);// первые 2 типа
 		break;
-		
+
 		case "LoanFindCitizenType_2_1":
             dialog.text = "Вы очень добры! Большое спасибо!";
 			Link.l1 = "Эх! Вечно сам во все лезу.";
@@ -466,7 +466,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 				AddCharacterExpToSkill(pchar, "Leadership", 20);
 				AddCharacterExpToSkill(pchar, "COMMERCE", 5);
                 OfficersReaction("good");
-    			TakeNItems(pchar, "Chest", -sti(pchar.GenQuest.LoanChest.Chest));    			
+    			TakeNItems(pchar, "Chest", -sti(pchar.GenQuest.LoanChest.Chest));
     			DeleteAttribute(pchar, "GenQuest.LoanChest");
     			DeleteAttribute(Pchar, "quest.LoanChestTimer");
     			AddQuestRecord("Gen_LoanTakeChest", "3");
@@ -515,27 +515,27 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 			DeleteAttribute(Pchar, "quest.LoanChestTimer");
 			AddQuestRecord("Gen_LoanTakeChest", "4");
             CloseQuestHeader("Gen_LoanTakeChest");
-		break; 
+		break;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////		Квесты мэра, проникновение во враждебный город
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "IntelligenceForAll":
-            Dialog.Text = RandPhraseSimple("Ну что же, очень хорошо. У меня готов для вас пакет, который вам надлежит доставить известному лицу лично в руки. Извольте получить.\nНе подходите ко мне больше и не заговаривайте со мной, это может быть подозрительным. Соблюдайте осторожность...", 
+            Dialog.Text = RandPhraseSimple("Ну что же, очень хорошо. У меня готов для вас пакет, который вам надлежит доставить известному лицу лично в руки. Извольте получить.\nНе подходите ко мне больше и не заговаривайте со мной, это может быть подозрительным. Соблюдайте осторожность...",
 				"Хм, прекрасно. Я вручаю вам пакет, и помните, что он должен быть доставлен названному вами лицу лично в руки.\nТеперь прощайте и не подходите ко мне более - это опасно.");
             link.l1 = RandPhraseSimple("Я понял. Прощайте...", "Прощайте и удачи.");
 			link.l1.go = "exit";
 			pchar.GenQuest.Intelligence = "Execute";
 			GiveItem2Character(pchar, "sicretLetter");
 			ref rItem = ItemsFromID("sicretLetter");
-			rItem.City = XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.Intelligence.MayorId)].city+"Gen")); 
-			rItem.Mayor = GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)); 
+			rItem.City = XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.Intelligence.MayorId)].city+"Gen"));
+			rItem.Mayor = GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId));
 			AddQuestRecord("MayorsQuestsList", "7");
 			AddQuestUserData("MayorsQuestsList", "ColonyName", XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.Intelligence.MayorId)].city+"Gen"));
 			AddQuestUserData("MayorsQuestsList", "MayorName", GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)));
 			AddQuestUserData("MayorsQuestsList", "sCity", XI_ConvertString("Colony"+pchar.GenQuest.Intelligence.City+"Dat"));
 			AddQuestUserData("MayorsQuestsList", "sWho", GetWorkTypeOfMan(&characters[GetCharacterIndex(pchar.GenQuest.Intelligence.SpyId)], "Gen"));
-			AddQuestUserData("MayorsQuestsList", "SpyName", GetFullName(&characters[GetCharacterIndex(pchar.GenQuest.Intelligence.SpyId)]));			
+			AddQuestUserData("MayorsQuestsList", "SpyName", GetFullName(&characters[GetCharacterIndex(pchar.GenQuest.Intelligence.SpyId)]));
 		break;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////		Квест Асокольда, рендомные базары
@@ -557,7 +557,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
             dialog.Text = "Послушай, не встречал еще порошка мумии, который я просил тебя разыскать?";
             Link.l2 = "Да, нашел. И сколько ты мне за него заплатишь?";
             Link.l2.go = "AscoldTrader_1";
-        break;		
+        break;
 		case "AscoldTrader_1":
         	dialog.text = "Я - нисколько. Но я знаю, кто купит у тебя это.";
     		link.l1 = "Хм, я расчитывал на получение денег прямо сейчас.";
@@ -738,7 +738,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
         	{
                 chComp = GetCompanionIndex(pchar, i);
                 if(chComp != -1 && RealShips[sti(characters[chComp].ship.type)].Name == "XebekVML1")
-        		{	
+        		{
 					dialog.text = "Хм, подождите... Насколько мне известно, вы сумели настигнуть шебеку, но не потопили ее! Теперь она находится в вашем владении.";
 					link.l1 = "Да, это так. Ну и в чем проблема?";
 					link.l1.go = "RBlueBirdWon_10";
@@ -870,13 +870,13 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 /////////		Линейка острова погибших кораблей ISS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		case "ISS_deposit":
-			dialog.text = NPCStringReactionRepeat("Совершенно верно. Один миллион пиастров мы можете получить через минуту после получения мной подтверждения.", 
-				"Я уже говорил вам, " + GetAddress_Form(NPChar) + ", что депозит у меня. Я жду подтверждения на его выдачу.", 
+			dialog.text = NPCStringReactionRepeat("Совершенно верно. Один миллион пиастров мы можете получить через минуту после получения мной подтверждения.",
+				"Я уже говорил вам, " + GetAddress_Form(NPChar) + ", что депозит у меня. Я жду подтверждения на его выдачу.",
 				"Вам не стоит беспокоиться. Депозит находится у меня, я жду только подтверждения на его выдачу.",
 				"Хм, мне кажется, вы чрезмерно обеспокоены этим депозитом. Моя репутация безупречна, поэтому я могу только повторить ранее сказанное. Депозит на ваше имя находится у меня, получить вы его сможете после подтверждения на выдачу.", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Понятно. Ну что же, прекрасно. Я узнал то, что хотел.", 
+			link.l1 = HeroStringReactionRepeat("Понятно. Ну что же, прекрасно. Я узнал то, что хотел.",
 				"Ага, понятно...",
-				"Я и не беспокоюсь особо.", 
+				"Я и не беспокоюсь особо.",
 				"Понятно... Спасибо вам, " + GetAddress_Form(NPChar) + ".", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
@@ -923,7 +923,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 			LAi_CharacterDisableDialog(npchar);
 			pchar.questTemp.LSC = "MechanicIsArrest_toResidence";
 			SetCrewQuantity(pchar, GetMinCrewQuantity(pchar));
-			bDisableFastReload = true; 
+			bDisableFastReload = true;
 			AddQuestRecord("ISS_MainLine", "64");
 			pchar.quest.LSC_fightEnterResidence.win_condition.l1 = "location";
 			pchar.quest.LSC_fightEnterResidence.win_condition.l1.location = "SanAugustineResidence";
@@ -958,7 +958,7 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 			LAi_CharacterDisableDialog(npchar);
 			pchar.questTemp.LSC = "MechanicIsArrest_toResidence";
 			SetCrewQuantity(pchar, GetMinCrewQuantity(pchar));
-			bDisableFastReload = true; 
+			bDisableFastReload = true;
 			AddQuestRecord("ISS_MainLine", "64");
 			pchar.quest.LSC_fightEnterResidence.win_condition.l1 = "location";
 			pchar.quest.LSC_fightEnterResidence.win_condition.l1.location = "SanAugustineResidence";
@@ -1000,10 +1000,10 @@ void ProcessCommonDialogRumors(ref NPChar, aref Link, aref NextDiag);
 					ChangeCharacterAddressGroup(npchar, npchar.location, "goto", LAi_FindNearestLocator("goto", locx, locy, locz));
 				}
 				LAi_SetActorType(npchar);
-				LAi_ActorRunToLocation(NPChar, "reload", LAi_FindNearestLocator("reload", locx, locy, locz), "none", "", "", "OpenTheDoors", 10.0);			
+				LAi_ActorRunToLocation(NPChar, "reload", LAi_FindNearestLocator("reload", locx, locy, locz), "none", "", "", "OpenTheDoors", 10.0);
 			}
 			NextDiag.CurrentNode = NextDiag.TempNode;
-			DialogExit();		
+			DialogExit();
 		break;
 	}
 }

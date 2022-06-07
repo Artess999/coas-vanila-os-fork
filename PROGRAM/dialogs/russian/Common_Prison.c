@@ -27,7 +27,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-	
+
 		case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -50,19 +50,19 @@ void ProcessDialogEvent()
 			if (!sti(pchar.questTemp.jailCanMove))
 			{
 				link.l3 = "Я хочу пройти внутрь тюрьмы.";
-				link.l3.go = "ForGoodMove";		
+				link.l3.go = "ForGoodMove";
 			}
 			if (CheckAttribute(pchar, "questTemp.jailCanMove.City") && npchar.city == pchar.questTemp.jailCanMove.City)
 			{
 				link.l4 = "Послушайте, не подскажете мне, за какое преступление сидит здесь заключенный по имени " + GetFullName(characterFromId(pchar.questTemp.jailCanMove.prisonerId)) + "?";
-				link.l4.go = "KnowAboutPrisoner";	
+				link.l4.go = "KnowAboutPrisoner";
 			}
 			NextDiag.TempNode = "First_officer";
 		break;
         case "ForGoodMove":
-			dialog.text = NPCStringReactionRepeat("Но зачем вам это? Поверьте мне, там нет ничего достойного внимания, одни воры и бандиты.", "Мы уже обсуждали это ваше желание.", 
+			dialog.text = NPCStringReactionRepeat("Но зачем вам это? Поверьте мне, там нет ничего достойного внимания, одни воры и бандиты.", "Мы уже обсуждали это ваше желание.",
 				"Опять о том же? Уже дважды мы с вами говорили об этом!", "Гм, опять...", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Тем не менее, я хотел бы провести экскурс по вашим казематам. Мне очень интересно!", "Да, именно так. Но я хотел еще поговорить на эту тему.", 
+			link.l1 = HeroStringReactionRepeat("Тем не менее, я хотел бы провести экскурс по вашим казематам. Мне очень интересно!", "Да, именно так. Но я хотел еще поговорить на эту тему.",
 				"Ну, может в третий раз...", "Надежда посмотреть на ваших узников не покидает меня...", npchar, Dialog.CurrentNode);
 			link.l1.go = "ForGoodMove_1";
 		break;
@@ -108,7 +108,7 @@ void ProcessDialogEvent()
 			dialog.text = "Нет, конечно. Этому висельнику прямая дорога в ад. Он на особом контроле у губернатора!";
 			link.l1 = "Хех, понятно...";
 			link.l1.go = "notFree_exit";
-		break;	
+		break;
         case "KnowAboutPrisoner_1":
 			dialog.text = "Не думаю. Много он крови попортил жителям нашего города. Так что даже и не проси.";
 			link.l1 = "Хм, ясно.";
@@ -198,7 +198,7 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "First_soldier";
 		break;
 		//---------------- Заключенные ------------------
-        case "First_prisoner": 
+        case "First_prisoner":
 			if (GetNationRelation2MainCharacter(sti(npchar.nation)) == RELATION_ENEMY)
 			{
 				dialog.text = LinkRandPhrase("Хо-хо, до чего же весело!!", "Режь их, приятель, режь!!!", "Эх, дьявол! Уж не думал, что увижу труп своего надсмотрщика!");
@@ -257,7 +257,7 @@ void ProcessDialogEvent()
 			link.l1 = "Нет, приятель. Я не собираюсь рисковать шкурой из-за сомнительного клада. Извини...";
 			link.l1.go = "Prisoner_5";
 			if (GetNationRelation2MainCharacter(sti(npchar.nation)) != RELATION_ENEMY)
-			{			
+			{
 				link.l2 = "Пожалуй, стоит рискнуть... Предлагаю следующее: я могу перебить стражу в тюрьме и забрать тебя на свой корабль. Если все получится, я хочу, чтобы ты не отходил от меня до тех пор, пока мы не доберемся до грота на " + XI_ConvertString(pchar.questTemp.jailCanMove.islandId + "Dat") + ". Идет?";
 				link.l2.go = "Prisoner_agree"; //силовой способ вызволения
 				link.l3 = "Ну, хорошо, я постараюсь помочь тебе - поговорю с начальником тюрьмы. Возможно, удастся внести залог за твое освобождение.";
@@ -298,11 +298,11 @@ void ProcessDialogEvent()
 			pchar.quest.GivePrisonFree_Death.win_condition = "GivePrisonFree_Death";
 			Pchar.quest.GivePrisonFree.win_condition.l1 = "location";
 			Pchar.quest.GivePrisonFree.win_condition.l1.location = pchar.questTemp.jailCanMove.placeId;
-			Pchar.quest.GivePrisonFree.win_condition = "GivePrisonFree";			
+			Pchar.quest.GivePrisonFree.win_condition = "GivePrisonFree";
 			DeleteAttribute(npchar, "LifeDay");
 			GiveItem2Character(npchar, "unarmed");
 			EquipCharacterbyItem(npchar, "unarmed");
-			GetCharacterPos(npchar, &locx, &locy, &locz);	
+			GetCharacterPos(npchar, &locx, &locy, &locz);
 			ChangeCharacterAddressGroup(npchar, npchar.location, "reload", LAi_FindNearestFreeLocator("reload", locx, locy, locz));
 			LAi_SetActorType(npchar);
 			LAi_group_Register("DeliveQuest_Prison");
@@ -334,7 +334,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(npchar, "LifeDay");
 			GiveItem2Character(npchar, "unarmed");
 			EquipCharacterbyItem(npchar, "unarmed");
-			GetCharacterPos(npchar, &locx, &locy, &locz);	
+			GetCharacterPos(npchar, &locx, &locy, &locz);
 			ChangeCharacterAddressGroup(npchar, npchar.location, "reload", LAi_FindNearestFreeLocator("reload", locx, locy, locz));
 			LAi_SetActorType(npchar);
 			LAi_group_Register("DeliveQuest_Prison");
@@ -385,11 +385,11 @@ void ProcessDialogEvent()
 			pchar.quest.GivePrisonFree_Death.win_condition = "GivePrisonFree_Death";
 			Pchar.quest.GivePrisonFree.win_condition.l1 = "location";
 			Pchar.quest.GivePrisonFree.win_condition.l1.location = pchar.questTemp.jailCanMove.placeId;
-			Pchar.quest.GivePrisonFree.win_condition = "GivePrisonFree";			
+			Pchar.quest.GivePrisonFree.win_condition = "GivePrisonFree";
 			DeleteAttribute(npchar, "LifeDay");
 			GiveItem2Character(npchar, "unarmed");
 			EquipCharacterbyItem(npchar, "unarmed");
-			GetCharacterPos(npchar, &locx, &locy, &locz);	
+			GetCharacterPos(npchar, &locx, &locy, &locz);
 			ChangeCharacterAddressGroup(npchar, npchar.location, "reload", LAi_FindNearestFreeLocator("reload", locx, locy, locz));
 			LAi_SetActorType(npchar);
 			LAi_group_Register("DeliveQuest_Prison");
@@ -426,7 +426,7 @@ void ProcessDialogEvent()
 			link.l1.go = "NoMoreTalkExit";
 			AddQuestRecord("GivePrisonFree", "7");
             AddQuestUserData("GivePrisonFree", "sName", pchar.questTemp.jailCanMove.Name);
-			DeleteAttribute(pchar, "questTemp.jailCanMove.islandId");	
+			DeleteAttribute(pchar, "questTemp.jailCanMove.islandId");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.placeId");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.prisonerId");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.IsTrue");
@@ -446,7 +446,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Я нашел его, приятель. Денежки были там же, где я их спрятал. Ну, теперь пойдет другая жизнь...";
 				link.l1 = "Хех, рад, что не ошибся в тебе! Давай делить.";
-				link.l1.go = "PrisonerInPlace_3";			
+				link.l1.go = "PrisonerInPlace_3";
 			}
 			else
 			{
@@ -465,7 +465,7 @@ void ProcessDialogEvent()
 		break;
         case "PrisonerInPlace_2":
 			LAi_group_Delete("EnemyFight");
-			DeleteAttribute(pchar, "questTemp.jailCanMove.islandId");	
+			DeleteAttribute(pchar, "questTemp.jailCanMove.islandId");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.placeId");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.prisonerId");
 			DeleteAttribute(pchar, "questTemp.jailCanMove.IsTrue");
@@ -554,7 +554,7 @@ void ProcessDialogEvent()
 				pchar.quest.DeliverToBander.win_condition.l1 = "location";
 				pchar.quest.DeliverToBander.win_condition.l1.location = pchar.questTemp.jailCanMove.Deliver.locationId;
 				pchar.quest.DeliverToBander.win_condition = "DeliverToBander";
-				pchar.quest.DeliverToBander.again = true; 
+				pchar.quest.DeliverToBander.again = true;
 				SetTimerCondition("DeliverToBander_over", 0, 0, 2, false);
 				ReOpenQuestHeader("GivePrisonFree");
 				AddQuestRecord("GivePrisonFree", "8");
@@ -571,19 +571,19 @@ void GetChestPlaceName()
 	int iTemp = rand(3);
 	switch (iTemp)
 	{
-		case 0: 
+		case 0:
 			pchar.questTemp.jailCanMove.islandId = "Bermudes";
 			pchar.questTemp.jailCanMove.placeId = "Bermudes_Cavern";
 		break;
-		case 1: 
+		case 1:
 			pchar.questTemp.jailCanMove.islandId = "Caiman";
 			pchar.questTemp.jailCanMove.placeId = "Caiman_Grot";
 		break;
-		case 2: 
+		case 2:
 			pchar.questTemp.jailCanMove.islandId = "Dominica";
 			pchar.questTemp.jailCanMove.placeId = "Dominica_Grot";
 		break;
-		case 3: 
+		case 3:
 			pchar.questTemp.jailCanMove.islandId = "Terks";
 			pchar.questTemp.jailCanMove.placeId = "Terks_Grot";
 		break;
@@ -594,7 +594,7 @@ string GetBanderLocation(ref npchar)
 {
     aref	arCommon, arRld, arRld2;
     int	i, n, Qty, Qty2;
-	string LocId; 
+	string LocId;
 	string	storeArray [50];
 	int howStore = 0;
     makearef(arRld, Locations[FindLocation(npchar.city + "_town")].reload);
@@ -606,12 +606,12 @@ string GetBanderLocation(ref npchar)
     		arCommon = GetAttributeN(arRld, i);
 			LocId = arCommon.go;
     		if (findsubstr(LocId, "Common" , 0) != -1 && LocId != pchar.GenQuest.SeekSpy.Location)
-    		{			
+    		{
 				storeArray[howStore] = LocId;
-				howStore++; 
+				howStore++;
 			}
 			if (arCommon.label != "Sea")
-			{	
+			{
 				makearef(arRld2, Locations[FindLocation(LocId)].reload);
 				Qty2 = GetAttributesNum(arRld2);
 				for (n=0; n<Qty2; n++)
@@ -621,10 +621,10 @@ string GetBanderLocation(ref npchar)
 					if (findsubstr(LocId, "Common" , 0) != -1 && LocId != pchar.GenQuest.SeekSpy.Location)
     				{
 						storeArray[howStore] = LocId;
-						howStore++; 					
+						howStore++;
 					}
 				}
-			}	
+			}
 		}
 	}
 	else
@@ -634,12 +634,12 @@ string GetBanderLocation(ref npchar)
     		arCommon = GetAttributeN(arRld, i);
 			LocId = arCommon.go;
     		if (findsubstr(LocId, "Common" , 0) != -1)
-    		{			
+    		{
 				storeArray[howStore] = LocId;
-				howStore++; 
+				howStore++;
 			}
 			if (arCommon.label != "Sea")
-			{	
+			{
 				makearef(arRld2, Locations[FindLocation(LocId)].reload);
 				Qty2 = GetAttributesNum(arRld2);
 				for (n=0; n<Qty2; n++)
@@ -649,10 +649,10 @@ string GetBanderLocation(ref npchar)
 					if (findsubstr(LocId, "Common" , 0) != -1)
     				{
 						storeArray[howStore] = LocId;
-						howStore++; 
+						howStore++;
 					}
 				}
-			}	
+			}
 		}
 	}
 	if (howStore == 0) return "none";
@@ -660,8 +660,8 @@ string GetBanderLocation(ref npchar)
 	SetOpenDoorCommonLoc(npchar.city, LocId); //открываем дверь
 	for(n=0; n<MAX_CHARACTERS; n++)
 	{
-		if (CheckAttribute(&characters[n], "locations") && characters[n].locations == LocId) 
-		{			
+		if (CheckAttribute(&characters[n], "locations") && characters[n].locations == LocId)
+		{
 			characters[n].lifeDay = 0;
 		}
 	}

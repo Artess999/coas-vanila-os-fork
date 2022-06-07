@@ -319,14 +319,14 @@ void BI_FastCommand()
 		}
 		switch(FComName)
 		{
-			case "OpenBox":	
+			case "OpenBox":
 				if (!LAi_IsFightMode(pchar)) // в бою быстрой командой низя открыть сундук
 				{
-					bEC = true; 
-					OpenBoxProcedure();	
+					bEC = true;
+					OpenBoxProcedure();
 				}
 			break;
-				
+
 			case "Pick": bEC = true; Item_OnPickItem(); break;
 			case "Action": bEC = true; Item_OnUseItem(); break;
 			case "Talk":

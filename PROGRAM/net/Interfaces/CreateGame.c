@@ -1,6 +1,6 @@
 int iGameType;
 int iMaxNumPlayers, iGameSpeed, iTimeLimit, iStartPosition, iCredit, iMaxShipClass;
-int iGameTime = 0; 
+int iGameTime = 0;
 int iWeatherType = 0;
 int iNumTeams = 2;
 
@@ -28,13 +28,13 @@ void InitInterface(string iniName)
 	// select checkbox LAN game
 	CheckButton_SetState("CHECKBUTTON_LAN", 1, true);
 
-	iMaxNumPlayers = NET_MAXCLIENTS;		
+	iMaxNumPlayers = NET_MAXCLIENTS;
 	iGameSpeed = 1;
 	iTimeLimit = 0;
 	iStartPosition = 0;
 	iCredit = 300000;
 	iMaxShipClass = 1;
-	
+
 	CS_SetNumTeams();
 	CS_SetNumPlayers();
 	CS_SetGameSpeed();
@@ -47,7 +47,7 @@ void InitInterface(string iniName)
 
 	SetEventHandler("OnCancel", "OnCancel", 0);
 
-	SetEventHandler("TableSelectChange", "CS_TableSelectChange", 0);	
+	SetEventHandler("TableSelectChange", "CS_TableSelectChange", 0);
 
 	SetEventHandler("AddPlayer", "CS_AddPlayer", 0);
 	SetEventHandler("DecPlayer", "CS_DecPlayer", 0);
@@ -133,9 +133,9 @@ void CS_DecGameSpeed() { iGameSpeed--; CS_SetGameSpeed(); }
 
 void CS_SetTimeLimit()
 {
-	if (iTimeLimit <= 0) 
-	{ 
-		iTimeLimit = 0; 
+	if (iTimeLimit <= 0)
+	{
+		iTimeLimit = 0;
 		StringCollection_SetText("STRINGS_VALUE", 4, "#");
 	}
 	else
@@ -252,7 +252,7 @@ void CS_TableSelectChange()
 {
 	string sControl = GetEventData();
 	int iSelected = GetEventData();
-	
+
 	if (sControl == "TABLE_GAMETYPE") { CS_SelectNewGameType(); return; }
 	if (sControl == "TABLE_MAPLIST" || sControl == "TABLE_MAPLIST_FORT") { CS_SelectNewIsland(); return; }
 
@@ -265,7 +265,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("OnCreate", "OnCreate");
 	DelEventHandler("OnCancel", "OnCancel");
 
-	SetEventHandler("TableSelectChange", "CS_TableSelectChange", 0);	
+	SetEventHandler("TableSelectChange", "CS_TableSelectChange", 0);
 
 	DelEventHandler("AddPlayer", "CS_AddPlayer");
 	DelEventHandler("DecPlayer", "CS_DecPlayer");
@@ -299,7 +299,7 @@ void CS_CheckButtonChange()
 	string sNode = GetEventData();
 	int iButtonNumber = GetEventData();
 	int bChecked = GetEventData();
-	
+
 	if (sNode == "CHECKBUTTON_LAN" && !bChecked)
 	{
 		//CheckButton_SetState("CHECKBUTTON_LAN", 1, true);
@@ -318,7 +318,7 @@ string CS_GetCurrentWeather()
 {
 	switch (iGameTime)
 	{
-		case 0: 
+		case 0:
 			switch (iWeatherType)
 			{
 				case 0:	return "Six Hours"; break;
@@ -327,7 +327,7 @@ string CS_GetCurrentWeather()
 				case 3:	return "Overcast2"; break;
 			}
 		break;
-		case 1: 
+		case 1:
 			switch (iWeatherType)
 			{
 				case 0:	return "Eleven Hour"; break;
@@ -336,7 +336,7 @@ string CS_GetCurrentWeather()
 				case 3:	return "Stormy1"; break;
 			}
 		break;
-		case 2: 
+		case 2:
 			switch (iWeatherType)
 			{
 				case 0:	return "Nineteen Hour"; break;
@@ -345,7 +345,7 @@ string CS_GetCurrentWeather()
 				case 3:	return "Overcast1"; break;
 			}
 		break;
-		case 3: 
+		case 3:
 			switch (iWeatherType)
 			{
 				case 0:	return "Tweny Four Hour"; break;
@@ -453,7 +453,7 @@ void OnCreate()
 		return;
 	}
 
-	// if LanServer == false && InetServer == false 
+	// if LanServer == false && InetServer == false
 	if (sti(GameInterface.CHECKBUTTON_LAN.state1) == false && sti(GameInterface.CHECKBUTTON_INET.state1) == false)
 	{
 		SetFormatedText("TEXT_OK", XI_ConvertString("Net_YouNeedtoChoseServerMode"));

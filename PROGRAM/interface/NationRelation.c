@@ -21,10 +21,10 @@ void InitInterface(string iniName)
 	int     deltaX = 170;
 	int     deltaY = 220;
 	int     max_nt = MAX_NATIONS;
-	
+
 	ref chref = GetMainCharacter();
     int j;
-    
+
 	if (bBettaTestMode)
 	{   // со столбцом ГГ
 		SetNewPicture("ICON_1", "interfaces\PORTRAITS\64\face_" + chref.faceId+ ".tga");
@@ -73,7 +73,7 @@ void InitInterface(string iniName)
 		sx=75;
     	sy=120;
 		sz = 60;
-		
+
 		deltaX = 140;
 		deltaY = 200;
 		for (i=0; i< max_nt; i++)
@@ -107,17 +107,17 @@ void InitInterface(string iniName)
     SetEventHandler("ievnt_command","ProcessCommandExecute",0);
     SetEventHandler("MouseRClickUP","HideInfo",0);
 	SetEventHandler("ShowInfoWindow","ShowInfoWindow",0);
-    
+
     /////////////
     CreateString(true,"titul", XI_ConvertString("Hunter_type"),"DIALOG2",COLOR_NORMAL,609,100,SCRIPT_ALIGN_LEFT,1.0);
-    
+
     CreateString(true,"EngH","","INTERFACE_ULTRASMALL",COLOR_NORMAL,700,134,SCRIPT_ALIGN_CENTER,1.0);
     CreateString(true,"FraH","","INTERFACE_ULTRASMALL",COLOR_NORMAL,700,190,SCRIPT_ALIGN_CENTER,1.0);
     CreateString(true,"SpaH","","INTERFACE_ULTRASMALL",COLOR_NORMAL,700,246,SCRIPT_ALIGN_CENTER,1.0);
     CreateString(true,"HolH","","INTERFACE_ULTRASMALL",COLOR_NORMAL,700,302,SCRIPT_ALIGN_CENTER,1.0);
 
     CalculateHunter();
-    
+
     CreateString(true,"Flag1","Флаг на корабле","DIALOG2",COLOR_NORMAL,630,432,SCRIPT_ALIGN_LEFT,1.0);
     curNationIdx = sti(chref.nation);
     SetNewNation(0);
@@ -187,7 +187,7 @@ void ShowInfoWindow()
 			sHeader = XI_ConvertString("Nation");
 			sText1 = GetRPGText("Nation_hint");
 		break;
-		
+
 		case "INFO_CLICK":
 			sHeader = XI_ConvertString("Hunter_type");
 			sText1 = GetRPGText("Hunter_hint");
@@ -208,9 +208,9 @@ void FlagsProcess()
 	bool bTmpBool = true;
 	int i, cn;
 	ref chref;
-	
+
 	if (CheckAttribute(pchar, "DisableChangeFlagMode")) return; // нефиг менять файл за 3 секунды сразу
-	
+
 	if (!bBettaTestMode)
 	{
     	//if(LAi_group_IsActivePlayerAlarm()) bTmpBool = false;
@@ -241,7 +241,7 @@ void FlagsProcess()
 	Sea_ClearCheckFlag(); // сбросить всем в море проверку смотрения на флаг.
 	pchar.DisableChangeFlagMode = true; //закрываем Флаг
 	DoQuestFunctionDelay("FreeChangeFlagMode", 15.0); // ролик + запас
-	
+
 	switch (curNationIdx)
 	{
     	case ENGLAND:	EnglandProcess();	break;
@@ -333,13 +333,13 @@ void SetNewNation(int add)
 {
     ref   mchar = GetMainCharacter();
     bool  ok, ok2;
-    
+
     curNationIdx = curNationIdx + add;
     if (curNationIdx < 0) curNationIdx = 4;
     if (curNationIdx > 4) curNationIdx = 0;
     //CreateImage("FlagPic", "NATIONS",GetNationNameByType(curNationIdx), 648, 455, 715, 522);
     SetNewGroupPicture("FlagPic", "NATIONS", GetNationNameByType(curNationIdx));
-    
+
     if (IsCharacterPerkOn(mchar,"FlagPir")  ||
 	    IsCharacterPerkOn(mchar,"FlagEng")  ||
 		IsCharacterPerkOn(mchar,"FlagFra")  ||

@@ -2,7 +2,7 @@
 int CreateNevisCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ int CreateNevisCharacters(int n)
 	LAi_group_MoveCharacter(ch, "ENGLAND_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);			//Банкир
 	ch.id		= "Charles_usurer";
 	ch.model	= "usurer_4";
@@ -194,6 +194,6 @@ int CreateNevisCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

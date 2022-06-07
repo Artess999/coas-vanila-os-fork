@@ -6,7 +6,7 @@ void CreateCharacters()
 	int n;
 
 	//InitBio();
-	
+
 
 	for(n=0; n<TOTAL_CHARACTERS; n++)
 	{
@@ -19,7 +19,7 @@ void CreateCharacters()
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// ПЕРВЫЙ ПЕРСОНАЖ - ПАРЕНЬ
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	makeref(ch,Characters[1]);		//Blaze Sharp
 	ch.name 	= "Блэйз";
 	ch.lastname = "Шарп";
@@ -78,7 +78,7 @@ void CreateCharacters()
 	ch.rumourquest = 0;
 	ch.abordage = 0;
 	ch.isSmuggPossible = 1;
-	
+
 	// Награда за голову -->
     ch.reputation.Enghunter = "-5";
     ch.reputation.Frahunter = "-5";
@@ -95,7 +95,7 @@ void CreateCharacters()
 	n = CreateAntiguaCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Antigua: " + n);
-	
+
 	n = CreateBarbadosCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Barbados: " + n);
@@ -103,15 +103,15 @@ void CreateCharacters()
 	n = CreateJamaicaCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Jamaica: " + n);
-	
+
 	n = CreateCuracaoCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Curacao: " + n);
-	
+
 	n = CreateGuadeloupeCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Guadeloupe: " + n);
-	
+
 	n = CreateSantiagoCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Santiago: " + n);
@@ -119,23 +119,23 @@ void CreateCharacters()
 	n = CreatePuertoPrincipeCharacters(n);
 	ReloadProgressUpdate();
 	Trace("PuertoPrincipe: " + n);
-	
+
 	n = CreateMartiniqueCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Martinique: " + n);
-	
+
 	n = CreateHavanaCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Havana: " + n);
-	
+
 	n = CreateNevisCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Nevis: " + n);
-	
+
 	n = CreatePuertoRicoCharacters(n);
 	ReloadProgressUpdate();
 	Trace("PuertoRico: " + n);
-	
+
 	n = CreateSentMartinCharacters(n);
 	ReloadProgressUpdate();
 	Trace("SentMartin: " + n);
@@ -143,23 +143,23 @@ void CreateCharacters()
 	n = CreateBermudesCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Bermudes: " + n);
-	
+
 	n = CreateTrinidadCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Trinidad: " + n);
-	
+
 	n = CreatePortPaxCharacters(n);
 	ReloadProgressUpdate();
 	Trace("PortPax: " + n);
-	
+
 	n = CreateSantoDomingoCharacters(n);
 	ReloadProgressUpdate();
 	Trace("SantoDomingo: " + n);
-	
+
 	n = CreateLaVegaCharacters(n);
 	ReloadProgressUpdate();
 	Trace("LaVega: " + n);
-	
+
 	n = CreateTortugaCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Tortuga: " + n);
@@ -167,7 +167,7 @@ void CreateCharacters()
 	n = CreatePanamaCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Panama: " + n);
-		
+
 	n = CreatePortoBelloCharacters(n);
 	ReloadProgressUpdate();
 	Trace("PortoBello: " + n);
@@ -195,15 +195,15 @@ void CreateCharacters()
 	n = CreateMaracaiboCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Maracaibo: " + n);
-	
+
 	n = CreateStoryCharacters(n);
 	ReloadProgressUpdate();
 	Trace("Story: " + n);
-	
+
 	CreateOtherCharacters();
 	globalCharacters = n; //eddy. если лодочник выведен из конкурса, то и инкремент не нужен. иначе болтается левый нпс
 	MAX_CHARACTERS = globalCharacters;
-	
+
     trace("ВСЕГО НПС В ИГРЕ (статиков) = " + MAX_CHARACTERS);
     trace("Version = " + GetVerNum());
 	ReloadProgressUpdate();
@@ -256,7 +256,7 @@ void CreateCharacters()
 		if(n > 1) rCharacter.FaceId = 0;
 
 		rCharacter.FaceId = makeint(rand(2) + 2);
-		
+
 		FaceMaker(rCharacter);
 
 		rCharacter.headModel = "h_" + rCharacter.model;
@@ -295,18 +295,18 @@ void CreateCharacters()
 	}
 
 	ReloadProgressUpdate();
-	
+
 	//Characters[GetCharacterIndex("Beatriss")].model.animation = "woman";
 	Characters[GetCharacterIndex("Blaze")].model.animation = "Blaze";
 
 	// boal -->
 	initStartState2Character(pchar); // заполнение всяких инитов
-	
+
 	NullCharacter.id       = "none"; // заглушка
 	NullCharacter.location = "none";
 
 	NullCharacter.SalayPayMonth = STARTGAME_MONTH; //месяц когда ЗП уже плотили
-	
+
 	// карты, деньги, два ствола... boal 16/05/05
 	NullCharacter.Cards.c1.pic = "hearts_A";
 	NullCharacter.Cards.c1.count = 11;
@@ -383,7 +383,7 @@ void CreateCharacters()
 	NullCharacter.Cards.c34.count = 7;
 	NullCharacter.Cards.c35.pic = "clubs_6";
 	NullCharacter.Cards.c35.count = 6;
-	
+
 	// ограничения по типам ГГ в специал
 	NullCharacter.HeroLimitSPEC.SecretAgent.Max_Strength = 8;
 	NullCharacter.HeroLimitSPEC.SecretAgent.Max_Perception = 8;
@@ -407,7 +407,7 @@ void CreateCharacters()
 
 	NullCharacter.HeroLimitSPEC.Inquisitor.Min_Charisma = 6;
 	NullCharacter.HeroLimitSPEC.Inquisitor.Max_Intellect = 8;
-	
+
 	InitRPGType();
 	// boal <--
 	// зават городов -->
@@ -428,7 +428,7 @@ void CreateCharacters()
 	NullCharacter.GenQuestFort.Santiago.next0  = "Santiago_town";
     NullCharacter.GenQuestFort.Santiago.next1  = "Santiago_townhall";
     NullCharacter.GenQuestFort.Santiago.next2  = "Santiago_ExitTown";
-    
+
     NullCharacter.GenQuestFort.SentJons.how        = 3;
     NullCharacter.GenQuestFort.SentJons.howSolder  = 3;
 	NullCharacter.GenQuestFort.SentJons.next0  = "SentJons_town";
@@ -464,37 +464,37 @@ void CreateCharacters()
 	NullCharacter.GenQuestFort.SantoDomingo.next0  = "SantoDomingo_town";
     NullCharacter.GenQuestFort.SantoDomingo.next1  = "SantoDomingo_townhall";
     NullCharacter.GenQuestFort.SantoDomingo.next2  = "SantoDomingo_ExitTown";
-    
+
     NullCharacter.GenQuestFort.PortPax.how        = 3;
     NullCharacter.GenQuestFort.PortPax.howSolder  = 3;
 	NullCharacter.GenQuestFort.PortPax.next0  = "PortPax_town";
     NullCharacter.GenQuestFort.PortPax.next1  = "PortPax_townhall";
     NullCharacter.GenQuestFort.PortPax.next2  = "PortPax_ExitTown";
-    
+
     NullCharacter.GenQuestFort.FortFrance.how        = 3;
     NullCharacter.GenQuestFort.FortFrance.howSolder  = 3;
 	NullCharacter.GenQuestFort.FortFrance.next0  = "FortFrance_town";
     NullCharacter.GenQuestFort.FortFrance.next1  = "FortFrance_townhall";
     NullCharacter.GenQuestFort.FortFrance.next2  = "FortFrance_ExitTown";
-    
+
     NullCharacter.GenQuestFort.Havana.how        = 3;
     NullCharacter.GenQuestFort.Havana.howSolder  = 3;
 	NullCharacter.GenQuestFort.Havana.next0  = "Havana_town";
     NullCharacter.GenQuestFort.Havana.next1  = "Havana_townhall";
     NullCharacter.GenQuestFort.Havana.next2  = "Havana_ExitTown";
-    
+
     NullCharacter.GenQuestFort.Charles.how        = 3;
     NullCharacter.GenQuestFort.Charles.howSolder  = 3;
 	NullCharacter.GenQuestFort.Charles.next0  = "Charles_town";
     NullCharacter.GenQuestFort.Charles.next1  = "Charles_townhall";
     NullCharacter.GenQuestFort.Charles.next2  = "Charles_ExitTown";
-    
+
     NullCharacter.GenQuestFort.PortoBello.how        = 3;
     NullCharacter.GenQuestFort.PortoBello.howSolder  = 3;
 	NullCharacter.GenQuestFort.PortoBello.next0  = "PortoBello_town";
     NullCharacter.GenQuestFort.PortoBello.next1  = "PortoBello_townhall";
     NullCharacter.GenQuestFort.PortoBello.next2  = "PortoBello_ExitTown";
-    
+
     NullCharacter.GenQuestFort.PortSpein.how        = 3;
     NullCharacter.GenQuestFort.PortSpein.howSolder  = 3;
 	NullCharacter.GenQuestFort.PortSpein.next0  = "PortSpein_town";
@@ -536,13 +536,13 @@ void CreateCharacters()
 	NullCharacter.GenQuestFort.Caracas.next0  = "Caracas_town";
     NullCharacter.GenQuestFort.Caracas.next1  = "Caracas_townhall";
     NullCharacter.GenQuestFort.Caracas.next2  = "Caracas_ExitTown";
-    
+
     NullCharacter.GenQuestFort.Cumana.how        = 3;
     NullCharacter.GenQuestFort.Cumana.howSolder  = 3;
 	NullCharacter.GenQuestFort.Cumana.next0  = "Cumana_town";
     NullCharacter.GenQuestFort.Cumana.next1  = "Cumana_townhall";
     NullCharacter.GenQuestFort.Cumana.next2  = "Cumana_ExitTown";
-    
+
     NullCharacter.GenQuestFort.SantaCatalina.how        = 3;
     NullCharacter.GenQuestFort.SantaCatalina.howSolder  = 3;
 	NullCharacter.GenQuestFort.SantaCatalina.next0  = "SantaCatalina_town";
@@ -554,7 +554,7 @@ void CreateCharacters()
 	NullCharacter.GenQuestFort.Beliz.next0  = "Beliz_town";
     NullCharacter.GenQuestFort.Beliz.next1  = "Beliz_townhall";
     NullCharacter.GenQuestFort.Beliz.next2  = "Beliz_ExitTown";
-    
+
     NullCharacter.GenQuestFort.LaVega.how        = 3;
     NullCharacter.GenQuestFort.LaVega.howSolder  = 3;
 	NullCharacter.GenQuestFort.LaVega.next0  = "LaVega_town";

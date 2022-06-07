@@ -13,7 +13,7 @@ void Duel_Prepare_Fight()
 	{
 		npchar.LifeDay = sti(npchar.LifeDay) + 2;
 	}
-	
+
 	if (CheckAttribute(rLoc, "type") && rLoc.type == "tavern")
 	{
 		if (PChar.chr_ai.type == LAI_TYPE_SIT)
@@ -41,7 +41,7 @@ void Duel_Prepare_Fight()
 	for(i=1; i<4; i++)
 	{
 		idx = GetOfficersIndex(pchar, i);
-		if(idx != -1) 
+		if(idx != -1)
 		{
 			SetCharacterTask_Stay(&Characters[idx]);
 			Characters[idx].chr_ai.tmpl = LAI_TMPL_STAY;
@@ -66,7 +66,7 @@ void Duel_Move_Opponent2Place(string qName)
 	string sTemp, attrName;
 
 	npchar = CharacterFromID(pchar.questTemp.duel.enemy);
-    
+
 	if (GetQuestPastTimeParam("questTemp.Duel.StartTime") < sti(pchar.questTemp.Duel.WaitTime))
 	{
 		DeleteAttribute(pchar, "quest.duel_move_opponent2place.over");
@@ -100,15 +100,15 @@ void Duel_Move_Opponent2Place(string qName)
 	sld = &Locations[FindLocation(pchar.questTemp.duel.place)];
 	makearef(arAll, sld.(attrName));
 	attrName = GetAttributeName(GetAttributeN(arAll, rand(0)));
-	ChangeCharacterAddressGroup(npchar, pchar.questTemp.duel.place, sTemp, attrName); 
+	ChangeCharacterAddressGroup(npchar, pchar.questTemp.duel.place, sTemp, attrName);
 	//прерывание на попадание в локатор
 	pchar.quest.Duel_Talk_Off_Town.win_condition.l1        = "locator";
 	pchar.quest.Duel_Talk_Off_Town.win_condition.l1.location = sld.id;
 	pchar.quest.Duel_Talk_Off_Town.win_condition.l1.locator_group = "Encdetector";
 	pchar.quest.Duel_Talk_Off_Town.win_condition.l1.locator = sTemp;
 	pchar.quest.Duel_Talk_Off_Town.function = "Duel_Talk_Off_Town";
-	pchar.quest.Duel_Talk_Off_Town.EncQty = 1; 
-	pchar.quest.Duel_Talk_Off_Town.LocIdx = sld.index; 
+	pchar.quest.Duel_Talk_Off_Town.EncQty = 1;
+	pchar.quest.Duel_Talk_Off_Town.LocIdx = sld.index;
 
 	//чтобы не сидел ;) а стоял на месте
 	LAi_SetGuardianType(npchar);
@@ -133,7 +133,7 @@ void Duel_CheckSituation(string qName)
 
 //по входу в локатор, последний разговор перед боем
 void Duel_Talk_Off_Town(string qName)
-{	
+{
 	ref sld;
 	sld = CharacterFromID(pchar.questTemp.duel.enemy);
 	LAi_SetActorType(sld);
@@ -242,7 +242,7 @@ void Duel_Move_OpponentBack(string qName)
 
 	if (CheckAttribute(npchar, "BackUp"))
 	{
-		ChangeCharacterAddressGroup(npchar, npchar.BackUp.location, npchar.BackUp.location.group, npchar.BackUp.location.locator); 
+		ChangeCharacterAddressGroup(npchar, npchar.BackUp.location, npchar.BackUp.location.group, npchar.BackUp.location.locator);
 		npchar.Dialog.CurrentNode = npchar.BackUp.DialogNode;
 	}
 	Locations[FindLocation(pchar.questTemp.duel.place)].DisableEncounters = false;
@@ -260,7 +260,7 @@ void Duel_Sea_Prepare()
 	//
 	//TODO: Нужно убрать все малусы за тех у кого аттрибут AlwaysEnemy = true
 	//		это квестовые персы...
-	NPChar.AlwaysEnemy = true;		  
+	NPChar.AlwaysEnemy = true;
 	NPChar.Coastal_Captain = true;  // не ругать нации
 	NPChar.Abordage.Enable = false;
 	NPChar.Nation.Bak = NPChar.Nation;
@@ -397,7 +397,7 @@ void CheckLinkFunction(ref Dialog)
 {
 	int i, iNum;
 	string func;
-	aref link, links; 
+	aref link, links;
 	makearef(links, Dialog.Links);
 
 	iNum = GetAttributesNum(links);

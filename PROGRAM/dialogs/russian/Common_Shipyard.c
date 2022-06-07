@@ -34,33 +34,33 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "ship_tunning_not_now":  // аналог выхода, со старых времен, много переделывать.
 			DialogExit();
 			NextDiag.CurrentNode = "Master_Ship";  // выход для тюнинга, нужно тут из-за LoadSegment
 		break;
-		
+
 		case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			LAi_group_Attack(NPChar, Pchar);
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
-		
+
 		case "First time":
             if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги приятель, пока солдаты не сделали из тебя решето..."), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги приятель, пока солдаты не сделали из тебя решето..."),
 					LinkRandPhrase("Что тебе нужно, негодяй?! Городская стража уже взяла твой след, далеко тебе не уйти, грязный пират!", "Грязный убийца, вон из моего дома! Стража!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."),
 					RandPhraseSimple("Заткни свою пасть, " + GetWorkTypeOfMan(npchar, "") + ", а не то вырву твой поганый язык!", "Хех, " + GetWorkTypeOfMan(npchar, "") + ", а все туда же - пиратов ловить! Вот что я тебе скажу, приятель: сиди тихо и будешь жить..."));
 				link.l1.go = "fight";
 				break;
 			}
 			NextDiag.TempNode = "First time";
-			
+
 			//homo Линейка Блада
             if (Pchar.questTemp.CapBloodLine == true )
             {
@@ -76,7 +76,7 @@ void ProcessDialogEvent()
                 }
 				break;
             }
-			
+
 			if(NPChar.quest.meeting == "0")
 			{
 				dialog.Text = TimeGreeting() + "! Я "+ GetFullName(NPChar) + ", владелец этой верфи.";
@@ -90,14 +90,14 @@ void ProcessDialogEvent()
 				//дача квеста
 				if (rand(1) && pchar.questTemp.different == "free" && GetNpcQuestPastDayWOInit(npchar, "questShipyardsMap") > 7 && !CheckAttribute(pchar, "questTemp.different.ShipyardsMap"))
 				{
-					dialog.text = "Послушайте, у меня есть к вам одно важное дело. Надеюсь, сумеете мне помочь...";					
+					dialog.text = "Послушайте, у меня есть к вам одно важное дело. Надеюсь, сумеете мне помочь...";
 					link.l1 = "Давайте послушаем, что за дело.";
 					link.l1.go = "ShipyardsMap_1";
 					SaveCurrentNpcQuestDateParam(npchar, "questShipyardsMap");
 					break;
 				}
-				//<<--- квест украсть чертеж на верфи			
-				
+				//<<--- квест украсть чертеж на верфи
+
 				dialog.Text = pcharrepphrase("А, это опять ты? Ну да ладно, деньги не пахнут.",
                                         TimeGreeting() + ", чем я могу помочь вам, " + GetAddress_Form(NPChar) + "?");
 				Link.l1 = pcharrepphrase("Вот-вот, я плачу - ты делаешь.",
@@ -115,7 +115,7 @@ void ProcessDialogEvent()
 				}
   				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") //квест мэра - на связь с нашим шпионом
 				{
-					link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
+					link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".",
 						GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " прислал меня к вам. Я должен кое-что забрать...");
 					link.l7.go = "IntelligenceForAll";
 				}
@@ -136,7 +136,7 @@ void ProcessDialogEvent()
 	            //<-- на квест Аззи.
 				//проверка выполнения квеста украсть чертеж на верфи
 				if (CheckCharacterItem(pchar, "ShipyardsMap") && CheckAttribute(pchar, "questTemp.different.ShipyardsMap.Id") && pchar.questTemp.different.ShipyardsMap.Id == npchar.id)
-				{				
+				{
 					link.l6 = "Я выполнил ваше поручение. Чертеж из верфи " + XI_ConvertString("Colony" + pchar.questTemp.different.ShipyardsMap.city + "Gen") + " у меня.";
 					link.l6.go = "ShipyardsMapOk_1";
 				}
@@ -144,7 +144,7 @@ void ProcessDialogEvent()
 				Link.l9.go = "exit";
 			}
 		break;
-		
+
 		case "Meeting":
 				dialog.Text = "Хорошо, я рад встречи с новым клиентом. Моя верфь к вашим услугам.";
 				Link.l1 = "Великолепно, " + GetFullName(NPChar) + ". Давайте посмотрим то, что вы можете мне предложить.";
@@ -161,7 +161,7 @@ void ProcessDialogEvent()
 				}
   				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") //квест мэра - на связь с нашим шпионом
 				{
-					link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
+					link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".",
 						GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " прислал меня к вам. Я должен кое-что забрать...");
 					link.l7.go = "IntelligenceForAll";
 				}
@@ -183,7 +183,7 @@ void ProcessDialogEvent()
 				Link.l9 = "Я должен идти. Благодарю вас.";
 				Link.l9.go = "exit";
 		break;
-		
+
 		case "shipyard":
             ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 		    if (sti(Pchar.Ship.Type) == SHIP_NOTUSED || ok)
@@ -205,7 +205,7 @@ void ProcessDialogEvent()
 			    link.l1.go = "exit";
 			}
 		break;
-		
+
 		case "Cannons":
             ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 		    if (sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok)
@@ -288,7 +288,7 @@ void ProcessDialogEvent()
 			sld.startLocation = pchar.questTemp.different.ShipyardsMap.city + "_Shipyard";
 			sld.startLocator = "item1";
 			sld.ShipName = pchar.questTemp.different.ShipyardsMap.what;
-			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты 
+			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты
 			ReOpenQuestHeader("ShipyardsMap");
 			AddQuestRecord("ShipyardsMap", "1");
 			AddQuestUserData("ShipyardsMap", "sCity", XI_ConvertString("Colony" + npchar.city + "Gen"));
@@ -384,7 +384,7 @@ void ProcessDialogEvent()
 			CloseQuestHeader("ShipyardsMap");
 			DeleteAttribute(pchar, "questTemp.different.ShipyardsMap");
 		break;
-		
+
         ////////////////////////////////////////////////homo линейка Блада/////////////////////////////////////////
         case "Blood_Shipyard1":
 			dialog.text = "Кхм, ну, это зависит от того, кто ваш друг и зачем ему нужно на Тортугу, доктор.";
@@ -395,7 +395,7 @@ void ProcessDialogEvent()
 			link.l3 = "Вы о нем слышали. Капитан Жак Соловей.";
 			link.l3.go = "Blood_Shipyard4";
 		break;
-		
+
 		case "Blood_Shipyard2":
 			dialog.text = "Скупщик? Торговец-скупщик хочет попасть на Тортугу? Вы меня разыгрываете, доктор!..";
 			link.l1 = "И в мыслях не было, сэр! Я всего лишь, кхм, пытаюсь помочь. Ну, ему. Другу. Да.";
@@ -415,7 +415,7 @@ void ProcessDialogEvent()
 			link.l1 = "Эээ... ну, да... бывший. Вы его знаете?";
 			link.l1.go = "Blood_Shipyard6";
 		break;
-		
+
         case "Blood_Shipyard5":
 			dialog.text = "Что ж, я вам поверю. На этот раз. Где-то в городе находится человек по имени Джон Майнер. Поговорите с ним, он только что купил у меня корвет.";
 			link.l1 = "Премного благодарен. ";
@@ -423,19 +423,19 @@ void ProcessDialogEvent()
 			LoginMainer();
 			AddQuestRecord("PirateQuest", "2");
 		break;
-		
+
         case "Blood_Shipyard6":
 			dialog.text = "Как вы правильно подметили, я о нем слышал. Не знаю, как жил Жак Соловей до того, как отправился с Тортуги за кладом на... это было в то время, когда он был капитаном ''Эбеновой Устрицы''.";
 			link.l1 = "Что?! Он не упоминал об этом.";
 			link.l1.go = "Blood_Shipyard7";
 		break;
-		
+
         case "Blood_Shipyard7":
 			dialog.text = "Теперь он не распускает язык - жизнь его проучила. На третий день пути пришел к нему старпом и говорит: ''у нас уговор делиться''. Мол, все должны знать, где сокровища. Ну, Жак дал ему карту, и ночью...";
 			link.l1 = "...был бунт?";
 			link.l1.go = "Blood_Shipyard8";
 		break;
-		
+
         case "Blood_Shipyard8":
 			dialog.text = "Нет! Не перебивай меня! Ночью карта пропала. Морские волки обнаружили, что табака полно, а трубок нет вовсе, и дружно карту сокровищ скурили, пустив на самокрутки. Наутро четвертого дня ром кончился, табак тоже, а сокровищ и вовсе теперь не найти. Какой-то барбос обвинил во всем Жака, и команда поддержала. Пираты высадили его на остров, чтобы он подох… после того как сбрендит от жары. Знаешь, Питер, когда пирата гонят, ему дают пистолет с одной пулей. Всего одной. Ну, для охоты или чтобы спастись маловато, но… Соловью ни черта не дали. Но Жак выбрался с острова, а злобу хранит по сей день. Вот уже десять лет он не может придумать способ, как отомстить новому капитану ''Устрицы'' эпично и зрелищно...";
 			link.l1 = "История потрясающая, но что насчет капитана и корабля? Порекомендуете кого-нибудь?";
@@ -443,7 +443,7 @@ void ProcessDialogEvent()
 			link.l2 = "А как Жак выбрался?";
 			link.l2.go = "Blood_Shipyard10";
 		break;
-		
+
         case "Blood_Shipyard9":
 			dialog.text = "Найди человека по имени Джон Майнер - он где-то в городе. Думаю, на только что приобретенном корвете он отправится именно на Тортугу.";
 			link.l1 = "Премного благодарен. ";
@@ -451,19 +451,19 @@ void ProcessDialogEvent()
 			LoginMainer();
 			AddQuestRecord("PirateQuest", "2");
 		break;
-		
+
         case "Blood_Shipyard10":
 			dialog.text = "О-о, расскажу! Он оказался на отмели и просидел там три дня и три ночи… чтобы обитающая там живность, хмм, немного к нему привыкла. Наутро четвертого дня он схватил двух морских черепах, связал и от души над ними поржал!..";
 			link.l1 = "М-м... а выбрался-то как?";
 			link.l1.go = "Blood_Shipyard11";
 		break;
-		
+
         case "Blood_Shipyard11":
 			dialog.text = "Просидев три дня, он еще сутки ржал над черепахами, а потом приплыли контрабандисты, у которых там тайник, и тоже поржали искренне, после чего, в обмен на связанных черепах, взяли его с собой.";
 			link.l1 = "Невероятно! Так как мне помочь ему добраться до Тортуги?";
 			link.l1.go = "Blood_Shipyard12";
 		break;
-		
+
         case "Blood_Shipyard12":
 			dialog.text = "Тебе нужен капитан Майнер, Джон Майнер - он только что приобрел у меня корвет. Отплыть он пока не успел, так что поищи его в городе.";
 			link.l1 = "Премного благодарен.";

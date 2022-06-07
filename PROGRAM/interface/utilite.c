@@ -134,7 +134,7 @@ void SetNewPicture(string _NodeName,string _NewPictureFileName)
 
 void SetNewGroupPicture(string sNodeName,string sGroup, string sName)
 {
-	SendMessage(&GameInterface,"lslss", MSG_INTERFACE_MSG_TO_NODE, sNodeName ,6, sGroup, sName);	
+	SendMessage(&GameInterface,"lslss", MSG_INTERFACE_MSG_TO_NODE, sNodeName ,6, sGroup, sName);
 }
 
 void SetNewVideoPicture(string _NodeName,string _NewVideoPicFileName)
@@ -369,7 +369,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		{
 			AddFaceGroup(strAccess,"FACE128_"+Characters[sti(chref.Fellows.Passengers.navigator)].faceID);
 		}
-		
+
 		if (chref.Fellows.Passengers.boatswain == "-1")
 		{
 			AddFaceGroup(strAccess,"FACE128_BOATSWAIN");
@@ -378,7 +378,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		{
 			AddFaceGroup(strAccess,"FACE128_"+Characters[sti(chref.Fellows.Passengers.boatswain)].faceID);
 		}
-		
+
 		if (chref.Fellows.Passengers.cannoner == "-1")
 		{
 			AddFaceGroup(strAccess,"FACE128_cannoner");
@@ -387,7 +387,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		{
 			AddFaceGroup(strAccess,"FACE128_"+Characters[sti(chref.Fellows.Passengers.cannoner)].faceID);
 		}
-		
+
 		if (chref.Fellows.Passengers.doctor == "-1")
 		{
 			AddFaceGroup(strAccess,"FACE128_doctor");
@@ -396,7 +396,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		{
 			AddFaceGroup(strAccess,"FACE128_"+Characters[sti(chref.Fellows.Passengers.doctor)].faceID);
 		}
-		
+
 		if (chref.Fellows.Passengers.treasurer == "-1")
 		{
 			AddFaceGroup(strAccess,"FACE128_treasurer");
@@ -405,7 +405,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		{
 			AddFaceGroup(strAccess,"FACE128_"+Characters[sti(chref.Fellows.Passengers.treasurer)].faceID);
 		}
-		
+
 		if (chref.Fellows.Passengers.carpenter == "-1")
 		{
 			AddFaceGroup(strAccess,"FACE128_carpenter");
@@ -414,7 +414,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		{
 			AddFaceGroup(strAccess,"FACE128_"+Characters[sti(chref.Fellows.Passengers.carpenter)].faceID);
 		}
-		
+
 		//fighters
 		for(n=1; n<4; n++)
 		{
@@ -446,16 +446,16 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		for(n=0; n<q; n++)
 		{
 			cn = GetPassenger(chref,n);
-			if( cn>=0) 
+			if( cn>=0)
 			{
 				AddFaceGroup(strAccess,"FACE128_"+Characters[cn].faceID);
 			}
 		}
 	}
-	
+
 	if(fillCode==3) // officer for hire
 	{
-		
+
 	}
 	if(fillCode==4) // free passengers
 	{
@@ -463,7 +463,7 @@ void FillFaceList(string strAccess, ref chref, int fillCode)
 		for(n=0; n<q; n++)
 		{
 			cn = GetPassenger(chref,n);
-			if( cn>=0) 
+			if( cn>=0)
 			{
 				if (!CheckAttribute(&characters[cn], "prisoned") || sti(characters[cn].prisoned) != true)
 				{
@@ -531,7 +531,7 @@ void FillUpgradesList(string strAccess, string smode, int iCannonMaterial)  // t
 {
 	aref ar;
 	makearef(ar, GameInterface.(strAccess));
-	
+
 	int iMax;
 	if(smode == "cannons")
 	{
@@ -704,11 +704,11 @@ void SaveStartGameParam()
     optref.StartGameParam.iEncountersRate        = iEncountersRate;
 	optref.StartGameParam.iArcadeSails           = iArcadeSails;
     // иначе сброс галки может быть optref.StartGameParam.bWorldAlivePause       = bWorldAlivePause;
-    
+
     optref.StartGameParam.HeroType         = NullCharacter.HeroParam.HeroType;
     optref.StartGameParam.Nation           = NullCharacter.HeroParam.Nation;
     optref.StartGameParam.CurHeroNum       = startHeroType;
-    
+
 	SaveSavedOptionsEx(&gopt);
 }
 void LoadStartGameParam()
@@ -782,16 +782,16 @@ string GetLevelComplexity(int _Level_Complexity)
 	switch (_Level_Complexity)
 	{
 	    case 1 :
-            return XI_ConvertString("m_Complexity_1"); //Матрос 
+            return XI_ConvertString("m_Complexity_1"); //Матрос
             break;
         case 2 :
-            return XI_ConvertString("m_Complexity_2"); // Боцман 
+            return XI_ConvertString("m_Complexity_2"); // Боцман
             break;
         case 3 :
-            return XI_ConvertString("m_Complexity_3");//Шкипер 
+            return XI_ConvertString("m_Complexity_3");//Шкипер
             break;
         case 4 :
-            return XI_ConvertString("m_Complexity_4");//Лейтенант 
+            return XI_ConvertString("m_Complexity_4");//Лейтенант
             break;
         case 5 :
             return XI_ConvertString("m_Complexity_5");
@@ -800,7 +800,7 @@ string GetLevelComplexity(int _Level_Complexity)
             return XI_ConvertString("m_Complexity_6");
             break;
         case 7 :
-            return XI_ConvertString("m_Complexity_7");//Командор 
+            return XI_ConvertString("m_Complexity_7");//Командор
             break;
         case 8 :
             return XI_ConvertString("m_Complexity_8");
@@ -854,19 +854,19 @@ string GetItemDescribe(int iGoodIndex)
 			describeStr += NewStr() + LanguageConvertString(lngFileID, "Potion parameters")+":";
 			describeStr += " "+LanguageConvertString(lngFileID, "health value");
 			if (stf(arItm.potion.health) >= 0)
-			{	
+			{
 				describeStr += "+" + sti(arItm.potion.health);
-			} 
+			}
 			else
-			{	
+			{
 				describeStr += "" + sti(arItm.potion.health);
 			}
 		}
 	}
     describeStr += newStr() + XI_ConvertString("weight") + " " + FloatToString(stf(arItm.weight), 1);
-    
+
 	LanguageCloseFile(lngFileID);
-	
+
 	return describeStr;
 }
 
@@ -899,7 +899,7 @@ void Table_Clear(string sTableControl, bool bClearHeader, bool bClearContent, bo
 
 	if (bClearContent)
 	{
-		for (int i=1; i<2000; i++) 
+		for (int i=1; i<2000; i++)
 		{
 			string sA = sTableControl + "." + "tr" + i;
 			if (!CheckAttribute(&GameInterface, sA)) { break; }
@@ -915,7 +915,7 @@ void Table_Clear(string sTableControl, bool bClearHeader, bool bClearContent, bo
 
 void Button_SetText(string sButtonControl, string sText)
 {
-	SendMessage( &GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, sButtonControl, 0, sText); 
+	SendMessage( &GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, sButtonControl, 0, sText);
 }
 
 void Button_SetEnable(string sButtonControl, bool bEnable)

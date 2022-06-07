@@ -86,7 +86,7 @@ void Net_CreateClient()
 		NCClients[i].ID = i;
 		NCClients[i].Use = false;
 		NCClients[i].Server = false;			// netclient clients
-		
+
 		NCClients[i].BuyReady = false;
 		NCClients[i].StartReady = false;
 		NCClients[i].Kick = false;
@@ -200,7 +200,7 @@ void NetClient_TryConnect(string sServerIP, int wPort)
 void NetClient_SelectProfile(string sProfileName)
 {
 	NetClient.SailColor = sti(SailsColors[sti(NCProfiles.Profiles.(sProfileName).ColorSail)].Color);
-	
+
 	NetClient.NickName = NCProfiles.Profiles.(sProfileName).Name;
 	NetClient.ShipName = NCProfiles.Profiles.(sProfileName).ShipName;
 	NetClient.Password = NCProfiles.Profiles.(sProfileName).Password;

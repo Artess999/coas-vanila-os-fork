@@ -21,7 +21,7 @@ void LAi_type_sit_Init(aref chr)
 	LAi_tmpl_stay_InitTemplate(chr);
 	//дадим предметы для использования в таверне
 	chr.TiedItems.itm1.model = "HandsItems\meet";
-	chr.TiedItems.itm1.locator = "Saber_hand";	
+	chr.TiedItems.itm1.locator = "Saber_hand";
 	chr.TiedItems.itm2.model = "HandsItems\cup";
 	chr.TiedItems.itm2.locator = "Saber_hand";
 	//Установим анимацию персонажу
@@ -32,9 +32,9 @@ void LAi_type_sit_Init(aref chr)
 //Процессирование типа персонажа
 void LAi_type_sit_CharacterUpdate(aref chr, float dltTime)
 {
-	float time = stf(chr.chr_ai.type.wait) - dltTime; 
+	float time = stf(chr.chr_ai.type.wait) - dltTime;
 	if (time < 0.0)
-	{		
+	{
 		ref chrTarget;
 		string snd = "male-sit";
 		int iTemp, i;
@@ -66,11 +66,11 @@ void LAi_type_sit_CharacterUpdate(aref chr, float dltTime)
 				{
 					GetCharacterAy(chr, &fAng);
 					//xAng = stf(chrFindNearCharacters[i].dx) * cos(fAng) - stf(chrFindNearCharacters[i].dz) * sin(fAng);
-					zAng = stf(chrFindNearCharacters[i].dz) * cos(fAng) + stf(chrFindNearCharacters[i].dx) * sin(fAng);				
+					zAng = stf(chrFindNearCharacters[i].dz) * cos(fAng) + stf(chrFindNearCharacters[i].dx) * sin(fAng);
 					if (zAng > -0.9 && zAng < 0.9)
 					{
 						if(LAi_Character_CanDialog(chr, chrTarget) && rand(1))
-						{				
+						{
 							if (!LAi_tmpl_SetDialog(chr, chrTarget, 50.0)) return;
 							if (!LAi_tmpl_SetDialog(chrTarget, chr, 50.0)) return;
 							time = 60.0;
@@ -88,25 +88,25 @@ void LAi_type_sit_CharacterUpdate(aref chr, float dltTime)
 				if (iNumEnemy > 0) //есть враги
 				{
 					//Нападаем на новую цель
-					GetCharacterPos(chr, &locx, &locy, &locz);	
+					GetCharacterPos(chr, &locx, &locy, &locz);
 					LAi_SetWarriorTypeNoGroup(chr); //ребрендинг и вперед на врага
 					ChangeCharacterAddressGroup(chr, chr.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
 					LAi_group_Attack(chr, pchar);
 				}
 			}
 			//слежение залезания ГГ в боксы
-			if (CheckAttribute(chr, "watchBoxes") && chr.chr_ai.tmpl != LAI_TMPL_DIALOG) 
+			if (CheckAttribute(chr, "watchBoxes") && chr.chr_ai.tmpl != LAI_TMPL_DIALOG)
 			{
 				num = FindNearCharacters(chr, 10.0, -1.0, 180.0, 0.01, true, true);
 				for(i = 0; i < num; i++)
 				{
 					if(nMainCharacterIndex == sti(chrFindNearCharacters[i].index))
-					{					
-						//нашли ГГ, проверяем, не в сундуке ли.						
+					{
+						//нашли ГГ, проверяем, не в сундуке ли.
 						if (bMainCharacterInBox)
 						{
 							//Нападаем на новую цель
-							GetCharacterPos(chr, &locx, &locy, &locz);	
+							GetCharacterPos(chr, &locx, &locy, &locz);
 							LAi_SetWarriorTypeNoGroup(chr); //ребрендинг и вперед на врага
 							ChangeCharacterAddressGroup(chr, chr.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
 							LAi_group_Attack(chr, pchar);
@@ -148,7 +148,7 @@ bool LAi_type_sit_CanDialog(aref chr, aref by)
 	if(sti(by.index) == nMainCharacterIndex && chr.chr_ai.tmpl == LAI_TMPL_DIALOG)
 	{
 		if(LAi_tmpl_dialog_StopNPC(chr)) return true;
-	}	
+	}
 	//Если уже говорим, то откажем
 	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG) return false;
 	//Согласимся на диалог
@@ -181,7 +181,7 @@ void LAi_type_sit_Fire(aref attack, aref enemy, float kDist, bool isFindedEnemy)
 //Персонаж атакован
 void LAi_type_sit_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 int LAi_type_sit_FindEnemy(aref chr, int num)
@@ -197,7 +197,7 @@ int LAi_type_sit_FindEnemy(aref chr, int num)
 		}
 	}
 	else
-	{		
+	{
 		for(i = 0; i < num; i++)
 		{
 			idx = sti(chrFindNearCharacters[i].index);

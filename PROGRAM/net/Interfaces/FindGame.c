@@ -1,7 +1,7 @@
-// 
+//
 int iCurrentLanServer, iCurrentInternetServer, iCurrentFavoriteServer;
 string sCurrentIP = "";
-string sCurrentName = ""; 
+string sCurrentName = "";
 string sCurrentPort = "";
 bool bCurrentProtected = false;
 int iMapListSelected = 0;
@@ -55,7 +55,7 @@ void InitInterface(string iniName)
 	SetEventHandler("OnPlayerSettings", "FG_OnPlayerSettings", 0);
 	SetEventHandler("OnAddFavorites", "FG_OnAddFavorites", 0);
 
-	SetEventHandler("TableSelectChange", "FG_TableSelectChangeEvent", 0);	
+	SetEventHandler("TableSelectChange", "FG_TableSelectChangeEvent", 0);
 	SetEventHandler("TableActivate", "FG_OnTableDoubleClick", 0);
 
 	SetEventHandler("TabClick_Local", "FG_TabLocal", 0);
@@ -80,7 +80,7 @@ void InitInterface(string iniName)
 	SendMessage(&GameInterface, "ls", MSG_INTERFACE_INIT, iniName);
 
 	Table_Clear("TABLE_LANSERVER", false, true, true);
-	iNumLanServers = 0; 
+	iNumLanServers = 0;
 	iNumLanServersList = 0;
 
 	iCurrentLanServer = -1;
@@ -115,8 +115,8 @@ void InitInterface(string iniName)
 	Table_UpdateWindow("TABLE_MAPLIST");
 
 	StringCollection_SetText("STRINGS_PROFILE", 2, "#" + NetClient.NickName);
-	
-	// 
+
+	//
 	StringCollection_SetTextValue("STRINGS_FILTERS_VALUE", 1, iFG_MaxShipClass);
 	StringCollection_SetTextValue("STRINGS_FILTERS_VALUE", 2, iFG_Credit);
 	StringCollection_SetTextValue("STRINGS_FILTERS_VALUE", 3, iFG_Ping);
@@ -183,13 +183,13 @@ void FindCurrentServers()
 {
 	switch (iCurrentServersList)
 	{
-		case NET_FG_LAN:		
+		case NET_FG_LAN:
 			if (iNumLanServers == 0) { NetClient_FindLocalServers(); }
 		break;
-		case NET_FG_INTERNET:	
+		case NET_FG_INTERNET:
 			if (iNumInternetServers == 0) { FG_FindInternetServers(); }
 		break;
-		case NET_FG_FAVORITE:	
+		case NET_FG_FAVORITE:
 		break;
 	}
 }
@@ -233,7 +233,7 @@ void FG_MasterServerOnConnect()
 void FG_MasterServer_GetServersFrameTimer()
 {
 	iGetInetServersFrameTime = iGetInetServersFrameTime + iRealDeltaTime;
-	
+
 	if (iGetInetServersFrameTime >= 1000)
 	{
 		iGetInetServersFrameTime = 0;
@@ -349,15 +349,15 @@ void SelectServer(ref rServer, int iSelected)
 
 	switch (iCurrentServersList)
 	{
-		case NET_FG_LAN:		
+		case NET_FG_LAN:
 			GameInterface.TABLE_LANSERVER.select = iSelected + 1;
 			Table_UpdateWindow("TABLE_LANSERVER");
 		break;
-		case NET_FG_INTERNET:	
+		case NET_FG_INTERNET:
 			GameInterface.TABLE_INETSERVER.select = iSelected + 1;
 			Table_UpdateWindow("TABLE_INETSERVER");
 		break;
-		case NET_FG_FAVORITE:	
+		case NET_FG_FAVORITE:
 			GameInterface.TABLE_FAVSERVER.select = iSelected + 1;
 			Table_UpdateWindow("TABLE_FAVSERVER");
 		break;
@@ -499,10 +499,10 @@ void FG_ClientNeedPasswordWindow(string sNeedPassword)
 void FG_ClientNeedPasswordOk()
 {
 	FG_ClientNeedPasswordCancel();
-	
+
 	if (bNeedServerPassword)
 		{ GameInterface.EDITBOX_CONNECT_SERVER_PASSWORD.str = GameInterface.EDITBOX_NEEDPASSWORD.str; }
-	else 
+	else
 		{ GameInterface.EDITBOX_CONNECT_PASSWORD.str = GameInterface.EDITBOX_NEEDPASSWORD.str; }
 
 	FG_OnConnectOk();
@@ -608,7 +608,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("OnJoinGame", "FG_OnJoinGame");
 	DelEventHandler("OnCancel", "FG_OnCancel");
 
-	DelEventHandler("TableSelectChange", "FG_TableSelectChangeEvent");	
+	DelEventHandler("TableSelectChange", "FG_TableSelectChangeEvent");
 	DelEventHandler("TableActivate", "FG_OnTableDoubleClick");
 
 	DelEventHandler("OnConnectOk", "FG_OnConnectOk");
@@ -697,12 +697,12 @@ bool IsFilterOk(ref rServer)
 	if (sti(rServer.Ping) > iFG_Ping) { return false; }
 
 	// check map/island
-	if (iMapListSelected != 0) 
+	if (iMapListSelected != 0)
 	{
 		if (rServer.IslandID == "" && iMapListSelected != 1) { return false; }	// check for open sea
 		// check for island
 		string sRow = "tr" + (iMapListSelected + 1);
-		
+
 		if (rServer.IslandID != GameInterface.TABLE_MAPLIST.(sRow).td1.IslandID) { return false; }
 	}
 
@@ -733,7 +733,7 @@ void FG_FilterChange()
 
 	switch (iCurrentServersList)
 	{
-		case NET_FG_LAN:		
+		case NET_FG_LAN:
 			for (i=0; i<iNumLanServers; i++)
 			{
 				if (AddServerToList("TABLE_LANSERVER", &LanServers[i], iNumLanServersList))
@@ -752,7 +752,7 @@ void FG_FilterChange()
 			}
 			Table_UpdateWindow("TABLE_LANSERVER");
 		break;
-		case NET_FG_INTERNET:	
+		case NET_FG_INTERNET:
 			for (i=0; i<iNumInternetServers; i++)
 			{
 				if (AddServerToList("TABLE_INETSERVER", &InternetServers[i], iNumInternetServersList))
@@ -836,14 +836,14 @@ void FG_OnRefresh()
 {
 	switch (iCurrentServersList)
 	{
-		case NET_FG_LAN:		
+		case NET_FG_LAN:
 			Table_Clear("TABLE_LANSERVER", false, true, true);
-			iNumLanServers = 0; 
+			iNumLanServers = 0;
 			iNumLanServersList = 0;
 		break;
-		case NET_FG_INTERNET:	
+		case NET_FG_INTERNET:
 			Table_Clear("TABLE_INETSERVER", false, true, true);
-			iNumInternetServers = 0; 
+			iNumInternetServers = 0;
 			iNumInternetServersList = 0;
 
 			// if we have first ask
@@ -876,8 +876,8 @@ void FG_OnFrame()
 	switch (iCurrentServersList)
 	{
 		case NET_FG_LAN:		sNumServers = "#" + iNumLanServersList + " / " + iNumLanServers;			break;
-		case NET_FG_INTERNET:	sNumServers = "#" + iNumInternetServersList + " / " + iNumInternetServers;	break;	
-		case NET_FG_FAVORITE:	
+		case NET_FG_INTERNET:	sNumServers = "#" + iNumInternetServersList + " / " + iNumInternetServers;	break;
+		case NET_FG_FAVORITE:
 			int iNumFavorites = GetAttributesNum(&NCFavorites);
 			sNumServers = "#" + iNumFavServersList + " / " + iNumFavorites;	break;
 		break;
@@ -979,14 +979,14 @@ void FG_OnAddFavorites()
 			{
 				sValue = LanServers[ LanServersList[iCurrentLanServer] ].IP + ":" + LanServers[ LanServersList[iCurrentLanServer] ].Port;
 			}
-			Button_SetEnable("BTN_ADDFAV_DELETE", false);	
+			Button_SetEnable("BTN_ADDFAV_DELETE", false);
 		break;
 		case NET_FG_INTERNET:
 			if (iCurrentInternetServer >= 0)
 			{
 				sValue = InternetServers[ InternetServersList[iCurrentInternetServer] ].IP + ":" + InternetServers[ InternetServersList[iCurrentInternetServer] ].Port;
 			}
-			Button_SetEnable("BTN_ADDFAV_DELETE", false);	
+			Button_SetEnable("BTN_ADDFAV_DELETE", false);
 		break;
 		case NET_FG_FAVORITE:
 			//Button_SetEnable("BTN_ADDFAV_DELETE", iCurrentFavoriteServer >= 0);
@@ -1006,7 +1006,7 @@ void FG_OnCreateGame()
 bool FG_ParseIPPort(string sIPPort, ref rIP, ref rPort)
 {
 	int iFindPos = findSubStr(&sIPPort, ":", 0);
-	if (iFindPos < 0) 
+	if (iFindPos < 0)
 	{
 		rIP = sIPPort;
 		rPort = NET_DEFAULT_SERVER_PORT;
@@ -1171,7 +1171,7 @@ bool AddServerToList(string sTableName, ref rServer, int iIndex)
 	arTable.td6.str = rServer.NumClients + " / " + rServer.MaxClients;
 	arTable.td7.str = rServer.Ping;
 
-	return true; 
+	return true;
 }
 
 void AddServer(ref rServer, string sName, string sIP, int wPort, bool bSecure, int iGameType, int iCredit, int iMaxClass, string sWeatherID, string sIslandID, int iNumClients, int iMaxClients, int iPing)

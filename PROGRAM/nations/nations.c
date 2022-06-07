@@ -42,7 +42,7 @@ void Nation_InitAfterLoading()
 void Nations_SetAllFriends()
 {
 	int i;
-	
+
 	for(i=0;i<MAX_NATIONS_SQR;i++)
 	{
 		NationsRelations[i] = RELATION_FRIEND;
@@ -61,7 +61,7 @@ void NationsInit()
 		InitNations();
 		UnloadSegment("nations\nations_init.c");
 	}
-    
+
 	Nations_SetAllFriends();
 }
 
@@ -111,7 +111,7 @@ int GetNationRelation(int iNation1, int iNation2)
 {
     // boal fix 171004 на всяк случай
     if (iNation1 == iNation2) return RELATION_FRIEND;
-    
+
     return NationsRelations[iNation1 * MAX_NATIONS + iNation2];
 }
 

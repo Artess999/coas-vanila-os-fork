@@ -44,7 +44,7 @@ void InitInterface_R(string iniName, ref pStore)
 	GameInterface.TABLE_LIST.hr.td6.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td7.str = "Вес шт.";
 	GameInterface.TABLE_LIST.hr.td7.scale = 0.9;
-	
+
 	GameInterface.TABLE_LIST.hr.td8.str = "Дист.";
 	GameInterface.TABLE_LIST.hr.td8.scale = 0.9;
 	GameInterface.TABLE_LIST.hr.td9.str = "Урон";
@@ -640,7 +640,7 @@ void TransactionOK()
 	    return;
 	}
     if (!GetRemovable(refCharacter)) return;
-    
+
  	if (BuyOrSell == 1) // BUY
 	{
         if(refStore.Colony != "none")

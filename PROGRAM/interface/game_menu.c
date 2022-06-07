@@ -41,8 +41,8 @@ void InitInterface_gm(string iniName)
 	if (QuickSaveGameEnabledHardcore()) // boal 09.07.06
 	{
 		SetSelectable("MB_SAVE", true);
-	} 
-	else 
+	}
+	else
 	{
 		SetSelectable("MB_SAVE", false);
 	}
@@ -103,7 +103,7 @@ void IDoExit(int exitCode, bool bClear)
 	DelEventHandler("OptionsClick","OptionsClick");
 	DelEventHandler("QuitClick","QuitClick");
     DelEventHandler("QuitProcess","QuitProcess");
-    
+
 	DelEventHandler("ConfirmExitClick","ConfirmExitClick");
 	DelEventHandler("ConfirmExitCancel","ConfirmExitCancel");
 
@@ -243,8 +243,8 @@ void ShowConfirmWindow(bool show)
 		XI_WindowShow("CONFIRM_WINDOW", false);
 		XI_WindowDisable("MAIN_WINDOW", false);
 
-		if(GetSelectable("MB_RESUME")) 
-			SetCurrentNode("MB_RESUME"); 
+		if(GetSelectable("MB_RESUME"))
+			SetCurrentNode("MB_RESUME");
 		else
 			SetCurrentNode("MB_NEW");
 	}

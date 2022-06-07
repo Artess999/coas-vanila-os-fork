@@ -23,13 +23,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		case "BlueBird_1":
-			dialog.text = NPCStringReactionRepeat("Я ничего не знаю об этом корабле. Если это все, что вы хотели, то уходите.", 
-				"Опять? Я все вам сказал.", 
+			dialog.text = NPCStringReactionRepeat("Я ничего не знаю об этом корабле. Если это все, что вы хотели, то уходите.",
+				"Опять? Я все вам сказал.",
 				"Что, снова про то же?",
                 "Да когда же это кончится?! Прошу вас, не отвлекайте меня от работы!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Что-то не очень вы любезны, милейший!", 
+			link.l1 = HeroStringReactionRepeat("Что-то не очень вы любезны, милейший!",
 				"Да-да, я помню...",
-                "Ага.", 
+                "Ага.",
 				"Хорошо, хорошо...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("BlueBird_2", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
 		break;
@@ -41,13 +41,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 
 		case "BlueBird_3":
-			dialog.text = NPCStringReactionRepeat("Пошел вон отсюда, идиот...", 
-				"Утомил...", 
+			dialog.text = NPCStringReactionRepeat("Пошел вон отсюда, идиот...",
+				"Утомил...",
 				"Хм, кажется ты потерял рассудок...",
                 "Опять о том же? Я-то здесь при чем?", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("У-у-у, какие эпитеты!", 
+			link.l1 = HeroStringReactionRepeat("У-у-у, какие эпитеты!",
 				"Да-да.",
-                "Все у меня в порядке!", 
+                "Все у меня в порядке!",
 				"Может и ни при чем, а может и при чем-то.", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;

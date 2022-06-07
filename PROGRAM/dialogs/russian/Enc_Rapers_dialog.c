@@ -3,18 +3,18 @@ void ProcessDialogEvent()
 	ref NPChar, sld;
 	aref Link, Diag;
 	int i;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(Diag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;
-			DialogExit();			
+			DialogExit();
 		break;
 
 		case "exit_fight":
@@ -47,7 +47,7 @@ void ProcessDialogEvent()
 			sld = CharacterFromID("CangGirl");
 			LAi_SetActorType(sld);
 			LAi_ActorAfraid(sld, npchar, true);
-			DialogExit();			
+			DialogExit();
 		break;
 
 		case "First time":
@@ -71,7 +71,7 @@ void ProcessDialogEvent()
 				"Я все понял. До свидания!");
 			Link.l2.go = "Exit_NoFight";
 		break;
-		
+
 		case "Node_2":
 			dialog.text = "Ну, тогда пеняй на себя! Пощекочем его ребра сталью, ребята!";
 			Link.l1 = "Помолитесь перед смертью!";
@@ -86,6 +86,6 @@ void ProcessDialogEvent()
 			Link.l2 = "Я не позволю насилию случиться на моих глазах!";
 			Link.l2.go = "Node_2";
 		break;
-				
+
 	}
 }

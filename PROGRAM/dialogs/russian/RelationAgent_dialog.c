@@ -12,7 +12,7 @@ void ProcessDialogEvent()
 	makearef(NextDiag, NPChar.Dialog);
 
 	int iSumm = 0;
-	
+
 	if (!CheckAttribute(npchar, "PatentPrice"))
     {
         npchar.PatentPrice = (8000 + rand(6) * 1000);
@@ -20,16 +20,16 @@ void ProcessDialogEvent()
     int i;
     string attrLoc;
 	ref    sld;
-	
+
     attrLoc   = Dialog.CurrentNode;
-    
+
     if (findsubstr(attrLoc, "SetNationPatent_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
 	 	NPChar.nation = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
  	    Dialog.CurrentNode = "patent_2";
  	}
- 	
+
  	if (findsubstr(attrLoc, "SetNationLicence_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
@@ -43,7 +43,7 @@ void ProcessDialogEvent()
 	 	NPChar.LicenceType = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
  	    Dialog.CurrentNode = "NationLicenceType2";
  	}
- 	
+
  	if (findsubstr(attrLoc, "RelationTo_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
@@ -60,21 +60,21 @@ void ProcessDialogEvent()
  	    	npchar.quest.relation.summ = CalculateRelationSum(sti(npchar.quest.relation));
  	    }
  	}
- 	
+
  	if (findsubstr(attrLoc, "CityPay_" , 0) != -1)
  	{
         i = findsubstr(attrLoc, "_" , 0);
 	 	NPChar.quest.CityIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
  	    Dialog.CurrentNode = "CityInfo";
  	}
- 	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "First time":
 			dialog.text = "Рад видеть вас снова.";
 			link.l1 = "Мне опять нужны ваши услуги.";
@@ -102,7 +102,7 @@ void ProcessDialogEvent()
 				link.l2.go = "exit";
 				npchar.quest.meeting = "1";
 			}
-			
+
 			NextDiag.TempNode = "First time";
 		break;
 
@@ -113,7 +113,7 @@ void ProcessDialogEvent()
 				link.l3 = "Я хочу помириться с Англией.";
 				link.l3.go = "RelationTo_0";
 			}
-			
+
 			if (ChangeCharacterNationReputation(pchar, FRANCE, 0) < 0)
 			{
 				link.l1 = "Я хочу помириться с Францией.";
@@ -137,20 +137,20 @@ void ProcessDialogEvent()
             }
             Link.l8 = "Мне нужен каперский патент.";
 			Link.l8.go = "patent_0";
-			
+
 			Link.l9 = "Есть торговые лицензии?";
 			Link.l9.go = "Licence";
-			
+
 			if (isHeroOwnCity(true))
 			{
 				Link.l10 = "У меня вопрос, связанный с принадлежностью поселений.";
 				Link.l10.go = "City_Buy";
 			}
-			
+
 			link.l99 = "Знаете, я думаю, что обойдусь своими силами.";
 			link.l99.go = "exit";
 		break;
-		
+
 		case "Licence":
 			dialog.text = "Всегда в наличии, на разные сроки. Какая торговая лицензия интересует?";
 		    link.l1 = "Англии";
@@ -164,7 +164,7 @@ void ProcessDialogEvent()
 			link.l9 = "Знаете, я думаю, что обойдусь своими силами.";
 			link.l9.go = "exit";
 		break;
-		
+
 		case "NationLicenceType":
         	dialog.text = "На какой срок?";
 		    link.l1 = "30 дней";
@@ -176,7 +176,7 @@ void ProcessDialogEvent()
 			link.l9 = "Я передумал.";
 			link.l9.go = "exit";
 		break;
-		
+
 		case "NationLicenceType2":
 			iSumm = sti(npchar.LicenceType) * (3000 + MOD_SKILL_ENEMY_RATE*500);
         	dialog.text = "Итак, торговая лицензия " + XI_ConvertString(Nations[sti(npchar.LicenceNation)].Name + "Gen") + " сроком на " + sti(npchar.LicenceType) + " дней, цена " + FindRussianMoneyString(iSumm) + ".";
@@ -192,7 +192,7 @@ void ProcessDialogEvent()
 			link.l9 = "Я передумал.";
 			link.l9.go = "exit";
 		break;
-		
+
 		case "NationLicenceType3":
             iSumm = sti(npchar.LicenceType) * (3000 + MOD_SKILL_ENEMY_RATE*500);
 			dialog.text = "Вот ваш документ. Входить в порт нужно под дружественным флагом. Помните, патруль может проверить, не просрочена ли лицензия.";
@@ -201,15 +201,15 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, -iSumm);
 			GiveNationLicence(sti(npchar.LicenceNation), sti(npchar.LicenceType));
 		break;
-		
+
         case "No_money":
 			dialog.text = "Отлично! Обратитесь ко мне, когда будет нужная сумма.";
 			link.l1 = "Хорошо.";
 			link.l1.go = "exit";
 		break;
-		
+
         case "patent_0":
-			dialog.text = "Замечательно! Для этого вы должны доказать свою преданность державе" + 
+			dialog.text = "Замечательно! Для этого вы должны доказать свою преданность державе" +
                           " безупречной службой. Отправляйтесь к любому губернатору" + //NationNameGenitive(sti(NPChar.nation)) +
                           " и выполните ряд его заданий. После этого он выдаст вам патент.";
 			link.l1 = "Скажите, "+GetAddress_FormToNPC(NPChar) + ", а можно как-нибудь обойти эту формальность? ";
@@ -217,7 +217,7 @@ void ProcessDialogEvent()
 			link.l2 = "Прощайте, "+GetAddress_FormToNPC(NPChar);
 			link.l2.go = "exit";
 		break;
-		
+
 		case "patent_1":
 			dialog.text = "Вы имеете в виду подкуп должностного лица!? Хотите, чтобы я выдал вам патент сам?";
 			link.l1 = "Именно!";
@@ -232,13 +232,13 @@ void ProcessDialogEvent()
 			link.l2 = "Нет. Всего хорошего, "+GetAddress_FormToNPC(NPChar);
 			link.l2.go = "exit";
 		break;
-		
+
 		case "patent_2_none":
 			dialog.text = "В данный момент я не располагаю такими связями, чтобы раздобыть чистый бланк патента со всеми печатями и подписями.";
             link.l1 = "Жаль. Прощайте, "+GetAddress_FormToNPC(NPChar);
 			link.l1.go = "exit";
 		break;
-		
+
 		case "patent_2_give":
 			dialog.text = "Хорошо, я смогу это устроить. Какой патент вам нужен?";
 			if (GetPatentNation() != ENGLAND)
@@ -264,7 +264,7 @@ void ProcessDialogEvent()
 			link.l9 = "Знаете, я думаю, что обойдусь своими силами.";
 			link.l9.go = "exit";
 		break;
-		
+
 		case "patent_2":
             pchar.PatentPrice = 8000 + (sti(NPChar.PatentPrice) * sti(pchar.rank));
             switch (sti(NPChar.nation))
@@ -327,7 +327,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Пожалуй, я передумал.";
 			Link.l2.go = "exit";
 		break;
-		
+
 		case "Contraband_Agreed":
 			dialog.Text = "Замечательно, я все улажу. Они будут иметь с вами дело.";
 			Link.l99 = "Спасибо.";
@@ -357,13 +357,13 @@ void ProcessDialogEvent()
 			attrLoc = "RelationAgent" + GetNationNameByType(sti(npchar.quest.relation));
             Pchar.GenQuest.(attrLoc) = true;
 		break;
-		
+
 		case "RelationYet":
 			dialog.Text = "За вас уже пошло ходатайство. Ждите, так быстро дела не делаются.";
 			Link.l99 = "Спасибо.";
 			Link.l99.go = "exit";
 		break;
-		
+
 		case "City_Buy":
 			dialog.Text = "Принадлежность какого поселения вы хотите обсудить?";
 			for (i=0; i<MAX_COLONIES; i++)
@@ -379,7 +379,7 @@ void ProcessDialogEvent()
 			Link.l99 = "Нет. Ничего.";
 			Link.l99.go = "exit";
 		break;
-		
+
 		case "CityInfo":
             i = sti(NPChar.quest.CityIdx);
             sld = GetFortCommander(colonies[i].id);
@@ -393,7 +393,7 @@ void ProcessDialogEvent()
 			Link.l99 = "Нет, спасибо. Не интересно.";
 			Link.l99.go = "exit";
 		break;
-		
+
 		case "City_Buy_End":
             i = sti(NPChar.quest.CityIdx);
             TWN_RealeseForMoney(colonies[i].id, true);

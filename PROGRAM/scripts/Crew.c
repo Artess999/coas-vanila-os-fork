@@ -1,6 +1,6 @@
 // файл по методам экипажа, переделка для ВМЛ 29.07.06
 void UpdateCrewExp()
-{	
+{
 	int cn;
 	ref chr;
 	for (int i = 0; i<COMPANION_MAX; i++)
@@ -21,7 +21,7 @@ void UpdateCrewExp()
 			}
 		}
 	}
-	
+
 }
 string GetExpName(int iExp)
 {
@@ -87,7 +87,7 @@ int GetMoneyForOfficerFull(ref Npchar)
 {
     float nLeaderShip = GetSummonSkillFromNameToOld(pchar, SKILL_LEADERSHIP);
 	float nCommerce   = GetSummonSkillFromNameToOld(pchar, SKILL_COMMERCE);
-	
+
 	return makeint(GetMoneyForOfficer(Npchar)*2/(nLeaderShip + nCommerce) );
 }
 int GetSalaryForShip(ref chref)
@@ -108,7 +108,7 @@ int GetSalaryForShip(ref chref)
 	// экипаж
 	fExp = (GetCrewExp(chref, "Sailors") + GetCrewExp(chref, "Cannoners") + GetCrewExp(chref, "Soldiers")) / 100.00; // средний коэф опыта 0..3
 	nPaymentQ += makeint( fExp * stf((0.5 + MOD_SKILL_ENEMY_RATE/5.0)*200*GetCrewQuantity(chref))/stf(shClass) * (1.05 - (nLeaderShip + nCommerce)/ 40.0) );
-    
+
     // теперь самого капитана и его офицеров (тут  главный герой не считается) так что пассажиров и оффицеров ниже
     if(sti(chref.index) != GetMainCharacterIndex())
     {
@@ -162,7 +162,7 @@ int AddCrewMorale(ref chr, int add)
 	if(morale < MORALE_MIN)	morale = MORALE_MIN;
 	if(morale > MORALE_MAX)	morale = MORALE_MAX;
 	chr.Ship.Crew.Morale = morale;
-	
+
 	return morale;
 }
 
@@ -172,7 +172,7 @@ int GetCharacterRaiseCrewMoraleMoney(ref chr)
 	float nCommerce   = GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_COMMERCE); // boal
 	int nPaymentQ = 15 + GetCrewQuantity(chr)*(16 + MOD_SKILL_ENEMY_RATE*5 - nLeaderShip - nCommerce); // boal
 	float fExp = (GetCrewExp(chr, "Sailors") + GetCrewExp(chr, "Cannoners") + GetCrewExp(chr, "Soldiers")) / 100.00; // средний коэф опыта 0..3
-	nPaymentQ = makeint(nPaymentQ * fExp + 0.5);	
+	nPaymentQ = makeint(nPaymentQ * fExp + 0.5);
 	if (nPaymentQ < 5) nPaymentQ = 5;
 	return nPaymentQ;
 }
@@ -180,18 +180,18 @@ int GetCharacterRaiseCrewMoraleMoney(ref chr)
 float ChangeCrewExp(ref chr, string sType, float fNewExp)
 {
 	if (!CheckAttribute(chr, "Ship.Crew.Exp." + sType)) chr.Ship.Crew.Exp.(sType) = (1 + rand(50));
-	
+
 	chr.Ship.Crew.Exp.(sType) = (stf(chr.Ship.Crew.Exp.(sType)) + fNewExp);
 	if (stf(chr.Ship.Crew.Exp.(sType)) > 100) chr.Ship.Crew.Exp.(sType) = 100;
 	if (stf(chr.Ship.Crew.Exp.(sType)) < 1) chr.Ship.Crew.Exp.(sType)   = 1;
-	
-	return stf(chr.Ship.Crew.Exp.(sType));	
+
+	return stf(chr.Ship.Crew.Exp.(sType));
 }
 
 float GetCrewExp(ref chr, string sType)
 {
 	if (!CheckAttribute(chr, "Ship.Crew.Exp." + sType)) chr.Ship.Crew.Exp.(sType) = 10;
-	return stf(chr.Ship.Crew.Exp.(sType));	
+	return stf(chr.Ship.Crew.Exp.(sType));
 }
 
 float GetCrewExpRate()
@@ -210,19 +210,19 @@ int GetCharacterCrewMorale(ref chr)
 }
 
 // пересчет наемников в городах
-void UpdateCrewInColonies()  
+void UpdateCrewInColonies()
 {
 	int nNeedCrew = GetCurCrewEscadr(); // всего матросов
 	int ableCrew = GetMaxCrewAble();   // допустимое число
-	ref rTown;    
+	ref rTown;
 	int nPastQ, nPastM;
 	int eSailors, eCannoners, eSoldiers;
-	 
+
 	for(int i = 0; i < MAX_COLONIES; i++)
 	{
 		rTown = &colonies[i];
 	    if (rTown.nation == "none") continue;
-	    
+
 	    if (GetNpcQuestPastDayParam(rTown, "CrewDate") >= (2+rand(2)) || !CheckAttribute(rTown, "CrewDate.control_year"))
 	    {
 	    	//trace("UpdateCrewInColonies " + rTown.id);
@@ -231,7 +231,7 @@ void UpdateCrewInColonies()
 			//nPastM = MORALE_NORMAL;
 			if (CheckAttribute(rTown,"ship.crew.quantity"))	nPastQ = sti(rTown.ship.crew.quantity);
 			//if (CheckAttribute(rTown,"ship.crew.morale"))	nPastM = sti(rTown.ship.crew.morale);
-		
+
 			if (nNeedCrew >= ableCrew )
 		    {
 		        nNeedCrew = 1+rand(20);
@@ -241,7 +241,7 @@ void UpdateCrewInColonies()
 		        nNeedCrew = ableCrew - nNeedCrew - rand(makeint((ableCrew - nNeedCrew)/2.0));
 				if (nNeedCrew < 1) nNeedCrew = 1+rand(20);
 		    }
-		
+
 			if (nPastQ > nNeedCrew)
 			{	nPastM = MORALE_NORMAL/3 + rand(MORALE_MAX-MORALE_NORMAL/3);
 			}
@@ -253,28 +253,28 @@ void UpdateCrewInColonies()
 			// пороги опыта от нации
 			switch (sti(rTown.nation))
 			{
-				case ENGLAND:	
-					eSailors   = 25; 
+				case ENGLAND:
+					eSailors   = 25;
 					eCannoners = 5;
 					eSoldiers  = 10;
 				break;
-				case FRANCE:	
-					eSailors   = 10; 
+				case FRANCE:
+					eSailors   = 10;
 					eCannoners = 25;
-					eSoldiers  = 5; 
+					eSoldiers  = 5;
 				break;
-				case SPAIN:		
-					eSailors   = 5; 
+				case SPAIN:
+					eSailors   = 5;
 					eCannoners = 10;
-					eSoldiers  = 25; 
+					eSoldiers  = 25;
 				break;
-				case PIRATE:	
-					eSailors   = 15; 
+				case PIRATE:
+					eSailors   = 15;
 					eCannoners = 15;
-					eSoldiers  = 25; 
+					eSoldiers  = 25;
 				break;
-				case HOLLAND:	
-					eSailors   = 15; 
+				case HOLLAND:
+					eSailors   = 15;
 					eCannoners = 15;
 					eSoldiers  = 5;
 				break;
@@ -293,14 +293,14 @@ int GetCrewPriceForTavern(string sColony)
 {
 	int iColony = FindColony(sColony);
 	ref rTown = &colonies[iColony];
-	
+
     float fExp = (GetCrewExp(rTown, "Sailors") + GetCrewExp(rTown, "Cannoners") + GetCrewExp(rTown, "Soldiers")) / 100.00; // средний коэф опыта 0..3
 	float fSkill = GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_LEADERSHIP) + GetSummonSkillFromNameToOld(GetMainCharacter(),SKILL_COMMERCE); // 0-20
     int   nCrewCost = makeint((0.5 + MOD_SKILL_ENEMY_RATE/5.0)*30 * (1.0 - fSkill / 40.0));
-    
+
 	nCrewCost = makeint(fExp*nCrewCost + 0.5);
 	if (nCrewCost < 5) nCrewCost = 5; // не ниже!
-	
+
 	return nCrewCost;
 }
 

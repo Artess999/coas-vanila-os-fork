@@ -48,7 +48,7 @@ void NetClient_DeleteWeatherEnvironment()
 
 aref NetClient_GetCurrentWeather()
 {
-	aref arWeather; 
+	aref arWeather;
 	makearef(arWeather, Weathers[iClientCurWeatherNum]);
 	return arWeather;
 }
@@ -59,7 +59,7 @@ void NetClient_CreateWeatherEnvironment(int iMsg)
 
 	string sWeatherID = NMGetString(iMsg);
 
-	for (int i=0; i<iTotalNumWeathers; i++) 
+	for (int i=0; i<iTotalNumWeathers; i++)
 	{
 		if (sWeatherID == Weathers[i].id)
 		{
@@ -90,7 +90,7 @@ void NetClient_CreateWeatherEnvironment(int iMsg)
 	NCWeather.WindSpeed = Whr_GetFloat(aCurWeather, "Wind.Speed");
 
 	sClientCurrentFog = "Fog";
-	if (CheckAttribute(aCurWeather, "SpecialSeaFog")) { sClientCurrentFog = "SpecialSeaFog"; }	
+	if (CheckAttribute(aCurWeather, "SpecialSeaFog")) { sClientCurrentFog = "SpecialSeaFog"; }
 
 	string sCurFog = NetClient_WhrGetCurrentFog();
 	NCWeather.Fog.Enable = Whr_GetLong(aCurWeather, sCurFog + ".Enable");
@@ -106,10 +106,10 @@ void NetClient_CreateWeatherEnvironment(int iMsg)
 
 	float x, y, z;
 
-	x = 5000.0; 
+	x = 5000.0;
 	y = 0.0;
 	RotateAroundY(&x, &y, cos(-stf(NCWeather.Sun.HeightAngle)), sin(-stf(NCWeather.Sun.HeightAngle)));
-	
+
 	z = 0.0;
 	RotateAroundY(&x, &z, cos(stf(NCWeather.Sun.AzimuthAngle)), sin(stf(NCWeather.Sun.AzimuthAngle)));
 
@@ -142,9 +142,9 @@ void NetClient_CreateWeatherEnvironment(int iMsg)
 	NetClient_MoveWeatherToLayers("net_execute", "net_realize");
 }
 
-float NetClient_WhrGetFogDensity() 
-{ 
-	return stf(NCWeather.Fog.Density); 
+float NetClient_WhrGetFogDensity()
+{
+	return stf(NCWeather.Fog.Density);
 }
 
 int NetClient_WhrOnCalcFogColor()

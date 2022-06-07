@@ -37,7 +37,7 @@ bool Ship_AutoAbordage(ref rCharacter, float fMinEnemyDistance)
 	    {           // учет оружи€
 	       fOurCrewFencing       = (0.1 + fOurFencing * GetWeaponCrew(rCharacter, sti(rCharacter.Ship.Crew.Quantity))*GetCrewExp(rCharacter, "Soldiers"));
 	    }
-	    float fMorale  = GetCharacterCrewMorale(rCharacter); 
+	    float fMorale  = GetCharacterCrewMorale(rCharacter);
         fOurCrewFencing = fOurCrewFencing * (0.5 + fMorale / MORALE_MAX);
 
 	    float fEnHP                = Ship_GetHP(rShipCharacter);
@@ -48,9 +48,9 @@ bool Ship_AutoAbordage(ref rCharacter, float fMinEnemyDistance)
 	    {   // учет оружи€
 	       fEnCrewFencing       = (0.1 + fEnFencing * GetWeaponCrew(rShipCharacter, sti(rShipCharacter.Ship.Crew.Quantity))*GetCrewExp(rShipCharacter, "Soldiers") );
 	    }
-        fMorale  = GetCharacterCrewMorale(rShipCharacter); 
+        fMorale  = GetCharacterCrewMorale(rShipCharacter);
         fEnCrewFencing = fEnCrewFencing * (0.5 + fMorale / MORALE_MAX);
-        
+
 		bool bAngleTest = true;// пока всегда, что верно дл€ тупого компа
         int deadCrew = 0;
 		if (bGrapplingProfessional || bAngleTest)
@@ -110,7 +110,7 @@ bool Ship_AutoAbordage(ref rCharacter, float fMinEnemyDistance)
 				if (IsCompanion(rShipCharacter)) LeaveAbordageShipDrift(sti(rCharacter.index), sti(rShipCharacter.index));
 			    else ShipDead(sti(rCharacter.index),KILL_BY_ABORDAGE,sti(rShipCharacter.index));
 				//navy <--
-            }  
+            }
 		}
 	}
     return bSuccess;
@@ -130,7 +130,7 @@ void SeaExchangeCharactersShips(ref rOneChr, ref rSecChr, bool _showLog, bool _s
     float fMor = stf(rOneChr.ship.crew.morale);
     makearef(arCargoOne, rOneChr.Ship.Crew.Exp);
 	CopyAttributes(&oTmp, arCargoOne); // опыт
-	
+
 	//мен€ем корабли...
 	SeaAI_SwapShipsAttributes(rOneChr, rSecChr);
 	SeaAI_SwapShipAfterAbordage(rOneChr, rSecChr);
@@ -143,7 +143,7 @@ void SeaExchangeCharactersShips(ref rOneChr, ref rSecChr, bool _showLog, bool _s
     makearef(arCargoOne, rOneChr.Ship.Crew.Exp);
 	DeleteAttribute(arCargoOne,"");
 	CopyAttributes(arCargoOne,&oTmp);
-	
+
 	//вернем груз
 	if (_swapCargo)
 	{
@@ -282,7 +282,7 @@ bool CheckEnemyCompanionDistance2GoAway(bool _loadForm)
 	int		i, k, cn, iRelation;
 	float	fDistance;
 	string  attr;
-	
+
 	ref rCharacter, rFortCharacter, rShipCharacter;
 
 	makearef(arUpdate, pchar.SeaAI.Update);
@@ -293,13 +293,13 @@ bool CheckEnemyCompanionDistance2GoAway(bool _loadForm)
 	aref aShips, aForts;
 	aref aFort;
 	aref aShip;
-	
+
 	makearef(aShips, arUpdate.Ships);
 	makearef(aForts, arUpdate.Forts);
 
 	// check forts for abordage
 	int iShipsNum = GetAttributesNum(aShips);
-	
+
 	int iFortsNum = GetAttributesNum(aForts);
 	int iFortMode;
 
@@ -312,7 +312,7 @@ bool CheckEnemyCompanionDistance2GoAway(bool _loadForm)
             attr = "CompIDX" + k;
 			rCharacter = GetCharacter(cn);
 			if (!GetRemovable(rCharacter)) continue;  // квестовые сами себ€ спасают
-			
+
 			// живые форты
 			for (i=0; i<iFortsNum; i++)
 			{

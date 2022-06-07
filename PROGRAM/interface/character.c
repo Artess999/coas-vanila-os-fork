@@ -59,7 +59,7 @@ void IDoExit(int exitCode)
 	if (bChangePIRATES)
 	{
 		xi_refCharacter.skill.FreeSPECIAL = 0; // если не все распределил, сам дурак
-		
+
 		if (Pchar.questTemp.CapBloodLine != true)//09/08/07 homo для Блада даем другое начало
 		{
     		ref sld = characterFromID("Sailor_1");
@@ -69,7 +69,7 @@ void IDoExit(int exitCode)
     	    LAi_ActorFollow(pchar, sld, "ActorDialog_Any2Pchar", 0.5);
         }//homo
     }
-		    
+
 	DelEventHandler("InterfaceBreak","ProcessExitCancel");
 	DelEventHandler("exitCancel","ProcessExitCancel");
     DelEventHandler("ievnt_command","ProcessCommandExecute");
@@ -826,7 +826,7 @@ void IncreaseSkill(int _add)
 			xi_refCharacter.skill.FreeSPECIAL = sti(xi_refCharacter.skill.FreeSPECIAL) - _add;
 	    }
 	    else return;
-	    
+
 	    if (bChangePIRATES)
 	    { //для начала игры пересчет скилов
 	    	// начальные скилы задать
@@ -873,7 +873,7 @@ void DecreaseSkill(int _add)
 			xi_refCharacter.skill.FreeSPECIAL = sti(xi_refCharacter.skill.FreeSPECIAL) + _add;
 	    }
 	    else return;
-	    
+
 	    if (bChangePIRATES)
 	    { //для начала игры пересчет скилов
 	    	// начальные скилы задать
@@ -1078,7 +1078,7 @@ void ShowMsgMenu()
 {
 	SetFormatedText("MSG_WINDOW_CAPTION", "Создать своего героя");
 	SetFormatedText("MSG_WINDOW_TEXT", "Для изменения параметров героя укажите характеристику и стрелками перераспределите очки. Умения автоматически пересчитаются от выбранных PIRATES. Закройте форму крестиком или Esc, когда распределение будет завершено.");
-	
+
 	XI_WindowShow("MSG_WINDOW", true);
 	XI_WindowDisable("MSG_WINDOW", false);
 	XI_WindowDisable("MAIN_WINDOW", true);

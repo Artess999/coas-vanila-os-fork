@@ -22,7 +22,7 @@ void InitInterface_R(string iniName, ref pStore)
 
     refStore = &stores[sti(pStore.StoreNum)];
 	refCharacter = pchar;
-	
+
 	if(CheckAttribute(pchar, "shiptrade.character"))
 	{
 		refShipChar = CharacterFromID(pchar.shiptrade.character);
@@ -240,7 +240,7 @@ void AddToTable()
 		makearef(refGoods,refStore.Goods.(sGood));
         tradeType = MakeInt(refGoods.TradeType);
         if (tradeType == TRADE_TYPE_CANNONS) continue; // не пушки
-        
+
 		sShipQ = GetCargoGoods(refCharacter, i);
 
 		if(refStore.Colony != "none")
@@ -266,7 +266,7 @@ void AddToTable()
 
 		GameInterface.TABLE_LIST.(row).td4.str = sStoreQ;
 
-		
+
 		switch(tradeType)
 		{
 			case TRADE_TYPE_NORMAL:
@@ -344,7 +344,7 @@ void ShowHelpHint()
 	sPicture = "none";
 	sGroup = "none";
 	sGroupPicture = "none";
-	
+
 	if (!bShowChangeWin)
 	{// покажем помощь по работе с формой
         sHeader = "Интерфейс грабежа города";
@@ -353,11 +353,11 @@ void ShowHelpHint()
 				 "Ввод положительного количества с клавиатуры устанавливает взятие товара, а отрицательного (с минусом) обратное перемещение."+ newStr() +
 				 "Стрелки лево/право изменяют количество по пачкам, а Shift + лево/право на максимально доступное. Нажатие Enter на форме равносильно ОК, а Esc - Отмена." + newStr() +
 				 "Находясь в режиме формы и мотая список в таблице стрелкам вверх/вниз, можно просматривать описание товара под курсором таблицы.";
-				 
+
         sText2 = "Быстрое взятие всего: стрелками вверх/вниз по списку, Shift + право, Enter";
-        
+
         sText3 = "Цвета: красный - контрабанда, синий - импорт, зеленый - экспорт";
-        
+
 		CreateTooltip("#" + sHeader, sText1, argb(255,255,255,255), sText2, argb(255,192,192,192), sText3, argb(255,255,255,255), "", argb(255,255,255,255), sPicture, sGroup, sGroupPicture, 64, 64);
 	}
 }
@@ -611,7 +611,7 @@ void TransactionOK()
 	    return;
 	}
     if (!GetRemovable(refCharacter)) return;
-    
+
  	if (BuyOrSell == 1) // BUY
 	{
         if(refStore.Colony != "none")
@@ -656,9 +656,9 @@ void ChangeQTY_EDIT()
 	int  iWeight;
 	SetShipWeight();
 	GameInterface.qty_edit.str = sti(GameInterface.qty_edit.str);
-	
+
 	string GoodName = goods[iCurGoodsIdx].name;
-	
+
 	if (sti(GameInterface.qty_edit.str) == 0)
 	{
 	    SetFormatedText("QTY_TypeOperation", "");

@@ -147,7 +147,7 @@ void LAi_tmpl_ani_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_ani_IsFire(aref chr)
-{	
+{
 	return false;
 }
 
@@ -186,7 +186,7 @@ void LAi_tmpl_ani_ColThreshold(aref chr)
 
 //Персонаж закончил проигрывать анимацию
 void LAi_tmpl_ani_EndAction(aref chr)
-{	
+{
 	if(chr.chr_ai.tmpl.animation == "") return;
 	chr.chr_ai.tmpl.timeout = "-1"; //бага еще та!
 	LAi_tmpl_ani_EndAnimation(chr);
@@ -205,7 +205,7 @@ void LAi_tmpl_ani_UpdateState(aref chr)
 	if(LAi_IsInitedAI)
 	{
 		if(CharacterGetTask(chr) != "stay")
-		{			
+		{
 			SetCharacterTask_Stay(chr);
 		}
 		CharacterPlayAction(chr, chr.chr_ai.tmpl.animation);

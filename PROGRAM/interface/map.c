@@ -8,12 +8,12 @@ void InitInterface(string iniName)
 {
 	EngineLayersOffOn(true);
 	SetTimeScale(0.0);
-	
+
 	// лочим квест и карту
     bQuestCheckProcessFreeze = true;
     bEncType = false; // обычный тип
     bShowVideo = false;
-    
+
     GameInterface.title = "title_map";
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
@@ -34,7 +34,7 @@ void InitInterface(string iniName)
 	SetEventHandler("exitCancel","ProcessCancelExit",0); // Выход на море по крестику или Esc
 	SetEventHandler("ievnt_command","ProcCommand",0); // выход на карту только тут (по НЕТ)
 	SetEventHandler("evntDoPostExit","DoPostExit",0); // выход из интерфейса
-	
+
 	EI_CreateFrame("INFO_BORDERS", 250,152,550,342);
 	PlaySound("interface\_EvShip"+rand(1)+".wav");
 }
@@ -63,7 +63,7 @@ void IDoExit(int exitCode)
 	if(IsPerkIntoList("TimeSpeed"))
 	{	DelPerkFromActiveList("TimeSpeed");
 	}
-	
+
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
 	PostEvent("StopQuestCheckProcessFreeze", 100);//boal 230804 заморозка проверки квестов
@@ -73,7 +73,7 @@ void ProcCommand()
 {
 	string comName = GetEventData();
 	string nodName = GetEventData();
-	
+
 	switch(nodName)
 	{
 	case "B_OK":
@@ -124,7 +124,7 @@ void wdmRecalcReloadToSea()
 			isShipEncounterType++;
 
 			string encID = worldMap.encounter.id;
-			
+
 			aref rEncounter;
 			makearef(rEncounter, worldMap.encounters.(encID).encdata);
 
@@ -176,7 +176,7 @@ void wdmRecalcReloadToSea()
                 iNumWarShips = GetCharacterIndex(rEncounter.CharacterID);
                 if (iNumWarShips != -1)
                 {
-					sQuestSeaCharId = characters[iNumWarShips].id; // квестовый 
+					sQuestSeaCharId = characters[iNumWarShips].id; // квестовый
 					if (CheckAttribute(&characters[iNumWarShips], "mapEnc.Name"))
 					{
 						totalInfo = totalInfo + characters[iNumWarShips].mapEnc.Name;
@@ -227,22 +227,22 @@ void wdmRecalcReloadToSea()
 			{
         			totalInfo = totalInfo + "БАГА -1.";
       		}
-	        
+
 			switch(sti(rEncounter.Nation))
-			{		        
-				case ENGLAND:		
+			{
+				case ENGLAND:
 					totalInfo = totalInfo + XI_ConvertString("under english flag");
 				break;
-				case FRANCE:		
+				case FRANCE:
 					totalInfo = totalInfo + XI_ConvertString("under french flag");
 				break;
-				case SPAIN:		
+				case SPAIN:
 					totalInfo = totalInfo + XI_ConvertString("under spanish flag");
 				break;
-				case HOLLAND:		
+				case HOLLAND:
 					totalInfo = totalInfo + XI_ConvertString("under dutch flag");
 				break;
-				case PIRATE:		
+				case PIRATE:
 					totalInfo = totalInfo + ".";
 				break;
 			}
@@ -272,18 +272,18 @@ void DoPostExit()
 void CalculateInfoData()
 {
     wdmRecalcReloadToSea();
-    
+
 	if (IsCharacterPerkOn(GetMainCharacter(), "SailingProfessional") || pchar.space_press == "1")
 	{
 		isSkipable = true;
 	}
 	SetCurrentNode("B_OK");
-	
-	
+
+
     float iSKILL_SNEAK = GetSummonSkillFromNameToOld(pchar, SKILL_SNEAK);
 
     if (iSKILL_SNEAK < 1) iSKILL_SNEAK = 1;
-    
+
     SetSelectable("B_CANCEL",true);
 	if( (rand(100) / iSKILL_SNEAK) > GetSummonSkillFromNameToOld(pchar, SKILL_SAILING) )// сделать учет скила навигация для запрета кнопки Нет
 	{
@@ -293,7 +293,7 @@ void CalculateInfoData()
         }
 	}
 	if (pchar.space_press == "1") bEncType = false;
-	
+
 	if (bEncType && !bBettaTestMode) // спец тип не пропустить
 	{
         SetSelectable("B_CANCEL",false);

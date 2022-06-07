@@ -28,7 +28,7 @@ void WM_ProcessControlPress()
 
 	switch(ControlName)
 	{
-		case "BICommandsActivate": 
+		case "BICommandsActivate":
 			PlaySound("interface\ok.wav"); // boal даешь звуки!
 		break;
 	}

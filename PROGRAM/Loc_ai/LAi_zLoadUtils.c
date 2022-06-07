@@ -2,14 +2,14 @@
 
 //Город погибших кораблей
 void CreateLostShipsCity(aref loc)
-{	
+{
 	int i;
 	if (loc.id == "LostShipsCity_town" && isDay())
 	{
 		ref sld;
 		string sTemp, sLocator;
 		int locNum, n, Index;
-		int qtyTavern = 0; 
+		int qtyTavern = 0;
 		int qtyResidence = 0;
 		int qtyChurch = 0;
 		int qtyPrison = 0;
@@ -54,13 +54,13 @@ void CreateLostShipsCity(aref loc)
 								sld.location.hours = rand(5)+1;
 								if (rand(1))
 								{	//выходим на улицы
-									//проверим занятость локатора								
+									//проверим занятость локатора
 									if (!LAi_CheckLocatorFree("goto", sld.location.baseLocator))
-									{	//выберем незанятый 
-										sTemp = sld.location.baseLocator;									
+									{	//выберем незанятый
+										sTemp = sld.location.baseLocator;
 										sTemp = strcut(sTemp, 4, 5);
 										for (n=0; n<=9; n++)
-										{											
+										{
 											sLocator = "goto" + sTemp + "_" + n;
 											if (LAi_CheckLocatorFree("goto", sLocator))
 											{
@@ -96,7 +96,7 @@ void CreateLostShipsCity(aref loc)
 				//////// если это менты /////////
 				if (sld.cityTape == "ment")
 				{
-					if (GetNpcQuestPastTimeParam(sld, "location") > sti(sld.location.hours)) 
+					if (GetNpcQuestPastTimeParam(sld, "location") > sti(sld.location.hours))
 					{
 						DeleteAttribute(sld, "location.going"); //снимаем флаг
 						//if (rand(1)) LAi_SetLoginTime(sld, 6.0, 21.99);
@@ -142,19 +142,19 @@ void CreateLostShipsCity(aref loc)
 										LAi_SetWarriorTypeNoGroup(sld);
 										ChangeCharacterAddressGroup(sld, "TartarusPrison", "goto", "goto"+qtyPrison);
 									}
-									break;									
+									break;
 								}
 							}
 						}
 						else
 						{	//возвращемся на варшип
-							//проверим занятость локатора								
+							//проверим занятость локатора
 							if (!LAi_CheckLocatorFree("goto", sld.location.baseLocator))
-							{	//выберем незанятый 
-								sTemp = sld.location.baseLocator;									
+							{	//выберем незанятый
+								sTemp = sld.location.baseLocator;
 								sTemp = strcut(sTemp, 4, 5);
 								for (n=0; n<=9; n++)
-								{											
+								{
 									sLocator = "goto" + sTemp + "_" + n;
 									if (LAi_CheckLocatorFree("goto", sLocator))
 									{
@@ -175,7 +175,7 @@ void CreateLostShipsCity(aref loc)
 				//////// если внешний горожанин /////////
 				if (sld.cityTape == "citizen")
 				{
-					if (GetNpcQuestPastTimeParam(sld, "location") > sti(sld.location.hours)) 
+					if (GetNpcQuestPastTimeParam(sld, "location") > sti(sld.location.hours))
 					{
 						DeleteAttribute(sld, "location.going"); //снимаем флаг
 						LAi_SetLoginTime(sld, 6.0, 21.99);
@@ -215,22 +215,22 @@ void CreateLostShipsCity(aref loc)
 								case 2: //в магазин
 									if (qtyStore < LSC_MAX_STORE)
 									{
-										sld.location.going = "toStore"; //флаг генерации в магазине	
+										sld.location.going = "toStore"; //флаг генерации в магазине
 										qtyStore++;
 									}
-									break;									
+									break;
 								}
 							}
 						}
 						else
 						{	//возвращемся на свой корабль
-							//проверим занятость локатора								
+							//проверим занятость локатора
 							if (!LAi_CheckLocatorFree("goto", sld.location.baseLocator))
-							{	//выберем незанятый 
+							{	//выберем незанятый
 								sTemp = sld.location.baseLocator;
 								sTemp = strcut(sTemp, 4, 5);
 								for (n=0; n<=9; n++)
-								{											
+								{
 									sLocator = "goto" + sTemp + "_" + n;
 									if (LAi_CheckLocatorFree("goto", sLocator))
 									{
@@ -251,7 +251,7 @@ void CreateLostShipsCity(aref loc)
 				//////// если домашний горожанин /////////
 				if (sld.cityTape == "citizenHome")
 				{
-					if (GetNpcQuestPastTimeParam(sld, "location") > sti(sld.location.hours)) 
+					if (GetNpcQuestPastTimeParam(sld, "location") > sti(sld.location.hours))
 					{
 						DeleteAttribute(sld, "location.going"); //снимаем флаг
 						LAi_SetLoginTime(sld, 6.0, 21.99);
@@ -291,18 +291,18 @@ void CreateLostShipsCity(aref loc)
 								case 2: //в магазин
 									if (qtyStore < LSC_MAX_STORE)
 									{
-										sld.location.going = "toStore"; //флаг генерации в магазине	
+										sld.location.going = "toStore"; //флаг генерации в магазине
 										qtyStore++;
 									}
-									break;	
+									break;
 								case 3: //на улицы
-									//проверим занятость локатора								
+									//проверим занятость локатора
 									if (!LAi_CheckLocatorFree("goto", sld.location.baseLocator))
-									{	//выберем незанятый 
+									{	//выберем незанятый
 										sTemp = sld.location.baseLocator;
 										sTemp = strcut(sTemp, 4, 5);
 										for (n=0; n<=9; n++)
-										{											
+										{
 											sLocator = "goto" + sTemp + "_" + n;
 											if (LAi_CheckLocatorFree("goto", sLocator))
 											{
@@ -317,7 +317,7 @@ void CreateLostShipsCity(aref loc)
 										LAi_SetLSCoutTypeNoGroup(sld);
 										ChangeCharacterAddressGroup(sld, "LostShipsCity_town", "goto", sld.location.baseLocator);
 									}
-									break;	
+									break;
 								}
 							}
 						}
@@ -364,7 +364,7 @@ void CreateLostShipsCity(aref loc)
 		//сам падре
 		if (!isDay())
 		{
-			Index = GetCharacterIndex("LSC_Priest");	
+			Index = GetCharacterIndex("LSC_Priest");
 			if (Index != -1)
 			{
 				sld = &characters[Index];
@@ -416,7 +416,7 @@ void CreateLostShipsCity(aref loc)
 			}
 		}
 	}
-	//------------------- тюрьма ------------------- 
+	//------------------- тюрьма -------------------
 	if (loc.id == "TartarusPrison")
 	{
 		Index = GetCharacterIndex("LSC_PrisonerHead");
@@ -426,7 +426,7 @@ void CreateLostShipsCity(aref loc)
 			if (GetNpcQuestPastDayParam(sld, "location") > sti(sld.location.days))
 			{
 				SaveCurrentNpcQuestDateParam(sld, "location");
-				if (rand(1))	
+				if (rand(1))
 				{
 					LAi_SetHuberTypeNoGroup(sld);
 					ChangeCharacterAddressGroup(sld, loc.id, "sit", "sit1");
@@ -445,7 +445,7 @@ void CreateLostShipsCity(aref loc)
 			if (GetNpcQuestPastTimeParam(sld, "location") > sti(sld.location.hours))
 			{
 				SaveCurrentNpcQuestDateParam(sld, "location");
-				if (rand(1))	
+				if (rand(1))
 				{
 					LAi_SetSitTypeNoGroup(sld);
 					ChangeCharacterAddressGroup(sld, loc.id, "sit", "sit2");
@@ -495,7 +495,7 @@ void CreatPlantation(aref loc)
 	int num, iMassive, iRank;
 	string sAnime;
 	string model[10];
-    
+
     	// ==> просто работники
 		model[0] = "citiz_5";
 		model[1] = "prison_5";
@@ -545,7 +545,7 @@ void CreatPlantation(aref loc)
             sType = NationShortName(iNation) + "_mush_" + (rand(2)+1);
 		}
 		chr = GetCharacter(NPC_GenerateCharacter("GenChar_", sType, "man", "mushketer", sti(pchar.rank), iNation, 2, false));
-		chr.id = "GenChar_" + chr.index;	
+		chr.id = "GenChar_" + chr.index;
 		chr.reputation = (1 + rand(44) + rand(44));// репа всем горожанам
 		chr.City = Colonies[iColony].id;
         chr.CityType = "soldier";
@@ -564,7 +564,7 @@ void CreatPlantation(aref loc)
 			LAi_group_MoveCharacter(chr, slai_group);
 		}
 		chr.dialog.filename = "Common_Soldier.c";
-		chr.dialog.currentnode = "first time";   
+		chr.dialog.currentnode = "first time";
 		ChangeCharacterAddressGroup(chr, pchar.location, "soldiers", "soldier1");
 	}
 	// солдаты <--
@@ -714,7 +714,7 @@ void CreatUnderwater(aref loc)
 }
 
 void CreatTenochtitlan(aref loc)
-{	
+{
 	if (loc.id == "Tenochtitlan")
 	{
 		int i;
@@ -733,7 +733,7 @@ void CreatTenochtitlan(aref loc)
 					//если тотем еще не использован, то помечаем на укладку в button
 					if (!CheckAttribute(itm, "shown.used"))
 					{
-						itm.shown = 0; 
+						itm.shown = 0;
 					}
 				}
 			}
@@ -759,7 +759,7 @@ void CreatTenochtitlanInside(aref loc)
 	if (loc.type == "teno_inside")
 	{
 		ref chr;
-		int iMassive, warriorQty, warriorRank, i, n;	
+		int iMassive, warriorQty, warriorRank, i, n;
 		string model[5];
 		string sLocator;
 		//----------------- генерим войнов в малых храмах богов -----------------
@@ -789,13 +789,13 @@ void CreatTenochtitlanInside(aref loc)
 				if (model[iMassive] != "")
 				{
 					chr = GetCharacter(NPC_GenerateCharacter("AztecWarrior"+loc.index+"_"+i, model[iMassive], "skeleton", "man", warriorRank, PIRATE, 0, true));
-					SetFantomParamFromRank(chr, warriorRank, true);					
+					SetFantomParamFromRank(chr, warriorRank, true);
 					while (FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE) != "")
 					{
 						TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
 					}
 					while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-					{             
+					{
 						TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
 					}
 					GiveItem2Character(chr, "toporAZ");
@@ -837,7 +837,7 @@ void CreatTenochtitlanInside(aref loc)
 				model[1] = "AztecWarrior2";
 				model[2] = "AztecWarrior3";
 				model[3] = "AztecWarrior4";
-				model[4] = "AztecWarrior5";	
+				model[4] = "AztecWarrior5";
 				i = 0;
 				while(i < warriorQty)
 				{
@@ -845,13 +845,13 @@ void CreatTenochtitlanInside(aref loc)
 					if (model[iMassive] != "")
 					{
 						chr = GetCharacter(NPC_GenerateCharacter("AztecWarrior"+loc.index+"_"+n+""+i, model[iMassive], "skeleton", "man", warriorRank, PIRATE, 0, true));
-						SetFantomParamFromRank(chr, 15, true);					
+						SetFantomParamFromRank(chr, 15, true);
 						while (FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE) != "")
 						{
 							TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
 						}
 						while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-						{             
+						{
 							TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
 						}
 						GiveItem2Character(chr, "toporAZ");
@@ -886,7 +886,7 @@ void CreatDesMoines(aref loc)
 	bool bImmortal;
 	int i, iMassive;
 	string sSex, sNode, sModel;
-	string model[10]; 
+	string model[10];
 	if (pchar.questTemp.MC != "Incquisitio")
 	{
 		if (loc.id == "DesMoines_town")
@@ -969,7 +969,7 @@ void CreatDesMoines(aref loc)
 		if (loc.id == "DesMoines_Townhall")
 		{
 			if (GetHour() > 6.0 && GetHour() < 21.99 )
-			{	
+			{
 				sSex = "man";
 				sNode = "DMCitiz";
 				sModel = "Hobart";
@@ -995,13 +995,13 @@ void CreatDesMoines(aref loc)
 			//глава поселения
 			chr = GetCharacter(NPC_GenerateCharacter("DesMoinesHead", sModel, sSex, "man", 25, SPAIN, 0, true));
 			chr.name = "Фернандо";
-			chr.lastname = "Торрес";	
+			chr.lastname = "Торрес";
 			chr.dialog.filename = "Quest\MagicCity.c";
 			chr.dialog.currentnode = sNode + "Head";
 			chr.greeting = "pirat_common";
 			chr.city = "DesMoines";
 			chr.watchBoxes = true;
-			chr.watchBoxes.exitDisable = true; 
+			chr.watchBoxes.exitDisable = true;
 			LAi_RemoveLoginTime(chr);
 			LAi_SetImmortal(chr, bImmortal);
 			ChangeCharacterAddressGroup(chr, "DesMoines_Townhall", "goto", "goto1");

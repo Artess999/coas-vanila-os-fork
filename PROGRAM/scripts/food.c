@@ -58,7 +58,7 @@ int CalculateShipFood(ref _chr)
 	iCrewQuantity   =  sti(_chr.ship.crew.quantity);
 	iFoodQuantity   =  GetCargoGoods(_chr, GOOD_FOOD);
 	iSlavesQuantity =  GetCargoGoods(_chr, GOOD_SLAVES);
-	if (_chr.id == pchar.id) 
+	if (_chr.id == pchar.id)
 	{
 		iPassQuantity = GetPassengersQuantity(pchar);
 	}
@@ -105,7 +105,7 @@ void DailyEatCrewUpdate()   // сюда пихаю все что в 1 день
     int i, cn, crew, morale;
     ref chref;
     int nMoraleDecreaseQ;
-    
+
     // to_do
     // boal 030804 Начисление денег верфям -->
     //DailyShipyardMoneyUpdate();
@@ -233,7 +233,7 @@ void DailyEatCrewUpdate()   // сюда пихаю все что в 1 день
 			if (crew > GetOptCrewQuantity(chref))
 			{
 				AddCrewMorale(chref, -(1+rand(3)));
-			} 
+			}
 			// рассчет перегруза команды на мораль <--
 			// расчет еды после Рома
 			crew = makeint((crew+5.1) / FOOD_BY_CREW + GetPassengersQuantity(chref) / FOOD_BY_PASSENGERS); // eat ratio
@@ -299,8 +299,8 @@ void DailyEatCrewUpdate()   // сюда пихаю все что в 1 день
                 chref.Ship.Crew.Morale = morale - nMoraleDecreaseQ;
                 if (sti(chref.Ship.Crew.Morale) < MORALE_MIN)
                 {
-                   chref.Ship.Crew.Morale = MORALE_MIN;  
-                }   
+                   chref.Ship.Crew.Morale = MORALE_MIN;
+                }
 			}
 			if (sti(chref.index) == GetMainCharacterIndex())
 			{

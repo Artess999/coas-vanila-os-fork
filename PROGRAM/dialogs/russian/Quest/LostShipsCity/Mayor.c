@@ -13,7 +13,7 @@ void ProcessDialogEvent()
 	int iTemp, i;
 
 	string NodeName = Dialog.CurrentNode;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -92,7 +92,7 @@ void ProcessDialogEvent()
 			{
 				link.l6 = "Адмирал, у меня есть к тебе небольшой вопрос по поводу Лейтона Декстера.";
 				link.l6.go = "LostDecster";
-			}	
+			}
 			//поиск товаров на корвет
 			if (pchar.questTemp.LSC == "toSeekGoods")
 			{
@@ -119,7 +119,7 @@ void ProcessDialogEvent()
 		break;
 
 		case "FT_1":
-			dialog.text = "Очень хорошо, приятель, просто замечательно... А меня зовут " + GetFullName(npchar) + ", я адмирал этого Города Потерянных Кораблей!"; 
+			dialog.text = "Очень хорошо, приятель, просто замечательно... А меня зовут " + GetFullName(npchar) + ", я адмирал этого Города Потерянных Кораблей!";
 			link.l1 = "Ха, а ведь слышал о тебе! Ты тот самый пиратский капитан, что вышел за призом на 'Ужасе Мейна' и пропал. Так вот куда ты задевался!";
 			link.l1.go = "FT_1_1";
 		break;
@@ -426,7 +426,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Рад тебя видеть, адмирал.";
 				link.l1 = "Как дела у клана 'Каспер?'";
-				link.l1.go = "Interception_1";				
+				link.l1.go = "Interception_1";
 				sld.questTemp.LSC = "InterceptionOk";
 				sld.questTemp.LSC.knowMechanic = true; //флаг ГГ знает о Механике
 			}
@@ -434,7 +434,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Рад тебя видеть, адмирал.";
 				link.l1 = "Тихо... Кажется, за решеткой кто-то есть. Поговорим в другом месте.";
-				link.l1.go = "exit";				
+				link.l1.go = "exit";
 				sld.questTemp.LSC = "InterceptionYouSeen";
 				AddDialogExitQuestFunction("LCS_EndScriptInterception");
 			}
@@ -606,13 +606,13 @@ void ProcessDialogEvent()
 		break;
 		//поиск товаров на корвет
 		case "SeekGoods":
-			dialog.text = NPCStringReactionRepeat("Посмотрим. О каких товарах речь?", 
-				"Ты уже спрашивал об этом.", 
+			dialog.text = NPCStringReactionRepeat("Посмотрим. О каких товарах речь?",
+				"Ты уже спрашивал об этом.",
 				"Уже спрашивал...",
                 "Ты уже спрашивал меня об этих товарах. Ничего я не знаю!", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Мне нужны порох и оружие.", 
+			link.l1 = HeroStringReactionRepeat("Мне нужны порох и оружие.",
 				"Да... Извини, запамятовал.",
-                "А-а, ну да.", 
+                "А-а, ну да.",
 				"Понял, понял...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekGoods_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -670,13 +670,13 @@ void ProcessDialogEvent()
 		break;
 		//найм команды
 		case "SeekCrew":
-			dialog.text = NPCStringReactionRepeat("И что?", 
-				"Мы уже говорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("И что?",
+				"Мы уже говорили об этом.",
 				"Не хочу ничего слышать об этом!",
                 "Убирайся!", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Есть основание полагать, что этот шторм будет очень сильным. Адмирал, город может разрушиться.", 
+			link.l1 = HeroStringReactionRepeat("Есть основание полагать, что этот шторм будет очень сильным. Адмирал, город может разрушиться.",
 				"Да... Извини, запамятовал.",
-                "Как знаешь...", 
+                "Как знаешь...",
 				"Хорошо-хорошо...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekCrew_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -742,13 +742,13 @@ void ProcessDialogEvent()
 
 		//освободить мужа Элис Тейлор
 		case "ELTHusb_begin":
-			dialog.text = NPCStringReactionRepeat("А тебе что до этого?", 
-				"Я уже все сказал.", 
+			dialog.text = NPCStringReactionRepeat("А тебе что до этого?",
+				"Я уже все сказал.",
 				"Вроде бы, мы все прояснили.",
                 "Ну и болван же ты, приятель!", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Хм... Ну, интересуюсь.", 
+			link.l1 = HeroStringReactionRepeat("Хм... Ну, интересуюсь.",
 				"Да-да, я помню.",
-                "Конечно.", 
+                "Конечно.",
 				"И верно, болван еще тот. Зачем одно и тоже спрашиваю - сам не пойму...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("ELTHusb_begin_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -767,7 +767,7 @@ void ProcessDialogEvent()
 			dialog.text = "Ну, отнеси ему бутылочку вина...";
 			link.l1 = "Хе, можно и так. Только я хочу помочь освободить его.";
 			link.l1.go = "ELTHusb_SF_1";
-		break;		
+		break;
 		case "ELTHusb_SF_1":
 			dialog.text = "Нет, приятель, этому не бывать! Хватит, от него устал уже весь Город. Он сгниет в своей клетке.";
 			link.l1 = "Ты что, решил его убить?";
@@ -856,7 +856,7 @@ void ProcessDialogEvent()
 			link.l1 = "Хорошо, адмирал, как скажешь. Спасибо за разговор.";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.lostDecster = "seekBox";
-			AddQuestRecord("LSC_findDekster", "5");	
+			AddQuestRecord("LSC_findDekster", "5");
 		break;
 
 	}

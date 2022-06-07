@@ -11,7 +11,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -30,22 +30,22 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "HeadMan";
 			if (npchar.quest.meeting == "0")
 			{
-				dialog.text = "Добро пожаловать к нам на промысел. Рад видеть подданного " + NationNameGenitive(sti(npchar.nation)) + ". Могу я узнать ваше имя?"; 
+				dialog.text = "Добро пожаловать к нам на промысел. Рад видеть подданного " + NationNameGenitive(sti(npchar.nation)) + ". Могу я узнать ваше имя?";
 				link.l1 = "Меня зовут " + GetFullName(pchar) + ". Я капитан собственного судна.";
 				link.l1.go = "HeadMan_1";
 				npchar.quest.meeting = "1";
 			}
 			else
 			{
-				dialog.text = NPCStringReactionRepeat("Рад вас видеть вновь у себя в доме. Вы по делу?", 
-					"Опять вы? Мы уже все проговорили, капитан.", 
+				dialog.text = NPCStringReactionRepeat("Рад вас видеть вновь у себя в доме. Вы по делу?",
+					"Опять вы? Мы уже все проговорили, капитан.",
 					"Капитан, вам еще что-нибудь нужно?",
 					"Капитан, я прошу вас не отвлекать меня!", "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Нет, " + GetAddress_Form(NPChar) + ", просто так заскочил...", 
+				link.l1 = HeroStringReactionRepeat("Нет, " + GetAddress_Form(NPChar) + ", просто так заскочил...",
 					"Да, конечно.",
-					"Нет, " + GetAddress_Form(NPChar) + ", простите...", 
+					"Нет, " + GetAddress_Form(NPChar) + ", простите...",
 					"Хорошо...", npchar, Dialog.CurrentNode);
-				link.l1.go = "exit";			
+				link.l1.go = "exit";
 			}
 			//-------- жемчужный генератор Шарпа ------------
 			if (pchar.questTemp.Sharp != "begin" && pchar.questTemp.Sharp != "over" && pchar.questTemp.Sharp.SeekSpy == "begin")
@@ -185,13 +185,13 @@ void ProcessDialogEvent()
 		// ==> часовой у поселения
 		case "GuardMan":
 			NextDiag.TempNode = "GuardMan";
-			dialog.text = NPCStringReactionRepeat("Здравствуйте! Позвольте представиться, меня зовут " + GetFullName(npchar) + ". Моя задача - предупредить поселение ловцов жемчуга о возможном нападении. Пираты, знаете ли... А вы кто?", 
-				"Приветствую еще раз!", 
+			dialog.text = NPCStringReactionRepeat("Здравствуйте! Позвольте представиться, меня зовут " + GetFullName(npchar) + ". Моя задача - предупредить поселение ловцов жемчуга о возможном нападении. Пираты, знаете ли... А вы кто?",
+				"Приветствую еще раз!",
 				"Стою тут один целыми днями, скучно, поговорить не с кем...",
                 "Эх, черт возьми, приятная отдушина в наряде!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Меня зовут " + GetFullName(pchar) + ". Я капитан, осматриваю эти земли.", 
+			link.l1 = HeroStringReactionRepeat("Меня зовут " + GetFullName(pchar) + ". Я капитан, осматриваю эти земли.",
 				"И я тебя тоже...",
-                "Понимаю.", 
+                "Понимаю.",
 				"Хех...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("GuardMan_1", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
 		break;
@@ -222,19 +222,19 @@ void ProcessDialogEvent()
 		// ==> пиплы в поселении
 		case "PearlMan":
 			NextDiag.TempNode = "PearlMan";
-			dialog.text = NPCStringReactionRepeat("Приветствую! Меня зовут " + GetFullName(npchar) + ". Чем я могу тебе помочь?", 
-				"Приветствую еще раз!", 
+			dialog.text = NPCStringReactionRepeat("Приветствую! Меня зовут " + GetFullName(npchar) + ". Чем я могу тебе помочь?",
+				"Приветствую еще раз!",
 				"В нашей глуши гости очень редки...",
                 "Эх, приятно поболтать с новым человеком! А то эти морды уже опротивели.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Да ничем особенным...", 
+			link.l1 = HeroStringReactionRepeat("Да ничем особенным...",
 				"И я тебя тоже...",
-                "Понимаю.", 
+                "Понимаю.",
 				"Хех...", npchar, Dialog.CurrentNode);
 			link.l1.go = "PearlMan_1";
 			if (pchar.questTemp.Sharp.SeekSpy == "seekSpy")
 			{
-				link.l2 = LinkRandPhrase("Слушай, мне тут ваш босс поручил кое-что... В общем, ты не в курсе, кто-нибудь с пиратами тут у вас встречается?", 
-					"Ты не знаешь, приятель, кто у вас тут с пиратам связи имеет?", 
+				link.l2 = LinkRandPhrase("Слушай, мне тут ваш босс поручил кое-что... В общем, ты не в курсе, кто-нибудь с пиратами тут у вас встречается?",
+					"Ты не знаешь, приятель, кто у вас тут с пиратам связи имеет?",
 					"У меня к тебе вопрос, дружище. Кто тут у вас замечен в связях с пиратами?");
 				link.l2.go = "PearlMan_Sharp_1";
 			}
@@ -261,8 +261,8 @@ void ProcessDialogEvent()
 			}
 		break;
 		case "PearlMan_Sharp_1":
-			dialog.text = LinkRandPhrase("Ты чего, на голову больной? Иди отсюда, придурок!", 
-				"Чего?!! Ты, часом, белены не объелся, идиот?! Вали отсюда со своими вопросами...", 
+			dialog.text = LinkRandPhrase("Ты чего, на голову больной? Иди отсюда, придурок!",
+				"Чего?!! Ты, часом, белены не объелся, идиот?! Вали отсюда со своими вопросами...",
 				"Ты в своем уме, родной? Какие пираты?! У нас?!! Шел бы ты отсюда, малахольный...");
 			link.l1 = RandPhraseSimple("Не надо хамить...", "Что за выражения?!");
 			link.l1.go = "exit";
@@ -271,13 +271,13 @@ void ProcessDialogEvent()
 		// ==> индейцы в поселении
 		case "IndPearlMan":
 			NextDiag.TempNode = "IndPearlMan";
-			dialog.text = NPCStringReactionRepeat("Бледнолицый хочет говорить?", 
-				"Снова ты, бледнолицый.", 
+			dialog.text = NPCStringReactionRepeat("Бледнолицый хочет говорить?",
+				"Снова ты, бледнолицый.",
 				"Бледнолицый любит говорить. Он похож на скво.",
                 "Духи привели ко мне бледнолицего брата.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Да.", 
+			link.l1 = HeroStringReactionRepeat("Да.",
 				"Да, снова я.",
-                "Очень поэтично.", 
+                "Очень поэтично.",
 				"Я тоже рад тебя видеть.", npchar, Dialog.CurrentNode);
 			link.l1.go = "IndPearlMan_1";
 		break;
@@ -328,7 +328,7 @@ void ProcessDialogEvent()
 			AddQuestUserData("SharpPearl_SeekSpy", "sName", npchar.name);
 			pchar.quest.SharpSeekSpy_loginSpy.win_condition.l1 = "location";
 			pchar.quest.SharpSeekSpy_loginSpy.win_condition.l1.location = "Shore55";
-			pchar.quest.SharpSeekSpy_loginSpy.function = "SharpSeekSpy_loginSpy";	
+			pchar.quest.SharpSeekSpy_loginSpy.function = "SharpSeekSpy_loginSpy";
 		break;
 		//продажа жемчуга
 		case "IndPearlMan_2":
@@ -356,7 +356,7 @@ void ProcessDialogEvent()
 							break;
 						}
 					}
-				}				
+				}
 				if (bOk)
 				{
 					dialog.text = "У меня есть слезы богов. А бледнолицый лает как собака, все слышат, все хотят дать пинка. Я ухожу...";
@@ -424,14 +424,14 @@ void ProcessDialogEvent()
 				link.l1 = "Бывай, приятель...";
 				AddMoneyToCharacter(pchar, -iTemp);
 				TakeNItems(pchar, "jewelry11", sti(npchar.quest.Pearl.bigQty));
-				TakeNItems(pchar, "jewelry12", sti(npchar.quest.Pearl.smallQty)); 
+				TakeNItems(pchar, "jewelry12", sti(npchar.quest.Pearl.smallQty));
 			}
 			else
 			{
 				dialog.text = "Ты должен мне " + iTemp + " денег. У тебя нет денег, у меня нет слез богов. Прощай.";
 				link.l1 = "Эх, жаль...";
 			}
-			link.l1.go = "IndPearlMan_Sale_Out";	
+			link.l1.go = "IndPearlMan_Sale_Out";
 		break;
 		case "IndPearlMan_Sale_Out":
 			chrDisableReloadToLocation = true;

@@ -49,8 +49,8 @@ void ControlsInit(string sPlatformName,bool bFirst)
 	DeleteAttribute(&objControlsState,"");
 
 	string initFileName = "";
-	
-	
+
+
 	initFileName = "controls\init_pc.c";
 
 	if(initFileName=="")

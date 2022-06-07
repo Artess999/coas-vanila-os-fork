@@ -13,7 +13,7 @@ void ProcessDialogEvent()
 	PChar = GetMainCharacter();
 
     string ret;
-    
+
 	switch(Dialog.CurrentNode)
 	{
 		case "exit":
@@ -35,7 +35,7 @@ void ProcessDialogEvent()
 			link.l1 = "Не сомневаюсь. Прощай, капитан!";
 			link.l1.go = "game_begin";
 		break;
-		
+
 		case "start2":
             ret = Pchar.name + ", я контрабандист, а не мэр города. Какая у меня для тебя работа?";
             if (sti(Pchar.nation) == PIRATE)
@@ -52,12 +52,12 @@ void ProcessDialogEvent()
 			link.l2 = "Знаешь, Абрахам, я, пожалуй, реквизирую твой корабль. Мне он очень понравился!";
 			link.l2.go = "start3";
 		break;
-		
+
 		case "game_begin":
 			DialogExit();
             addDialogExitQuest("Tut_SkipTutorialOnShip");
 		break;
-		
+
 		case "start3":
 			dialog.text = "Ты плохо шутишь, приятель.";
 			link.l1 = "Не бери в голову, старик. Прощай!";
@@ -65,7 +65,7 @@ void ProcessDialogEvent()
 			link.l2 = "А кто сказал, что я шучу? Ты скажешь команде, что продал мне свою посудину. А я оставлю тебе жизнь. Договорились?";
 			link.l2.go = "start4";
 		break;
-		
+
 		case "start4":
 			dialog.text = "Говорили, что ты убил своего учителя Малькольма Хатчера из-за паршивой сабли. Не верил, а зря. Сегодня ты будешь кормить рыб. У тебя нет ни шанса, приятель.";
 			link.l1 = "Неужели?!";
@@ -128,7 +128,7 @@ void ProcessDialogEvent()
 
 
 			LAi_SetPlayerType(PChar);
-			//грузим ГГ куда нужно.... 
+			//грузим ГГ куда нужно....
 			setWDMPointXZ(pchar.GenQuest.contraTravel.destination.loc);
 			SetAnyReloadToLocation(pchar.GenQuest.contraTravel.destination.loc,
 									pchar.GenQuest.contraTravel.destination.group,

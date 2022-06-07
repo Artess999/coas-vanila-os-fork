@@ -4,16 +4,16 @@ void ProcessDialogEvent()
 	aref Link, NextDiag;
 	bool bOk = false;
     bool bOk2;
-    
+
 	int Sum, nRel, nDay;
 	ref sld;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
     string iDay, iMonth;
 	iDay = environment.date.day;
 	iMonth = environment.date.month;
@@ -37,7 +37,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "Smuggling_exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			PlaceSmugglersOnShore(Pchar.quest.contraband.CurrentPlace);
@@ -55,17 +55,17 @@ void ProcessDialogEvent()
 				AddQuestUserData("Gen_Contraband", "sIsland", XI_ConvertString(GetIslandByCityName(npchar.city)));
 			}
 			AddQuestUserData("Gen_Contraband", "sLoc", GetConvertStr(Pchar.quest.contraband.CurrentPlace, "LocLables.txt"));
-				
+
 			DialogExit();
 		break;
-		
-		case "First time":			
+
+		case "First time":
 			if(NPChar.quest.meeting == "0")
 			{
 				Dialog.Text = "Что вам надо, капитан? Я не знаю вашего имени, и не могу назвать вам свое.";
 				Link.l1 = "Я капитан " + GetFullName(pchar) + ".";
 				Link.l1.go = "meeting";
-				NPChar.quest.meeting = "1"; 
+				NPChar.quest.meeting = "1";
 			}
 			else
 			{
@@ -85,9 +85,9 @@ void ProcessDialogEvent()
 				else
 					Link.l2 = "Мне нужно добраться кое-куда.";
 				Link.l2.go = "Travel";
-				
+
 				Link.l3 = "Ничего. До встречи.";
-				Link.l3.go = "Exit";				
+				Link.l3.go = "Exit";
 			}
 		break;
 
@@ -99,23 +99,23 @@ void ProcessDialogEvent()
 				Link.l1.go = "Meeting_1";
 			}
 			Link.l2 = "Мне нужно добраться кое-куда.";
-			Link.l2.go = "Travel";				
+			Link.l2.go = "Travel";
 			Link.l3 = "Ничем. Удачи!";
-			Link.l3.go = "Exit";				
+			Link.l3.go = "Exit";
 		break;
 
 		case "Meeting_1":
 			Dialog.Text = "Хм... Причем здесь я? Наверное, вы не туда зашли, капитан. Идите в магазин - там с радостью купят то, что вы привезли.";
 			Link.l1 = "Боюсь, что мне нужны именно вы.";
-			Link.l1.go = "Meeting_2";				
+			Link.l1.go = "Meeting_2";
 			Link.l2 = "Спасибо за совет. Всего хорошего.";
-			Link.l2.go = "exit";				
+			Link.l2.go = "exit";
 		break;
 
 		case "Meeting_2":
 			Dialog.Text = "Зачем же?";
 			Link.l1 = "Я хочу продать то, что не купит ни один торговец на этом острове.";
-			Link.l1.go = "Meeting_3";				
+			Link.l1.go = "Meeting_3";
 		break;
 
 		case "Meeting_3":
@@ -136,7 +136,7 @@ void ProcessDialogEvent()
 			{
 				Dialog.Text = "Извини, парень, у нас уже есть дела. Зайди через пару дней.";
 				Link.l1 = "Жаль...";
-				Link.l1.go = "Exit";		
+				Link.l1.go = "Exit";
 				break;
 			}
 //navy <--
@@ -145,14 +145,14 @@ void ProcessDialogEvent()
 			{
 				Dialog.Text = "Может, стоит завершить одно дело прежде, чем браться за другое?";
 				Link.l1 = "Пожалуй, ты прав.";
-				Link.l1.go = "Exit";				
+				Link.l1.go = "Exit";
 			}
 			else
 			{
                 if (npchar.quest.trade_date != lastspeak_date)
     			{
                     npchar.quest.trade_date = lastspeak_date;
-                    
+
                     if (ChangeContrabandRelation(pchar, 0) > 5)
                     {
                         Pchar.quest.contraband.CurrentPlace = SelectSmugglingLocation();
@@ -200,7 +200,7 @@ void ProcessDialogEvent()
 			{
 				Dialog.Text = "Извини, парень, у нас уже есть дела. Зайди через пару дней.";
 				Link.l1 = "Жаль...";
-				Link.l1.go = "Exit";		
+				Link.l1.go = "Exit";
 				break;
 			}
 //navy <--
@@ -258,11 +258,11 @@ void ProcessDialogEvent()
 						pchar.GenQuest.contraTravel.CurrentPlace = SelectSmugglingLocation();
 						aref arTmp; makearef(arTmp, pchar.GenQuest.contraTravel);
 						SetSmugglersTravelDestination(arTmp);
-						//за сколько доставят 
+						//за сколько доставят
 						pchar.GenQuest.contraTravel.price = (sti(PChar.rank)*250 + (100 - nRel)*10 + rand(30)*20) + sti(arTmp.destination.days)*100;
-						
+
 						//если метро активно, и нет пассажиров у ГГ, и еще сегодня не виделись, есть доступная бухта, и ранд ...
-						bOk = !bPauseContrabandMetro && CheckNPCQuestDate(npchar, "Travel_Talk") && 
+						bOk = !bPauseContrabandMetro && CheckNPCQuestDate(npchar, "Travel_Talk") &&
 							Pchar.GenQuest.contraTravel.CurrentPlace != "None" && rand(50) < nRel;
                         bOk2 = CheckAttribute(Pchar, "quest.Contraband.Active") && (sti(Pchar.quest.Contraband.Active) == true);
 						if (bOk && !bOk2)
@@ -297,7 +297,7 @@ void ProcessDialogEvent()
 				}
 			}
 			//корабль есть, посылаем в сад...
-			else 
+			else
 			{
 				if(GetPassengersQuantity(pchar) != 0)
 				{
@@ -351,7 +351,7 @@ void ProcessDialogEvent()
 				Dialog.Text = "Приятно иметь с тобой дело. Корабль ждет, не опоздай.";
 				Link.l1 = "Постараюсь.";
 				AddQuestRecord("Gen_ContrabandTravel", "2");
-				
+
 				//ставим контру.
 				PlaceSmugglersOnShore(PChar.GenQuest.contraTravel.CurrentPlace);
 				//корабль на волнах в бухте....
@@ -374,8 +374,8 @@ void ProcessDialogEvent()
 				Link.l1 = "Жаль, приду позже.";
 			}
 			Link.l1.go = "Exit";
-			break;  
-			
+			break;
+
 ////////////////////////////////////////////////////////////////////////////////
 //	END OF Корсарское метро
 ////////////////////////////////////////////////////////////////////////////////

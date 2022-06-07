@@ -28,7 +28,7 @@ void NetClient_TimeFrame()
 	if (iClientDeltaTimeFraction > 1000)
 	{
 		int iMilliseconds = iClientDeltaTimeFraction / 1000;
-		
+
 		iClientTime = iClientTime + iMilliseconds;
 		iClientServerTime = iClientServerTime + iMilliseconds;
 

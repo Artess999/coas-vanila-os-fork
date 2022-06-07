@@ -12,12 +12,12 @@ void IslandsInit()
 	}
 }
 
-ref GetIslandByIndex(int iIslandIndex) 
-{ 
-	return &Islands[iIslandIndex]; 
+ref GetIslandByIndex(int iIslandIndex)
+{
+	return &Islands[iIslandIndex];
 }
 
-ref GetIslandByID(string sIslandID) 
+ref GetIslandByID(string sIslandID)
 {
 	for (int i=0;i<MAX_ISLANDS;i++)
 	{

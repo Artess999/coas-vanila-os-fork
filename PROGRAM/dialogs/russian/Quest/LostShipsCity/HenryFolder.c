@@ -15,11 +15,11 @@ void ProcessDialogEvent()
 	string NodeName = Dialog.CurrentNode;
 	string NodePrevName = "";
 	if (CheckAttribute(NextDiag, "PrevNode")) NodePrevName = NextDiag.PrevNode;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			NextDiag.TempNode = "First time";			
+			NextDiag.TempNode = "First time";
 			if (npchar.quest.meeting == "0")
 			{
 				npchar.quest.meeting = "1";
@@ -43,7 +43,7 @@ void ProcessDialogEvent()
 				link.l1.go = "SeekCitizen";
 				link.l2 = "Хочу задать вам вопрос.";
 				link.l2.go = "int_quests";
-				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", 
+				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажете?",
 					"Что нового в Городе?", "Эх, с удовольствием послушал бы последние сплетни...");
 				link.l3.go = "rumours_LSC";
 				//поиск товаров на корвет
@@ -154,7 +154,7 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
-		break;		
+		break;
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -184,9 +184,9 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Я не понимаю, о ком вы говорите. Мне нужно знать имя и фамилию этого человека.";
 				Link.l1 = "Понятно. Давайте я еще попробую назвать.";
-				Link.l1.go = "SeekCitizen_Choice_2";				
+				Link.l1.go = "SeekCitizen_Choice_2";
 				Link.l2 = "Спасибо, я лучше сам поищу.";
-				Link.l2.go = "exit";	
+				Link.l2.go = "exit";
 			}
 			else
 			{
@@ -196,12 +196,12 @@ void ProcessDialogEvent()
 					link.l1 = "Надо же, точно на вас вышел!";
 					link.l1.go = "exit";
 					break;
-				}				
+				}
 				if (sld.sex == "man")
 				{
 					dialog.text = GetFullName(sld) + ", вы о нем говорите?";
 					Link.l1 = "Да-да, точно, это он.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о нем. Давайте еще раз назову.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -209,7 +209,7 @@ void ProcessDialogEvent()
 				{
 					dialog.text = GetFullName(sld) + ", вы о ней говорите?";
 					Link.l1 = "Ага, именно о ней.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о ней. Послушайте, давайте я еще раз попробую назвать.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -247,8 +247,8 @@ void ProcessDialogEvent()
 			{
 				if (sld.sex == "man")
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str1 = npchar.location.locator;
 						string Str2 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str1, 0, 5) == strcut(Str2, 0, 5))
@@ -276,8 +276,8 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str3 = npchar.location.locator;
 						string Str4 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str3, 0, 5) == strcut(Str4, 0, 5))
@@ -403,13 +403,13 @@ void ProcessDialogEvent()
 		break;
 		//поиск товаров на корвет
 		case "SeekGoods":
-			dialog.text = NPCStringReactionRepeat("Простите, я не пойму, о чем речь.", 
-				"Вы уже спрашивали об этом.", 
+			dialog.text = NPCStringReactionRepeat("Простите, я не пойму, о чем речь.",
+				"Вы уже спрашивали об этом.",
 				"Уже спрашивали...",
                 "Вы уже спрашивал меня об этих товарах. Ничего я не знаю!", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Мне нужны бомбы, картечь, провиант, лекарства, порох, оружие...", 
+			link.l1 = HeroStringReactionRepeat("Мне нужны бомбы, картечь, провиант, лекарства, порох, оружие...",
 				"Да... Извините, запамятовал.",
-                "А-а, ну да.", 
+                "А-а, ну да.",
 				"Понял, понял...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekGoods_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -425,16 +425,16 @@ void ProcessDialogEvent()
 		break;
 		//найм команды
 		case "SeekCrew":
-			dialog.text = NPCStringReactionRepeat("Идти с вами? Вот так предложение!", 
-				"Мы уже говорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("Идти с вами? Вот так предложение!",
+				"Мы уже говорили об этом.",
 				"Это уже обсуждено, второй раз повторяю.",
                 "Хватит, утомил...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Я жду ответа.", 
+			link.l1 = HeroStringReactionRepeat("Я жду ответа.",
 				"Да... Извини, запамятовал.",
-                "Как знаешь...", 
+                "Как знаешь...",
 				"Ну, ладно...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekCrew_1", "", "", "", npchar, Dialog.CurrentNode);
-		break;		
+		break;
 		case "SeekCrew_1":
 			dialog.text = "Пожалуй, откажусь. Мне здесь нравится!";
 			link.l1 = "Не надоело еще?";

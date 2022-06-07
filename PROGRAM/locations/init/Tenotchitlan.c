@@ -19,9 +19,9 @@ int LocationInitTenotchitlan(int n)
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
-	Locations[n].models.always.locators = "jungle1_locators";		
+	Locations[n].models.always.locators = "jungle1_locators";
 	Locations[n].models.always.grassPatch = "jungle1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -30,11 +30,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle1_patch";	
+	locations[n].models.night.charactersPatch = "jungle1_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -67,10 +67,10 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle3";
-	Locations[n].models.always.jungle = "jungle3";	
-	Locations[n].models.always.locators = "jungle3_locators";		
+	Locations[n].models.always.jungle = "jungle3";
+	Locations[n].models.always.locators = "jungle3_locators";
 	Locations[n].models.always.grassPatch = "jungle3_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -79,11 +79,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle3_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle3_patch";	
+	locations[n].models.night.charactersPatch = "jungle3_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -127,10 +127,10 @@ int LocationInitTenotchitlan(int n)
 	locations[n].models.always.pyramid1.sea_reflection = 1;
 	Locations[n].models.always.pyramid1seabed = "pyramid1_sb";
 	Locations[n].models.always.locators = "pyramid1_locators";
-	
+
 	Locations[n].models.always.grassPatch = "pyramid1_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-			
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 99948;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -142,23 +142,23 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 99945;
-	Locations[n].models.always.l4.tech = "LocationModelBlend";	
+	Locations[n].models.always.l4.tech = "LocationModelBlend";
 	//Waterfall
 	Locations[n].models.always.Waterfall1 = "waterfall1";
 	Locations[n].models.always.Waterfall1.uvslide.v0 = 0.2;
     Locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
 	Locations[n].models.always.Waterfall1.tech = "LocationWaterFall";
 	Locations[n].models.always.Waterfall1.level = 99950;
-	
+
 	Locations[n].models.always.Waterfall2 = "waterfall2";
 	Locations[n].models.always.Waterfall2.uvslide.v0 = 0.3;
     Locations[n].models.always.Waterfall2.uvslide.v1 = 0.0;
 	Locations[n].models.always.Waterfall2.tech = "LocationWaterFall";
-	Locations[n].models.always.Waterfall2.level = 99949;	
+	Locations[n].models.always.Waterfall2.level = 99949;
 	//Day
 	locations[n].models.day.charactersPatch = "pyramid1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "pyramid1_patch";		
+	locations[n].models.night.charactersPatch = "pyramid1_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -182,7 +182,7 @@ int LocationInitTenotchitlan(int n)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	Locations[n].id = "Temple_Inside";
 	locations[n].id.label = "Pyramid1Inside";
-	Locations[n].image = "loading\outside\TempleInside.tga";	
+	Locations[n].image = "loading\outside\TempleInside.tga";
 	//Sound
 	locations[n].type = "teno_inside";
 	locations[n].id.label = "Incas Temple";
@@ -191,13 +191,13 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	Locations[n].filespath.models = "Locations\Inside\Pyramid1Inside\";
-	//Always	
+	//Always
 	Locations[n].models.always.pyramid1 = "Pyramid1Inside";
-	Locations[n].models.always.locators = "Pyramid1Inside_locators";	
+	Locations[n].models.always.locators = "Pyramid1Inside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "Pyramid1Inside_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "Pyramid1Inside_patch";			
+	locations[n].models.night.charactersPatch = "Pyramid1Inside_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
@@ -225,10 +225,10 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle7";
-	Locations[n].models.always.jungle = "jungle7";	
-	Locations[n].models.always.locators = "jungle7_locators";		
+	Locations[n].models.always.jungle = "jungle7";
+	Locations[n].models.always.locators = "jungle7_locators";
 	Locations[n].models.always.grassPatch = "jungle7_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -237,11 +237,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle7_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle7_patch";	
+	locations[n].models.night.charactersPatch = "jungle7_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -281,10 +281,10 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt2";
-	Locations[n].models.always.caveEnt2 = "caveEnt2";	
-	Locations[n].models.always.locators = "caveEnt2_locators";		
+	Locations[n].models.always.caveEnt2 = "caveEnt2";
+	Locations[n].models.always.locators = "caveEnt2_locators";
 	Locations[n].models.always.grassPatch = "caveEnt2_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -296,11 +296,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
-	Locations[n].models.always.l4.tech = "LocationModelBlend";	
+	Locations[n].models.always.l4.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "caveEnt2_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "caveEnt2_patch";	
+	locations[n].models.night.charactersPatch = "caveEnt2_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -335,16 +335,16 @@ int LocationInitTenotchitlan(int n)
 	locations[n].filespath.models = "locations\inside\cavernMedium1";
 	locations[n].models.always.cavernMedium1 = "cavernMedium1";
 	locations[n].models.always.cavernMedium1.sea_reflection = 1;
-	locations[n].models.always.lamps = "cavernMedium1_lamps";	
-	locations[n].models.always.locators = "cavernMedium1_locators";	
+	locations[n].models.always.lamps = "cavernMedium1_lamps";
+	locations[n].models.always.locators = "cavernMedium1_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "cavernMedium1_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
 	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
+	Locations[n].models.always.rays.uvslide.v1 = -0.03;
 	//Day
 	locations[n].models.day.charactersPatch = "cavernMedium1_patch";
 	Locations[n].models.day.jumpPatch = "CavernMedium1_jump";
@@ -377,9 +377,9 @@ int LocationInitTenotchitlan(int n)
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
-	Locations[n].models.always.locators = "jungle1_locators";		
+	Locations[n].models.always.locators = "jungle1_locators";
 	Locations[n].models.always.grassPatch = "jungle1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -388,11 +388,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle1_patch";	
+	locations[n].models.night.charactersPatch = "jungle1_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -425,10 +425,10 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle8";
-	Locations[n].models.always.jungle = "jungle8";	
-	Locations[n].models.always.locators = "jungle8_locators";		
+	Locations[n].models.always.jungle = "jungle8";
+	Locations[n].models.always.locators = "jungle8_locators";
 	Locations[n].models.always.grassPatch = "jungle8_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -437,11 +437,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle8_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle8_patch";	
+	locations[n].models.night.charactersPatch = "jungle8_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -460,7 +460,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].reload.l2.label = "Jungle";
 	locations[n].locators_radius.reload.reload2_back = 2.0;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Теночтитлан
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -491,7 +491,7 @@ int LocationInitTenotchitlan(int n)
 	locations[n].models.always.plan = "plan3";
 	locations[n].models.always.plan.level = 10;
 	locations[n].models.always.plan = "plan4";
-	locations[n].models.always.plan.level = 9;	
+	locations[n].models.always.plan.level = 9;
 	//Day
 	locations[n].models.day.charactersPatch = "Tenochtitlan_patch";
 	//Night
@@ -622,7 +622,7 @@ int LocationInitTenotchitlan(int n)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Теночтитлан Храмы Тотемов
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//----------------- Храм №1 ------------------------	
+	//----------------- Храм №1 ------------------------
 	locations[n].id = "Temple_1";
 	locations[n].id.label = "";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TemplePointInside";
@@ -635,7 +635,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -664,7 +664,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -693,7 +693,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -722,7 +722,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -751,7 +751,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -780,7 +780,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -809,7 +809,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -838,7 +838,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -867,7 +867,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -896,7 +896,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TemplePointInside";
-	locations[n].models.always.locators = "TemplePointInside_locators";	
+	locations[n].models.always.locators = "TemplePointInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TemplePointInside_patch";
 	//Night
@@ -927,7 +927,7 @@ int LocationInitTenotchitlan(int n)
 	//Models
 	//Always
 	locations[n].models.always.TemplePointInside = "TempleGreatInside";
-	locations[n].models.always.locators = "TempleGreatInside_locators";	
+	locations[n].models.always.locators = "TempleGreatInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TempleGreatInside_patch";
 	//Night
@@ -1008,20 +1008,20 @@ int LocationInitTenotchitlan(int n)
 	locations[n].private3.items.indian8 = 2;
 	locations[n].private3.items.indian9 = 2;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Теночтитлан Круглый Храм
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	locations[n].id = "Temple_round";
 	locations[n].id.label = "TempleRoundInside";
 	locations[n].filespath.models = "locations\TenochtitlanInside\TempleRoundInside";
-	locations[n].image = "loading\outside\TempleInside.tga";	
+	locations[n].image = "loading\outside\TempleInside.tga";
 	//Sound
 	locations[n].type = "teno_inside";
 	//Models
 	//Always
 	locations[n].models.always.TempleRoundInside = "TempleRoundInside";
-	locations[n].models.always.locators = "TempleRoundInside_locators";	
+	locations[n].models.always.locators = "TempleRoundInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TempleRoundInside_patch";
 	//Night
@@ -1051,11 +1051,11 @@ int LocationInitTenotchitlan(int n)
 	//Always
 	Locations[n].filespath.models = "Locations\TenochtitlanInside\TempleSecondInside\";
 	Locations[n].models.always.Temple = "TempleSecondInside";
-	Locations[n].models.always.locators = "TempleSecondInside_locators";	
+	Locations[n].models.always.locators = "TempleSecondInside_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TempleSecondInside_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "TempleSecondInside_patch";			
+	locations[n].models.night.charactersPatch = "TempleSecondInside_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	Locations[n].lockWeather = "Inside";
@@ -1080,7 +1080,7 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].id = "Temple_Underwater_left";
 	locations[n].id.label = "TempleUnderwater";
 	Locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound	
+	//Sound
 	locations[n].type = "underwater";
 	locations[n].changeAnimation = "swim"; //сменить анимацию на плавание
 	//Models
@@ -1091,11 +1091,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.reflect = "TempleUnderwater_reflect";
 	//Locations[n].models.always.reflect.tech = "DLightModel";
 	Locations[n].models.always.reflect.sea_reflection = 1;
-	Locations[n].models.always.locators = "TempleUnderwater_locators";	
+	Locations[n].models.always.locators = "TempleUnderwater_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TempleUnderwater_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "TempleUnderwater_patch";			
+	locations[n].models.night.charactersPatch = "TempleUnderwater_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1124,7 +1124,7 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].id = "Temple_Underwater_right";
 	locations[n].id.label = "TempleUnderwater";
 	Locations[n].image = "loading\outside\TempleInside.tga";
-	//Sound	
+	//Sound
 	locations[n].type = "underwater";
 	locations[n].changeAnimation = "swim"; //сменить анимацию на плавание
 	//Models
@@ -1135,11 +1135,11 @@ int LocationInitTenotchitlan(int n)
 	Locations[n].models.always.reflect = "TempleUnderwater_reflect";
 	//Locations[n].models.always.reflect.tech = "DLightModel";
 	Locations[n].models.always.reflect.sea_reflection = 1;
-	Locations[n].models.always.locators = "TempleUnderwater_locators";	
+	Locations[n].models.always.locators = "TempleUnderwater_locators";
 	//Day
 	locations[n].models.day.charactersPatch = "TempleUnderwater_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "TempleUnderwater_patch";			
+	locations[n].models.night.charactersPatch = "TempleUnderwater_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";

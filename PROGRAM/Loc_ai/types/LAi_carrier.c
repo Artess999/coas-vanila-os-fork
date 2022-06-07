@@ -24,25 +24,25 @@ void LAi_type_carrier_Init(aref chr)
 	//Установим шаблон идти
 	chr.chr_ai.type = LAI_TYPE_CARRY;
 	chr.chr_ai.type.checkFight = rand(5)+2;
-	//определим маршрут и отправим в путь	
+	//определим маршрут и отправим в путь
 	if (CheckAttribute(chr, "gotoGroup") && CheckAttribute(chr, "gotoLocator"))
 	{
 		LAi_tmpl_goto_InitTemplate(chr);
 		LAi_tmpl_goto_SetLocator(chr, chr.gotoGroup, chr.gotoLocator, -1);
 	}
 	else
-	{		
+	{
 		LAi_tmpl_stay_InitTemplate(chr);
 	}
 	chr.chr_ai.tmpl.wait = 0;  //таймер ожидания
-	chr.chr_ai.tmpl.time = 0; 
+	chr.chr_ai.tmpl.time = 0;
 	chr.chr_ai.tmpl.baseLocator = "";  //откуда идем
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
 
 //Процессирование типа персонажа
 void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
-{	
+{
 	float time;
 	float locx, locy, locz;
 	if(chr.chr_ai.tmpl == LAI_TMPL_GOTO)
@@ -71,13 +71,13 @@ void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
 						chr.checkMove.locy = locy;
 						chr.checkMove.locz = locz;
 					}
-					else 
+					else
 					{
 						chr.chr_ai.tmpl.time = 0;
 						DeleteAttribute(chr, "checkMove");
 						DeleteAttribute(chr, "chr_ai.tmpl.time.time");
 					}
-				}				
+				}
 			}
 		}
 		if (chr.chr_ai.tmpl.state == "falure")
@@ -96,10 +96,10 @@ void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
 				LAi_type_carrier_GoTo(chr);
 			}
 		}
-		//--> проверяем не врагов, но дерущихся. 
+		//--> проверяем не врагов, но дерущихся.
 		if (stf(chr.chr_ai.type.checkFight) < 0.0)
 		{
-			int num = FindNearCharacters(chr, 5.0, -1.0, -1.0, 0.001, false, true);				
+			int num = FindNearCharacters(chr, 5.0, -1.0, -1.0, 0.001, false, true);
 			for(int i = 0; i < num; i++)
 			{
 				int idx = sti(chrFindNearCharacters[i].index);
@@ -119,7 +119,7 @@ void LAi_type_carrier_CharacterUpdate(aref chr, float dltTime)
 				}
 			}
 		}
-		else 
+		else
 		{
 			chr.chr_ai.type.checkFight = stf(chr.chr_ai.type.checkFight) - dltTime;
 		}

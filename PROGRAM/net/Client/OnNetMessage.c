@@ -145,7 +145,7 @@ void NetClient_OnStatistics(int iMsg)
 
 	int iWrecks = NMGetWord(iMsg);
 	int iSunk = NMGetWord(iMsg);
-	
+
 	float fAccuracy = NMGetFloat(iMsg);
 	int iTotalDamage = NMGetDword(iMsg);
 

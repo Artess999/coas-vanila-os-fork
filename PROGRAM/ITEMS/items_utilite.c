@@ -217,7 +217,7 @@ void QuestCheckEnterLocItem(aref _location, string _locator) /// <<<провер
 	ref sld;
 	int i;
 	//======> Генератор инквизиции.
-	if (_location.id == "Santiago_Incquisitio" && CheckNPCQuestDate(_location, "AttackGuard_date") && sti(Colonies[FindColony(_location.fastreload)].nation) == SPAIN && findsubstr(_locator, "detector" , 0) != -1) 
+	if (_location.id == "Santiago_Incquisitio" && CheckNPCQuestDate(_location, "AttackGuard_date") && sti(Colonies[FindColony(_location.fastreload)].nation) == SPAIN && findsubstr(_locator, "detector" , 0) != -1)
 	{
 		SetNPCQuestDate(_location, "AttackGuard_date"); //одна засада в день.
 		LAi_group_AttackGroup("SPAIN_CITIZENS", LAI_GROUP_PLAYER);
@@ -226,7 +226,7 @@ void QuestCheckEnterLocItem(aref _location, string _locator) /// <<<провер
 		if (pchar.questTemp.State == "Fr7RockBras_toSeekPlace") LAi_ActorWaitDialog(characterFromId("RockBrasilian"), pchar);
 	}
 	//=======> Квест Изабеллы, детектор на скрипт базара Сальватора с братом
-	if (_location.id == "SanJuan_town" && pchar.RomanticQuest == "SeeTalkNearHouse") 
+	if (_location.id == "SanJuan_town" && pchar.RomanticQuest == "SeeTalkNearHouse")
 	{
         pchar.quest.Romantic_DeadBrother_Cancel.over = "yes"; //убираем таймер на вовремя не явлился
 		StartQuestMovie(true, true, true);
@@ -242,9 +242,9 @@ void QuestCheckEnterLocItem(aref _location, string _locator) /// <<<провер
 		LAi_ActorFollow(pchar, CharacterFromID("MigelDeValdes"), "ActorDialog_Any2Pchar", 0.0);
 	}
 	//=======> Квест Изабеллы, закрываем дверь дома, если прошлялся не заходя домой более 3 месяцев
-	if (_location.id == "SanJuan_town" && pchar.RomanticQuest == "NewLifeForHero") 
+	if (_location.id == "SanJuan_town" && pchar.RomanticQuest == "NewLifeForHero")
 	{
-		if (GetQuestPastMonthParam("RomanticQuest") > 3) 
+		if (GetQuestPastMonthParam("RomanticQuest") > 3)
 		{
 			LocatorReloadEnterDisable("SanJuan_town", "houseSp6", true);
 			pchar.RomanticQuest = "TheDoosIsClosed";
@@ -260,7 +260,7 @@ void QuestCheckEnterLocItem(aref _location, string _locator) /// <<<провер
 		AddQuestRecord("Romantic_Line", "29");
 	}
 	//======> Генератор маяка Порт Рояля.
-	if (_location.id == "Mayak3") 	
+	if (_location.id == "Mayak3")
 	{
 		int iNation = GetCityNation(GetCityNameByIsland(GiveArealByLocation(_location)));
 		if(iNation == -1) return;
@@ -271,14 +271,14 @@ void QuestCheckEnterLocItem(aref _location, string _locator) /// <<<провер
 	if (_locator == "duhi1" && CheckAttribute(_location, "locators.monsters") && !bMonstersGen)
 	{
 		//проверяем флаг запрещения генерации
-		if(LAi_LocationIsMonstersGen(_location) && LAi_grp_playeralarm == 0) 
+		if(LAi_LocationIsMonstersGen(_location) && LAi_grp_playeralarm == 0)
 		{
 			SetSkeletonsToLocation(_location);
 		}
 	}
 	//======> детектор в тюрьме, вторжение без разрешения
 	if (_location.type == "jail" && !sti(pchar.questTemp.jailCanMove) && _locator == "detector1")
-	{	
+	{
 		pchar.questTemp.jailCanMove = true; //чтобы не срабатывало 2 раза
 		if (!LAi_grp_alarmactive && !IsLocationCaptured(_location.id))
 		{
@@ -294,7 +294,7 @@ void QuestCheckEnterLocItem(aref _location, string _locator) /// <<<провер
 	}
 	//======> скафандр
 	if (pchar.questTemp.LSC == "toUnderwater" && _location.id == "FenixPlatform")
-	{        
+	{
 		if (pchar.model == "protocusto")
 		{	//смена со скафандра на норму
 			bDisableFastReload = false;
@@ -363,7 +363,7 @@ void QuestCheckExitLocItem(aref _location, string _locator) /// <<<провер�
 		// ГГ теперь Сальватор
 		//sGlobalTemp = GetMainCharacterIndex();
 		SetMainCharacterIndex(GetCharacterIndex("MigelDeValdes"));
-        PChar   = GetMainCharacter();			
+        PChar   = GetMainCharacter();
 		locCameraToPos(-2.41, 2.35, -2.41, false);
 		SetActorDialogAny2Pchar("Isabella", "", 3.0, 0.0);
 		LAi_ActorFollow(PChar, CharacterFromID("Isabella"), "ActorDialog_Any2Pchar", 4.0);
@@ -377,7 +377,7 @@ void QuestCheckExitLocItem(aref _location, string _locator) /// <<<провер�
 		ChangeCharacterAddressGroup(CharacterFromID("Isabella"), pchar.location, "goto",  "goto3");
 		ChangeCharacterAddressGroup(CharacterFromID("Rosita"), pchar.location, "goto",  "goto1");
         SetMainCharacterIndex(GetCharacterIndex("Isabella"));
-        PChar   = GetMainCharacter();			
+        PChar   = GetMainCharacter();
         locCameraToPos(-3.84, 2.35, 0.85, false);
 		LAi_SetActorType(CharacterFromID("Rosita"));
 		LAi_SetActorType(pchar);
@@ -391,7 +391,7 @@ void QuestCheckExitLocItem(aref _location, string _locator) /// <<<провер�
 		pchar.questTemp.piratesLine = "PL5Hunter_executeReload";
 		StartQuestMovie(true, true, true);
 		SetMainCharacterIndex(GetCharacterIndex("Orry"));
-        PChar   = GetMainCharacter();			
+        PChar   = GetMainCharacter();
 		locCameraToPos(1.34, 2.1, 1.68, false);
 		LAi_SetActorType(CharacterFromID("Aivory"));
 		LAi_SetActorType(pchar);
@@ -400,7 +400,7 @@ void QuestCheckExitLocItem(aref _location, string _locator) /// <<<провер�
 	}
 	//======> установка метки нахождения в локаторе item1 в погребке
 	if (pchar.questTemp.LSC == "toInterception" && _location.id == "FleuronTavern" && _locator == "detector1")
-	{        
+	{
 		pchar.questTemp.LSC.itemState = false;
 	}
 }
@@ -412,7 +412,7 @@ void QuestCheckUseButton(aref _location, string _locator, string _itemId) /// <<
     {
 		//==> перебиваем иниты пещеры Гваделупы
 		_location.reload.l1.name = "reload3_back";
-		locations[FindLocation("Guadeloupe_CaveEntrance")].reload.l1.emerge = "reload3"; 
+		locations[FindLocation("Guadeloupe_CaveEntrance")].reload.l1.emerge = "reload3";
 		//==> перемещаемся на reload5
 		DoQuestFunctionDelay("Ascold_OpenTheGrave", 1.5);
     }
@@ -422,18 +422,18 @@ void QuestCheckUseButton(aref _location, string _locator, string _itemId) /// <<
         ref sld;
 		for (int i=1; i<=3; i++)
         {
-			sld = GetCharacter(NPC_GenerateCharacter("Enemy_"+i, "Skel"+i, "skeleton", "man", 30, PIRATE, 0, true));	
-			FantomMakeCoolFighter(sld, 30, 85, 85, "topor2", "pistol3", 100);  
-            LAi_SetWarriorType(sld);				
-			LAi_group_MoveCharacter(sld, "EnemyFight");				
-            ChangeCharacterAddressGroup(sld, pchar.location, "goto",  "goto"+i);	
+			sld = GetCharacter(NPC_GenerateCharacter("Enemy_"+i, "Skel"+i, "skeleton", "man", 30, PIRATE, 0, true));
+			FantomMakeCoolFighter(sld, 30, 85, 85, "topor2", "pistol3", 100);
+            LAi_SetWarriorType(sld);
+			LAi_group_MoveCharacter(sld, "EnemyFight");
+            ChangeCharacterAddressGroup(sld, pchar.location, "goto",  "goto"+i);
         }
         LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
         LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
         LAi_group_SetCheck("EnemyFight", "Ascold_InGraveAfterFight");
         chrDisableReloadToLocation = true;
     }
-    //==> Квест Аскольда, вскрытие лампы и появление Аззи на верфи 
+    //==> Квест Аскольда, вскрытие лампы и появление Аззи на верфи
     if (_location.id == (pchar.questTemp.Ascold.ShipyarderColony + "_shipyard") && _locator == "button01")
     {
 		LAi_SetActorType(PChar);
@@ -468,12 +468,12 @@ void QuestCheckTakeItem(aref _location, string _itemId)
 {
 	//квест промышленного шпионажа не верфях
 	if (_itemId == "ShipyardsMap")
-	{		
+	{
 		AddQuestRecord("ShipyardsMap", "2");
 		if (IsLoginTime() && !IsLocationCaptured(_location.id))
 		{
 			ref sld = characterFromId(_location.fastreload + "_shipyarder");
-			sld.dialog.currentnode = "Allarm";	
+			sld.dialog.currentnode = "Allarm";
 			LAi_SetActorType(pchar);
 			LAi_ActorDialog(pchar, sld, "", 0, 0);
 		}
@@ -514,9 +514,9 @@ void QuestCheckTakeItem(aref _location, string _itemId)
 		Islands[n].storm = true;
 		Islands[n].tornado = true;
 		n = GetCharacterIndex("PoorKillSponsor");
-		if (n != -1 && !LAi_IsDead(&characters[n])) 
+		if (n != -1 && !LAi_IsDead(&characters[n]))
 		{
-			chrDisableReloadToLocation = true; 
+			chrDisableReloadToLocation = true;
 			LAi_LocationFightDisable(loadedLocation, false);
 			LAi_group_Attack(&characters[n], pchar);
 			pchar.quest.PQ8_afterFight.win_condition.l1 = "NPC_Death";
@@ -557,7 +557,7 @@ void StartIncquisitioAttack()
 		sld = GetCharacter(NPC_GenerateCharacter("IncqAddGuard_"+i, "sold_spa_"+(rand(7)+1), "man", "man", 35, SPAIN, 1, true));
 		FantomMakeCoolFighter(sld, sti(pchar.rank)+MOD_SKILL_ENEMY_RATE+8, 80, 70, BLADE_LONG, "pistol4", 50);
         LAi_SetWarriorType(sld);
-        LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");            
+        LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
         ChangeCharacterAddressGroup(sld, "Santiago_Incquisitio", "goto", LAi_FindRandomLocator("goto"));
     }
 }

@@ -29,7 +29,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = "Да, падре.";
 			link.l1.go = "Romantic_3";
 		break;
-        case "Romantic_3":	
+        case "Romantic_3":
 			locCameraToPos(3.64, 3.25, -7.84, false);
 			LAi_SetActorType(npchar);
 			LAi_ActorTurnToLocator(npchar, "goto", "goto5");
@@ -37,7 +37,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = "Да, падре.";
 			link.l1.go = "Romantic_4";
 		break;
-        case "Romantic_4":	
+        case "Romantic_4":
 			locCameraToPos(-0.75, 3.85, -10.60, false);
 			LAi_SetActorType(npchar);
 			LAi_ActorTurnToLocator(npchar, "goto", "goto5");
@@ -45,12 +45,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = "...";
 			link.l1.go = "Romantic_5";
 		break;
-        case "Romantic_5":		
+        case "Romantic_5":
 			dialog.text = "Отныне вы муж и жена!";
 			link.l1 = "...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
-			AddDialogExitQuest("Romantic_Padre_3");			
+			AddDialogExitQuest("Romantic_Padre_3");
 		break;
 
 	}

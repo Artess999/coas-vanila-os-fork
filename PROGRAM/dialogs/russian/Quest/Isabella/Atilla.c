@@ -9,18 +9,18 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-	
+
 		case "First time":
 			dialog.text = "Чтоб мне лопнуть! Старина " + GetFullName(PChar) + "!";
 			link.l1 = "Атилла! Здорово, старый морской черт!";
-			link.l1.go = "port_1";		
+			link.l1.go = "port_1";
 			NextDiag.TempNode = "First time";
 			DeleteAttribute(npchar, "talker"); //снимаем говорилку
 		break;
@@ -48,9 +48,9 @@ void ProcessDialogEvent()
 
 		case "port_toTavern":
 			DialogExit();
-			NextDiag.CurrentNode = "Tavern_1"; 
-			chrDisableReloadToLocation = true; 
-			bDisableFastReload = true; 
+			NextDiag.CurrentNode = "Tavern_1";
+			chrDisableReloadToLocation = true;
+			bDisableFastReload = true;
 			FreeSitLocator("Pirates_tavern", "sit3");
 			LAi_SetActorType(npchar);
 			LAi_ActorRunToLocation(npchar, "reload", "reload4_back", "Pirates_tavern", "sit", "sit3", "Romantic_Pirat_toTavern", -1);
@@ -62,41 +62,41 @@ void ProcessDialogEvent()
 			link.l1 = "Да уж... Многих каталонских дьяволов ты отправил к праотцам в том бою. За ту лихую рубку тебе и дали это прозвище - Атилла... С тех пор тебе, я вижу, не часто улыбалась удача.";
 			link.l1.go = "Tavern_2";
 		break;
-		
+
 		case "Tavern_2":
 			dialog.text = "Аррргх! Вот что я тебе скажу - никогда не верь этим каталонским донам! Ходил я с одним. Взяли как-то раз французскую посудину. Среди пассажиров ювелир оказался.  До бумажек его - векселей всяких - мне дела нет, а в побрякушках-то я знаю толк. Матерь Божья, стоили они столько, что можно было купить половину Эспаньолы и губернаторский дом с самим губернатором впридачу. Ну, поделили все честь по чести, нашли в трюме пять бочонков рома, напились на радостях...";
 			link.l1 = "Хех, ну как всегда...";
 			link.l1.go = "Tavern_3";
 		break;
-		
+
 		case "Tavern_3":
 			dialog.text = "Так-то оно так, но вот наутро оказалось, что приятель мой не лыком шит. Отвязал ночью ялик, прихватил все цацки и был таков.";
 			link.l1 = "И ты спустил ему это с рук? Чтоб меня акула проглотила! Да я бы...";
 			link.l1.go = "Tavern_4";
 		break;
-		
+
 		case "Tavern_4":
 			dialog.text = "Что ты бы, салага?! Бежал-то он на испанский остров. А мне туда пути заказаны. Ну, да Бог с ним. Мог ведь просто глотку мне, дурню пьяному, перерезать - и никто бы слова не сказал.";
 			link.l1 = "Хм, что-то ты стал больно меланхоличен, дружище.";
 			link.l1.go = "Tavern_5";
 		break;
-		
+
 		case "Tavern_5":
 			dialog.text = "Время идет, да и я старею. Не так просто мне уже отправить человека на тот свет...  А Сальватор, говорят, на мои денежки свадебку сыграл. Живет теперь в Сан-Хуане...";
 			link.l1 = "Черт меня побери!  Атилла, дружище, а не навестить ли мне это тихое семейное гнездышко? Глядишь, в жениной шкатулке твои побрякушки отыщутся, а?";
 			link.l1.go = "Tavern_6";
 		break;
-		
+
 		case "Tavern_6":
 			dialog.text = "Ха-ха-ха! Сдается мне, ты не ради побрякушек в ее спальню пробраться надумал!  Да нет, приятель, раз уплыла добыча из моих рук - видно, так тому и быть... Ну, пора мне. Даст Бог - еще свидимся.";
 			link.l1 = "Прощай, Атилла.";
 			link.l1.go = "Tavern_Out";
 		break;
-		
+
 		case "Tavern_Out":
 			NextDiag.CurrentNode = "Tavern_Bye";
 			DialogExit();
-			AddDialogExitQuest("Romantic_Pirat_toTavern_end");			
+			AddDialogExitQuest("Romantic_Pirat_toTavern_end");
 		break;
 
 		case "Tavern_Bye":
@@ -436,7 +436,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			AddMoneyToCharacter(pchar, -1000);
 			ChangeCharacterReputation(pchar, -10);
-		break;	
+		break;
 		case "AddRepa_2":
 			dialog.text = "Ну, здорово! Я благодарен тебе, " + GetFullName(pchar) + ".";
 			link.l1 = "Все нормально, Атилла. Будь здоров...";
@@ -444,7 +444,7 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, -70000);
 			pchar.RomanticQuest.Atilla = "YouAreNormal";
 			ChangeCharacterReputation(pchar, 5);
-		break;	
+		break;
 		case "AddRepa_3":
 			dialog.text = "Ох ты, здорово! Хоть я особо и не напрягался...";
 			link.l1 = "Атилла, ты, может, и не особо напрягался, зато все твои усилия были очень даже по делу! Будь здоров...";
@@ -461,6 +461,6 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(pchar, -300000);
 			pchar.RomanticQuest.Atilla = "YouAreGood";
 			ChangeCharacterReputation(pchar, 30);
-		break;	
+		break;
 	}
 }

@@ -98,7 +98,7 @@ int CreateStoryCharacters(int n)
 	ch.lastname = "Морган";
 	ch.id		= "Henry Morgan";
 	ch.model	= "Morgan";
-	ch.model.animation = "man"; 
+	ch.model.animation = "man";
 	ch.sex = "man";
 	ch.location	= "PortRoyal_houseS1";
 	ch.location.group = "sit";
@@ -116,7 +116,7 @@ int CreateStoryCharacters(int n)
 	ch.Ship.Stopped = true;
    	ch.Ship.Cannons.Type = CANNON_TYPE_CANNON_LBS48;
     SetCrewQuantityFull(ch);
-    Fantom_SetBalls(ch, "pirate");    
+    Fantom_SetBalls(ch, "pirate");
     ch.rank = 45;
     SetRandSPECIAL(ch);
     SetSelfSkill(ch, 90, 90, 90, 60, 70);
@@ -241,7 +241,7 @@ int CreateStoryCharacters(int n)
 	ch.equip.gun = GUN_COMMON;
 	GiveItem2Character(ch, "blade25");
 	ch.equip.blade = "blade25";
-	// ==> Кораблик 
+	// ==> Кораблик
 	ch.Ship.Name = "Шарпоносец";
 	ch.Ship.Type = GenerateShip(SHIP_BRIG, true);
 	ch.Ship.Stopped = true;

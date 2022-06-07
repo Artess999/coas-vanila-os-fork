@@ -34,11 +34,11 @@ void InitTravelMap()
 	NullCharacter.TravelMap.Islands.PuertoRico.Shore.t0		= "shore45";
 	NullCharacter.TravelMap.Islands.Hispaniola1.Shore.t0	= "shore33";
 	NullCharacter.TravelMap.Islands.Hispaniola1.Shore.t1	= "Mayak8";
-	NullCharacter.TravelMap.Islands.Hispaniola2.Shore.t0	= "shore34";  
+	NullCharacter.TravelMap.Islands.Hispaniola2.Shore.t0	= "shore34";
 	//NullCharacter.TravelMap.Islands.Hispaniola2.Shore.t1	= "Mayak7";
 	NullCharacter.TravelMap.Islands.Tortuga.Shore.t0		= "shore58";
 	NullCharacter.TravelMap.Islands.Tortuga.Shore.t1		= "Mayak6";
-	
+
 	NullCharacter.TravelMap.Islands.Caiman.Shore.t0			= "shore16";
 	NullCharacter.TravelMap.Islands.Caiman.Shore.t1			= "shore17";
 	NullCharacter.TravelMap.Islands.Dominica.Shore.t0		= "shore26";
@@ -4242,7 +4242,7 @@ string GetIslandRandomShoreId(string _island)
 	makearef(arDest, NullCharacter.TravelMap.Islands.(_island).Shore);
 	iNum = GetAttributesNum(arDest);
 	sAttr = "t" + rand(iNum-1);
-	
+
 	if (sAttr == "t-1")
 	{
 		Log_TestInfo("Can't find any shore on island: " + _island);
@@ -4260,7 +4260,7 @@ string GetRandomIslandId()
 	makearef(arDest, NullCharacter.TravelMap.Islands);
 	iNum = GetAttributesNum(arDest);
     iNum = rand(iNum-1);
-    
+
     arImt = GetAttributeN(arDest, iNum);
 	return GetAttributeName(arImt);
 }
@@ -4284,7 +4284,7 @@ void SetSmugglersTravelDestination(aref arDest)
 	iNum = GetAttributesNum(arTown);
 	sTmp = "t" + rand(iNum-1);
 	//необитаемые острова, там нет городов, туда не плаваем.
-	//PS: мы плывем на остров, хотя выбор идет по городам (по сухопутным тоже), 
+	//PS: мы плывем на остров, хотя выбор идет по городам (по сухопутным тоже),
 	//но т.к. высаживаем в бухте, то пофиг.
 	while (arTown.(sTmp).town == "")
 	{
@@ -4299,7 +4299,7 @@ void SetSmugglersTravelDestination(aref arDest)
 	arDest.destination =			arTown.(sTmp).town;
 	arDest.destination.loc =		GetIslandRandomShoreId(arTown.(sTmp));
 	//пишу стандартные аттрибуты, везде будут они.
-	arDest.destination.group =		"reload"; 
+	arDest.destination.group =		"reload";
 	arDest.destination.locator =	"sea";
 }
 

@@ -30,7 +30,7 @@
 	void LAi_tmpl_<tmpl>_FightStay(aref chr)
 	//Персонаж провалил команду  Fight
 	void LAi_tmpl_<tmpl>_FailureFight(aref chr)
-	
+
 	//Можно ли стрелять
 	bool LAi_tmpl_<tmpl>_IsFire(aref chr)
 	//Можно ли использовать оружие
@@ -152,20 +152,20 @@
 
 Функции для работы:
 
-	Окончание работы шаблона. После вызова данные текущего шаблона 
+	Окончание работы шаблона. После вызова данные текущего шаблона
 	являются недействительными.
-	
+
 			void LAi_Character_TemplateComplite(aref chr);
 
 
 	Запрос другим персонажам на освобождение локатора.
-	
+
 			void LAi_Character_FreeLocator(aref chr, string group, string locator);
 
 
 Группы:
 
-	
+
 
 
 

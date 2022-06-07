@@ -44,7 +44,7 @@ void NetServer_OnServerInfo_SendCommonServerInfo(int wNetClientID)
 	NMDelete(iSMsg);
 }
 
-// NSC_SERVERINFO_PLAYER 
+// NSC_SERVERINFO_PLAYER
 void NetServer_OnServerInfo_SendClientsInfo(int wNetClientID)
 {
 	for (int i=0; i<NetServer_GetClientsNum(); i++)

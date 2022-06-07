@@ -10,18 +10,18 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makeref(d, Dialog);
 	makearef(Diag, NPChar.Dialog);
-	
+
 	ref    sld;
 	string attr;
 	int    iTemp, iTax, iFortValue;
-	
+
 	switch(Dialog.CurrentNode)
 	{
         case "First time":
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = RandPhraseSimple("Хех, капитан, за тобой тут половина гарнизона гоняется. Сейчас явно не время идти к тебе в команду!", "Предлагаешь с боем прорываться на корабль? Нет уж, в другой раз, кэп...");
-				link.l1 = RandPhraseSimple("Ну как знаешь...", "Да я и не собирался тебя нанимать."); 
+				link.l1 = RandPhraseSimple("Ну как знаешь...", "Да я и не собирался тебя нанимать.");
 				link.l1.go = "exit";
 				break;
 			}
@@ -33,9 +33,9 @@ void ProcessDialogEvent()
     			Link.l1.go = "Node_2";
 			}
 			Link.l2 = "Нет, у меня полный комплект.";
-			Link.l2.go = "Exit";			
+			Link.l2.go = "Exit";
 		break;
-		
+
 		case "hired":
 			Diag.TempNode = "Hired";
 			// только наняли -->
@@ -90,20 +90,20 @@ void ProcessDialogEvent()
             Link.l9 = "Ничего. Вольно.";
             Link.l9.go = "Exit";
         break;
-        
+
 		case "ShowParam_exit":
 			Diag.CurrentNode = "OnceAgain";
 			NPChar.quest.meeting = true;
 			DialogExit();
-			
+
 			PChar.SystemInfo.OnlyShowCharacter = true;
             LaunchCharacter(NPChar);
 		break;
-		
+
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = true;
-			DialogExit();			
+			DialogExit();
 		break;
 
 		case "exit_hire":
@@ -120,7 +120,7 @@ void ProcessDialogEvent()
 			{
 				pchar.questTemp.FiringOfficerIDX = NPChar.index;
 				AddDialogExitQuestFunction("PGG_FireOfficer");
-				DialogExit();			
+				DialogExit();
 				break;
 			}
 			//navy <--
@@ -131,9 +131,9 @@ void ProcessDialogEvent()
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = true;
 
-			DialogExit();			
+			DialogExit();
 		break;
-		
+
 		// boal 29.05.04 офицер хочет свалить -->
         case "WantToGo":
 			chrDisableReloadToLocation = false;
@@ -150,7 +150,7 @@ void ProcessDialogEvent()
 			                         "Никаких гулянок на стороне. Впереди жаркие бои, и у меня каждый офицер на счету.");
 			Link.l2.go = "WantToGo_Stay";
 		break;
-		
+
 		case "WantToGo_Stay":
 			dialog.text = "Я все же не раб. И работаю исключительно за деньги. Хотя вы мне и симпатичны. Я вправе решать, когда мне свалить!";
 			Link.l1 = "В этом ты прав. Как насчет прибавки?";
@@ -160,7 +160,7 @@ void ProcessDialogEvent()
 			                         "Не любите вы меня. Вижу, вижу. Ладно, гуляй, но помни: я в обиде.");
 			Link.l2.go = "WantToGo_free";
 		break;
-		
+
 		case "WantToGo_Stay_2":
 			dialog.text = "Хорошо, "+sti(NPChar.rank)*500+" золотых прямо сейчас на руки меня вполне устроят.";
             if (sti(Pchar.money) >= sti(NPChar.rank)*500)
@@ -182,7 +182,7 @@ void ProcessDialogEvent()
 			NPChar.location = "none";
 			LAi_SetOfficerType(NPChar);
 		break;
-		
+
 		case "WantToGo_free":
             Diag.TempNode = "WantToGo_free_Yet";
 			//navy -->
@@ -191,18 +191,18 @@ void ProcessDialogEvent()
 				pchar.questTemp.FiringOfficerIDX = NPChar.index;
 				AddDialogExitQuestFunction("PGG_FireOfficer");
 				Diag.CurrentNode = Diag.TempNode;
-				DialogExit();			
+				DialogExit();
 				break;
 			}
 			//navy <--
 		    Pchar.questTemp.FiringOfficerIDX = NPChar.index;
 			AddDialogExitQuestFunction("LandEnc_OfficerFired");
-			
+
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = true;
 			DialogExit();
 		break;
-		
+
 		case "WantToGo_free_Yet":
             Diag.TempNode = "WantToGo_free_Yet";
 			dialog.text = "Эх... вот я теперь заживу свободной жизнью...";
@@ -210,7 +210,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "exit";
 		break;
 		// boal 29.05.04 офицер хочет свалить <--
-		
+
 		// пассажир возмущен игроком и сваливает -->
 		case "WantToRemove":
             chrDisableReloadToLocation = false;
@@ -226,7 +226,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "WantToGo_free";
 		break;
 		// пассажир возмущен игроком и сваливает <--
-		
+
 		case "Node_2":
 			dialog.text = NPCharRepPhrase(Npchar, RandSwear() + "Да я лучший "+ XI_ConvertString(Npchar.quest.officertype) + " в этих водах. " + Npchar.quest.officertype_2 + "Готов оказать вам услугу, пойдя на службу.",
                                     "Ну, говорят, что я неплохой " + XI_ConvertString(Npchar.quest.officertype) + ". " + Npchar.quest.officertype_2 + "Возьмите меня на свое судно, капитан - убедитесь в этом сами.");
@@ -242,7 +242,7 @@ void ProcessDialogEvent()
 			if (LAi_grp_playeralarm > 0)
 			{
        			dialog.text = RandPhraseSimple("Хех, капитан, за тобой тут половина гарнизона гоняется. Сейчас явно не время идти к тебе в команду!", "Предлагаешь с боем прорываться на корабль? Нет уж, в другой раз, кэп...");
-				link.l1 = RandPhraseSimple("Ну как знаешь...", "Да я и не собирался тебя нанимать."); 
+				link.l1 = RandPhraseSimple("Ну как знаешь...", "Да я и не собирался тебя нанимать.");
 				link.l1.go = "exit";
 				break;
 			}
@@ -277,7 +277,7 @@ void ProcessDialogEvent()
 				Npchar.quest.OfficerPrice = makeint(makeint(Npchar.quest.OfficerPrice) - GetCharacterSkillToOld(Pchar, "commerce")*100); // пусть будет коммерция перса голой
 				dialog.text = "Хорошо... Пожалуй, я готов согласиться даже на " + Npchar.quest.OfficerPrice + " пиастров. Ну как?";
 				Link.l1 = "Вот это уже лучше. Ты принят.";
-				Link.l1.go = "hire";				
+				Link.l1.go = "hire";
 				Link.l2 = "Я по-прежнему считаю, что это чересчур. Прощай.";
 				Link.l2.go = "exit";
 			}
@@ -285,7 +285,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Увы, капитан, я стою именно столько, сколько запросил. Если это слишком дорого для вас - поищите кого-нибудь другого.";
 				Link.l1 = "Ну ладно, я согласен. Я беру тебя.";
-				Link.l1.go = "hire";				
+				Link.l1.go = "hire";
 				Link.l2 = "Так я и поступлю. Всего хорошего.";
 				Link.l2.go = "exit";
 			}
@@ -298,23 +298,23 @@ void ProcessDialogEvent()
 				Diag.TempNode = "OnboardSoon";
 				dialog.text = "Благодарю вас, капитан. Вы не пожалеете, что отдали мне это золото.";
 				Link.l1 = "Хочется в это верить.";
-				Link.l1.go = "Exit_hire";								
+				Link.l1.go = "Exit_hire";
 			}
 			else
 			{
 				dialog.text = "Эй, похоже, у вас проблемы с наличностью! Извините, капитан, но я не работаю в кредит.";
 				Link.l1 = "Ах ты, черт!";
-				Link.l1.go = "Exit";								
+				Link.l1.go = "Exit";
 			}
 		break;
 
-		case "OnboardSoon":			
+		case "OnboardSoon":
 			Diag.TempNode = "OnboardSoon";
 			dialog.text = "Сейчас я допью, капитан, и отправлюсь на борт. Не извольте беспокоиться - я успею до отплытия.";
 			Link.l1 = "Хорошо. Опоздаешь - заставлю драить палубу!";
-			Link.l1.go = "Exit";											
+			Link.l1.go = "Exit";
 		break;
-        
+
         case "QMASTER_1":
             dialog.text = "Максимальная активность крыс в рейсе " +
                      FloatToString(50.0 / (2.0+GetSummonSkillFromNameToOld(PChar, SKILL_REPAIR) + GetSummonSkillFromNameToOld(PChar,SKILL_SNEAK)), 1) +
@@ -323,7 +323,7 @@ void ProcessDialogEvent()
             Link.l1.go = "Exit";
             Diag.TempNode = "Hired";
         break;
-        
+
         // boal 05.09.03 offecer need to go to abordage -->
         case "stay_follow":
             dialog.text = "Какие будут приказания?";
@@ -343,7 +343,7 @@ void ProcessDialogEvent()
 			dialog.text = "На каком именно, капитан? Укажите в метрах, но не более 20-ти.";
 			link.l1 = "";
 			Link.l1.edit = 3;
-			link.l1.go = "TargetDistance_1";			
+			link.l1.go = "TargetDistance_1";
 		break;
 		case "TargetDistance_1":
 			iTemp = sti(dialogEditStrings[3]);
@@ -385,18 +385,18 @@ void ProcessDialogEvent()
 				{
 					dialog.text = "Это ваше право, но сперва довезите меня до какого-нибудь города.";
 					Link.l1 = "Хорошо, так и сделаем. Пока оставайся на службе.";
-					Link.l1.go = "Exit";	
-					break;	
+					Link.l1.go = "Exit";
+					break;
 				}
 			}
 			// проверка на море <--
 			dialog.text = "Как скажете, капитан. Но смотрите: если вы выгоните меня - я больше никогда не вернусь на ваше судно. Так что решать вам.";
 			Link.l1 = "Пожалуй, я передумал. Ты мне еще " + NPCharSexPhrase(NPChar, "нужен", "нужна") + ".";
-			Link.l1.go = "Exit";								
+			Link.l1.go = "Exit";
 			Link.l2 = "Отлично. Можешь проваливать, куда подальше.";
-			Link.l2.go = "Exit_Fire";		
+			Link.l2.go = "Exit_Fire";
 		break;
-		
+
 		case "Fired":
 		      Diag.TempNode = "Fired";
 		      dialog.text = "Я же предупреждал вас, капитан, что не вернусь на ваш корабль. У меня есть своя " + NPCharSexPhrase(NPChar, "", "женская ") + "гордость.";

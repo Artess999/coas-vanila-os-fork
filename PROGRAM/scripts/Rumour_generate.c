@@ -9,14 +9,14 @@ void GenerateRumour()
     && Colonies[FindColony("PortoBello")].nation == SPAIN && rand(5) == 0 )
     {
 
-        
+
         Log_TestInfo("loading GoldFleet "+XI_ConvertString("target_month_"+GetAddingDataMonth(0, 6, 0)));
         isGoldFleet = true;
         string sQuest = "GenerateGoldFleet";
         SetTimerCondition(sQuest, 0, 6, 0, false);
         pchar.quest.(sQuest).win_condition = "StartGoldFleet";
         pchar.quest.(sQuest).function= "StartGoldFleet";
-        
+
         GoldMonth = XI_ConvertString("target_month_"+GetAddingDataMonth(0, 6, 0));
         AddTemplRumour("Init_GoldFleet", id_counter+1);
     }

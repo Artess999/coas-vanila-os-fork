@@ -19,7 +19,7 @@ void InitCharacterEvents()
 
 	lockedReloadLocator = "";
 	chrWaitReloadLocator = "";
-	
+
 	chrWaitReloadIsNoLink = false;
 }
 
@@ -40,7 +40,7 @@ bool DelCharacterLocatorGroup(aref chr, string group)
 
 void chrCharacterEntryToLocator()
 {
-	aref loc = GetEventData();	
+	aref loc = GetEventData();
 	aref chr = GetEventData();
 	string group = GetEventData();
 	string locator = GetEventData();
@@ -108,16 +108,16 @@ void chrCharacterEntryToLocator()
 	case "randitem":
 		RandItem_OnEnterLocator(loc, locator);
 		break;
-	case "box":	
+	case "box":
 		Box_EnterToLocator(loc, locator);
 		//<<-- линейка ГПК, обнаружение сундука со скелетом
 		if (loc.id == "LostShipsCity_town" && locator == "private10")
 		{
 			LSC_enterAdmiralBox();
-		}		
+		}
 		break;
-	case "teleport":	
-		if (CheckAttribute(loc, "gotoFire")) 
+	case "teleport":
+		if (CheckAttribute(loc, "gotoFire"))
 		{
 			bMainCharacterInFire = true;
 			aref locator_group;
@@ -135,7 +135,7 @@ void chrCharacterEntryToLocator()
 		}
 		break;
 	}
-	
+
 	if( CheckAttribute(chr,"Quests.LocatorCheck." + group) )
 	{
 		chr.Quests.LocatorCheck.(group) = locator;
@@ -195,10 +195,10 @@ void chrCharacterInLocator()
 {
 	if (bMainCharacterInFire)
 	{
-		aref loc = GetEventData();			
+		aref loc = GetEventData();
 		aref chr = GetEventData();
 		if (LAi_IsDead(chr) && LAi_IsImmortal(chr)) return;
-		float hp    = stf(chr.chr_ai.hp);		
+		float hp    = stf(chr.chr_ai.hp);
 		chr.chr_ai.hp = sti(chr.chr_ai.hp) - (15+MOD_SKILL_ENEMY_RATE);
 		LAi_CheckKillCharacter(chr);
 		SendMessage(chr, "lfff", MSG_CHARACTER_VIEWDAMAGE, (15+MOD_SKILL_ENEMY_RATE), MakeFloat(MakeInt(hp)), MakeFloat(MakeInt(chr.chr_ai.hp_max)));
@@ -241,7 +241,7 @@ void chrCharacterExitFromLocator()
 	case "box":
 		Box_ExitFromLocator(loc, locator);
 		break;
-	case "teleport":	
+	case "teleport":
 		if (CheckAttribute(loc, "gotoFire"))
 		{
 			DeleteParticles();
@@ -329,9 +329,9 @@ ref funcGetWeaponID()
 	int iTemp = GetCharacterIndex(nCharIdx);
 	if (iTemp != -1)
 	{
-		string bladeId = characters[iTemp].equip.blade; 
+		string bladeId = characters[iTemp].equip.blade;
 		if (findsubstr(bladeId, "topor" , 0) != -1)	g_strRetParam = "topor";
-	}	
+	}
 	return &g_strRetParam;
 }
 

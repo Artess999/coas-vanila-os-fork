@@ -2,7 +2,7 @@
 int CreateCaracasCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -48,7 +48,7 @@ int CreateCaracasCharacters(int n)
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);		// ОФициантка
 	ch.id		= "Caracas_waitress";
 	ch.model	= "girl_3";
@@ -176,6 +176,6 @@ int CreateCaracasCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

@@ -1,7 +1,7 @@
 object NetSkills[16];
 int iNetSkillsNum;
 
-ref Net_GetSkillByName(string sSkill) 
+ref Net_GetSkillByName(string sSkill)
 {
 	for (int i=0; i<iNetSkillsNum; i++) { if (sSkill == NetSkills[i].Name) return &NetSkills[i]; }
 	trace("WARNING! NetSkills ID (" + sSkill + ") not found!");
@@ -30,7 +30,7 @@ void Net_InitSkills()
 	makeref(rS, NetSkills[n]); n++;
 	rS.Name = "Sailing";
 	rS.Cost = 100;
-	
+
 	makeref(rS, NetSkills[n]); n++;
 	rS.Name = "Defence";
 	rS.Cost = 150;

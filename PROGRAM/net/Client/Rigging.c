@@ -71,7 +71,7 @@ ref NetClient_procGetSailTextureData()
 		shref = Net_GetShipByIndex(st);
 		BI_objRetValue.maxSP = shref.sp;
 
-		if (CheckAttribute(shref, "GeraldSails")) 
+		if (CheckAttribute(shref, "GeraldSails"))
 		{
 			makearef(arEmbl, shref.GeraldSails);
 		} else {
@@ -103,7 +103,7 @@ ref NetClient_procGetRiggingData()
 	int retVal = 0;
 
 	string datName = GetEventData();
-	
+
 	if(datName=="GetFlagTexNum")
 	{
 		i = GetEventData();

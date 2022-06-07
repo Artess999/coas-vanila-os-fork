@@ -3,15 +3,15 @@
 
 object	RealShips[REAL_SHIPS_QUANTITY];
 
-ref GetRealShip(int iType) 
-{ 
+ref GetRealShip(int iType)
+{
 	if(iType >= REAL_SHIPS_QUANTITY)
 	{
 		trace ("--- Wrong Ship Index. iType is " + iType);
 		Log_TestInfo("--- Wrong Ship Index. iType is " + iType);
 		return &ShipsTypes[SHIP_TYPES_QUANTITY + 1]; // для отлова
 	}
-	return &RealShips[iType]; 
+	return &RealShips[iType];
 }
 
 // isLock - рудимент, можно выкидывать (26.05.06 boal)
@@ -25,13 +25,13 @@ int GenerateShip(int iBaseType, bool isLock)
 	{
 		return SHIP_NOTUSED;
 	}
-	
+
 	ref rRealShip = GetRealShip(iShip);
 	ref rBaseShip = GetShipByType(sti(rRealShip.BaseType));
     // boal 26/05/06 изменим
     rRealShip.ship.upgrades.hull  = 1 + rand(2);  //признак корабля теперь
 	rRealShip.ship.upgrades.sails = 1 + rand(2);  // только визуальная разница
-	
+
 	if (!CheckAttribute(rRealShip, "isFort"))
 	{
 	    int iCaliber = sti(rRealShip.MaxCaliber);
@@ -97,14 +97,14 @@ int GenerateShip(int iBaseType, bool isLock)
     rRealShip.MinCrew         = makeint(sti(rRealShip.MinCrew) + rand(makeint(sti(rRealShip.MinCrew)/3)) - makeint(sti(rRealShip.MinCrew)/6));
 
 	rRealShip.Weight		  = sti(rRealShip.Weight) + rand(sti(rRealShip.Weight)/20) - rand(sti(rRealShip.Weight)/20);
-	
+
 	// to_do del -->
 	rRealShip.BoardingCrew    = 0;
 	rRealShip.GunnerCrew      = 0;
 	rRealShip.CannonerCrew    = 0;
 	rRealShip.SailorCrew      = sti(rRealShip.OptCrew);
     // to_do del <--
-    
+
 	int iDiffWeight			= sti(rRealShip.Weight) - sti(rBaseShip.Weight);
 	int iDiffCapacity		= sti(rRealShip.Capacity) - sti(rBaseShip.Capacity);
 	int iDiffMaxCrew		= sti(rRealShip.MaxCrew) - sti(rBaseShip.MaxCrew);
@@ -116,7 +116,7 @@ int GenerateShip(int iBaseType, bool isLock)
 	rRealShip.Price	= (iDiffWeight + iDiffCapacity + iDiffMaxCrew*2 + iDiffMinCrew + fDiffSpeedRate*2 + iDiffTurnRate*2 + iDiffHP)*5 + sti(rRealShip.Price);
 
 	if (sti(rRealShip.Price) <= 0) rRealShip.Price = 100;
-	
+
 	rRealShip.Stolen = isLock;  // ворованность
 
 	return iShip;
@@ -143,7 +143,7 @@ int CreateBaseShip(int iBaseType)
     	rRealShip.ship.upgrades.hull = 1;  //признак корабля теперь
     }
 	rRealShip.ship.upgrades.sails = 1;
-	
+
     rRealShip.BaseName = rRealShip.name; // запоминалка для нужд, тк далее идет "странное"
 	if (rRealShip.name != "Fort" && rRealShip.name != "Boat") // не знаю зачем :(
 	{
@@ -151,28 +151,28 @@ int CreateBaseShip(int iBaseType)
 		// выяснил - папка с моделью имеет на конце 1, вот и ответ
 	}
     rRealShip.Stolen = 0;  // ворованность - честный
-    
+
 	if (iArcadeSails == 0) // момент инерции ниже для тактики
 	{
 	    rRealShip.InertiaAccelerationY = stf(rRealShip.InertiaAccelerationY) / 2.0;
 	}
-    
+
 	return iShip;
 }
 // Генерация корабля для верфи
 int GenerateStoreShip(int iBaseType)
 {
-	int iShip = GenerateShip(iBaseType, 0); // честный 
+	int iShip = GenerateShip(iBaseType, 0); // честный
 
 	if (iShip == -1)
 	{
 		return SHIP_NOTUSED;
 	}
-	
+
 	ref rRealShip = GetRealShip(iShip);
     rRealShip.StoreShip = true;  // кораль на верфи, трется отдельным методом
-    
-	return iShip;	
+
+	return iShip;
 }
 // переработка метода 26.05.06 boal
 // идея: трем все корабли, где нет НПС-владельца, все галки пофиг
@@ -284,7 +284,7 @@ float FindShipSpeed(aref refCharacter)
 		return 1.0;
 	}
 	ref rShip = GetRealShip(nShipType);
-	
+
 	float	fMaxSpeedZ = stf(rShip.SpeedRate);  // базовая скорость
 	float fShipHp = stf(refCharacter.ship.hp);
 	float fShipMaxHp = stf(rShip.HP);
@@ -301,7 +301,7 @@ float FindShipSpeed(aref refCharacter)
 	float	fTRFromSailDamage = Bring2Range(0.1, 1.0, 0.1, 100.0, fSailsDamage); //0.3
 
 	float fTRFromShipState = fSpeedFromHp * fTRFromSailDamage;
-	
+
 	float	fLoad = Clampf(stf(refCharacter.Ship.Cargo.Load) / stf(rShip.Capacity));
 	float	fTRFromWeight = Clampf(1.03 - stf(rShip.SpeedDependWeight) * fLoad);
 	float   fTRFromSkill = SpeedBySkill(refCharacter);
@@ -316,7 +316,7 @@ float FindShipSpeed(aref refCharacter)
 	float  fTRFromPeople;
 	fTRFromPeople = 0.85 + ((GetCrewExp(refCharacter, "Sailors") * fCrewCur) / (fCrewOpt * GetCrewExpRate())) * 0.15;
 	if (fTRFromPeople > 1) fTRFromPeople = 1;
-	 
+
 	fMaxSpeedZ = fMaxSpeedZ * fTRFromWeight * fTRFromSkill * fTRFromShipState * fTRFromPeople;
 
 	return fMaxSpeedZ;
@@ -334,7 +334,7 @@ float SpeedBySkill(aref refCharacter)
 	//fTRFromSKill = fTRFromSKill * fSpeedByHullUpgrade * fSpeedBySailsUpgrade;
     float fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "ShipSpeedUp"), 1.0, 1.15);   //slib
     fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "SailingProfessional"), fSpeedPerk, 1.20);
-    
+
 	return fTRFromSKill*fSpeedPerk;
 }
 
@@ -388,7 +388,7 @@ float FindShipTurnRate(aref refCharacter)
 		fTRFromPeople = 0.05 + ((GetCrewExp(refCharacter, "Sailors") * fCrewCur) / (fCrewOpt * GetCrewExpRate())) * 0.95;
 	}
 	if (fTRFromPeople > 1) fTRFromPeople = 1;
-	
+
 	float fTRFromSKill = TurnBySkill(refCharacter);
 
 	float fTRFromSailDamage = Bring2Range(0.05, 1.0, 0.1, 100.0, stf(refCharacter.ship.sp));
@@ -396,7 +396,7 @@ float FindShipTurnRate(aref refCharacter)
 	float fTurn = fTRFromWeight * fTRFromSkill * fTRFromPeople * fTRFromSailDamage * fSpeedFromHp;
 
 	//Log_info(refCharacter.id + "  " + fTurn);
-	return fTurn;	
+	return fTurn;
 }
 
 float TurnBySkill(aref refCharacter)
@@ -412,11 +412,11 @@ float TurnBySkill(aref refCharacter)
 	{
 		fTRFromSKill = 0.3 + (0.07 * fSkill);
 	}
-	
+
     float fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "ShipTurnRateUp"), 1.0, 1.15);   //slib
     fSpeedPerk = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "SailingProfessional"), fSpeedPerk, 1.20);
     float fFastTurn180 = AIShip_isPerksUse(CheckOfficersPerk(refCharacter, "Turn180"), 1.0, 8.0);
-    
+
 	return fTRFromSKill*fSpeedPerk*fFastTurn180;
 }
 
@@ -456,11 +456,11 @@ void SetShipyardStore(ref NPChar)
 {
     int    iTest_ship, i;
 	string attrName;
-	
+
 	if (CheckAttribute(NPChar, "shipyard")) return; // еще есть корабли с того раза
-	
+
 	SaveCurrentNpcQuestDateParam(npchar, "shipyardDate"); // дата заполнения верфи
-    
+
     if (bBettaTestMode)
     {
         for (i = 1; i <=SHIP_TYPES_QUANTITY; i++)
@@ -468,12 +468,12 @@ void SetShipyardStore(ref NPChar)
             attrName = "ship" + i;
             FillShipParamShipyard(NPChar, GenerateStoreShip(i-1), attrName);
         }
-        
+
         return;
     }
-    
+
     FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_TARTANE), "ship1");
-    
+
 	iTest_ship = rand(2);
 	if (iTest_ship == 1)
 	{
@@ -497,7 +497,7 @@ void SetShipyardStore(ref NPChar)
 		iTest_ship = rand(4);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_SCHOONER), "ship5");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_BARQUE), "ship5");
-	
+
 		iTest_ship = rand(4);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_SCHOONER), "ship6");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_BARQUE), "ship6");
@@ -507,11 +507,11 @@ void SetShipyardStore(ref NPChar)
 		iTest_ship = rand(6);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_CARAVEL), "ship8");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_CARAVEL), "ship8");
-	
+
 		iTest_ship = rand(6);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_FLEUT), "ship9");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_CARAVEL), "ship9");
-	
+
 		iTest_ship = rand(6);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_FLEUT), "ship10");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_CARAVEL), "ship10");
@@ -521,11 +521,11 @@ void SetShipyardStore(ref NPChar)
 		iTest_ship = rand(8);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_BRIG), "ship11");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_FLEUT), "ship11");
-	
+
 		iTest_ship = rand(8);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_BRIG), "ship12");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_GALEON_L), "ship12");
-	
+
 		iTest_ship = rand(8);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_BRIG), "ship13");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_GALEON_L), "ship13");
@@ -535,24 +535,24 @@ void SetShipyardStore(ref NPChar)
 		iTest_ship = rand(50);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_GALEON_L), "ship14");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_CORVETTE), "ship14");
-	
+
 		iTest_ship = rand(70);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_GALEON_H), "ship15");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_PINNACE), "ship15");
     }
-    
+
     if (sti(PChar.rank) > 12)
     {
 		iTest_ship = rand(50);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_FRIGATE), "ship141");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_CORVETTE), "ship141");
-	
+
 		iTest_ship = rand(70);
 		if (iTest_ship == 1) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_FRIGATE), "ship151");
 		if (iTest_ship == 2) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_PINNACE), "ship151");
 		if (iTest_ship == 3) FillShipParamShipyard(NPChar, GenerateStoreShip(SHIP_GALEON_H), "ship151");
     }
-    
+
     if (sti(PChar.rank) > 18)
     {
        iTest_ship = rand(120);
@@ -589,10 +589,10 @@ void FreeShipFromShipyard(ref NPChar)
 void FillShipParamShipyard(ref NPChar, int _iType, string _sShipNum)
 {
     aref    arTo, arFrom;
-    
+
 	DeleteAttribute(NPChar, "ship");
     NPChar.Ship.Type = _iType;
-    
+
 	SetRandomNameToShip(NPChar);
 
     SetBaseShipData(NPChar);
@@ -604,7 +604,7 @@ void FillShipParamShipyard(ref NPChar, int _iType, string _sShipNum)
     DeleteAttribute(NPChar, "Ship.Cargo");  //пустой трюм
     SetGoodsInitNull(NPChar);
     RecalculateCargoLoad(NPChar);
-    
+
     FillShipyardShipBack(NPChar, _sShipNum);
 }
 
@@ -648,10 +648,10 @@ string GetShip_deck(ref chr, bool map2sea)
 	if (iType != SHIP_NOTUSED)
 	{
         ref rRealShip = GetRealShip(iType);
-        
+
 		add = rRealShip.DeckType;
 	}
-	
+
 	return ret + add;
 }
 
@@ -660,7 +660,7 @@ void MakeCloneShipDeck(ref chr, bool map2sea)
 	ref rOrg, rClone;
 	int iOrg, iClone;
     string locId, toLocId;
-    
+
     locId = GetShip_deck(chr, map2sea);
     if (map2sea)
 	{
@@ -670,7 +670,7 @@ void MakeCloneShipDeck(ref chr, bool map2sea)
 	{
 	    toLocId = "Deck_Near_Ship";
 	}
-	
+
 	iOrg = FindLocation(locId);
 	iClone = FindLocation(toLocId);
 
@@ -688,7 +688,7 @@ void MakeCloneFortBoarding(string fromLocId)
 	ref rOrg, rClone;
 	int iOrg, iClone;
     string toLocId;
-    
+
     toLocId = "BOARDING_FORT";
 
 	iOrg = FindLocation(fromLocId);
@@ -701,15 +701,15 @@ void MakeCloneFortBoarding(string fromLocId)
 	CopyAttributes(rClone, rOrg);
 	rClone.id = toLocId;
 	rClone.index = iClone;
-	
+
     rClone.type = "fort_attack";
 	LAi_LocationFantomsGen(rClone, false);
 	DeleteAttribute(rClone, "reload");
 	//это подкручивание другого файла локаторов. там нет goto, soldiers и пр. есть rld и дополн.сундуки
-	if (rClone.models.always.locators == "fortV_locators") 
+	if (rClone.models.always.locators == "fortV_locators")
 	{
 		rClone.models.always.locators = "fortV_lAttack";
-		rClone.models.always.fortV = "fortV_attack";	
+		rClone.models.always.fortV = "fortV_attack";
 	}
 	else
 	{

@@ -13,7 +13,7 @@ int LocationInitTortuga(int n)
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
 	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
-	locations[n].questSeekCap = 8; 
+	locations[n].questSeekCap = 8;
 	//Town sack
 	locations[n].townsack = "Tortuga";
 	//Sound
@@ -49,7 +49,7 @@ int LocationInitTortuga(int n)
 	//WindMill Fan
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
-	Locations[n].models.always.MillFan.locator.name ="Fan";	
+	Locations[n].models.always.MillFan.locator.name ="Fan";
 	Locations[n].models.always.MillFan.rotate.x = 0.0;
 	Locations[n].models.always.MillFan.rotate.y = 0.0;
 	Locations[n].models.always.MillFan.rotate.z = 0.3;
@@ -160,7 +160,7 @@ int LocationInitTortuga(int n)
 	locations[n].reload.l14.autoreload = "0";
 	locations[n].reload.l14.label = "DEstre House";
 	locations[n].reload.l14.close_for_night = 1;
-	
+
     // --> Комоны, загрушки. Номера с начинаются с 20.
 	locations[n].reload.l20.name = "houseF4";
 	locations[n].reload.l20.go = "CommonRoom_MH";
@@ -191,7 +191,7 @@ int LocationInitTortuga(int n)
 	locations[n].reload.l24.emerge = "reload1";
 	locations[n].reload.l24.autoreload = "0";
 	locations[n].reload.l24.label = "House";
-	
+
 	locations[n].reload.l25.name = "houseH2";
 	locations[n].reload.l25.go = "CommonRoom_MH7";
 	locations[n].reload.l25.emerge = "reload1";
@@ -615,7 +615,7 @@ int LocationInitTortuga(int n)
 	locations[n].models.always.l1.level = 65538;
 	locations[n].models.always.window = "residence01_window";
 	locations[n].models.always.window.tech = "LocationWindows";
-	locations[n].models.always.window.level = 65539;	
+	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
 	//Day
@@ -713,18 +713,18 @@ int LocationInitTortuga(int n)
 	locations[n].models.always.churchInside2 = "churchInside2";
 	locations[n].models.always.churchInside2.level = 65538;
 	locations[n].models.always.locators = "churchInside2_locators";
-	
+
 	locations[n].models.always.backgroundInsides = "backgroundInsides";
 	locations[n].models.always.backgroundInsides.level = 65529;
-	
+
 	Locations[n].models.always.churchInside2windows = "churchInside2_windows";
 	Locations[n].models.always.churchInside2windows.tech = "LocationWindows";
 	locations[n].models.always.churchInside2windows.level = 65539;
-	
+
 	Locations[n].models.always.churchInside2alpha = "churchInside2_alpha";
 	Locations[n].models.always.churchInside2alpha.tech = "LocationWindows";
 	locations[n].models.always.churchInside2alpha.level = 65540;
-	
+
 	Locations[n].models.always.churchInside2gold = "churchInside2_gold";
 	Locations[n].models.always.churchInside2gold.reflection = 0.6;
 	Locations[n].models.always.churchInside2gold.tech = "EnvironmentShader";
@@ -896,15 +896,15 @@ int LocationInitTortuga(int n)
 	locations[n].filespath.models = "locations\inside\DungeonVault1";
 	locations[n].models.always.DungeonVault1 = "DungeonVault1";
 	locations[n].models.always.InquisitionDungeonVault1Fonars = "DungeonVault1_fonars";
-	locations[n].models.always.locators = "DungeonVault1_locators";	
+	locations[n].models.always.locators = "DungeonVault1_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "DungeonVault1_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
 	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
+	Locations[n].models.always.rays.uvslide.v1 = -0.03;
 	//Day
 	locations[n].models.day.charactersPatch = "DungeonVault1_patch";
 	//Night
@@ -942,12 +942,12 @@ int LocationInitTortuga(int n)
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitW";
 	Locations[n].models.always.townExit = "townExitW";
 	Locations[n].models.always.townWalls = "townExitW_stone";
-	
+
 	Locations[n].models.always.locators = "townExitW_locators";
-		
+
 	Locations[n].models.always.grassPatch = "townExitW_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -956,13 +956,13 @@ int LocationInitTortuga(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "townExitW_patch";
 	locations[n].models.day.fonars = "townExitW_fd";
 	//Night
 	locations[n].models.night.charactersPatch = "townExitW_patch";
-	locations[n].models.night.fonars = "townExitW_fn";	
+	locations[n].models.night.fonars = "townExitW_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1012,57 +1012,57 @@ int LocationInitTortuga(int n)
 	locations[n].models.always.lighthouse.sea_reflection = 1;
 	Locations[n].models.always.lighthouseSeabed = "lighthouse_sb";
 	Locations[n].models.always.locators = "lighthouse_locators";
-	
+
 	Locations[n].models.always.dooropen = "lighthouse_dooropen";
-	Locations[n].models.always.dooropen.tech = "DLightModel";	
-	
+	Locations[n].models.always.dooropen.tech = "DLightModel";
+
 	Locations[n].models.always.windows = "lighthouse_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
 	Locations[n].models.always.windows.level = 66530;
-		
+
 	Locations[n].models.always.grassPatch = "lighthouse_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
 	Locations[n].models.always.l2 = "plan2";
 	Locations[n].models.always.l2.level = 8;
-	Locations[n].models.always.l2.tech = "LocationModelBlend";		
+	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.winday = "lighthouse_winday";
 	locations[n].models.day.fonar = "lighthouse_fd";
 	locations[n].models.day.charactersPatch = "lighthouse_patch";
 	Locations[n].models.day.jumpPatch = "lighthouse_jamp";
-	
+
 	locations[n].models.day.glassinday = "lighthouse_glassinday";
 	Locations[n].models.day.glassinday.tech = "LocationWindows";
 	locations[n].models.day.glassinday.level = 66531;
-	
+
 	locations[n].models.day.glassonday = "lighthouse_glassonday";
 	Locations[n].models.day.glassonday.tech = "LocationWindows";
-	locations[n].models.day.glassonday.level = 66532;	
+	locations[n].models.day.glassonday.level = 66532;
 	//Night
 	locations[n].models.night.volumeLight= "lighthouse_volumeLight";
 	locations[n].models.night.volumeLight.tech = "LighthouseLight";
-	locations[n].models.night.volumeLight.level = 66529;	
-	
+	locations[n].models.night.volumeLight.level = 66529;
+
 	locations[n].models.night.fonar = "lighthouse_fn";
 	locations[n].models.night.winnight = "lighthouse_winnight";
 	locations[n].models.night.winnight.tech = "LighthouseLight";
 	locations[n].models.night.winnight.level = 66529;
-	locations[n].models.night.charactersPatch = "lighthouse_patch";	
+	locations[n].models.night.charactersPatch = "lighthouse_patch";
 	Locations[n].models.night.jumpPatch = "lighthouse_jamp";
-	
+
 	locations[n].models.night.glassinnight = "lighthouse_glassinnight";
 	Locations[n].models.night.glassinnight.tech = "LocationWindows";
 	locations[n].models.night.glassinnight.level = 66531;
-	
+
 	locations[n].models.night.glassonnight = "lighthouse_glassonnight";
 	Locations[n].models.night.glassonnight.tech = "LocationWindows";
 	locations[n].models.night.glassonnight.level = 66532;
-	
-	locations[n].models.night.fonaronnight = "lighthouse_fonaronnight";		
+
+	locations[n].models.night.fonaronnight = "lighthouse_fonaronnight";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1093,10 +1093,10 @@ int LocationInitTortuga(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle2";
-	Locations[n].models.always.jungle = "jungle2";	
-	Locations[n].models.always.locators = "jungle2_locators";		
+	Locations[n].models.always.jungle = "jungle2";
+	Locations[n].models.always.locators = "jungle2_locators";
 	Locations[n].models.always.grassPatch = "jungle2_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1105,11 +1105,11 @@ int LocationInitTortuga(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle2_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle2_patch";	
+	locations[n].models.night.charactersPatch = "jungle2_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1148,10 +1148,10 @@ int LocationInitTortuga(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt2";
-	Locations[n].models.always.caveEnt2 = "caveEnt2";	
-	Locations[n].models.always.locators = "caveEnt2_locators";		
+	Locations[n].models.always.caveEnt2 = "caveEnt2";
+	Locations[n].models.always.locators = "caveEnt2_locators";
 	Locations[n].models.always.grassPatch = "caveEnt2_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1163,11 +1163,11 @@ int LocationInitTortuga(int n)
 	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	Locations[n].models.always.l4 = "plan4";
 	Locations[n].models.always.l4.level = 6;
-	Locations[n].models.always.l4.tech = "LocationModelBlend";	
+	Locations[n].models.always.l4.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "caveEnt2_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "caveEnt2_patch";	
+	locations[n].models.night.charactersPatch = "caveEnt2_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1202,12 +1202,12 @@ int LocationInitTortuga(int n)
 	locations[n].models.always.grotto2 = "grotto2";
 	locations[n].models.always.grotto2.sea_reflection = 1;
 	locations[n].models.always.grotto2alpha = "grotto2_alpha";
-	Locations[n].models.always.grotto2alpha.tech = "LocationWindows";	
-	locations[n].models.always.grotto2alpha.level = 65532;	
-	locations[n].models.always.locators = "grotto2_locators";	
+	Locations[n].models.always.grotto2alpha.tech = "LocationWindows";
+	locations[n].models.always.grotto2alpha.level = 65532;
+	locations[n].models.always.locators = "grotto2_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "grotto2_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
@@ -1229,7 +1229,7 @@ int LocationInitTortuga(int n)
 	locations[n].reload.l1.label = "Cave entrance";
 	locations[n].locators_radius.reload.reload1_back = 2;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Пляж 58
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1247,10 +1247,10 @@ int LocationInitTortuga(int n)
 	locations[n].models.always.shore04.sea_reflection = 1;
 	Locations[n].models.always.shore04seabed = "shore04_sb";
 	Locations[n].models.always.locators = "shore04_locators";
-		
+
 	Locations[n].models.always.grassPatch = "shore04_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1259,11 +1259,11 @@ int LocationInitTortuga(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shore04_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shore04_patch";		
+	locations[n].models.night.charactersPatch = "shore04_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1274,7 +1274,7 @@ int LocationInitTortuga(int n)
 	locations[n].reload.l1.autoreload = "1";
 	locations[n].reload.l1.label = "Jungle";
 	locations[n].locators_radius.reload.reload1_back = 1;
-	
+
 	locations[n].reload.l2.name = "reload2_back";
 	locations[n].reload.l2.go = "Tortuga_Cave";
 	locations[n].reload.l2.emerge = "reload2";
@@ -1289,6 +1289,6 @@ int LocationInitTortuga(int n)
 	locations[n].reload.l3.label = "Sea";
 	locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
-	
+
 	return n;
 }

@@ -6,7 +6,7 @@ bool chrEnableReloadLocator(string locationID, string reloadLocatorName, bool is
 	Event("EnableReloadLocatorEvent", "ssl", locationID, reloadLocatorName, isEnable);
 	//Location
 	int li = FindLocation(locationID);
-	if(li < 0) 
+	if(li < 0)
 	{
 		return false;
 	}
@@ -20,23 +20,23 @@ bool chrEnableReloadLocator(string locationID, string reloadLocatorName, bool is
 		at = GetAttributeN(rl, i);
 		if(at.name == reloadLocatorName)
 		{
-			if(CheckAttribute(at,"disable")) 
+			if(CheckAttribute(at,"disable"))
 			{
 				disableVal = sti(at.disable);
 			}
-			if(isEnable) 
+			if(isEnable)
 			{
-				disableVal--; 
+				disableVal--;
 			}
-			else 
+			else
 			{
 				disableVal++;
 			}
-			if(disableVal <= 0) 
+			if(disableVal <= 0)
 			{
-				DeleteAttribute(at,"disable"); 
+				DeleteAttribute(at,"disable");
 			}
-			else 
+			else
 			{
 				at.disable = disableVal;
 			}
@@ -89,7 +89,7 @@ bool chrCheckReloadLink(ref loc, string reloadLocatorName)
 		at = GetAttributeN(rl, i);
 		if(at.name == reloadLocatorName)
 		{
-			if(FindLocation(at.go) > 0) 
+			if(FindLocation(at.go) > 0)
 			{
 				// boal -->
 				if (bLocatorShow)
@@ -102,7 +102,7 @@ bool chrCheckReloadLink(ref loc, string reloadLocatorName)
 			int iShip = sti(mc.ship.type);
 			if(CheckAttribute(mc, "location.from_sea") && iShip != SHIP_NOTUSED)
 			{
-				if(mc.location.from_sea == mc.location) 
+				if(mc.location.from_sea == mc.location)
 				{
 					return 1;
 				}

@@ -3,19 +3,19 @@ Scrypt Syntax
 Types of Variables
 
 1] Integer
-syntax: 
+syntax:
 	int var_name;
 example:
 	int GameTime;
 
 2] Float
-syntax: 
+syntax:
 	float var_name;
 example:
 	float WindSpeed;
 
 3] String
-syntax: 
+syntax:
 	string var_name;
 example:
 	string Name;
@@ -44,7 +44,7 @@ syntax:
 
 WHILE loop
 syntax:
-	while(condition) 
+	while(condition)
 	{
 		...
 		code
@@ -90,7 +90,7 @@ void	DeleteClass(object obj_var);
 void	SetEventHandler(string event_name, string function_name,int post);
 void	DelEventHandler(string event_name, string function_name);
 void	ExitProgram();	// quit to desktop
-?		GetEventData();	// 
+?		GetEventData();	//
 void	Execute(string file_name);	// run file in different space (thread like)
 void	Stop();						// stop executing (thread like)
 void	SendMessage(object to,string format_strinf,...);
@@ -120,7 +120,7 @@ float		atan2(int/float value);
 float		stf(string);	// string to float
 int			sti(string);	// string to int
 
-void	DeleteAttribute(object obj, string attribute_access_string); 
+void	DeleteAttribute(object obj, string attribute_access_string);
 int		GetAttributesNum(object TRef);
 int		GetAttributesNum(aref TARef);
 void	EntityUpdate(int on_off);

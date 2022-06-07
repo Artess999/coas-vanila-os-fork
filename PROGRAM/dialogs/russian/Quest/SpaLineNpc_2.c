@@ -10,7 +10,7 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	float locx, locy, locz;
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -49,13 +49,13 @@ void ProcessDialogEvent()
     			link.l1 = "Да, очень хорошо. Что он велел мне передать?";
     			link.l1.go = "Step_S6_1";
             }	//квест №7, Моисей Воклейн.
- 			if (pchar.questTemp.State == "Sp7SavePardal_toAntigua" || pchar.questTemp.State == "Sp7SavePardal_PardalIsSink")  
+ 			if (pchar.questTemp.State == "Sp7SavePardal_toAntigua" || pchar.questTemp.State == "Sp7SavePardal_PardalIsSink")
 			{
                 dialog.text = "Дьявол!!! Все так хорошо начиналось - мы отловили Пардаля... И тут появился ты...";
     			link.l1 = "Хм, для того и появился, чтобы ваши хорошие начинания закончились не так славно...";
     			link.l1.go = "Step_S7_1";
             }  //квест №8, капитан Ансель.
- 			if (pchar.questTemp.State == "Sp8SaveCumana_toCumana")  
+ 			if (pchar.questTemp.State == "Sp8SaveCumana_toCumana")
 			{
                 dialog.text = "Аргх, проклятый испанский пес!";
     			link.l1 = "Продолжим, капитан, давайте не будем отвлекаться...";

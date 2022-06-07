@@ -44,7 +44,7 @@ ref pchar;
 // Bool section
 //--------------------------------------------------------------------
 #define false			0
-#define true			1			
+#define true			1
 
 //--------------------------------------------------------------------
 // Nation section
@@ -115,50 +115,50 @@ float MaxWaveDistance = 4000.0;//4000.0;//3000.0;//2000.0;//1000.0
 float LodScale = 0.7;//0.7;//1.2;//2.0;//4.0
 
 ref GetFantomCharacter(int iIndex)
-{ 
-	return &Characters[FANTOM_CHARACTERS + iIndex]; 
+{
+	return &Characters[FANTOM_CHARACTERS + iIndex];
 }
 
-ref GetCharacter(int iIndex) 
-{ 
+ref GetCharacter(int iIndex)
+{
 	if (iIndex < 0 || iIndex >= TOTAL_CHARACTERS)
 	{
 		trace("Incorrect Index for a character! Wrong Index is " + iIndex);
 		if (MOD_BETTATESTMODE	==	"On") Log_Info("ERROR: Incorrect Index for a character! Wrong Index is " + iIndex);
 		return &NullCharacter;
 	}
-	return &Characters[iIndex]); 
+	return &Characters[iIndex]);
 }
 
-ref GetMainCharacter() 
-{ 
-	return &Characters[nMainCharacterIndex]; 
+ref GetMainCharacter()
+{
+	return &Characters[nMainCharacterIndex];
 }
 
-int GetMainCharacterIndex() 
-{ 
+int GetMainCharacterIndex()
+{
 	return nMainCharacterIndex;
 }
 
-int	GetCharacterIndex(string string_id) 
+int	GetCharacterIndex(string string_id)
 {
 	return NativeFindCharacter(&Characters, string_id);
 /*	int n;
 	for(n=0;n<TOTAL_CHARACTERS;n++)
 	{
-		if(string_id == Characters[n].id) return n; 
+		if(string_id == Characters[n].id) return n;
 	}
 	return -1;*/
 }
 
-void SetMainCharacterIndex(int index) 
-{ 
+void SetMainCharacterIndex(int index)
+{
 	if (nMainCharacterIndex!=-1)
 	{
 		Characters[nMainCharacterIndex].MainCharacter = "0";
 		Characters[nMainCharacterIndex].model.entity = "NPCharacter";
 	}
-	nMainCharacterIndex = index; 
+	nMainCharacterIndex = index;
 	Characters[nMainCharacterIndex].MainCharacter = "1";
 	Characters[nMainCharacterIndex].model.entity = "Player";
 	pchar = GetMainCharacter();
@@ -183,7 +183,7 @@ int EventReturn_isGrassLightsOn()
 	{
 		return 0;
 	}
-	
+
 	if (GetHour() >= 9 && GetHour() <= 18)
 	{
 	    return 1;

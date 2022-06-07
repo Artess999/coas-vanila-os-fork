@@ -9,7 +9,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
     // вызов диалога по городам -->
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Tavern\" + NPChar.City + "_Tavern.c";
     if (LoadSegment(NPChar.FileDialog2))
@@ -19,16 +19,16 @@ void ProcessDialogEvent()
 	}
     // вызов диалога по городам <--
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);//homo 25/06/06
-	
+
 	int iTest;
-    iTest = FindColony(NPChar.City); // город 
+    iTest = FindColony(NPChar.City); // город
     ref rColony;
 	if (iTest != -1)
 	{
 		rColony = GetColonyByIndex(iTest);
 	}
 	bool ok;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -44,7 +44,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			
+
             // homo линейка капитана Блада
             if (Pchar.questTemp.CapBloodLine == true )
             {
@@ -59,13 +59,13 @@ void ProcessDialogEvent()
             		link.l2 = "Не подскажешь ли, дружище " + NPChar.name + ", как найти доктора Вакера?";
             		link.l2.go = "TStep_0";
                 }
-                
+
                 if(Pchar.questTemp.CapBloodLine.stat == "PrepareToEscape")
                 {
             		link.l2 = "У меня к вам одно деликатное дело.";
             		link.l2.go = "TStep_1";
                 }
-                
+
                 if(Pchar.questTemp.CapBloodLine.stat == "needMoney" && CheckAttribute(pchar, "questTemp.CapBloodLine.QuestRaff") && pchar.questTemp.CapBloodLine.QuestRaff == true)
                 {
             		link.l2 = "Меня интересует человек по имени Рафаэль Гиннес. Как мне его найти?";
@@ -103,7 +103,7 @@ void ProcessDialogEvent()
 				link.l1.go = "MCCaracasAfter";
 				break;
 			}
-			//<-- зачарованный город 
+			//<-- зачарованный город
 
 			if(NPChar.quest.meeting == "0")
 			{
@@ -133,7 +133,7 @@ void ProcessDialogEvent()
 			}
 
 		break;
-		
+
 		case "Meeting":
 			dialog.Text = "О, вы сами в этом убедитесь, " + GetAddress_Form(NPChar) + ". Меня зовут " + GetFullName(npchar) + ". Я владелец этой таверны.";
 			Link.l1 = "Мне нужна команда, " + NPChar.name + ".";
@@ -150,11 +150,11 @@ void ProcessDialogEvent()
 			Link.l4 = "Пожалуй, загляну к тебе попозже.";
 			Link.l4.go = "exit";
 		break;
-		
+
 		case "crew hire":
 			ok = (rColony.from_sea == "") || (Pchar.location.from_sea == rColony.from_sea);
 			ok = sti(Pchar.Ship.Type) != SHIP_NOTUSED && ok;
-			
+
 			if (!ok)
 			{
 				Dialog.text = "А на что тебе матросы? Что-то не вижу твоего корабля в порту.";
@@ -162,7 +162,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			
+
             if (makeint(environment.time) > 22.0 || makeint(environment.time) < 7.0)
 			{
 				Dialog.text = "Обычно у меня в таверне полно людей, желающих стать матросами, но сейчас слишком поздно, и они начнут появляться только утром. Может быть, вы хотите снять комнату, и подождать их?";
@@ -197,7 +197,7 @@ void ProcessDialogEvent()
 				}
 			}
 		break;
-		
+
         case "int_quests":
 			dialog.text = "Я весь внимание.";
 			link.l1 = "Я ищу работу. Не поможешь мне?";
@@ -224,7 +224,7 @@ void ProcessDialogEvent()
 			link.l9 = "Спасибо, ничего. До свидания.";
 			link.l9.go = "exit";
 		break;
-		
+
 		case "work":
 			if (sti(NPChar.nation) != PIRATE && GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY)
 			{
@@ -237,7 +237,7 @@ void ProcessDialogEvent()
             if (sti(Pchar.Ship.Type) != SHIP_NOTUSED)
             {
 				if (!CheckAttribute(npchar, "work_date") || GetNpcQuestPastDayParam(npchar, "work_date") >= 1 || bBettaTestMode)
-    			{					
+    			{
 					SaveCurrentNpcQuestDateParam(npchar, "work_date");
 					if (isBadReputation(pchar, 40))
 					{
@@ -272,7 +272,7 @@ void ProcessDialogEvent()
 										link.l1.go = "exit";
 									}
 								}
-                			}							
+                			}
             			break;
 
             			case 1: // пассажир
@@ -481,7 +481,7 @@ void ProcessDialogEvent()
 				TavernWaitDate("wait_day");
 			}
 		break;
-		
+
 		case "tavern_keeper":
 			NextDiag.TempNode = "First time";
 
@@ -497,20 +497,20 @@ void ProcessDialogEvent()
 		break;
 		//==> eddy. квест мэра, вопросы не замечал ли шпиона
 		case "SeekSpy_Seen":
-			dialog.text = NPCStringReactionRepeat("Хм, дай подумать... Ты знаешь, есть один тип, который лично мне доверия не внушает. По виду обычный горожанин, но крутится то тут, то в городе шастает, вопросы у него странные. Сюда он вряд ли заявится - я его вчера отшил, а вот в городе поищи.", 
+			dialog.text = NPCStringReactionRepeat("Хм, дай подумать... Ты знаешь, есть один тип, который лично мне доверия не внушает. По виду обычный горожанин, но крутится то тут, то в городе шастает, вопросы у него странные. Сюда он вряд ли заявится - я его вчера отшил, а вот в городе поищи.",
 				"Мы уже говорили на эту тему, более мне сказать тебе нечего.", "Опять то же самое... Я уже все тебе сказал.", "Сколько можно спрашивать об одном и том же?!", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Спасибо, тебе, приятель. Что же, пойду искать этого типа.", "Хм, ну извини...",
                       "Хм, да уж...", "Извини, приятель...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
 		case "SeekSpy_NotSeen":
-			dialog.text = NPCStringReactionRepeat("Нет, никого не видел, чтобы у меня подозрение вызывал.", 
+			dialog.text = NPCStringReactionRepeat("Нет, никого не видел, чтобы у меня подозрение вызывал.",
 				"Мы уже говорили на эту тему, более мне сказать тебе нечего.", "Опять то же самое... Я уже все тебе сказал.", "Сколько можно спрашивать одно и то же?!", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Ну что же, и на этом спасибо, приятель.", "Хм, ну извини...",
                       "Хм, да уж...", "Извини, приятель...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
-		
+
 		//==> homo линейка Блада
 		case "TStep_0":
 			dialog.text = "Вверх по лестнице. Я с тобой не разговаривал.";
@@ -519,13 +519,13 @@ void ProcessDialogEvent()
 			int n= FindLocation("Bridgetown_tavern");
             locations[n].reload.l2.disable = false;
 		break;
-		
+
 		case "TStep_1":
 			dialog.text = "Что за дело ко мне у вас, уважаемый доктор?";
 			link.l1 = "Дело житейское... мне бы не помешали, на всякий случай, несколько абордажных сабель и пара пистолетов, дорогой друг. Вы ведь можете это устроить или указать на человека, который мог бы нечто подобное провернуть? Вы же знаете, в магазин мне идти нет смысла...";
 			link.l1.go = "TStep_2";
 		break;
-		
+
 		case "TStep_2":
 			dialog.text = "Ну, разумеется, нет.";
 			link.l1 = "Не можете? Или нет смысла?";
@@ -536,13 +536,13 @@ void ProcessDialogEvent()
     			link.l1.go = "TStep_4";
             }
 		break;
-		
+
 		case "TStep_3":
 			dialog.text = "Ничем не могу помочь, доктор.";
 			link.l1 = "Всего наилучшего.";
 			link.l1.go = "exit";
 		break;
-		
+
 		case "TStep_4":
 			dialog.text = "Конечно, у меня есть то, что вам нужно, доктор Блад. Мистер Гриффин, которому вы не так давно вправляли перелом, по жизни старый оружейник. Его дом находится неподалеку от поместья губернатора Стида - сходите к нему. Уверен, он не откажет вам.";
 			link.l1 = "Всего наилучшего.";
@@ -552,7 +552,7 @@ void ProcessDialogEvent()
 			AddQuestRecord("WeaponsForEscape", "2");
 
 		break;
-		
+
 		case "TStep_5":
             pchar.questTemp.CapBloodLine.QuestRaff = false;
 			dialog.text = "Пожалуй, я припоминаю такого... или это был не он... вроде не он...";
@@ -564,26 +564,26 @@ void ProcessDialogEvent()
 			link.l2 = "Так он или нет?";
 			link.l2.go = "TStep_7";
 		break;
-		
+
 		case "TStep_6":
             AddMoneyToCharacter(pchar, -500);
 			dialog.text = "Еще бы! Конечно, это он! Заходил совсем недавно, говорил что-то про покупку корабля... я точно не знаю, какого и у кого.";
 			link.l1 = "А что ты знаешь? Мне кажется, за 500 пиастров можно припомнить куда как больше подробностей, нежели просто тот факт, что он здесь бывал.";
 			link.l1.go = "TStep_8";
 		break;
-		
+
 		case "TStep_7":
 			dialog.text = "Нет, увы... точно не он. Спутал - бывает.";
 			link.l1 = "Досадно...";
 			link.l1.go = "TStep_10";
 		break;
-		
+
 		case "TStep_8":
 			dialog.text = "Думаю, ты его найдешь на верфи, если поторопишься.";
 			link.l1 = "Премного благодарен.";
 			link.l1.go = "TStep_9";
 		break;
-		
+
 		case "TStep_9":
             AddQuestRecord("UsurerQuest", "2");
             sld = GetCharacter(NPC_GenerateCharacter("QStranger", "citiz_7", "man", "man", 10, ENGLAND, 1, false));
@@ -598,7 +598,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
-		
+
 		case "TStep_10":
 
             sld = GetCharacter(NPC_GenerateCharacter("QStranger", "citiz_7", "man", "man", 10, ENGLAND, 1, false));
@@ -623,7 +623,7 @@ void ProcessDialogEvent()
 			DeleteAttribute(&locations[reload_location_index], "reload.l2.disable");
 			sld = GetCharacter(NPC_GenerateCharacter("CaracasWervolf", "trader_14", "man", "man", 10, PIRATE, -1, true));
 			sld.dialog.filename = "Quest\MagicCity.c";
-			sld.dialog.currentnode = "CaracasWervolf";  
+			sld.dialog.currentnode = "CaracasWervolf";
 			sld.location	= "Caracas_tavern_upstairs";
 			sld.location.group = "goto";
 			sld.location.locator = "goto1";
@@ -631,7 +631,7 @@ void ProcessDialogEvent()
 			sld.reactionOnFightModeOn = true;
 			LAi_SetActorType(sld);
 			LAi_ActorWaitDialog(sld, pchar);
-			LAi_group_MoveCharacter(sld, "EnemyFight");	
+			LAi_group_MoveCharacter(sld, "EnemyFight");
 		break;
 
 		case "MCCaracasAfter":

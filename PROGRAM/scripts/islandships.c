@@ -2,7 +2,7 @@
 void GenerateIslandShips(string sIslandID)
 {
 	//if (!TestRansackCaptain) return; // to_do
-	
+
 	int iColonyQuantity = sti(Islands[FindIsland(sIslandID)].colonyquantity);
 	int iNation;
 	int iShipsQuantity;
@@ -18,7 +18,7 @@ void GenerateIslandShips(string sIslandID)
 				if (!CheckAttribute(&colonies[i], "GenShipDate") || GetNpcQuestPastDayParam(&colonies[i], "GenShipDate") > 0)
 				{
                     SaveCurrentNpcQuestDateParam(&colonies[i], "GenShipDate"); // дата заполнения
-                    
+
 					iNation = sti(Colonies[i].nation);
 					float fChecker = frand(1.0);
 					if (fChecker < 0.8)
@@ -64,13 +64,13 @@ void GenerateIslandShips(string sIslandID)
 void PlaceCharacterShip(int iChar, int iNation, string sIslandID, int iColonyIdx)
 {
 	int iColonyNum = sti(colonies[iColonyIdx].num);
-	
+
 	string sColonyID = colonies[iColonyIdx].id;
-	
+
 	string sGroup = "IslandGroup" + iChar;
-	
+
 	Group_AddCharacter(sGroup, characters[iChar].id);
-	Group_SetGroupCommander(sGroup, characters[iChar].id);	
+	Group_SetGroupCommander(sGroup, characters[iChar].id);
 	string sLocatorGroup = "IslandShips" + iColonyNum;
 	string sLocator = "Ship_"+(rand(5)+1);
 	Group_SetAddress(sGroup, sIslandID, sLocatorGroup, sLocator);
@@ -78,7 +78,7 @@ void PlaceCharacterShip(int iChar, int iNation, string sIslandID, int iColonyIdx
 	//trace("sLocatorGroup is " + sLocatorGroup + " sLocator is " + sLocator);
 
 	int iTask = rand(1);
-	
+
 	float x, z;
 	if (iTask == 0)
 	{

@@ -46,9 +46,9 @@ void LAi_type_officer_Init(aref chr)
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
         }
         while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-        {             
+        {
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
-        }		
+        }
 		GiveItem2Character(chr, "unarmed");
 		EquipCharacterbyItem(chr, "unarmed");
 		GiveItem2Character(chr, "mushket2x2");
@@ -112,7 +112,7 @@ void LAi_type_officer_CharacterUpdate(aref chr, float dltTime)
 	float dist = 0.0;
 	float dhlt;
 	if(!GetCharacterDistByChr3D(chr, pchar, &dist)) dist = -1.0;
-	if(fCheck < 0)	
+	if(fCheck < 0)
 	{
 		chr.chr_ai.type.bottle = 6.0;
 		if(!LAi_IsBottleWork(chr))
@@ -128,7 +128,7 @@ void LAi_type_officer_CharacterUpdate(aref chr, float dltTime)
 	else chr.chr_ai.type.bottle = fCheck;
 	//Log_Info("LAi_type_officer_CharacterUpdate "+chr.chr_ai.tmpl);
 	if (chr.chr_ai.tmpl == LAI_TMPL_STAY) return; // приказ ему стоять. Врага не ищем 18.06.05
-	
+
 	if (CheckAttribute(loadedLocation, "noFight")) return;
 
 	//Дистанция до главного персонажа
@@ -306,7 +306,7 @@ void LAi_type_officer_Fire(aref attack, aref enemy, float kDist, bool isFindedEn
 void LAi_type_officer_Attacked(aref chr, aref by)
 {
 	//если наносящий удар уже таргет, нефиг крутить код и переназначать цель
-	if (LAi_tmpl_fight_GetTarget(chr) == sti(by.index)) return;	
+	if (LAi_tmpl_fight_GetTarget(chr) == sti(by.index)) return;
 	//Своих пропускаем
 	if(!LAi_group_IsEnemy(chr, by)) return;
 	float dist = -1.0;
@@ -347,7 +347,7 @@ void LAi_type_officer_FindTarget(aref chr)
 	{
 		if(LAi_type_officer_CheckDists(chr, &Characters[trg]))
 		{
-			if(LAi_tmpl_SetFight(chr, &Characters[trg])) 
+			if(LAi_tmpl_SetFight(chr, &Characters[trg]))
 			{
 				chr.chr_ai.type.checkTarget = rand(3) + 2; //таймер на проверялку расстояния до таргета
 				return;

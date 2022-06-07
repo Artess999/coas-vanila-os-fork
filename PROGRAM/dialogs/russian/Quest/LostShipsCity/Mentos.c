@@ -13,25 +13,25 @@ void ProcessDialogEvent()
 	string NodeName = Dialog.CurrentNode;
 	string NodePrevName = "";
 	if (CheckAttribute(NextDiag, "PrevNode")) NodePrevName = NextDiag.PrevNode;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			NextDiag.TempNode = "First time";			
+			NextDiag.TempNode = "First time";
 			if (npchar.quest.meeting == "0")
 			{
 				npchar.quest.meeting = "1";
 				if (CheckAttribute(loadedLocation, "storm"))
 				{
-					dialog.text = LinkRandPhrase("Ха, новый гражданин! Полагаю, что шторм не помешает нам познакомиться. Я - " + GetFullName(npchar) + ", состою в здешней милиции.", 
+					dialog.text = LinkRandPhrase("Ха, новый гражданин! Полагаю, что шторм не помешает нам познакомиться. Я - " + GetFullName(npchar) + ", состою в здешней милиции.",
 						"Так вы и есть единственный спасшийся с последнего корабля в этом шторме? Ну что же, добро пожаловать в Город. Меня зовут " + GetFullName(npchar) + ", я работаю в милиции.",
 						"Вижу нового гражданина Города! Добро пожаловать, как говорится, а на шторм уже можете не обращать внимания. Мое имя - " + GetFullName(npchar) + ", я числюсь в местной милиции.");
 					link.l1 = RandPhraseSimple("Привет, я - " + GetFullName(pchar) + " Что за милиция?", "Приветствую. Меня зовут " + GetFullName(pchar) + ". А что это за милиция?");
 					link.l1.go = "FT_1";
 				}
 				else
-				{				
-					dialog.text = LinkRandPhrase("Ха, новый гражданин! Ну, здравствуй и давай знакомится. Я - " + GetFullName(npchar) + ", состою в здешней милиции.", 
+				{
+					dialog.text = LinkRandPhrase("Ха, новый гражданин! Ну, здравствуй и давай знакомится. Я - " + GetFullName(npchar) + ", состою в здешней милиции.",
 						"Так вы и есть единственный спасшийся с последнего корабля? Ну что же, добро пожаловать в Город. Меня зовут " + GetFullName(npchar) + ", я работаю в милиции.",
 						"Вижу нового гражданина Города! Добро пожаловать, как говорится. Мое имя - " + GetFullName(npchar) + ", я числюсь в местной милиции.");
 					link.l1 = RandPhraseSimple("Привет, я - " + GetFullName(pchar) + " Что за милиция?", "Приветствую. Меня зовут " + GetFullName(pchar) + " А что это за милиция?");
@@ -79,8 +79,8 @@ void ProcessDialogEvent()
 		break;
 
 		case "FT_1":
-			dialog.text = LinkRandPhrase("Милиция обеспечивает порядок и соблюдение Закона гражданами Города.", 
-				"Милиция смотрит тут за всем происходящим. В общем, это власть в Городе...", 
+			dialog.text = LinkRandPhrase("Милиция обеспечивает порядок и соблюдение Закона гражданами Города.",
+				"Милиция смотрит тут за всем происходящим. В общем, это власть в Городе...",
 				"В обычных городах есть губернатор с гарнизоном солдат. Здесь губернатор - наш адмирал, а гарнизон - это мы, милиционеры.")
 			link.l1 = RandPhraseSimple("Понятно...", "Теперь ясно, спасибо за разъяснения.");
 			link.l1.go = "exit";
@@ -121,7 +121,7 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
-		break;		
+		break;
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -150,9 +150,9 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Я не понимаю, о ком ты говоришь. Мне нужно знать имя и фамилию этого человека.";
 				Link.l1 = "Понятно. Давай я еще попробую назвать.";
-				Link.l1.go = "SeekCitizen_Choice_2";				
+				Link.l1.go = "SeekCitizen_Choice_2";
 				Link.l2 = "Спасибо, я лучше сам поищу.";
-				Link.l2.go = "exit";	
+				Link.l2.go = "exit";
 			}
 			else
 			{
@@ -162,12 +162,12 @@ void ProcessDialogEvent()
 					link.l1 = "Надо же, точно на тебя вышел!";
 					link.l1.go = "exit";
 					break;
-				}				
+				}
 				if (sld.sex == "man")
 				{
 					dialog.text = GetFullName(sld) + ", ты о нем говоришь?";
 					Link.l1 = "Да-да, точно, это он.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о нем. Давай еще раз назову.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -175,7 +175,7 @@ void ProcessDialogEvent()
 				{
 					dialog.text = GetFullName(sld) + ", ты о ней говоришь?";
 					Link.l1 = "Ага, именно о ней.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о ней. Слушай, давай я еще раз попробую назвать.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -213,8 +213,8 @@ void ProcessDialogEvent()
 			{
 				if (sld.sex == "man")
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str1 = npchar.location.locator;
 						string Str2 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str1, 0, 5) == strcut(Str2, 0, 5))
@@ -242,8 +242,8 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str3 = npchar.location.locator;
 						string Str4 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str3, 0, 5) == strcut(Str4, 0, 5))
@@ -288,16 +288,16 @@ void ProcessDialogEvent()
 			link.l10.go = "exit";
 		break;
 		case "ansewer_1":
-			dialog.text = LinkRandPhrase("Этот остров называется Городом Потерянных Кораблей. Ты теперь гражданин этого Города.", 
-				"Очень необычное место, не правда ли? Остров называется Городом Потерянных Кораблей. Теперь и ты будешь жить с нами.", 
+			dialog.text = LinkRandPhrase("Этот остров называется Городом Потерянных Кораблей. Ты теперь гражданин этого Города.",
+				"Очень необычное место, не правда ли? Остров называется Городом Потерянных Кораблей. Теперь и ты будешь жить с нами.",
 				"Это Город Потерянных Кораблей. Весь остров состоит из кораблей, которые сюда занесла нелегкая...");
 			link.l1 = RandPhraseSimple("Понятно.", "Ясно...");
 			link.l1.go = "exit";
 			NextDiag.(NodePrevName).l1 = true;
 		break;
 		case "ansewer_2":
-			dialog.text = LinkRandPhrase("А зачем? Нас и здесь неплохо кормят...", 
-				"Это запрещено Законом. А вообще-то, лично я и не хочу, меня здесь все устраивает.", 
+			dialog.text = LinkRandPhrase("А зачем? Нас и здесь неплохо кормят...",
+				"Это запрещено Законом. А вообще-то, лично я и не хочу, меня здесь все устраивает.",
 				"Ты знаешь, здесь есть все, что я хотел получить от жизни. Зачем мне искать лучшей доли?");
 			link.l1 = RandPhraseSimple("Понятно.", "Ясно...");
 			link.l1.go = "exit";
@@ -317,13 +317,13 @@ void ProcessDialogEvent()
 		break;
 		//поиск товаров на корвет
 		case "SeekGoods":
-			dialog.text = NPCStringReactionRepeat("А зачем тебе порох и оружие? Здесь это - мертвый груз.", 
-				"Все решили.", 
+			dialog.text = NPCStringReactionRepeat("А зачем тебе порох и оружие? Здесь это - мертвый груз.",
+				"Все решили.",
 				"Я все сделаю.",
                 "Ох, и приставучий же ты.", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Здесь - да. Но есть места, где эти товары необходимы.", 
+			link.l1 = HeroStringReactionRepeat("Здесь - да. Но есть места, где эти товары необходимы.",
 				"Отлично!",
-                "А-а, ну да.", 
+                "А-а, ну да.",
 				"Ага.", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekGoods_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -372,8 +372,8 @@ void ProcessDialogEvent()
 			link.l1 = "Это верно! Ну что же, ожидай здесь.";
 			link.l1.go = "exit";
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
-			pchar.questTemp.LSC.crew.ment_6 = true; 
-			npchar.quest.LSCofficer = true; 
+			pchar.questTemp.LSC.crew.ment_6 = true;
+			npchar.quest.LSCofficer = true;
 			AddQuestRecord("ISS_MainLine", "61");
 		break;
 
@@ -409,7 +409,7 @@ void ProcessDialogEvent()
 			link.l1 = "Ну вот и славно...";
 			link.l1.go = "exit";
 			LAi_group_MoveCharacter(npchar, LAI_GROUP_PLAYER);
-			npchar.quest.LSCofficer = true; 
+			npchar.quest.LSCofficer = true;
 			AddQuestRecord("ISS_MainLine", "68");
 		break;
 		//финальный разговор мента_6 перед посадкой на корвет

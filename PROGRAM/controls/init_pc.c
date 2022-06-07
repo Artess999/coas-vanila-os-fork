@@ -19,7 +19,7 @@ void ExternControlsInit(bool bFirst)
 		CI_CreateAndSetControls( "", "PaperMap", CI_GetKeyCode("KEY_M"), 0, true );
 	}
 	//
-	
+
 	// boal Ќе подведем :) -->
 	CI_CreateAndSetControls( "", "BOAL_Control", CI_GetKeyCode("VK_F11"), 0, false );
     CI_CreateAndSetControls( "", "BOAL_Control2", CI_GetKeyCode("VK_F12"), 0, false );
@@ -28,7 +28,7 @@ void ExternControlsInit(bool bFirst)
     CI_CreateAndSetControls( "", "BOAL_ControF5", CI_GetKeyCode("VK_F5"), 0, false );
     CI_CreateAndSetControls( "", "BOAL_ControF7", CI_GetKeyCode("VK_F7"), 0, false );
     CI_CreateAndSetControls( "", "BOAL_ControlDebug", CI_GetKeyCode("VK_INSERT"), 0, false );
-    
+
     CI_CreateAndSetControls( "", "TimeScaleFaster", CI_GetKeyCode("VK_ADD"), 0, false );
 †   CI_CreateAndSetControls( "", "TimeScaleSlower", CI_GetKeyCode("VK_SUBTRACT"), 0, false );
 	CI_CreateAndSetControls( "", "VK_PAUSETimePause", CI_GetKeyCode("VK_PAUSE"), 0, false );
@@ -49,7 +49,7 @@ void ExternControlsInit(bool bFirst)
 		CI_CreateAndSetControls( "", "WhrNextWeather", CI_GetKeyCode("VK_R_BREAKE"), 0, false );
 		CI_CreateAndSetControls( "", "WhrUpdateWeather", CI_GetKeyCode("VK_A_QUOTE"), 0, false );
 		//CI_CreateAndSetControls( "", "Tele", CI_GetKeyCode("VK_A_POINT"), 0, false );
-		
+
 		CI_CreateAndSetControls( "", "CoastFoamLB", CI_GetKeyCode("VK_LBUTTON"), 0, true );
 		CI_CreateAndSetControls( "", "CoastFoamRB", CI_GetKeyCode("VK_RBUTTON"), 0, true );
 		CI_CreateAndSetControls( "", "CoastFoamINS", CI_GetKeyCode("VK_INSERT"), 0, true );
@@ -131,10 +131,10 @@ void ExternControlsInit(bool bFirst)
 
     CI_CreateAndSetControls( "PrimaryLand", "BOAL_DeadSearch", CI_GetKeyCode("KEY_1"), 0, true );
 	MapControlToGroup("BOAL_DeadSearch","FightModeControls");
-	
+
 	CI_CreateAndSetControls( "FightModeControls", "BOAL_ActivateRush", CI_GetKeyCode("KEY_F"), 0, true ); // boal €рость на суше
 	// boal <--
-	
+
 	//CI_CreateContainer("", "ChrTurnH1", 15.0);
 	//MapControlToGroup("ChrTurnH1","FightModeControls");
 	//MapControlToGroup("ChrTurnH1","BattleInterfaceControls");
@@ -167,16 +167,16 @@ void ExternControlsInit(bool bFirst)
 
 
 	MapControlToGroup("ChrBlock","BattleInterfaceControls");
-	
+
 	CI_CreateAndSetControls( "FightModeControls", "ChrFightMode", CI_GetKeyCode("KEY_E"), 0, true );
 	MapControlToGroup("ChrFightMode","BattleInterfaceControls");
-	
+
 	CI_CreateAndSetControls( "FightModeControls", "ChrFire", CI_GetKeyCode("KEY_Q"), 0, true );
-	
+
 	MapControlToGroup("ChrFire","BattleInterfaceControls");
 
 // Ship ========================================================================
-	
+
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_TurnLeft", CI_GetKeyCode("KEY_A"), 0, true );
 	MapControlToGroup("Ship_TurnLeft","Sailing1Pers");
 	CI_CreateAndSetControls( "Sailing3Pers", "Ship_TurnRight", CI_GetKeyCode("KEY_D"), 0, true );
@@ -205,13 +205,13 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "WorldMapControls", "WMapBackward", CI_GetKeyCode("VK_MWHEEL_DOWN"), 0, true );
 	CI_CreateAndSetControls( "WorldMapControls", "WMapCameraSwitch", CI_GetKeyCode("VK_TAB"), 0, true );
 	//CI_CreateAndSetControls( "WorldMapControls", "WMapPauseSwitch", CI_GetKeyCode("VK_PAUSE"), 0, true );
-	
+
 	CI_CreateAndSetControls( "WorldMapControls", "WMapShipSailUp", CI_GetKeyCode("KEY_W"), 0, true );
-	
+
 	CI_CreateAndSetControls( "WorldMapControls", "WMapShipSailDown", CI_GetKeyCode("KEY_S"), 0, true );
-	
+
 	CI_CreateAndSetControls( "WorldMapControls", "WMapShipTurnLeft", CI_GetKeyCode("KEY_A"), 0, true );
-	
+
 	CI_CreateAndSetControls( "WorldMapControls", "WMapShipTurnRight", CI_GetKeyCode("KEY_D"), 0, true );
 	CI_CreateAndSetControls( "WorldMapControls", "WMapCancel", CI_GetKeyCode("VK_SPACE"), 0, true );
 	CI_CreateAndSetControls( "WorldMapControls", "WMapSkipEncounter", CI_GetKeyCode("VK_RETURN"), 0, true );
@@ -327,7 +327,7 @@ void ExternControlsInit(bool bFirst)
 
 	// temporary control
 	CI_CreateAndSetControls( "NetShipControls", "Ship_StartRepair", CI_GetKeyCode("KEY_L"), 0, true );
-	
+
 	MapControlToGroup("Ship_TurnLeft", "NetShipControls");
 	MapControlToGroup("Ship_TurnRight", "NetShipControls");
 	MapControlToGroup("Ship_SailUp", "NetShipControls");
@@ -514,7 +514,7 @@ void ExternInitKeyCodes()
 	objControlsState.key_codes.VK_MWHEEL_UP.img = ">";
 	objControlsState.key_codes.VK_MWHEEL_DOWN	= 259;
 	objControlsState.key_codes.VK_MWHEEL_DOWN.img = ">";
-	
+
 	// boal -->
 	objControlsState.key_codes.VK_MBUTTON	= 4;
 	objControlsState.key_codes.VK_MBUTTON.img = ">";
@@ -526,7 +526,7 @@ void ExternInitKeyCodes()
 	objControlsState.key_codes.VK_F12.img = "z";
 	objControlsState.key_codes.VK_PAUSE	= 19;
 	objControlsState.key_codes.VK_PAUSE.img = "z";
-	
+
 	objControlsState.key_codes.VK_L_BREAKE		= 219;   //[ {
 	objControlsState.key_codes.VK_L_BREAKE.img = "s";
 	objControlsState.key_codes.VK_R_BREAKE		= 221;   //[ {
@@ -550,7 +550,7 @@ void ExternInitKeyCodes()
 
 	objControlsState.key_codes.VK_A_TILDA	    = 192;  // ` ~
 	objControlsState.key_codes.VK_A_TILDA.img = ">";
-	
+
 	objControlsState.key_codes.VK_CAPSLOCK	    = 20;
 	objControlsState.key_codes.VK_CAPSLOCK.img = "s";
 

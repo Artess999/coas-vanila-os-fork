@@ -82,8 +82,8 @@ void LAi_tmpl_follow_CharacterUpdate(aref chr, float dltTime)
 		}else{
 			//Trace("Template <follow> -> timeout chr.id = " + chr.id);
 			SetCharacterTask_Stay(chr);
-			LAi_tmpl_follow_Teleport(chr);			
-			tmpl.state = "stay";			
+			LAi_tmpl_follow_Teleport(chr);
+			tmpl.state = "stay";
 		}
 	}
 	if(tmpl.state == "stay")
@@ -126,13 +126,13 @@ void LAi_tmpl_follow_FailureGoToPoint(aref chr)
 
 //Персонаж выполнил команду  run to point
 void LAi_tmpl_follow_EndRunToPoint(aref chr)
-{	
+{
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
 //Персонаж провалил команду  run to point
 void LAi_tmpl_follow_FailureRunToPoint(aref chr)
-{	
+{
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
@@ -150,14 +150,14 @@ void LAi_tmpl_follow_FollowGo(aref chr)
 
 //Персонаж начал дошёл до другого персонажа
 void LAi_tmpl_follow_FollowStay(aref chr)
-{	
+{
 	chr.chr_ai.tmpl.state = "stay";
 	LAi_tmpl_follow_Complite(chr);
 }
 
 //Персонаж провалил команду  follow character
 void LAi_tmpl_follow_FailureFollow(aref chr)
-{	
+{
 	LAi_tmpl_follow_updatetemplate(chr);
 }
 
@@ -182,7 +182,7 @@ void LAi_tmpl_follow_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_follow_IsFire(aref chr)
-{	
+{
 	return false;
 }
 
@@ -253,7 +253,7 @@ bool LAi_tmpl_follow_SetFollow(aref chr, aref follow, float timeout)
 				chr.chr_ai.tmpl.state = "falure";
 				SetCharacterTask_Stay(chr);
 				return false;
-			}			
+			}
 	   }
 	}
 	return true;

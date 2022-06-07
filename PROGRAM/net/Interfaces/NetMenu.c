@@ -3,7 +3,7 @@ void InitInterface(string iniName)
 	GameInterface.title = "";
 
 	SendMessage(&GameInterface, "ls", MSG_INTERFACE_INIT, iniName);
-	
+
 	SetEventHandler("OnNetMenuDisconnect", "ICancelProcedure", 0);
 	SetEventHandler("OnNetMenuReturn", "IReturnToGame", 0);
 	SetEventHandler("exitCancel", "IReturnToGame", 0);

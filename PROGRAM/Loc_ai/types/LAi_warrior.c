@@ -51,14 +51,14 @@ void LAi_type_warrior_Init(aref chr)
 		chr.chr_ai.type = LAI_TYPE_WARRIOR;
 		chr.chr_ai.type.stay = "0";
 		chr.chr_ai.type.index = "";
-		chr.chr_ai.type.dialog = "1"; 
+		chr.chr_ai.type.dialog = "1";
 		chr.chr_ai.type.bottle = rand(10)+2;
 		chr.chr_ai.type.checkTarget = 0;
 		LAi_tmpl_stay_InitTemplate(chr);
 	}else{
 		if(!CheckAttribute(chr, "chr_ai.type.stay")) chr.chr_ai.type.stay = "0";
 		if(!CheckAttribute(chr, "chr_ai.type.index")) chr.chr_ai.type.index = "";
-		if(!CheckAttribute(chr, "chr_ai.type.dialog")) chr.chr_ai.type.dialog = "1"; 
+		if(!CheckAttribute(chr, "chr_ai.type.dialog")) chr.chr_ai.type.dialog = "1";
 	}
 	//Установим анимацию персонажу
 	if (chr.model.animation == "mushketer" && !CheckAttribute(chr, "isMusketer.weapon"))
@@ -68,9 +68,9 @@ void LAi_type_warrior_Init(aref chr)
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
         }
         while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-        {             
+        {
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
-        }		
+        }
 		GiveItem2Character(chr, "unarmed");
 		EquipCharacterbyItem(chr, "unarmed");
 		string sMush = "mushket";
@@ -104,7 +104,7 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 		chr.chr_ai.type.bottle = 5.0;
 		if (!LAi_IsBottleWork(chr) && MOD_SKILL_ENEMY_RATE > 2)
 		{
-			string btl = "";		
+			string btl = "";
 			float dhlt;
 			if(LAi_GetCharacterRelHP(chr) < 0.75)
 			{
@@ -126,7 +126,7 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 		fCheck = stf(chr.chr_ai.type.checkTarget) - dltTime;
 		chr.chr_ai.type.checkTarget = fCheck;
 		if(trg >= 0)
-		{			
+		{
 			if(LAi_group_ValidateTarget(chr, &Characters[trg]))
 			{
 				if(!LAi_tmpl_fight_LostTarget(chr))
@@ -135,7 +135,7 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 					if (stf(LAi_grp_relations.distance) > 2.0 && fCheck < 0) //цель далеко, попробуем сменить на ближайшую
 					{
 						isValidate = false;
-					}				
+					}
 				}
 			}
 		}
@@ -177,14 +177,14 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 				LAi_type_warrior_SetWateState(chr);
 			}
 			//слежение залезания ГГ в боксы
-			if (CheckAttribute(chr, "watchBoxes")) 
+			if (CheckAttribute(chr, "watchBoxes"))
 			{
 				int num = FindNearCharacters(chr, 10.0, -1.0, 180.0, 0.01, true, true);
 				for(int i = 0; i < num; i++)
 				{
 					if(nMainCharacterIndex == sti(chrFindNearCharacters[i].index))
-					{					
-						//нашли ГГ, проверяем, не в сундуке ли.						
+					{
+						//нашли ГГ, проверяем, не в сундуке ли.
 						if (bMainCharacterInBox)
 						{
 							//Нападаем на новую цель
@@ -192,13 +192,13 @@ void LAi_type_warrior_CharacterUpdate(aref chr, float dltTime)
 							if(rand(100) > 95)
 							{
 								LAi_type_warrior_PlaySound(chr);
-							}	
+							}
 						}
 					}
 				}
 			}
 		}
-	}	
+	}
 }
 
 //Загрузка персонажа в локацию
@@ -225,7 +225,7 @@ void LAi_type_warrior_NeedDialog(aref chr, aref by)
 
 //Запрос на диалог, если возвратить true то в этот момент можно начать диалог
 bool LAi_type_warrior_CanDialog(aref chr, aref by)
-{	
+{
 	if(sti(chr.chr_ai.type.dialog) == 0) return false;
 	//Если просто стоим, то согласимся
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY) return true;
@@ -237,7 +237,7 @@ bool LAi_type_warrior_CanDialog(aref chr, aref by)
 //Начать диалог
 void LAi_type_warrior_StartDialog(aref chr, aref by)
 {
-	//Если мы пасивны, запускаем шаблон без времени завершения	
+	//Если мы пасивны, запускаем шаблон без времени завершения
 	LAi_CharacterSaveAy(chr);
 	CharacterTurnByChr(chr, by);
 	LAi_tmpl_SetActivatedDialog(chr, by);
@@ -277,7 +277,7 @@ void LAi_type_warrior_Attacked(aref chr, aref by)
 	//<-- штурм Панамы, смотрим, со спины ли выстрел
 	if(!LAi_group_IsEnemy(chr, by)) return;
 	LAi_group_UpdateTargets(chr);
-    float dist = -1.0;	
+    float dist = -1.0;
 	if(!GetCharacterDistByChr3D(chr, by, &dist)) return;
 	if(dist < 0.0) return;
 	if(dist > 20.0) return;
@@ -354,7 +354,7 @@ void LAi_type_warrior_questPanama(ref chr)
 			break;
 		}
 	}
-	if (bOk) 
+	if (bOk)
 	{
 		LAi_SetImmortal(chr, false);
 		LAi_KillCharacter(chr);

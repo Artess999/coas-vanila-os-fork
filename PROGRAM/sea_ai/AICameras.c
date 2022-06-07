@@ -67,7 +67,7 @@ void CreateSeaCamerasEnvironment()
 	if (!bSeaLoad)
 	{
 		SeaCameras.Camera = "SeaShipCamera";
-	
+
 		Crosshair.OutsideCamera = true;
 	}
 
@@ -131,7 +131,7 @@ void SeaCameras_Switch()
 		break;
 		case "SeaDeckCamera":
 			//SeaCameras.Camera = "SeaFreeCamera"; break;		// Debug : SeaFreeCamera, release : SeaShipCamera
-			SeaCameras.Camera = "SeaShipCamera"; 
+			SeaCameras.Camera = "SeaShipCamera";
 			// boal -->
 			if (locCameraEnableFree)
             {

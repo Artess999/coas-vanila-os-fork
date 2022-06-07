@@ -9,7 +9,7 @@ void InitInterface(string iniName)
     {
     	wdmLockReload            = true;
     }
-    
+
  	StartAboveForm(true);
 
 	GameInterface.title = "titleSalary";
@@ -25,12 +25,12 @@ void InitInterface(string iniName)
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"INFO_TEXT",5);
 
     CalculateInfoData();
-    
+
 	SetEventHandler("InterfaceBreak","ProcessBreakExit",0)
 	SetEventHandler("exitCancel","ProcessCancelExit",0);
 	SetEventHandler("ievnt_command","ProcCommand",0);
 	SetEventHandler("evntDoPostExit","DoPostExit",0);
-	
+
 	EI_CreateFrame("INFO_BORDERS", 250,152,550,342);
 }
 
@@ -49,7 +49,7 @@ void ProcessCancelExit()
 void IDoExit(int exitCode)
 {
  	EndAboveForm(true);
- 	
+
 	DelEventHandler("InterfaceBreak","ProcessBreakExit");
 	DelEventHandler("exitCancel","ProcessCancelExit");
 	DelEventHandler("ievnt_command","ProcCommand");

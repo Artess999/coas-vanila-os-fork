@@ -14,7 +14,7 @@ void InitInterface(string iniName)
 {
 	GameInterface.title = "titleCharacterSelect";
 	GameInterface.faces.current = 1;
-	
+
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
 	SetNewGroupPicture("ENGLAND", "NATIONS", "England");
@@ -26,21 +26,21 @@ void InitInterface(string iniName)
 	SetMainCharacterIndex(1);
 
 	sCharacterName = pchar.id;
-	
+
 	SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE,"BLAZE", 5, 1);
 	SendMessage(&GameInterface,"lsll",MSG_INTERFACE_MSG_TO_NODE,"FRANCE", 5, 1);
 
 	GameInterface.PROFILE_NAME.str = DEFAULT_NAME;
 	GameInterface.PROFILE_PASS.str = DEFAULT_PASS;
-	
+
     LoadStartGameParam(); // boal
     MOD_EXP_RATE =  10; // задаем в начале игры (выбор, от 5 до 15, 10 - середина по умолчанию, 15 - медлено)
     GameInterface.nodes.EXP_SLIDE.value = 0.5;
     SendMessage(&GameInterface,"lslf",MSG_INTERFACE_MSG_TO_NODE,"EXP_SLIDE", 0, 0.5);
-    
+
     if (startHeroType < 1) startHeroType = 1; // fix
     if (startHeroType > sti(GetNewMainCharacterParam("hero_qty"))) startHeroType = sti(GetNewMainCharacterParam("hero_qty")); // fix
-    
+
 	SetEventHandler("exitCancel", "exitCancel", 0);
 	SetEventHandler("exitOk", "exitOk", 0);
 	SetEventHandler("selectEngland", "selectEngland", 0);
@@ -60,12 +60,12 @@ void InitInterface(string iniName)
 
 	if (!CheckAttribute(&GameInterface, "SavePath"))
 		GameInterface.SavePath = "SAVE";
-		
+
 	EI_CreateFrame("CHARACTER_BIG_PICTURE_BORDER",50,76,300,358); // tak from CHARACTER_BIG_PICTURE
     EI_CreateHLine("CHARACTER_BIG_PICTURE_BORDER", 54,107,296,1, 4);
-    
+
     heroQty   = sti(GetNewMainCharacterParam("hero_qty"));
-    
+
     if (!CheckAttribute(&NullCharacter, "HeroParam.HeroType") || !CheckAttribute(&NullCharacter, "HeroParam.nation"))
     {   // иначе уже загружен и выбран √√, смотрим настройки и идем обратно
 		SetVariable(true);
@@ -167,7 +167,7 @@ void IProcessFrame()
 void exitCancel()
 {
 	if( CheckAttribute(&InterfaceStates,"showGameMenuOnExit") && sti(InterfaceStates.showGameMenuOnExit) == true)
-	{	
+	{
 		isOkExit = true;
 		IDoExit(RC_INTERFACE_LAUNCH_GAMEMENU, true);
 		return;
@@ -192,8 +192,8 @@ void exitOk()
 
         isOkExit = true;
 		IDoExit(RC_INTERFACE_CHARACTER_SELECT_EXIT, true);
-	} 
-	else 
+	}
+	else
 	{
 
 		ShowConfirmWindow(true);
@@ -272,7 +272,7 @@ void ProcessCommandExecute()
 	            TmpI_ShowLevelComplexity();
 			}
 		break;
-		
+
 		case "CONFIRM_WINDOW_MB_YES":
 
 			if (comName == "click" || comName == "activate")
@@ -306,7 +306,7 @@ void ProcessCommandExecute()
 			}
 
 			break;
-			
+
 		////////////////////////////////
 		case "OK_BUTTON":
     		if(comName=="leftstep")
@@ -369,7 +369,7 @@ void ProcessCommandExecute()
     		    ProcessCommandExecuteTypeRight();
     		}
     	break;
-    	
+
     	case "FACEPICT":
     		if(comName=="click")
     		{
@@ -392,8 +392,8 @@ void ShowConfirmWindow(bool show)
 		XI_WindowShow("CONFIRM_WINDOW", true);
 		EI_CreateFrame("CONFIRM_WINDOW_BORDERS",190,190,610,360);
 
-	} 
-	else 
+	}
+	else
 	{
 		XI_WindowDisable("CONFIRM_WINDOW", true);
 		XI_WindowShow("CONFIRM_WINDOW", false);
@@ -412,7 +412,7 @@ void CreateProfileFolders()
 
 	if (XI_CheckFolder(folder)) return;
 
-	if(!XI_CreateFolder(folder)) 
+	if(!XI_CreateFolder(folder))
 		trace("Could not create profile folder");
 }
 //----------------------------------------------------------------------------------------------------
@@ -446,7 +446,7 @@ bool ProfileExists()
 
 	folder+= pchar.profile.name;
 
-	return (XI_CheckFolder(folder)); 
+	return (XI_CheckFolder(folder));
 }
 //----------------------------------------------------------------------------------------------------
 //
@@ -472,7 +472,7 @@ void SelectNation(int iNation)
 
 void selectEngland()
 {
-	SelectNation(ENGLAND);	
+	SelectNation(ENGLAND);
 }
 
 void selectFrance()
@@ -517,7 +517,7 @@ void IDoExit(int exitCode, bool bCode)
 	DelEventHandler("ShowInfo","ShowInfo");
 
 	DelEventHandler("noteOk","procNoteOk");
-	
+
 	DelEventHandler("frame","IProcessFrame");
 	DelEventHandler("ievnt_command","ProcessCommandExecute");
 
@@ -535,14 +535,14 @@ void IDoExit(int exitCode, bool bCode)
 }
 
 void confirmChangeProfileName()
-{	
+{
 	PlayerProfile.name = GameInterface.PROFILE_NAME.str;
 	pchar.profile.name = GameInterface.PROFILE_NAME.str;
 }
 
 
 void confirmChangeProfilePass()
-{	
+{
 	PlayerProfile.password = GameInterface.PROFILE_PASS.str;
 	pchar.profile.pass = GameInterface.PROFILE_PASS.str;
 	SetCurrentNode("OK_BUTTON");
@@ -586,32 +586,32 @@ void ShowInfo()
 			sHeader = XI_ConvertString("Pirate");
 			sText1 = GetRPGText("Pirate_descr");
 		break;
-		
+
 		case "COMPLEX_TYPE":
 			sHeader = XI_ConvertString("m_Complexity");
 			sText1 = GetRPGText("LevelComplexity_desc");
 		break;
-		
+
 		case "CHECK_ENCOUNTERS":
 			sHeader = XI_ConvertString("EncountersRate");
 			sText1 = GetRPGText("EncountersRate_desc");
 		break;
-		
+
 		case "CHECK_ARCADESAIL":
 			sHeader = XI_ConvertString("Sailing Mode");
 			sText1 = GetRPGText("ArcadeSailMode_desc");
 		break;
-		
+
 		case "CHECK_PISTOL":
 			sHeader = XI_ConvertString("New Fight Mode");
 			sText1 = GetRPGText("RechargePistolOnLine_desc");
 		break;
-		
+
 		case "CHECK_HARDCORE":
 			sHeader = XI_ConvertString("HardcoreGame");
 			sText1 = GetRPGText("HardcoreGame_desc");
 		break;
-		
+
 		case "EXP_SLIDE":
 			sHeader = GetRPGText("EXP_SLIDE");
 			sText1 = GetRPGText("EXP_SLIDE_desc");

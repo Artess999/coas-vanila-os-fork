@@ -170,13 +170,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//ищем Тизера
 		case "TizerFind":
-			dialog.text = NPCStringReactionRepeat("Как не знать, его весь город знал! Знатный был выдумщик...", 
-				"Слушай, я тебу уже рассказывал об этом.", 
+			dialog.text = NPCStringReactionRepeat("Как не знать, его весь город знал! Знатный был выдумщик...",
+				"Слушай, я тебу уже рассказывал об этом.",
 				"Мы уже говорили об этом.",
                 "Прошу прощения, но на столь длинное повествование у меня больше нет времени.", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Как понять?", 
+			link.l1 = HeroStringReactionRepeat("Как понять?",
 				"А-а, да, я помню.",
-                "Да, конечно.", 
+                "Да, конечно.",
 				"Понимаю...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("TizerFind_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;

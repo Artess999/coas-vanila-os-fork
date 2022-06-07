@@ -46,7 +46,7 @@ void NetClient_OnServerInfo_Player(int iMsg)
 void NetClient_OnServerInfo_Ship(int iMsg)
 {
 	int i = NMGetWord(iMsg);
-	
+
 	ref rShip = Net_GetShipByIndex(i);
 
 	rShip.Cost = NMGetDword(iMsg);
@@ -116,7 +116,7 @@ void NetClient_OnServerInfo_Goods(int iMsg)
 void NetClient_OnServerInfo_TopListPlayer(int iMsg)
 {
 	int iNumPlayers = NMGetWord(iMsg);
-	
+
 	if (!iNumPlayers)
 	{
 		Event("NetClient_OnServerInfo_TopListEnd_Event");

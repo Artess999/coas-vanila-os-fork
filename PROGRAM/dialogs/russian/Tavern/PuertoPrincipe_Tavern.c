@@ -17,13 +17,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//пиратка, квест №7, попытка узнать о планах Соукинса
 		case "PL_Q7_1":
-			dialog.text = NPCStringReactionRepeat("Да, что-то назревает. Опять Ричард собрался испанцев пощипать, факт.", 
-				"Мы уже говорили на эту тему.", 
+			dialog.text = NPCStringReactionRepeat("Да, что-то назревает. Опять Ричард собрался испанцев пощипать, факт.",
+				"Мы уже говорили на эту тему.",
 				"Опять ты об планах Ричарда?",
                 "Никакого нового совета я тебе не дам.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Понятно. А ты не знаешь, кого конкретно и где?", 
+			link.l1 = HeroStringReactionRepeat("Понятно. А ты не знаешь, кого конкретно и где?",
 				"Да, верно.",
-                "Ага, опять...", 
+                "Ага, опять...",
 				"Хм, спасибо и на этом...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("PL_Q7_2", "", "", "", npchar, Dialog.CurrentNode);
 		break;

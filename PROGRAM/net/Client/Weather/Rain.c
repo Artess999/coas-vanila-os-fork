@@ -37,7 +37,7 @@ void NetClient_WhrCreateRainEnvironment()
 
 	NCRain.Rainbow.Enable = Whr_GetLong(aRainbow, "Enable");
 	NCRain.Rainbow.Texture = Whr_GetString(aRainbow, "Texture");
-	
+
 	NCRain.isDone = "";
 
 	bClientWeatherIsRain = true;

@@ -21,10 +21,10 @@ void ProcessDialogEvent()
     {
 	    sCap = NationShortName(sti(aData.nation))+"SiegeCap_";
 	    sGroup = "Sea_"+sCap+"1";
-	    
+
 	   // string myships  = GetCompanionQuantity(PChar);
        // string escships = Group_GetCharactersNum(sGroup);
-        
+
         switch(sti(aData.conation))
         {
             case 0:  fort = "Английским фортом"; break;
@@ -36,12 +36,12 @@ void ProcessDialogEvent()
         int ifortPower = sti(colonies[FindColony(aData.colony)].FortValue);
         int fortDamage = CheckFortInjuri();
         int SquadronDamage = CheckSquadronInjuri();
-        
+
     }
 
     int iMoney;
 	ref sld;
-    
+
     if (CheckNPCQuestDate(npchar, "Card_date"))
 	{
 		SetNPCQuestDate(npchar, "Card_date");
@@ -55,7 +55,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			Diag.CurrentNode = Diag.TempNode;
 		break;
-		
+
 		case "First time":
 			if (!bDisableMapEnter)
 			{
@@ -130,7 +130,7 @@ void ProcessDialogEvent()
 			link.l2 = "Я передумал.";
 			link.l2.go = "exit";
 		break;
-		
+
 		case "Trade_2":
 			FillShipStore(NPChar);
 	    	pchar.shiptrade.character = NPChar.id;
@@ -139,7 +139,7 @@ void ProcessDialogEvent()
 		    DeleteAttribute(pchar, "PriceList.StoreManIdx"); // не вести лог по кораблям
 		    LaunchStore(SHIP_STORE);
 		break;
-		
+
         case "Play_Game":
 			dialog.text = "Что вы предлагаете?";
 			link.l1 = "Перекинемся в карты на солидный интерес?";
@@ -377,7 +377,7 @@ void ProcessDialogEvent()
 	            {
                     sld = &Characters[iMoney];
                     pchar.PriceList.ShipStoreIdx = iMoney;
-                    
+
 					Dialog.Text = "Я иду из города " + GetCityName(sld.City) + ".";
 					Link.l1 = "Какие цены на товары в местном магазине?";
 					Link.l1.go = "price_2";
@@ -392,7 +392,7 @@ void ProcessDialogEvent()
 				Link.l1.go = "exit";
             }
 		break;
-		
+
 		case "price_2":
             sld = &Characters[sti(pchar.PriceList.ShipStoreIdx)];
 			SetPriceListByStoreMan(&Colonies[FindColony(sld.City)]);
@@ -401,7 +401,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "exit";
 			PlaySound("interface\important_item.wav");
 		break;
-		
+
         case "Talk_board":
             if ((Group_GetCharactersNum(NPChar.EncGroupName) - Group_GetDeadCharactersNum(NPChar.EncGroupName)) > GetCompanionQuantity(PChar) && rand(11) > GetCharacterSkillToOld(PChar, SKILL_FORTUNE))
             {
@@ -444,14 +444,14 @@ void ProcessDialogEvent()
 			Link.l2.go = "exit";
 			Diag.TempNode = "quests";
 		break;
-		
+
 		case "Go_away":
 			Dialog.Text = "Убирайтесь с моего корабля!";
 			Link.l1 = "Уже ухожу.";
 			Link.l1.go = "exit";
 			Diag.TempNode = "Go_away";
 		break;
-		
+
 		case "Go_away_Good":
 			Dialog.Text = "Наш разговор уже окончен. Ничего нового я вам не скажу, "+GetAddress_Form(NPChar)+".";
 			Link.l1 = "Ясно. До встречи в море!";
@@ -480,7 +480,7 @@ void ProcessDialogEvent()
             DialogExit();
             Diag.CurrentNode = Diag.TempNode;
         break;
-        
+
         case "QuestAboardCabinDialog":  // тестовый диалог, в игре не работает, для метода SetQuestAboardCabinDialog
 			Diag.TempNode = "QuestAboardCabinDialog";
             Dialog.Text = "Стой, так и убить можно. Что ты хочешь от меня?";
@@ -491,7 +491,7 @@ void ProcessDialogEvent()
 			Link.l3 = "Отдай нам карту, Билли (c)";  // предмет, далее не ясно или  QuestAboardCabinDialog_1 или QuestAboardCabinDialog_2
 			Link.l3.go = "QuestAboardCabinDialog_3";  // можно закодить покидание корабля, но экипаж уже вырезан и тп...
         break;
-        
+
         case "QuestAboardCabinDialog_1":
 			Dialog.Text = "Ну, это мы еще посмотрим!";
 			Link.l1 = "А что тут смотреть?";
@@ -500,14 +500,14 @@ void ProcessDialogEvent()
 			LAi_SetCurHPMax(NPChar);
 			AddDialogExitQuestFunction("QuestAboardCabinDialogExitWithBattle"); // тут ругань обратно
 		break;
-		
+
 		case "QuestAboardCabinDialog_2":
 			Dialog.Text = "Хорошо, твоя взяла!";
 			Link.l1 = "Так бы сразу!";
 			Link.l1.go = "exit";
 			AddDialogExitQuestFunction("QuestAboardCabinDialogSurrender");
 		break;
-		
+
 		case "QuestAboardCabinDialog_3":
 			Dialog.Text = "Да забирай!";
 			Link.l1 = "Вот и хорошо, теперь сдавайся в плен.";
@@ -522,7 +522,7 @@ void ProcessDialogEvent()
 			TakeNItems(NPChar, "Chest", -1);
 			TakeNItems(pchar, "Chest", 1);
 		break;
-		
+
 		case "QuestAboardCabinDialog_3_1":
 			Dialog.Text = "Пришел, наследил, все отнял и еще меня в рабы? Фиг!";
 			Link.l1 = "Тогда тапки белые готовь.";
@@ -534,7 +534,7 @@ void ProcessDialogEvent()
 			Link.l1 = "Понятно.";
 			Link.l1.go = "exit";
 		break;
-		
+
 		//homo Наводка на купца
 		case "MerchantTrap_Abordage":
 
@@ -544,13 +544,13 @@ void ProcessDialogEvent()
 			LAi_SetCurHPMax(NPChar);
 			AddDialogExitQuestFunction("QuestAboardCabinDialogExitWithBattleNoParam"); // тут ругань обратно
 		break;
-		
+
 		case "Siegehelp":
-		
+
             ref rchar = Group_GetGroupCommander(sGroup);
             if (NPChar.id == rchar.id)
             {
-    			
+
     			dialog.text = "Я вас слушаю, но давайте поскорее выкладывайте цель вашего визита, у нас идет бой с " + fort +
                           " и мне нужно руководить ходом сражения.";
                 link.l1 = "Именно поэтому я здесь, " + GetAddress_FormToNPC(NPChar) + ".";
@@ -558,7 +558,7 @@ void ProcessDialogEvent()
 
                 link.l2 = "В таком случае не буду вас больше задерживать. Прощайте, "+ GetAddress_FormToNPC(NPChar) + ".";
                 link.l2.go = "exit";
-    			
+
             }
             else
             {
@@ -566,12 +566,12 @@ void ProcessDialogEvent()
                               ", он находится на корабле " + XI_ConvertString(RealShips[sti(rchar.Ship.Type)].BaseName) + " ''" + rchar.Ship.Name + "''.";
                 link.l1 = "Спасибо. Так и поступлю.";
                 link.l1.go = "exit";
-            
+
             }
             Diag.TempNode = "Siegehelp";
-            
+
 		break;
-		
+
 		case "attack_fort":
                 dialog.text = "И о чем же идет речь?";
                 link.l1 = "Я могу помочь вам разгромить форт колонии " +GetConvertStr(aData.Colony+" Town", "LocLables.txt")+ " и захватить город, а добычу, полученную в случае нашего успеха, мы поделим между собой.";
@@ -580,7 +580,7 @@ void ProcessDialogEvent()
                 link.l2.go = "exit";
                 Diag.TempNode = "Siegehelp_0";
 		break;
-		
+
 		case "Siegehelp_0":
             Dialog.text = "Это опять вы? Мне казалось, мы все уже обсудили?";
             link.l1 = "Вы правы - забыл.";
@@ -589,7 +589,7 @@ void ProcessDialogEvent()
             Diag.TempNode = "Siegehelp_0";
 
 		break;
-		
+
 		case "Siegehelp_1":
             SiegeResult("");
             if (sti(aData.win)==0)
@@ -613,7 +613,7 @@ void ProcessDialogEvent()
 			Diag.TempNode = "Siegehelp_0";
 
 		break;
-		
+
 		case "attack_fort_03":
 
 
@@ -653,7 +653,7 @@ void ProcessDialogEvent()
             }
             Diag.TempNode = "Siegehelp_0";
         break;
-        
+
         case "attack_fort_04":
             dialog.text = "Как только форт будет захвачен, мы немедленно начинаем высадку десантных групп на берег, а дальше уже продолжим бой в самом городе, где, я надеюсь, мы и встретимся с вами.";
             link.l1 = "На этом и порешим. До встречи, " + GetAddress_FormToNPC(NPChar) + "!";
@@ -687,7 +687,7 @@ void ProcessDialogEvent()
             aData.PartAttaksFort = 4;
             Diag.TempNode = "Siegehelp_0";
         break;
-		
+
 		case "Talk_Capture_City":
             AfterTownBattle();  // все, все свободны
             LAi_LoginInCaptureTown(NPChar, false);
@@ -725,13 +725,13 @@ void ProcessDialogEvent()
             link.l1.go = "exit";
             Diag.TempNode = "no_return_02";
 		break;
-		
+
 		case "GoldSquadron":
             ref rch = Group_GetGroupCommander("Sea_Head_of_Gold_Squadron");
             if (NPChar.id == rch.id)
             {
     			dialog.text = "Я вас слушаю, но давайте поскорее выкладывайте цель вашего визита, я очень спешу. На меня возложена важная миссия секретного характера, и к тому же мне предписано топить все подозрительные корабли в открытом море, которые могут представлять опасность нашему конвою.";
-                          
+
                 link.l1 = "В таком случае не буду вас больше задерживать. Прощайте, "+ GetAddress_FormToNPC(NPChar) + ".";
                 link.l1.go = "exit";
 
@@ -796,7 +796,7 @@ int findPriceStoreMan(ref NPChar)
             if (ch.location == "none") continue; // фикс для новых, невидимых до поры островов
             storeArray[howStore] = n;
             howStore++;
-            
+
             // homo 05/09/06
             if ( CheckAttribute(NPChar, "FromColony") && NPChar.FromColony == ch.City ) return n;
             //

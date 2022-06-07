@@ -2,7 +2,7 @@
 int CreatePortPaxCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -142,7 +142,7 @@ int CreatePortPaxCharacters(int n)
 	LAi_group_MoveCharacter(ch, "FRANCE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);			//Начальник порта
 	ch.id		= "PortPax_PortMan";
 	ch.model	= "usurer_5";
@@ -159,7 +159,7 @@ int CreatePortPaxCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	ch.item_date = "";
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);
 	ch.name 	= "Контрабандист";
 	ch.lastname = "";
@@ -176,6 +176,6 @@ int CreatePortPaxCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

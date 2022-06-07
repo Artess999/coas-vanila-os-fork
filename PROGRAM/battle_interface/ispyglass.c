@@ -90,7 +90,7 @@ void SetSpyGlassData()
 	}
 
 	// смотрим на форт
-	if(CheckAttribute(chref,"Ship.Type")) 
+	if(CheckAttribute(chref,"Ship.Type"))
 	{
 		int iShip = sti(chref.Ship.Type);
 		if (iShip != SHIP_NOTUSED)
@@ -133,7 +133,7 @@ void SetSpyGlassData()
 					case GOOD_BOMBS: shipCharge=1; break;
 					}
 				}
-	
+
 				sTextureName = "battle_interface\list_icon2.tga";
 				uvLeft = 0.375;
 				uvTop = 0.75;
@@ -147,7 +147,7 @@ void SetSpyGlassData()
 				GetTextureUVForShip(iShip, &uvLeft, &uvTop, &uvRight, &uvBottom);
 
 				shipClass = GetCharacterShipClass(chref);
-	
+
 				if (CheckAttribute(arScopeItm,"scope.show.cannons") && sti(arScopeItm.scope.show.cannons)!=0 )
 				{
 					shipCannons = GetIntactCannonQuantity(chref);
@@ -161,8 +161,8 @@ void SetSpyGlassData()
 				{
 					shipType = XI_ConvertString(GetShipTypeName(chref));
 				}
-	
-	
+
+
 				if (CheckAttribute(arScopeItm,"scope.show.hull") && sti(arScopeItm.scope.show.hull) == true )
 				{
 					shipHull = makeint(GetHullPercent(chref));
@@ -196,45 +196,45 @@ void SetSpyGlassData()
 	if (CheckAttribute(arScopeItm,"scope.show.cannontype") && sti(arScopeItm.scope.show.cannontype)== true)
 	{
 		string CannonTypeName = "";
-		
+
 		switch (sti(chref.Ship.Cannons.Type))
 		{
 			case  CANNON_TYPE_CANNON_LBS12:
 			     CannonTypeName = " " + xiDStr("CannonTypeName_12");
 			     break;
-			      
+
 			case  CANNON_TYPE_CANNON_LBS16:
 			     CannonTypeName = " " + xiDStr("CannonTypeName_16");
 			     break;
-			      
+
 			case  CANNON_TYPE_CANNON_LBS24:
 			     CannonTypeName = " " + xiDStr("CannonTypeName_24");
 			     break;
-			      
+
 			case  CANNON_TYPE_CANNON_LBS32:
 			     CannonTypeName = " " + xiDStr("CannonTypeName_32");
 			     break;
-			      
+
 		    case CANNON_TYPE_CANNON_LBS42:
 		         CannonTypeName = " " + xiDStr("CannonTypeName_42");
 			     break;
-			     
+
 			case CANNON_TYPE_CANNON_LBS48:
 		         CannonTypeName = " " + xiDStr("CannonTypeName_48");
-			     break;     
-			     
+			     break;
+
 			case CANNON_TYPE_CULVERINE_LBS12:
 			     CannonTypeName = " " + xiDStr("CulTypeName_12");
 			     break;
-			     
+
 			case CANNON_TYPE_CULVERINE_LBS16:
 			     CannonTypeName = " " + xiDStr("CulTypeName_16");
 			     break;
-			     
+
 			case CANNON_TYPE_CULVERINE_LBS24:
 			     CannonTypeName = " " + xiDStr("CulTypeName_24");
 			     break;
-			     
+
 		    case CANNON_TYPE_CULVERINE_LBS32:
 		         CannonTypeName = " " + xiDStr("CulTypeName_32");
 			     break;
@@ -259,23 +259,23 @@ void SetSpyGlassData()
 		{
 		    Log_SetStringToLog("shipType=" + GetCharacterShipType(chref) +
 		                               " SeaAI.Task=" + chref.SeaAI.Task);
-			if (CheckAttribute(chref, "SeaAI.Task.Target"))		                               
+			if (CheckAttribute(chref, "SeaAI.Task.Target"))
 			{
 		        sCaptainName = "none";
 				if (sti(chref.SeaAI.Task.Target) != -1)  sCaptainName = Characters[sti(chref.SeaAI.Task.Target)].id;
-		        
+
 				Log_Info("SeaAI.Task.Target = " + chref.SeaAI.Task.Target + " id npc = " + sCaptainName);
-			}		        
+			}
 		}
 		if (TestRansackCaptain && !bQuestLogShow && rand(20) == 4) // иначе не отжать кнопку
 		{
 		    pchar.SystemInfo.OnlyShowCharacter = true;
 		    LaunchCharacter(chref);
-		} 
+		}
 		if (TestRansackCaptain && bQuestLogShow && rand(20) == 4) // иначе не отжать кнопку
 		{
 		    LaunchShipStateNPC(chref);
-		} 
+		}
 		Log_SetStringToLog("Cap_id = " + chref.id +" hp= " + makeint(chref.chr_ai.hp) + " rank= "+ chref.rank +
 		                           " Moral= " + chref.ship.crew.morale);
 		Log_SetStringToLog("Ship.MaxCaliber=  " + RealShips[sti(chref.Ship.Type)].MaxCaliber +
@@ -305,20 +305,20 @@ int TranslateNationCode(int nationCode)
 {
 	switch(nationCode)
 	{
-		case ENGLAND: 
-			return 0; 
+		case ENGLAND:
+			return 0;
 		break;
-		case FRANCE: 
-			return 1; 
+		case FRANCE:
+			return 1;
 		break;
-		case SPAIN: 
-			return 2; 
+		case SPAIN:
+			return 2;
 		break;
-		case HOLLAND: 
-			return 3; 
+		case HOLLAND:
+			return 3;
 		break;
-		case PIRATE: 
-			return 4; 
+		case PIRATE:
+			return 4;
 		break;
 	}
 }
@@ -364,11 +364,11 @@ void FillISpyGlassParameters()
 	objISpyGlass.info.speed.texture = "battle_interface\\list_icon2.tga";
 	objISpyGlass.info.speed.pos = RecalculateHIconScaled(284)+","+(ntop+RecalculateVIconScaled(42)) + "," + RecalculateHIconScaled(332)+","+(ntop+RecalculateVIconScaled(90));
 	objISpyGlass.info.speed.uv = "0.25,0.25,0.375,0.375";
-	
+
 	objISpyGlass.info.sailto.texture = "battle_interface\\list_icons.tga";   // boal
 	objISpyGlass.info.sailto.pos = RecalculateHIconScaled(428)+","+(ntop+RecalculateVIconScaled(42)) + "," + RecalculateHIconScaled(476)+","+(ntop+RecalculateVIconScaled(90));
 	objISpyGlass.info.sailto.uv = "0.75,0.25,0.8125,0.375";
-	
+
 	//
 	objISpyGlass.info.charge.texture = "battle_interface\\list_icon2.tga";
 	objISpyGlass.info.charge.pos = RecalculateHIconScaled(356)+","+(ntop+RecalculateVIconScaled(42)) + "," + RecalculateHIconScaled(404)+","+(ntop+RecalculateVIconScaled(90));

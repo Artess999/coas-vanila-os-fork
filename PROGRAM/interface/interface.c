@@ -28,7 +28,7 @@
 
 
 
-//extern string FindRussianDaysString(int idays); 
+//extern string FindRussianDaysString(int idays);
 //extern string FindRussianMoneyString(int imoney);
 
 
@@ -80,10 +80,10 @@ bool bMainMenuLaunchAfterVideo = false;
 
 // boal -->
 void LaunchAboutScreen()
-{	
+{
 	SetEventHandler(EVENT_END_VIDEO,"LaunchMainMenu_afterVideo",0);
 	bMainMenuLaunchAfterVideo = true;
-	StartPostVideo("credits",1);	
+	StartPostVideo("credits",1);
 	/*if(procInterfacePrepare(INTERFACE_ABOUT))
 	{
 		nPrevInterface = -1;
@@ -720,7 +720,7 @@ void LaunchRansackMain(ref _refMy,ref _refEnemy,string captureState)
 		CurrentInterface = INTERFACE_RANSACK_MAIN;
 		InitInterface_RS(Interfaces[CurrentInterface].IniFile,_refEnemy,captureState); // что характерно, _refMy не при делах вообще :) Забавно, право слово. Ну да, совместимости для.
 	}
-	// Это по сути вызов LaunchTransferMain(_refMy, _refEnemy, captureState); , но нужна проверка на	INTERFACE_RANSACK_MAIN 
+	// Это по сути вызов LaunchTransferMain(_refMy, _refEnemy, captureState); , но нужна проверка на	INTERFACE_RANSACK_MAIN
 }
 
 void LaunchTransferMain(ref _refMy,ref _refEnemy, string newCurNod)
@@ -896,43 +896,43 @@ void EndCancelInterface(bool bYesRelease)
 	switch(interfaceResultCommand)
 	{
 		/*
-		case RC_INTERFACE_RANSACK_JOIN_EXIT: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
+		case RC_INTERFACE_RANSACK_JOIN_EXIT:
+			refObj1 = GetMyCharacterRef();
+			refObj2 = GetEnemyCharacterRef();
 		break;
 
-		case RC_INTERFACE_RANSACK_CREW_EXIT: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
+		case RC_INTERFACE_RANSACK_CREW_EXIT:
+			refObj1 = GetMyCharacterRef();
+			refObj2 = GetEnemyCharacterRef();
 		break;
 
-		case RC_INTERFACE_RANSACK_CAPTAIN_EXIT: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-		break;
-		
-
-		case RC_INTERFACE_TRANSFER_START_GOODS: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-			ICurNode = GetCurrentNode(); 
+		case RC_INTERFACE_RANSACK_CAPTAIN_EXIT:
+			refObj1 = GetMyCharacterRef();
+			refObj2 = GetEnemyCharacterRef();
 		break;
 
-		case RC_INTERFACE_TRANSFER_START_CHARACTERS: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-			ICurNode = GetCurrentNode(); 
+
+		case RC_INTERFACE_TRANSFER_START_GOODS:
+			refObj1 = GetMyCharacterRef();
+			refObj2 = GetEnemyCharacterRef();
+			ICurNode = GetCurrentNode();
 		break;
 
-		case RC_INTERFACE_TRANSFER_START_CREW: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
-			ICurNode = GetCurrentNode(); 
+		case RC_INTERFACE_TRANSFER_START_CHARACTERS:
+			refObj1 = GetMyCharacterRef();
+			refObj2 = GetEnemyCharacterRef();
+			ICurNode = GetCurrentNode();
 		break;
 
-		case RC_INTERFACE_TRANSFER_MAIN_RETURN: 
-			refObj1 = GetMyCharacterRef(); 
-			refObj2 = GetEnemyCharacterRef(); 
+		case RC_INTERFACE_TRANSFER_START_CREW:
+			refObj1 = GetMyCharacterRef();
+			refObj2 = GetEnemyCharacterRef();
+			ICurNode = GetCurrentNode();
+		break;
+
+		case RC_INTERFACE_TRANSFER_MAIN_RETURN:
+			refObj1 = GetMyCharacterRef();
+			refObj2 = GetEnemyCharacterRef();
 		break;
         */
 		/*
@@ -950,53 +950,53 @@ void EndCancelInterface(bool bYesRelease)
 	switch(interfaceResultCommand)
 	{
 		/*
-		case RC_INTERFACE_RANSACK_JOIN_EXIT: 
-			InterfaceStates.Launched=false; 
-			LaunchRansackCrew(refObj1,refObj2); 
-			return; 
+		case RC_INTERFACE_RANSACK_JOIN_EXIT:
+			InterfaceStates.Launched=false;
+			LaunchRansackCrew(refObj1,refObj2);
+			return;
 		break;
-		
-		case RC_INTERFACE_RANSACK_CREW_EXIT: 
+
+		case RC_INTERFACE_RANSACK_CREW_EXIT:
 			if (!CheckAttribute(refObj2, "cannotsurrender"))
 			{
-				InterfaceStates.Launched=false; 
-				LaunchRansackCaptain(refObj1,refObj2); 
-				return; 
+				InterfaceStates.Launched=false;
+				LaunchRansackCaptain(refObj1,refObj2);
+				return;
 			}
 			else
 			{
-				InterfaceStates.Launched=false; 
-				LaunchRansackMain(refObj1,refObj2,""); 
+				InterfaceStates.Launched=false;
+				LaunchRansackMain(refObj1,refObj2,"");
 				return;
 			}
 		break;
 
-		case RC_INTERFACE_RANSACK_CAPTAIN_EXIT: 
-			InterfaceStates.Launched=false; 
-			LaunchRansackMain(refObj1,refObj2,""); 
-			return; 
+		case RC_INTERFACE_RANSACK_CAPTAIN_EXIT:
+			InterfaceStates.Launched=false;
+			LaunchRansackMain(refObj1,refObj2,"");
+			return;
 		break;
 		*/
-		
+
 		/*
-		case RC_INTERFACE_TRANSFER_START_GOODS: 
-			InterfaceStates.Launched=false; 
-			LaunchTransferGoods(&Characters[sti(refObj1.index)],&Characters[sti(refObj2.index)]); 
-			return; 
+		case RC_INTERFACE_TRANSFER_START_GOODS:
+			InterfaceStates.Launched=false;
+			LaunchTransferGoods(&Characters[sti(refObj1.index)],&Characters[sti(refObj2.index)]);
+			return;
 		break;
 
-		case RC_INTERFACE_TRANSFER_START_CHARACTERS: 
-			InterfaceStates.Launched=false; 
-			LaunchTransferCharacter(refObj1,refObj2); 
-			return; 
+		case RC_INTERFACE_TRANSFER_START_CHARACTERS:
+			InterfaceStates.Launched=false;
+			LaunchTransferCharacter(refObj1,refObj2);
+			return;
 		break;
 
-		case RC_INTERFACE_TRANSFER_START_CREW: 
-			InterfaceStates.Launched=false; 
-			LaunchTransferCrew(refObj1,refObj2); 
-			return; 
+		case RC_INTERFACE_TRANSFER_START_CREW:
+			InterfaceStates.Launched=false;
+			LaunchTransferCrew(refObj1,refObj2);
+			return;
 		break;
-		
+
 		case RC_INTERFACE_TRANSFER_MAIN_RETURN:
 			if(nPrevInterface==INTERFACE_RANSACK_MAIN)
 			{
@@ -1010,7 +1010,7 @@ void EndCancelInterface(bool bYesRelease)
 		break;
 		*/
 	}
-	
+
     Start_InterfaceDoExit();
 	if(bYesRelease)	PostEvent("evntQuestsCheck",1);
 }
@@ -1239,7 +1239,7 @@ void _Procedure_EndVideoPlay()
 int GetCurrentInterface()
 {
 	return CurrentInterface;
-} 
+}
 
 bool procEnableInterfaceLaunch(int _interfaceCode)
 {
@@ -1421,7 +1421,7 @@ void ReloadAfterFortCapture()
 		if (MOD_BETTATESTMODE == "On") Log_Info("Error: ReloadAfterFortCapture miss from_interface.fortCharacterIdx");
 		return;
 	}
-	
+
 	int fortChr = sti(pchar.from_interface.fortCharacterIdx);
 	// boal -->
 	AfterTownBattle();//трем неоконченый захват
@@ -1945,22 +1945,22 @@ void SetSkillShowEx(aref xi_refCharacter, string skillName, int skillVal, int sk
 	string sReal = skillName+"real";
 	//GameInterface.strings.(sReal) = skillTempVal;
 	int color = COLOR_NORMAL;
-	
+
 	if(skillVal >= MAX_CHARACTER_SKILL) color = COLOR_MONEY;
 	int iResult = skillVal;
-	
+
 	if (skillTempVal > skillVal)
 	{
 		if (skillVal > 0)
 		{
-			iresult = skillVal; 
+			iresult = skillVal;
 		}
 		else
 		{
 			iResult = 1;
 		}
 	}
-	
+
 	if (skillUPVal > iResult && pchar.id == xi_refCharacter.id)
 	{
 		color = argb(255,128,255,128);
@@ -1974,17 +1974,17 @@ void SetSkillShowEx(aref xi_refCharacter, string skillName, int skillVal, int sk
 			iResult = skillUPVal;// - skillVal;
 		}
 	}
-	
+
 	if (skillTempVal > skillVal)
 	{
 		color = COLOR_RED;
 	}
 	SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,"MAIN_WINDOW_STRINGS",0,
-		skillName, its(iResult), FONT_BOLD_NUMBERS,iX,iY, SetAlphaIntoColor(color,GetAlphaFromSkill(iResult)),0, 
+		skillName, its(iResult), FONT_BOLD_NUMBERS,iX,iY, SetAlphaIntoColor(color,GetAlphaFromSkill(iResult)),0,
 		SCRIPT_ALIGN_RIGHT, true, 0.7, 420);
-	
+
 	SendMessage(&GameInterface,"lslsssllllllfl", MSG_INTERFACE_MSG_TO_NODE,"MAIN_WINDOW_STRINGS",0,
-		sReal, its(skillTempVal), FONT_BOLD_NUMBERS,(iX+37),iY, SetAlphaIntoColor(COLOR_NORMAL,GetAlphaFromSkill(skillTempVal)),0, 
+		sReal, its(skillTempVal), FONT_BOLD_NUMBERS,(iX+37),iY, SetAlphaIntoColor(COLOR_NORMAL,GetAlphaFromSkill(skillTempVal)),0,
 		SCRIPT_ALIGN_RIGHT, true, 0.7, 420);
 }
 
@@ -2063,7 +2063,7 @@ void MakeQuickSave()
 	TimeScaleCounter = 0;
 	DelPerkFromActiveList("TimeSpeed");
 	DeleteAttribute(pchar, "pause");
-	
+
 	// boal 09.07.06 <--
 	aref arScrShoter;
 	if( !GetEntity(&arScrShoter,"scrshoter") ) {

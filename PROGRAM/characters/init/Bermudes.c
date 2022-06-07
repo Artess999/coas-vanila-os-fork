@@ -2,7 +2,7 @@
 int CreateBermudesCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -35,7 +35,7 @@ int CreateBermudesCharacters(int n)
 	ch.Ship.Stopped = true;
    	ch.Ship.Cannons.Type = CANNON_TYPE_CULVERINE_LBS24;
     SetCrewQuantityFull(ch);
-    Fantom_SetBalls(ch, "pirate");    
+    Fantom_SetBalls(ch, "pirate");
 	ch.rank 	= 20;
 	ch.reputation = "25";
 	ch.money = "25000";

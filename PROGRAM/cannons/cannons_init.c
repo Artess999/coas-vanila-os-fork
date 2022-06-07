@@ -7,7 +7,7 @@ void InitBaseCannons_CalcSpeedV0(ref rCannon, float fFireRange)
 void InitCannons()
 {
 	ref rCannon;
-	
+
 	/*makeref(rCannon,Cannon[CANNON_TYPE_CULVERINE_LBS8]);
 	rCannon.type = CANNON_NAME_CULVERINE;
 	rCannon.name = "caliber8";
@@ -103,7 +103,7 @@ void InitCannons()
 	//rCannon.TradeOff = true;
 	rCannon.hp = 55.0;
 	InitBaseCannons_CalcSpeedV0(&rCannon,750.0);
-	
+
 	/*makeref(rCannon,Cannon[CANNON_TYPE_CANNON_LBS8]);
 	rCannon.type = CANNON_NAME_CANNON;
 	rCannon.name = "caliber8";
@@ -199,7 +199,7 @@ void InitCannons()
 	//rCannon.TradeOff = true;
 	rCannon.hp = 60.0;
 	InitBaseCannons_CalcSpeedV0(&rCannon,650.0);
-	
+
 	/*makeref(rCannon,Cannon[CANNON_TYPE_CANNON_LBS36]);
 	rCannon.type = CANNON_NAME_SPECIAL_CANNON;
 	rCannon.caliber = 36;
@@ -219,7 +219,7 @@ void InitCannons()
 	rCannon.TradeOff = true;
 	rCannon.hp = 65.0;
 	InitBaseCannons_CalcSpeedV0(&rCannon,800.0);    */
-	
+
 	makeref(rCannon,Cannon[CANNON_TYPE_CANNON_LBS42]);
 	rCannon.type = CANNON_NAME_CANNON;
 	rCannon.caliber = 42;
@@ -239,7 +239,7 @@ void InitCannons()
 	rCannon.TradeOff = true;
 	rCannon.hp = 70.0;
 	InitBaseCannons_CalcSpeedV0(&rCannon,800.0);
-	
+
 	makeref(rCannon,Cannon[CANNON_TYPE_CANNON_LBS48]);
 	rCannon.type = CANNON_NAME_CANNON;
 	rCannon.caliber = 48;

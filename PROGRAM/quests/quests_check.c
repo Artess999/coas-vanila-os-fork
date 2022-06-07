@@ -21,7 +21,7 @@ bool TestIntValue(int nValue, int nCompareValue, string sOperation)
 	break;
 	case "<":
 			if(nValue < nCompareValue) return true;
-			return false;	
+			return false;
 	break;
 	}
 	trace("ERROR: invalid operation(" + sOperation + ")");
@@ -73,7 +73,7 @@ bool ProcessCondition(aref condition)
     	break;
 
         case "location":
-    		if(refCharacter.location==condition.location) 
+    		if(refCharacter.location==condition.location)
 			{
 				bLandEncountersGen = false;
 				return !CharacterIsDead(refCharacter);
@@ -88,7 +88,7 @@ bool ProcessCondition(aref condition)
     		if( GetDataMonth() > sti(condition.date.month) ) return true;
     		if( GetDataDay() < sti(condition.date.day) ) return false;
     		if (CheckAttribute(condition, "date.hour") && GetDataDay() <= sti(condition.date.day))  //fix
-			{				
+			{
 				if(GetHour() < stf(condition.date.hour)) return false;
 				if(GetHour() >= stf(condition.date.hour)) return true;
 			}
@@ -192,7 +192,7 @@ bool ProcessCondition(aref condition)
 			return Group_isDead(sTmpString);
 		break;
 	// boal <--
-	
+
 		case "ComeToIsland":
 			if(CheckAttribute(refCharacter,"ComeToIsland") && refCharacter.ComeToIsland=="1")
 			{
@@ -275,16 +275,16 @@ void QuestsCheck()
 	int  n,m;
 	string sQuestName;
 	bool bQuestCompleted;
-	
-	
+
+
 	makearef(quests,pchar.quest);
-		
+
 	nQuestsNum = GetAttributesNum(quests);
-	
+
 	for(n = 0; n < nQuestsNum; n++)
 	{
         if (bQuestCheckProcessFreeze || dialogRun) continue;  // boal 230804 fix замораживать проверку квестов
-        
+
         quest = GetAttributeN(quests,n);
 
 		sQuestName = GetAttributeName(quest);
@@ -311,19 +311,19 @@ void QuestsCheck()
 			for(m = 0; m < nConditionsNum; m++)
 			{
 				condition = GetAttributeN(conditions,m);
-				if(ProcessCondition(condition) == false) 
+				if(ProcessCondition(condition) == false)
 				{
 					bQuestCompleted = false;
 					break;
 				}
 			}
-			if(bQuestCompleted) 
+			if(bQuestCompleted)
 			{
 				OnQuestComplete(quest, sQuestName);
 				nQuestsNum = GetAttributesNum(quests);
 			}
 		}
-		
+
 		if(CheckAttribute(quest,"fail_condition"))
 		{
 			makearef(conditions,quest.fail_condition);
@@ -332,7 +332,7 @@ void QuestsCheck()
 			for(m = 0; m < nConditionsNum; m++)
 			{
 				condition = GetAttributeN(conditions,m);
-				if(ProcessCondition(condition) == true) 
+				if(ProcessCondition(condition) == true)
 				{
 					OnQuestFailed(quest, sQuestName);
 					nQuestsNum = GetAttributesNum(quests);

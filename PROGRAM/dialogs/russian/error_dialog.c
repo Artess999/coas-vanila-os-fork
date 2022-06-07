@@ -14,7 +14,7 @@ void ProcessDialogEvent()
 	{
 		// -----------------------------------Диалог первый - первая встреча
 		case "First time":
-			
+
 			dialog.text = "Ошибка открытия файла диалога.";
 			if(CheckAttribute(CharacterRef, "Dialog.Filename"))
 			{

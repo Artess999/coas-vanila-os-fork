@@ -9,7 +9,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "Exit":
@@ -115,7 +115,7 @@ void ProcessDialogEvent()
 			link.l1 = "Здравствуй, ацтек. Насколько я по понимаю, тебя зовут Ауисотль.";
 			link.l1.go = "AztecFT2_1";
 		break;
-		
+
 		case "AztecFT2_1":
 			dialog.text = "Да, это так. А кто ты такой?";
 			link.l1 = "Я капитан " + GetFullName(pchar) + ". Рад познакомиться, так сказать, с местным жителем. С братом твоим, Мешитли, мы уже пообщались.";

@@ -1,6 +1,6 @@
 
 int LocationInitMartinique(int n)
-{	
+{
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// ГОРОД
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -13,7 +13,7 @@ int LocationInitMartinique(int n)
 	locations[n].soldiers = true;
 	locations[n].carrier = true;
 	//==> флаг генерации квестодателя по розыску кэпов, int значение - шанс что сам заговорит(1-10)
-	locations[n].questSeekCap = 6; 
+	locations[n].questSeekCap = 6;
 	//Town sack
 	locations[n].townsack = "FortFrance";
 	//Sound
@@ -30,7 +30,7 @@ int LocationInitMartinique(int n)
 	locations[n].models.always.seabed = "Martinique_sb";
 	locations[n].models.always.locators = "Martinique_locators";
 	locations[n].models.always.grassPatch = "Martinique_grass";
-	
+
 	locations[n].models.always.plan = "plan1";
 	locations[n].models.always.plan.level = 9;
 
@@ -40,7 +40,7 @@ int LocationInitMartinique(int n)
     locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
 	locations[n].models.always.Waterfall1.tech = "LocationWaterFall";
 	locations[n].models.always.Waterfall1.level = 50;
-	
+
 	locations[n].models.always.Waterfall2 = "fontain2";
 	locations[n].models.always.Waterfall2.uvslide.v0 = 0.2;
     locations[n].models.always.Waterfall2.uvslide.v1 = 0.0;
@@ -50,7 +50,7 @@ int LocationInitMartinique(int n)
 	//WindMill Fan
 	locations[n].models.always.MillFan = "MillFan";
 	Locations[n].models.always.MillFan.locator.group = "WindMill";
-	Locations[n].models.always.MillFan.locator.name ="Fan";	
+	Locations[n].models.always.MillFan.locator.name ="Fan";
 	Locations[n].models.always.MillFan.rotate.x = 0.0;
 	Locations[n].models.always.MillFan.rotate.y = 0.0;
 	Locations[n].models.always.MillFan.rotate.z = 0.2;
@@ -147,7 +147,7 @@ int LocationInitMartinique(int n)
 	locations[n].reload.gate.emerge = "reload3";
 	locations[n].reload.gate.autoreload = "0";
 	locations[n].reload.gate.label = "ExitTown";
-	
+
     // --> Квестовые локации.
 	locations[n].reload.l11.name = "houseH1";
 	locations[n].reload.l11.go = "FortFrance_HouseHut";
@@ -607,7 +607,7 @@ int LocationInitMartinique(int n)
 	locations[n].models.always.l1.level = 65538;
 	locations[n].models.always.window = "residence01_window";
 	locations[n].models.always.window.tech = "LocationWindows";
-	locations[n].models.always.window.level = 65539;	
+	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
 	//Day
@@ -786,12 +786,12 @@ int LocationInitMartinique(int n)
 	locations[n].models.always.locators = "DungeonVault2_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "DungeonVault2_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
 	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
+	Locations[n].models.always.rays.uvslide.v1 = -0.03;
 	//Day
 	locations[n].models.day.charactersPatch = "DungeonVault2_patch";
 	//Night
@@ -827,12 +827,12 @@ int LocationInitMartinique(int n)
 	locations[n].filespath.models = "locations\Outside\Jungles\TownExitY";
 	Locations[n].models.always.townExit = "townExitY";
 	Locations[n].models.always.townWalls = "townExitY_stone";
-	
+
 	Locations[n].models.always.locators = "townExitY_locators";
-		
+
 	Locations[n].models.always.grassPatch = "townExitY_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -841,13 +841,13 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "townExitY_patch";
 	locations[n].models.day.fonars = "townExitY_fd";
 	//Night
 	locations[n].models.night.charactersPatch = "townExitY_patch";
-	locations[n].models.night.fonars = "townExitY_fn";	
+	locations[n].models.night.fonars = "townExitY_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -872,7 +872,7 @@ int LocationInitMartinique(int n)
 	locations[n].reload.l3.label = "FortFrance Fort";
 	locations[n].locators_radius.reload.reload1_back = 2;
 	n = n + 1;
-	
+
  	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Джунгли
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -885,10 +885,10 @@ int LocationInitMartinique(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle7";
-	Locations[n].models.always.jungle = "jungle7";	
-	Locations[n].models.always.locators = "jungle7_locators";		
+	Locations[n].models.always.jungle = "jungle7";
+	Locations[n].models.always.locators = "jungle7_locators";
 	Locations[n].models.always.grassPatch = "jungle7_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -897,11 +897,11 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle7_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle7_patch";	
+	locations[n].models.night.charactersPatch = "jungle7_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -927,7 +927,7 @@ int LocationInitMartinique(int n)
 	locations[n].reload.l3.label = "Shore38";
 	locations[n].locators_radius.reload.reload3_back = 2;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Пляж Ламантен
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -945,10 +945,10 @@ int LocationInitMartinique(int n)
 	locations[n].models.always.shore10.sea_reflection = 1;
 	Locations[n].models.always.shore10seabed = "shore10_sb";
 	Locations[n].models.always.locators = "shore10_locators";
-		
+
 	Locations[n].models.always.grassPatch = "shore10_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -957,11 +957,11 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shore10_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shore10_patch";		
+	locations[n].models.night.charactersPatch = "shore10_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -980,7 +980,7 @@ int LocationInitMartinique(int n)
 	locations[n].reload.l2.label = "Sea";
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Джунгли
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -993,10 +993,10 @@ int LocationInitMartinique(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\Jungle3";
-	Locations[n].models.always.jungle = "jungle3";	
-	Locations[n].models.always.locators = "jungle3_locators";		
+	Locations[n].models.always.jungle = "jungle3";
+	Locations[n].models.always.locators = "jungle3_locators";
 	Locations[n].models.always.grassPatch = "jungle3_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1005,11 +1005,11 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle3_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle3_patch";	
+	locations[n].models.night.charactersPatch = "jungle3_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1049,9 +1049,9 @@ int LocationInitMartinique(int n)
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle1\";
 	Locations[n].models.always.jungle = "jungle1";
-	Locations[n].models.always.locators = "jungle1_locators";		
+	Locations[n].models.always.locators = "jungle1_locators";
 	Locations[n].models.always.grassPatch = "jungle1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1060,11 +1060,11 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle1_patch";	
+	locations[n].models.night.charactersPatch = "jungle1_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1101,10 +1101,10 @@ int LocationInitMartinique(int n)
 	locations[n].models.always.shore06.sea_reflection = 1;
 	Locations[n].models.always.shore06seabed = "shore06_sb";
 	Locations[n].models.always.locators = "shore06_locators";
-		
+
 	Locations[n].models.always.grassPatch = "shore06_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1113,11 +1113,11 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shore06_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shore06_patch";		
+	locations[n].models.night.charactersPatch = "shore06_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1136,7 +1136,7 @@ int LocationInitMartinique(int n)
 	locations[n].reload.l2.label = "Sea";
     locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Порт Ле Франсуа
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1157,10 +1157,10 @@ int LocationInitMartinique(int n)
 	locations[n].models.always.shore07.sea_reflection = 1;
 	Locations[n].models.always.shore07seabed = "shore07_sb";
 	Locations[n].models.always.locators = "shore07_locators";
-		
+
 	Locations[n].models.always.grassPatch = "shore07_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1169,11 +1169,11 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shore07_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shore07_patch";		
+	locations[n].models.night.charactersPatch = "shore07_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1208,10 +1208,10 @@ int LocationInitMartinique(int n)
 	//Models
 	//Always
 	Locations[n].filespath.models = "locations\Outside\smugglerLairExit";
-	Locations[n].models.always.smugglerLairExit = "smugglerLairExit";	
-	Locations[n].models.always.locators = "smugglerLairExit_locators";		
+	Locations[n].models.always.smugglerLairExit = "smugglerLairExit";
+	Locations[n].models.always.locators = "smugglerLairExit_locators";
 	Locations[n].models.always.grassPatch = "smugglerLairExit_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1220,13 +1220,13 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "smugglerLairExit_patch";
 	locations[n].models.day.fonars = "smugglerLairExit_fd";
 	//Night
 	locations[n].models.night.charactersPatch = "smugglerLairExit_patch";
-	locations[n].models.night.fonars = "smugglerLairExit_fn";	
+	locations[n].models.night.fonars = "smugglerLairExit_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -1271,10 +1271,10 @@ int LocationInitMartinique(int n)
 	//Models
 	//Always
 	Locations[n].filespath.models = "locations\Outside\smugglerLairTown";
-	Locations[n].models.always.smugglerLairTown = "smugglerLairTown";	
-	Locations[n].models.always.locators = "smugglerLairTown_locators";		
+	Locations[n].models.always.smugglerLairTown = "smugglerLairTown";
+	Locations[n].models.always.locators = "smugglerLairTown_locators";
 	Locations[n].models.always.grassPatch = "smugglerLairTown_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -1283,19 +1283,19 @@ int LocationInitMartinique(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "smugglerLairTown_patch";
 	locations[n].models.day.fonars = "smugglerLairTown_fd";
 	//Night
 	locations[n].models.night.charactersPatch = "smugglerLairTown_patch";
-	locations[n].models.night.fonars = "smugglerLairTown_fn";	
+	locations[n].models.night.fonars = "smugglerLairTown_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
 	//Reload map
 
-	Locations[n].reload.l1.name = "reload1"; 
+	Locations[n].reload.l1.name = "reload1";
 	Locations[n].reload.l1.go = "LeFransua_ExitTown";
 	Locations[n].reload.l1.emerge = "reload3";
 	Locations[n].reload.l1.autoreload = "0";
@@ -1383,7 +1383,7 @@ int LocationInitMartinique(int n)
 	locations[n].reload.l2.emerge = "reload1";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Tavern upstairs";
-	locations[n].reload.l2.disable = 1; // закроем, но связку сделаем для квестовых нужд.	
+	locations[n].reload.l2.disable = 1; // закроем, но связку сделаем для квестовых нужд.
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
 
@@ -1461,7 +1461,7 @@ int LocationInitMartinique(int n)
 	//Reload map
 	locations[n].reload.l1.name = "reload1";
 	locations[n].reload.l1.go = "LeFransua_town";
-	locations[n].reload.l1.emerge = "reload8"; 
+	locations[n].reload.l1.emerge = "reload8";
 	locations[n].reload.l1.autoreload = "0";
     locations[n].reload.l1.label = "Street";
 
@@ -1560,6 +1560,6 @@ int LocationInitMartinique(int n)
 	locations[n].reload.l1.label = "Street";
 	LAi_LocationFightDisable(&locations[n], true);
 	n = n + 1;
-	
+
 	return n;
 }

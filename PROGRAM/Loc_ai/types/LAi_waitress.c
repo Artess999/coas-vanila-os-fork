@@ -31,7 +31,7 @@ void LAi_type_waitress_Init(aref chr)
 		chr.chr_ai.type.locator = "";
 		//Установим шаблон гуляния
 		LAi_tmpl_stay_InitTemplate(chr);
-	}	
+	}
 	//Установим анимацию персонажу
 	LAi_SetDefaultStayAnimation(chr);
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
@@ -39,7 +39,7 @@ void LAi_type_waitress_Init(aref chr)
 
 //Процессирование типа персонажа
 void LAi_type_waitress_CharacterUpdate(aref chr, float dltTime)
-{	
+{
 	bool isProcessed;
 	//Ищим врагов
 	if(LAi_CanNearEnemy(chr, 5.0))
@@ -252,7 +252,7 @@ void LAi_type_waitress_Fire(aref attack, aref enemy, float kDist, bool isFindedE
 //Персонаж атакован
 void LAi_type_waitress_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 //Стоять и ждать
@@ -260,7 +260,7 @@ void LAi_type_waitress_Wait(aref chr, float time)
 {
 	LAi_tmpl_stay_InitTemplate(chr);
 	chr.chr_ai.type.task = "wait";
-	chr.chr_ai.type.time = time;	
+	chr.chr_ai.type.time = time;
 }
 
 //Идём к бармену

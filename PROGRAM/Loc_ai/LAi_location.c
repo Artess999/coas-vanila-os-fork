@@ -9,7 +9,7 @@ void LAi_LocationFightDisable(ref location, bool isDisable)
 	}
 }
 
-//–азрешить или запретить генерации монстров 
+//–азрешить или запретить генерации монстров
 void LAi_LocationDisableMonstersGen(string locationId, bool isDisable)
 {
 	ref location = &locations[FindLocation(locationId)];
@@ -35,9 +35,9 @@ void LAi_LocationSetMonstersTime(ref location, float start, float end)
 	if(!CheckAttribute(location, "monsters"))
 	{
 		location.monsters = "0";
-	}		
+	}
 	location.monsters.stime = start;
-	location.monsters.etime = end;	
+	location.monsters.etime = end;
 }
 
 bool LAi_LocationIsMonstersGen(ref location)

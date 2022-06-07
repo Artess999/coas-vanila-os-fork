@@ -97,7 +97,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 						}
                     }
                 break;
-                
+
                 case "":           // Квест №1, Спасти горожан от Моргана.
                     dialog.text = "Так-так, капитан, я был проинформирован о Вашем прибытии.";
                     link.l1 = "Для меня это большая честь, дон Франсиско. Никак не ожидал, что моя скромная персона удостоится внимания столь высокопоставленного сеньора.";
@@ -774,7 +774,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             CloseQuestHeader("Spa_Line_5_LaVegaAttack");
 			//--> огонь и пламень убираем
 			DeleteAttribute(&locations[FindLocation("LaVega_town")], "hidden_effects");
-			DeleteAttribute(&locations[FindLocation("LaVega_ExitTown")], "hidden_effects");	
+			DeleteAttribute(&locations[FindLocation("LaVega_ExitTown")], "hidden_effects");
 			//<-- огонь и пламень
             //===> Эдвард убит :( теперь Ла Вегой рулит капитан Купер.
             sld = characterFromID("Edward Mansfield");
@@ -826,7 +826,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			else
 			{
 				link.l1 = "Я не смог добыть бумаги до сих пор. Мне кажется, что все бесполезно и это задание мне уже не выполнить...";
-				link.l1.go = "Step_6_5";			
+				link.l1.go = "Step_6_5";
 			}
         break;
         case "Step_6_5":
@@ -886,7 +886,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddCharacterExpToSkill(pchar, "Accuracy", 350);
 			//слухи
 			AddSimpleRumour("Говорят, что капитан " + GetFullName(pchar) + ", удачно провернул сверхопасное дело на Тортуге. М-да, мужеством этого человека можно только восхищаться...", SPAIN, 5, 1);
-		break; 
+		break;
         //********************** Квест №7, Спасти Пардаля. ************************
         case "Step_7_1":
             dialog.text = "Дьявол, это очень и очень плохо. Боевой дух поселенцев серьезно упадет с этим известием...";
@@ -901,7 +901,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             SaveCurrentQuestDateParam("questTemp");
             pchar.questTemp.CurQuestNumber = "8";
             pchar.questTemp.Waiting_time = "20";
-            CloseQuestHeader("Spa_Line_7_SavePardal"); 
+            CloseQuestHeader("Spa_Line_7_SavePardal");
 		break;
         case "Step_7_3":
             dialog.text = "Великолепно, друг мой, просто прекрасно!";
@@ -914,7 +914,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1.go = "Step_7_5";
         break;
         case "Step_7_5":
-            dialog.text = "Слова настоящего солдата! Я в вас не ошибался.\n"+ 
+            dialog.text = "Слова настоящего солдата! Я в вас не ошибался.\n"+
 				          "Сейчас я вас не задерживаю, только попрошу через неделю быть у меня в резиденции - намечается дело для отважного капитана. Кажется, я знаю, кто этот капитан...";
             link.l1 = "Хорошо, дон Франсиско, буду у вас примерно в это время.";
             link.l1.go = "exit";
@@ -943,7 +943,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             SaveCurrentQuestDateParam("questTemp");
             pchar.questTemp.CurQuestNumber = "8";
             pchar.questTemp.Waiting_time = "40";
-            CloseQuestHeader("Spa_Line_7_SavePardal"); 
+            CloseQuestHeader("Spa_Line_7_SavePardal");
 			ChangeCharacterReputation(pchar, -4);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), -1);
 			AddCharacterExpToSkill(pchar, "Sailing", -250);
@@ -1067,13 +1067,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 	sld = GetCharacter(ShipType);
                     ShipType = sti(sld.ship.type);
                     Rank = sti(RealShips[ShipType].basetype);
-                    if (Rank == SHIP_GALEON_L) 
+                    if (Rank == SHIP_GALEON_L)
 					{
 						iTemp++;
 						iMoney = iMoney + sti(sld.Ship.Cargo.Goods.Gold);
 					}
                 }
-            } 
+            }
 			npchar.quest.money = iMoney;
 			if (iTemp < 4 && iTemp > 0)
             {
@@ -1093,7 +1093,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				if (iTemp == 0)
 				{
 					link.l1 = "Сеньор, нападение ладронов было внезапным и отличалось крайней яростью. Я потерял все галеоны...";
-					link.l1.go = "Step_9_8";				
+					link.l1.go = "Step_9_8";
 				}
 				else
 				{
@@ -1129,7 +1129,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				dialog.text = "Э-э-э, да вы, сеньор, никак жульничать вздумали?! На галеонах не хватает золота! Я не желаю более иметь с вами дела ни под каким соусом. Прощайте!";
 				link.l1 = "Гм, ну как же...";
 				link.l1.go = "Step_9_exit";
-				pchar.questTemp.State = "QuestLineBreake";	
+				pchar.questTemp.State = "QuestLineBreake";
 				ChangeCharacterReputation(pchar, -5);
 				ChangeCharacterNationReputation(pchar, sti(NPChar.nation), -1);
 				AddCharacterExpToSkill(pchar, "Sailing", -300);
@@ -1154,26 +1154,26 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Waiting_time = "60";
             SaveCurrentQuestDateParam("questTemp");
             pchar.questTemp.CurQuestNumber = "10";
-            CloseQuestHeader("Spa_Line_9_FourGolgGaleons"); 
+            CloseQuestHeader("Spa_Line_9_FourGolgGaleons");
         break;
 		case "Step_9_11":
             dialog.text = "Находящееся на них золото тоже в сохранности?";
 			if (sti(npchar.quest.money) >= 5000)
 			{
 				link.l1 = "Да, дон Франсиско, все в порядке.";
-				link.l1.go = "Step_9_12";			
+				link.l1.go = "Step_9_12";
 			}
 			else
 			{
 				if(sti(npchar.quest.money) > 4800)
 				{
 					link.l1 = "Не совсем, дон Франсиско. Я имею на на галеонах " + FindRussianQtyString(sti(npchar.quest.money)) + " золота.";
-					link.l1.go = "Step_9_14";	
+					link.l1.go = "Step_9_14";
 				}
 				else
 				{
 					link.l1 = "Хм, не совсем, дон Франсиско... Я имею на на галеонах " + FindRussianQtyString(sti(npchar.quest.money)) + " золота.";
-					link.l1.go = "Step_9_16";				
+					link.l1.go = "Step_9_16";
 				}
 			}
         break;
@@ -1211,7 +1211,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1.go = "Step_9_exit";
 			pchar.questTemp.Waiting_time = "12";
 			pchar.questTemp.State = "empty";
-            SaveCurrentQuestDateParam("questTemp");            
+            SaveCurrentQuestDateParam("questTemp");
 			AddMoneyToCharacter(pchar, 200000);
 			AddTitleNextRate(sti(NPChar.nation), 0.5);
 			ChangeCharacterReputation(pchar, 1);
@@ -1298,7 +1298,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Я более не жалю иметь с вами никакого дела. Таких трусов и разгильдяев не было еще на службе Испании! Какой позор... Все, разговор с вами окончен раз и навсегда, прощайте.";
             link.l1 = "...";
             link.l1.go = "exit";
-			CloseQuestHeader("Spa_Line_10_Maracaibo"); 
+			CloseQuestHeader("Spa_Line_10_Maracaibo");
             DeleteAttribute(pchar, "questTemp.Waiting_time");
 			pchar.questTemp.State = "QuestLineBreake";
             bWorldAlivePause   = false; // Конец линейки
@@ -1332,7 +1332,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Waiting_time = "15";
             SaveCurrentQuestDateParam("questTemp");
             pchar.questTemp.CurQuestNumber = "11";
-            CloseQuestHeader("Spa_Line_10_Maracaibo"); 
+            CloseQuestHeader("Spa_Line_10_Maracaibo");
 			ChangeCharacterReputation(pchar, 5);
 			AddTitleNextRate(sti(NPChar.nation), 2);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 1);
@@ -1357,13 +1357,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Ни в коей мере.";
             link.l1 = "Ну что же, очень хорошо. Я приступаю.";
             link.l1.go = "exit";
-            SetNationRelation2MainCharacter(HOLLAND, RELATION_ENEMY); //ссорим ГГ и голландцев. 
+            SetNationRelation2MainCharacter(HOLLAND, RELATION_ENEMY); //ссорим ГГ и голландцев.
             SetNationRelationBoth(HOLLAND, SPAIN, RELATION_ENEMY);
             SetQuestHeader("Spa_Line_11_DestrHolland");
             AddQuestRecord("Spa_Line_11_DestrHolland", "1");
             pchar.questTemp.State = "DestrHolland_GoOn";
 			characters[GetCharacterIndex("Villemstad_Mayor")].dialog.captureNode = "SpaLine11Quest_DestrHol"; //капитулянтская нода мэра
-			characters[GetCharacterIndex("Marigo_Mayor")].dialog.captureNode = "SpaLine11Quest_DestrHol"; //капитулянтская нода мэра       
+			characters[GetCharacterIndex("Marigo_Mayor")].dialog.captureNode = "SpaLine11Quest_DestrHol"; //капитулянтская нода мэра
 		break;
 		case "Step_11_3":
             dialog.text = "И сделано отлично! Голландцы получили по рукам, надеюсь, это их заставит быть более прижимистыми в тратах, ха-ха.\n"+
@@ -1377,7 +1377,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.Waiting_time = "30";
             SaveCurrentQuestDateParam("questTemp");
             pchar.questTemp.CurQuestNumber = "12";
-            CloseQuestHeader("Spa_Line_11_DestrHolland"); 
+            CloseQuestHeader("Spa_Line_11_DestrHolland");
 			AddTitleNextRate(sti(NPChar.nation), 2);
 			ChangeCharacterReputation(pchar, 7);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 1);
@@ -1408,7 +1408,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             SetQuestHeader("Spa_Line_12_OccupyPortPax");
             AddQuestRecord("Spa_Line_12_OccupyPortPax", "1");
             pchar.questTemp.State = "OccupyPortPax_GoOn";
-			characters[GetCharacterIndex("PortPax_Mayor")].dialog.captureNode = "SpaLine12Quest_PortPax"; //капитулянтская нода мэра 
+			characters[GetCharacterIndex("PortPax_Mayor")].dialog.captureNode = "SpaLine12Quest_PortPax"; //капитулянтская нода мэра
         break;
 		case "Step_12_4":
             dialog.text = "Прекрасно! Я немедленно извещу всех заинтересованных лиц об этой грандиозной новости. Великолепная победа, капитан, просто сказочная удача!";
@@ -1426,12 +1426,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1.go = "exit";
             AddTitleNextRate(sti(NPChar.nation), 4);
             DeleteAttribute(pchar, "questTemp.Waiting_time");
-            pchar.questTemp.State = "EndOfQuestLine"; 
+            pchar.questTemp.State = "EndOfQuestLine";
 			bWorldAlivePause   = false; // Конец линейки
 			AddTitleNextRate(sti(NPChar.nation), 4);
 			ChangeCharacterReputation(pchar, 5);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 20);
-			CloseQuestHeader("Spa_Line_12_OccupyPortPax"); 
+			CloseQuestHeader("Spa_Line_12_OccupyPortPax");
 			AddCharacterExpToSkill(pchar, "Repair", 630);
 			AddCharacterExpToSkill(pchar, "Sneak", 490);
 			AddCharacterExpToSkill(pchar, "FencingLight", 530);

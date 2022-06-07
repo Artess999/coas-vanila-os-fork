@@ -305,7 +305,7 @@ string STR_COLOR[MAX_LINE] = {
 void InitInterface(string iniName)
 {
 	GameInterface.title = "";
-	
+
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 
 	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);
@@ -359,7 +359,7 @@ void IDoExit(int exitCode)
  	DelEventHandler("InterfaceBreak","ProcessCancelExit");
 	DelEventHandler("exitCancel","ProcessCancelExit");
     DelEventHandler("My_MoveText","MoveText");
-    
+
 	interfaceResultCommand = exitCode;
 	if( CheckAttribute(&InterfaceStates,"InstantExit") && sti(InterfaceStates.InstantExit)==true ) {
 		EndCancelInterface(true);

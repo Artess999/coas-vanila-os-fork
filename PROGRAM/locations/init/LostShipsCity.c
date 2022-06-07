@@ -1,39 +1,39 @@
 
 int LocationInitLostShipsCity(int n)
 {
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// ГОРОД
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	locations[n].id = "LostShipsCity_town";
 	locations[n].id.label = "LSC Town";
 	locations[n].worldmap = "LostShipsCity";
-	
+
 	locations[n].townsack = "LostShipsCity";
 	locations[n].fastreload = "LostShipsCity";
  	locations[n].islandId = "LostShipsCity";
-	
+
 	locations[n].filespath.models = "locations\LostShipsCity\";
 	locations[n].image = "loading\OutsideLSC.tga";
 	//Sound
 	locations[n].type = "LostShipsCity";
 	//locations[n].houseEnc = true; //для энкаунтеров в домах
 
-	Locations[n].models.always.LostShipsCity = "LostShipsCity";	
+	Locations[n].models.always.LostShipsCity = "LostShipsCity";
 	//Locations[n].models.always.LostShipsCity.level = 65538;
-	Locations[n].models.always.seabed = "LostShipsCity_seabed";	
+	Locations[n].models.always.seabed = "LostShipsCity_seabed";
 	Locations[n].models.always.reflect = "LostShipsCity_reflect";
 	Locations[n].models.always.reflect.sea_reflection = 1;
 
 	Locations[n].models.always.sails = "LostShipsCity_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
 	Locations[n].models.always.sails.level = 65539;
-	
+
 	Locations[n].models.always.plan1 = "LostShipsCity_plan1";
 	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65534;
-	
+
 	Locations[n].models.always.plan2 = "LostShipsCity_plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
 	Locations[n].models.always.plan2.level = 65533;
@@ -41,19 +41,19 @@ int LocationInitLostShipsCity(int n)
 	Locations[n].models.always.plan3 = "LostShipsCity_plan3";
 	Locations[n].models.always.plan3.tech = "LocationWindows";
 	Locations[n].models.always.plan3.level = 65532;
-	
+
 	Locations[n].models.always.locators = "LostShipsCity_locators";
-	
+
 	Locations[n].models.always.grassPatch = "LostShipsCity_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "LostShipsCity_patch_day";
 	Locations[n].models.day.jumpPatch = "LostShipsCity_jump_patch";
-	locations[n].models.day.fonar = "LostShipsCity_fd";	
+	locations[n].models.day.fonar = "LostShipsCity_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "LostShipsCity_patch_day";	
+	locations[n].models.night.charactersPatch = "LostShipsCity_patch_day";
 	Locations[n].models.night.jumpPatch = "LostShipsCity_jump_patch";
-	Locations[n].models.night.fonar = "LostShipsCity_fn";	
+	Locations[n].models.night.fonar = "LostShipsCity_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -76,7 +76,7 @@ int LocationInitLostShipsCity(int n)
 	locations[n].reload.l2.emerge = "reload_2";
 	locations[n].reload.l2.autoreload = "0";
 	locations[n].reload.l2.label = "Sea";
-	locations[n].reload.l2.disable = true; 
+	locations[n].reload.l2.disable = true;
 	locations[n].locators_radius.reload.reload2_back = 6.0;
 
 	////////  Галеон Эва AvaShipInside3 //////////
@@ -158,14 +158,14 @@ int LocationInitLostShipsCity(int n)
 	locations[n].reload.l13.autoreload = "0";
 	locations[n].reload.l13.label = "CeresSmithy cabin";
 	locations[n].reload.l13.close_for_night = 1;
-	
+
 	locations[n].reload.l14.name = "reload59";
 	locations[n].reload.l14.go = "CeresSmithy";
 	locations[n].reload.l14.emerge = "reload5";
 	locations[n].reload.l14.autoreload = "0";
 	locations[n].reload.l14.label = "CeresSmithy cabin";
 	locations[n].reload.l14.close_for_night = 1;
-	
+
 	locations[n].reload.l15.name = "reload60";
 	locations[n].reload.l15.go = "CeresSmithy";
 	locations[n].reload.l15.emerge = "reload6";
@@ -201,7 +201,7 @@ int LocationInitLostShipsCity(int n)
 	locations[n].reload.l19.autoreload = "0";
 	locations[n].reload.l19.label = "EsmeraldaStoreBig cabin";
 	locations[n].reload.l19.close_for_night = 1;
-	
+
 	locations[n].reload.l20.name = "reload49";
 	locations[n].reload.l20.go = "EsmeraldaStoreBig";
 	locations[n].reload.l20.emerge = "reload4";
@@ -583,7 +583,7 @@ int LocationInitLostShipsCity(int n)
 	locations[n].private1.items.indian6 = 2;
 	locations[n].private1.items.indian7 = 1;
 	locations[n].private1.items.indian8 = 1;
-	locations[n].private1.items.indian9 = 2;	
+	locations[n].private1.items.indian9 = 2;
 	locations[n].private1.items.statue1 = 1;
 
 	locations[n].private2.key = "key1";
@@ -712,40 +712,40 @@ int LocationInitLostShipsCity(int n)
 	//Sound
 	locations[n].type = "LSC_inside";
 	locations[n].fastreload = "LostShipsCity";
-	locations[n].islandId = "LostShipsCity";	
+	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "AvaShipInside3";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "AvaShipInside3_sb";
-	Locations[n].models.always.outdoor = "AvaShipInside3_outdoor";		
+	Locations[n].models.always.outdoor = "AvaShipInside3_outdoor";
 	Locations[n].models.always.reflect = "AvaShipInside3_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "AvaShipInside3_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "AvaShipInside3_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "AvaShipInside3_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "AvaShipInside3_locators";
 	Locations[n].models.always.grassPatch = "AvaShipInside3_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "AvaShipInside3_patch_day";
 	//Locations[n].models.day.jumpPatch = "AvaShipInside3_jump_patch";
-	locations[n].models.day.fonarday = "AvaShipInside3_fd";	
+	locations[n].models.day.fonarday = "AvaShipInside3_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "AvaShipInside3_patch_day";	
+	locations[n].models.night.charactersPatch = "AvaShipInside3_patch_day";
 	//Locations[n].models.night.jumpPatch = "AvaShipInside3_jump_patch";
-	Locations[n].models.night.fonarnight = "AvaShipInside3_fn";	
+	Locations[n].models.night.fonarnight = "AvaShipInside3_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -812,39 +812,39 @@ int LocationInitLostShipsCity(int n)
 	//Sound
 	locations[n].type = "LSC_inside";
 	locations[n].fastreload = "LostShipsCity";
-	locations[n].islandId = "LostShipsCity";	
+	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
-	Locations[n].models.always.inside = "CarolineBank";	
+	//Always
+	Locations[n].models.always.inside = "CarolineBank";
 	Locations[n].models.always.inside.level = 65538;
-	Locations[n].models.always.outdoor = "CarolineBank_outdoor";		
+	Locations[n].models.always.outdoor = "CarolineBank_outdoor";
 	Locations[n].models.always.reflect = "CarolineBank_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "CarolineBank_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "CarolineBank_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "CarolineBank_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "CarolineBank_locators";
 	Locations[n].models.always.grassPatch = "CarolineBank_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "CarolineBank_patch_day";
 	//Locations[n].models.day.jumpPatch = "CarolineBank_jump_patch";
-	locations[n].models.day.fonarday = "CarolineBank_fd";	
+	locations[n].models.day.fonarday = "CarolineBank_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "CarolineBank_patch_day";	
+	locations[n].models.night.charactersPatch = "CarolineBank_patch_day";
 	//Locations[n].models.night.jumpPatch = "CarolineBank_jump_patch";
-	Locations[n].models.night.fonarnight = "CarolineBank_fn";	
+	Locations[n].models.night.fonarnight = "CarolineBank_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -896,40 +896,40 @@ int LocationInitLostShipsCity(int n)
 	//Sound
 	locations[n].type = "LSC_inside";
 	locations[n].fastreload = "LostShipsCity";
-	locations[n].islandId = "LostShipsCity";	
+	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "CeresSmithy";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "CeresSmithy_sb";
-	Locations[n].models.always.outdoor = "CeresSmithy_outdoor";		
+	Locations[n].models.always.outdoor = "CeresSmithy_outdoor";
 	Locations[n].models.always.reflect = "CeresSmithy_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "CeresSmithy_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "CeresSmithy_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "CeresSmithy_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "CeresSmithy_locators";
 	Locations[n].models.always.grassPatch = "CeresSmithy_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "CeresSmithy_patch_day";
 	//Locations[n].models.day.jumpPatch = "CeresSmithy_jump_patch";
-	locations[n].models.day.fonarday = "CeresSmithy_fd";	
+	locations[n].models.day.fonarday = "CeresSmithy_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "CeresSmithy_patch_day";	
+	locations[n].models.night.charactersPatch = "CeresSmithy_patch_day";
 	//Locations[n].models.night.jumpPatch = "CeresSmithy_jump_patch";
-	Locations[n].models.night.fonarnight = "CeresSmithy_fn";	
+	Locations[n].models.night.fonarnight = "CeresSmithy_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1015,40 +1015,40 @@ int LocationInitLostShipsCity(int n)
 	//Sound
 	locations[n].type = "LSC_inside";
 	locations[n].fastreload = "LostShipsCity";
-	locations[n].islandId = "LostShipsCity";	
+	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "EsmeraldaStoreBig";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "EsmeraldaStoreBig_sb";
-	Locations[n].models.always.outdoor = "EsmeraldaStoreBig_outdoor";		
+	Locations[n].models.always.outdoor = "EsmeraldaStoreBig_outdoor";
 	Locations[n].models.always.reflect = "EsmeraldaStoreBig_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "EsmeraldaStoreBig_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "EsmeraldaStoreBig_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "EsmeraldaStoreBig_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "EsmeraldaStoreBig_locators";
 	Locations[n].models.always.grassPatch = "EsmeraldaStoreBig_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "EsmeraldaStoreBig_patch_day";
 	//Locations[n].models.day.jumpPatch = "EsmeraldaStoreBig_jump_patch";
-	locations[n].models.day.fonarday = "EsmeraldaStoreBig_fd";	
+	locations[n].models.day.fonarday = "EsmeraldaStoreBig_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "EsmeraldaStoreBig_patch_day";	
+	locations[n].models.night.charactersPatch = "EsmeraldaStoreBig_patch_day";
 	//Locations[n].models.night.jumpPatch = "EsmeraldaStoreBig_jump_patch";
-	Locations[n].models.night.fonarnight = "EsmeraldaStoreBig_fn";	
+	Locations[n].models.night.fonarnight = "EsmeraldaStoreBig_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1104,7 +1104,7 @@ int LocationInitLostShipsCity(int n)
 	locations[n].private1.items.jewelry18 = 7;
 	locations[n].private1.items.suit_2 = 1;
 
-	locations[n].private2.key = "key1";	
+	locations[n].private2.key = "key1";
 	locations[n].private2.money = 3520;
 	locations[n].private2.items.pistol4 = 2;
 	locations[n].private2.items.blade17 = 1;
@@ -1133,37 +1133,37 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "FenixPlatform";
 	Locations[n].models.always.inside.level = 65538;
-	Locations[n].models.always.outdoor = "FenixPlatform_outdoor";		
+	Locations[n].models.always.outdoor = "FenixPlatform_outdoor";
 	Locations[n].models.always.reflect = "FenixPlatform_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "FenixPlatform_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "FenixPlatform_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "FenixPlatform_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "FenixPlatform_locators";
 	Locations[n].models.always.grassPatch = "FenixPlatform_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "FenixPlatform_patch_day";
 	//Locations[n].models.day.jumpPatch = "FenixPlatform_jump_patch";
-	locations[n].models.day.fonarday = "FenixPlatform_fd";	
+	locations[n].models.day.fonarday = "FenixPlatform_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "FenixPlatform_patch_day";	
+	locations[n].models.night.charactersPatch = "FenixPlatform_patch_day";
 	//Locations[n].models.night.jumpPatch = "FenixPlatform_jump_patch";
-	Locations[n].models.night.fonarnight = "FenixPlatform_fn";	
+	Locations[n].models.night.fonarnight = "FenixPlatform_fn";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -1205,36 +1205,36 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "FernandaDiffIndoor";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "FernandaDiffIndoor_sb";
-	Locations[n].models.always.outdoor = "FernandaDiffIndoor_outdoor";		
+	Locations[n].models.always.outdoor = "FernandaDiffIndoor_outdoor";
 	Locations[n].models.always.reflect = "FernandaDiffIndoor_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "FernandaDiffIndoor_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "FernandaDiffIndoor_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "FernandaDiffIndoor_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "FernandaDiffIndoor_locators";
 	Locations[n].models.always.grassPatch = "FernandaDiffIndoor_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "FernandaDiffIndoor_patch_day";
 	//Locations[n].models.day.jumpPatch = "FernandaDiffIndoor_jump_patch";
-	locations[n].models.day.fonarday = "FernandaDiffIndoor_fd";	
+	locations[n].models.day.fonarday = "FernandaDiffIndoor_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "FernandaDiffIndoor_patch_day";	
+	locations[n].models.night.charactersPatch = "FernandaDiffIndoor_patch_day";
 	//Locations[n].models.night.jumpPatch = "FernandaDiffIndoor_jump_patch";
 	Locations[n].models.night.fonarnight = "FernandaDiffIndoor_fn";
 	//Environment
@@ -1266,7 +1266,7 @@ int LocationInitLostShipsCity(int n)
 	n = n + 1;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Каравелла Флерон   FleuronTavern 
+	// Каравелла Флерон   FleuronTavern
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	locations[n].id = "FleuronTavern";
 	locations[n].id.label = "FleuronTavern cabin";
@@ -1280,35 +1280,35 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "FleuronTavern";
 	Locations[n].models.always.inside.level = 65538;
-	Locations[n].models.always.outdoor = "FleuronTavern_outdoor";		
+	Locations[n].models.always.outdoor = "FleuronTavern_outdoor";
 	Locations[n].models.always.reflect = "FleuronTavern_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "FleuronTavern_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "FleuronTavern_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "FleuronTavern_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "FleuronTavern_locators";
 	Locations[n].models.always.grassPatch = "FleuronTavern_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "FleuronTavern_patch_day";
 	//Locations[n].models.day.jumpPatch = "FleuronTavern_jump_patch";
-	locations[n].models.day.fonarday = "FleuronTavern_fd";	
+	locations[n].models.day.fonarday = "FleuronTavern_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "FleuronTavern_patch_day";	
+	locations[n].models.night.charactersPatch = "FleuronTavern_patch_day";
 	//Locations[n].models.night.jumpPatch = "FleuronTavern_jump_patch";
 	Locations[n].models.night.fonarnight = "FleuronTavern_fn";
 	//Environment
@@ -1367,12 +1367,12 @@ int LocationInitLostShipsCity(int n)
 	locations[n].private1.items.potion2 = 2;
 	locations[n].private1.items.potion5 = 4;
 	locations[n].private1.items.potionrum = 2;
-	locations[n].private1.items.potionwine = 3;	
-	locations[n].private1.items.rabble = 1;	
-	locations[n].private1.items.topor3 = 1;	
-	locations[n].private1.items.mineral9 = 26;	
-	locations[n].private1.items.topor10 = 1;	
-	locations[n].private1.items.mineral3 = 2;	
+	locations[n].private1.items.potionwine = 3;
+	locations[n].private1.items.rabble = 1;
+	locations[n].private1.items.topor3 = 1;
+	locations[n].private1.items.mineral9 = 26;
+	locations[n].private1.items.topor10 = 1;
+	locations[n].private1.items.mineral3 = 2;
 
 	locations[n].private2.key = "key2";
 	locations[n].private2.money = 34920;
@@ -1382,7 +1382,7 @@ int LocationInitLostShipsCity(int n)
 	locations[n].private2.items.potionwine = 3;
 	locations[n].private2.items.blade13 = 3;
 	locations[n].private2.items.map_martiniqua = 1;
-	
+
 	locations[n].private3.key = "key3";
 	locations[n].private3.items.potion1 = 231;
 	locations[n].private3.items.potion2 = 84;
@@ -1409,36 +1409,36 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "FurieShipInside2";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "FurieShipInside2_sb";
-	Locations[n].models.always.outdoor = "FurieShipInside2_outdoor";		
+	Locations[n].models.always.outdoor = "FurieShipInside2_outdoor";
 	Locations[n].models.always.reflect = "FurieShipInside2_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "FurieShipInside2_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "FurieShipInside2_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "FurieShipInside2_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "FurieShipInside2_locators";
 	Locations[n].models.always.grassPatch = "FurieShipInside2_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "FurieShipInside2_patch_day";
 	//Locations[n].models.day.jumpPatch = "FurieShipInside2_jump_patch";
-	locations[n].models.day.fonarday = "FurieShipInside2_fd";	
+	locations[n].models.day.fonarday = "FurieShipInside2_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "FurieShipInside2_patch_day";	
+	locations[n].models.night.charactersPatch = "FurieShipInside2_patch_day";
 	//Locations[n].models.night.jumpPatch = "FurieShipInside2_jump_patch";
 	Locations[n].models.night.fonarnight = "FurieShipInside2_fn";
 	//Environment
@@ -1489,9 +1489,9 @@ int LocationInitLostShipsCity(int n)
 	locations[n].private1.money = 7473;
 	locations[n].private1.items.map_guad = 1;
 	locations[n].private1.items.spyglass3 = 1;
-	locations[n].private1.items.potion4 = 12;	
-	locations[n].private1.items.rabble = 1;	
-	locations[n].private1.items.topor3 = 2;	
+	locations[n].private1.items.potion4 = 12;
+	locations[n].private1.items.rabble = 1;
+	locations[n].private1.items.topor3 = 2;
 	locations[n].private1.items.jewelry8 = 10;
 
 	locations[n].private2.key = "key2";
@@ -1519,36 +1519,36 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
-	Locations[n].models.always.inside = "GloriaChurch";	
+	//Always
+	Locations[n].models.always.inside = "GloriaChurch";
 	Locations[n].models.always.inside.level = 65538;
-	Locations[n].models.always.seabed = "GloriaChurch_sb";	
-	Locations[n].models.always.outdoor = "GloriaChurch_outdoor";		
+	Locations[n].models.always.seabed = "GloriaChurch_sb";
+	Locations[n].models.always.outdoor = "GloriaChurch_outdoor";
 	Locations[n].models.always.reflect = "GloriaChurch_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "GloriaChurch_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65540;	
+	Locations[n].models.always.windows.level = 65540;
 	Locations[n].models.always.sails = "GloriaChurch_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "GloriaChurch_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "GloriaChurch_locators";
 	Locations[n].models.always.grassPatch = "GloriaChurch_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";		
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "GloriaChurch_patch_day";
 	//Locations[n].models.day.jumpPatch = "GloriaChurch_jump_patch";
-	locations[n].models.day.fonarday = "GloriaChurch_fd";	
+	locations[n].models.day.fonarday = "GloriaChurch_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "GloriaChurch_patch_day";	
+	locations[n].models.night.charactersPatch = "GloriaChurch_patch_day";
 	//Locations[n].models.night.jumpPatch = "GloriaChurch_jump_patch";
 	Locations[n].models.night.fonarnight = "GloriaChurch_fn";
 	//Environment
@@ -1611,36 +1611,36 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
-	Locations[n].models.always.inside = "PlutoStoreSmall";	
+	//Always
+	Locations[n].models.always.inside = "PlutoStoreSmall";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "PlutoStoreSmall_sb";
-	Locations[n].models.always.outdoor = "PlutoStoreSmall_outdoor";		
+	Locations[n].models.always.outdoor = "PlutoStoreSmall_outdoor";
 	Locations[n].models.always.reflect = "PlutoStoreSmall_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "PlutoStoreSmall_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "PlutoStoreSmall_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "PlutoStoreSmall_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "PlutoStoreSmall_locators";
 	Locations[n].models.always.grassPatch = "PlutoStoreSmall_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "PlutoStoreSmall_patch_day";
 	//Locations[n].models.day.jumpPatch = "PlutoStoreSmall_jump_patch";
-	locations[n].models.day.fonarday = "PlutoStoreSmall_fd";	
+	locations[n].models.day.fonarday = "PlutoStoreSmall_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "PlutoStoreSmall_patch_day";	
+	locations[n].models.night.charactersPatch = "PlutoStoreSmall_patch_day";
 	//Locations[n].models.night.jumpPatch = "PlutoStoreSmall_jump_patch";
 	Locations[n].models.night.fonarnight = "PlutoStoreSmall_fn";
 	//Environment
@@ -1717,35 +1717,35 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
-	Locations[n].models.always.inside = "ProtectorFisher";	
+	//Always
+	Locations[n].models.always.inside = "ProtectorFisher";
 	Locations[n].models.always.inside.level = 65538;
-	Locations[n].models.always.outdoor = "ProtectorFisher_outdoor";		
+	Locations[n].models.always.outdoor = "ProtectorFisher_outdoor";
 	Locations[n].models.always.reflect = "ProtectorFisher_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "ProtectorFisher_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "ProtectorFisher_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "ProtectorFisher_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "ProtectorFisher_locators";
 	Locations[n].models.always.grassPatch = "ProtectorFisher_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "ProtectorFisher_patch_day";
 	//Locations[n].models.day.jumpPatch = "ProtectorFisher_jump_patch";
-	locations[n].models.day.fonarday = "ProtectorFisher_fd";	
+	locations[n].models.day.fonarday = "ProtectorFisher_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "ProtectorFisher_patch_day";	
+	locations[n].models.night.charactersPatch = "ProtectorFisher_patch_day";
 	//Locations[n].models.night.jumpPatch = "ProtectorFisher_jump_patch";
 	Locations[n].models.night.fonarnight = "ProtectorFisher_fn";
 	//Environment
@@ -1786,35 +1786,35 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "SanAugustineResidence";
 	Locations[n].models.always.inside.level = 65538;
-	Locations[n].models.always.outdoor = "SanAugustineResidence_outdoor";		
+	Locations[n].models.always.outdoor = "SanAugustineResidence_outdoor";
 	Locations[n].models.always.reflect = "SanAugustineResidence_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "SanAugustineResidence_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65539;	
+	Locations[n].models.always.windows.level = 65539;
 	Locations[n].models.always.sails = "SanAugustineResidence_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "SanAugustineResidence_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "SanAugustineResidence_locators";
 	Locations[n].models.always.grassPatch = "SanAugustineResidence_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "SanAugustineResidence_patch_day";
 	//Locations[n].models.day.jumpPatch = "SanAugustineResidence_jump_patch";
-	locations[n].models.day.fonarday = "SanAugustineResidence_fd";	
+	locations[n].models.day.fonarday = "SanAugustineResidence_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "SanAugustineResidence_patch_day";	
+	locations[n].models.night.charactersPatch = "SanAugustineResidence_patch_day";
 	//Locations[n].models.night.jumpPatch = "SanAugustineResidence_jump_patch";
 	Locations[n].models.night.fonarnight = "SanAugustineResidence_fn";
 	//Environment
@@ -1942,39 +1942,39 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "SanGabrielMechanic";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "SanGabrielMechanic_sb";
-	Locations[n].models.always.outdoor = "SanGabrielMechanic_outdoor";		
+	Locations[n].models.always.outdoor = "SanGabrielMechanic_outdoor";
 	Locations[n].models.always.reflect = "SanGabrielMechanic_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.reflTrum = "SanGabrielMechanic_refl_trum";
 	Locations[n].models.always.reflTrum.level = 65539;
-	Locations[n].models.always.reflTrum.sea_reflection = 1;	
+	Locations[n].models.always.reflTrum.sea_reflection = 1;
 	Locations[n].models.always.windows = "SanGabrielMechanic_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65540;	
+	Locations[n].models.always.windows.level = 65540;
 	Locations[n].models.always.sails = "SanGabrielMechanic_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "SanGabrielMechanic_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "SanGabrielMechanic_locators";
 	Locations[n].models.always.grassPatch = "SanGabrielMechanic_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "SanGabrielMechanic_patch_day";
 	//Locations[n].models.day.jumpPatch = "SanGabrielMechanic_jump_patch";
-	locations[n].models.day.fonarday = "SanGabrielMechanic_fd";	
+	locations[n].models.day.fonarday = "SanGabrielMechanic_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "SanGabrielMechanic_patch_day";	
+	locations[n].models.night.charactersPatch = "SanGabrielMechanic_patch_day";
 	//Locations[n].models.night.jumpPatch = "SanGabrielMechanic_jump_patch";
 	Locations[n].models.night.fonarnight = "SanGabrielMechanic_fn";
 	//Environment
@@ -2055,36 +2055,36 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
-	Locations[n].models.always.inside = "SantaFlorentinaShipInside4";	
+	//Always
+	Locations[n].models.always.inside = "SantaFlorentinaShipInside4";
 	Locations[n].models.always.inside.level = 65538;
-	Locations[n].models.always.seabed = "SantaFlorentinaShipInside4_sb";	
-	Locations[n].models.always.outdoor = "SantaFlorentinaShipInside4_outdoor";		
+	Locations[n].models.always.seabed = "SantaFlorentinaShipInside4_sb";
+	Locations[n].models.always.outdoor = "SantaFlorentinaShipInside4_outdoor";
 	Locations[n].models.always.reflect = "SantaFlorentinaShipInside4_reflect";
 	Locations[n].models.always.reflect.level = 65541;
-	Locations[n].models.always.reflect.sea_reflection = 1;		
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.windows = "SantaFlorentinaShipInside4_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65540;	
+	Locations[n].models.always.windows.level = 65540;
 	Locations[n].models.always.sails = "SantaFlorentinaShipInside4_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "SantaFlorentinaShipInside4_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "SantaFlorentinaShipInside4_locators";
 	Locations[n].models.always.grassPatch = "SantaFlorentinaShipInside4_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "SantaFlorentinaShipInside4_patch_day";
 	//Locations[n].models.day.jumpPatch = "SantaFlorentinaShipInside4_jump_patch";
-	locations[n].models.day.fonarday = "SantaFlorentinaShipInside4_fd";	
+	locations[n].models.day.fonarday = "SantaFlorentinaShipInside4_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "SantaFlorentinaShipInside4_patch_day";	
+	locations[n].models.night.charactersPatch = "SantaFlorentinaShipInside4_patch_day";
 	//Locations[n].models.night.jumpPatch = "SantaFlorentinaShipInside4_jump_patch";
 	Locations[n].models.night.fonarnight = "SantaFlorentinaShipInside4_fn";
 	//Environment
@@ -2170,39 +2170,39 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
+	//Always
 	Locations[n].models.always.inside = "TartarusPrison";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "TartarusPrison_sb";
-	Locations[n].models.always.outdoor = "TartarusPrison_outdoor";		
+	Locations[n].models.always.outdoor = "TartarusPrison_outdoor";
 	Locations[n].models.always.reflect = "TartarusPrison_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.reflTrum = "TartarusPrison_refl_trum";
 	Locations[n].models.always.reflTrum.level = 65539;
-	Locations[n].models.always.reflTrum.sea_reflection = 1;	
+	Locations[n].models.always.reflTrum.sea_reflection = 1;
 	Locations[n].models.always.windows = "TartarusPrison_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65540;	
+	Locations[n].models.always.windows.level = 65540;
 	Locations[n].models.always.sails = "TartarusPrison_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "TartarusPrison_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "TartarusPrison_locators";
 	Locations[n].models.always.grassPatch = "TartarusPrison_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "TartarusPrison_patch_day";
 	//Locations[n].models.day.jumpPatch = "TartarusPrison_jump_patch";
-	locations[n].models.day.fonarday = "TartarusPrison_fd";	
+	locations[n].models.day.fonarday = "TartarusPrison_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "TartarusPrison_patch_day";	
+	locations[n].models.night.charactersPatch = "TartarusPrison_patch_day";
 	//Locations[n].models.night.jumpPatch = "TartarusPrison_jump_patch";
 	Locations[n].models.night.fonarnight = "TartarusPrison_fn";
 	//Environment
@@ -2259,39 +2259,39 @@ int LocationInitLostShipsCity(int n)
 	locations[n].fastreload = "LostShipsCity";
 	locations[n].islandId = "LostShipsCity";
 	//Models
-	//Always	
-	Locations[n].models.always.inside = "VelascoShipInside1";	
+	//Always
+	Locations[n].models.always.inside = "VelascoShipInside1";
 	Locations[n].models.always.inside.level = 65538;
 	Locations[n].models.always.seabed = "VelascoShipInside1_sb";
-	Locations[n].models.always.outdoor = "VelascoShipInside1_outdoor";		
+	Locations[n].models.always.outdoor = "VelascoShipInside1_outdoor";
 	Locations[n].models.always.reflect = "VelascoShipInside1_reflect";
 	Locations[n].models.always.reflect.level = 65531;
-	Locations[n].models.always.reflect.sea_reflection = 1;	
+	Locations[n].models.always.reflect.sea_reflection = 1;
 	Locations[n].models.always.reflTrum = "VelascoShipInside1_refl_trum";
 	Locations[n].models.always.reflTrum.level = 65539;
 	Locations[n].models.always.reflTrum.sea_reflection = 1;
 	Locations[n].models.always.windows = "VelascoShipInside1_windows";
 	Locations[n].models.always.windows.tech = "LocationWindows";
-	Locations[n].models.always.windows.level = 65540;	
+	Locations[n].models.always.windows.level = 65540;
 	Locations[n].models.always.sails = "VelascoShipInside1_sails";
 	Locations[n].models.always.sails.tech = "LocationWindows";
-	Locations[n].models.always.sails.level = 65534;	
+	Locations[n].models.always.sails.level = 65534;
 	Locations[n].models.always.plan1 = "Plan1";
 	Locations[n].models.always.plan1.tech = "LocationWindows";
 	Locations[n].models.always.plan1.level = 65533;
-	Locations[n].models.always.plan1.sea_reflection = 1;	
+	Locations[n].models.always.plan1.sea_reflection = 1;
 	Locations[n].models.always.plan2 = "Plan2";
 	Locations[n].models.always.plan2.tech = "LocationWindows";
-	Locations[n].models.always.plan2.level = 65532;	
-	Locations[n].models.always.locators = "VelascoShipInside1_locators";	
+	Locations[n].models.always.plan2.level = 65532;
+	Locations[n].models.always.locators = "VelascoShipInside1_locators";
 	Locations[n].models.always.grassPatch = "VelascoShipInside1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";					
+	Locations[n].models.always.grassPatch.texture = "grass\algaeU1.tga.tx";
 	//Day
 	locations[n].models.day.charactersPatch = "VelascoShipInside1_patch_day";
 	//Locations[n].models.day.jumpPatch = "VelascoShipInside1_jump_patch";
-	locations[n].models.day.fonarday = "VelascoShipInside1_fd";	
+	locations[n].models.day.fonarday = "VelascoShipInside1_fd";
 	//Night
-	locations[n].models.night.charactersPatch = "VelascoShipInside1_patch_day";	
+	locations[n].models.night.charactersPatch = "VelascoShipInside1_patch_day";
 	//Locations[n].models.night.jumpPatch = "VelascoShipInside1_jump_patch";
 	Locations[n].models.night.fonarnight = "VelascoShipInside1_fn";
 	//Environment

@@ -27,9 +27,9 @@ void LAi_type_stay_Init(aref chr)
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
         }
         while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-        {             
+        {
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
-        }		
+        }
 		GiveItem2Character(chr, "unarmed");
 		EquipCharacterbyItem(chr, "unarmed");
 		string sMush = "mushket";
@@ -53,7 +53,7 @@ void LAi_type_stay_CharacterUpdate(aref chr, float dltTime)
 {
 	int num = FindNearCharacters(chr, 5.0, -1.0, -1.0, 0.001, true, true);
 	int idx;
-	bool bVis = false;	
+	bool bVis = false;
 	if(num > 0)
 	{
 		for(int i = 0; i < num; i++)
@@ -61,7 +61,7 @@ void LAi_type_stay_CharacterUpdate(aref chr, float dltTime)
 			idx = sti(chrFindNearCharacters[i].index);
 			if(LAi_group_IsEnemy(chr, &Characters[idx])) break;
 			//квест штурма Панамы -->>
-			if (chr.id == "Richard_Soukins") 
+			if (chr.id == "Richard_Soukins")
 			{
 				if (idx == nMainCharacterIndex)
 				{
@@ -70,15 +70,15 @@ void LAi_type_stay_CharacterUpdate(aref chr, float dltTime)
 				}
 			}
 			//<<--штурм Панамы
-			if (CheckAttribute(chr, "talker") && idx == nMainCharacterIndex && LAi_Character_CanDialog(chr, pchar)) 
-			{	
-				LAi_tmpl_SetDialog(chr, pchar, 1.0); 
+			if (CheckAttribute(chr, "talker") && idx == nMainCharacterIndex && LAi_Character_CanDialog(chr, pchar))
+			{
+				LAi_tmpl_SetDialog(chr, pchar, 1.0);
 				DeleteAttribute(chr, "talker");
 				return;
 			}
 		}
 		//квест штурма Панамы -->>
-		if (chr.id == "Richard_Soukins" && sti(!bVis)) 
+		if (chr.id == "Richard_Soukins" && sti(!bVis))
 		{
 			LAi_SetWarriorTypeNoGroup(chr);
 		}
@@ -106,13 +106,13 @@ void LAi_type_stay_CharacterUpdate(aref chr, float dltTime)
 			LAi_SetDefaultDead(chr);
 		}
 		//квест штурма Панамы -->>
-		if (chr.id == "Richard_Soukins") 
+		if (chr.id == "Richard_Soukins")
 		{
-			float dist = -1.0;	
+			float dist = -1.0;
 			if(!GetCharacterDistByChr3D(chr, pchar, &dist)) return;
 			if (dist > 12.5) LAi_SetWarriorTypeNoGroup(chr);
 		}
-		//<<--штурм Панамы		
+		//<<--штурм Панамы
 	}
 }
 
@@ -151,7 +151,7 @@ bool LAi_type_stay_CanDialog(aref chr, aref by)
 void LAi_type_stay_StartDialog(aref chr, aref by)
 {
 	//Если мы пасивны, запускаем шаблон без времени завершения
-	LAi_CharacterSaveAy(chr); 
+	LAi_CharacterSaveAy(chr);
 	CharacterTurnByChr(chr, by);
 	LAi_tmpl_SetActivatedDialog(chr, by);
 }
@@ -187,6 +187,6 @@ void LAi_type_stay_Attacked(aref chr, aref by)
 			LAi_SetWarriorTypeNoGroup(chr);
 		}
 	}
-	//<-- штурм Панамы, смотрим, со спины ли выстрел	
+	//<-- штурм Панамы, смотрим, со спины ли выстрел
 }
 

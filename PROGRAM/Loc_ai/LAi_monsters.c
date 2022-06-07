@@ -48,7 +48,7 @@ void LAi_GenerateFantomFromMe(aref chr)
 	//Сохраняем параметры персонажа
 	object tmp;
 	CopyAttributes(&tmp, chr);
-	//Создаём фантома	
+	//Создаём фантома
 	if(ani == "mushketer")
 	{
 		ref sld = GetCharacter(NPC_GenerateCharacter("GenChar_", model, "man", "mushketer", chr.rank, sti(chr.nation), sti(chr.lifeDay), false));
@@ -56,7 +56,7 @@ void LAi_GenerateFantomFromMe(aref chr)
 		sld.reputation = chr.reputation;
 		sld.City = chr.City;
         sld.CityType = chr.CityType;
-		sld.RebirthPhantom = true; 
+		sld.RebirthPhantom = true;
 		sld.dialog.filename = "Common_Soldier.c";
 		sld.dialog.currentnode = "first time";
 		LAi_CharacterReincarnation(sld, true, true);
@@ -65,7 +65,7 @@ void LAi_GenerateFantomFromMe(aref chr)
 		{
 			SetFantomParamFromRank(sld, sti(chr.rank) + sti(chr.chr_ai.reincarnation.step), true); // бравые орлы
 		}
-		LAi_SetLoginTime(sld, 6.0, 23.0); //а ночью будет беготня от патруля :)		
+		LAi_SetLoginTime(sld, 6.0, 23.0); //а ночью будет беготня от патруля :)
 		sld.dialog.filename = chr.dialog.filename;
 		sld.dialog.currentnode = chr.dialog.currentnode;
 		SetRandomNameToCharacter(sld);
@@ -80,7 +80,7 @@ void LAi_GenerateFantomFromMe(aref chr)
 		//Устанавливаем параметры предыдущего персонажа
 		CopyAttributes(fnt, &tmp);
 		// boal оружие дать! 19.01.2004 -->
-		// фантомы точные клоны SetFantomParam(fnt);  
+		// фантомы точные клоны SetFantomParam(fnt);
 		//--> eddy. шаг на увеличение ранга фантома.
 		if (CheckAttribute(chr, "chr_ai.reincarnation.step"))
 		{
@@ -127,7 +127,7 @@ bool LAi_CreateEncounters(ref location)
 	int num, i, iChar, iNation, iRank, n, iTemp, iMassive;
 	string model[10];
 	if (!bLandEncountersGen) //если прерывание на локацию, энкаунтеров не генерим
-	{		
+	{
 		bLandEncountersGen = true;
 		return false;
 	}
@@ -142,23 +142,23 @@ bool LAi_CreateEncounters(ref location)
 	}
 	// boal <--
 	//--> если бухта и в ней контра, то не ставим никого
-	if (location.type == "seashore") 
+	if (location.type == "seashore")
 	{
 		makearef(st, location.models.always);
 		num = GetAttributesNum(st);
 		for(i = 0; i < num; i++)
 		{
-			at = GetAttributeN(st, i);	
+			at = GetAttributeN(st, i);
 			str = GetAttributeName(at);
 			if(st.(str) == "smg")
 			{
 				return false;
 			}
-		}			
+		}
 	}
 	//<-- если бухта и в ней контра, то не ставим никого
 	SetNPCQuestDate(location, "Enc_date"); //запись на дату не сегодня
-	//Установить нацию патруля 
+	//Установить нацию патруля
 	sAreal = GiveArealByLocation(location);
 	if (sAreal == "none") return false;
 	sCity = GetCityNameByIsland(sAreal);
@@ -177,22 +177,22 @@ bool LAi_CreateEncounters(ref location)
 			num = GetAttributesNum(grp) - rand(3); //кол-во человек в банде
 			if (num <= 0 ) num = 1; //если локаторов меньше четырех
 			str = "Gang"+ location.index + "_";
-			//--> генерим ранг 
-			if (sti(pchar.rank) > 6) 
+			//--> генерим ранг
+			if (sti(pchar.rank) > 6)
 			{
 				if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
 				else iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*1.6/num);
 			}
-			else  
+			else
 			{	//казуалам зеленый свет на начало игры
 				if (sti(pchar.rank) > 3) iRank = sti(pchar.rank);
-				else 
+				else
 				{
 					iRank = 1;
 					num = 1;
 				}
-			}	
-			//<-- генерим ранг 
+			}
+			//<-- генерим ранг
 			//Начинаем перебирать локаторы и логинить фантомов
 			model[0] = "pirate_1";
 			model[1] = "pirate_2";
@@ -216,16 +216,16 @@ bool LAi_CreateEncounters(ref location)
 					locator = GetAttributeName(GetAttributeN(grp, i));
 					ChangeCharacterAddressGroup(chr, location.id, encGroup, locator);
 					chr.dialog.filename = "Enc_Raiders_dialog.c";
-					chr.greeting = "Enc_Raiders"; 
+					chr.greeting = "Enc_Raiders";
 					chr.EncQty = num;
 					LAi_SetStayType(chr);
 					LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, true, "LandEnc_RaidersBeforeDialog");
 					LAi_group_MoveCharacter(chr, "RaidersGroup_" + location.index);
-					if (i == 0) 			
+					if (i == 0)
 					{
 						sAreal = "Raiders_" + location.index;
 						pchar.GenQuest.(sAreal).name = GetFullName(chr); //имя бандита, будет главарем
-						pchar.GenQuest.(sAreal).nation = iNation; //нация для слухов 
+						pchar.GenQuest.(sAreal).nation = iNation; //нация для слухов
 					}
 					i++;
 					model[iMassive] = "";
@@ -238,23 +238,23 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).win_condition.l1.locator = encGroup;
 			pchar.quest.(str).win_condition = "LandEnc_RaidersBegin";
 			pchar.quest.(str).EncQty = num; //кол-во бандитов
-			pchar.quest.(str).LocIdx = location.index; 
+			pchar.quest.(str).LocIdx = location.index;
 			str = "TimeRaiders_" + location.index;
 			pchar.quest.(str).win_condition.l1            = "Timer";
 			pchar.quest.(str).win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.(str).win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.(str).win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-			pchar.quest.(str).win_condition               = "LandEnc_RaidersOver";	
+			pchar.quest.(str).win_condition               = "LandEnc_RaidersOver";
 			pchar.quest.(str).LocIdx = location.index;
 		break;
 		//------------------ Спасаем девку в пампасах ----------------------
 		case 1:
-			if (rand(10) > 4 || location.type == "seashore" || location.type == "mayak") return false;	
-			num = GetAttributesNum(grp); //кол-во локаторов 
+			if (rand(10) > 4 || location.type == "seashore" || location.type == "mayak") return false;
+			num = GetAttributesNum(grp); //кол-во локаторов
 			if (num <= 0) num = 1;
 			if (!CheckAttribute(location, "locators.reload.reloadW_back"))
-			{//--------------- обычная девка в джунглях ---------------				
-				if (sti(pchar.rank) > 6) 
+			{//--------------- обычная девка в джунглях ---------------
+				if (sti(pchar.rank) > 6)
 				{
 					if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
 					else iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*1.6/num);
@@ -263,8 +263,8 @@ bool LAi_CreateEncounters(ref location)
 				{	//казуалам зеленый свет на начало игры
 					if (sti(pchar.rank) > 3) iRank = sti(pchar.rank);
 					else iRank = 1;
-				}	
-				//<-- генерим ранг 
+				}
+				//<-- генерим ранг
 				LAi_group_Delete("EnemyFight");
 				LAi_group_Delete("LandEncGroup");
 				//Начинаем перебирать локаторы и логинить фантомов
@@ -287,7 +287,7 @@ bool LAi_CreateEncounters(ref location)
 						//Получим локатор для логина
 						locator = GetAttributeName(GetAttributeN(grp, i));
 						if (i == 0)
-						{					
+						{
 							iChar =	NPC_GenerateCharacter("CangGirl", "girl_"+(rand(7)+1), "woman", "towngirl", 5, iNation, 1, false);
 							chr = &characters[iChar];
 							chr.dialog.filename = "Enc_RapersGirl_dialog.c";
@@ -296,10 +296,10 @@ bool LAi_CreateEncounters(ref location)
 							ChangeCharacterAddressGroup(chr, location.id, encGroup, locator);
 							LAi_SetActorType(chr);
 							LAi_group_MoveCharacter(chr, "LandEncGroup");
-							LAi_ActorDialog(chr, pchar, "", -1, 0);  
+							LAi_ActorDialog(chr, pchar, "", -1, 0);
 							LAi_SetCheckMinHP(chr, LAi_GetCharacterHP(chr)-1, false, "LandEnc_RapersBeforeDialog");
 							str = location.index;
-							pchar.GenQuest.EncGirl.nation = iNation; //нация для слухов 
+							pchar.GenQuest.EncGirl.nation = iNation; //нация для слухов
 							pchar.GenQuest.EncGirl.name = GetFullName(chr); //имя девки
 							i++;
 							continue;
@@ -342,7 +342,7 @@ bool LAi_CreateEncounters(ref location)
 				if (str == "none") return false; //на всякий случай
 				//--> снимаем возможный конфликт с бергларами
 				if (sAreal == "SentMartin" || sAreal == "SantaCatalina")
-				{					
+				{
 					iTemp = GetCharacterIndex("BerglarSantaCatalina");
 					if (iTemp != -1 && characters[iTemp].location == str) return false;
 					iTemp = GetCharacterIndex("BerglarMarigo");
@@ -357,19 +357,19 @@ bool LAi_CreateEncounters(ref location)
 				ChangeCharacterAddressGroup(chr, location.id, encGroup, locator);
 				LAi_SetActorType(chr);
 				LAi_group_MoveCharacter(chr, "LandEncGroup");
-				LAi_ActorDialog(chr, pchar, "", -1, 0); 
+				LAi_ActorDialog(chr, pchar, "", -1, 0);
 				pchar.GenQuest.EncGirl.locationId = str; //ID локации
-				pchar.GenQuest.EncGirl.nation = iNation; //нация для слухов 
+				pchar.GenQuest.EncGirl.nation = iNation; //нация для слухов
 				pchar.GenQuest.EncGirl.name = GetFullName(chr); //имя девки
 				pchar.quest.Enc_FriendGirl_after.win_condition.l1 = "NPC_Death";
 				pchar.quest.Enc_FriendGirl_after.win_condition.l1.character = "FriendGirl";
-				pchar.quest.Enc_FriendGirl_after.win_condition = "Enc_FriendGirl_after";				
+				pchar.quest.Enc_FriendGirl_after.win_condition = "Enc_FriendGirl_after";
 			}
 		break;
 		//------------------ Праздношатающиеся перцы ----------------------
 		case 2:
 			LAi_group_Delete("LandEncGroup");
-			if (rand(10) > 7) return false;	
+			if (rand(10) > 7) return false;
 			locator = GetAttributeName(GetAttributeN(grp, 0));
 			//Начинаем перебирать локаторы и логинить фантомов
 			if (rand(5) > 3 && location.id.label == "ExitTown")
@@ -397,14 +397,14 @@ bool LAi_CreateEncounters(ref location)
 			if (num <= 0) num = 1;
 			if (sti(pchar.rank) > 14) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
 			else iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*1.6/num);
-			//<-- генерим ранг 
+			//<-- генерим ранг
 			//Начинаем перебирать локаторы и логинить фантомов
 			str = "Patrol"+ location.index + "_";
 			string sGroup = "PatrolGroup_" + location.index; //имя группы
 			for(i = 0; i < num; i++)
 			{
 				if (i == 0)
-				{					
+				{
 					chr = GetCharacter(NPC_GenerateCharacter(str + i, "off_"+NationShortName(iNation)+"_"+(rand(1)+1), "man", "man", iRank+2, iNation, 1, true));
 					SetFantomParamFromRank(chr, iRank+2, true);
 				}
@@ -422,7 +422,7 @@ bool LAi_CreateEncounters(ref location)
 					}
 				}
 				chr.City = sCity;
-				chr.CityType = "soldier";				
+				chr.CityType = "soldier";
 				chr.greeting = "soldier_arest";
 				chr.dialog.filename = "Enc_Patrol.c";
 				chr.EncQty = num;
@@ -443,16 +443,16 @@ bool LAi_CreateEncounters(ref location)
 			pchar.quest.(str).win_condition.l1.locator = encGroup;
 			pchar.quest.(str).win_condition = "LandEnc_PatrolBegin";
 			pchar.quest.(str).EncQty = num; //кол-во патрульных
-			pchar.quest.(str).LocIdx = location.index; 
+			pchar.quest.(str).LocIdx = location.index;
 			str = "TimePatrol_" + location.index;
 			pchar.quest.(str).win_condition.l1            = "Timer";
 			pchar.quest.(str).win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 			pchar.quest.(str).win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 			pchar.quest.(str).win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-			pchar.quest.(str).win_condition               = "LandEnc_PatrolOver";	
+			pchar.quest.(str).win_condition               = "LandEnc_PatrolOver";
 			pchar.quest.(str).LocIdx = location.index;
 			str = location.index;
-			pchar.GenQuest.(str).nation = iNation; //нация патруля для слухов 
+			pchar.GenQuest.(str).nation = iNation; //нация патруля для слухов
 		break;
 	}
 	return true;

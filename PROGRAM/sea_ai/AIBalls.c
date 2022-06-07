@@ -93,7 +93,7 @@ void Ball_AddBall(aref aCharacter, float fX, float fY, float fZ, float fSpeedV0,
 	AIBalls.SizeMultiply      = rCannon.SizeMultiply;
 	AIBalls.TimeSpeedMultiply = rCannon.TimeSpeedMultiply;
 	AIBalls.MaxFireDistance   = fMaxFireDistance;
-	
+
 	float fTempDispersionY = Degree2Radian(15.0);
 	float fTempDispersionX = Degree2Radian(5.0);
 
@@ -115,7 +115,7 @@ void Ball_AddBall(aref aCharacter, float fX, float fY, float fZ, float fSpeedV0,
 	}
 
 	float fK = Bring2Range(0.5, 1.2, 0.2, 1.2, fAccuracy);
-	
+
 	AIBalls.Dir = fDirAng + fK * fTempDispersionY * (frnd() - 0.5);
 	AIBalls.SpdV0 = fSpeedV0 + fAccuracy * (10.0 * fTempDispersionY) * (frnd() - 0.5);
 	AIBalls.Ang = fHeightAng + fAccuracy * (fTempDispersionX) * (frnd() - 0.5);

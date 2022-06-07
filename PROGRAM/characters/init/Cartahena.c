@@ -2,7 +2,7 @@
 int CreateCartahenaCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -159,7 +159,7 @@ int CreateCartahenaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	ch.item_date = "";
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);
 	ch.name 	= "Контрабандист";
 	ch.lastname = "";

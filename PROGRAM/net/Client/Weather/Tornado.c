@@ -2,8 +2,8 @@
 
 void WhrDeleteTornadoEnvironment()
 {
-	if (isEntity(&Tornado)) 
-	{ 
+	if (isEntity(&Tornado))
+	{
 		DeleteClass(&Tornado);
 		DeleteAttribute(&Tornado,"");
 	}
@@ -12,16 +12,16 @@ void WhrDeleteTornadoEnvironment()
 void WhrCreateTornadoEnvironment()
 {
 	aref aCurWeather = NetClient_GetCurrentWeather();
-	
+
 	DeleteAttribute(&Tornado,"");
 
 	if (sti(aCurWeather.Tornado) != true) return;
 
-	if (!isEntity(&Tornado)) 
-	{ 
+	if (!isEntity(&Tornado))
+	{
 		CreateEntity(&Tornado,"Tornado");
 	}
-	
+
 	Tornado.x = 10000.0;
 	Tornado.z = 10000.0;
 

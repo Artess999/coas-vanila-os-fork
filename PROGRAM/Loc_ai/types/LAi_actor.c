@@ -39,7 +39,7 @@ void LAi_type_actor_Init(aref chr)
 	}else{
 		//Востанавливаем состояние
 		if(!CheckAttribute(chr, "chr_ai.type.state")) chr.chr_ai.type.state = "wait";
-		if(!CheckAttribute(chr, "chr_ai.type.quest")) chr.chr_ai.type.quest = "";		
+		if(!CheckAttribute(chr, "chr_ai.type.quest")) chr.chr_ai.type.quest = "";
 		if(!CheckAttribute(chr, "chr_ai.type.checkhp")) chr.chr_ai.type.checkhp = "";
 		if(!CheckAttribute(chr, "chr_ai.type.lock")) chr.chr_ai.type.lock = "0";
 		if(!CheckAttribute(chr, "chr_ai.type.mode")) chr.chr_ai.type.mode = "stay";
@@ -52,9 +52,9 @@ void LAi_type_actor_Init(aref chr)
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
         }
         while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-        {             
+        {
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
-        }		
+        }
 		GiveItem2Character(chr, "unarmed");
 		EquipCharacterbyItem(chr, "unarmed");
 		string sMush = "mushket";
@@ -78,7 +78,7 @@ void LAi_type_actor_Init(aref chr)
 			}else{
 				LAi_ActorSetStayMode(chr);
 			}
-		}	
+		}
 	}
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
 }
@@ -119,14 +119,14 @@ void LAi_type_actor_CharacterUpdate(aref chr, float dltTime)
 					}
 				}
 				else
-				{					
+				{
 					if (CheckAttribute(chr, "checkChrDistance"))
 					{
 						float time, dist;
 						time = stf(chr.checkChrDistance.time) - dltTime;
 						chr.checkChrDistance.time = time;
 						if (time < 0)
-						{	
+						{
 							GetCharacterDistByChr(sld, characterFromId(by.id), &dist);
 							if (by.id == chr.checkChrDistance.id && dist <= stf(chr.checkChrDistance))
 							{
@@ -138,7 +138,7 @@ void LAi_type_actor_CharacterUpdate(aref chr, float dltTime)
 					}
 				}
 			}
-		}		
+		}
 	}
 
 }
@@ -196,7 +196,7 @@ void LAi_type_actor_TemplateComplite(aref chr, string tmpl)
 			isResetActor = false;
 		}
 	}
-	if(isResetActor) 
+	if(isResetActor)
 	{
 		LAi_type_actor_Reset(chr);
 	}

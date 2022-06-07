@@ -37,7 +37,7 @@ void NetServer_WhrCreateSeaEnvironment()
 	NSSea.Sea2.Transparency = Whr_GetFloat(aSea2, "Transparency");
 	NSSea.Sea2.Attenuation = Whr_GetFloat(aSea2, "Attenuation");
 	NSSea.Sea2.Frenel = Whr_GetFloat(aSea2, "Frenel");
-		
+
 	NSSea.MaxSeaHeight = 50.0;
 	NSSea.isDone = "";
 }

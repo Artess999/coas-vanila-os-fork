@@ -2,7 +2,7 @@
 int CreateAntiguaCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -29,7 +29,7 @@ int CreateAntiguaCharacters(int n)
 	//LAi_group_MoveCharacter(ch, "NONE_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;   // boal зачем рн тут не ведаю. Но, зная шаманство К3, пусть будет имено тут (те за номером 2)
-	
+
 	makeref(ch,Characters[n]);			//губернатор
 	ch.id		= "SentJons_Mayor";
 	ch.model	= "huber_eng";
@@ -185,7 +185,7 @@ int CreateAntiguaCharacters(int n)
 	LAi_SetImmortal(ch, true);
 	ch.item_date = "";
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);
 	ch.name 	= "Контрабандист";
 	ch.lastname = "";
@@ -202,6 +202,6 @@ int CreateAntiguaCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

@@ -41,7 +41,7 @@ void InitInterface(string iniName)
 	// boal ver num -->
     CreateString(true,"VerNum", VERSION_NUMBER1 + GetVerNum(), FONT_NORMAL, COLOR_NORMAL, 780, 580, SCRIPT_ALIGN_RIGHT, 0.9);
     // boal ver num <--
-	
+
 	SetEventHandler("backgroundcommand","ProcCommand",0);
 
 	GameInterface.SavePath = "SAVE";
@@ -135,7 +135,7 @@ void IDoExit(int exitCode, bool bClear)
 	InterfaceStates.BackEnvironmentIsCreated = true;
 
 	DelEventHandler("backgroundcommand","ProcCommand");
-	
+
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(bClear);
 }
@@ -275,14 +275,14 @@ void MainMenu_CreateShip()
 	rCharacter.Ship.Ang.y = 0.0;
 	rCharacter.Ship.Strand = false;
 	rCharacter.Ship.Strand.SndID = -1;
-	
+
 	rCharacter.Ship.LastBallCharacter = -1;
 	rCharacter.Ship.WindDotShip = 1.0;
-	
+
 	rCharacter.TmpPerks = "";
 	aref aTmpPerks; makearef(aTmpPerks, rCharacter.TmpPerks);
 	aTmpPerks.StormProfessional		= 0;
-	
+
 	SendMessage(&InterfaceBackScene, "lsa", 2, "ship", &rCharacter); // set ship position
 	CreateEntity( rCharacter, "ship" );
 	ref rBaseShip = GetRealShip(sti(rCharacter.ship.type));

@@ -13,7 +13,7 @@ void InitInterface(string iniName)
     SetEventHandler("TableSelectChange", "TableSelectChange", 0);
     SetEventHandler("ShowInfoWindow","ShowInfoWindow",0);
     SetEventHandler("MouseRClickUp","HideInfoWindow",0);
-    
+
     XI_RegistryExitKey("IExit_F2");
     FillPriceListTown("TABLE_CITY");
 }
@@ -31,7 +31,7 @@ void IDoExit(int exitCode)
     DelEventHandler("TableSelectChange", "TableSelectChange");
     DelEventHandler("ShowInfoWindow","ShowInfoWindow");
     DelEventHandler("MouseRClickUp","HideInfoWindow");
-    
+
 	interfaceResultCommand = exitCode;
 	if( CheckAttribute(&InterfaceStates,"ReloadMenuExit"))
 	{
@@ -111,7 +111,7 @@ void FillPriceListTown(string _tabName)
     aref    rootItems;
     aref    curItem;
     ref     rCity;
-    
+
     // шапка -->
     GameInterface.(_tabName).select = 0;
     GameInterface.(_tabName).hr.td1.str = "Нация";
@@ -198,10 +198,10 @@ void FillPriceList(string _tabName, string  attr1)
 	        row = "tr" + n;
 	        sGoods = "Gidx" + i;
 	        if (sti(nulChr.PriceList.(attr1).(sGoods).TradeType) == TRADE_TYPE_CANNONS) continue; // не пушки
-	        
+
             GameInterface.(_tabName).(row).UserData.ID = Goods[i].name;
             GameInterface.(_tabName).(row).UserData.IDX = i;
-            
+
 	        GameInterface.(_tabName).(row).td1.icon.group = "GOODS";
 			GameInterface.(_tabName).(row).td1.icon.image = Goods[i].name;
 			GameInterface.(_tabName).(row).td1.icon.offset = "1, 0";

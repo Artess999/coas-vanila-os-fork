@@ -15,7 +15,7 @@ void ProcessDialogEvent()
 	string NodeName = Dialog.CurrentNode;
 	string NodePrevName = "";
 	if (CheckAttribute(NextDiag, "PrevNode")) NodePrevName = NextDiag.PrevNode;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -25,7 +25,7 @@ void ProcessDialogEvent()
 			link.l1.go = "SeekCitizen";
 			link.l2 = "Хочу задать тебе вопрос.";
 			link.l2.go = "int_quests";
-			link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?", 
+			link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажешь?",
 				"Что нового в Городе?", "Эх, с удовольствием послушал бы последние сплетни...");
 			link.l3.go = "rumours_LSC";
 			link.l10 = "Ничего...";
@@ -49,9 +49,9 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Я не понимаю, о ком ты говоришь. Мне нужно знать имя и фамилию этого человека.";
 				Link.l1 = "Понятно. Давай я еще попробую назвать.";
-				Link.l1.go = "SeekCitizen_Choice_2";				
+				Link.l1.go = "SeekCitizen_Choice_2";
 				Link.l2 = "Спасибо, я лучше сам поищу.";
-				Link.l2.go = "exit";	
+				Link.l2.go = "exit";
 			}
 			else
 			{
@@ -61,12 +61,12 @@ void ProcessDialogEvent()
 					link.l1 = "Надо же, точно на тебя вышел!";
 					link.l1.go = "exit";
 					break;
-				}				
+				}
 				if (sld.sex == "man")
 				{
 					dialog.text = GetFullName(sld) + ", ты о нем говоришь?";
 					Link.l1 = "Да-да, точно, это он.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о нем. Давай еще раз назову.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -74,7 +74,7 @@ void ProcessDialogEvent()
 				{
 					dialog.text = GetFullName(sld) + ", ты о ней говоришь?";
 					Link.l1 = "Ага, именно о ней.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о ней. Слушай, давай я еще раз попробую назвать.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -112,8 +112,8 @@ void ProcessDialogEvent()
 			{
 				if (sld.sex == "man")
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str1 = npchar.location.locator;
 						string Str2 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str1, 0, 5) == strcut(Str2, 0, 5))
@@ -141,8 +141,8 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str3 = npchar.location.locator;
 						string Str4 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str3, 0, 5) == strcut(Str4, 0, 5))
@@ -189,7 +189,7 @@ void ProcessDialogEvent()
 		break;
 		//нерадивый муж Элис Тейлор
 		case "InPrison":
-			dialog.text = "Эй, приятель! Не поможешь мне?";	
+			dialog.text = "Эй, приятель! Не поможешь мне?";
 			link.l1 = "Ну, и чем я могу тебе помочь?";
 			link.l1.go = "InPrison_1";
 		break;
@@ -219,13 +219,13 @@ void ProcessDialogEvent()
 		break;
 
 		case "DontRemember":
-			dialog.text = NPCStringReactionRepeat("Что тебе нужно, дружище?", 
-				"Приятель, ты еще что-то хочешь узнать?", 
+			dialog.text = NPCStringReactionRepeat("Что тебе нужно, дружище?",
+				"Приятель, ты еще что-то хочешь узнать?",
 				"Ничего не помню, полнейший мрак в сознании.",
                 "Дружище, ты бы побыстрей меня вытаскивал отсюда. Поднимаешь, трубы горят...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Твоя жена хочет вытащить тебя отсюда. Можешь мне объяснить, что ты наделал такого, чтобы сюда попасть?", 
+			link.l1 = HeroStringReactionRepeat("Твоя жена хочет вытащить тебя отсюда. Можешь мне объяснить, что ты наделал такого, чтобы сюда попасть?",
 				"Нет.",
-                "Да уж...", 
+                "Да уж...",
 				"Придется потерпеть.", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("DontRemember_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;

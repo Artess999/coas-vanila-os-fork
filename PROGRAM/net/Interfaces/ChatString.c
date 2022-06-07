@@ -31,7 +31,7 @@ void ICancelProcedure()
 void ChatS_OnSend()
 {
 	string sMessage = GameInterface.EDITBOX_STRING.str;
-	if (sMessage == "") 
+	if (sMessage == "")
 	{
 		ICancelProcedure();
 		return;

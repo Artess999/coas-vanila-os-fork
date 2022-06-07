@@ -51,9 +51,9 @@ void InitLocations()
 		loc.locators_radius.camdetector = 1.0;
 		loc.locators_radius.camera = 0.3;
 		loc.locators_radius.characters = 0.5;
-		loc.locators_radius.goto = 0.5;		
-		loc.locators_radius.sit = 0.5;		
-		loc.locators_radius.item = 0.5;		
+		loc.locators_radius.goto = 0.5;
+		loc.locators_radius.sit = 0.5;
+		loc.locators_radius.item = 0.5;
 		loc.locators_radius.officers = 0.5;
 		loc.locators_radius.merchant = 1.0;
 		loc.locators_radius.box = 1.0;
@@ -86,13 +86,13 @@ void InitLocations()
 			loc.locators_radius.Smugglers = 0.5;
 			loc.locators_radius.monsters = 0.5;
 		}
-		
+
 		//Day dynamic light
 		loc.models.day.lights.candles = "candle";
 		loc.models.day.lights.candles_medium = "candelabrum";
 		loc.models.day.lights.chandeliers = "chandelier";
 		loc.models.day.lights.heaters = "heater";
-		loc.models.day.lights.torchlightes = "torchlight";		
+		loc.models.day.lights.torchlightes = "torchlight";
 		loc.models.day.lights.outside = "outside_day";
 		loc.models.day.lights.incas_light = "incas";
 		loc.models.day.lights.incas_sky = "incasskyday";
@@ -110,7 +110,7 @@ void InitLocations()
 		loc.models.night.lights.torchlightes = "torchlight";
 		loc.models.night.lights.torchlightes_o = "torchlight";
 		loc.models.night.lights.fonar = "lamp";
-		loc.models.night.lights.outside = "outside_night";		
+		loc.models.night.lights.outside = "outside_night";
 		loc.models.night.lights.incas_light = "incas";
 		loc.models.night.lights.incas_sky = "incasskynight";
 		loc.models.night.lights.lamp = "lamp";
@@ -129,12 +129,12 @@ void InitLocations()
 	n = LocationInitAntigua(n);
 	Locations[0].IslandsList.Antigua.end = n;
 	Trace("Antigua locations " + n);
-	
+
 	Locations[0].IslandsList.Barbados.begin = n;  //Bridgetown
 	n = LocationInitBarbados(n);
 	Locations[0].IslandsList.Barbados.end = n;
 	Trace("Barbados locations " + n);
-	
+
 	Locations[0].IslandsList.Curacao.begin = n;  //Villemstad
 	n = LocationInitCuracao(n);
 	Locations[0].IslandsList.Curacao.end = n;
@@ -143,15 +143,15 @@ void InitLocations()
 	Locations[0].IslandsList.LostShipsIsland.begin = n;  //ГПК
 	n = LocationInitLostShipsCity(n);
 	Locations[0].IslandsList.LostShipsIsland.end = n;
-	Trace("LostShipsIsland locations " + n);	
+	Trace("LostShipsIsland locations " + n);
 
 	ReloadProgressUpdate();
-	
+
 	Locations[0].IslandsList.Guadeloupe.begin = n;
 	n = LocationInitGuadeloupe(n);
 	Locations[0].IslandsList.Guadeloupe.end = n;
 	Trace("Guadeloupe locations " + n);
-	
+
 	Locations[0].IslandsList.Jamaica.begin = n;
 	n = LocationInitJamaica(n);
 	Locations[0].IslandsList.Jamaica.end = n;
@@ -161,7 +161,7 @@ void InitLocations()
 	n = LocationInitCaracas(n);
 	Locations[0].IslandsList.Caracas.end = n;
 	Trace("Caracas locations " + n);
-	
+
 	Locations[0].IslandsList.Pearl.begin = n;
 	n = LocationInitPearl(n);
 	Locations[0].IslandsList.Pearl.end = n;
@@ -190,7 +190,7 @@ void InitLocations()
 	Trace("Tenotchitlan locations " + n);
 
 	ReloadProgressUpdate();
-	
+
 	Locations[0].IslandsList.Hispaniola1.begin = n;
 	n = LocationInitLaVega(n);
 	Trace("LaVega locations " + n);
@@ -202,7 +202,7 @@ void InitLocations()
 	n = LocationInitPortPax(n);
 	Trace("PortPax locations " + n);
 	Locations[0].IslandsList.Hispaniola2.end = n;
-	
+
 	Locations[0].IslandsList.Cuba1.begin = n;
 	n = LocationInitSantiago(n);
 	Trace("Santiago locations " + n);
@@ -214,14 +214,14 @@ void InitLocations()
 	n = LocationInitHavana(n);
 	Locations[0].IslandsList.Cuba2.end = n;
 	Trace("Havana locations " + n);
-	
+
 	ReloadProgressUpdate();
-	
+
 	Locations[0].IslandsList.Martinique.begin = n; //FortFrance
 	n = LocationInitMartinique(n);
 	Locations[0].IslandsList.Martinique.end = n;
 	Trace("Martinique locations " + n);
-	
+
 	Locations[0].IslandsList.Panama.begin = n;
 	n = LocationInitPanama(n);
 	Locations[0].IslandsList.Panama.end = n;
@@ -238,17 +238,17 @@ void InitLocations()
 	Trace("Beliz locations " + n);
 
 	ReloadProgressUpdate();
-	
+
 	Locations[0].IslandsList.Nevis.begin = n;
 	n = LocationInitNevis(n);
 	Locations[0].IslandsList.Nevis.end = n;
 	Trace("Nevis locations " + n);
-	
+
 	Locations[0].IslandsList.PuertoRico.begin = n;
 	n = LocationInitPuertoRico(n);
 	Locations[0].IslandsList.PuertoRico.end = n;
 	Trace("PuertoRico locations " + n);
-	
+
 	Locations[0].IslandsList.Cumana.begin = n;
 	n = LocationInitCumana(n);
 	Locations[0].IslandsList.Cumana.end = n;
@@ -260,7 +260,7 @@ void InitLocations()
 	Trace("SantaCatalina locations " + n);
 
 	ReloadProgressUpdate();
-	
+
 	Locations[0].IslandsList.Trinidad.begin = n; //PortSpein
 	n = LocationInitTrinidad(n);
 	Locations[0].IslandsList.Trinidad.end = n;
@@ -285,7 +285,7 @@ void InitLocations()
 	n = LocationInitTerks(n);
 	Locations[0].IslandsList.Terks.end = n;
 	Trace("Terks locations " + n);
-	
+
 	Locations[0].IslandsList.Caiman.begin = n;
 	n = LocationInitCaiman(n);
 	Locations[0].IslandsList.Caiman.end = n;
@@ -293,9 +293,9 @@ void InitLocations()
 
 	n = LocationInitCommonLoc(n);
 	Trace("Common locations " + n);
-	
+
 	ReloadProgressUpdate();
-	
+
 	n = LocationInitQuestLocations(n);
 	n = LocationInitBoarding(n);
 	nLocationsNum = n;

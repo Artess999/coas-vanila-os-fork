@@ -9,7 +9,7 @@ void ColoniesInit()
 		UnloadSegment("Colonies\Colonies_init.c");
 	}
 }
- 
+
 int FindColony(string sColony)
 {
 	for (int i=0; i<MAX_COLONIES; i++)
@@ -19,7 +19,7 @@ int FindColony(string sColony)
 			return i;
 		}
 	}
-	
+
 	return -1;
 }
 

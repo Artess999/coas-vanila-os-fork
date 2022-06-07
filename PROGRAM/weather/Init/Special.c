@@ -33,9 +33,9 @@ int Whr_InitSpecial(int n)
 	Weathers[n].Sky.Rotate.Max = 0.0;
 	Weathers[n].Sky.Size = 512.0;
 	Weathers[n].Sky.Angle = 0.0;
-	
+
 	Weathers[n].Planets.enable = false;
-	
+
 	Weathers[n].Stars.Enable = false;
 	Weathers[n].Stars.Texture = "weather\astronomy\stars.tga";
 	Weathers[n].Stars.Color = argb(0, 255, 255, 255);
@@ -52,7 +52,7 @@ int Whr_InitSpecial(int n)
 	Weathers[n].Fog.SeaDensity = 0.001;
 	Weathers[n].Fog.IslandDensity = 0.001;
 	Weathers[n].Fog.Color = argb(0,200,220,255);
-	
+
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
 	Weathers[n].Rain.DropLength = 2.12;
@@ -133,13 +133,13 @@ int Whr_InitSpecial(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //ћ≈Ћ »≈ ¬ќЋЌџ
 	Weathers[n].Sea2.PosShift = 2.0; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 10, 55, 100);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
 	Weathers[n].Sea2.Reflection = 0.7;
 	Weathers[n].Sea2.Transparency = 0.9;
-	Weathers[n].Sea2.Frenel = 0.3; 
+	Weathers[n].Sea2.Frenel = 0.3;
 	Weathers[n].Sea2.Attenuation = 0.3;
 
 	Weathers[n].Sea2.Amp1 = 6.0; //амплитуда 1 волны
@@ -158,7 +158,7 @@ int Whr_InitSpecial(int n)
 	n++;
 
 	// ====================================================================
-    //Underwater	
+    //Underwater
 	Weathers[n].id = "Underwater";
 	Weathers[n].Hour.Min = 0;
 	Weathers[n].Hour.Max = 24;
@@ -190,7 +190,7 @@ int Whr_InitSpecial(int n)
 	Weathers[n].Sky.Angle = 0.0;
 
 	Weathers[n].Planets.enable = false;
-	
+
 	Weathers[n].Stars.Enable = false;
 	Weathers[n].Stars.Texture = "weather\astronomy\stars.tga";
 	Weathers[n].Stars.Color = argb(0, 255, 255, 255);
@@ -199,7 +199,7 @@ int Whr_InitSpecial(int n)
 	Weathers[n].Stars.HeightFade = 200.0;
 	Weathers[n].Stars.SunFade = 1.0;
 	Weathers[n].Stars.VisualMagnitude = 8.0;
-	
+
 	Weathers[n].Fog.Enable = true;
 	Weathers[n].Fog.Height = 2000;
 	Weathers[n].Fog.Start = 1;
@@ -207,7 +207,7 @@ int Whr_InitSpecial(int n)
 	Weathers[n].Fog.IslandDensity = 0.002;
 	Weathers[n].Fog.SeaDensity = 0.006;
 	Weathers[n].Fog.Color = argb(0,26,64,59);
-	
+
 	Weathers[n].Rain.NumDrops = 0;
 	Weathers[n].Rain.Color = argb(0,73,73,73);
 	Weathers[n].Rain.DropLength = 2.12;
@@ -308,7 +308,7 @@ int Whr_InitSpecial(int n)
 
 	Weathers[n].Sea2.BumpScale = 0.05; //ћ≈Ћ »≈ ¬ќЋЌџ
 	Weathers[n].Sea2.PosShift = 1.9; //остроконечность волн
-	
+
 	Weathers[n].Sea2.WaterColor = argb(0, 65, 100, 110);
 	Weathers[n].Sea2.SkyColor = argb(0, 255, 255, 255);
 
@@ -334,7 +334,7 @@ int Whr_InitSpecial(int n)
 
 	Weathers[n].Wind.Angle = 2.0;
 	Weathers[n].Wind.Speed.Min = 7.0;
-	Weathers[n].Wind.Speed.Max = 14.5;	
+	Weathers[n].Wind.Speed.Max = 14.5;
 	n++;
 
 	return n;

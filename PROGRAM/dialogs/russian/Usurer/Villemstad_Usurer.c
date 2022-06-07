@@ -133,7 +133,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		case "Step_E4_4":
 			dialog.text = "Не тут то было, ублюдок. Охрана, ко мне!!!";
 			link.l1 = "Проклятье!";
-			link.l1.go = "Step_E4_5"; 
+			link.l1.go = "Step_E4_5";
 		break;
 		case "Step_E4_5":
             pchar.questTemp.State = "Intelligence_Curacao_FightGard";
@@ -179,7 +179,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "Step_S2_fihgt";
 		break;
 		case "Step_S2_fihgt":
-			bDisableFastReload = false; 
+			bDisableFastReload = false;
             AddQuestRecord("Spa_Line_2_Inquisition", "4");
             LAi_LocationFightDisable(&Locations[FindLocation("Villemstad_bank")], false);
             LAi_NoRebirthEnable(npchar);
@@ -235,14 +235,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.text = "Нет. Не надо.\nХе, вы, так называемые вытрясыватели долгов, одинаковые, как однояйцевые близнецы. Вот и Эйвори точно так же разговаривает...";
 			link.l1 = "Джон Эйвори?! Так это мой приятель. Он еще в городе? Где его можно отыскать?";
 			link.l1.go = "Step_P5_2";
-		break;	
+		break;
 		case "Step_P5_2":
 			dialog.text = "Понятия не имею. Он вольный человек, ходит, где заблагорассудится. А насчет того, что он еще в Виллемстаде, это вряд ли, здесь для него работы не осталось. Вы же приятель Джона, должны понимать, что искать его надо там, где ром льется рекой - в тавернах!";
 			link.l1 = "Ха! Ну конечно, кто бы сомневался... Но ты точно ничего такого не припомнишь, куда он мог податься? Может чего-то сказал?..";
 			link.l1.go = "Step_P5_3";
 		break;
 		case "Step_P5_3":
-			pchar.questTemp.piratesLine.Q5.city_1 = GetQuestNationsCity(ENGLAND); 
+			pchar.questTemp.piratesLine.Q5.city_1 = GetQuestNationsCity(ENGLAND);
 			dialog.text = "Сказал, что теперь к англичанам собиратеся. Вроде о " + XI_ConvertString("Colony" + pchar.questTemp.piratesLine.Q5.city_1 + "Dat") + " шла речь, но точно не скажу.";
 			link.l1 = "А говорил, что понятия не имеешь. Ну спасибо тебе!";
 			link.l1.go = "exit";
@@ -250,7 +250,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddQuestUserData("Pir_Line_5_Hunter", "sCity", XI_ConvertString("Colony" + pchar.questTemp.piratesLine.Q5.city_1));
 			AddQuestUserData("Pir_Line_5_Hunter", "sIsland", XI_ConvertString(GetIslandByCityName(pchar.questTemp.piratesLine.Q5.city_1) + "Dat"));
 			pchar.questTemp.piratesLine = "PL5Hunter_toFirst";
-		break;		
+		break;
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод
 }

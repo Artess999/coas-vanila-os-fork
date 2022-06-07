@@ -56,7 +56,7 @@ bool bMainMenu = false;
 //загрузка начала игры
 bool startGameWeather = false;
 //движок проверяет эту переменную, должна равной #define ENGINE_SCRIPT_VERSION в core.h
-int iScriptVersion = 15650; 
+int iScriptVersion = 15650;
 
 // Генератор фантомов - альтернатива
 bool    bNewFantomGenerator       = true;  // резерв "новый фехт"

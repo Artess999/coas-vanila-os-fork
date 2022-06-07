@@ -26,7 +26,7 @@ void StoreInit()
 	Stores[FortOrange_STORE].Colony	= "FortOrange";
 	Stores[FortOrange_STORE].group	= "FortOrange";
 	Stores[FortOrange_STORE].StoreSize = "small";
-	
+
 	// PuertoRico
 	Stores[SanJuan_STORE].Colony = "SanJuan";
 	Stores[SanJuan_STORE].group	= "SanJuan";
@@ -49,19 +49,19 @@ void StoreInit()
 
 	// Tortuga
 	Stores[Tortuga_STORE].Colony	= "Tortuga";
-	Stores[Tortuga_STORE].Group	= "Tortuga";	
+	Stores[Tortuga_STORE].Group	= "Tortuga";
 	Stores[Tortuga_STORE].StoreSize = "large";
 
 	// SentMartin (Marigo)
 	Stores[Marigo_STORE].Colony	= "Marigo";
 	Stores[Marigo_STORE].Group	= "Marigo";
 	Stores[Marigo_STORE].StoreSize = "large";
-	
+
 	// PortSpein  (Trinidad)
 	Stores[PortSpein_STORE].Colony	= "PortSpein";
 	Stores[PortSpein_STORE].group	= "PortSpein";
 	Stores[PortSpein_STORE].StoreSize = "large";
-	
+
 	// Charles  (Nevis)
 	Stores[Charles_STORE].Colony	= "Charles";
 	Stores[Charles_STORE].group	= "Charles";
@@ -81,12 +81,12 @@ void StoreInit()
 	Stores[Havana_STORE].Colony	= "Havana";
 	Stores[Havana_STORE].group	= "Havana";
 	Stores[Havana_STORE].StoreSize = "large";
-	
+
 	// BasTer
 	Stores[BasTer_STORE].Colony	= "BasTer";
 	Stores[BasTer_STORE].group	= "BasTer";
 	Stores[BasTer_STORE].StoreSize = "large";
-	
+
 	// FortFrance (Martinique)
 	Stores[FortFrance_STORE].Colony	= "FortFrance";
 	Stores[FortFrance_STORE].group	= "FortFrance";
@@ -95,17 +95,17 @@ void StoreInit()
 	Stores[LeFransua_STORE].Colony	= "LeFransua";
 	Stores[LeFransua_STORE].group	= "LeFransua";
 	Stores[LeFransua_STORE].StoreSize = "small";
-	
+
 	// LaVega
 	Stores[LaVega_STORE].Colony	= "LaVega";
 	Stores[LaVega_STORE].group	= "LaVega";
 	Stores[LaVega_STORE].StoreSize = "small";
-	
+
 	// SantoDomingo
 	Stores[SantoDomingo_STORE].Colony	= "SantoDomingo";
 	Stores[SantoDomingo_STORE].group	= "SantoDomingo";
 	Stores[SantoDomingo_STORE].StoreSize = "large";
-	
+
 	// Pirates Town
 	Stores[Pirates_STORE].Colony = "Pirates";
 	Stores[Pirates_STORE].group	= "Pirates";
@@ -145,7 +145,7 @@ void StoreInit()
 	Stores[SantaCatalina_STORE].Colony	= "SantaCatalina";
 	Stores[SantaCatalina_STORE].group	= "SantaCatalina";
 	Stores[SantaCatalina_STORE].StoreSize = "large";
-	
+
 	// Beliz
 	Stores[Beliz_STORE].Colony	= "Beliz";
 	Stores[Beliz_STORE].group	= "Beliz";

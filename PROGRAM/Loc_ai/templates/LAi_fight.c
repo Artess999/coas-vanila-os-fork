@@ -114,7 +114,7 @@ void LAi_tmpl_fight_CharacterUpdate(aref chr, float dltTime)
 			//Режим
 //			if(tmpl.stopMode == "near")
 //			{
-				
+
 
 
 //			}else{
@@ -170,13 +170,13 @@ void LAi_tmpl_fight_FailureGoToPoint(aref chr)
 
 //Персонаж выполнил команду  run to point
 void LAi_tmpl_fight_EndRunToPoint(aref chr)
-{	
+{
 	LAi_tmpl_fight_updatetemplate(chr);
 }
 
 //Персонаж провалил команду  run to point
 void LAi_tmpl_fight_FailureRunToPoint(aref chr)
-{	
+{
 	LAi_tmpl_fight_updatetemplate(chr);
 }
 
@@ -194,13 +194,13 @@ void LAi_tmpl_fight_FollowGo(aref chr)
 
 //Персонаж начал дошёл до другого персонажа
 void LAi_tmpl_fight_FollowStay(aref chr)
-{	
+{
 	LAi_tmpl_fight_updatetemplate(chr);
 }
 
 //Персонаж провалил команду  follow character
 void LAi_tmpl_fight_FailureFollow(aref chr)
-{	
+{
 	LAi_tmpl_fight_updatetemplate(chr);
 }
 
@@ -225,7 +225,7 @@ void LAi_tmpl_fight_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_fight_IsFire(aref chr)
-{	
+{
 	return LAi_CharacterCanFrie(chr);
 }
 
@@ -380,7 +380,7 @@ bool LAi_tmpl_fight_CheckEnemy(aref chr)
 	{
 		int idx = sti(chrFindNearCharacters[i].index);
 		if(LAi_group_IsEnemy(chr, &Characters[idx])) return true;
-	}	
+	}
 	return false;
 }
 

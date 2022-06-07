@@ -151,7 +151,7 @@ void IReadVariableAfterInit()
 	SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"SHIPMARK_CHECKBOX", 2, 1, nEnabledShipMarks );
 
 	int nEnabledSimpleSea = 0;
-	if( CheckAttribute(&InterfaceStates,"SimpleSea") ) 
+	if( CheckAttribute(&InterfaceStates,"SimpleSea") )
 	{
 		nEnabledSimpleSea = sti(InterfaceStates.SimpleSea);
 	}
@@ -259,46 +259,46 @@ void procCheckBoxChange()
 		}
 		return;
 	}
-	if( sNodName == "ALWAYS_RUN_CHECKBOX" ) 
+	if( sNodName == "ALWAYS_RUN_CHECKBOX" )
 	{
 		{ // always run
 			SetAlwaysRun( bBtnState );
 		}
 	}
-	if( sNodName == "INVERT_MOUSE_CHECKBOX" ) 
+	if( sNodName == "INVERT_MOUSE_CHECKBOX" )
 	{
 		{ // invert mouse
 			InterfaceStates.InvertCameras = bBtnState;
 		}
 	}
-	if( sNodName == "BATTLE_MODE_CHECKBOX" ) 
+	if( sNodName == "BATTLE_MODE_CHECKBOX" )
 	{
 		{ // Show battle mode border
 			InterfaceStates.ShowBattleMode = bBtnState;
 		}
 	}
-	if( sNodName == "AUTOSAVE_CHECKBOX" ) 
+	if( sNodName == "AUTOSAVE_CHECKBOX" )
 	{
 		{ // Show battle mode border
 			InterfaceStates.EnabledAutoSaveMode = bBtnState;
 		}
 	}
 
-	if( sNodName == "QUESTMARK_CHECKBOX" ) 
+	if( sNodName == "QUESTMARK_CHECKBOX" )
 	{
 		{ // Show battle mode border
 			InterfaceStates.EnabledQuestsMarks = bBtnState;
 		}
 	}
 
-	if( sNodName == "SHIPMARK_CHECKBOX" ) 
+	if( sNodName == "SHIPMARK_CHECKBOX" )
 	{
 		{ // Show battle mode border
 			InterfaceStates.EnabledShipMarks = bBtnState;
 		}
 	}
 
-	if( sNodName == "SIMPLESEA_CHECKBOX" ) 
+	if( sNodName == "SIMPLESEA_CHECKBOX" )
 	{
 		{ // Show battle mode border
 			InterfaceStates.SimpleSea = bBtnState;

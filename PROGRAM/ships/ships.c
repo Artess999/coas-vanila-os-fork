@@ -59,18 +59,18 @@ string generateRandomNameToShip(int iNation)
 	}
 	int iMassiveOfNamesSize = GetArraySize(rMassiveOfNames);
 	string sName = GetRandSubString(rMassiveOfNames[rand(iMassiveOfNamesSize-2)]);
-	
+
 	return sName;
 }
 
 string GetShipLocationID(ref chref)
 {
-	if(!CheckAttribute(chref,"ship.type")) 
+	if(!CheckAttribute(chref,"ship.type"))
 	{
 		return "";
 	}
 	int st = sti(chref.ship.type);
-	if(st==SHIP_NOTUSED) 
+	if(st==SHIP_NOTUSED)
 	{
 		return "";
 	}
@@ -79,7 +79,7 @@ string GetShipLocationID(ref chref)
 	if(ShipsTypes[iShipType].name == "Fort")
 	{
 		aref ar_FindLoc = FindIslandReloadLocator(chref.location,chref.location.locator);
-		if( CheckAttribute(ar_FindLoc,"go") ) 
+		if( CheckAttribute(ar_FindLoc,"go") )
 		{
 			MakeCloneFortBoarding(ar_FindLoc.go); // инитим локацию из разных городов
             return "BOARDING_FORT"; // всегда клонова€ локаци€

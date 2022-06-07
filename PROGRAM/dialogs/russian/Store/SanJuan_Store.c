@@ -20,7 +20,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		    NextDiag.TempNode = "Second time";
 		    AddDialogExitQuest("Romantic_TalkInShop_2");
 		break;
-		
+
 		case "Romantic_2":
             dialog.Text = "Конечно, конечно, сеньор капитан.";
 			Link.l1 = "Вот, другой разговор.";

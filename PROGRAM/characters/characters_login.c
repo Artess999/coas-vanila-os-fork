@@ -24,7 +24,7 @@ void LoginCharactersInLocation(ref loc)
 			LoginCharacter(&Characters[LOC_FANTOM_CHARACTERS + i], locID);
 		}
 	}
-	
+
 	// boal пленники в трюм  и фантомы на палубе
 	for(i = FANTOM_CHARACTERS; i < TOTAL_CHARACTERS; i++)
 	{
@@ -96,10 +96,10 @@ bool SetCharacterShipLocation(ref character, string location_id)
 {
 	if (location_id == "")  // для пусто свой подход, это не баг, это нужно занулить
 	{
-		character.location.from_sea = location_id;	
+		character.location.from_sea = location_id;
 		return true;
 	}
-	
+
 	int lindex = FindLocation(location_id);
 	if (lindex < 0)
 	{

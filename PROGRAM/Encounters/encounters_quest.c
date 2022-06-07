@@ -30,8 +30,8 @@ int Encounter_FindFirstQuestMapEncounter(int iEncType)
 {
 	for (int i=0; i<MAX_QUEST_MAP_ENCOUNTERS; i++)
 	{
-		if (CheckAttribute(&QuestMapEncounters[i], "id")) 
-		{ 
+		if (CheckAttribute(&QuestMapEncounters[i], "id"))
+		{
 			if (sti(QuestMapEncounters[i].Type) == iEncType) { return i; }
 		}
 	}
@@ -45,7 +45,7 @@ void Encounter_DeleteQuestMapEncounter(string sGroupID)
 
 	DeleteAttribute(&QuestMapEncounters[iEncounter], "");
 	//рэйнжер продолжает путь
-	
+
 	/*
 	if (characters[GetCharacterIndex(sGroupID)].adventure.type == "trade")
 	{
@@ -98,7 +98,7 @@ void Encounter_SetQuestMapEncounter(string sGroupID, int iEncType, bool bPermane
 	ref rEnc = &QuestMapEncounters[iEncounter];
 
     DeleteAttribute(rEnc, ""); //fix
-    
+
 	if (iRandomMeeting > 100)	{ iRandomMeeting = 100; }
 	if (iRandomMeeting < 0)		{ iRandomMeeting = 0; }
 

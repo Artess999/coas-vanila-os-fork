@@ -132,7 +132,7 @@ void LAi_SetDltHealth(aref chr, float healthPerSec)
 //Использовать бутылочку-лечилку
 void LAi_UseHealthBottle(aref chr, float healthInBottle)
 {
-	if(healthInBottle <= 0) return;	
+	if(healthInBottle <= 0) return;
 	if(!CheckAttribute(chr, "chr_ai.hp_bottle"))
 	{
 		chr.chr_ai.hp_bottle = "0";
@@ -143,7 +143,7 @@ void LAi_UseHealthBottle(aref chr, float healthInBottle)
 void LAi_UseHealthBottleSpeed(aref chr, float healthSpeed)
 {
 	if (healthSpeed <= 0) return;
-	
+
 	chr.chr_ai.hp_dlt_bottle = healthSpeed;
 }
 
@@ -263,7 +263,7 @@ void LAi_RemoveCheckMinHP(aref chr)
 {
 	aref chr_ai;
 	makearef(chr_ai, chr.chr_ai);
-	DeleteAttribute(chr_ai, "hpchecker");	
+	DeleteAttribute(chr_ai, "hpchecker");
 }
 
 //Убить персонажа
@@ -341,7 +341,7 @@ void LAi_CharacterReincarnationEx(aref chr, bool isEnable, bool isUseCurModel, s
 		aref chr_ai;
 		makearef(chr_ai, chr.chr_ai);
 		DeleteAttribute(chr_ai, "reincarnation");
-	}	
+	}
 }
 
 bool LAi_CharacterIsReincarnation(aref chr)
@@ -373,7 +373,7 @@ string LAi_CharacterReincarnationGroup(aref chr)
 }
 
 //eddy. установить установить шаг повышения ранга фантома при реинкарнации.
-bool LAi_SetReincarnationRankStep(aref _chr, int _step) 
+bool LAi_SetReincarnationRankStep(aref _chr, int _step)
 {
 	if(CheckAttribute(_chr, "chr_ai.reincarnation"))
 	{
@@ -636,7 +636,7 @@ void LAi_AllCharactersUpdate(float dltTime)
 						bottledlthp = stf(chr_ai.hp_dlt_bottle);
 					}
 					//Количество вытянутых хп за текущий период времени
-					bottledlthp = bottledlthp*dltTime;				
+					bottledlthp = bottledlthp*dltTime;
 					if(bottledlthp > bottle)
 					{
 						bottledlthp = bottle;
@@ -764,7 +764,7 @@ void LAi_CharacterSaveAy(aref chr)
 {
 	float ay = 0.0;
 	if(GetCharacterAy(chr, &ay) == false) ay = 0.0;
-	chr.chr_ai.type.ay = ay;	
+	chr.chr_ai.type.ay = ay;
 }
 
 void LAi_CharacterRestoreAy(aref chr)

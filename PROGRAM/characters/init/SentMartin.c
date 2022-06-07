@@ -2,11 +2,11 @@
 int CreateSentMartinCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
-	
+
 	makeref(ch,Characters[n]);			//Губернатор
 	ch.id		= "Marigo_Mayor";
 	ch.model	= "huber_hol";
@@ -33,7 +33,7 @@ int CreateSentMartinCharacters(int n)
 	makeref(ch,Characters[n]);			//Священик
 	ch.id		= "Marigo_Priest";
 	ch.model	= "priest_4";
-	ch.model.animation = "man"; 
+	ch.model.animation = "man";
 	ch.sex = "man";
 	ch.City = "Marigo";
 	ch.location	= "Marigo_church";
@@ -194,6 +194,6 @@ int CreateSentMartinCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

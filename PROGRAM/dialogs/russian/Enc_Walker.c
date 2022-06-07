@@ -7,7 +7,7 @@ void ProcessDialogEvent()
 	aref Link, Diag;
 	string NPC_Meeting, TempInfoCharacterID_1, TempInfoCharacterID_2;
 	int Sum;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
@@ -21,11 +21,11 @@ void ProcessDialogEvent()
 	iMonth = environment.date.month;
 	string lastspeak_date = iday + " " + iMonth;
 
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		// ----------------------------------- Диалог первый - первая встреча
-		
+
 		case "First time":
 			if (NPChar.sex != "man")
 			{
@@ -45,9 +45,9 @@ void ProcessDialogEvent()
 				npchar.quest.Meeting = LastSpeakDate();
 			}
 			switch (sti(npchar.quest.last_theme))
-			{	
+			{
 				case 0:
-					dialog.text = DLG_TEXT[0]; 
+					dialog.text = DLG_TEXT[0];
 					Link.l1 = DLG_TEXT[1];
 					Link.l1.go = "skeletons";
 					Link.l2 = DLG_TEXT[2];
@@ -149,7 +149,7 @@ void ProcessDialogEvent()
 						Link.l2.go = "exit_out";
 					}
 				break;
-				
+
 				case 10:
 					dialog.text = DLG_TEXT[36];
 					Link.l1 = DLG_TEXT[37];
@@ -173,7 +173,7 @@ void ProcessDialogEvent()
 					Link.l2 = DLG_TEXT[41];
 					Link.l2.go = "exit";
 				break;
-				
+
 				case 13:
 					dialog.text = DLG_TEXT[39];
 					Link.l1 = DLG_TEXT[40];
@@ -181,7 +181,7 @@ void ProcessDialogEvent()
 					Link.l2 = DLG_TEXT[41];
 					Link.l2.go = "exit";
 				break;
-				
+
 				case 14:
 					dialog.text = DLG_TEXT[18];
 					Link.l1 = DLG_TEXT[19];
@@ -189,7 +189,7 @@ void ProcessDialogEvent()
 					Link.l2 = DLG_TEXT[20];
 					Link.l2.go = "exit_once_more";
 				break;
-				
+
 				case 15:
 					dialog.text = DLG_TEXT[15];
 					Link.l1 = DLG_TEXT[16];
@@ -197,7 +197,7 @@ void ProcessDialogEvent()
 					Link.l2 = DLG_TEXT[17];
 					Link.l2.go = "exit";
 				break;
-				
+
 				case 16:
 					dialog.text = DLG_TEXT[0];
 					Link.l1 = DLG_TEXT[1];
@@ -369,7 +369,7 @@ void ProcessDialogEvent()
 				case 7:
 					GiveItem2Character(pchar, "indian7");
 				break;
-				
+
 				case 8:
 					GiveItem2Character(pchar, "indian8");
 				break;
@@ -377,7 +377,7 @@ void ProcessDialogEvent()
 				case 9:
 					GiveItem2Character(pchar, "indian9");
 				break;
-				
+
 				case 10:
 					GiveItem2Character(pchar, "indian10");
 				break;
@@ -391,7 +391,7 @@ void ProcessDialogEvent()
 			Link.l2 = DLG_TEXT[73];
 			Link.l2.go = "exit_out";
 		break;
-		
+
 		case "skill":
 
 			switch (Rand(7))
@@ -518,7 +518,7 @@ void ProcessDialogEvent()
 					Link.l2 = DLG_TEXT[103];
 					Link.l2.go = "exit_Repair";
 				break;
-	
+
 				case 7:
 					dialog.text = DLG_TEXT[104];
 					if(makeint(PChar.skill.Commerce)>=SKILL_MAX)
@@ -543,7 +543,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[110];
-				Link.l1.go = "exit_Fencing";		
+				Link.l1.go = "exit_Fencing";
 			}
 			else
 			{
@@ -560,7 +560,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[115];
-				Link.l1.go = "exit_Fencing";		
+				Link.l1.go = "exit_Fencing";
 			}
 			else
 			{
@@ -585,7 +585,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[120];
-				Link.l1.go = "exit_Defence";		
+				Link.l1.go = "exit_Defence";
 			}
 			else
 			{
@@ -602,7 +602,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[125];
-				Link.l1.go = "exit_Defence";		
+				Link.l1.go = "exit_Defence";
 			}
 			else
 			{
@@ -627,7 +627,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[130];
-				Link.l1.go = "exit_Leadership";		
+				Link.l1.go = "exit_Leadership";
 			}
 			else
 			{
@@ -644,7 +644,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[135];
-				Link.l1.go = "exit_Leadership";		
+				Link.l1.go = "exit_Leadership";
 			}
 			else
 			{
@@ -669,7 +669,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[140];
-				Link.l1.go = "exit_Sailing";		
+				Link.l1.go = "exit_Sailing";
 			}
 			else
 			{
@@ -686,7 +686,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[145];
-				Link.l1.go = "exit_Sailing";		
+				Link.l1.go = "exit_Sailing";
 			}
 			else
 			{
@@ -711,7 +711,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[150];
-				Link.l1.go = "exit_Accuracy";		
+				Link.l1.go = "exit_Accuracy";
 			}
 			else
 			{
@@ -728,7 +728,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[155];
-				Link.l1.go = "exit_Accuracy";		
+				Link.l1.go = "exit_Accuracy";
 			}
 			else
 			{
@@ -753,7 +753,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[160];
-				Link.l1.go = "exit_Cannons";		
+				Link.l1.go = "exit_Cannons";
 			}
 			else
 			{
@@ -770,7 +770,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[165];
-				Link.l1.go = "exit_Cannons";		
+				Link.l1.go = "exit_Cannons";
 			}
 			else
 			{
@@ -795,7 +795,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[170];
-				Link.l1.go = "exit_Grappling";		
+				Link.l1.go = "exit_Grappling";
 			}
 			else
 			{
@@ -812,7 +812,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[175];
-				Link.l1.go = "exit_Grappling";		
+				Link.l1.go = "exit_Grappling";
 			}
 			else
 			{
@@ -837,7 +837,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[180];
-				Link.l1.go = "exit_Repair";		
+				Link.l1.go = "exit_Repair";
 			}
 			else
 			{
@@ -854,7 +854,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[185];
-				Link.l1.go = "exit_Repair";		
+				Link.l1.go = "exit_Repair";
 			}
 			else
 			{
@@ -879,7 +879,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[190];
-				Link.l1.go = "exit_Commerce";		
+				Link.l1.go = "exit_Commerce";
 			}
 			else
 			{
@@ -896,7 +896,7 @@ void ProcessDialogEvent()
 			if(makeint(Pchar.money) < Sum)
 			{
 				Link.l1 = DLG_TEXT[195];
-				Link.l1.go = "exit_Commerce";		
+				Link.l1.go = "exit_Commerce";
 			}
 			else
 			{
@@ -972,7 +972,7 @@ void ProcessDialogEvent()
 		case "advises":
 
 			switch(Rand(6))
-			{	
+			{
 				case 0:
 					dialog.text = DLG_TEXT[213];
 					Link.l1 = DLG_TEXT[214];
@@ -1092,7 +1092,7 @@ void ProcessDialogEvent()
 			Diag.CurrentNode = "once_more_portion";
 			DialogExit();
 		break;
-		
+
 		case "exit_than":
 			Diag.CurrentNode = "thanx";
 			DialogExit();

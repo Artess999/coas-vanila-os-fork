@@ -20,7 +20,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "First time":
 			NextDiag.TempNode = "First time";
 			if (LAi_grp_playeralarm > 0)
@@ -56,7 +56,7 @@ void ProcessDialogEvent()
 					link.l1.go = "FT_1";
 				}
 				else
-				{				
+				{
 					dialog.Text = "Да-да, я знаю вас! Это ваш корабль затонул тут последним. Что ж, такова ваша судьба, и теперь она объединена с нашей! Мы все заключены на этом острове...";
 					Link.l1 = "Да уж, успел заметить...";
 					Link.l1.go = "FT_1";
@@ -115,7 +115,7 @@ void ProcessDialogEvent()
 				if (pchar.questTemp.LSC == "toSeekMechanik" && CheckAttribute(pchar, "questTemp.LSC.Armo") && sti(pchar.questTemp.LSC.Armo) == 15 && npchar.name == "Armo")
 				{
 					link.l4 = "Армо, тут такое дело получилось...";
-					link.l4.go = "CasperAllFight"; 
+					link.l4.go = "CasperAllFight";
 				}
 				if (pchar.questTemp.LSC == "seekMillionAndHalf" && npchar.name == "Армо" && !CheckAttribute(npchar, "quest.giveMoney"))
 				{
@@ -398,7 +398,7 @@ void ProcessDialogEvent()
 			link.l1 = "Хорошо, Армо. Спасибо тебе.";
 			link.l1.go = "exit";
 			AddQuestRecord("ISS_MainLine", "33");
-			pchar.questTemp.LSC.Armo = 0; //флаг на мочилово касперов. четные - готовность Армо, нечетные - флаг questAction 
+			pchar.questTemp.LSC.Armo = 0; //флаг на мочилово касперов. четные - готовность Армо, нечетные - флаг questAction
 			SaveCurrentQuestDateParam("questTemp.LSC"); //запомним дату базара
 		break;
 		//первый каспер
@@ -551,13 +551,13 @@ void ProcessDialogEvent()
 		break;
 		//поиск товаров на корвет
 		case "SeekGoods":
-			dialog.text = NPCStringReactionRepeat("О каких товарах идет речь, месье капитан?", 
-				"Вы уже спрашивали об этом.", 
+			dialog.text = NPCStringReactionRepeat("О каких товарах идет речь, месье капитан?",
+				"Вы уже спрашивали об этом.",
 				"Уже спрашивали...",
                 "Вы уже спрашивал меня об этих товарах. Может хватит?", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Мне нужны бомбы, книппеля, провиант, порох, оружие, лекарства...", 
+			link.l1 = HeroStringReactionRepeat("Мне нужны бомбы, книппеля, провиант, порох, оружие, лекарства...",
 				"Да... Извини, запамятовал.",
-                "А-а, ну да.", 
+                "А-а, ну да.",
 				"Понял, понял...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekGoods_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -570,13 +570,13 @@ void ProcessDialogEvent()
 		break;
 		//найм команды
 		case "SeekCrew":
-			dialog.text = NPCStringReactionRepeat("И что?", 
-				"Мы уже поговорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("И что?",
+				"Мы уже поговорили об этом.",
 				"Это уже обсуждено, второй раз повторяю.",
                 "Хватит, утомили...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Я хочу пригласить тебя пойти ко мне в команду.", 
+			link.l1 = HeroStringReactionRepeat("Я хочу пригласить тебя пойти ко мне в команду.",
 				"Да... Извини, запамятовал.",
-                "Как знаешь...", 
+                "Как знаешь...",
 				"Ну, ладно...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekCrew_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -631,4 +631,4 @@ void ProcessDialogEvent()
 	}
 	NextDiag.PrevNode = NodeName;
 }
- 
+

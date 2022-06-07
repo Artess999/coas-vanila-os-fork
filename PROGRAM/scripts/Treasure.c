@@ -9,7 +9,7 @@ string GetIslandForTreasure()
 	{
 		ret = GetRandomIslandId();
 	}
-	
+
 	int islIdx = GetCharacterCurrentIsland(Pchar);
 
 	if (islIdx != -1)
@@ -31,7 +31,7 @@ string GetLocationForTreasure(string island)
 	makearef(arDest, NullCharacter.TravelMap.Islands.(island).Treasure);
 	iNum = GetAttributesNum(arDest);
     iNum = rand(iNum-1);
-    
+
     arImt = GetAttributeN(arDest, iNum);
 	return GetAttributeName(arImt);
 }
@@ -45,7 +45,7 @@ string GetBoxForTreasure(string island, string location)
 	makearef(arDest, NullCharacter.TravelMap.Islands.(island).Treasure.(location));
 	iNum = GetAttributesNum(arDest);
     iNum = rand(iNum-1);
-    
+
     arImt = GetAttributeN(arDest, iNum);
 	return GetAttributeValue(arImt);  // тут не атрибут, а значеие
 }
@@ -542,11 +542,11 @@ void SetTreasureHunter(string temp)
 	bool   ok;
 
 	if (chrDisableReloadToLocation) return; // идет некий другой квест с запретом выхода
-	
+
     Pchar.GenQuest.Hunter2Pause            = true;
-    
+
     j = GetOfficersQuantity(Pchar) + 2;
-    
+
 	sCapId = "LandHunter0";
     sTemp = "LAND_HUNTER";
 	ok = true;
@@ -569,7 +569,7 @@ void SetTreasureHunter(string temp)
 		}
 		arrayNPCModel[arrayNPCModelHow] = sld.model;
 		arrayNPCModelHow++;
-		
+
         LAi_SetActorTypeNoGroup(sld);
         LAi_SetCheckMinHP(sld, (LAi_GetCharacterHP(sld) - 1), false, "Battle_Hunters_Land");
         if (PlaceCharacter(sld, "goto", "random_must_be_near") == "" && i == 1) // fix если вдруг нет в локации
@@ -640,13 +640,13 @@ void  GhostShipOnMap()
     ref  sld;
     int  i;
     ref  rRealShip;
-    
+
     sld = characterFromID("GhostCapt");
     // пушки чинятся в SetBaseShipData DeleteAttribute(sld, "ship.cannons");
-    
+
     SetBaseShipData(sld);
     sld.ship.sailscolor = argb(255, 60, 60, 60);
-    
+
     DeleteAttribute(sld,"ship.sails");
     DeleteAttribute(sld,"ship.masts");
     DeleteAttribute(sld,"ship.blots");
@@ -661,7 +661,7 @@ void  GhostShipOnMap()
 	    rRealShip.HP         = 7500;
 	    rRealShip.WindAgainstSpeed = 3.0;
 		rRealShip.TurnRate   = 45.0;
-	
+
         SetBaseShipData(sld);
         DeleteAttribute(sld, "ship.sailscolor");  // белый парус
 
@@ -678,12 +678,12 @@ void  GhostShipOnMap()
     sld.mapEnc.type = "war";
     sld.mapEnc.Name = "Летучий голландец";
 	sld.mapEnc.worldMapShip = "pirates_manowar";
-				
+
     sld.ship.Crew.Morale = 90;
     ChangeCrewExp(sld, "Sailors", 100);
 	ChangeCrewExp(sld, "Cannoners", 100);
 	ChangeCrewExp(sld, "Soldiers", 100);
-				
+
     Fantom_SetBalls(sld, "pirate");
     Fantom_SetCharacterGoods(sld, GOOD_BALLS,  3900 + rand(300));
 	Fantom_SetCharacterGoods(sld, GOOD_BOMBS,  2900 + rand(300));
@@ -701,7 +701,7 @@ void  GhostShipOnMap()
     Group_LockTask(sGroup);
 
     Map_CreateWarrior("", "GhostCapt", 3);
-    
+
     Pchar.quest.GhostShip_Dead.win_condition.l1 = "NPC_Death";
 	Pchar.quest.GhostShip_Dead.win_condition.l1.character = "GhostCapt";
 	Pchar.quest.GhostShip_Dead.win_condition = "GhostShip_Dead";
@@ -715,7 +715,7 @@ void Survive_In_Sea_Go2Land()
 	int 	n, i, idx;
     int 	storeArray[30];
     int 	howStore = 0;
-    
+
     // трем всех офов и компаньонов, не квестовых
     iDay = GetPassengersQuantity(pchar);
     i = 0;
@@ -751,7 +751,7 @@ void Survive_In_Sea_Go2Land()
 			}
 		}
 	}
-	
+
 	DeleteAttribute(pchar, "ship");
 	pchar.ship.name = "";
 	pchar.ship.type = SHIP_NOTUSED;
@@ -766,7 +766,7 @@ void Survive_In_Sea_Go2Land()
   		if (sti(colonies[n].nation) == PIRATE) continue;
   		if (colonies[n].from_sea == "") continue; // необитайки
   		if (!CheckAttribute(&Colonies[n], "islandLable") || Colonies[n].islandLable == "Mein") continue; // только острова
-  		
+
         storeArray[howStore] = n;
    		howStore++;
     }
@@ -804,10 +804,10 @@ void Survive_In_Sea_Go2Land()
     bQuestCheckProcessFreeze = true;
     WaitDate("",0,0,iDay, rand(10), 1); // прошло время
     bQuestCheckProcessFreeze = false;
-    
+
 	// бухта контры
     pchar.location = SelectSmugglingLocation();
-    
+
     pchar.Health.Damg = stf(pchar.chr_ai.hp_max)*40;
 	// дает лог в + и - AddCharacterHealth(pchar, -30);
 	Log_Info("О чудо! Я жив!");
@@ -828,7 +828,7 @@ void Survive_In_Sea_Go2Land()
 	}
 	sGlobalTemp = "afterFDsink";
 	bDisableMapEnter           = false;   // мир, был бой с ЛГ
-	
+
 	SetLaunchFrameFormParam("Прошло " + iDay + " дней." + NewStr() +
 	                        "Остров " + GetConvertStr(ch.islandLable, "LocLables.txt")+","+ NewStr() +
 							"" + GetConvertStr(pchar.location, "LocLables.txt") + ".",
@@ -859,7 +859,7 @@ void GhostShipInit()
 	LAi_SetHP(sld, 666, 666);
 	SetCharacterPerk(sld, "Energaiser"); // скрытый перк дает 1.5 к приросту энергии, дается ГГ и боссам уровней
     sld.SuperShooter  = true;
-    
+
 	DeleteAttribute(sld, "items");
 	GiveItem2Character(sld, "topor2");
 	EquipCharacterByItem(sld, "topor2");
@@ -868,13 +868,13 @@ void GhostShipInit()
 	TakeNItems(sld, "bullet", 10);
 	TakeNItems(sld,"potion2", 10);
 	sld.money = 70000;
-	
+
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetCitizenType(sld);
 	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	sld.Ship.Type = CreateBaseShip(SHIP_FLYINGDUTCHMAN);
 	sld.Ship.Name = "Летучий голландец";
-	
+
 	ref rRealShip = GetRealShip(sti(sld.Ship.Type));
 	//sld.ship.sailscolor = argb(255,60,60,60);
 	rRealShip.MaxCaliber = 48;
@@ -887,7 +887,7 @@ void GhostShipInit()
     rRealShip.SpeedRate	 = 15.0;
 	rRealShip.TurnRate   = 60.0;
 	rRealShip.Price      = 500000;
-	
+
 	pchar.GenQuest.GhostShip.ShipType   = sti(sld.Ship.Type); // запомним, потом пригодится, когда парус нужно сменить на целый
 }
 
@@ -897,12 +897,12 @@ void QuestShotgunT102()
 	ref sld;
 	sld = GetCharacter(NPC_GenerateCharacter("T102", "skelT", "man", "man2", 55, PIRATE, 0, false));
 	sld.dialog.filename      = "Quest\T102_dialog.c";
-    
+
     sld.name  = "Terminator";
     sld.lastname = "";
 	TakeNItems(sld,"potion2", 30);
 	LAi_SetHP(sld, 1600.0, 1600.0);
-	
+
 	ChangeCharacterAddressGroup(sld, PChar.location, "reload", "reload1");
 	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	LAi_SetActorType(sld);

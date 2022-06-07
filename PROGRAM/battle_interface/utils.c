@@ -32,13 +32,13 @@ void procActionRepair()
 {
 	int chrIdx = GetEventData();
 	int eRepType = GetEventData();
-	
+
 	if(eRepType!=0) // fix
 	{
 		float fMaterialH = GetEventData();
 		float fMaterialS = GetEventData();
 	}
-	
+
 	if(chrIdx<0) return;
 	if(!bSeaActive)	return;
 	ref chref = GetCharacter(chrIdx);
@@ -214,7 +214,7 @@ float ProcessSailRepair(ref chref, float repPercent)
 	string tmpstr;
 	makearef(arRoot, chref.ship.sails);
 	rq = GetAttributesNum(arRoot);
-	
+
 	for(i=0; i<rq; i++)
 	{
 		arGroup = GetAttributeN(arRoot, i);
@@ -222,7 +222,7 @@ float ProcessSailRepair(ref chref, float repPercent)
 		for(j=0; j<gq; j++)
 		{
 			arSail = GetAttributeN(arGroup, j);
-			
+
 			if( CheckAttribute(arSail,"mastFall") )
 			{
 				tmpstr = "ship.masts."+arSail.mastFall;
@@ -258,9 +258,9 @@ float OneSailDmgRepair(ref chref, aref arSailNode, aref arSail, float fDmgRepair
 	if(fDmgRepair<=0.0) return 0.0;
 	if (!CheckAttribute(arSail, "dmg")) return 0.0; // fix boal 18.08.06
 	float fSailDmg = stf(arSail.dmg);
-	
+
 	if (fSailDmg <= 0.0 || !CheckAttribute(arSail, "hd"))  return 0.0;  // fix boal 14.09.06
-	
+
 	if (fDmgRepair>=fSailDmg)
 	{
 		DeleteOneSailHole( sti(chref.index), GetAttributeName(arSail), GetAttributeName(arSailNode), sti(arSail.hd), sti(arSail.hc) );
@@ -376,7 +376,7 @@ float CalculateShipSP(ref chref)
 }
 
 //===============================================
-// Заполнение 
+// Заполнение
 //===============================================
 int AddTextureToList(ref rHostObj, string texName, int hSize, int vSize)
 {

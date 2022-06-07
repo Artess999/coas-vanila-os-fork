@@ -10,20 +10,20 @@ void InitInterface(string iniName)
 	//locCameraSleep(true);
 
 	//EngineLayersOffOn(true);
-	
+
 	GameInterface.title = "titleBoal_Debug";
-	
+
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
-	
+
 	CalculateInfoData();
 
 	SetFormatedText("INFO_TEXT",totalInfo);//"Информация отладчика");
 	SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE,"INFO_TEXT",5);
 
 
-	SetEventHandler("InterfaceBreak","ProcessBreakExit",0); 
-	SetEventHandler("exitCancel","ProcessCancelExit",0); 
-	SetEventHandler("evntDoPostExit","DoPostExit",0); 
+	SetEventHandler("InterfaceBreak","ProcessBreakExit",0);
+	SetEventHandler("exitCancel","ProcessCancelExit",0);
+	SetEventHandler("evntDoPostExit","DoPostExit",0);
 	SetEventHandler("ievnt_command","ProcCommand",0);
 	SetEventHandler("SetScrollerPos","SetScrollerPos",0);
 	SetEventHandler("ScrollPosChange","ProcScrollPosChange",0);
@@ -47,7 +47,7 @@ void IDoExit(int exitCode)
     EndAboveForm(true);
     //SetTimeScale(1.0);
 	//locCameraSleep(false);
-	
+
 	DelEventHandler("InterfaceBreak","ProcessBreakExit");
 	DelEventHandler("exitCancel","ProcessCancelExit");
 	DelEventHandler("evntDoPostExit","DoPostExit");
@@ -232,7 +232,7 @@ void ProcCommand()
 		      CalculateInfoDataF18();
 		  }
 	    break;
-	    
+
 	    case "B_F19":
 		  if(comName=="activate" || comName=="click")
 		  {
@@ -246,7 +246,7 @@ void ProcCommand()
 		      CalculateInfoDataF20();
 		  }
 	    break;
-	    
+
 	    case "B_F21":
 		  if(comName=="activate" || comName=="click")
 		  {
@@ -400,13 +400,13 @@ void CalculateInfoDataF3()
 			totalInfo = totalInfo + NewStr() + "models.locators = " + loadedLocation.models.always.locators;
 		}
 	}
-	
+
 	//aref rootItems;
     //makearef(rootItems, worldMap);  //Islands[0]
 	//DumpAttributes(rootItems);
-	
+
 	totalInfo = totalInfo + NewStr() + " MapShipX " +	worldMap.playerShipX + " MapShipZ " + worldMap.playerShipZ + " X " + worldMap.island.x + " Z " + worldMap.island.z;
-	
+
     // <
     totalInfo = totalInfo + NewStr() + NewStr() +
                 "Команда отработала успешно!";
@@ -604,7 +604,7 @@ void CalculateInfoDataF9()
     Weather.Wind.Speed = 9.5;
 	pchar.wind.speed = Weather.Wind.Speed;
 	fWeatherSpeed = stf(Weather.Wind.Speed);
-	
+
     /*
     ref mc;
 	mc = GetMainCharacter();
@@ -998,28 +998,28 @@ void CalculateInfoDataF23()
 	// -->
     {
       if (!CheckAttribute(pchar, "PatentNation")) pchar.PatentNation = "eng";
-	  else 
+	  else
 	  {
 		  switch (pchar.PatentNation)
 		  {
-			  case "eng": 
+			  case "eng":
 				  TakeItemFromCharacter(pchar, "patent_" + pchar.PatentNation);
-				  pchar.PatentNation = "fra"; 				  
+				  pchar.PatentNation = "fra";
 				  break;
-			  case "fra": 
+			  case "fra":
 				  TakeItemFromCharacter(pchar, "patent_" + pchar.PatentNation);
-				  pchar.PatentNation = "spa"; 
+				  pchar.PatentNation = "spa";
 				  break;
 			  case "spa":
 				  TakeItemFromCharacter(pchar, "patent_" + pchar.PatentNation);
-				  pchar.PatentNation = "hol"; 
+				  pchar.PatentNation = "hol";
 				  break;
-			  case "hol": 
+			  case "hol":
 				  TakeItemFromCharacter(pchar, "patent_" + pchar.PatentNation);
-				  pchar.PatentNation = "eng"; 
+				  pchar.PatentNation = "eng";
 				  break;
 		  }
-	  }      
+	  }
 	  GiveItem2Character(pchar, "patent_" + pchar.PatentNation);
       EquipCharacterbyItem(pchar, "patent_" + pchar.PatentNation);
 	  totalInfo = "Патент: " + pchar.PatentNation + NewStr();
@@ -1051,7 +1051,7 @@ void CalculateInfoDataF25()
     totalInfo = totalInfo + NewStr() + NewStr() +
                 "Команда отработала успешно!";
     SetFormatedText("INFO_TEXT",totalInfo);
-    
+
     ProcessCancelExit();
     if( bSeaActive && !bAbordageStarted )
     {

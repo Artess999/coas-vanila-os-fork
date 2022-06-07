@@ -108,7 +108,7 @@ void wdmShipEncounter(float dltTime, float playerShipX, float playerShipZ, float
 						if(!IsStopMapFollowEncounters())
 						{
 							wdmCreateFollowShip(0.8 + rand(10)*0.05);
-						}						
+						}
 					}
 				}
 			}
@@ -141,7 +141,7 @@ void Map_WarriorEnd()
 void Map_TraderSucces()
 {
 	if(!CheckAttribute(pchar, "worldmap.shipcounter"))
-	{		
+	{
 		return;
 	}
 	pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) - 1;
@@ -165,7 +165,7 @@ void Map_TraderSucces()
 	{
         RouteGoldFleet();
 	}
-	
+
 	if (findsubstr(sChar, "SiegeCap_" , 0) != -1)
 	{
         SiegeProgress();

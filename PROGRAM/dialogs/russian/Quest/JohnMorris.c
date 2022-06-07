@@ -76,24 +76,24 @@ void ProcessDialogEvent()
 			link.l1 = "Мэдифорд собирает эскадру для атаки Кюрасао.";
 			link.l1.go = "Step_2";
   		break;
-  		
+
  		case "Step_2":
 			dialog.text = "Без меня.";
 			link.l1 = "Почему?";
 			link.l1.go = "Step_3";
   		break;
-  		
+
  		case "Step_3":
 			dialog.text = "Генерал-губернатор Ямайки относится ко мне, мягко говоря, не дружелюбно. Поэтому его приглашение поучаствовать в деле вызывает у меня серьезные опасения. Что-то здесь не так.";
 			link.l1 = "Возможно, Мэдифорд сменил гнев на милость.";
 			link.l1.go = "Step_4";
   		break;
-  		
+
  		case "Step_4":
 			dialog.text = "Плохо ты знаешь Мэдифорда. Нет, я не так глуп, что-то здесь не то. Возможно, предстоит кровавая баня, а мне как-то не хочется умываться кровью ради генерал-губернатора Ямайки. Так что без меня, и удачи тебе, корсар.";
 			link.l1 = "Спасибо. И тебе удачи, друг.";
 			link.l1.go = "exit";
-			
+
             AddQuestRecord("Eng_Line_2_Talking", "5");
             pchar.questTemp.Count = makeint(sti(pchar.questTemp.Count) + 1);
             if (pchar.questTemp.Count == "4")   {pchar.questTemp.State = "after_talks_with_pirates";}
@@ -120,7 +120,7 @@ void ProcessDialogEvent()
     			link.l1.go = "exit";
                 NextDiag.TempNode = "First time";
             }
-            
+
   		break;
 
  		case "Step_6":
@@ -165,7 +165,7 @@ void ProcessDialogEvent()
 			link.l1 = "Всего хорошего, Джон. Еще встретимся!";
 			link.l1.go = "Step_8";
         break;
-        
+
 	 	case "Step_8":
             LAi_SetActorType(npchar);
             LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "", 15.0);
@@ -235,7 +235,7 @@ void ProcessDialogEvent()
 			sld.DontClearDead = true; // не убирать труп через 200с
 			LAi_NoRebirthEnable(sld);
 			LAi_SetLoginTime(sld, 0.0, 24.0);
-			LAi_SetStayType(sld); 
+			LAi_SetStayType(sld);
 			ChangeCharacterAddressGroup(sld, "PortRoyal_tavern_upstairs", "goto", "goto1");
 		break;
         case "Step_F8_Result":

@@ -22,7 +22,7 @@ bool LAi_tmpl_walk_InitTemplate(aref chr)
 		chr.chr_ai.tmpl.locator = "";
 		chr.chr_ai.tmpl.time = 0;
 		float maxtime = rand(5);
-		chr.chr_ai.tmpl.maxtime = maxtime;	
+		chr.chr_ai.tmpl.maxtime = maxtime;
 		if(rand(3) != 0)
 		{
 			chr.chr_ai.tmpl.state = "goto";
@@ -306,7 +306,7 @@ void LAi_tmpl_walk_go_notime(aref chr)
 		chr.chr_ai.tmpl.state = "stay";
 		return;
 	}
-	if(SetCharacterTask_GotoPoint(chr, "goto", loc) == false)	
+	if(SetCharacterTask_GotoPoint(chr, "goto", loc) == false)
 	{
 		//Локатора нет, стоим
 		chr.chr_ai.tmpl.maxtime = 1;
@@ -363,7 +363,7 @@ bool LAi_tmpl_walk_neareststaycheck(aref chr)
 		{
 			cnt++;
 		}
-	}	
+	}
 	if(cnt > 1) return false;
 	return true;
 }

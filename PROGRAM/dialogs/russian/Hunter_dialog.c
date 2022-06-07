@@ -2,7 +2,7 @@ void ProcessDialogEvent()
 {
 	ref NPChar, TempChar;
 	aref Link, Diag;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
@@ -20,18 +20,18 @@ void ProcessDialogEvent()
 		case "First time":
 			chrDisableReloadToLocation = false;
 			//Lai_SetPlayerType(pchar);
-			
+
 			dialog.text = GetFullName(PChar) + "! "+"Мы выслеживали тебя долгое время, и вот, наконец, ты у нас в руках.";
 			Link.l1 = "Кто вы такие и что вам от меня нужно?";
-			Link.l1.go = "meeting"; 
-			
+			Link.l1.go = "meeting";
+
 			PChar.GenQuest.HunterStart = true;
 		break;
 
 		case "meeting":
 			dialog.text = XI_ConvertString(Nations[sti(NPChar.nation)].Name) + " заплатила за твою голову хорошую цену, неважно, живым мы тебя доставим или мертвым.";
 			Link.l1 = "Я готов заплатить вам еще, лишь бы вы оставили меня в покое.";
-			Link.l1.go = "Cost_Head"; 
+			Link.l1.go = "Cost_Head";
             // boal 08.04.04 -->
             if (GetSummonSkillFromNameToOld(PChar, SKILL_SNEAK) > 2 || bBettaTestMode)
             {
@@ -50,20 +50,20 @@ void ProcessDialogEvent()
     			Link.l4.go = "ToPrison";
             }*/
 		break;
-		
+
 		/*case "ToPrison":
             AddDialogExitQuest("Hunters_GoToPrison");
-            
+
             if (CheckAttribute(PChar, "GenQuest.HunterStart")) // только ОЗГи, а не кладоисатели
             {   // запись в СЖ
 	            AddQuestRecord("HeadHunter", "HeadHunter_GiveUp");
 				AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
 				AddQuestUserData("HeadHunter", "sLoc", GetLocHunterName());
-                DeleteAttribute(PChar, "GenQuest.HunterStart"); 
+                DeleteAttribute(PChar, "GenQuest.HunterStart");
             }
             DialogExit();
         break;  */
-        
+
         case "lier":
             if (GetSummonSkillFromNameToOld(PChar, SKILL_SNEAK) > rand(15) || bBettaTestMode)
             {
@@ -80,9 +80,9 @@ void ProcessDialogEvent()
 			    Link.l2 = "Ну что же, испытайте свою удачу.";
 			    Link.l2.go = "battle";
             }
-            
+
         break;
-        
+
         case "lier_2":
             AddDialogExitQuest("GoAway_Hunters_Land");
             if (CheckAttribute(PChar, "GenQuest.HunterStart")) // только ОЗГи, а не кладоисатели
@@ -90,12 +90,12 @@ void ProcessDialogEvent()
 	            AddQuestRecord("HeadHunter", "HeadHunter_free");
 				AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
 				AddQuestUserData("HeadHunter", "sLoc", GetLocHunterName());
-                DeleteAttribute(PChar, "GenQuest.HunterStart"); 
+                DeleteAttribute(PChar, "GenQuest.HunterStart");
             }
             DialogExit();
         break;
         // boal <--
-        
+
         case "battle":
             AddDialogExitQuest("Battle_Hunters_Land");    // BOAL Весь код я перенес сюда по всем нациям, просто не переименовал
             if (CheckAttribute(PChar, "GenQuest.HunterStart")) // только ОЗГи, а не кладоисатели
@@ -103,7 +103,7 @@ void ProcessDialogEvent()
 	            AddQuestRecord("HeadHunter", "HeadHunter_battle");
 				AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
 				AddQuestUserData("HeadHunter", "sLoc", GetLocHunterName());
-                DeleteAttribute(PChar, "GenQuest.HunterStart"); 
+                DeleteAttribute(PChar, "GenQuest.HunterStart");
             }
             DialogExit();
         break;
@@ -111,14 +111,14 @@ void ProcessDialogEvent()
         case "Cost_Head2":
             AddMoneyToCharacter(pchar, -sti(PChar.HunterCost));
 
-            AddDialogExitQuest("GoAway_Hunters_Land"); 
-            
+            AddDialogExitQuest("GoAway_Hunters_Land");
+
             if (CheckAttribute(PChar, "GenQuest.HunterStart")) // только ОЗГи, а не кладоисатели
             {   // запись в СЖ
 	            AddQuestRecord("HeadHunter", "HeadHunter_Buy");
 				AddQuestUserData("HeadHunter", "sNation", NationNameGenitive(sti(NPChar.Nation)));
 				AddQuestUserData("HeadHunter", "sLoc", GetLocHunterName());
-                DeleteAttribute(PChar, "GenQuest.HunterStart"); 
+                DeleteAttribute(PChar, "GenQuest.HunterStart");
             }
             DialogExit();
         break;
@@ -141,9 +141,9 @@ void ProcessDialogEvent()
         case "NoMoney":
 			dialog.text = "В таком случае разговор окончен!";
 			Link.l1 = "Живым вам меня не взять.";
-			Link.l1.go = "battle"; 
+			Link.l1.go = "battle";
 		break;
-		
+
 		case "TreasureHunter":
 			dialog.text = "Постой-ка, приятель... Сдается, у тебя есть кое-что интересное. Нужно делиться с близкими найдеными сокровищами.";
             Link.l1 = "Хорошо, я готов заплатить вам, лишь бы вы оставили меня в покое.";
@@ -159,7 +159,7 @@ void ProcessDialogEvent()
             Link.l3 = "Ну что же, пришло время отделиться вашим головам от тела.";
 			Link.l3.go = "battle";
 		break;
-		
+
 		case "TreasureHunterLier":
             if (GetSummonSkillFromNameToOld(PChar, SKILL_SNEAK) > rand(15))
             {
@@ -183,8 +183,8 @@ string GetLocHunterName()
 	int nLoc = FindLocation(Pchar.location);
 	int nFile = LanguageOpenFile("LocLables.txt");
 	string ret = "";
-	
-	if(nFile >= 0) 
+
+	if(nFile >= 0)
 	{
 		if (CheckAttribute(&locations[nLoc],"islandId"))
 		{
@@ -205,5 +205,5 @@ string GetLocHunterName()
 		//ret += LanguageConvertString(nFile, locations[nLoc].id.label);
 		LanguageCloseFile( nFile );
 	}
-	return ret;	
+	return ret;
 }

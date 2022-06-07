@@ -68,7 +68,7 @@ bool SetCharacterTask_RuntoPoint(ref character, string locatorGroup, string loca
 }
 
 bool SetCharacterTask_FollowCharacter(ref character, ref followCharacter)
-{	
+{
 	return SendMessage(character, "lsi", MSG_NPCHARACTER_SETTASK, "Follow character", followCharacter);
 }
 

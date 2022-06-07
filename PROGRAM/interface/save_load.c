@@ -54,7 +54,7 @@ void InitInterface_BB(string iniName, bool isSave, bool isMainMenu)
 	SendMessage( &GameInterface, "lslll", MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 3, 3, argb(255,255,255,255) );
 
 	//FillProfileList();
-	
+
 	FillProfileList();
 	FindScrshotClass();
 	InitSaveObjList();
@@ -144,7 +144,7 @@ void ProcessCancelExit()
 	}
 
 	if( CheckAttribute(&InterfaceStates,"showGameMenuOnExit") && sti(InterfaceStates.showGameMenuOnExit) == true)
-	{	
+	{
 		IDoExit(RC_INTERFACE_LAUNCH_GAMEMENU);
 		return;
 	}
@@ -621,7 +621,7 @@ void ShowDataForSave(int nSlot, string picname, ptr picpointer, string strdata)
 			SendMessage( &GameInterface, "lslls", MSG_INTERFACE_MSG_TO_NODE, nodname, 2, 0,"interfaces\SaveIcons\SaveCorrupted.tga" );
 		}
 	}
-	
+
 	if( picpointer ) {
 		SendMessage( &GameInterface, "lslp", MSG_INTERFACE_MSG_TO_NODE, nodname, 7, picpointer );
 		bClickable = true;

@@ -53,10 +53,10 @@ void FillSkyDir(aref aSky)
 
 			satr = "d" + sti(Weathers[i].Hour.Min);
 			if( satr=="d24" ) {continue;}
-			
+
 //navy -->
 			sDir = Weathers[i].Sky.Dir;
-			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay)) 
+			if (CheckAttribute(&WeatherParams, "Rain.ThisDay") && sti(WeatherParams.Rain.ThisDay))
 			{
 				nStart = sti(WeatherParams.Rain.StartTime);
 				nDur = MakeInt(sti(WeatherParams.Rain.Duration)/60 + 0.5);

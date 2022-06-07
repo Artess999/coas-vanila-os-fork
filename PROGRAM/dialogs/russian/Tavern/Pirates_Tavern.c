@@ -10,14 +10,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                       "Да уж, действительно в третий раз...", "Да нет, какие вопросы...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 			// ==> Проверяем поле состояния квестов.
-            if (pchar.questTemp.State == "SeekBible_toBermudes") 
-			{				
+            if (pchar.questTemp.State == "SeekBible_toBermudes")
+			{
                 link.l1 = HeroStringReactionRepeat("Послушай, я ищу пирата, который продавал здесь Библию какую-то странную. Не слышал об этом деле?",
                 "Я про Библию хотел спросить... уже выяснил, извини.", "Да уж, верно...", "А-а-а, разобрались уже, извини...", npchar, Dialog.CurrentNode);
                 link.l1.go = DialogGoNodeRepeat("Step_H8_1", "", "", "", npchar, Dialog.CurrentNode);
             }
-            if (pchar.RomanticQuest == "BrotherIsDead") 
-			{				
+            if (pchar.RomanticQuest == "BrotherIsDead")
+			{
                 link.l1 = HeroStringReactionRepeat("Слушай, ты не в курсе, где Атилла сейчас обретается?",
                 "Да, да, про Атиллу говорили...", "Да уж, верно...", "А-а-а, разобрались уже, извини...", npchar, Dialog.CurrentNode);
                 link.l1.go = DialogGoNodeRepeat("Step_Romantic_1", "", "", "", npchar, Dialog.CurrentNode);
@@ -46,13 +46,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//шебека Синяя Птица
 		case "BlueBird_1":
-			dialog.text = NPCStringReactionRepeat("Слышно-то много всякого. В основном говорят, что корабль очень быстрый. Поймать пытались, да куда там...", 
-				"Мы уже говорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("Слышно-то много всякого. В основном говорят, что корабль очень быстрый. Поймать пытались, да куда там...",
+				"Мы уже говорили об этом.",
 				"Опять? Уже все выяснили.",
                 "Простите, если вам больше ничего не надо, то, пожалуй, займусь другими клиентами.", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("А кто пытался поймать?", 
+			link.l1 = HeroStringReactionRepeat("А кто пытался поймать?",
 				"Да, точно...",
-                "Хм, верно.", 
+                "Хм, верно.",
 				"Хорошо...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("BlueBird_2", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
 		break;
@@ -113,7 +113,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = "Благодарю.";
 			link.l1.go = "exit";
 			AddQuestRecord("Pir_Line_3_KillLoy", "9");
-			pchar.questTemp.piratesLine = "KillLoy_toAlexus";			
+			pchar.questTemp.piratesLine = "KillLoy_toAlexus";
 		break;
 
 		case "PL_Q3_2":

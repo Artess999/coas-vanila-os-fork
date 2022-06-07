@@ -71,7 +71,7 @@ bool DialogMain(ref Character)
 	LAi_Character_StartDialog(mainChr, Character);
 	LAi_Character_StartDialog(Character, mainChr);
 	SendMessage(mainChr, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 1);
-	SendMessage(Character, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 1);	
+	SendMessage(Character, "lsl", MSG_CHARACTER_EX_MSG, "InDialog", 1);
 	//Запускаем диалог
 	//Trace("Dialog: dialog path for character <" + Character.id + "> = " + FullDialogPath);
 	Dialog.CurrentNode = CharacterRef.Dialog.CurrentNode;
@@ -82,7 +82,7 @@ bool DialogMain(ref Character)
 	{
 		SetCameraDialogMode(Character);  // boal
 	}
-	return true;	
+	return true;
 }
 
 int startDialogMainCounter = 0;
@@ -93,7 +93,7 @@ void StartDialogMain()
 {
 	startDialogMainCounter++;
 	if(startDialogMainCounter < 3) return;
-	
+
 	DelEventHandler("frame", "StartDialogMain");
 
 	CreateEntity(&Dialog, "dialog");
@@ -193,7 +193,7 @@ void SelfDialog(ref Character)
 	object persRef = GetCharacterModel(Characters[GetMainCharacterIndex()]);
 	SendMessage(&Dialog, "lii", 0, Character, &persRef);
 	SendMessage(&Dialog, "lii", 1, Character, &persRef);
-	
+
 
 	//LayerCreate("realize",1);
 	LayerSetRealize(REALIZE);
@@ -202,7 +202,7 @@ void SelfDialog(ref Character)
 	ProcessDialogEvent();
 
 	SetEventHandler("DialogEvent","ProcessDialogEvent",0);
-	//SetEventHandler("DialogCancel","DialogExit",0);	
+	//SetEventHandler("DialogCancel","DialogExit",0);
 
 	Event(EVENT_DIALOG_START,"");
 }
@@ -262,7 +262,7 @@ void StartDialogWithMainCharacter()
 	//С непрогруженными персонажами не беседуем
 	if(!IsEntity(&Characters[person])) return;
 	//Начинаем диалог
-	DialogMain(&Characters[person]);	
+	DialogMain(&Characters[person]);
 	//Trace("Dialog: start dialog " + person + " whith main character");
 }
 
@@ -284,7 +284,7 @@ bool LoadDialogFiles(string dialogPath)
 
 	//bool retVal = LoadSegment(PathDlgLngExtn);
 	bool retVal;
-	
+
 	if( !LoadSegment(FullDialogPath) )
 	{
 		Trace("Dialog: Missing dialog file: " + FullDialogPath);

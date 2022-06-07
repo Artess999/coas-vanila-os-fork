@@ -356,7 +356,7 @@ void initFastReloadTable()
 	curTable.l7.pic = FRP_PORT_OFFICE;
 	curTable.l7.tex = FRT_PORT_OFFICE;
 	curTable.l7.location = "Havana_PortOffice";
-	
+
 	makearef(curTable,objFastReloadTable.table.Charles);
 	// store
 	curTable.l1.pic = FRP_STORE;
@@ -646,7 +646,7 @@ void initFastReloadTable()
 	curTable.l7.pic = FRP_PORT_OFFICE;
 	curTable.l7.tex = FRT_PORT_OFFICE;
 	curTable.l7.location = "PortoBello_PortOffice";
-	
+
 	makearef(curTable,objFastReloadTable.table.Cartahena);
 	// store
 	curTable.l1.pic = FRP_STORE;
@@ -706,7 +706,7 @@ void initFastReloadTable()
 	curTable.l7.pic = FRP_PORT_OFFICE;
 	curTable.l7.tex = FRT_PORT_OFFICE;
 	curTable.l7.location = "Maracaibo_PortOffice";
-	
+
 	makearef(curTable,objFastReloadTable.table.Caracas);
 	// store
 	curTable.l1.pic = FRP_STORE;
@@ -796,7 +796,7 @@ void initFastReloadTable()
 	curTable.l7.pic = FRP_PORT_OFFICE;
 	curTable.l7.tex = FRT_PORT_OFFICE;
 	curTable.l7.location = "SantaCatalina_PortOffice";
-	
+
 	makearef(curTable,objFastReloadTable.table.Beliz);
 	// store
 	curTable.l1.pic = FRP_STORE;
@@ -900,7 +900,7 @@ void InitTownTable()
 	objTownStateTable.towns.t5.crew.data.year = 1;
 	objTownStateTable.towns.t5.crew.data.month = 1;
 	objTownStateTable.towns.t5.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t6.name = "Santiago";
 	objTownStateTable.towns.t6.captured = false;
 	objTownStateTable.towns.t6.crew.quantity = 200 + Rand(300);
@@ -908,7 +908,7 @@ void InitTownTable()
 	objTownStateTable.towns.t6.crew.data.year = 1;
 	objTownStateTable.towns.t6.crew.data.month = 1;
 	objTownStateTable.towns.t6.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t7.name = "LaVega";
 	objTownStateTable.towns.t7.captured = false;
 	objTownStateTable.towns.t7.crew.quantity = 200 + Rand(300);
@@ -924,7 +924,7 @@ void InitTownTable()
 	objTownStateTable.towns.t8.crew.data.year = 1;
 	objTownStateTable.towns.t8.crew.data.month = 1;
 	objTownStateTable.towns.t8.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t9.name = "FortFrance";
 	objTownStateTable.towns.t9.captured = false;
 	objTownStateTable.towns.t9.crew.quantity = 200 + Rand(300);
@@ -932,7 +932,7 @@ void InitTownTable()
 	objTownStateTable.towns.t9.crew.data.year = 1;
 	objTownStateTable.towns.t9.crew.data.month = 1;
 	objTownStateTable.towns.t9.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t10.name = "LeFransua";
 	objTownStateTable.towns.t10.captured = false;
 	objTownStateTable.towns.t10.crew.quantity = 200 + Rand(300);
@@ -948,7 +948,7 @@ void InitTownTable()
 	objTownStateTable.towns.t11.crew.data.year = 1;
 	objTownStateTable.towns.t11.crew.data.month = 1;
 	objTownStateTable.towns.t11.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t12.name = "Charles";
 	objTownStateTable.towns.t12.captured = false;
 	objTownStateTable.towns.t12.crew.quantity = 200 + Rand(300);
@@ -956,7 +956,7 @@ void InitTownTable()
 	objTownStateTable.towns.t12.crew.data.year = 1;
 	objTownStateTable.towns.t12.crew.data.month = 1;
 	objTownStateTable.towns.t12.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t13.name = "PortPax";
 	objTownStateTable.towns.t13.captured = false;
 	objTownStateTable.towns.t13.crew.quantity = 200 + Rand(300);
@@ -964,7 +964,7 @@ void InitTownTable()
 	objTownStateTable.towns.t13.crew.data.year = 1;
 	objTownStateTable.towns.t13.crew.data.month = 1;
 	objTownStateTable.towns.t13.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t14.name = "SanJuan";
 	objTownStateTable.towns.t14.captured = false;
 	objTownStateTable.towns.t14.crew.quantity = 200 + Rand(300);
@@ -972,7 +972,7 @@ void InitTownTable()
 	objTownStateTable.towns.t14.crew.data.year = 1;
 	objTownStateTable.towns.t14.crew.data.month = 1;
 	objTownStateTable.towns.t14.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t15.name = "SantoDomingo";
 	objTownStateTable.towns.t15.captured = false;
 	objTownStateTable.towns.t15.crew.quantity = 100 + Rand(100);
@@ -1036,7 +1036,7 @@ void InitTownTable()
 	objTownStateTable.towns.t23.crew.data.year = 1;
 	objTownStateTable.towns.t23.crew.data.month = 1;
 	objTownStateTable.towns.t23.crew.data.day = 1;
-	
+
 	objTownStateTable.towns.t24.name = "Maracaibo";
 	objTownStateTable.towns.t24.captured = false;
 	objTownStateTable.towns.t24.crew.quantity = 100 + Rand(100);

@@ -16,7 +16,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l2 = "Ловко почикали английских псов, а?";
             link.l2.go = "Step_H4_1";
         break;
-        
+
         case "Step_H4_1":
 			dialog.text = "Да чего уж тут скажешь, минхер. Ловчее не бывает. Огромное вам спасибо!";
 			link.l1 = "Да не за что.";

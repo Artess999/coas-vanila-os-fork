@@ -6,7 +6,7 @@ void Island_Start()
 void Island_Reload(string sIslandID, string sNewIslandModel)
 {
 	int iIslandID = FindIsland(sIslandID);
-	if (iIslandID < 0) 
+	if (iIslandID < 0)
 	{
 		return;
 	}
@@ -28,7 +28,7 @@ string Island_FindNearestLocator(string group, float x, float z)
 	float fDist;
 	int i, iNum;
 	int iIslandID = FindIsland(PChar.location);
-	if (iIslandID < 0) 
+	if (iIslandID < 0)
 	{
 		return retStr;
 	}
@@ -41,7 +41,7 @@ string Island_FindNearestLocator(string group, float x, float z)
 	{
 		arLocator = GetAttributeN(arGroup, i);
 		fDist = GetDistance2D(x, z, stf(arLocator.x), stf(arLocator.z));
-		if (fDist < fMin) 
+		if (fDist < fMin)
 		{
 			fMin = fDist;
 			retStr = GetAttributeName(arLocator);

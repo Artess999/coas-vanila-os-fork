@@ -22,7 +22,7 @@ void InitInterface(string iniName)
 	SetEventHandler("exitCancel","ProcessCancelExit",0); // Выход на море по крестику или Esc
 	SetEventHandler("ievnt_command","ProcCommand",0);
 	SetEventHandler("evntDoPostExit","DoPostExit",0);
-	
+
 	SetEventHandler("My_EndView","EndView",0);
 	PostEvent("My_EndView", makeint(stf(pchar.AutoQuest.FrameAutoEnd)*1000));
 }
@@ -82,7 +82,7 @@ void ProcCommand()
 {
 	string comName = GetEventData();
 	string nodName = GetEventData();
-    
+
 	switch(nodName)
 	{
 	}

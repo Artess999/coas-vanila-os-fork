@@ -56,7 +56,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			DialogExit();
 			SetReturn_Gover_Dialog_Exit(NPChar);
             Statistic_AddValue(Pchar, NationShortName(sti(NPChar.nation)) + "_GrabbingTown", 1);
-			LAi_LoginInCaptureTown(&characters[GetCharacterIndex("Henry Morgan")], true); 
+			LAi_LoginInCaptureTown(&characters[GetCharacterIndex("Henry Morgan")], true);
 			LAi_LoginInCaptureTown(&characters[GetCharacterIndex("Jackman")], true);
 			LAi_LoginInCaptureTown(&characters[GetCharacterIndex("John Morris")], true);
             DoReloadCharacterToLocation("Beliz_fort",  "goto", "goto61");
@@ -74,7 +74,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                 ChangeCharacterAddressGroup(&characters[GetCharacterIndex("John Morris")], "Beliz_fort", "goto", "goto01");
                 LAi_SetStayType(characterFromID("John Morris"));
                 characters[GetCharacterIndex("John Morris")].dialog.currentnode = "Gold_found_in_fort";
-            }     
+            }
             LAi_LocationFightDisable(&Locations[FindLocation("Beliz_fort")], true);
             // ==> Дележ золота. Можно не брать Джекмена и Джона Морриса вообще в эскадру.
             // === Квест будет выполнен, а золото поделено соответственно.

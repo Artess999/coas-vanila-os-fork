@@ -56,14 +56,14 @@ void LAI_TYPE_LSCout_CharacterUpdate(aref chr, float dltTime)
 	//Log_SetEternalString("Темплейт: " + chr.chr_ai.tmpl + "   Стейт: " + chr.chr_ai.tmpl.state);
 	//Если болтаем, то ничего пока не меняем
 	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG) return;
-	
+
 	if(chr.chr_ai.tmpl != LAI_TMPL_FIGHT && chr.chr_ai.tmpl != LAI_TMPL_AFRAID)
 	{
-		bool isDialog = false;		
+		bool isDialog = false;
 		//Ищем цель
 		int trg = LAi_group_GetTarget(chr);
 		if(trg < 0)
-		{			
+		{
 			float time = stf(chr.chr_ai.type.time) - dltTime;
 			chr.chr_ai.type.time = time;
 			chr.chr_ai.type.look_around = stf(chr.chr_ai.type.look_around) - dltTime;
@@ -76,7 +76,7 @@ void LAI_TYPE_LSCout_CharacterUpdate(aref chr, float dltTime)
 				{
 					for(int i = 0; i < num; i++)
 					{
-						//--> проверяем не врагов, но дерущихся. 
+						//--> проверяем не врагов, но дерущихся.
 						int idx = sti(chrFindNearCharacters[i].index);
 						by = &Characters[idx];
 						if (LAi_CheckFightMode(by))
@@ -95,7 +95,7 @@ void LAI_TYPE_LSCout_CharacterUpdate(aref chr, float dltTime)
 							else
 							{
 								LAi_tmpl_afraid_SetAfraidCharacter(chr, by, true);
-							}							
+							}
 							return;
 						}
 						//<-- проверяем не врагов, но дерущихся.
@@ -116,9 +116,9 @@ void LAI_TYPE_LSCout_CharacterUpdate(aref chr, float dltTime)
 						else CharacterTurnByChr(chr, pchar);
 					}
 					else
-					{	//если не ГГ, то ближайший нпс (сортировка)				
+					{	//если не ГГ, то ближайший нпс (сортировка)
 						trg = sti(chrFindNearCharacters[0].index);
-						if (stf(chrFindNearCharacters[0].dist) < 2.5 && stf(chr.chr_ai.type.notalk) <= 0.0) 
+						if (stf(chrFindNearCharacters[0].dist) < 2.5 && stf(chr.chr_ai.type.notalk) <= 0.0)
 						{
 							isDialog = true;
 						}
@@ -139,7 +139,7 @@ void LAI_TYPE_LSCout_CharacterUpdate(aref chr, float dltTime)
 							LAI_TYPE_LSCout_Goto(chr);
 						}
 					}
-				}			
+				}
 				if(LAi_tmpl_goto_IsWait(chr))
 				{
 					if(rand(100) < 20) LAI_TYPE_LSCout_Goto(chr);
@@ -156,7 +156,7 @@ void LAI_TYPE_LSCout_CharacterUpdate(aref chr, float dltTime)
 			//Стоим
 			if(chr.chr_ai.tmpl == LAI_TMPL_STAY)
 			{
-				if(trg >= 0) 
+				if(trg >= 0)
 				{
 					if (isDialog && rand(1))
 					{
@@ -263,7 +263,7 @@ bool LAI_TYPE_LSCout_CharacterLogoff(aref chr)
 
 //Завершение работы темплейта
 void LAI_TYPE_LSCout_TemplateComplite(aref chr, string tmpl)
-{	
+{
 	if(tmpl == "goto")
 	{
 		LAI_TYPE_LSCout_Stay(chr);
@@ -345,12 +345,12 @@ void LAI_TYPE_LSCout_Attacked(aref chr, aref by)
 	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG)
 	{
 		LAi_tmpl_dialog_StopNPC(chr);
-	}	
+	}
 	//Своих пропускаем
 	if(!LAi_group_IsEnemy(chr, by)) return;
     //boal fix ai -->
     float dist = -1.0;
-	
+
 	if(!GetCharacterDistByChr3D(chr, by, &dist)) return;
 	if(dist < 0.0) return;
 	if(dist > 20.0) return;
@@ -387,7 +387,7 @@ void LAI_TYPE_LSCout_Goto(aref chr)
 	int locQty = 9;
 	newloc = strcut(newloc, 4, 5);
 	//переадресация на другой корабль
-	if (rand(10) == 5 && sti(chr.location.baseShip.going)) 
+	if (rand(10) == 5 && sti(chr.location.baseShip.going))
 	{
 		int iTemp = rand(15)+1;
 		if (iTemp < 10) newloc = "0" + iTemp;
@@ -404,7 +404,7 @@ void LAI_TYPE_LSCout_Goto(aref chr)
 		LAi_tmpl_goto_SetLocator(chr, "goto", newloc, -1.0);
 		chr.chr_ai.type.state = "goto";
 		chr.chr_ai.type.locator = newloc;
-	}	
+	}
 }
 
 

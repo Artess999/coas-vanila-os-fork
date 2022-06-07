@@ -4,26 +4,26 @@ int iNetShipsNum = 0;
 int Net_GetShipsNum() { return iNetShipsNum; }
 ref Net_GetShipByName(string sName) { return &NetShips[Net_GetShipIndex(sName)]; }
 ref Net_GetShipByIndex(int iIndex) { return &NetShips[iIndex]; }
-int Net_GetShipIndex(string sName) 
-{ 
-	for (int i=0; i<iNetShipsNum; i++) 
+int Net_GetShipIndex(string sName)
+{
+	for (int i=0; i<iNetShipsNum; i++)
 	{
 		if (NetShips[i].Name == sName) { return i; }
 	}
 	Trace("ERROR: Can't find NetShip" + sName);
-	return -1; 
+	return -1;
 }
 
-int Net_GetShipCannonsNum(int iShipIndex) 
-{ 
-	if (iShipIndex < 0) { return 0; }
-	return sti(NetShips[iShipIndex].CannonsQuantity); 
-}
-
-int Net_GetShipCost(int iShipIndex) 
+int Net_GetShipCannonsNum(int iShipIndex)
 {
 	if (iShipIndex < 0) { return 0; }
-	return sti(NetShips[iShipIndex].Cost); 
+	return sti(NetShips[iShipIndex].CannonsQuantity);
+}
+
+int Net_GetShipCost(int iShipIndex)
+{
+	if (iShipIndex < 0) { return 0; }
+	return sti(NetShips[iShipIndex].Cost);
 }
 
 int Net_GetShipUpgradeHullCost(int iShipIndex, int iHullUpgradeIndex)
@@ -32,7 +32,7 @@ int Net_GetShipUpgradeHullCost(int iShipIndex, int iHullUpgradeIndex)
 	if (iHullUpgradeIndex < 0) { return 0; }
 
 	string sHullUpgrade = "Hull" + (iHullUpgradeIndex + 1);
-	return sti(NetShips[iShipIndex].Upgrades.(sHullUpgrade)); 
+	return sti(NetShips[iShipIndex].Upgrades.(sHullUpgrade));
 }
 
 int Net_GetShipUpgradeRiggingCost(int iShipIndex, int iRiggingUpgradeIndex)
@@ -41,7 +41,7 @@ int Net_GetShipUpgradeRiggingCost(int iShipIndex, int iRiggingUpgradeIndex)
 	if (iRiggingUpgradeIndex < 0) { return 0; }
 
 	string sRiggingUpgrade = "Rigging" + (iRiggingUpgradeIndex + 1);
-	return sti(NetShips[iShipIndex].Upgrades.(sRiggingUpgrade)); 
+	return sti(NetShips[iShipIndex].Upgrades.(sRiggingUpgrade));
 }
 
 void Net_InitShips()
@@ -96,7 +96,7 @@ void Net_InitShips()
 		aref cannonl, cannonr, cannonb, cannonf;
 
 		refShip.FireHeight = 3.0;
-		
+
 		refShip.rcannon = 0;
 		refShip.lcannon = 0;
 		refShip.fcannon = 0;
@@ -156,7 +156,7 @@ void Net_InitShips()
 	refShip.fWindAgainstSpeed				= 10.0;
 	refShip.sea_enchantment					= 4.0;
 	refShip.lowpolycrew						= 3;
-	
+
 	refShip.Massa = 50000.0;
 	refShip.Volume = 100.0;
 
@@ -167,7 +167,7 @@ void Net_InitShips()
 	refship.InertiaAccelerationX	= 3.0;	refship.InertiaBrakingX		= 2.0;
 	refship.InertiaAccelerationY	= 14;	refship.InertiaBrakingY		= 5;
 	refship.InertiaAccelerationZ	= 5.0;	refship.InertiaBrakingZ		= 3.0;
-	
+
 	refShip.GeraldSails.rey_a2		= 1;
 
 	refShip.Height.Bombs.Y				= 1.0;	refShip.Height.Bombs.DY		= 0.5;
@@ -218,16 +218,16 @@ void Net_InitShips()
 	//refShip.Rocking.factor = 0.012;
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.035;
-	
+
 	refship.WaterLine							= 0.2;
 	refship.SpeedDependWeight			= 0.1;
 	refship.SubSeaDependWeight			= 0.4;
 	refship.TurnDependWeight			= 0.8;
-	
+
 	refship.InertiaAccelerationX	= 10.0;	refship.InertiaBrakingX		= 10.0;
 	refship.InertiaAccelerationY	= 10;	refship.InertiaBrakingY		= 10;
 	refship.InertiaAccelerationZ	= 10.0;	refship.InertiaBrakingZ		= 10.0;
-	
+
 	refShip.Height.Bombs.Y				= 1.0;	refShip.Height.Bombs.DY		= 0.5;
 	refShip.Height.Grapes.Y				= 2.0;	refShip.Height.Grapes.DY	= 1.0;
 	refShip.Height.Knippels.Y			= 10.0;	refShip.Height.Knippels.DY	= 8.0;
@@ -247,7 +247,7 @@ void Net_InitShips()
 	refShip.GeraldSails.rey_a3		= 1;
 
 	///////////////////////////////////////////////////////////////////////////
-	//// Sloop 
+	//// Sloop
 	///////////////////////////////////////////////////////////////////////////
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Sloop";
@@ -274,17 +274,17 @@ void Net_InitShips()
 	refShip.fWindAgainstSpeed				= 5;
 	refShip.sea_enchantment					= 2.0;
 	refShip.lowpolycrew = 8;
-	
+
 	//refShip.Rocking.factor = 0.015;
 	refship.Rocking.y = 0.25;
 	refship.Rocking.az = 0.05;
-	
+
 	refship.WaterLine							= -0.0;
 
 	refship.SpeedDependWeight			= 0.3;
 	refship.SubSeaDependWeight			= 0.3;
 	refship.TurnDependWeight			= 0.6;
-	
+
 	refship.InertiaAccelerationX	= 8.0;	refship.InertiaBrakingX		= 8.0;
 	refship.InertiaAccelerationY	= 8;	refship.InertiaBrakingY		= 8;
 	refship.InertiaAccelerationZ	= 8.0;	refship.InertiaBrakingZ		= 8.0;
@@ -339,11 +339,11 @@ void Net_InitShips()
 	refship.SpeedDependWeight			= 0.3;
 	refship.SubSeaDependWeight			= 0.2;
 	refship.TurnDependWeight			= 0.4;
-	
+
 	refship.InertiaAccelerationX	= 8.0;	refship.InertiaBrakingX		= 8.0;
 	refship.InertiaAccelerationY	= 6;		refship.InertiaBrakingY		= 6;
 	refship.InertiaAccelerationZ	= 6.0;	refship.InertiaBrakingZ		= 6.0;
-	
+
 	refShip.Height.Bombs.Y				= 1.0;		refShip.Height.Bombs.DY		= 1.0;
 	refShip.Height.Grapes.Y				= 2.0;		refShip.Height.Grapes.DY	= 1.0;
 	refShip.Height.Knippels.Y			= 15.0;		refShip.Height.Knippels.DY	= 10.0;
@@ -394,12 +394,12 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.4;
 	refship.Rocking.az = 0.025;
-	
+
 	refship.WaterLine							= 1.15;
 	refship.SpeedDependWeight			= 0.4;
 	refship.SubSeaDependWeight			= 0.8;
 	refship.TurnDependWeight			= 1.6;
-	
+
 	refship.InertiaAccelerationX	= 4.0;	refship.InertiaBrakingX		= 4.0;
 	refship.InertiaAccelerationY	= 4;	refship.InertiaBrakingY		= 4.0;
 	refship.InertiaAccelerationZ	= 6.0;	refship.InertiaBrakingZ		= 6.0;
@@ -449,22 +449,22 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.035;
-		
-	
+
+
 	refship.WaterLine							= 1.0;
 	refship.SpeedDependWeight			= 0.5;
 	refship.SubSeaDependWeight			= 0.6;
 	refship.TurnDependWeight			= 1.2;
-	
+
 	refship.InertiaAccelerationX	= 3.0;	refship.InertiaBrakingX		= 3.0;
 	refship.InertiaAccelerationY	= 3;	refship.InertiaBrakingY		= 3;
 	refship.InertiaAccelerationZ	= 3.0;	refship.InertiaBrakingZ		= 3.0;
-	
+
 	refShip.Height.Bombs.Y				= 1.0;	refShip.Height.Bombs.DY		= 0.5;
 	refShip.Height.Grapes.Y				= 2.0;	refShip.Height.Grapes.DY	= 1.0;
 	refShip.Height.Knippels.Y			= 10.0;	refShip.Height.Knippels.DY	= 8.0;
 	refShip.Height.Balls.Y				= 1.0;	refShip.Height.Balls.DY		= 0.5;
-	
+
 	refship.Track.Enable	= true;
 	refship.Track1.ZStart	= 0.20;
 	refship.Track1.LifeTime = 10;
@@ -477,10 +477,10 @@ void Net_InitShips()
 	refship.Track2.Speed	= "0.15, 0.25";
 
 	refShip.GeraldSails.rey_a3		= 1;
-	
+
 
 	///////////////////////////////////////////////////////////////////////////
-	/// Fleut 
+	/// Fleut
 	///////////////////////////////////////////////////////////////////////////
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Fleut";
@@ -507,15 +507,15 @@ void Net_InitShips()
 	refShip.fWindAgainstSpeed				= 2;
 	refShip.sea_enchantment					= 1.5;
 	refShip.lowpolycrew = 16;
-	
+
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.035;
-	
+
 	refship.WaterLine							= 1.2;
 	refship.SpeedDependWeight			= 0.35;
 	refship.SubSeaDependWeight			= 0.8;
 	refship.TurnDependWeight			= 1.6;
-	
+
 	refship.InertiaAccelerationX	= 4.5;	refship.InertiaBrakingX		= 4.5;
 	refship.InertiaAccelerationY	= 6;	refship.InertiaBrakingY		= 6;
 	refship.InertiaAccelerationZ	= 4.0;	refship.InertiaBrakingZ		= 4.0;
@@ -530,7 +530,7 @@ void Net_InitShips()
 	refship.Track2.LifeTime = 7.5;
 	refship.Track2.Width	= "6.0, 8.0";
 	refship.Track2.Speed	= "0.15, 0.25";
-	
+
 	refShip.GeraldSails.rey_a3		= 1;
 	refShip.GeraldSails.rey_a2		= 1;
 
@@ -565,24 +565,24 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.04;
-	
+
 	refship.WaterLine							= 0.1;
 	refship.SpeedDependWeight			= 0.3;
 	refship.SubSeaDependWeight			= 0.6;
 	refship.TurnDependWeight			= 1.2;
-	
+
 	refship.InertiaAccelerationX	= 5.5;	refship.InertiaBrakingX		= 5.5;
 	refship.InertiaAccelerationY	= 8;	refship.InertiaBrakingY		= 8;
 	refship.InertiaAccelerationZ	= 6.0;	refship.InertiaBrakingZ		= 6.0;
-	
+
 	refShip.Height.Bombs.Y				= 1.0;		refShip.Height.Bombs.DY		= 1.0;
 	refShip.Height.Grapes.Y				= 2.0;		refShip.Height.Grapes.DY	= 1.0;
 	refShip.Height.Knippels.Y			= 15.0;		refShip.Height.Knippels.DY	= 10.0;
 	refShip.Height.Balls.Y				= 1.0;		refShip.Height.Balls.DY		= 1.0;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
-	
+
 	refship.Track.Enable	= true;
 	refship.Track1.ZStart	= 0.20;
 	refship.Track1.LifeTime = 12;
@@ -625,16 +625,16 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.45;
 	refship.Rocking.az = 0.035;
-	
+
 	refship.WaterLine							= 0.85;
 	refship.SpeedDependWeight			= 0.4;
 	refship.SubSeaDependWeight			= 0.95;
 	refship.TurnDependWeight			= 0.2;
-	
+
 	refship.InertiaAccelerationX	= 4.0;	refship.InertiaBrakingX		= 4.0;
 	refship.InertiaAccelerationY	= 6;	refship.InertiaBrakingY		= 6;
 	refship.InertiaAccelerationZ	= 4.0;	refship.InertiaBrakingZ		= 4.0;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -648,7 +648,7 @@ void Net_InitShips()
 	refship.Track2.LifeTime = 10.5;
 	refship.Track2.Width	= "6.0, 8.0";
 	refship.Track2.Speed	= "0.15, 0.25";
-	
+
 	refShip.GeraldSails.rey_a2		= 1;
 
 	///////////////////////////////////////////////////////////////////////////
@@ -682,16 +682,16 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.8;
 	refship.Rocking.az = 0.025;
-	
+
 	refship.WaterLine							= -0.4;
 	refship.SpeedDependWeight			= 0.3;
 	refship.SubSeaDependWeight			= 0.7;
 	refship.TurnDependWeight			= 1.4;
-	
+
 	refship.InertiaAccelerationX	= 8.0;	refship.InertiaBrakingX		= 8.0;
 	refship.InertiaAccelerationY	= 6;	refship.InertiaBrakingY		= 6;
 	refship.InertiaAccelerationZ	= 6.0;	refship.InertiaBrakingZ		= 6.0;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -737,20 +737,20 @@ void Net_InitShips()
 	refShip.sea_enchantment					= 1.2;
 	refShip.lowpolycrew = 20;
 
-	
+
 	refship.Rocking.y = 0.4;
 	refship.Rocking.az = 0.02;
-	
+
 	refship.WaterLine							= -0.2;
 
 	refship.SpeedDependWeight			= 0.5;
 	refship.SubSeaDependWeight			= 0.3;
 	refship.TurnDependWeight			= 1.0;
-	
+
 	refship.InertiaAccelerationX	= 4.5;	refship.InertiaBrakingX		= 4.5;
 	refship.InertiaAccelerationY	= 3;	refship.InertiaBrakingY		= 3;
 	refship.InertiaAccelerationZ	= 4.5;	refship.InertiaBrakingZ		= 4.5;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -766,7 +766,7 @@ void Net_InitShips()
 	refship.Track2.Speed	= "0.15, 0.25";
 
 	///////////////////////////////////////////////////////////////////////////
-	/// Pinnace 
+	/// Pinnace
 	///////////////////////////////////////////////////////////////////////////
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Pinnace";
@@ -796,16 +796,16 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.4;
 	refship.Rocking.az = 0.035;
-	
+
 	refship.WaterLine							= 0.8;
 	refship.SpeedDependWeight			= 0.4;
 	refship.SubSeaDependWeight			= 1.3;
 	refship.TurnDependWeight			= 1.0;
-	
+
 	refship.InertiaAccelerationX	= 3.0;	refship.InertiaBrakingX		= 3.0;
 	refship.InertiaAccelerationY	= 4;	refship.InertiaBrakingY		= 4;
 	refship.InertiaAccelerationZ	= 3.0;	refship.InertiaBrakingZ		= 3.0;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -819,9 +819,9 @@ void Net_InitShips()
 	refship.Track2.LifeTime = 8.5;
 	refship.Track2.Width	= "10.0, 12.0";
 	refship.Track2.Speed	= "0.15, 0.25";
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	/// Frigate 
+	/// Frigate
 	///////////////////////////////////////////////////////////////////////////
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Frigate";
@@ -849,25 +849,25 @@ void Net_InitShips()
 	refShip.sea_enchantment					= 1.2;
 	refShip.lowpolycrew = 20;
 
-	
+
 	refship.Rocking.y = 0.4;
 	refship.Rocking.az = 0.035;
-	
+
 	refship.WaterLine							= 0.5;
 
 	refship.SpeedDependWeight			= 0.3;
 	refship.SubSeaDependWeight			= 1.0;
 	refship.TurnDependWeight			= 1.0;
-	
+
 	refship.InertiaAccelerationX	= 5.0;	refship.InertiaBrakingX		= 5.0;
 	refship.InertiaAccelerationY	= 4;	refship.InertiaBrakingY		= 4;
 	refship.InertiaAccelerationZ	= 5.0;	refship.InertiaBrakingZ		= 5.0;
-	
+
 	refShip.Height.Bombs.Y				= 1.0;	refShip.Height.Bombs.DY		= 0.5;
 	refShip.Height.Grapes.Y				= 2.0;	refShip.Height.Grapes.DY	= 1.0;
 	refShip.Height.Knippels.Y			= 10.0;	refShip.Height.Knippels.DY	= 8.0;
 	refShip.Height.Balls.Y				= 1.0;	refShip.Height.Balls.DY		= 0.5;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -881,9 +881,9 @@ void Net_InitShips()
 	refship.Track2.LifeTime = 8.5;
 	refship.Track2.Width	= "8.0, 9.0";
 	refship.Track2.Speed	= "0.15, 0.25";
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	/// Lineship 
+	/// Lineship
 	///////////////////////////////////////////////////////////////////////////
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Lineship";
@@ -913,17 +913,17 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.035;
-		
+
 	refship.WaterLine					= 2.2;
 
 	refship.SpeedDependWeight			= 0.4;
 	refship.SubSeaDependWeight			= 1.15;
 	refship.TurnDependWeight			= 0.6;
-	
+
 	refship.InertiaAccelerationX	= 3.0;	refship.InertiaBrakingX		= 3.0;
 	refship.InertiaAccelerationY	= 2;	refship.InertiaBrakingY		= 2;
 	refship.InertiaAccelerationZ	= 3.0;	refship.InertiaBrakingZ		= 3.0;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -939,7 +939,7 @@ void Net_InitShips()
 	refship.Track2.Speed	= "0.15, 0.25";
 
 	///////////////////////////////////////////////////////////////////////////
-	/// Warship 
+	/// Warship
 	///////////////////////////////////////////////////////////////////////////
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Warship";
@@ -969,17 +969,17 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.035;
-	
+
 	refship.WaterLine							= 0.5;
 
 	refship.SpeedDependWeight			= 0.45;
 	refship.SubSeaDependWeight			= 1.0;
 	refship.TurnDependWeight			= 1.0;
-	
+
 	refship.InertiaAccelerationX	= 2.5;	refship.InertiaBrakingX		= 2.5;
 	refship.InertiaAccelerationY	= 1.5;		refship.InertiaBrakingY		= 1.5;
 	refship.InertiaAccelerationZ	= 2.5;	refship.InertiaBrakingZ		= 2.5;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -994,7 +994,7 @@ void Net_InitShips()
 	refship.Track2.Width	= "8.0, 10.0";
 	refship.Track2.Speed	= "1.0, 2.0";
 	///////////////////////////////////////////////////////////////////////////
-	/// Battleship 
+	/// Battleship
 	///////////////////////////////////////////////////////////////////////////
 	makeref(refShip, NetShips[n]); n++;
 	refShip.Name            			= "Battleship";
@@ -1024,17 +1024,17 @@ void Net_InitShips()
 
 	refship.Rocking.y = 0.5;
 	refship.Rocking.az = 0.035;
-	
-	
+
+
 	refship.WaterLine							= -0.2;
 	refship.SpeedDependWeight			= 0.5;
 	refship.SubSeaDependWeight			= 0.75;
 	refship.TurnDependWeight			= 1.9;
-	
+
 	refship.InertiaAccelerationX	= 2.0;	refship.InertiaBrakingX		= 2.0;
 	refship.InertiaAccelerationY	= 1;	refship.InertiaBrakingY		= 1;
 	refship.InertiaAccelerationZ	= 2.0;	refship.InertiaBrakingZ		= 2.0;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 
@@ -1048,7 +1048,7 @@ void Net_InitShips()
 	refship.Track2.LifeTime = 13.5;
 	refship.Track2.Width	= "8.0, 9.0";
 	refship.Track2.Speed	= "0.15, 0.25";
-	
+
 	///////////////////////////////////////////////////////////////////////////
 	/// Manowar
 	///////////////////////////////////////////////////////////////////////////
@@ -1085,11 +1085,11 @@ void Net_InitShips()
 	refship.SpeedDependWeight			= 0.6;
 	refship.SubSeaDependWeight			= 1.8;
 	refship.TurnDependWeight			= 2.6;
-	
+
 	refship.InertiaAccelerationX	= 1.0;	refship.InertiaBrakingX		= 1.0;
 	refship.InertiaAccelerationY	= 1;	refship.InertiaBrakingY		= 1;
 	refship.InertiaAccelerationZ	= 1.0;	refship.InertiaBrakingZ		= 1.0;
-	
+
 	refShip.GeraldSails.rey_b2		= 1;
 	refShip.GeraldSails.rey_b3		= 1;
 

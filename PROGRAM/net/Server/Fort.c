@@ -63,7 +63,7 @@ void NetServer_CreateFortEnvironment(int iSMsg)
 
 			ref rShip = Net_GetShipByName("FORT");
 			rFort.Ship.Type = Net_GetShipIndex("FORT");
-			
+
 			rFort.Ship.HP = 100.0;
 			rFort.Ship.Crew.Quantity = sti(rShip.MaxCrew);
 			rFort.Ship.Crew.MinRatio = 1.0;
@@ -160,7 +160,7 @@ float NetServer_OnFortCannonDamage()
 		NMDelete(iSMsg);
 
 		iDamagedCannons++;
-		
+
 		rFort.Ship.HP = 100.0 * (1.0 - (iDamagedCannons / iTotalCannons));
 
 		// check for fort defeat
@@ -178,7 +178,7 @@ void NetServer_OnFortHit()
 	float x = GetEventData();
 	float y = GetEventData();
 	float z = GetEventData();
-	
+
 	int iSMsg = NMCreate();
 	NMAddByte(iSMsg, NC_BALL);
 	NMAddByte(iSMsg, NSC_BALL_HIT_FORT);

@@ -40,7 +40,7 @@ void FillStoreGoods(ref pRef)
 	{
 		ref rColony = GetColonyByIndex(iColony);
 		int islandIdx = FindIsland(rColony.island); // остров города
-		
+
 		if (islandIdx!=-1)
 		{
             ref rIsland = GetIslandByIndex(islandIdx);
@@ -65,10 +65,10 @@ void FillStoreGoods(ref pRef)
 			}
 		}
 		else
-		{		
+		{
 			trace("Mistake island id into store:  id="+rColony.island);
 		}
-	
+
   		for (i=0; i<GOODS_QUANTITY; i++)
 		{
 		   	goodName = Goods[i].Name;
@@ -99,11 +99,11 @@ void FillStoreGoods(ref pRef)
 				    pRef.Goods.(goodName).Quantity = 200 + Rand(2500) + rand(500); // boal
 					pRef.Goods.(goodName).RndPriceModify = frnd() * 0.2;//0.4
 					break;
-					
-				case TRADE_TYPE_CANNONS:  
+
+				case TRADE_TYPE_CANNONS:
 				    pRef.Goods.(goodName).Quantity = 20 + Rand(50) + rand(50); // boal
 					pRef.Goods.(goodName).RndPriceModify = frnd() * 0.4
-					break;	
+					break;
 			}
 
 			if (i==GOOD_GOLD || i==GOOD_SILVER  || i==GOOD_WEAPON || i==GOOD_MEDICAMENT) //|| i==GOOD_FOOD

@@ -10,7 +10,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
@@ -21,7 +21,7 @@ void ProcessDialogEvent()
 			link.l2 = "Нет, это не я.";
 			link.l2.go = "exit";
 		break;
-		
+
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 			link.l1 = "Пассажир ваш, случайно, не дон Мигель де Вальдес? Я мог бы доставить его на Сан-Хуан.";
 			link.l1.go = "ShipToDomingoTavenr_3";
 		break;
-		
+
 		case "ShipToDomingoTavenr_3":
             NextDiag.TempNode = "ShipToDomingoTavenr_Temp";
 			dialog.text = "Да, сеньор! Именно! Дон Мигель де Вальдес!  О, сеньор, да благословит вас Господь!";
@@ -47,7 +47,7 @@ void ProcessDialogEvent()
 			npchar.LifeDay = 2;
             SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 		break;
-		
+
 		case "ShipToDomingoTavenr_Temp":
             NextDiag.TempNode = "ShipToDomingoTavenr_Temp";
             dialog.text = "О, сеньор, да благословит вас Господь!";
@@ -76,7 +76,7 @@ void ProcessDialogEvent()
             LAi_SetActorType(npchar);
             LAi_ActorRunToLocation(npchar, "reload", "reload1_back", "none", "", "", "", -1);
 			chrDisableReloadToLocation = false;
-			bDisableFastReload = false; 
+			bDisableFastReload = false;
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
@@ -87,7 +87,7 @@ void ProcessDialogEvent()
 			link.l1 = "Поверьте, мне это совсем не в тягость.";
 			link.l1.go = "exit";
 		break;
-		
+
 		case "Romantic_Brother_port_1":
             NextDiag.TempNode = "Romantic_Brother_2";
             dialog.text = "Спасибо. А теперь пойдем навестим мою сестру.";
@@ -128,7 +128,7 @@ void ProcessDialogEvent()
 			link.l1 = "Ты сам выбрал свою судьбу, щенок!";
 			link.l1.go = "TalkNearHouse_3";
 		break;
-		case "TalkNearHouse_3":		
+		case "TalkNearHouse_3":
 			DialogExit();
 			AddDialogExitQuest("Romantic_DeadBrother_1");
 		break;
@@ -153,7 +153,7 @@ void ProcessDialogEvent()
 			if (CheckCharacterItem(pchar, "Order"))
 			{
 				link.l1 = "Они у меня, офицер!";
-				link.l1.go = "ArrestInHome_Have";				
+				link.l1.go = "ArrestInHome_Have";
 			}
 			else
 			{
@@ -242,7 +242,7 @@ void ProcessDialogEvent()
 		break;
   		case "BrigAbordage_4":
 			LAi_SetCurHPMax(npchar);
-			QuestAboardCabinDialogExitWithBattle("Romantic_TaklInCabinBrig");            
+			QuestAboardCabinDialogExitWithBattle("Romantic_TaklInCabinBrig");
             pchar.quest.Romantic_BrigDieHard.over = "yes";
 			pchar.quest.Romantic_AfterBrigSunk.over = "yes";
             Island_SetReloadEnableGlobal("PortoBello", true);
@@ -370,7 +370,7 @@ void ProcessDialogEvent()
 			pchar.quest.SeekIsabella_exitTown.win_condition.l1.location = "Beliz_ExitTown";
 			pchar.quest.SeekIsabella_exitTown.win_condition.l1.locator_group = "quest";
 			pchar.quest.SeekIsabella_exitTown.win_condition.l1.locator = "detector1";
-			pchar.quest.SeekIsabella_exitTown.function = "SeekIsabella_exitTown";		
+			pchar.quest.SeekIsabella_exitTown.function = "SeekIsabella_exitTown";
 			AddQuestRecord("Romantic_Line", "21");
 			//миортвая служанка
 			sld = GetCharacter(NPC_GenerateCharacter("ServantGirl", "girl_6", "woman", "towngirl", 5, SPAIN, 30, false));
@@ -443,7 +443,7 @@ void ProcessDialogEvent()
 			dialog.text = "И вновь все проблемы решил твой верный рыцарь... Изабелла, тебе крупно повезло, что у тебя есть такой почитатель!";
 			link.l1 = "Ах, кузина, это действительно так! Росита, чуть позже я тебе расскажу и о других новостях, а сейчас давай не будем задерживать моего спасителя.";
 			link.l1.go = "exit";
-			NextDiag.TempNode = "SavedIsabella_after";			
+			NextDiag.TempNode = "SavedIsabella_after";
 			AddDialogExitQuest("Romantic_DelivToRosita_2");
 		break;
 		case "SavedIsabella_after":
@@ -519,13 +519,13 @@ void ProcessDialogEvent()
 		break;
 		//семейная жизнь ГГ
 		case "IsabellaIsWife":
-			dialog.text = NPCStringReactionRepeat("Здравствуйте, кузен. Я так рада вас видеть! Как поживает Изабелла?", 
-				"Вы опять ко мне, кузен? Мы же только что поговорили.", 
-				"Кузен, что опять?! Ничего нового вы от меня не услышите!", 
+			dialog.text = NPCStringReactionRepeat("Здравствуйте, кузен. Я так рада вас видеть! Как поживает Изабелла?",
+				"Вы опять ко мне, кузен? Мы же только что поговорили.",
+				"Кузен, что опять?! Ничего нового вы от меня не услышите!",
 				"Послушайте, капитан, если вы и дома такой зануда, то мне жаль бедную мою кузину Изабеллу!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Здравствуйте, кузина Росита. Изабелла в порядке.", 
-				"Да, верно, только что... Извините меня, Росита, не буду вас отвлекать...", 
-				"Да? Ну тогда ладно...", 
+			link.l1 = HeroStringReactionRepeat("Здравствуйте, кузина Росита. Изабелла в порядке.",
+				"Да, верно, только что... Извините меня, Росита, не буду вас отвлекать...",
+				"Да? Ну тогда ладно...",
 				"Нет, Росита, дома я - ангел во плоти...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("IsabellaIsWife_1", "none", "none", "none", npchar, Dialog.CurrentNode);
 			NextDiag.TempNode = "IsabellaIsWife";
@@ -533,17 +533,17 @@ void ProcessDialogEvent()
 		case "IsabellaIsWife_1":
 			dialog.text = "Вы что-то хотели у меня узнать, капитан?";
 			link.l1 = "Да нет, Росита, просто зашел проведать.";
-			link.l1.go = "exit";				
+			link.l1.go = "exit";
 			if (pchar.RomanticQuest == "over")
 			{
 				link.l2 = "Росита, даже не знаю как сказать... Изабелла закрыла дверь в доме и не пускает меня!";
-				link.l2.go = "HorseCheck";	
+				link.l2.go = "HorseCheck";
 				break;
-			}			
+			}
 			if (pchar.RomanticQuest == "TheDoosIsClosed")
 			{
 				link.l2 = "Росита, даже не знаю как сказать... Изабелла закрыла дверь в доме и не пускает меня!";
-				link.l2.go = "TheDoosIsClosed";			
+				link.l2.go = "TheDoosIsClosed";
 			}
 			sld = characterFromID("Isabella");
 			if (CheckAttribute(sld, "angry")) //если Изабелла сидит на ангри
@@ -551,29 +551,29 @@ void ProcessDialogEvent()
 				if (sld.angry.name == "NewLife_Budget_Pay")
 				{
 					link.l3 = "Ты знаешь, Росита, у меня тут с деньгами проблемы были и Изабелла здорово на меня обиделать...";
-					link.l3.go = "Budget";			
+					link.l3.go = "Budget";
 				}
 				if (sld.angry.name == "NewLife_KnowPirates")
 				{
 					link.l4 = "Ты представляешь, Росита, Изабелла каким-то образом узнала о том, что я не совсем бросил каперство, как обещал перед свадьбой...";
-					link.l4.go = "KnowPirates";			
+					link.l4.go = "KnowPirates";
 				}
 				if (sld.angry.name == "NewLife_Present")
 				{
 					link.l5 = "Росита, тут такое дело... В общем, Изабелла здорово надулась на меня, не хочет общаться с мужем. Вот так!";
-					link.l5.go = "Present";			
+					link.l5.go = "Present";
 				}
 			}
 		break;
 		case "TheDoosIsClosed":
 			dialog.text = "Понятно... Вы, видимо, серьезно провинились, капитан. Вы что, долго не были дома?";
 			link.l1 = "Хм, ну как сказать... В общем-то, да. Но я же моряк, Росита, и моя работа - это постоянные выходы в море.";
-			link.l1.go = "TheDoosIsClosed_1";	
+			link.l1.go = "TheDoosIsClosed_1";
 		break;
 		case "TheDoosIsClosed_1":
 			dialog.text = "Я понимаю, капитан... Ну что же, я смогу уладить это дело. Отправляйтесь домой, все будет нормально...";
 			link.l1 = "Росита, вы просто чудо!";
-			link.l1.go = "TheDoosIsClosed_2";	
+			link.l1.go = "TheDoosIsClosed_2";
 		break;
 		case "TheDoosIsClosed_2":
 			dialog.text = "Не перехвалите меня, " + pchar.name + ". Я бы вам посоветовала взяться за ум и чаще бывать дома.";
@@ -587,75 +587,75 @@ void ProcessDialogEvent()
 		case "Budget":
 			dialog.text = "Что, такие долги?";
 			link.l1 = "Да, Росита. Изабелла просила меня несколько раз погасить задолженность, но у меня, как назло, не было тогда денег.";
-			link.l1.go = "Budget_1";	
+			link.l1.go = "Budget_1";
 		break;
 		case "Budget_1":
 			dialog.text = "Хм, плохо... Ну ладно, подскажу тебе, что нужно сделать. Принеси ей в подарок изумруды: кольцо, ожерелье и просто камень. Она очень любит эти камни и, полагаю, растает...";
 			link.l1 = "Пожалуй, так и сделаю! Спасибо тебе, Росита. До свидания.";
-			link.l1.go = "exit";	
+			link.l1.go = "exit";
 		break;
 
 		case "KnowPirates":
 			dialog.text = "Хм, кузен, вы меня простите за вопрос, но 'не совсем' - это как?";
 			link.l1 = "Ну, понимаешь, нападают на меня сами, а мне что остается делать? Атаковать, конечно!";
-			link.l1.go = "KnowPirates_1";	
+			link.l1.go = "KnowPirates_1";
 		break;
 		case "KnowPirates_1":
 			dialog.text = "Хм, понятно... Значит вы, капитан, совершенно ни при чем?";
 			link.l1 = "Именно так, кузина, совершенно точное определение моей причастности к пиратству!";
-			link.l1.go = "KnowPirates_2";	
+			link.l1.go = "KnowPirates_2";
 		break;
 		case "KnowPirates_2":
 			dialog.text = "Ясно... Ну что же, единственно могу посоветовать задобрить кузину Изабеллу.";
 			link.l1 = "Да это пожалуйста, но чем?";
-			link.l1.go = "KnowPirates_3";	
+			link.l1.go = "KnowPirates_3";
 		break;
 		case "KnowPirates_3":
 			dialog.text = "Разных камней и побольше. Я бы, например, подарила сапфир, алмаз, рубин, большую жемчужину, ну и золотое кольцо с рубином в придачу...";
 			link.l1 = "Хм, а это мысль!.. Спасибо тебе, Росита, я так и сделаю, кузина! Прощай...";
-			link.l1.go = "exit";	
+			link.l1.go = "exit";
 		break;
 
 		case "Present":
 			dialog.text = "А что произошло?";
 			link.l1 = "Да так, ничего особенного... Я тут решил подарок ей сделать, но подходящего ничего не нашлось.";
-			link.l1.go = "Present_1";	
+			link.l1.go = "Present_1";
 		break;
 		case "Present_1":
 			dialog.text = "Хм, ничего страшного... Кузен, вы что-то не договариваете.";
 			link.l1 = "Да я что-то забегался и забыл, что уже предлагал ей подарок... В общем, снова предложил. И так четыре раза...";
-			link.l1.go = "Present_2";	
+			link.l1.go = "Present_2";
 		break;
 		case "Present_2":
 			dialog.text = "Это вы хватили лишку, капитан! Кто же это стерпит такое?!";
 			link.l1 = "Понятно, что переборщил, но что делать то теперь?";
-			link.l1.go = "Present_3";	
+			link.l1.go = "Present_3";
 		break;
 		case "Present_3":
 			dialog.text = "Делать вот что: сделайте ей, наконец, подарок. Возьмите три золотых самородка и пять серебряных слитков. Я думаю, Изабелла растает...";
 			link.l1 = "Ох, кузина Росита, что бы я без вас делал! Побегу искать злато-серебро. Прощайте...";
-			link.l1.go = "exit";	
+			link.l1.go = "exit";
 		break;
 
 		case "HorseCheck":
 			dialog.text = "Да, мне это известно. А вам я хочу сказать следующее, капитан - ваш брак расторгнут в одностороннем порядке.";
 			link.l1 = "Это что за дела такие? Уж не сам ли папа римский расторгнул?";
-			link.l1.go = "HorseCheck_1";	
+			link.l1.go = "HorseCheck_1";
 		break;
 		case "HorseCheck_1":
 			dialog.text = "Брак расторгнут де-факто, вы больше никогда не увидите Изабеллу.";
 			link.l1 = "Ничего не понимаю, да что же это делается?";
-			link.l1.go = "HorseCheck_2";	
+			link.l1.go = "HorseCheck_2";
 		break;
 		case "HorseCheck_2":
 			dialog.text = "А вы не знаете? Ну тогда я вам скажу, в чем дело.";
 			link.l1 = "Да, будьте так добры.";
-			link.l1.go = "HorseCheck_3";	
+			link.l1.go = "HorseCheck_3";
 		break;
 		case "HorseCheck_3":
 			dialog.text = "Вам нужно было меньше бегать по борделям, дорогой мой! Изабелла может много простить, но измену - никогда!";
 			link.l1 = "Черт!! А кто ей сказал? Меня оговорили!";
-			link.l1.go = "HorseCheck_4";	
+			link.l1.go = "HorseCheck_4";
 		break;
 		case "HorseCheck_4":
 			dialog.text = "Не нужно лицемерить, полученные Изабеллой сведения более чем достоверны. Прощайте, капитан...";

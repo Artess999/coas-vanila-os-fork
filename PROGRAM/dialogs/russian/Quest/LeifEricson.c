@@ -213,7 +213,7 @@ void ProcessDialogEvent()
 			Pchar.questTemp.Ascold.relation      = GetNationRelation2MainCharacter(FRANCE);
 			SetNationRelation2MainCharacter(FRANCE, RELATION_ENEMY);
             npchar.model = pchar.model;
-			npchar.model.animation = pchar.model.animation;			
+			npchar.model.animation = pchar.model.animation;
             FaceMaker(npchar);
             SetNewModelToChar(npchar);
             pchar.model = "Mummy";
@@ -250,15 +250,15 @@ void ProcessDialogEvent()
     		link.l1.go = "exit";
             for (i=1; i<=6; i++)
             {
-				sld = GetCharacter(NPC_GenerateCharacter("MySkel"+i, "Skel"+(rand(3)+1), "skeleton", "man", 30, PIRATE, 0, true));	
-				FantomMakeCoolFighter(sld, 20, 70, 70, "topor2", "pistol3", 50);  
+				sld = GetCharacter(NPC_GenerateCharacter("MySkel"+i, "Skel"+(rand(3)+1), "skeleton", "man", 30, PIRATE, 0, true));
+				FantomMakeCoolFighter(sld, 20, 70, 70, "topor2", "pistol3", 50);
 				ChangeCharacterAddressGroup(sld, pchar.location, "goto",  "goto"+(rand(2)+1));
 				LAi_SetActorType(sld);
 				LAi_ActorFollowEverywhere(sld, "", -1);
             }
             pchar.questTemp.Ascold = "Ascold_SkelSlave";
 		break;
-		
+
         case "Step_27":
         	dialog.text = "За это не волнуйся, я тебе его верну в целости. Твое тело мне не нужно, оно мне не нравится.\n"+
                           "Все, ты можешь идти.";
@@ -267,7 +267,7 @@ void ProcessDialogEvent()
 		break;
 
         case "Step_28":
-            PChar.GenQuest.CrewSkelMode = true; //команда - скелеты 
+            PChar.GenQuest.CrewSkelMode = true; //команда - скелеты
   		    chrDisableReloadToLocation = false; // открыть выход из локации.
             pchar.questTemp.Ascold = "Ascold_ImMummy";
             //==> потом вернуть
@@ -287,7 +287,7 @@ void ProcessDialogEvent()
             NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
         case "Step_29":
             DeleteAttribute(PChar, "GenQuest.CrewSkelMode"); // команда-скелеты в нормальное сост.
             bDisableCharacterMenu = false; //открываем Ф2
@@ -330,7 +330,7 @@ void ProcessDialogEvent()
             NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
         case "Step_30":
         	dialog.text = "Пока не найдешь, своего тела обратно не получишь.";
     		link.l1 = "Я буду искать...";
@@ -342,7 +342,7 @@ void ProcessDialogEvent()
     		link.l1 = "Понял. Ну, будь здоров, если можно так сказать...";
     		link.l1.go = "exit";
     		chrDisableReloadToLocation = false; // открыть выход из локации.
-			bDisableFastReload = false; 
+			bDisableFastReload = false;
     		pchar.questTemp.Ascold = "Ascold_ReturnToAscold";
     		characters[GetCharacterIndex("Ascold")].dialog.currentnode = "AfterAttackMummy";
 		break;

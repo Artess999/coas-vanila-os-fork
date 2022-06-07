@@ -158,11 +158,11 @@ ref BLI_CheckCommand()
 	case "BI_TalkSelf":
 		g_intRetVal = 0;
 	break;
-	
+
 	case "BI_ActivateRush":
 		g_intRetVal = 0;
 	break;
-	
+
 	case "BI_Exit_Deck": //boal
 		g_intRetVal = 0;
 	break;
@@ -261,11 +261,11 @@ void BLI_ExecuteCommand()
 	case "BI_DeadBox":
 		Dead_OpenBoxProcedure();
 	break;
-	
+
 	case "BI_TalkSelf":
 		DoQuestCheckDelay("TalkSelf_Start", 0.2);
 	break;
-	
+
 	case "BI_ActivateRush":
 		ActivateCharacterPerk(pchar,"Rush");
 	break;
@@ -348,11 +348,11 @@ void BLI_SetObjectData()
 	objLandInterface.CommandTextures.list.t0.name = "battle_interface\LandCommands.tga";
 	objLandInterface.CommandTextures.list.t0.xsize = 16;
 	objLandInterface.CommandTextures.list.t0.ysize = 2;
-	
+
  	objLandInterface.CommandTextures.list.t1.name = "battle_interface\LandTarget_SLB.tga";
 	objLandInterface.CommandTextures.list.t1.xsize = 16;
 	objLandInterface.CommandTextures.list.t1.ysize = 2;
-	
+
 	objLandInterface.CommandTextures.list.t2.name = "battle_interface\Cancel.tga";
 	objLandInterface.CommandTextures.list.t2.xsize = 2;
 	objLandInterface.CommandTextures.list.t2.ysize = 1;
@@ -398,28 +398,28 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.ItemsUse.texNum		= 0;
 	objLandInterface.Commands.ItemsUse.event		= "BI_ItemsUse";
 	objLandInterface.Commands.ItemsUse.note			= LanguageConvertString(idLngFile, "land_ItemsUse");
-	
+
 	objLandInterface.Commands.DialogStart.enable	= true;
  	objLandInterface.Commands.DialogStart.picNum		= 17;
 	objLandInterface.Commands.DialogStart.selPicNum		= 1;
 	objLandInterface.Commands.DialogStart.texNum		= 0;
 	objLandInterface.Commands.DialogStart.event		= "BI_DialogStart";
 	objLandInterface.Commands.DialogStart.note		= LanguageConvertString(idLngFile, "land_DialogStart");
-	
+
 	objLandInterface.Commands.ItemsChange.enable	= true;
  	objLandInterface.Commands.ItemsChange.picNum		= 19;
 	objLandInterface.Commands.ItemsChange.selPicNum		= 3;
 	objLandInterface.Commands.ItemsChange.texNum		= 0;
 	objLandInterface.Commands.ItemsChange.event		= "BI_ItemsChange";
 	objLandInterface.Commands.ItemsChange.note		= LanguageConvertString(idLngFile, "land_ItemsChange");
-	
+
 	objLandInterface.Commands.TakeItem.enable		= true;
  	objLandInterface.Commands.TakeItem.picNum		= 16;
 	objLandInterface.Commands.TakeItem.selPicNum		= 0;
 	objLandInterface.Commands.TakeItem.texNum		= 0;
 	objLandInterface.Commands.TakeItem.event		= "BI_TakeItem";
 	objLandInterface.Commands.TakeItem.note			= LanguageConvertString(idLngFile, "land_TakeItem");
-	
+
 	objLandInterface.Commands.PlaceItem.enable		= true;
  	objLandInterface.Commands.PlaceItem.picNum		= 16;
 	objLandInterface.Commands.PlaceItem.selPicNum		= 0;
@@ -433,7 +433,7 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.UseBox.texNum		= 0;
 	objLandInterface.Commands.UseBox.event			= "BI_UseBox";
 	objLandInterface.Commands.UseBox.note			= LanguageConvertString(idLngFile, "land_UseBox");
-	
+
 	objLandInterface.Commands.DeadBox.enable			= true;
  	objLandInterface.Commands.DeadBox.picNum		    = 20;
 	objLandInterface.Commands.DeadBox.selPicNum		= 4;
@@ -454,7 +454,7 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.ActivateRush.texNum		= 0;
 	objLandInterface.Commands.ActivateRush.event	= "BI_ActivateRush";
 	objLandInterface.Commands.ActivateRush.note		= LanguageConvertString(idLngFile, "land_ActivateRush");
-	
+
 	objLandInterface.Commands.Exit_Deck.enable		= true;
 	objLandInterface.Commands.Exit_Deck.picNum		= 30;
 	objLandInterface.Commands.Exit_Deck.selPicNum		= 14;
@@ -550,7 +550,7 @@ void BLI_SetObjectData()
 			objLandInterface.textinfo.locationname.scale = 0.9;
 			objLandInterface.textinfo.locationname.pos.x = sti(showWindow.right) - RecalculateHIcon(104);
 			objLandInterface.textinfo.locationname.pos.y = RecalculateVIcon(60);
-			
+
             if (!CheckAttribute(&locations[nLoc],"fastreload"))
 			{
 			    objLandInterface.textinfo.villagename.text = "";
@@ -601,7 +601,7 @@ void BLI_SetObjectData()
 	objLandInterface.textinfo.timetext.pos.y = RecalculateVIcon(100);
 	objLandInterface.textinfo.timetext.text = makeint(GetHour())+":"+makeint(GetMinute());
     */
-    
+
     // Это у вас нет, у меня все есть ;) - boal
 	objLandInterface.CommandList.CommandMaxIconQuantity = 10;
 	objLandInterface.CommandList.CommandIconSpace = 1;
@@ -620,7 +620,7 @@ void BLI_SetObjectData()
 	objLandInterface.CommandList.UDArrow_Size = RecalculateHIcon(32) + "," + RecalculateVIcon(32);
 	objLandInterface.CommandList.UDArrow_Offset_Up = RecalculateHIcon(-41) + "," + RecalculateVIcon(-30);
 	objLandInterface.CommandList.UDArrow_Offset_Down = RecalculateHIcon(-41) + "," + RecalculateVIcon(46);
-	
+
 	// дебилы все равно играть не будут, а нормальным лишнее не нужно boal
 	/*objLandInterface.CommandList.ActiveIcon_Texture = "battle_interface\enter_list.tga";
 	objLandInterface.CommandList.ActiveIcon_Offset = RecalculateHIcon(-49) + ",0";
@@ -785,7 +785,7 @@ void BLI_SetPossibleCommands()
 		objLandInterface.Commands.ActivateRush.enable = true;
 		bUseCommand = true;
 	}
-	
+
 
 	if( CanBeUseItem(pchar) )
 	{
@@ -879,7 +879,7 @@ void procFindDialogChar()
 
 void BLI_ChrEnterToLocation()
 {
-	aref loc = GetEventData();	
+	aref loc = GetEventData();
 	aref chr = GetEventData();
 	string group = GetEventData();
 	string locator = GetEventData();
@@ -980,7 +980,7 @@ bool SetReloadIcons()
 		ar = GetAttributeN(uiref,i);
 		if( CheckAttribute(ar,"location") ) {
 			DeleteAttribute(uiref,GetAttributeName(ar));
-			nq--; 
+			nq--;
 			i--;
 		}
 	}
@@ -991,7 +991,7 @@ bool SetReloadIcons()
 	if(idxloc>=0 && CheckAttribute(&Locations[idxloc],"fastreload"))
 	{
 		outGroupName = Locations[idxloc].fastreload;
-		
+
 		if( CheckAttribute(&objFastReloadTable,"table."+outGroupName) )
 		{
 			makearef(locList,objFastReloadTable.table.(outGroupName));
@@ -1015,7 +1015,7 @@ bool SetReloadIcons()
 			for(i=0; i<nq; i++)
 			{
 				curloc = GetAttributeN(locList,i);
-				if(!CheckFastJump(Locations[idxloc].id, curloc.location) ) 
+				if(!CheckFastJump(Locations[idxloc].id, curloc.location) )
 				{
 					continue;
 				}
@@ -1119,8 +1119,8 @@ void LI_ProcessControlPress()
 				DoCharacterUsedItem(pchar, btl);
 			}
 		break;
-		
-		case "LICommandsActivate": 
+
+		case "LICommandsActivate":
 			PlaySound("interface\ok.wav"); // boal даешь звуки!
 		break;
 	}

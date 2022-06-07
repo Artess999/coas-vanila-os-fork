@@ -17,12 +17,12 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
-		
+
         case "First time":
 			dialog.text = "Поговорите с нашим капитаном. Мне нечего вам сказать";
 			Link.l1 = "Хорошо.";
 			Link.l1.go = "exit";
-			
+
 			NextDiag.TempNode = "first time";
 		break;
 		//  на палубе -->
@@ -32,7 +32,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "exit";
 
 			NextDiag.TempNode = "On_Deck";
-			
+
 			//--> eddy. квест мэра, закрываем выход с палубы и ноду даем нужную
 			if (CheckAttribute(pchar, "GenQuest.DestroyPirate") && pchar.GenQuest.CaptainId == "MQPirate")
 			{
@@ -51,7 +51,7 @@ void ProcessDialogEvent()
 
 			NextDiag.TempNode = "On_Fort";
 		break;
-		
+
 		case "On_Fort_Head":
 			dialog.text = RandPhraseSimple("Я сейчас страшно занят. Оставьте меня в покое.",
                                            "Не мешайте мне работать. Нам не о чем говорить.");
@@ -60,7 +60,7 @@ void ProcessDialogEvent()
 
 			NextDiag.TempNode = "On_Fort_Head";
 		break;
-		
+
 		case "Morgan_wait_you":
 			Dialog.defAni = "dialog_stay1";
 			Dialog.defCam = "1";

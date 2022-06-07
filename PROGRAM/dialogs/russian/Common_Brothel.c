@@ -9,7 +9,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
     // вызов диалога по городам -->
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Brothel\" + NPChar.City + "_Brothel.c";
     if (LoadSegment(NPChar.FileDialog2))
@@ -24,11 +24,11 @@ void ProcessDialogEvent()
 		case "First time":
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("Милый-дорогой, какие девочки?! За тобой половина гарнизона гонятся, а он в бордель пожаловал!", "Вся городская стража рыщет по городу в поисках тебя. Я не идиотка, привечать тебя в такой момент...", "Попрошу удалиться из моего заведения, тебе здесь делать нечего!"), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("Милый-дорогой, какие девочки?! За тобой половина гарнизона гонятся, а он в бордель пожаловал!", "Вся городская стража рыщет по городу в поисках тебя. Я не идиотка, привечать тебя в такой момент...", "Попрошу удалиться из моего заведения, тебе здесь делать нечего!"),
 					LinkRandPhrase("Попробуй только дотронуться до моих девочек - я с тебя живого шкуру сдеру!", "Грязный убийца, вон из моего заведения! Стража!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."),
 					RandPhraseSimple("Помолчала бы лучше, дура...", "Заткнись, не то хуже будет..."));
 				link.l1.go = "exit";
 				break;
@@ -99,7 +99,7 @@ void ProcessDialogEvent()
 					link.l8 = "К сожалению, мне некогда, " + npchar.name + ". Как-нибудь в другой раз...";
 					link.l8.go = "exit";
 					pchar.questTemp.different = "HostessSex";
-					SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты 
+					SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты
 					SaveCurrentNpcQuestDateParam(npchar, "questSex");
 				}
 				else
@@ -149,7 +149,7 @@ void ProcessDialogEvent()
 				{
 					dialog.text = "Мы всегда рады клиенту. Скажи мне, дорогой, ты уже присмотрел кого-то или тебе все равно?";
 					Link.l1 = "Хех, мне нужна девка и немедленно, а кто она такая - наплевать. У тебя все они симпатичные...";
-					Link.l1.go = "Hostess_NotChoice";	
+					Link.l1.go = "Hostess_NotChoice";
 					Link.l2 = "Да, есть одна, что мне приглянулась...";
 					Link.l2.go = "Hostess_Choice";
 				}
@@ -164,7 +164,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Хм, ты уже оплатил девушку. Так что займись ею вплотную, так сказать, и не отвлекай меня по пустякам.";
 				Link.l1 = "Хорошо, уже иду.";
-				Link.l1.go = "exit";	
+				Link.l1.go = "exit";
 			}
 		break;
 
@@ -175,7 +175,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Сейчас у меня нет свободных девушек, тебе нужно будет зайти сюда через пару дней.";
 				Link.l1 = "Хорошо, как скажешь.";
-				Link.l1.go = "exit";	
+				Link.l1.go = "exit";
 			}
 			else
 			{
@@ -185,7 +185,7 @@ void ProcessDialogEvent()
 				if (sti(pchar.money) >= sti(sld.quest.price))
 				{
 					Link.l2 = "Конечно, согласен, какие могут быть вопросы?!";
-					Link.l2.go = "Hostess_NotChoice_agree";	
+					Link.l2.go = "Hostess_NotChoice_agree";
 					npchar.quest.choiceIdx = sld.index;
 				}
 				else
@@ -203,14 +203,14 @@ void ProcessDialogEvent()
 				Link.l1 = "Хех, ну я пошел...";
 				Link.l1.go = "exit";
 				AddMoneyToCharacter(pchar, -sti(sld.quest.price));
-				sld.dialog.currentnode = "Horse_ReadyFack";			
+				sld.dialog.currentnode = "Horse_ReadyFack";
 				//--> таймер на возврат, чтобы не вечно ждали
 				str = npchar.city;
 				pchar.quest.(str).win_condition.l1            = "Timer";
 				pchar.quest.(str).win_condition.l1.date.day   = GetAddingDataDay(0, 0, 1);
 				pchar.quest.(str).win_condition.l1.date.month = GetAddingDataMonth(0, 0, 1);
 				pchar.quest.(str).win_condition.l1.date.year  = GetAddingDataYear(0, 0, 1);
-				pchar.quest.(str).win_condition               = "Brothel_checkVisitTime";	
+				pchar.quest.(str).win_condition               = "Brothel_checkVisitTime";
 				pchar.quest.(str).HorseId = sld.id;
 				pchar.quest.(str).locator = sld.location.locator;
 				//<-- таймер на возврат, чтобы не вечно ждали
@@ -239,7 +239,7 @@ void ProcessDialogEvent()
 			dialog.text = "Я всегда рада, когда между девочками и клиентами возникают теплые чувства... Назови мне ее имя.";
 			Link.l1.edit = 9;
 			Link.l1 = "";
-			Link.l1.go = "Hostess_Choice_1";	
+			Link.l1.go = "Hostess_Choice_1";
 		break;
         case "Hostess_Choice_1":
 			sld = CheckHorsesName(npchar.city, 9);
@@ -247,15 +247,15 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Хм, ты ошибаешься, у меня нет такой девочки в заведении. Возможно, ты неверно называешь ее имя.";
 				Link.l1 = "Хм, но я только что с ней разговаривал.";
-				Link.l1.go = "Hostess_Choice_2";				
+				Link.l1.go = "Hostess_Choice_2";
 				Link.l2 = "Пожалуй, мне лучше уточнить ее имя. Я позже переговорю с тобой на эту тему.";
-				Link.l2.go = "exit";	
+				Link.l2.go = "exit";
 			}
 			else
 			{
 				dialog.text = GetFullName(sld) + ", ты о ней говоришь?";
 				Link.l1 = "Ага, именно о ней.";
-				Link.l1.go = "Hostess_NotChoice_agree";				
+				Link.l1.go = "Hostess_NotChoice_agree";
 				Link.l2 = "Нет, не о ней.";
 				Link.l2.go = "Hostess_Choice_2";
 				npchar.quest.choiceIdx = sld.index;
@@ -267,7 +267,7 @@ void ProcessDialogEvent()
 			Link.l1 = "";
 			Link.l1.go = "Hostess_Choice_1";
 			Link.l2 = "Пожалуй, мне лучше уточнить ее имя. Я позже переговорю с тобой на эту тему.";
-			Link.l2.go = "exit";	
+			Link.l2.go = "exit";
 		break;
 		//==> команда
 		case "ForCrew":
@@ -277,7 +277,7 @@ void ProcessDialogEvent()
 			link.l2 = "Думаю, они обойдутся как-нибудь...";
 			link.l2.go = "exit";
 		break;
-		
+
 		case "ForCrew_1":
 		    if (sti(Pchar.money) >= GetCrewQuantity(pchar)*30 && GetCrewQuantity(pchar)>0)
 		    {
@@ -476,7 +476,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.different.HostessSex = "toRoom";
 			pchar.questTemp.different.HostessSex.city = npchar.city;
 			AddDialogExitQuestFunction("SexWithHostess_goToRoom");
-			pchar.quest.SmallQuests_free.over = "yes"; 
+			pchar.quest.SmallQuests_free.over = "yes";
 			SetTimerFunction("SexWithHostess_null", 0, 0, 1); //возврат хозяйки на место, если ГГ не прийдет в комнату
 		break;
 
@@ -572,7 +572,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.different.HostessSex = "toRoom";
 			pchar.questTemp.different.HostessSex.city = npchar.city;
 			AddDialogExitQuestFunction("SexWithHostess_goToRoom");
-			pchar.quest.SmallQuests_free.over = "yes"; 
+			pchar.quest.SmallQuests_free.over = "yes";
 			SetTimerFunction("SexWithHostess_null", 0, 0, 1); //возврат хозяйки на место, если ГГ не прийдет в комнату
 		break;
 
@@ -590,18 +590,18 @@ void ProcessDialogEvent()
         case "Horse_talk":
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("Вам лучше уйти из заведения!", "Вся городская стража рыщет по городу! Вам лучше уйти...", "Надебоширил - и к нам?! Нет уж, в другой раз..."), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("Вам лучше уйти из заведения!", "Вся городская стража рыщет по городу! Вам лучше уйти...", "Надебоширил - и к нам?! Нет уж, в другой раз..."),
 					LinkRandPhrase("Убирайся!!", "Грязный убийца, вон отсюда! Стража!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."),
 					RandPhraseSimple("Хех, ну и дура же ты...", "Заткнись, не то хуже будет..."));
 				link.l1.go = "exit";
 				break;
 			}
-			dialog.text = NPCStringReactionRepeat("Здравствуйте, " + GetAddress_Form(NPChar) + ". Вам нужно обратиться к хозяйке заведения, все заказы проходят через нее.", 
-				"Ой, это опять вы. Простите, но вам нужно сначала уладить все вопросы с хозяйкой. Прошу вас пройти к ней.", 
-				"Послушайте, " + GetAddress_Form(NPChar) + ", я очень надеюсь, что вы так же упрямы и в других делах, а не только в разговорах... Еще раз прошу вас пройти к хозяйке заведения.", 
+			dialog.text = NPCStringReactionRepeat("Здравствуйте, " + GetAddress_Form(NPChar) + ". Вам нужно обратиться к хозяйке заведения, все заказы проходят через нее.",
+				"Ой, это опять вы. Простите, но вам нужно сначала уладить все вопросы с хозяйкой. Прошу вас пройти к ней.",
+				"Послушайте, " + GetAddress_Form(NPChar) + ", я очень надеюсь, что вы так же упрямы и в других делах, а не только в разговорах... Еще раз прошу вас пройти к хозяйке заведения.",
 				"Ах, " + GetAddress_Form(NPChar) + ", какой же вы... настойчивый! Вам нужно пройти к хозяйке заведения для оформления заказа.", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Хорошо, красавица, я понял.", "А-а, да, конечно...",
                       "Можешь не сомневаться, красавица, я упрям и силен, как бык!", "Вот дьявол, что-то упустил... Прости, милая.", npchar, Dialog.CurrentNode);
@@ -620,8 +620,8 @@ void ProcessDialogEvent()
 			//-->> квест поиска кольца мэра
 			if (pchar.questTemp.different == "TakeMayorsRing" && pchar.questTemp.different.TakeMayorsRing.city == npchar.city && GetNpcQuestPastDayWOInit(npchar, "TakeMayorsRing") > 7)
 			{
-				link.l5 = LinkRandPhrase("Слушай, красавица, ты не находила здесь обручального кольца? Потерял его тут один человек...", 
-					"Дорогуша, ты, случаем, не находила в вашем заведении обручального кольца?", 
+				link.l5 = LinkRandPhrase("Слушай, красавица, ты не находила здесь обручального кольца? Потерял его тут один человек...",
+					"Дорогуша, ты, случаем, не находила в вашем заведении обручального кольца?",
 					"Послушай, рыба моя, колечко не попадалось тебе тут, обручальное?");
 				link.l5.go = "TakeMayorsRing_S1";
 				SaveCurrentNpcQuestDateParam(npchar, "TakeMayorsRing");
@@ -653,14 +653,14 @@ void ProcessDialogEvent()
         case "Horse_1":
 			dialog.text = "Она в своем кабинете, вы можете пройти к ней отсюда через дверь, противоположную выходу на улицу, либо через улицу с другой стороны дома. Ее зовут " + characters[GetCharacterIndex(npchar.city + "_Hostess")].name + ".";
 			Link.l1 = "Понятно, милая, спасибо.";
-			Link.l1.go = "exit";			
+			Link.l1.go = "exit";
 		break;
         case "Horse_2":
 			if (rand(1))
 			{
 				dialog.text = LinkRandPhrase("Ах, боже мой, до чего прятно слышать такое! Слушай, я сейчас свободна, так что если ты выберешь меня, то не пожалеешь...", "Ты действительно так считаешь? Мне очень и очень приятно... Послушай, я сейчас свободна, так что ты можешь выбрать меня. Я общаю тебе море любви и океан ласки...", "Вот как?! Хм, не скрою, я польщена, не часто приходится слышать в свой адрес такие слова... Слушай, я не занята в данный момент, так что я предлагаю тебе выбрать меня. Обещаю, что ты останешься доволен...");
 				link.l1 = "Хех, именно тебя и выбираю!";
-				Link.l1.go = "Horse_3";		
+				Link.l1.go = "Horse_3";
 				Link.l2 = "Не-е-ет, это был просто комплимент прекрасной даме.";
 				Link.l2.go = "exit";
 				npchar.quest.choice = 0; //был базар, но ГГ потом отказался
@@ -680,10 +680,10 @@ void ProcessDialogEvent()
 			npchar.quest.choice = 1; //она согласная
 			SetNPCQuestDate(npchar, "quest.choice");
 		break;
-        case "Horse_4": 
-			dialog.text = NPCStringReactionRepeat("Ты уже оплатил девушку, она ждет тебя, поднимайся наверх.", 
-				"Я же тебе сказала - поднимайся к ней.", 
-				"Слушай внимательно, еще раз повторяю - поднимайся к ней...", 
+        case "Horse_4":
+			dialog.text = NPCStringReactionRepeat("Ты уже оплатил девушку, она ждет тебя, поднимайся наверх.",
+				"Я же тебе сказала - поднимайся к ней.",
+				"Слушай внимательно, еще раз повторяю - поднимайся к ней...",
 				"Бесполезно говорить, не доходит...", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Да, я знаю.", "Я помню.",
                       "Можешь не повторять, о ней я помню.", "Хм, о чем это ты?..", npchar, Dialog.CurrentNode);
@@ -691,12 +691,12 @@ void ProcessDialogEvent()
 			NextDiag.TempNode = "Horse_4";
 		break;
 		//===>> реакция на попытки пофлиртовыть, если флирт уже был
-        case "HorseChoice_0": 
+        case "HorseChoice_0":
 			if (!CheckAttribute(npchar, "quest.sexHappend"))
 			{
-				dialog.text = NPCStringReactionRepeat("Что-то я тебя не пойму. То комплименты делаешь, то вдруг на попятную идешь. Странный тип...", 
-					"Опять со своим комплиментами? Хм, иди к хозяйке, с ней все решай.", 
-					"Хм, и не надоело тебе? Сказала же - иди к хозяйке заведения.", 
+				dialog.text = NPCStringReactionRepeat("Что-то я тебя не пойму. То комплименты делаешь, то вдруг на попятную идешь. Странный тип...",
+					"Опять со своим комплиментами? Хм, иди к хозяйке, с ней все решай.",
+					"Хм, и не надоело тебе? Сказала же - иди к хозяйке заведения.",
 					"Нам нельзя здесь оскорблять клиентов, но ты нарываешься, милый...", "block", 1, npchar, Dialog.CurrentNode);
 				link.l1 = HeroStringReactionRepeat("Так вышло, знаешь ли...", "Хорошо, я так и сделаю.",
 						"Да-да, я понял...", "Хм, извини, дорогуша.", npchar, Dialog.CurrentNode);
@@ -709,14 +709,14 @@ void ProcessDialogEvent()
 				Link.l1.go = "exit";
 			}
 		break;
-        case "HorseChoice_1": 
+        case "HorseChoice_1":
 			if (!CheckAttribute(npchar, "quest.sexHappend"))
 			{
 				if (!CheckNPCQuestDate(npchar, "quest.choice"))
 				{
-					dialog.text = NPCStringReactionRepeat("Милый, мы все оговорили. Не заставляй меня долго ждать...", 
-						"Хм, послушай, милый, мне очень приятны все твои слова, но пора уже и за дело браться...", 
-						"Послушай, может ты все-таки уладишь все с хозяйкой?..", 
+					dialog.text = NPCStringReactionRepeat("Милый, мы все оговорили. Не заставляй меня долго ждать...",
+						"Хм, послушай, милый, мне очень приятны все твои слова, но пора уже и за дело браться...",
+						"Послушай, может ты все-таки уладишь все с хозяйкой?..",
 						"Хм, даже не знаю, что и сказать...", "block", 1, npchar, Dialog.CurrentNode);
 					link.l1 = HeroStringReactionRepeat("Да ни за что на свете!", "Обязательно!",
 							"Да, конечно!", "Бегу, бегу к хозяйке...", npchar, Dialog.CurrentNode);
@@ -739,12 +739,12 @@ void ProcessDialogEvent()
 				Link.l2.go = "HorseChoice_1_Add";
 			}
 		break;
-        case "HorseChoice_2": 
+        case "HorseChoice_2":
 			if (!CheckAttribute(npchar, "quest.sexHappend"))
 			{
-				dialog.text = NPCStringReactionRepeat("Вот что, милый друг, займись-ка лучше делом. Это полезней будет, чем языком чесать.", 
-					"Хм, странный ты, талдычишь одно и тоже...", 
-					"Послушай, может хватит уже?!", 
+				dialog.text = NPCStringReactionRepeat("Вот что, милый друг, займись-ка лучше делом. Это полезней будет, чем языком чесать.",
+					"Хм, странный ты, талдычишь одно и тоже...",
+					"Послушай, может хватит уже?!",
 					"Хм, ну надо же, ничего нового, опять глупые попытки очаровать. Хочешь со мной переспать - иди к хозяйке заведения, недоумок!", "block", 1, npchar, Dialog.CurrentNode);
 				link.l1 = HeroStringReactionRepeat("Да, слышал...", "Хм, вот так оно и выходит...",
 						"Хм, может хватит, а может и нет...", "Осторожней в выражениях, коза...", npchar, Dialog.CurrentNode);
@@ -774,7 +774,7 @@ void ProcessDialogEvent()
 				break;
 				case "1":
 					dialog.text = "Ах, вот и ты, мой славный корсар! Я кое-что обещала тебе и готова сдержать свое слово...";
-					Link.l1 = "Ух, как заманчиво звучит...";	
+					Link.l1 = "Ух, как заманчиво звучит...";
 				break;
 				case "2":
 					dialog.text = "А-а-а, пришел, наконец-то. Ну, не будем терять времени!";
@@ -793,7 +793,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.HorseQty = sti(pchar.questTemp.HorseQty) + 1; //счетчик
 			NextDiag.TempNode = "Horse_AfterSex";
 			AddDialogExitQuest("PlaySex_1");
-			
+
 			/// кач от борделя
 			if (CheckNPCQuestDate(pchar, "BrothelSex"))
 			{
@@ -819,13 +819,13 @@ void ProcessDialogEvent()
 					if (sti(npchar.quest.sexHappend) > (rand(4)+5) && sti(pchar.questTemp.HorseLoot) < 3 && !CheckAttribute(npchar, "questTemp.HorseLoot"))
 					{
 						dialog.text = "Послушай, ты ходишь ко мне уже давно, я так к тебе привязалась...";
-						Link.l1 = "Да и я к тебе тоже, чего уж...";	
+						Link.l1 = "Да и я к тебе тоже, чего уж...";
 						Link.l1.go = "HorseQuest";
 					}
 					else
 					{
 						dialog.text = LinkRandPhrase("Ну что, я выполнила обещание?", "Ну, как я тебе, понравилась?", "Я надеюсь, ты доволен, потому что я о-о-очень довольна...");
-						Link.l1 = RandPhraseSimple("Да, мне все очень понравилось.", "Отлично покувыркались, ты была на высоте!");	
+						Link.l1 = RandPhraseSimple("Да, мне все очень понравилось.", "Отлично покувыркались, ты была на высоте!");
 						Link.l1.go = "exit";
 					}
 				break;
@@ -862,18 +862,18 @@ void ProcessDialogEvent()
 			Link.l1.go = "HorseQuest_3";
 		break;
         case "HorseQuest_3":
-			sTemp = LinkRandPhrase("Shore55", "Shore9", "Shore_ship2");							
-			if (sTemp == "Shore55") 
+			sTemp = LinkRandPhrase("Shore55", "Shore9", "Shore_ship2");
+			if (sTemp == "Shore55")
 			{
 				str = "заливе Сан-Хуан дель Норте";
 				str1 = "box" + (rand(1)+1);
 			}
-			if (sTemp == "Shore9") 
+			if (sTemp == "Shore9")
 			{
 				str = "бухте Аматике";
 				str1 = "box1";
 			}
-			if (sTemp == "Shore_ship2") 
+			if (sTemp == "Shore_ship2")
 			{
 				str = "заливе Гибели, что рядом с Белизом";
 				str1 = "box2";
@@ -881,7 +881,7 @@ void ProcessDialogEvent()
          	pchar.GenQuestBox.(sTemp) = true;
 			switch (pchar.questTemp.HorseLoot)
 			{
-				case "1": 
+				case "1":
 					pchar.GenQuestBox.(sTemp).(str1).items.spyglass2 = 1;
 					pchar.GenQuestBox.(sTemp).(str1).items.jewelry1 = 4;
 					pchar.GenQuestBox.(sTemp).(str1).items.jewelry5 = 6;
@@ -889,7 +889,7 @@ void ProcessDialogEvent()
 					pchar.GenQuestBox.(sTemp).(str1).items.indian11 = 1;
 					pchar.GenQuestBox.(sTemp).(str1).money = 15000;
 				break;
-				case "2": 
+				case "2":
 					pchar.GenQuestBox.(sTemp).(str1).items.spyglass3 = 1;
 					pchar.GenQuestBox.(sTemp).(str1).items.jewelry14 = 3;
 					pchar.GenQuestBox.(sTemp).(str1).items.jewelry16 = 2;
@@ -897,7 +897,7 @@ void ProcessDialogEvent()
 					pchar.GenQuestBox.(sTemp).(str1).items.indian17 = 1;
 					pchar.GenQuestBox.(sTemp).(str1).money = 19000;
 				break;
-				case "3": 
+				case "3":
 					pchar.GenQuestBox.(sTemp).(str1).items.indian20 = 1;
 					pchar.GenQuestBox.(sTemp).(str1).items.indian5 = 1;
 					pchar.GenQuestBox.(sTemp).(str1).items.indian10 = 1;
@@ -924,8 +924,8 @@ void ProcessDialogEvent()
 		case "TakeMayorsRing_S1":
 			if (CheckAttribute(pchar, "questTemp.different.TakeMayorsRing.item")) //если валяется в итемах
 			{
-				dialog.text = LinkRandPhrase("Нет, дорогой, не попадалось, к сожалению. Рада бы помочь, да не могу...", 
-					"Нет, красавчик, кольца не видела...", 
+				dialog.text = LinkRandPhrase("Нет, дорогой, не попадалось, к сожалению. Рада бы помочь, да не могу...",
+					"Нет, красавчик, кольца не видела...",
 					"К сожалению, нет. Никакого кольца не видела.");
 				link.l1 = "Жаль... Ну что же, спасибо тебе.";
 				link.l1.go = "exit";
@@ -940,8 +940,8 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					dialog.text = LinkRandPhrase("Нет, дорогой, не попадалось, к сожалению. Рада бы помочь, да не могу...", 
-						"Нет, красавчик, кольца не видела...", 
+					dialog.text = LinkRandPhrase("Нет, дорогой, не попадалось, к сожалению. Рада бы помочь, да не могу...",
+						"Нет, красавчик, кольца не видела...",
 						"К сожалению, нет. Никакого кольца не видела.");
 					link.l1 = "Жаль... Ну что же, спасибо тебе.";
 					link.l1.go = "exit";
@@ -1088,7 +1088,7 @@ ref CheckHorsesName(string City, int num)
 		{
 			sTemp = GetStrSmallRegister(rCharacter.lastname + " " + rCharacter.name);
 			if (findsubstr(sSeeked, sTemp , 0) != -1)
-				return rCharacter;			
+				return rCharacter;
 			sTemp = GetStrSmallRegister(rCharacter.lastname);
 			if (findsubstr(sSeeked, sTemp , 0) != -1)
 				return rCharacter;

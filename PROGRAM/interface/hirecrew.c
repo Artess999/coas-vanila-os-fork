@@ -29,7 +29,7 @@ void InitInterface(string iniName)
 	SetEventHandler("ShowInfoWindow","ShowInfoWindow",0);
 	SetEventHandler("MouseRClickUp","HideInfoWindow",0);
 	SetEventHandler("frame","ProcessFrame",1);
-	
+
 	SetEventHandler("TransactionOK", "TransactionOK", 0);
 	SetEventHandler("TransactionCancel", "TransactionCancel", 0);
 	SetEventHandler("confirmChangeQTY_EDIT", "confirmChangeQTY_EDIT", 0);
@@ -37,7 +37,7 @@ void InitInterface(string iniName)
 	SetEventHandler("ADD_BUTTON","ADD_BUTTON",0);
 	SetEventHandler("REMOVE_BUTTON", "REMOVE_BUTTON", 0);
 	SetEventHandler("REMOVE_ALL_BUTTON", "REMOVE_ALL_BUTTON", 0);
-	
+
 	SetNewGroupPicture("CREW_PICTURE", "SHIP_STATE_ICONS", "Crew");
 	SetNewGroupPicture("CREW_PICTURE2", "SHIP_STATE_ICONS", "Crew");
 	SetBackupQty();
@@ -67,7 +67,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("ShowInfoWindow","ShowInfoWindow");
 	DelEventHandler("MouseRClickUp","HideInfoWindow");
 	DelEventHandler("frame","ProcessFrame");
-	
+
 	DelEventHandler("TransactionOK", "TransactionOK");
 	DelEventHandler("TransactionCancel", "TransactionCancel");
 	DelEventHandler("confirmChangeQTY_EDIT", "confirmChangeQTY_EDIT");
@@ -75,7 +75,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("ADD_BUTTON","ADD_BUTTON");
 	DelEventHandler("REMOVE_BUTTON", "REMOVE_BUTTON");
 	DelEventHandler("REMOVE_ALL_BUTTON", "REMOVE_ALL_BUTTON");
-	
+
 	interfaceResultCommand = exitCode;
 	EndCancelInterface(true);
 
@@ -124,7 +124,7 @@ void ProcCommand()
 			{
 	            REMOVE_ALL_BUTTON();
 			}
-		break;	
+		break;
 	}
 }
 
@@ -150,17 +150,17 @@ void SetVariable()
 	string sText, sTextSecond;
 	int iColor;
 	int nShipType = sti(refCharacter.ship.type);
-	
+
 	if (nShipType == SHIP_NOTUSED)
 	{
         GameInterface.strings.shipname = "";
 		return;
 	}
-	
+
 	ref refBaseShip = GetRealShip(nShipType);
-	
+
     SetNewPicture("MAIN_CHARACTER_PICTURE", "interfaces\portraits\256\face_" + its(refCharacter.FaceId) + ".tga");
-    
+
 	SetFormatedText("CAPACITY", GetFullName(refCharacter));
 
 	sText = XI_ConvertString("OurMoney") + NewStr() + FindRussianMoneyString(sti(pchar.money));
@@ -175,7 +175,7 @@ void SetVariable()
 	    GameInterface.strings.shipname = "";
 	}
 	SetCrewExpTable(refCharacter, "TABLE_CREW", "BAR_Sailors", "BAR_Cannoners", "BAR_Soldiers");
-	
+
 	SetFormatedText("CREW_QTY", ""+GetCrewQuantity(refCharacter));
 	if (GetCrewQuantity(refCharacter) > GetOptCrewQuantity(refCharacter) || GetCrewQuantity(refCharacter) < GetMinCrewQuantity(refCharacter))
 	{
@@ -188,15 +188,15 @@ void SetVariable()
 	SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE,"CREW_QTY", 8,-1,iColor);
 	SetNewGroupPicture("CREW_MORALE_PIC", "MORALE_SMALL", GetMoraleGroupPicture(stf(refCharacter.ship.crew.morale)));
 	SetFormatedText("CREW_MORALE_TEXT", XI_ConvertString("CrewMorale") + ": " + XI_ConvertString(GetMoraleName(sti(refCharacter.Ship.crew.morale))));
-	
+
 	// на одном корабле
 	SetFoodShipInfo(refCharacter, "FOOD_SHIP");
-	
+
 	SetFormatedText("INFO_SHIP", XI_ConvertString(refBaseShip.BaseName) + ", класс " + refBaseShip.Class +", команда: мин. "+GetMinCrewQuantity(refCharacter) + ", макс. " + GetOptCrewQuantity(refCharacter));
 	SetFormatedText("MONEY_SHIP", "Содержание корабля: " + NewStr() + FindRussianMoneyString(GetSalaryForShip(refCharacter)));
 	////  заполнялка города
 	SetCrewExpTable(refTown, "TABLE_CREW2", "BAR_Sailors2", "BAR_Cannoners2", "BAR_Soldiers2");
-	
+
 	SetFormatedText("CREW_QTY2", ""+GetCrewQuantity(refTown));
 	SetNewGroupPicture("CREW_MORALE_PIC2", "MORALE_SMALL", GetMoraleGroupPicture(stf(refTown.ship.crew.morale)));
 	SetFormatedText("CREW_MORALE_TEXT2", XI_ConvertString("CrewMorale") + ": " + XI_ConvertString(GetMoraleName(sti(refTown.Ship.crew.morale))));
@@ -223,7 +223,7 @@ void ProcessFrame()
 void SetDescription()
 {
  	string sChrId;
- 	 
+
 	if(GetCurrentNode() == "SHIPS_SCROLL")
 	{
 		string attributeName = attributeName = "pic" + (nCurScrollNum+1);
@@ -258,18 +258,18 @@ void ShowInfoWindow()
 	int nChooseNum = -1;
 	int iShip;
 	ref refBaseShip;
-	
+
 	bool  bShowHint = true;
 	switch (sCurrentNode)
 	{
 		case "TABLE_CREW":
 			sHeader = GetConvertStr("Crew_Exp", "ShipsDescribe.txt");
 			sText1  = GetConvertStr("Crew_Exp_hint", "ShipsDescribe.txt");
-		break; 
+		break;
 		case "TABLE_CREW2":
 			sHeader = GetConvertStr("Crew_Exp", "ShipsDescribe.txt");
 			sText1  = GetConvertStr("Crew_Exp_hint", "ShipsDescribe.txt");
-		break; 
+		break;
 	}
 	if (bShowHint)
 	{
@@ -287,11 +287,11 @@ void SetBackupQty()
 	aref    arTo, arFrom;
 	NullCharacter.TavernBak.Hero = "";
 	NullCharacter.TavernBak.Tavern = "";
-	
+
 	makearef(arTo,   NullCharacter.TavernBak.Hero);
 	makearef(arFrom, refCharacter.Ship.Crew);
 	CopyAttributes(arTo, arFrom);
-	
+
 	makearef(arTo,   NullCharacter.TavernBak.Tavern);
 	makearef(arFrom, refTown.Ship.Crew);
 	CopyAttributes(arTo, arFrom);
@@ -300,11 +300,11 @@ void SetBackupQty()
 void GetBackupQty()
 {
 	aref    arTo, arFrom;
-	
+
 	makearef(arFrom,   NullCharacter.TavernBak.Hero);
 	makearef(arTo, refCharacter.Ship.Crew);
 	CopyAttributes(arTo, arFrom);
-	
+
 	makearef(arFrom,   NullCharacter.TavernBak.Tavern);
 	makearef(arTo, refTown.Ship.Crew);
 	CopyAttributes(arTo, arFrom);
@@ -314,17 +314,17 @@ void TransactionCancel()
 {
 	if (sti(GameInterface.qty_edit.str) == 0)
 	{   // выход
-		ProcessCancelExit();	
+		ProcessCancelExit();
 	}
 	else
 	{
-		CancelQty();	
+		CancelQty();
     }
 }
 
 void CancelQty()
 {
-	GetBackupQty();	
+	GetBackupQty();
 	SetVariable();
 	GameInterface.qty_edit.str = 0;
 	SetFormatedText("QTY_TypeOperation", "");
@@ -342,7 +342,7 @@ void TransactionOK()
 	}
 
     if (!GetRemovable(refCharacter)) return;
-    
+
  	if (BuyOrSell == 1) // BUY  нанять
 	{
 		moneyback = makeint(iPriceSailor*stf(GameInterface.qty_edit.str));
@@ -404,7 +404,7 @@ void ChangeQTY_EDIT()
 		    {
 		        GameInterface.qty_edit.str = (GetMaxCrewQuantity(refCharacter) -  GetCrewQuantity(refCharacter));
 		    }
-		    
+
 		    if (makeint(iPriceSailor*stf(GameInterface.qty_edit.str)) > sti(pchar.money))
 		    {
 		        GameInterface.qty_edit.str = makeint(sti(pchar.money) / iPriceSailor);
@@ -424,33 +424,33 @@ void ChangeQTY_EDIT()
 	}
 	if (sti(GameInterface.qty_edit.str) > 0)
 	{ // применение кол-ва
-		
+
 		if (BuyOrSell == 1)
 		{   // найм меняет опыт и мораль корабля
 			fQty = stf(GetCrewQuantity(refCharacter) + sti(GameInterface.qty_edit.str));
-			refCharacter.Ship.Crew.Exp.Sailors   = (stf(refCharacter.Ship.Crew.Exp.Sailors)*GetCrewQuantity(refCharacter) + 
-			                                        stf(refTown.Ship.Crew.Exp.Sailors)*sti(GameInterface.qty_edit.str)) / fQty; 
-			refCharacter.Ship.Crew.Exp.Cannoners   = (stf(refCharacter.Ship.Crew.Exp.Cannoners)*GetCrewQuantity(refCharacter) + 
+			refCharacter.Ship.Crew.Exp.Sailors   = (stf(refCharacter.Ship.Crew.Exp.Sailors)*GetCrewQuantity(refCharacter) +
+			                                        stf(refTown.Ship.Crew.Exp.Sailors)*sti(GameInterface.qty_edit.str)) / fQty;
+			refCharacter.Ship.Crew.Exp.Cannoners   = (stf(refCharacter.Ship.Crew.Exp.Cannoners)*GetCrewQuantity(refCharacter) +
 			                                        stf(refTown.Ship.Crew.Exp.Cannoners)*sti(GameInterface.qty_edit.str)) / fQty;
-			refCharacter.Ship.Crew.Exp.Soldiers   = (stf(refCharacter.Ship.Crew.Exp.Soldiers)*GetCrewQuantity(refCharacter) + 
+			refCharacter.Ship.Crew.Exp.Soldiers   = (stf(refCharacter.Ship.Crew.Exp.Soldiers)*GetCrewQuantity(refCharacter) +
 			                                        stf(refTown.Ship.Crew.Exp.Soldiers)*sti(GameInterface.qty_edit.str)) / fQty;
-			refCharacter.Ship.Crew.Morale   = (stf(refCharacter.Ship.Crew.Morale)*GetCrewQuantity(refCharacter) + 
-			                                        stf(refTown.Ship.Crew.Morale)*sti(GameInterface.qty_edit.str)) / fQty;																													                                        
+			refCharacter.Ship.Crew.Morale   = (stf(refCharacter.Ship.Crew.Morale)*GetCrewQuantity(refCharacter) +
+			                                        stf(refTown.Ship.Crew.Morale)*sti(GameInterface.qty_edit.str)) / fQty;
 		}
 		else
 		{ // увольнение меняет таверну
 			fQty = stf(GetCrewQuantity(refTown) + sti(GameInterface.qty_edit.str));
-			refTown.Ship.Crew.Exp.Sailors   = (stf(refTown.Ship.Crew.Exp.Sailors)*GetCrewQuantity(refTown) + 
+			refTown.Ship.Crew.Exp.Sailors   = (stf(refTown.Ship.Crew.Exp.Sailors)*GetCrewQuantity(refTown) +
 			                                        stf(refCharacter.Ship.Crew.Exp.Sailors)*sti(GameInterface.qty_edit.str)) / fQty;
-			refTown.Ship.Crew.Exp.Cannoners   = (stf(refTown.Ship.Crew.Exp.Cannoners)*GetCrewQuantity(refTown) + 
+			refTown.Ship.Crew.Exp.Cannoners   = (stf(refTown.Ship.Crew.Exp.Cannoners)*GetCrewQuantity(refTown) +
 			                                        stf(refCharacter.Ship.Crew.Exp.Cannoners)*sti(GameInterface.qty_edit.str)) / fQty;
-			refTown.Ship.Crew.Exp.Soldiers   = (stf(refTown.Ship.Crew.Exp.Soldiers)*GetCrewQuantity(refTown) + 
+			refTown.Ship.Crew.Exp.Soldiers   = (stf(refTown.Ship.Crew.Exp.Soldiers)*GetCrewQuantity(refTown) +
 			                                        stf(refCharacter.Ship.Crew.Exp.Soldiers)*sti(GameInterface.qty_edit.str)) / fQty;
-			refTown.Ship.Crew.Morale   = (stf(refTown.Ship.Crew.Morale)*GetCrewQuantity(refTown) + 
+			refTown.Ship.Crew.Morale   = (stf(refTown.Ship.Crew.Morale)*GetCrewQuantity(refTown) +
 			                                        stf(refCharacter.Ship.Crew.Morale)*sti(GameInterface.qty_edit.str)) / fQty;
 		}
 		SetCrewQuantity(refCharacter, GetCrewQuantity(refCharacter) + BuyOrSell*sti(GameInterface.qty_edit.str));
-		refTown.Ship.Crew.Quantity = sti(refTown.Ship.Crew.Quantity) - BuyOrSell*sti(GameInterface.qty_edit.str));	
+		refTown.Ship.Crew.Quantity = sti(refTown.Ship.Crew.Quantity) - BuyOrSell*sti(GameInterface.qty_edit.str));
 	}
     SetVariable(); // обновим экран
 }

@@ -296,17 +296,17 @@
 //============================================================================================
 //Animals messages
 //============================================================================================
-#define MSG_ANIMALS_SEAGULLS_SHOW			77100	//""         
-#define MSG_ANIMALS_SEAGULLS_HIDE			77101	//""         
-#define MSG_ANIMALS_SEAGULLS_FRIGHTEN			77102	//""         
+#define MSG_ANIMALS_SEAGULLS_SHOW			77100	//""
+#define MSG_ANIMALS_SEAGULLS_HIDE			77101	//""
+#define MSG_ANIMALS_SEAGULLS_FRIGHTEN			77102	//""
 #define MSG_ANIMALS_SEAGULLS_ADD        		77103	//"fff"         x,y,z
-#define MSG_ANIMALS_SHARKS_SHOW				77104	//""         
-#define MSG_ANIMALS_SHARKS_HIDE				77105	//""         
-#define MSG_ANIMALS_FISHSCHOOLS_SHOW			77106	//""         
-#define MSG_ANIMALS_FISHSCHOOLS_HIDE			77107	//""         
-#define MSG_ANIMALS_BUTTERFLIES_SHOW			77108	//""         
-#define MSG_ANIMALS_BUTTERFLIES_HIDE			77109	//""         
-#define MSG_ANIMALS_BUTTERFLIES_XYZ				77110	//""         
+#define MSG_ANIMALS_SHARKS_SHOW				77104	//""
+#define MSG_ANIMALS_SHARKS_HIDE				77105	//""
+#define MSG_ANIMALS_FISHSCHOOLS_SHOW			77106	//""
+#define MSG_ANIMALS_FISHSCHOOLS_HIDE			77107	//""
+#define MSG_ANIMALS_BUTTERFLIES_SHOW			77108	//""
+#define MSG_ANIMALS_BUTTERFLIES_HIDE			77109	//""
+#define MSG_ANIMALS_BUTTERFLIES_XYZ				77110	//""
 //============================================================================================
 //============================================================================================
 //Ball splash messages
@@ -317,7 +317,7 @@
 //============================================================================================
 //Telescope messages
 //============================================================================================
-#define MSG_TELESCOPE_INIT_ARRAYS			77300	//"ee"    
+#define MSG_TELESCOPE_INIT_ARRAYS			77300	//"ee"
 #define MSG_TELESCOPE_REQUEST				77301
 #define MSG_TELESCOPE_SET_TYPE				77302 //"l", telescope_type
 //============================================================================================

@@ -20,7 +20,7 @@ void LAi_type_citizen_Init(aref chr)
 		chr.chr_ai.type = LAI_TYPE_CITIZEN;
 		//Установим шаблон гуляния
 		LAi_tmpl_walk_InitTemplate(chr);
-	}	
+	}
 	chr.chr_ai.type.notalk = rand(10);
 	chr.chr_ai.type.checkFight = rand(5)+2;
 	//Установим анимацию персонажу
@@ -30,7 +30,7 @@ void LAi_type_citizen_Init(aref chr)
 
 //Процессирование типа персонажа
 void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
-{	
+{
 	int idx, i;
 	int trg = -1;
 	float time;
@@ -50,17 +50,17 @@ void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 				LAi_SetAfraidDead(chr);
 			}
 		}else{
-			//Думаем о возможности поговорить	
+			//Думаем о возможности поговорить
 			time = stf(chr.chr_ai.type.notalk) - dltTime;
-			int num = FindNearCharacters(chr, 3.0, -1.0, -1.0, 0.001, true, true);	
+			int num = FindNearCharacters(chr, 3.0, -1.0, -1.0, 0.001, true, true);
 			//--> eddy. если квестовый ситизен, задача которого поговорить с ГГ
-			if (CheckAttribute(chr, "talker") && time < 10.0) 
-			{	
+			if (CheckAttribute(chr, "talker") && time < 10.0)
+			{
 				for(i = 0; i < num; i++)
-				{						
+				{
 					idx = sti(chrFindNearCharacters[i].index);
 					if (idx == nMainCharacterIndex) //ищем ГГ
-					{					
+					{
 						if (sti(chr.talker) > rand(10) && LAi_Character_CanDialog(chr, pchar))
 						{
 							LAi_tmpl_SetDialog(chr, pchar, -1.0); //любое время можно ставить, с ГГ базар будет сразу
@@ -69,10 +69,10 @@ void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 						}
 						else time = 50.0;
 					}
-				}		
+				}
 			}
 			//<-- если квестовый ситизен, задача которого поговорить с ГГ
-			//--> проверяем не врагов, но дерущихся. 			
+			//--> проверяем не врагов, но дерущихся.
 			if (stf(chr.chr_ai.type.checkFight) < 0.0)
 			{
 				for(i = 0; i < num; i++)
@@ -100,7 +100,7 @@ void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 					}
 				}
 			}
-			else 
+			else
 			{
 				chr.chr_ai.type.checkFight = stf(chr.chr_ai.type.checkFight) - dltTime;
 			}
@@ -113,7 +113,7 @@ void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 					{
 						idx = sti(chrFindNearCharacters[0].index);
 						if(idx >= 0)
-						{							
+						{
 							by = &Characters[idx];
 							//Тип
 							if(CheckAttribute(by, "chr_ai.type"))
@@ -124,7 +124,7 @@ void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 								case LAI_TYPE_CITIZEN:
 									isDialog = true;
 									break;
-								case LAI_TYPE_GUARDIAN: 
+								case LAI_TYPE_GUARDIAN:
 									//не разговаривать с протекторами
 									if (!CheckAttribute(by, "protector"))
 									{
@@ -142,7 +142,7 @@ void LAi_type_citizen_CharacterUpdate(aref chr, float dltTime)
 								time = -1.0;
 								if(GetCharacterDistByChr(chr, by, &time))
 								{
-									if(time < 0.0) isDialog = false;								
+									if(time < 0.0) isDialog = false;
 									if(time > 2.5) isDialog = false;
 								}
 								if(isDialog)
@@ -247,7 +247,7 @@ bool LAi_type_citizen_CanDialog(aref chr, aref by)
 		return true;
 	}
 	if(chr.chr_ai.tmpl == LAI_TMPL_STAY) return true;
-	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG)	
+	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG)
 	{
 		if(sti(by.index) == nMainCharacterIndex)
 		{

@@ -78,7 +78,7 @@ void ProcessDialogEvent()
 				link.l1.go = "PL_Q3_1";
 			}
 			if (pchar.questTemp.piratesLine == "KillLoy_toTavernAgain")
-			{				
+			{
 				dialog.text = "Что надо?! Я не в настроении отвечать на твои вопросы!";
 				link.l1 = "Кажется, у нас есть с тобой общее дело. Эдвард Лоу.";
 				link.l1.go = "PL_Q3_2";
@@ -87,13 +87,13 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Вернулся! Да не с пустыми руками!";
 				link.l1 = "Рад сообщить, что Эдвард Лоу умер с ужасом в глазах и твоим именем в ушах.";
-				link.l1.go = "PL_SEAWOLF";				
+				link.l1.go = "PL_SEAWOLF";
 			}
 			if (pchar.questTemp.piratesLine == "Panama_backToShip")
 			{
 				dialog.text = "А, раз тебя видеть, " + pchar.name + ". Ну, что скажешь?";
 				link.l1 = "Ты знаешь о том, что сделал Морган в Панаме?";
-				link.l1.go = "PL_Q8";				
+				link.l1.go = "PL_Q8";
 			}
 			//поиски супер-мушкета
 			if (CheckAttribute(pchar, "questTemp.mushket2x2") && !CheckCharacterItem(pchar, "mushket2x2"))
@@ -141,7 +141,7 @@ void ProcessDialogEvent()
 				link.l1.go = "PL_Q3_1";
 			}
 			if (pchar.questTemp.piratesLine == "KillLoy_toTavernAgain")
-			{				
+			{
 				dialog.text = "Что надо?! Я не в настроении отвечать на твои вопросы!";
 				link.l1 = "Кажется, у нас есть с тобой общее дело. Эдвард Лоу.";
 				link.l1.go = "PL_Q3_2";
@@ -150,13 +150,13 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Вернулся! Да не с пустыми руками!";
 				link.l1 = "Рад сообщить, что Эдвард Лоу умер с ужасом в глазах и твоим именем в ушах.";
-				link.l1.go = "PL_SEAWOLF";				
+				link.l1.go = "PL_SEAWOLF";
 			}
 			if (pchar.questTemp.piratesLine == "Panama_backToShip")
 			{
 				dialog.text = "А, раз тебя видеть, " + pchar.name + ". Ну, что скажешь?";
 				link.l1 = "Ты знаешь о том, что сделал Морган в Панаме?";
-				link.l1.go = "PL_Q8";				
+				link.l1.go = "PL_Q8";
 			}
 			//поиски супер-мушкета
 			if (CheckAttribute(pchar, "questTemp.mushket2x2") && !CheckCharacterItem(pchar, "mushket2x2"))
@@ -207,7 +207,7 @@ void ProcessDialogEvent()
 		case "PL_Q3_2":
 			dialog.text = "Лоу?! Какие у тебя дела с Лоу?";
 			link.l1 = "Я его разыскиваю по поручению Моргана. Лоу досадил Моргану, и я ищу его, чтоб пустить ему кровь.";
-			link.l1.go = "PL_Q3_3";	
+			link.l1.go = "PL_Q3_3";
 		break;
 		case "PL_Q3_3":
 			dialog.text = "Хм. Он и Моргану успел подгадить. Нельзя сказать, что я сильно расстроен этим фактом. Но этот проходимец, украл мой бриг!";
@@ -257,7 +257,7 @@ void ProcessDialogEvent()
         	{
 				chComp = GetCompanionIndex(pchar, i);
                 if(chComp != -1 && RealShips[sti(characters[chComp].ship.type)].Name == "BrigSW1")
-        		{	
+        		{
 					bOk = true;
 					break;
 				}
@@ -267,7 +267,7 @@ void ProcessDialogEvent()
 				dialog.text = "Именно этих слов я и ждал. Вижу, что еще и мой бриг сумел прихватить! Молодец. Ты доказал, что ты – Волк! Поэтому с чистым сердцем отдаю тебе 'Морского Волка', владей по праву! Хотел бы я иметь такого парня как ты, в своей команде!";
 				link.l1 = "Я - свободный капитан, Джекмен. Но твои слова - честь для меня!";
 				link.l1.go = "exit";
-				AddQuestRecord("Pir_Line_3_KillLoy", "19");	
+				AddQuestRecord("Pir_Line_3_KillLoy", "19");
 			}
 			else
 			{
@@ -275,7 +275,7 @@ void ProcessDialogEvent()
 				link.l1 = "Спасибо, Джекмен! Эти деньги мне пригодятся.";
 				link.l1.go = "exit";
 				AddMoneyToCharacter(pchar, 20000);
-				AddQuestRecord("Pir_Line_3_KillLoy", "20");	
+				AddQuestRecord("Pir_Line_3_KillLoy", "20");
 			}
 		break;
 		//********************* пиратка, квест №6. двойник *********************
@@ -313,22 +313,22 @@ void ProcessDialogEvent()
 			AddQuestRecord("Pir_Line_6_Jackman", "2");
 			pchar.questTemp.piratesLine = "PL6Brother_toSantaCatalina";
 			//ставим Джона Лидса в залив Косумель
-			sld = GetCharacter(NPC_GenerateCharacter("JohnLids", "officer_10", "man", "man", 30, sti(pchar.nation), -1, true));	
+			sld = GetCharacter(NPC_GenerateCharacter("JohnLids", "officer_10", "man", "man", 30, sti(pchar.nation), -1, true));
 			FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Антверпен", CANNON_TYPE_CULVERINE_LBS24, 80, 60, 60);
 			sld.name = "Джон";
 			sld.lastname = "Лидс";
 			sld.dialog.filename   = "Quest\PiratesLine_dialog.c";
-			sld.dialog.currentnode   = "First time";	        
-			sld.DeckDialogNode = "JohnLids";		
+			sld.dialog.currentnode   = "First time";
+			sld.DeckDialogNode = "JohnLids";
 			sld.Abordage.Enable = false;
-			sld.AnalizeShips = true; 
+			sld.AnalizeShips = true;
 			sld.AlwaysFriend = true;
 			sld.ShipEnemyDisable = true;
 			sld.Ship.Mode = "Pirate";
 			sld.greeting = "Gr_MiddPirate";
 			LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER_OWN);
 			Group_AddCharacter("LidsGroup", "JohnLids");
-			Group_SetGroupCommander("LidsGroup", "JohnLids");			
+			Group_SetGroupCommander("LidsGroup", "JohnLids");
 			Group_SetAddress("LidsGroup", "Beliz", "quest_ships", "Quest_ship_11");
 			Group_SetTaskNone("LidsGroup");
 		break;
@@ -376,13 +376,13 @@ void ProcessDialogEvent()
 
         //********************** поиски Синей птицы ***********************
         case "BlueBird_1":
-			dialog.text = NPCStringReactionRepeat("М-да, знаменитое стало корыто, что и говорить... А тебе-то зачем понадобилась эта шебека?", 
-				"Мы уже говорили об этой шебеке.", 
+			dialog.text = NPCStringReactionRepeat("М-да, знаменитое стало корыто, что и говорить... А тебе-то зачем понадобилась эта шебека?",
+				"Мы уже говорили об этой шебеке.",
 				"Опять про то же?",
                 "Что?! Опять?! Ну с меня хватит...", "repeat", 10, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Да видишь ли, очень ей интересуются одна группа товарищей...", 
+			link.l1 = HeroStringReactionRepeat("Да видишь ли, очень ей интересуются одна группа товарищей...",
 				"Да, Джекмен, верно.",
-                "Хм, ноты попутал, пардон...", 
+                "Хм, ноты попутал, пардон...",
 				"Ай-ай!..", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("BlueBird_2", "exit", "exit", "exit", npchar, Dialog.CurrentNode);
   		break;
@@ -408,13 +408,13 @@ void ProcessDialogEvent()
 		break;
 
 		case "BlueBird_6":
-			dialog.text = NPCStringReactionRepeat("Хм, поздравляю. Большая удача, черт побери! Молодец.", 
-				"Поздравляю еще раз.", 
+			dialog.text = NPCStringReactionRepeat("Хм, поздравляю. Большая удача, черт побери! Молодец.",
+				"Поздравляю еще раз.",
 				"Это я уже слышал...",
                 "Ха, да ты хвастун, приятель, каких карибы еще не видели!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Спасибо, Джекмен. Доброе слово и кошке приятно...", 
+			link.l1 = HeroStringReactionRepeat("Спасибо, Джекмен. Доброе слово и кошке приятно...",
 				"Еще раз спасибо, Джекмен.",
-                "А, ну да...", 
+                "А, ну да...",
 				"Горжусь этим!", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
@@ -430,30 +430,30 @@ void ProcessDialogEvent()
 			link.l1 = "Мэдифорду нужна атака на Кюрасао, а нам не помешают богатства негоциантов этого города. В Кюрасао сейчас много протестантских купцов, которые отказались примерять инквизиторский 'испанский сапожок' и свалили из Испании и Португалии в Голландию. А где негоцианты, там много золота. Предлагаю совместить приятное с полезным.";
 			link.l1.go = "Step_2";
   		break;
-  		
+
  		case "Step_2":
 			dialog.text = "Хех... Звучит заманчиво, но откажусь.";
 			link.l1 = "И в чем причина отказа?";
 			link.l1.go = "Step_3";
   		break;
-  		
+
  		case "Step_3":
 			dialog.text = "В том, что кроме негоциантов с их золотом, в Кюрасао много голландских солдат с их мушкетами и пушками в амбразурах форта.";
 			link.l1 = "Испанские солдаты тебя не сильно пугают...";
 			link.l1.go = "Step_4";
   		break;
-  		
+
  		case "Step_4":
 			dialog.text = "Меня пугает только состояние своей печени. Но, видишь ли в чем дело, вспороть брюхо испанцу - дело святое, а пустить кровь голландцу - на это я много людей не наберу. Так что без меня.";
 			link.l1 = "Может, подумаешь?";
 			link.l1.go = "Step_5";
   		break;
-  		
+
  		case "Step_5":
 			dialog.text = "Свое слово я сказал. А Мэдифорду передавай от меня привет.";
 			link.l1 = "Как знаешь. Всего хорошего.";
 			link.l1.go = "exit";
-			
+
             AddQuestRecord("Eng_Line_2_Talking", "4");
             pchar.questTemp.Count = makeint(sti(pchar.questTemp.Count) + 1);
             if (pchar.questTemp.Count == "4")   {pchar.questTemp.State = "after_talks_with_pirates";}

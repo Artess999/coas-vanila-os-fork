@@ -41,7 +41,7 @@ void LAi_type_player_Init(aref chr)
 void LAi_type_player_CharacterUpdate(aref chr, float dltTime)
 {
 	float time;
-	if (CheckAttribute(chr, "showTimer")) 
+	if (CheckAttribute(chr, "showTimer"))
 	{
 		chr.showTimer = stf(chr.showTimer) - dltTime;
 		if (sti(chr.showTimer) <= 0.0)

@@ -27,7 +27,7 @@ void NetClient_CreateShipEnvironment(int iMsg)
 	SetEventHandler("Interface_Started", "NetClient_DropCurrentControls", 0);
 
 	NCShipTracks.Server = false;
-	CreateEntity(&NCShipTracks, "NetShipTracks");		
+	CreateEntity(&NCShipTracks, "NetShipTracks");
 	LayerAddObject("net_execute", &NCShipTracks, 65531);
 	LayerAddObject("net_realize", &NCShipTracks, 65531);
 
@@ -178,17 +178,17 @@ void NetClient_ShipActivateFirePlace()
 	int wOurClientID = GetEventData();
 	int iFirePlaceIndex = GetEventData();
 	float fFireTime = GetEventData();
-	
+
 	SendMessage(NetClient_GetClient(wOurClientID), "llsssf", MSG_SHIP_ACTIVATE_FIRE_PLACE, iFirePlaceIndex, "Ship_Fire", "", "ship_onfire", fFireTime);
 }
 
 void NetClient_OnShip(int iMsg)
 {
-	int iTime; 
+	int iTime;
 	float x, y, z;
 
 	int iSubCode = NMGetByte(iMsg);
-	
+
 	switch (iSubCode)
 	{
 		case NSC_SHIP_MAST_FALL:
@@ -239,7 +239,7 @@ void NetClient_OnShipShipCollision(int iMsg)
 	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 
-	Play3DSound("coll_ship2ship", x, y, z); 
+	Play3DSound("coll_ship2ship", x, y, z);
 }
 
 void NetClient_OnShipIslandCollision(int iMsg)
@@ -248,7 +248,7 @@ void NetClient_OnShipIslandCollision(int iMsg)
 	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 
-	Play3DSound("coll_ship2rock", x, y, z); 
+	Play3DSound("coll_ship2rock", x, y, z);
 }
 
 void NetClient_OnShipChangeCharge(int iMsg)
@@ -325,7 +325,7 @@ void NetClient_OnShipDead(int iMsg)
 		case NETKILL_BY_ISLAND:
 			NetClient_ChatAddGameMessage("Net_ShipDieFromCollisionIsland", rgbGameMessage, 1, wDeadID, DST_INVALID);
 		break;
-		case NETKILL_BY_TOUCH_DEAD: 
+		case NETKILL_BY_TOUCH_DEAD:
 			NetClient_ChatAddGameMessage("Net_ShipDieFromCollisionDeadShip", rgbGameMessage, 1, wDeadID, DST_INVALID);
 		break;
 		case NETKILL_BY_TOUCH_ALIVE:
@@ -337,7 +337,7 @@ void NetClient_OnShipDead(int iMsg)
 	}
 
 	rDeadClient.Dead = true;
-	
+
 	Event("NCEvent_ShipDead");
 }
 
@@ -345,7 +345,7 @@ void NetClient_OnShipMastFall(int iMsg)
 {
 	int wMastClientID = NMGetClientID(iMsg);
 	int wBallClientID = NMGetClientID(iMsg);
-	int iTouchMode = NMGetByte(iMsg); 
+	int iTouchMode = NMGetByte(iMsg);
 	int iMastNum = NMGetByte(iMsg);
 
 	ref rClient = NetClient_GetClient(wMastClientID);
@@ -377,7 +377,7 @@ void NetClient_OnShipInfo(int iMsg)
 	int iMsgServerTime = NMGetDword(iMsg);
 
 	rClient.Ship.SailState = NMGetByte(iMsg) / 2.0;
-	
+
 	float x = NMGetFloat(iMsg);
 	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
@@ -423,9 +423,9 @@ void NetClient_OnShipInfo(int iMsg)
 
 	rClient.Ship.Goods.(sBallName) = iBallsNum;
 
-	if (iHits + iMisses > 0) 
+	if (iHits + iMisses > 0)
 		{ rClient.Stat.Accuracy = makeint((iHits * 100) / (iHits + iMisses)); }
-	else 
+	else
 		{ rClient.Stat.Accuracy = 0; }
 	rClient.Stat.DamageInflicted = fDamageInflicted;
 

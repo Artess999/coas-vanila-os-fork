@@ -14,7 +14,7 @@ void Birglars_fight(string qName)
 	if (GetCharacterIndex("Berglar" + pchar.quest.(qName).city) != -1)
 	{
 		LAi_SetFightMode(pchar, false);
-		LAi_LockFightMode(pchar, true);		
+		LAi_LockFightMode(pchar, true);
 		sTemp = "berglar" + pchar.quest.(qName).city;
 		pchar.questTemp.tugs.(sTemp) = "over";
 		sld = characterFromId("Berglar" + pchar.quest.(qName).city);
@@ -28,7 +28,7 @@ void SmallQuests_free(string qName)
 	pchar.questTemp.different = "free";
 }
 //вернуть тип губернаторов обратно в sit после боевки
-void MayorSitBack(string qName) 
+void MayorSitBack(string qName)
 {
 	iTemp = GetCharacterIndex(Pchar.quest.MayorSitBack.mayorId)
 	if (iTemp > 0)
@@ -53,9 +53,9 @@ void Ascold_fightInsideTemple(string qName)
     int Rank = sti(pchar.rank) - 5 + MOD_SKILL_ENEMY_RATE;
 	if (Rank < 1) Rank = 1;
  	sld = GetCharacter(NPC_GenerateCharacter("SpaEnemy_off", "SpaOfficer3", "man", "man", Rank, SPAIN, -1, true));
-    FantomMakeCoolFighter(sld, sti(pchar.rank), 90, 90, "blade26", "pistol4", 120);	
+    FantomMakeCoolFighter(sld, sti(pchar.rank), 90, 90, "blade26", "pistol4", 120);
 	LAi_SetActorType(sld);
-    LAi_group_MoveCharacter(sld, "EnemyFight");	
+    LAi_group_MoveCharacter(sld, "EnemyFight");
 	ChangeCharacterAddressGroup(sld, pchar.location, "goto",  "goto9");
 	for (i=1; i<=8; i++)
     {
@@ -72,7 +72,7 @@ void Ascold_fightInsideTemple(string qName)
     for (i=10; i<=13; i++)
     {
         sld = GetCharacter(NPC_GenerateCharacter("SpaMush_"+i, "spa_mush_"+(rand(2)+1), "man", "mushketer", Rank, SPAIN, -1, false));
-		if (MOD_SKILL_ENEMY_RATE > 5) TakeNItems(sld,"potion1", rand(MOD_SKILL_ENEMY_RATE)+1);		
+		if (MOD_SKILL_ENEMY_RATE > 5) TakeNItems(sld,"potion1", rand(MOD_SKILL_ENEMY_RATE)+1);
 		sld.MusketerDistance = 0;
 		LAi_SetWarriorType(sld);
         LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -91,7 +91,7 @@ void Ascold_actorSetWarrior(string qName)
 	if (iTemp != -1 && !LAi_IsDead(&characters[iTemp])) LAi_SetWarriorTypeNoGroup(&characters[iTemp]);
 	for (i=1; i<=8; i++)
     {
-		iTemp = GetCharacterIndex("SpaEnemy_"+i);	
+		iTemp = GetCharacterIndex("SpaEnemy_"+i);
 		if (iTemp != -1 && !LAi_IsDead(&characters[iTemp])) LAi_SetWarriorTypeNoGroup(&characters[iTemp]);
 	}
 }
@@ -140,14 +140,14 @@ void Isabella_widding(string qName)
 	sld = characterFromID("Isabella");
 	LAi_SetActorType(pchar);
     SetActorDialogAny2Pchar(sld.id, "", 0.0, 0.0);
-	LAi_ActorFollow(pchar, sld, "ActorDialog_Any2Pchar", 0.0);	
+	LAi_ActorFollow(pchar, sld, "ActorDialog_Any2Pchar", 0.0);
 }
 
 void FrLine_HoverGoOnPrison()
-{	
+{
 	pchar.questTemp.jailCanMove = true; //даем возможность выйти из тюрьмы
 	LAi_SetPlayerType(pchar);
-	pchar.questTemp.State = "Fr2Letter_SeekProblems";	
+	pchar.questTemp.State = "Fr2Letter_SeekProblems";
 	AddQuestRecord("Fra_Line_2_DelivLetter", "3");
 	RestoreTempRemoveParam(pchar, "items");
 	pchar.money = pchar.questTemp.money;
@@ -191,7 +191,7 @@ void HL5_portManGiveFleuts()
         sld.Ship.Cargo.Goods.Bombs = 18;
         sld.Ship.Cargo.Goods.Weapon = 0;
         sld.Ship.Cargo.Goods.Powder = 50;
-		sld.CompanionEnemyEnable = false; 
+		sld.CompanionEnemyEnable = false;
 		sld.Abordage.Enable = false; // НЕЛЬЗЯ!
 		SetShipRemovable(sld, false);
 		AddCharacterGoods(sld, GOOD_CLOTHES, 5000);
@@ -266,14 +266,14 @@ void BlueBird_endCaveScript(string qName)
 	pchar.questTemp.BlueBird = "toSeaBattle";
 	pchar.quest.BlueBird_seaBattle.win_condition.l1 = "location";
 	pchar.quest.BlueBird_seaBattle.win_condition.l1.location = "Bermudes";
-	pchar.quest.BlueBird_seaBattle.function = "BlueBird_seaBattle";	
+	pchar.quest.BlueBird_seaBattle.function = "BlueBird_seaBattle";
 }
 
 void BlueBird_seaBattle(string qName)
 {
 	LAi_group_Delete("EnemyFight");
 	group_DeleteGroup("BlueBird_Group");
-	sld = GetCharacter(NPC_GenerateCharacter("BlueBirdCapitain", "", "man", "man", 20, PIRATE, 30, true));							
+	sld = GetCharacter(NPC_GenerateCharacter("BlueBirdCapitain", "", "man", "man", 20, PIRATE, 30, true));
 	SetCaptanModelByEncType(sld, "pirate");
 	sld.dialog.filename = "Quest\ForAll_dialog.c";
 	sld.dialog.currentnode = "BlueBirdCapitain";
@@ -303,7 +303,7 @@ void BlueBird_seaBattle(string qName)
 	SetCharacterPerk(sld, "Sliding");
 	LAi_group_MoveCharacter(sld, "EnemyFight");
 
-	Group_AddCharacter("BlueBird_Group", "BlueBirdCapitain");			
+	Group_AddCharacter("BlueBird_Group", "BlueBirdCapitain");
 	Group_SetType("BlueBird_Group", "pirate");
 	Group_SetGroupCommander("BlueBird_Group", "BlueBirdCapitain");
 	sTemp = "quest_ship_10";
@@ -345,20 +345,20 @@ void BlueBird_DieHard(string qName)
 //возмездие торгашам. нападение на личный флейт торговца
 void BlueBird_loginFleut(string qName)
 {
-	if (GetQuestPastMinutesParam("questTemp.BlueBird") < 10) 
+	if (GetQuestPastMinutesParam("questTemp.BlueBird") < 10)
 	{
 		LAi_group_Delete("EnemyFight");
 		group_DeleteGroup("BlueBird_Group");
-		sld = GetCharacter(NPC_GenerateCharacter("BlueBirdTrader", "", "man", "man", 20, sti(pchar.questTemp.BlueBird.nation), 30, true));							
+		sld = GetCharacter(NPC_GenerateCharacter("BlueBirdTrader", "", "man", "man", 20, sti(pchar.questTemp.BlueBird.nation), 30, true));
 		sld.dialog.filename = "Quest\ForAll_dialog.c";
 		sld.dialog.currentnode = "BlueBirdTrader";
-		sld.greeting = "CapSinkShip";		
+		sld.greeting = "CapSinkShip";
 		SetCaptanModelByEncType(sld, "trade");
 		FantomMakeCoolSailor(sld, SHIP_FLEUT, pchar.questTemp.BlueBird.Ship.Name, CANNON_TYPE_CULVERINE_LBS24, 70, 70, 70);
 		sld.Ship.Mode = "trade"; //торговец
 		sld.DontRansackCaptain = true;
 		LAi_group_MoveCharacter(sld, "EnemyFight");
-		Group_AddCharacter("BlueBird_Group", "BlueBirdTrader");			
+		Group_AddCharacter("BlueBird_Group", "BlueBirdTrader");
 		Group_SetGroupCommander("BlueBird_Group", "BlueBirdTrader");
 		Group_SetAddress("BlueBird_Group", pchar.questTemp.BlueBird.Island, "quest_ships", "quest_ship_"+(rand(5)+1));
 		Group_SetTaskRunaway("BlueBird_Group", PLAYER_GROUP);
@@ -415,8 +415,8 @@ void BlueBirdFleut_board(string qName)
 ////  Генератор жемчужного промысла Sharp    начало
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Sharp_loginNearIsland(string qName)
-{	
-	if (GetQuestPastMinutesParam("questTemp.Sharp") < 10) 
+{
+	if (GetQuestPastMinutesParam("questTemp.Sharp") < 10)
 	{
 		sld = &characters[GetCharacterIndex("Sharp")];
 		LAi_SetCurHPMax(sld);
@@ -427,7 +427,7 @@ void Sharp_loginNearIsland(string qName)
 		DeleteAttribute(sld, "ship.masts");// вернуть сбитые мачты
 		SetBaseShipData(sld);
 		LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER_OWN);
-		Group_AddCharacter("Sharp_Group", "Sharp");			
+		Group_AddCharacter("Sharp_Group", "Sharp");
 		Group_SetGroupCommander("Sharp_Group", "Sharp");
 		Group_SetAddress("Sharp_Group", pchar.questTemp.Sharp.Island, "quest_ships", "quest_ship_"+(rand(1)+1));
 		Group_SetTaskRunaway("Sharp_Group", PLAYER_GROUP);
@@ -474,9 +474,9 @@ void SeaPearl_login(string qName)
 	group_DeleteGroup("PearlGroup");
 	iTemp = sti(pchar.questTemp.Sharp.PearlAreal.qtyShips);
 	for (i = 1; i <= iTemp; i++)
-	{                
+	{
 		sTemp = "PearlCapitain_" + i;
-		sld = GetCharacter(NPC_GenerateCharacter(sTemp, "trader_"+(rand(15)+1), "man", "man", 10, PIRATE, 30, true));	
+		sld = GetCharacter(NPC_GenerateCharacter(sTemp, "trader_"+(rand(15)+1), "man", "man", 10, PIRATE, 30, true));
 		sld.Ship.Type = GenerateShip(SHIP_TARTANE, false);
 		SetRandomNameToShip(sld);
 		SetBaseShipData(sld);
@@ -490,7 +490,7 @@ void SeaPearl_login(string qName)
 		Group_AddCharacter("PearlGroup", sTemp);
 	}
     // ==> стравливание
-	Group_SetGroupCommander("PearlGroup", "PearlCapitain_1");			
+	Group_SetGroupCommander("PearlGroup", "PearlCapitain_1");
 	Group_SetAddress("PearlGroup", pchar.questTemp.Sharp.PearlAreal.Island, "quest_ships", pchar.questTemp.Sharp.PearlAreal.locator);
 	Group_SetTaskRunaway("PearlGroup", PLAYER_GROUP);
 	Group_LockTask("PearlGroup");
@@ -502,7 +502,7 @@ void SeaPearl_login(string qName)
 }
 
 void SeaPearl_Late(string qName)
-{	
+{
 	pchar.quest.SeaPearl_login.over = "yes";
 	AddQuestRecord("SharpPearl", "9");
 	AddQuestUserData("SharpPearl", "iDay", FindRussianDaysString(sti(pchar.questTemp.Sharp.PearlAreal.terms)));
@@ -586,7 +586,7 @@ void SharpSeekSpy_again(string qName)
 {
 	pchar.quest.SharpSeekSpy_loginSpy.win_condition.l1 = "location";
 	pchar.quest.SharpSeekSpy_loginSpy.win_condition.l1.location = "Shore55";
-	pchar.quest.SharpSeekSpy_loginSpy.function = "SharpSeekSpy_loginSpy";	
+	pchar.quest.SharpSeekSpy_loginSpy.function = "SharpSeekSpy_loginSpy";
 }
 
 void SharpSeekSpy_caveDialog()
@@ -638,9 +638,9 @@ void SharpSeekSpy_afterFight(string qName)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PiratesLine_q1_tavernEnd()
 {
-	chrDisableReloadToLocation = false; 
-	bDisableFastReload = false; 
-	LAI_SetPlayerType(pchar);           
+	chrDisableReloadToLocation = false;
+	bDisableFastReload = false;
+	LAI_SetPlayerType(pchar);
     DoReloadCharacterToLocation("PuertoPrincipe_tavern", "tables", "stay3");
     sld = CharacterFromID("QuestPirate1");
     LAI_SetSitType(sld);
@@ -648,8 +648,8 @@ void PiratesLine_q1_tavernEnd()
 
 void PiratesLine_q1_arrest(string qName)
 {
-	chrDisableReloadToLocation = true; 
-	bDisableFastReload = true; 
+	chrDisableReloadToLocation = true;
+	bDisableFastReload = true;
 	//LocatorReloadEnterDisable("Portroyal_town", "houseS1", true); //закроем дом Моргана
 	GetCharacterPos(pchar, &locx, &locy, &locz);
     for (i=1; i<=3; i++)
@@ -665,9 +665,9 @@ void PiratesLine_q1_arrest(string qName)
 		ChangeCharacterAddressGroup(sld, pchar.location, "patrol", "patrol16");
 		if (i == 1) LAi_ActorDialog(sld, pchar, "", -1, 0);
 		else LAi_ActorFollow(sld, characterFromId("QuestSold_1"), "", -1);
-	}	
+	}
 	sld = characterFromId("QuestPirate2");
-	ChangeCharacterAddressGroup(sld, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));	
+	ChangeCharacterAddressGroup(sld, pchar.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
 	LAi_SetActorTypeNoGroup(sld);
 	LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER_OWN);
 	LAi_ActorFollow(sld, pchar, "", -1);
@@ -699,8 +699,8 @@ void PiratesLine_q1_MorganInPrison(string qName)
 
 void PiratesLine_q1_MorganEnd()
 {
-	chrDisableReloadToLocation = false; 
-	bDisableFastReload = false; 
+	chrDisableReloadToLocation = false;
+	bDisableFastReload = false;
 	LocatorReloadEnterDisable("Portroyal_town", "houseS1", false); //откроем дом Моргана
 	LAi_LocationFightDisable(&Locations[FindLocation("PortRoyal_prison")], false);
 	pchar.questTemp.jailCanMove = true; //чтобы спокойно выйти из тюрьмы
@@ -726,7 +726,7 @@ void PiratesLine_q3_loginSeaWolf(string qName)
 		sld.greeting = "CapSinkShip";
 		pchar.questTemp.piratesLine = "KillLoy_SeaWolfBattle";
 		AddQuestRecord("Pir_Line_3_KillLoy", "15");
-		Group_AddCharacter("SW_Group", "EdwardLoy");			
+		Group_AddCharacter("SW_Group", "EdwardLoy");
 		Group_SetType("SW_Group", "pirate");
 		Group_SetGroupCommander("SW_Group", "EdwardLoy");
 		sTemp = "quest_ship_" + (rand(4)+5);
@@ -743,7 +743,7 @@ void PiratesLine_q3_loginSeaWolf(string qName)
 	{
 		pchar.quest.PiratesLine_q3_SeaWolfAgain.win_condition.l1 = "ExitFromLocation";
 		pchar.quest.PiratesLine_q3_SeaWolfAgain.win_condition.l1.location = "Cumana";
-		pchar.quest.PiratesLine_q3_SeaWolfAgain.function = "PiratesLine_q3_SeaWolfAgain";	
+		pchar.quest.PiratesLine_q3_SeaWolfAgain.function = "PiratesLine_q3_SeaWolfAgain";
 	}
 }
 
@@ -751,7 +751,7 @@ void PiratesLine_q3_SeaWolfAgain(string qName)
 {
 	pchar.quest.PiratesLine_q3_loginSeaWolf.win_condition.l1 = "location";
 	pchar.quest.PiratesLine_q3_loginSeaWolf.win_condition.l1.location = "Cumana";
-	pchar.quest.PiratesLine_q3_loginSeaWolf.function = "PiratesLine_q3_loginSeaWolf";	
+	pchar.quest.PiratesLine_q3_loginSeaWolf.function = "PiratesLine_q3_loginSeaWolf";
 }
 
 void PiratesLine_q3_over(string qName)
@@ -764,7 +764,7 @@ void PiratesLine_q3_over(string qName)
 		if (sti(RealShips[sti(pchar.ship.type)].basetype) == SHIP_BRIGSW)
 		{
 			AddQuestRecord("Pir_Line_3_KillLoy", "17");
-			pchar.questTemp.piratesLine = "KillLoy_GoodWork"; //выполнено все, бриг захвачен			
+			pchar.questTemp.piratesLine = "KillLoy_GoodWork"; //выполнено все, бриг захвачен
 		}
 		else
 		{
@@ -790,9 +790,9 @@ void PQ4_SeaPearl_login(string qName)
 	group_DeleteGroup("PearlGroup");
 	iTemp = sti(pchar.questTemp.Sharp.PearlAreal.qtyShips);
 	for (i = 1; i <= iTemp; i++)
-	{                
+	{
 		sTemp = "PearlCapitain_" + i;
-		sld = GetCharacter(NPC_GenerateCharacter(sTemp, "trader_"+(rand(15)+1), "man", "man", 10, PIRATE, 30, true));	
+		sld = GetCharacter(NPC_GenerateCharacter(sTemp, "trader_"+(rand(15)+1), "man", "man", 10, PIRATE, 30, true));
 		sld.Ship.Type = GenerateShip(SHIP_TARTANE, false);
 		SetRandomNameToShip(sld);
 		SetBaseShipData(sld);
@@ -806,7 +806,7 @@ void PQ4_SeaPearl_login(string qName)
 		Group_AddCharacter("PearlGroup", sTemp);
 	}
     // ==> стравливание
-	Group_SetGroupCommander("PearlGroup", "PearlCapitain_1");			
+	Group_SetGroupCommander("PearlGroup", "PearlCapitain_1");
 	Group_SetAddress("PearlGroup", pchar.questTemp.Sharp.PearlAreal.Island, "quest_ships", pchar.questTemp.Sharp.PearlAreal.locator);
 	Group_SetTaskRunaway("PearlGroup", PLAYER_GROUP);
 	Group_LockTask("PearlGroup");
@@ -818,7 +818,7 @@ void PQ4_SeaPearl_login(string qName)
 }
 
 void PQ4_SeaPearl_Late(string qName)
-{	
+{
 	pchar.quest.PQ4_SeaPearl_login.over = "yes";
 	AddQuestRecord("Pir_Line_4_Pearl", "2");
 	pchar.questTemp.piratesLine = "PearlQ4_late";
@@ -876,7 +876,7 @@ void PQ5_inOrryHouse(string qName)
 {
 	pchar.questTemp.piratesLine = "PL5Hunter_exitReload";
 	LAi_LocationFightDisable(&locations[FindLocation("Pirates_houseS1")], true); //закроем боевки
-	chrDisableReloadToLocation = true; 
+	chrDisableReloadToLocation = true;
 	LAi_group_Delete("EnemyFight");
 
 	sld = GetCharacter(NPC_GenerateCharacter("Aivory", "officer_7", "man", "man", 30, PIRATE, -1, true));
@@ -918,7 +918,7 @@ void PQ5_afterChangeMainHero()
     PChar = GetMainCharacter();
     LAi_SetPlayerType(PChar);
 	locCameraTarget(PChar)
-    locCameraFollow();	
+    locCameraFollow();
 	rCharacter = characterFromID("Orry");
 	LAi_SetActorType(rCharacter);
 	LAi_ActorTurnToCharacter(rCharacter, pchar);
@@ -930,10 +930,10 @@ void PQ5_afterChangeMainHero()
 }
 
 void PQ5_afterChangeMainHero2()
-{	
+{
 	rCharacter = characterFromID("Orry");
 	LAi_group_MoveCharacter(rCharacter, "EnemyFight");
-	sld = characterFromID("Aivory");			
+	sld = characterFromID("Aivory");
 	LAi_SetWarriorType(sld);
 	LAi_group_MoveCharacter(sld, "EnemyFight");
     LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -946,7 +946,7 @@ void PQ5_afterFight(string qName)
 	AddQuestRecord("Pir_Line_5_Hunter", "11");
 	AddQuestUserData("Pir_Line_5_Hunter", "sCity", XI_ConvertString("Colony" + pchar.questTemp.piratesLine.Q5.city_4 + "Gen"));
 	pchar.questTemp.piratesLine = "PL5Hunter_toMorgan";
-	chrDisableReloadToLocation = false; 
+	chrDisableReloadToLocation = false;
 	Pchar.quest.PQ5_inPortPoyalTavern.win_condition.l1 = "location";
 	Pchar.quest.PQ5_inPortPoyalTavern.win_condition.l1.location = "PortRoyal_tavern";
 	Pchar.quest.PQ5_inPortPoyalTavern.function = "PQ5_inPortPoyalTavern";
@@ -973,7 +973,7 @@ void PQ5_Morgan_4()
     PChar = GetMainCharacter();
     LAi_SetPlayerType(PChar);
 	locCameraTarget(PChar)
-    locCameraFollow();	
+    locCameraFollow();
 	rCharacter = characterFromID("CapGoodly");
 	LAi_SetActorType(rCharacter);
 	LAi_ActorTurnToCharacter(rCharacter, pchar);
@@ -1004,7 +1004,7 @@ void PQ5_Morgan_afterFight(string qName)
 //пиратка, квест №6, двойник
 void PQ6_ShoreBattle(string qName)
 {
-    LAi_group_Delete("EnemyFight"); 
+    LAi_group_Delete("EnemyFight");
 	LocatorReloadEnterDisable("Shore7", "boat", true); //закроем выход в море
 	GetCharacterPos(pchar, &locx, &locy, &locz);
 	//наши
@@ -1089,7 +1089,7 @@ void PQ7_FriendLinney(string qName)
 {
 	if (GetQuestPastMinutesParam("questTemp.piratesLine") < 20)
 	{
-		sld = GetCharacter(NPC_GenerateCharacter("FriendLinney", "", "man", "man", 20, sti(pchar.nation), 5, true));							
+		sld = GetCharacter(NPC_GenerateCharacter("FriendLinney", "", "man", "man", 20, sti(pchar.nation), 5, true));
 		SetCaptanModelByEncType(sld, "pirate");
 		sld.dialog.filename = "Quest\PiratesLine_dialog.c";
 		sld.DeckDialogNode = "FriendLinney";
@@ -1103,9 +1103,9 @@ void PQ7_FriendLinney(string qName)
 		DeleteAttribute(sld, "DontClearDead");
 		DeleteAttribute(sld, "AboardToFinalDeck");
 		DeleteAttribute(sld, "SinkTenPercent");
-		DeleteAttribute(sld, "DontRansackCaptain");		
+		DeleteAttribute(sld, "DontRansackCaptain");
 		sld.AnalizeShips = true;  //анализировать вражеские корабли при выборе таска
-		Group_AddCharacter("FriendLinney_Group", "FriendLinney");			
+		Group_AddCharacter("FriendLinney_Group", "FriendLinney");
 		Group_SetType("FriendLinney_Group", "pirate");
 		Group_SetGroupCommander("FriendLinney_Group", "FriendLinney");
 		Group_SetAddress("FriendLinney_Group", "Hispaniola1", "quest_ships", "quest_ship_4");
@@ -1123,7 +1123,7 @@ void PQ7_LoginLeon()
 {
 	LAi_group_Delete("EnemyFight");
 	group_DeleteGroup("FriendLinney_Group"); //сносим друга Стива Линнея
-	sld = GetCharacter(NPC_GenerateCharacter("LeonCapitain", "", "man", "man", 25, PIRATE, 30, true));							
+	sld = GetCharacter(NPC_GenerateCharacter("LeonCapitain", "", "man", "man", 25, PIRATE, 30, true));
 	SetCaptanModelByEncType(sld, "pirate");
 	sld.dialog.filename = "Quest\PiratesLine_dialog.c";
 	sld.dialog.currentnode = "LeonCapitain";
@@ -1161,7 +1161,7 @@ void PQ7_LoginLeon()
 	Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, sld.id);
 	Group_SetGroupCommander(sGroup, sld.id);
-	SetRandGeraldSail(sld, sti(sld.Nation)); 
+	SetRandGeraldSail(sld, sti(sld.Nation));
 
 	sld.mapEnc.type = "warrior";
 	sld.mapEnc.worldMapShip = "quest_ship";
@@ -1193,7 +1193,7 @@ void PQ7_loadToRecidence(string qName)
 }
 
 void PQ7_setBattleShip(string qName)
-{	
+{
 	sld = &locations[FindLocation("PuertoPrincipe_townhall")];
 	DeleteAttribute(sld, "reload.l2"); //уберем возможность спуститься с лестницы
 	if (GetQuestPastMinutesParam("questTemp.piratesLine") > 100)
@@ -1204,7 +1204,7 @@ void PQ7_setBattleShip(string qName)
 	}
 	else
 	{
-		sld = GetCharacter(NPC_GenerateCharacter("QuestCap_PL7", "SpaOfficer1", "man", "man", 40, SPAIN, -1, true));							
+		sld = GetCharacter(NPC_GenerateCharacter("QuestCap_PL7", "SpaOfficer1", "man", "man", 40, SPAIN, -1, true));
 		sld.dialog.filename = "Quest\PiratesLine_dialog.c";
 		sld.dialog.currentnode = "QuestCap_PL7";
 		sld.DeckDialogNode = "QuestCap_PL7_inDeck";
@@ -1246,13 +1246,13 @@ void PQ7_setBattleShip(string qName)
 		Group_LockTask(sGroup);
 		Group_AddCharacter(sGroup, sld.id);
 		Group_SetGroupCommander(sGroup, sld.id);
-		SetRandGeraldSail(sld, sti(sld.Nation)); 
+		SetRandGeraldSail(sld, sti(sld.Nation));
 
 		sld.mapEnc.type = "trade";
 		sld.mapEnc.worldMapShip = "quest_ship";
 		sld.mapEnc.Name = "Баттлшип";
 		Map_CreateTraderXZ(1009.22, -992.708, 988.514, 515.407, "QuestCap_PL7", 15);
-		Log_TestInfo("Искомый баттлшип начал движение.");	
+		Log_TestInfo("Искомый баттлшип начал движение.");
 	}
 }
 
@@ -1277,7 +1277,7 @@ void PQ8_timeOver(string qName) //убираем моргана
 
 void PQ8_openPanama(string qName) //откроем Панаму
 {
-	LocatorReloadEnterDisable("Shore48", "reload1_back", false); 
+	LocatorReloadEnterDisable("Shore48", "reload1_back", false);
 	LocatorReloadEnterDisable("PortoBello_Jungle_01", "reload1_back", false);
 	sld = characterFromId("Henry Morgan");
 	sld.dialog.currentnode = "First time";
@@ -1289,11 +1289,11 @@ void PQ8_openPanama(string qName) //откроем Панаму
 void PQ8_openPanama_2(string qName) //откроем Панаму
 {
 	sld = characterFromId("Henry Morgan");
-	if (pchar.questTemp.piratesLine == "Panama_backToShip") 
+	if (pchar.questTemp.piratesLine == "Panama_backToShip")
 	{
 		SetTimerFunction("PQ8_openPanama_3", 0, 0, 180);
 	}
-	else 
+	else
 	{
 		sld.dialog.currentnode = "I_know_you_good";
 		ChangeCharacterAddressGroup(sld, "PortRoyal_houseS1", "sit", "sit2");
@@ -1306,10 +1306,10 @@ void PQ8_openPanama_2(string qName) //откроем Панаму
 	iTemp = GetCharacterIndex("Jackman");
 	if (iTemp != -1)
 	{
-		if(IsCompanion(&characters[iTemp]))  
+		if(IsCompanion(&characters[iTemp]))
 		{
 			RemoveCharacterCompanion(pchar, &characters[iTemp]);
-		}               
+		}
 		LAi_SetHuberType(&characters[iTemp]);
 		LAi_group_MoveCharacter(&characters[iTemp], "PIRATE_CITIZENS");
         ChangeCharacterAddressGroup(&characters[iTemp], "Pirates_townhall", "sit", "sit1");
@@ -1319,16 +1319,16 @@ void PQ8_openPanama_2(string qName) //откроем Панаму
 	iTemp = GetCharacterIndex("Richard_Soukins");
 	if (iTemp != -1)
 	{
-		if(IsCompanion(&characters[iTemp]))  
+		if(IsCompanion(&characters[iTemp]))
 		{
 			RemoveCharacterCompanion(pchar, &characters[iTemp]);
-		}                   
+		}
 		LAi_SetHuberType(&characters[iTemp]);
 		LAi_group_MoveCharacter(&characters[iTemp], "PIRATE_CITIZENS");
         ChangeCharacterAddressGroup(&characters[iTemp], "PuertoPrincipe_townhall", "sit", "sit1");
         characters[iTemp].dialog.currentnode = "First time";
     }
-	LocatorReloadEnterDisable("Panama_ExitTown", "reload4", false); 
+	LocatorReloadEnterDisable("Panama_ExitTown", "reload4", false);
 	SetLocationCapturedState("Panama_town", false);
 	bDisableLandEncounters = false;
 	pchar.quest.PL_Q8_backFight_1.over = "yes"; //на всякий случай
@@ -1354,14 +1354,14 @@ void PQ8_PanamaTimerOver(string qName)
 	        pchar.quest.PQ8_PanamaTimerOver_01.over = "yes"; // сброс, если уже откладывали
 	        pchar.quest.PQ8_PanamaTimerOver_02.over = "yes";
 			pchar.quest.PQ8_EnterPortoBello.over = "yes"; //снимаем прерывание на вход
-            
+
             aref arOldMapPos;
 			makearef(arOldMapPos, worldMap.old);
             WdmPrepareMapForAbordage(arOldMapPos);
             MakeCloneShipDeck(pchar, true); // подмена палубы
             DoReloadFromWorldMapToLocation("Ship_deck", "goto", "goto5");
 	        ReloadFromWMtoL_complete();
-	        
+
             sld = characterFromID("Henry Morgan");
             ChangeCharacterAddressGroup(sld, "Ship_deck", "goto", "goto6");
             LAi_SetWarriorType(sld);
@@ -1400,20 +1400,20 @@ void PQ8_EnterPortoBello()
 {
 	sld = characterFromId("Henry Morgan");
 	LAi_SetImmortal(sld, false);
-	pchar.quest.PQ8_PanamaTimerOver.over = "yes"; //снимаем таймер 
+	pchar.quest.PQ8_PanamaTimerOver.over = "yes"; //снимаем таймер
 	//bQuestDisableMapEnter = true;
 }
 
 void PQ8_MorganInPortoBello()
 {
-	chrDisableReloadToLocation = true; 
-	DoQuestFunctionDelay("PQ8_MorganInPortoBello_2", 3.0);	
+	chrDisableReloadToLocation = true;
+	DoQuestFunctionDelay("PQ8_MorganInPortoBello_2", 3.0);
 }
 
 void PQ8_MorganInPortoBello_2(string qName)
-{	
+{
 	sld = characterFromId("Henry Morgan");
-	LAi_LoginInCaptureTown(sld, true); 
+	LAi_LoginInCaptureTown(sld, true);
 	LAi_SetCurHPMax(sld);
 	sld.dialog.currentNode = "PL_Q8_PBResidence";
 	ChangeCharacterAddressGroup(sld, pchar.location, "reload", "reload1");
@@ -1426,28 +1426,28 @@ void PQ8_PBExitResidence(string qName)
 	iTemp = GetCharacterIndex("Henry Morgan");
 	if (iTemp != -1)
 	{
-		if(IsCompanion(&characters[iTemp]))  
+		if(IsCompanion(&characters[iTemp]))
 		{
 			RemoveCharacterCompanion(pchar, &characters[iTemp]);
-		}   				
+		}
 		ChangeCharacterAddress(&characters[iTemp], "none", "");
 	}
 	iTemp = GetCharacterIndex("Jackman");
 	if (iTemp != -1)
 	{
-		if(IsCompanion(&characters[iTemp]))  
+		if(IsCompanion(&characters[iTemp]))
 		{
 			RemoveCharacterCompanion(pchar, &characters[iTemp]);
-		}   				
+		}
 		ChangeCharacterAddress(&characters[iTemp], "none", "");
 	}
 	iTemp = GetCharacterIndex("John Morris");
 	if (iTemp != -1)
 	{
-		if(IsCompanion(&characters[iTemp]))  
+		if(IsCompanion(&characters[iTemp]))
 		{
 			RemoveCharacterCompanion(pchar, &characters[iTemp]);
-		}   				
+		}
 		ChangeCharacterAddress(&characters[iTemp], "none", "");
 	}
 	sld = characterFromId("Richard_Soukins");
@@ -1477,7 +1477,7 @@ void PQ8_controlShore48(string qName)
 	{	//ГГ вовремя и на месте -->
 		LAi_LocationFightDisable(&Locations[FindLocation("Shore48")], true); //закрываем локацию для боевки
 		LocatorReloadEnterDisable("Shore48", "boat", true); //Не даем выходить в море
-		chrDisableReloadToLocation = true; 
+		chrDisableReloadToLocation = true;
 		bDisableLandEncounters = true; //энкаунтеры не генерим
 		pchar.questTemp.piratesLine = "Panama_inShore";
 		pchar.questTemp.piratesLine.crewHero = makeint(GetCrewQuantity(pchar) / 100 / 2);	//запомним кол-во десанта от ГГ
@@ -1494,7 +1494,7 @@ void PQ8_controlShore48(string qName)
 			LAi_warrior_DialogEnable(sld, false);
             LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
             ChangeCharacterAddressGroup(sld, "Shore48", "goto",  "goto12");
-        }	
+        }
         for (i=1; i<=iTemp; i++) //мушкетеры ГГ
         {
             sld = GetCharacter(NPC_GenerateCharacter("MHmush_"+i, "mushketer_"+(rand(4)+1), "man", "mushketer", sti(pchar.rank), PIRATE, -1, false));
@@ -1545,7 +1545,7 @@ void PQ8_controlShore48(string qName)
 		EquipCharacterbyItem(sld, "pistol4");
 		TakeNItems(sld,"potion1", 5);
 		RemoveCharacterCompanion(pchar, sld); //убираем Соукинса из компаньонов
-		ChangeCharacterAddressGroup(sld, "Shore48", "goto", "goto11");	
+		ChangeCharacterAddressGroup(sld, "Shore48", "goto", "goto11");
 		LAi_SetActorType(sld);
 		LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER_OWN);
 		LAi_ActorDialog(sld, pchar, "", -1.0, 0);
@@ -1559,10 +1559,10 @@ void PQ8_controlShore48(string qName)
 		iTemp = GetCharacterIndex("Richard_Soukins");
 		if (iTemp != -1)
 		{
-			if(IsCompanion(&characters[iTemp]))  
+			if(IsCompanion(&characters[iTemp]))
 			{
 				RemoveCharacterCompanion(pchar, &characters[iTemp]);
-			}                   
+			}
 			LAi_SetHuberType(&characters[iTemp]);
 			LAi_group_MoveCharacter(&characters[iTemp], "PIRATE_CITIZENS");
             ChangeCharacterAddressGroup(&characters[iTemp], "PuertoPrincipe_townhall", "sit", "sit1");
@@ -1571,7 +1571,7 @@ void PQ8_controlShore48(string qName)
         //Возвращаем на место Джекмена
 		iTemp = GetCharacterIndex("Jackman");
 		if (iTemp != -1)
-		{              
+		{
 			LAi_SetHuberType(&characters[iTemp]);
 			LAi_group_MoveCharacter(&characters[iTemp], "PIRATE_CITIZENS");
             ChangeCharacterAddressGroup(&characters[iTemp], "Pirates_townhall", "sit", "sit1");
@@ -1587,7 +1587,7 @@ void PQ8_controlShore48(string qName)
 }
 
 void PQ8_jungle_05(string qName)
-{ 
+{
 	chrDisableReloadToLocation = true;
 	pchar.questTemp.piratesLine = "Panama_inJungle";
 	//--------------------------- наши ------------------------------
@@ -1656,9 +1656,9 @@ void PQ8_jungle_05(string qName)
     {
         sTemp = "sold_spa_"+(rand(7)+1);
 		if (i==16) sTemp = "off_spa_2";
- 		sld = GetCharacter(NPC_GenerateCharacter("SpaEnemy_"+i, sTemp, "man", "man", Rank, SPAIN, -1, true));       
+ 		sld = GetCharacter(NPC_GenerateCharacter("SpaEnemy_"+i, sTemp, "man", "man", Rank, SPAIN, -1, true));
 		FantomMakeCoolFighter(sld, sti(pchar.rank), 80, 80, "blade34", "pistol6", 80);
-		sld.BreakTmplAndFightGroup = true; 
+		sld.BreakTmplAndFightGroup = true;
 		LAi_SetActorType(sld);
         LAi_group_MoveCharacter(sld, "EnemyFight");
         ChangeCharacterAddressGroup(sld, pchar.location, "rld",  "aloc"+i);
@@ -1686,7 +1686,7 @@ void PQ8_jungle_05(string qName)
 
 
 void PQ8_jungle_04(string qName)
-{ 
+{
 	chrDisableReloadToLocation = true;
 	pchar.questTemp.piratesLine = "Panama_inJungle";
 	//--------------------------- наши ------------------------------
@@ -1755,7 +1755,7 @@ void PQ8_jungle_04(string qName)
     {
         sTemp = "sold_spa_"+(rand(7)+1);
 		if (i==14) sTemp = "off_spa_1";
- 		sld = GetCharacter(NPC_GenerateCharacter("SpaEnemy_"+i, sTemp, "man", "man", Rank, SPAIN, -1, true));      
+ 		sld = GetCharacter(NPC_GenerateCharacter("SpaEnemy_"+i, sTemp, "man", "man", Rank, SPAIN, -1, true));
         FantomMakeCoolFighter(sld, sti(pchar.rank), 90, 90, "blade26", "pistol4", 100);
 		LAi_SetWarriorType(sld);
         LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -1792,7 +1792,7 @@ void PQ8_jungle_04(string qName)
 }
 
 void PQ8_jungle_03(string qName)
-{ 
+{
 	chrDisableReloadToLocation = true;
 	pchar.questTemp.piratesLine = "Panama_inJungle";
 	//--------------------------- наши ------------------------------
@@ -1863,7 +1863,7 @@ void PQ8_jungle_03(string qName)
 		if (i==13) sTemp = "off_spa_2";
  		sld = GetCharacter(NPC_GenerateCharacter("SpaEnemy_"+i, sTemp, "man", "man", Rank, SPAIN, -1, true));
 		FantomMakeCoolFighter(sld, sti(pchar.rank), 90, 90, "blade26", "pistol4", 120);
-		sld.BreakTmplAndFightGroup = true; 
+		sld.BreakTmplAndFightGroup = true;
 		LAi_SetActorType(sld);
         LAi_group_MoveCharacter(sld, "EnemyFight");
         ChangeCharacterAddressGroup(sld, pchar.location, "rld",  "aloc"+i);
@@ -1890,16 +1890,16 @@ void PQ8_jungle_03(string qName)
 }
 
 void PQ8_ExitTown(string qName)
-{ 
+{
 	iTemp = GetCharacterIndex("Richard_Soukins");
 	if(LAi_IsDead(&characters[iTemp]))
 	{	//Соукинс мертв, задание выполнено
-		AddQuestRecord("Pir_Line_8_Panama", "7");	
+		AddQuestRecord("Pir_Line_8_Panama", "7");
 		pchar.questTemp.piratesLine = "Panama_RichardGoodWork";
 	}
 	else
 	{	//Соукинс жив, задание провалено
-		AddQuestRecord("Pir_Line_8_Panama", "8");	
+		AddQuestRecord("Pir_Line_8_Panama", "8");
 		pchar.questTemp.piratesLine = "Panama_RichardBadWork";
 		sld = &characters[iTemp];
 		LAi_SetCurHPMax(sld);
@@ -2000,7 +2000,7 @@ void PQ8_ExitTown(string qName)
     for (i=1; i<=10; i++)
     {
         sld = GetCharacter(NPC_GenerateCharacter("SpaMush_"+i, "spa_mush_"+(rand(2)+1), "man", "mushketer", Rank, SPAIN, -1, false));
-		if (MOD_SKILL_ENEMY_RATE > 5) TakeNItems(sld,"potion1", rand(MOD_SKILL_ENEMY_RATE)+1);		
+		if (MOD_SKILL_ENEMY_RATE > 5) TakeNItems(sld,"potion1", rand(MOD_SKILL_ENEMY_RATE)+1);
 		LAi_SetWarriorType(sld);
         LAi_group_MoveCharacter(sld, "EnemyFight");
         ChangeCharacterAddressGroup(sld, pchar.location, "rld",  "aloc"+i);
@@ -2123,14 +2123,14 @@ void PQ8_piratesInPanama(string qName)
 			PlaceCharacter(sld, "goto", pchar.location);
 		}
 	}
-}	
+}
 
 void PQ8_MorganInPanama_1(string qName)
 {
 	chrDisableReloadToLocation = true;
 	//делаем видимым ключ
 	sld = ItemsFromID("keyPanama");
-	sld.shown = true; 
+	sld.shown = true;
 	sld.startLocation = "Panama_prison";
 	sld.startLocator = "item1";
 	BackItemDescribe("keyPanama");
@@ -2153,7 +2153,7 @@ void PL_Q8_ResEnterBox(string qName)
 		TakeItemFromCharacter(pchar, "keyPanama");
 		chrDisableReloadToLocation = true;
 		sld = characterFromId("Henry Morgan");
-		sld.dialog.currentNode = "PL_Q8_Panama2";		
+		sld.dialog.currentNode = "PL_Q8_Panama2";
 		ChangeCharacterAddressGroup(sld, pchar.location, "reload", "reload1");
 		LAi_SetActorType(sld);
 		LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
@@ -2185,7 +2185,7 @@ void PL_Q8_inPanamaFort2(string qName)
 
 void PL_Q8_inPanamaPirates_1(string qName)
 {
-	chrDisableReloadToLocation = true;	
+	chrDisableReloadToLocation = true;
 	//--------------------------- меняем ноды у оставшихся пиратов ------------------------------
 	//расставляем бойцов ГГ
 	for (i=1; i<=sti(pchar.questTemp.piratesLine.crewHero); i++)
@@ -2246,7 +2246,7 @@ void PL_Q8_inPanamaPirates_1(string qName)
 		{
 			characters[iTemp].Dialog.CurrentNode = "PQ8_FackMorgan";
 		}
-	}	
+	}
 	//разговорный пират
 	GetCharacterPos(pchar, &locx, &locy, &locz);
 	sld = GetCharacter(NPC_GenerateCharacter("QuestPirate", "pirate_"+(rand(9)+1), "man", "man", 25, PIRATE, 0, true));
@@ -2259,7 +2259,7 @@ void PL_Q8_inPanamaPirates_1(string qName)
 	LAi_ActorDialog(sld, pchar, "", -1, 0);
 }
 
-void PL_Q8_backFight_1(string qName) 
+void PL_Q8_backFight_1(string qName)
 {
     int Rank = sti(pchar.rank) - 5 + MOD_SKILL_ENEMY_RATE;
 	if (Rank < 1) Rank = 1;
@@ -2297,7 +2297,7 @@ void PL_Q8_backFight_1(string qName)
 void WaitressFack_null(string qName) //нулим квест официантки
 {
 	pchar.questTemp.different = "free";
-	pchar.quest.WaitressFack_inRoom.over = "yes"; 
+	pchar.quest.WaitressFack_inRoom.over = "yes";
 	DeleteAttribute(pchar, "questTemp.different.FackWaitress");
 }
 
@@ -2309,8 +2309,8 @@ void WaitressFack_inRoom(string qName)
 }
 
 void WaitressFack_Enter(string qName)
-{	
-	LAi_group_Delete("EnemyFight"); 
+{
+	LAi_group_Delete("EnemyFight");
 	LAi_SetFightMode(pchar, false);
 	LAi_LockFightMode(pchar, true);
 	if (pchar.questTemp.different.FackWaitress.Kick == "0")
@@ -2319,13 +2319,13 @@ void WaitressFack_Enter(string qName)
 		sld = GetCharacter(NPC_GenerateCharacter("BerglarWairessQuest", "officer_"+(rand(19)+1), "man", "man", iTemp, PIRATE, -1, true));
 		FantomMakeCoolFighter(sld, iTemp, 80, 80, "topor2", "pistol6", 50);
 		sld.dialog.Filename = "Quest\ForAll_dialog.c";
-		sld.dialog.currentnode = "WaitressBerglar";	
-		sld.greeting = "Enc_Raiders"; 
+		sld.dialog.currentnode = "WaitressBerglar";
+		sld.greeting = "Enc_Raiders";
  		//меняем обличие официантки
 		rCharacter = characterFromId(locations[reload_location_index].fastreload + "_waitress");
 		rCharacter.model = "girl_" + (rand(7)+1);
 		SetRandomNameToCharacter(rCharacter);
-		FaceMaker(rCharacter);  
+		FaceMaker(rCharacter);
 	}
 	else
 	{
@@ -2347,7 +2347,7 @@ void WaitressFack_outRoom()
         TakeItemFromCharacter(pchar, FindCharacterItemByGroup(pchar, BLADE_ITEM_TYPE));
     }
     while (FindCharacterItemByGroup(pchar, GUN_ITEM_TYPE) != "")
-    {             
+    {
         TakeItemFromCharacter(pchar, FindCharacterItemByGroup(pchar, GUN_ITEM_TYPE));
     }
     pchar.money = 0;
@@ -2377,14 +2377,14 @@ void WaitressFack_fack()
 {
 	pchar.questTemp.HorseQty = sti(pchar.questTemp.HorseQty) + 1;
 	DoQuestCheckDelay("PlaySex_1", 1.0);
-	pchar.questTemp.different = "FackWaitress_facking"; 
+	pchar.questTemp.different = "FackWaitress_facking";
 }
 
 // ----------------- Пожертвование хозяйки борделя ---------------------
-void HostessChurch_null(string qName) //нулим квест 
+void HostessChurch_null(string qName) //нулим квест
 {
 	//если квест еще взят, то деньги считай прикарманены
-	if (characters[GetCharacterIndex(pchar.questTemp.different.HostessChurch.city + "_Hostess")].questChurch == "taken") 
+	if (characters[GetCharacterIndex(pchar.questTemp.different.HostessChurch.city + "_Hostess")].questChurch == "taken")
 	{
 		characters[GetCharacterIndex(pchar.questTemp.different.HostessChurch.city + "_Hostess")].questChurch = "baster";
 	}
@@ -2393,7 +2393,7 @@ void HostessChurch_null(string qName) //нулим квест
 }
 
 // ----------------- Украсть чертежи на верфи ---------------------
-void ShipyardsMap_returnCFN(string qName) 
+void ShipyardsMap_returnCFN(string qName)
 {
 	string  sName;
 	aref	arDis, arRld;
@@ -2414,7 +2414,7 @@ void ShipyardsMap_returnCFN(string qName)
 }
 
 // ----------------- Найти кольцо мэра в борделе ---------------------
-void TakeMayorsRing_null(string qName) //нулим квест 
+void TakeMayorsRing_null(string qName) //нулим квест
 {
 	pchar.questTemp.different = "free";
 	if (CheckCharacterItem(pchar, "MayorsRing"))
@@ -2439,7 +2439,7 @@ void TakeMayorsRing_null(string qName) //нулим квест
 }
 
 // ----------------- Развод на секс хозяйки борделя ---------------------
-void SexWithHostess_null(string qName) //нулим квест 
+void SexWithHostess_null(string qName) //нулим квест
 {
 	if (pchar.questTemp.different.HostessSex == "toRoom")
 	{
@@ -2454,7 +2454,7 @@ void SexWithHostess_null(string qName) //нулим квест
 	pchar.questTemp.different = "free";
 }
 
-void SexWithHostess_goToRoom()  
+void SexWithHostess_goToRoom()
 {
 	chrDisableReloadToLocation = true;
 	sld = characterFromId(pchar.questTemp.different.HostessSex.city + "_Hostess");
@@ -2493,7 +2493,7 @@ void SetCapitainFromCityToSea(string qName) //помещаем в море кэ�
 	if (!CheckAttribute(pchar, "quest." + qName + ".CapId")) return;
 	int capIndex = GetCharacterIndex(pchar.quest.(qName).CapId)
 	if (capIndex != -1)
-	{		
+	{
 		sld = &characters[capIndex];
 		if (LAi_IsDead(sld)) return;
 		sld.location	= "none";
@@ -2508,7 +2508,7 @@ void SetCapitainFromCityToSea(string qName) //помещаем в море кэ�
 		Group_LockTask(sGroup);
 		Group_AddCharacter(sGroup, sld.id);
 		Group_SetGroupCommander(sGroup, sld.id);
-		SetRandGeraldSail(sld, sti(sld.Nation)); 
+		SetRandGeraldSail(sld, sti(sld.Nation));
 		//записываем данные в структуру кэпа
 		sld.quest = "InMap"; //личный флаг рассеянного кэпа
 		sld.quest.targetCity = SelectNotEnemyColony(sld); //определим колонию, куда отправится кэп
@@ -2521,9 +2521,9 @@ void SetCapitainFromCityToSea(string qName) //помещаем в море кэ�
 		iTemp = GetMaxDaysFromIsland2Island(sTemp, GetArealByCityName(sld.quest.targetCity))+5; //дней доехать даем с запасом
 		Map_CreateTrader(sld.quest.baseShore, sld.quest.targetCity, sld.id, iTemp);
 		//даем общий слух, что кэп ушел в другой город
-		AddSimpleRumourEx(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', которого зовут " + GetFullName(sld) + ", опять ушел в море. По слухам, он двинулся в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".", 
-			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'? Так вот, он направился в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".", 
-			"Если вам нужен капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то вам придется отправится в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ". " + GetFullName(sld) + " ушел именно туда."), 
+		AddSimpleRumourEx(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', которого зовут " + GetFullName(sld) + ", опять ушел в море. По слухам, он двинулся в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".",
+			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'? Так вот, он направился в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".",
+			"Если вам нужен капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то вам придется отправится в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ". " + GetFullName(sld) + " ушел именно туда."),
 			sld.city, iTemp, 1, "PortmansBook_DeliveryToCap", sld.id);
 		//--> запись инфы по кэпу в базу местного портмана
 		sTemp = sld.id; //Id кэпа, который оставил отметку
@@ -2549,7 +2549,7 @@ void SetRobberFromSeaToMap(string qName) //помещаем в море кэпа
 	if (!CheckAttribute(pchar, "quest." + qName + ".CapId")) return;
 	int capIndex = GetCharacterIndex(pchar.quest.(qName).CapId)
 	if (capIndex != -1)
-	{		
+	{
 		sld = &characters[capIndex];
 		if (LAi_IsDead(sld)) return;
 		//в морскую группу кэпа
@@ -2560,7 +2560,7 @@ void SetRobberFromSeaToMap(string qName) //помещаем в море кэпа
 		Group_LockTask(sGroup);
 		Group_AddCharacter(sGroup, sld.id);
 		Group_SetGroupCommander(sGroup, sld.id);
-		SetRandGeraldSail(sld, sti(sld.Nation)); 
+		SetRandGeraldSail(sld, sti(sld.Nation));
 		//записываем данные в структуру кэпа
 		sld.quest = "InMap"; //личный флаг рассеянного кэпа
 		sld.quest.targetCity = SelectAnyColony2(sld.city, sld.quest.cribCity); //определим колонию, куда отправится кэп
@@ -2569,9 +2569,9 @@ void SetRobberFromSeaToMap(string qName) //помещаем в море кэпа
 		iTemp = GetMaxDaysFromIsland2Island(GetArealByCityName(sld.quest.targetCity), GetArealByCityName(sld.city))+5; //дней доехать даем с запасом
 		Map_CreateTrader(sld.city, sld.quest.targetCity, sld.id, iTemp);
 		//даем общий слух, что кэп ушел в другой город
-		AddSimpleRumourEx(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', которого зовут " + GetFullName(sld) + ", опять ушел в море. По слухам, он двинулся в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".", 
-			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'? Так вот, он направился в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".", 
-			"Если вам нужен капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то вам придется отправится в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ". " + GetFullName(sld) + " ушел именно туда."), 
+		AddSimpleRumourEx(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', которого зовут " + GetFullName(sld) + ", опять ушел в море. По слухам, он двинулся в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".",
+			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'? Так вот, он направился в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".",
+			"Если вам нужен капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то вам придется отправится в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ". " + GetFullName(sld) + " ушел именно туда."),
 			sld.city, iTemp, 1, "Portmans_SeekShip_rum", sld.id);
 		//--> запись инфы по кэпу в базу местного портмана
 		sTemp = sld.id; //Id кэпа, который оставил отметку
@@ -2593,7 +2593,7 @@ void SetRobberFromSeaToMap(string qName) //помещаем в море кэпа
 }
 
 void SeekShip_checkAbordage(string qName) //кэп-вор успешно абордирован
-{	
+{
 	//смотрим, взят корабль себе или потоплен
 	sld = characterFromId(pchar.quest.(qName).CapId);
 	rCharacter = &characters[GetCharacterIndex(sld.quest.cribCity + "_PortMan")];
@@ -2604,20 +2604,20 @@ void SeekShip_checkAbordage(string qName) //кэп-вор успешно або�
 		if(iTemp != -1)
 		{
 			sld = &characters[iTemp];
-			if (sld.ship.name == rCharacter.quest.PortmansSeekShip.shipName && 
+			if (sld.ship.name == rCharacter.quest.PortmansSeekShip.shipName &&
 				RealShips[sti(sld.ship.type)].BaseName == rCharacter.quest.PortmansSeekShip.shipTapeName &&
 				RealShips[sti(sld.Ship.Type)].basetype == rCharacter.quest.PortmansSeekShip.shipTape)
 			{
 				bOk = true;
 			}
 		}
-	}	
+	}
 	//решение по результатам проверки
 	sld = characterFromId(pchar.quest.(qName).CapId);
 	sTemp = "SeekShip_checkSink" + rCharacter.index;
 	pchar.quest.(sTemp).over = "yes"; //снимаем прерывание на утонул
 	if (bOk)
-	{		
+	{
 		rCharacter.quest = "SeekShip_success"; //флаг успешного взятия на абордаж
 		sTemp = rCharacter.id + "Portmans_SeekShip";
 		AddQuestRecordEx(sTemp, "Portmans_SeekShip", "5");
@@ -2680,30 +2680,30 @@ void ChurchNightGuard_timerInChurch(string qName)
 		pchar.questTemp.different.Church_NightGuard.fight = true; //флаг боевки
         chrDisableReloadToLocation = true; // закрыть выход из локации.
 		sTemp = pchar.questTemp.different.Church_NightGuard + "Church_NightGuard";
-		AddQuestRecordEx(sTemp, "Church_NightGuard", "5");		
+		AddQuestRecordEx(sTemp, "Church_NightGuard", "5");
         LAi_group_Delete("EnemyFight");
-		//--> генерим ранг 
+		//--> генерим ранг
 		num = rand(2)+1;
-		if (sti(pchar.rank) > 6) 
+		if (sti(pchar.rank) > 6)
 		{
 			if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*2.5/num);
 			else iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE*1.6/num);
 		}
-		else  
+		else
 		{	//казуалам зеленый свет на начало игры
 			if (sti(pchar.rank) > 3) iRank = sti(pchar.rank);
-			else 
+			else
 			{
 				iRank = 1;
 				num = 1;
 			}
-		}	
-		//<-- генерим ранг 		
+		}
+		//<-- генерим ранг
 		for (i=1; i<=num; i++)
         {
             sld = GetCharacter(NPC_GenerateCharacter("Bandit"+i, "officer_"+(i+10), "man", "man", iRank, PIRATE, 0, true));
-			SetFantomParamFromRank(sld, iRank, true);         
-			LAi_SetWarriorType(sld); 
+			SetFantomParamFromRank(sld, iRank, true);
+			LAi_SetWarriorType(sld);
 			LAi_warrior_SetStay(sld, true);
 			LAi_warrior_DialogEnable(sld, false);
             LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -2723,7 +2723,7 @@ void ChurchNightGuard_timerInChurch(string qName)
 }
 // ----------------- поиск кэпов, дача квеста горожанином ---------------------
 void SCQ_seekCapIsDeath(string qName)
-{	
+{
 	string sTitle;
 	sld = characterFromId(pchar.quest.(qName).CapId); //капитан
 	rCharacter = &characters[GetCharacterIndex("QuestCitiz_" + sld.quest.cribCity)]; //горожанин-квестодатель
@@ -2776,7 +2776,7 @@ void SCQ_seekCapIsDeath(string qName)
 //смерть квестодателя закрывает и чистит квест
 void SCQ_CitizenIsDeath(string qName)
 {
-	sld = characterFromId(pchar.quest.(qName).CapId); //капитан	
+	sld = characterFromId(pchar.quest.(qName).CapId); //капитан
 	sld.lifeDay = 0;
 	rCharacter = characterFromId(pchar.quest.(qName).CitizenId); //горожанин-квестодатель
 	//чистим базу нпс-кэпов  -->
@@ -2800,7 +2800,7 @@ void CitizCapFromSeaToMap(string qName) //помещаем на карту кэ�
 	if (!CheckAttribute(pchar, "quest." + qName + ".CapId")) return;
 	int capIndex = GetCharacterIndex(pchar.quest.(qName).CapId)
 	if (capIndex != -1)
-	{		
+	{
 		sld = &characters[capIndex];
 		if (LAi_IsDead(sld)) return;
 		sld.nation = sld.quest.nation;
@@ -2812,7 +2812,7 @@ void CitizCapFromSeaToMap(string qName) //помещаем на карту кэ�
 		Group_LockTask(sGroup);
 		Group_AddCharacter(sGroup, sld.id);
 		Group_SetGroupCommander(sGroup, sld.id);
-		SetRandGeraldSail(sld, sti(sld.Nation)); 
+		SetRandGeraldSail(sld, sti(sld.Nation));
 		//записываем данные в структуру кэпа
 		sld.quest = "InMap"; //личный флаг искомого кэпа
 		sld.quest.targetCity = SelectAnyColony2(sld.city, sld.quest.cribCity); //определим колонию, куда отправится кэп
@@ -2821,9 +2821,9 @@ void CitizCapFromSeaToMap(string qName) //помещаем на карту кэ�
 		iTemp = GetMaxDaysFromIsland2Island(GetArealByCityName(sld.quest.targetCity), GetArealByCityName(sld.city))+5; //дней доехать даем с запасом
 		Map_CreateTrader(sld.city, sld.quest.targetCity, sld.id, iTemp);
 		//даем общий слух, что кэп ушел в другой город
-		AddSimpleRumourEx(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', которого зовут " + GetFullName(sld) + ", опять ушел в море. По слухам, он двинулся в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".", 
-			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'? Так вот, он направился в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".", 
-			"Если вам нужен капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то вам придется отправится в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ". " + GetFullName(sld) + " ушел именно туда."), 
+		AddSimpleRumourEx(LinkRandPhrase("Капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', которого зовут " + GetFullName(sld) + ", опять ушел в море. По слухам, он двинулся в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".",
+			"Вы знаете, капитана " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "'? Так вот, он направился в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ".",
+			"Если вам нужен капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(sld.Ship.Type)].BaseName + "Acc")) + " '" + sld.Ship.name + "', то вам придется отправится в " + XI_ConvertString("Colony"+sld.quest.targetCity+"Acc") + ". " + GetFullName(sld) + " ушел именно туда."),
 			sld.city, iTemp, 1, "Citiz_SeekCap_rum", sld.id);
 		//--> запись инфы по кэпу в базу местного портмана
 		sTemp = sld.id; //Id кэпа, который оставил отметку
@@ -2846,7 +2846,7 @@ void CitizCapFromSeaToMap(string qName) //помещаем на карту кэ�
 
 //после боевки в каюте. для всех квестов по поисков кэпов ситезанами
 void CitizSeekCap_afterCabinFight(string qName)
-{	
+{
 	sld = GetCharacter(NPC_GenerateCharacter(pchar.quest.(qName).label + "_" + pchar.quest.(qName).WifeCity, pchar.quest.(qName).model, "woman", "towngirl", 5, pchar.quest.(qName).nation, -1, false));
 	sld.name = pchar.quest.(qName).WifeName;
 	sld.lastname = pchar.quest.(qName).WifeLastname;
@@ -2874,7 +2874,7 @@ void SetMushketFromSeaToMap(string qName)
 	Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, sld.id);
 	Group_SetGroupCommander(sGroup, sld.id);
-	SetRandGeraldSail(sld, sti(sld.Nation)); 
+	SetRandGeraldSail(sld, sti(sld.Nation));
 	sld.quest = "InMap"; //личный флаг искомого кэпа
 	sld.cityShore = GetIslandRandomShoreId(GetArealByCityName(sld.city));
 	sld.quest.targetCity = SelectAnyColony(sld.city); //определим колонию, в бухту которой он придет
@@ -2906,7 +2906,7 @@ void SetDanielleFromSeaToMap(string qName)
 	Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, sld.id);
 	Group_SetGroupCommander(sGroup, sld.id);
-	SetRandGeraldSail(sld, sti(sld.Nation)); 
+	SetRandGeraldSail(sld, sti(sld.Nation));
 	sld.quest = "InMap"; //личный флаг искомого кэпа
 	sld.cityShore = GetIslandRandomShoreId(GetArealByCityName(sld.city));
 	sld.quest.targetCity = SelectAnyColony(sld.city); //определим колонию, в бухту которой он придет
@@ -2969,14 +2969,14 @@ void LSC_enterStuvesantBox(string qName)
 }
 
 void LSC_openMasterHouse(string qName)
-{	
+{
 	LocatorReloadEnterDisable("Villemstad_town", "houseSp5", false);
 	//делаем видимым ключ
 	sld = ItemsFromID("keyQuestLSC");
-	sld.shown = true; 
+	sld.shown = true;
 	pchar.quest.LSC_enterMasterHouse.win_condition.l1 = "location";
 	pchar.quest.LSC_enterMasterHouse.win_condition.l1.location = "Villemstad_houseSp5";
-	pchar.quest.LSC_enterMasterHouse.function = "LSC_enterMasterHouse";	
+	pchar.quest.LSC_enterMasterHouse.function = "LSC_enterMasterHouse";
 }
 
 void LSC_enterMasterHouse(string qName)
@@ -2995,11 +2995,11 @@ void LSC_enterMasterHouse(string qName)
 }
 
 void LSC_enterSoldiers()
-{	
+{
 	LAi_SetPlayerType(pchar);
-	LAi_group_Delete("EnemyFight"); 
+	LAi_group_Delete("EnemyFight");
 	pchar.questTemp.LSC = "CanFoundStuvesantKey";
-	sld = characterFromId("GiveKeyMan"); 
+	sld = characterFromId("GiveKeyMan");
 	LAi_CharacterDisableDialog(sld);
 	LAi_SetCitizenType(sld);
 	LAi_group_MoveCharacter(sld, LAI_GROUP_TmpEnemy);
@@ -3009,8 +3009,8 @@ void LSC_enterSoldiers()
 	for (i=1; i<=iNum; i++)
     {
         sld = GetCharacter(NPC_GenerateCharacter("MKSold"+i, "sold_hol_"+(rand(7)+1), "man", "man", iTemp, HOLLAND, 0, true));
-		SetFantomParamFromRank(sld, iTemp, true);         
-		LAi_SetWarriorType(sld); 
+		SetFantomParamFromRank(sld, iTemp, true);
+		LAi_SetWarriorType(sld);
 		//LAi_warrior_SetStay(sld, true);
 		LAi_warrior_DialogEnable(sld, false);
         LAi_group_MoveCharacter(sld, "EnemyFight");
@@ -3127,13 +3127,13 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.location.locator = "sit1";
 	sld.location.baseShip = "11"; //базовый корабль в ГПК
 	sld.location.baseLocator = "goto11_0";
-	sld.location.baseShip.going = false; //перемещаться между кораблями в городе	
+	sld.location.baseShip.going = false; //перемещаться между кораблями в городе
 	sld.location.hours = 5; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\Mayor.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "mayor"; //тип нпс
 	sld.greeting = "Gr_Kapper";
-	sld.standUp = true; //вставать и нападать на врага 
+	sld.standUp = true; //вставать и нападать на врага
 	sld.watchBoxes = true;
 	sld.standUp.exitDisable = true;   //залочить выход в случае драки
 	sld.watchBoxes.exitDisable = true; //залочить выход в случае драки
@@ -3141,7 +3141,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	LAi_SetHuberType(sld);
 	LAi_RemoveLoginTime(sld);
 	LAi_SetImmortal(sld, true);
-	LAi_group_MoveCharacter(sld, "TmpEnemy");	
+	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	SaveCurrentNpcQuestDateParam(sld, "location");
 
 	// миллиционер №1
@@ -3153,10 +3153,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanAugustineResidence";
 	sld.location.group = "goto";
-	sld.location.locator = "goto9"; 
+	sld.location.locator = "goto9";
 	sld.location.baseShip = "11"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto11_1"; 
-	sld.location.baseShip.going = false; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto11_1";
+	sld.location.baseShip.going = false; //перемещаться между кораблями в городе
 	sld.location.hours = 4; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\Mentos.c";
 	sld.dialog.currentnode   = "First time";
@@ -3177,10 +3177,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanAugustineResidence";
 	sld.location.group = "goto";
-	sld.location.locator = "goto8"; 
+	sld.location.locator = "goto8";
 	sld.location.baseShip = "11"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto11_2"; 
-	sld.location.baseShip.going = false; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto11_2";
+	sld.location.baseShip.going = false; //перемещаться между кораблями в городе
 	sld.location.hours = 2; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\Mentos.c";
 	sld.dialog.currentnode   = "First time";
@@ -3200,9 +3200,9 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanAugustineResidence";
 	sld.location.group = "goto";
-	sld.location.locator = "goto11"; 
+	sld.location.locator = "goto11";
 	sld.location.baseShip = "11"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto11_3"; 
+	sld.location.baseLocator = "goto11_3";
 	sld.location.baseShip.going = false; //перемещаться между кораблями в городе
 	sld.location.hours = 6; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\Mentos.c";
@@ -3224,9 +3224,9 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanAugustineResidence";
 	sld.location.group = "goto";
-	sld.location.locator = "goto4"; 
+	sld.location.locator = "goto4";
 	sld.location.baseShip = "11"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto11_4";  
+	sld.location.baseLocator = "goto11_4";
 	sld.location.baseShip.going = false; //перемещаться между кораблями в городе
 	sld.location.hours = 3; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\Mentos.c";
@@ -3248,9 +3248,9 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanAugustineResidence";
 	sld.location.group = "goto";
-	sld.location.locator = "goto3"; 
+	sld.location.locator = "goto3";
 	sld.location.baseShip = "11"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto11_5"; 
+	sld.location.baseLocator = "goto11_5";
 	sld.location.baseShip.going = false; //перемещаться между кораблями в городе
 	sld.location.hours = 5; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\Mentos.c";
@@ -3271,10 +3271,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanAugustineResidence";
 	sld.location.group = "goto";
-	sld.location.locator = "goto1"; 
+	sld.location.locator = "goto1";
 	sld.location.baseShip = "11"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto11_6"; 
-	sld.location.baseShip.going = false; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto11_6";
+	sld.location.baseShip.going = false; //перемещаться между кораблями в городе
 	sld.location.hours = 7; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\Mentos.c";
 	sld.dialog.currentnode   = "First time";
@@ -3297,7 +3297,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	SaveCurrentNpcQuestDateParam(sld, "location");
 
-	// ------------------------ таверна ------------------------ 
+	// ------------------------ таверна ------------------------
 	//тавернщик
 	sld = GetCharacter(NPC_GenerateCharacter("LSCBarmen", "barmen_8", "man", "man", 20, PIRATE, -1, false));
 	sld.name = "Хилл";
@@ -3334,7 +3334,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	SaveCurrentNpcQuestDateParam(sld, "location");
 
-	// ------------------------ внешние горожане ------------------------	
+	// ------------------------ внешние горожане ------------------------
 	// внешний горожанин Педро Хуртадо
 	sld = GetCharacter(NPC_GenerateCharacter("PedroHurtado", "usurer_2", "man", "man", 10, PIRATE, -1, true));
 	sld.name = "Педро";
@@ -3343,10 +3343,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
-	sld.location.locator = "goto06_1"; 
+	sld.location.locator = "goto06_1";
 	sld.location.baseShip = "06"; //базовый корабль в ГПК
-	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = sld.location.locator;
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 2; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\PedroHurtado.c";
 	sld.dialog.currentnode   = "First time";
@@ -3366,10 +3366,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
-	sld.location.locator = "goto07_1"; 
+	sld.location.locator = "goto07_1";
 	sld.location.baseShip = "07"; //базовый корабль в ГПК
-	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = sld.location.locator;
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 1; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\ZhilBaru.c";
 	sld.dialog.currentnode   = "First time";
@@ -3389,10 +3389,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
-	sld.location.locator = "goto09_1"; 
+	sld.location.locator = "goto09_1";
 	sld.location.baseShip = "09"; //базовый корабль в ГПК
-	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = sld.location.locator;
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 3; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\TristanBorcher.c";
 	sld.dialog.currentnode   = "First time";
@@ -3412,10 +3412,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
-	sld.location.locator = "goto14_1"; 
+	sld.location.locator = "goto14_1";
 	sld.location.baseShip = "14"; //базовый корабль в ГПК
-	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = sld.location.locator;
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 4; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\RoyelHaag.c";
 	sld.dialog.currentnode   = "First time";
@@ -3435,10 +3435,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
-	sld.location.locator = "goto15_1"; 
+	sld.location.locator = "goto15_1";
 	sld.location.baseShip = "15"; //базовый корабль в ГПК
-	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = sld.location.locator;
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 4; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\DiminicLegro.c";
 	sld.dialog.currentnode   = "First time";
@@ -3458,17 +3458,17 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "LostShipsCity_town";
 	sld.location.group = "goto";
-	sld.location.locator = "goto08_1"; 
+	sld.location.locator = "goto08_1";
 	sld.location.baseShip = "08"; //базовый корабль в ГПК
-	sld.location.baseLocator = sld.location.locator; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = sld.location.locator;
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 4; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\JorgeStouks.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "citizen"; //тип нпс
 	sld.greeting = "Gr_JorgeStouks";
 	sld.talker = true; //начать диалог
-	LAi_RemoveLoginTime(sld);	
+	LAi_RemoveLoginTime(sld);
 	LAi_SetStayType(sld);
 	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	SaveCurrentNpcQuestDateParam(sld, "location");
@@ -3483,10 +3483,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
-	sld.location.locator = "sit2"; 
+	sld.location.locator = "sit2";
 	sld.location.baseShip = "03"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto03_2"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto03_2";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 6; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\HenryFolder.c";
 	sld.dialog.currentnode   = "First time";
@@ -3504,10 +3504,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
-	sld.location.locator = "sit3"; 
+	sld.location.locator = "sit3";
 	sld.location.baseShip = "10"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto10_2"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto10_2";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 5; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\FelixMendoza.c";
 	sld.dialog.currentnode   = "First time";
@@ -3525,10 +3525,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
-	sld.location.locator = "sit5"; 
+	sld.location.locator = "sit5";
 	sld.location.baseShip = "12"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto12_2"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto12_2";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 7; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\RodgerWoyler.c";
 	sld.dialog.currentnode   = "First time";
@@ -3547,10 +3547,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
-	sld.location.locator = "sit9"; 
+	sld.location.locator = "sit9";
 	sld.location.baseShip = "15"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto15_2"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto15_2";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 4; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\AndreLabor.c";
 	sld.dialog.currentnode   = "First time";
@@ -3568,10 +3568,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
-	sld.location.locator = "sit8"; 
+	sld.location.locator = "sit8";
 	sld.location.baseShip = "14"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto14_2";  
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto14_2";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 3; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\StefanKleyn.c";
 	sld.dialog.currentnode   = "First time";
@@ -3589,10 +3589,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
-	sld.location.locator = "sit6"; 
+	sld.location.locator = "sit6";
 	sld.location.baseShip = "02"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto02_2";  
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto02_2";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 3; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\ThomasFlann.c";
 	sld.dialog.currentnode   = "First time";
@@ -3611,10 +3611,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FleuronTavern";
 	sld.location.group = "sit";
-	sld.location.locator = "sit14"; 
+	sld.location.locator = "sit14";
 	sld.location.baseShip = "09"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto09_2";  
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto09_2";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 5; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\PabloBarades.c";
 	sld.dialog.currentnode   = "First time";
@@ -3633,14 +3633,14 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "GloriaChurch";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.dialog.filename   = "Quest\LostShipsCity\Priest.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "priest"; //тип нпс
 	sld.greeting = "Gr_padre";
 	LAi_SetPriestType(sld);
-	LAi_group_MoveCharacter(sld, "TmpEnemy");		
-	
+	LAi_group_MoveCharacter(sld, "TmpEnemy");
+
 	// в церкви Сандра Гомес
 	sld = GetCharacter(NPC_GenerateCharacter("SandraGomes", "girl_4", "woman", "towngirl", 5, PIRATE, -1, false));
 	sld.name = "Сандра";
@@ -3649,10 +3649,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "GloriaChurch";
 	sld.location.group = "goto";
-	sld.location.locator = "goto1"; 
+	sld.location.locator = "goto1";
 	sld.location.baseShip = "04"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto04_3"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto04_3";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 4; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\SandraGomes.c";
 	sld.dialog.currentnode   = "First time";
@@ -3671,10 +3671,10 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "GloriaChurch";
 	sld.location.group = "goto";
-	sld.location.locator = "goto2"; 
+	sld.location.locator = "goto2";
 	sld.location.baseShip = "08"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto08_3"; 
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseLocator = "goto08_3";
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 5; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\MonikaRight.c";
 	sld.dialog.currentnode   = "First time";
@@ -3693,14 +3693,14 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "EsmeraldaStoreBig";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.dialog.filename   = "Quest\LostShipsCity\Trader.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "trader"; //тип нпс
 	sld.greeting = "tra_common";
 	LAi_SetLoginTime(sld, 6.0, 21.99);
 	LAi_SetOwnerType(sld);
-	LAi_group_MoveCharacter(sld, "TmpEnemy");	
+	LAi_group_MoveCharacter(sld, "TmpEnemy");
 
 	// ------------------------ Тюрьма ------------------------
 	sld = GetCharacter(NPC_GenerateCharacter("LSC_PrisonerHead", "Hobart", "man", "man", 40, PIRATE, -1, true));
@@ -3716,14 +3716,14 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.dialog.currentnode   = "prisonerHead";
 	sld.cityTape = "prisonerHead"; //тип нпс
 	sld.greeting = "pirat_common";
-	sld.standUp = true; //вставать и нападать на врага 
+	sld.standUp = true; //вставать и нападать на врага
 	sld.watchBoxes = true;
 	sld.location.days = 2; //передвижения через .. дней
 	//sld.talker = true; //начать диалог
 	LAi_SetHuberType(sld);
 	LAi_RemoveLoginTime(sld);
 	LAi_SetImmortal(sld, true);
-	LAi_group_MoveCharacter(sld, "TmpEnemy");	
+	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	SaveCurrentNpcQuestDateParam(sld, "location");
 
 	// тюремщик №1
@@ -3740,7 +3740,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.dialog.currentnode   = "Prisoner";
 	sld.cityTape = "prisoner"; //тип нпс
 	sld.greeting = "pirat_common";
-	sld.standUp = true; //вставать и нападать на врага 
+	sld.standUp = true; //вставать и нападать на врага
 	sld.watchBoxes = true;
 	sld.location.hours = 4; //передвижения через .. часов
 	LAi_SetWarriorType(sld);
@@ -3755,7 +3755,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "CarolineBank";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.dialog.filename   = "Quest\LostShipsCity\Usurer.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "usurer"; //тип нпс
@@ -3763,7 +3763,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	LAi_SetImmortal(sld, true);
 	LAi_RemoveLoginTime(sld);
 	LAi_SetOwnerType(sld);
-	LAi_group_MoveCharacter(sld, "TmpEnemy");	
+	LAi_group_MoveCharacter(sld, "TmpEnemy");
 
 	// ------------------------ Механик ------------------------
 	sld = GetCharacter(NPC_GenerateCharacter("Mechanic", "Mechanic", "man", "man", 5, PIRATE, -1, false));
@@ -3773,7 +3773,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.dialog.filename   = "Quest\LostShipsCity\Mechanic.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "mechanic"; //тип нпс
@@ -3791,11 +3791,11 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "CeresSmithy";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.location.baseShip = "03"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto03_0"; 
+	sld.location.baseLocator = "goto03_0";
 	sld.location.baseLocation = "CeresSmithy"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 4; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\ElisTaylor.c";
 	sld.dialog.currentnode   = "First time";
@@ -3814,11 +3814,11 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "FurieShipInside2";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.location.baseShip = "06"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto06_0"; 
+	sld.location.baseLocator = "goto06_0";
 	sld.location.baseLocation = "FurieShipInside2"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 6; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\OreliBertin.c";
 	sld.dialog.currentnode   = "First time";
@@ -3837,11 +3837,11 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "PlutoStoreSmall";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.location.baseShip = "09"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto09_0"; 
+	sld.location.baseLocator = "goto09_0";
 	sld.location.baseLocation = "PlutoStoreSmall"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 5; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\LeaToors.c";
 	sld.dialog.currentnode   = "First time";
@@ -3860,11 +3860,11 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SantaFlorentinaShipInside4";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.location.baseShip = "14"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto14_0"; 
+	sld.location.baseLocator = "goto14_0";
 	sld.location.baseLocation = "SantaFlorentinaShipInside4"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 7; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\ElizaCalvo.c";
 	sld.dialog.currentnode   = "First time";
@@ -3883,11 +3883,11 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "AvaShipInside3";
 	sld.location.group = "barmen";
-	sld.location.locator = "stay"; 
+	sld.location.locator = "stay";
 	sld.location.baseShip = "15"; //базовый корабль в ГПК
-	sld.location.baseLocator = "goto15_0"; 
+	sld.location.baseLocator = "goto15_0";
 	sld.location.baseLocation = "AvaShipInside3"; //базовая внутреняя локация
-	sld.location.baseShip.going = true; //перемещаться между кораблями в городе	
+	sld.location.baseShip.going = true; //перемещаться между кораблями в городе
 	sld.location.hours = 5; //передвижения через .. часов
 	sld.dialog.filename   = "Quest\LostShipsCity\SesilGalard.c";
 	sld.dialog.currentnode   = "First time";
@@ -3907,7 +3907,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto1"; 	
+	sld.location.locator = "goto1";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -3924,7 +3924,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto2"; 	
+	sld.location.locator = "goto2";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -3939,7 +3939,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto3"; 	
+	sld.location.locator = "goto3";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -3954,7 +3954,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto4"; 	
+	sld.location.locator = "goto4";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -3969,7 +3969,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto5"; 	
+	sld.location.locator = "goto5";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -3984,7 +3984,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto6"; 	
+	sld.location.locator = "goto6";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -3999,7 +3999,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto7"; 	
+	sld.location.locator = "goto7";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -4014,7 +4014,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "VelascoShipInside1";
 	sld.location.group = "goto";
-	sld.location.locator = "goto8"; 	
+	sld.location.locator = "goto8";
 	sld.dialog.filename   = "Quest\LostShipsCity\Narval.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "narval"; //тип нпс
@@ -4031,7 +4031,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto8"; //	
+	sld.location.locator = "goto8"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4048,7 +4048,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto4"; //	
+	sld.location.locator = "goto4"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4064,7 +4064,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto6"; //	
+	sld.location.locator = "goto6"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4080,7 +4080,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto5"; //	
+	sld.location.locator = "goto5"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4096,7 +4096,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto7"; //	
+	sld.location.locator = "goto7"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4112,7 +4112,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto13"; //	
+	sld.location.locator = "goto13"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4128,7 +4128,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto1" //; 	
+	sld.location.locator = "goto1" //;
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4144,7 +4144,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto2"; //	
+	sld.location.locator = "goto2"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4160,7 +4160,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto3"; // 	
+	sld.location.locator = "goto3"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4192,7 +4192,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto11"; //	
+	sld.location.locator = "goto11"; //
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4208,7 +4208,7 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 	sld.city = "LostShipsCity";
 	sld.location	= "SanGabrielMechanic";
 	sld.location.group = "goto";
-	sld.location.locator = "goto12"; 	
+	sld.location.locator = "goto12";
 	sld.dialog.filename   = "Quest\LostShipsCity\Casper.c";
 	sld.dialog.currentnode   = "First time";
 	sld.cityTape = "casper"; //тип нпс
@@ -4222,12 +4222,12 @@ void FirstLoginLostShipsCity(string qName) //первоначальная ген
 void LSC_stormTimer_1(string qName)
 {
 	for(i=0; i<MAX_LOCATIONS; i++)
-	{				
+	{
 		if (CheckAttribute(&locations[i], "fastreload") && locations[i].fastreload == "LostShipsCity")
-		{			
+		{
 			DeleteAttribute(&locations[i], "alwaysStorm");
 			DeleteAttribute(&locations[i], "storm");
-			DeleteAttribute(&locations[i], "tornado");	
+			DeleteAttribute(&locations[i], "tornado");
 			DeleteAttribute(&locations[i], "QuestlockWeather");
 			DeleteAttribute(&locations[i], "MaxWaveHeigh");
 		}
@@ -4285,7 +4285,7 @@ void LSC_admiralTakeAll()
 	RemoveCharacterEquip(pchar, SPYGLASS_ITEM_TYPE);
 	RemoveCharacterEquip(pchar, PATENT_ITEM_TYPE);
 	RemoveCharacterEquip(pchar, CIRASS_ITEM_TYPE);
-	RemoveCharacterEquip(pchar, MAPS_ITEM_TYPE);	
+	RemoveCharacterEquip(pchar, MAPS_ITEM_TYPE);
 	//сносим все предметы, кроме квестовых -->
     aref arItems;
 	string sName;
@@ -4310,7 +4310,7 @@ void LSC_admiralTakeAll()
 		TakeNItems(pchar, sName, sti(arItems.(sName)));
     }
 	DeleteAttribute(pchar, "questTemp.items");
-	//<-- сносим все предметы, кроме квестовых	
+	//<-- сносим все предметы, кроме квестовых
 	//проверим, не залезал и ГГ в сундучок Тизера -->
 	int iLoc = FindLocation("LostShipsCity_town");
 	if (CheckAttribute(&locations[iLoc], "private11.equip"))
@@ -4321,7 +4321,7 @@ void LSC_admiralTakeAll()
 	AddQuestRecord("ISS_MainLine", "3");
 	//------->>> пул нужных слухов для наводок на квесты		AddSimpleRumourCityTip("", "LostShipsCity", 10, 1, "LSC", "");
 	//освобождение мужа Элис Тейлор
-	LSC_beginElisHusband();	
+	LSC_beginElisHusband();
 	AddSimpleRumourCityTip("Вы знаете, муж Элис Тейлор попал в тюрьму, адмирал посадил его за дебош у него в резиденции. И теперь бедняга Элис просит помоч ей вызволить супруга.", "LostShipsCity", 10, 1, "LSC", "LSC_rumourElisHusband");
 	//квест со скелетом Лейтона Декстера
 	AddSimpleRumourCityTip("Леа Тоорс недавно вспоминала Лейтона Декстера. Пропал человек буквально в никуда...", "LostShipsCity", 10, 1, "LSC", "LSC_rumourLostDecster");
@@ -4348,13 +4348,13 @@ void LSC_returnBarmen_2(string qName)
 void LSC_enterToProtector(string qName)
 {
     chrDisableReloadToLocation = true;
-	LAi_LocationFightDisable(loadedLocation, true); 
+	LAi_LocationFightDisable(loadedLocation, true);
     DoQuestFunctionDelay("LSC_enterToProtector_1", 7.0);
 }
 
 void LSC_enterToProtector_1(string qName)
 {
-	LAi_group_Delete("EnemyFight"); 
+	LAi_group_Delete("EnemyFight");
     sld = GetCharacter(NPC_GenerateCharacter("LSCQuestMent", "off_hol_2", "man", "man", 25, PIRATE, 0, true));
 	FantomMakeCoolFighter(sld, 25, 70, 70, "blade28", "pistol3", 50);
 	sld.Dialog.Filename = "Quest\ForAll_dialog.c";
@@ -4368,13 +4368,13 @@ void LSC_enterToProtector_1(string qName)
 void LSC_KillOneNarval(string qName)
 {
 	chrDisableReloadToLocation = true;
-	LAi_LocationFightDisable(loadedLocation, true); 
+	LAi_LocationFightDisable(loadedLocation, true);
     DoQuestFunctionDelay("LSC_KillOneNarval_1", 3.0 + frand(4.0));
 }
 
 void LSC_KillOneNarval_1(string qName)
 {
-	LAi_group_Delete("EnemyFight"); 
+	LAi_group_Delete("EnemyFight");
     sld = GetCharacter(NPC_GenerateCharacter("LSCQuestNarval", "officer_16", "man", "man", 25, PIRATE, 0, true));
 	FantomMakeCoolFighter(sld, 30, 80, 80, "blade28", "pistol4", 150);
 	sld.Dialog.Filename = "Quest\ForAll_dialog.c";
@@ -4456,7 +4456,7 @@ void LSC_scriptInterception(string qName)
 		sld = characterFromId("Casper_head");
 		LAi_SetActorType(sld);
 		ChangeCharacterAddressGroup(sld, pchar.location, "reload", "reload1");
-		LAi_ActorGoToLocator(sld, "quest", "stay2", "LSC_EnterComplite_2", -1);		
+		LAi_ActorGoToLocator(sld, "quest", "stay2", "LSC_EnterComplite_2", -1);
 	}
 	else
 	{
@@ -4473,7 +4473,7 @@ void LCS_EndScriptInterception()
     LAi_SetPlayerType(PChar);
 	locCameraTarget(PChar)
     locCameraFollow();
-    EndQuestMovie(); 
+    EndQuestMovie();
 	//разводим адмирала и каспера
 	sld = characterFromId("LSCMayor");
 	sld.Dialog.CurrentNode = "First time";
@@ -4481,7 +4481,7 @@ void LCS_EndScriptInterception()
 	LAi_ActorGoToLocator(sld, "goto", "goto3", "", -1.0);
 	sld = characterFromId("Casper_head");
 	LAi_SetActorType(sld);
-	LAi_ActorGoToLocator(sld, "reload", "reload1", "", -1.0);	
+	LAi_ActorGoToLocator(sld, "reload", "reload1", "", -1.0);
 	//прерывание на возврат адмирала и каспера на места
 	pchar.quest.LCS_EndScriptInterception_2.win_condition.l1 = "ExitFromLocation";
 	pchar.quest.LCS_EndScriptInterception_2.win_condition.l1.location = pchar.location;
@@ -4500,7 +4500,7 @@ void LCS_EndScriptInterception_2(string qName)
 	sld.location.going = "toTavern"; //посадим в таверну, ведь он туда пошел
 	SaveCurrentNpcQuestDateParam(sld, "location");
 	LAi_SetHuberType(sld);
-	LAi_group_MoveCharacter(sld, "TmpEnemy");	
+	LAi_group_MoveCharacter(sld, "TmpEnemy");
 	ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "sit", "sit1");
 
 	sld = characterFromId("Casper_head");
@@ -4513,7 +4513,7 @@ void LCS_EndScriptInterception_2(string qName)
 
 void LSC_changeBarmen(string qName)
 {
-	if (pchar.location != "FleuronTavern") 
+	if (pchar.location != "FleuronTavern")
 	{
 		pchar.questTemp.LSC = "barmenIsDead";
 		sld = characterFromId("LSCBarmen");
@@ -4572,19 +4572,19 @@ void LSC_SaveSesilGalard(string qName)
 }
 
 void LSC_SaveSesilGalard_2()
-{	
+{
 	LAi_SetFightMode(pchar, true);
 	LAi_LocationFightDisable(loadedLocation, false);
 	//Сесилия
 	sld = characterFromID("SesilGalard");
 	LAi_SetActorTypeNoGroup(sld);
-	if (pchar.location.locator == "reload1") 
-	{		
-		LAi_ActorRunToLocator(sld, "barmen", "bar2", "LSC_SesilAfraid", -1);	
-	}
-	else 
+	if (pchar.location.locator == "reload1")
 	{
-		LAi_ActorRunToLocator(sld, "barmen", "stay", "LSC_SesilAfraid", -1);	
+		LAi_ActorRunToLocator(sld, "barmen", "bar2", "LSC_SesilAfraid", -1);
+	}
+	else
+	{
+		LAi_ActorRunToLocator(sld, "barmen", "stay", "LSC_SesilAfraid", -1);
 	}
 	//клановцы
 	LAi_group_Delete("EnemyFight");
@@ -4593,8 +4593,8 @@ void LSC_SaveSesilGalard_2()
     {
         sld = GetCharacter(NPC_GenerateCharacter("LSCBandit"+i, "officer_"+(i+3), "man", "man", iTemp, PIRATE, 0, true));
         FantomMakeCoolFighter(sld, iTemp, 80, 80, "topor2", "pistol6", 50);
-        LAi_SetWarriorType(sld);			
-        LAi_group_MoveCharacter(sld, "EnemyFight");				
+        LAi_SetWarriorType(sld);
+        LAi_group_MoveCharacter(sld, "EnemyFight");
         if (i == 2)
 			ChangeCharacterAddressGroup(sld, pchar.location, "reload",  "reload2");
 		else
@@ -4606,10 +4606,10 @@ void LSC_SaveSesilGalard_2()
 }
 //вход к касперам на Сан Габриэль
 void LSC_enterCasper(string qName)
-{	
+{
 	//если тюремщик Томас Бойл с нами
 	iTemp = GetCharacterIndex("LSC_Prisoner1");
-	if (iTemp != -1 && characters[iTemp].location == "SanGabrielMechanic") 
+	if (iTemp != -1 && characters[iTemp].location == "SanGabrielMechanic")
 	{
 		characters[iTemp].reactionOnFightModeOn = true; //среагировать на обнаженку оружия
 		characters[iTemp].lifeDay = 0;
@@ -4618,7 +4618,7 @@ void LSC_enterCasper(string qName)
 	}
 	//касперы
 	iTemp = GetCharacterIndex("Casper_head");
-	if (iTemp != -1 && characters[iTemp].location == "SanGabrielMechanic") 
+	if (iTemp != -1 && characters[iTemp].location == "SanGabrielMechanic")
 	{
 		chrDisableReloadToLocation = true;
 		LAi_group_SetCheck("PearlGroup_2", "OpenTheDoors");
@@ -4637,9 +4637,9 @@ void LSC_enterCasper(string qName)
 //прерывание на завал каспера от Армо
 void LSC_KillOneCasper(string qName)
 {
-	pchar.quest.LSC_checkCasperDead.over = "yes"; 
+	pchar.quest.LSC_checkCasperDead.over = "yes";
 	if (sti(pchar.questTemp.LSC.Armo) < 5)
-	{		
+	{
 		iTemp = sti(pchar.quest.(qName).casperIdx);
 		pchar.questTemp.LSC.Armo = sti(pchar.questTemp.LSC.Armo) + 1; //на следующего...
 		pchar.questTemp.LSC.Armo.waiting = true;
@@ -4669,7 +4669,7 @@ void LSC_KillOneCasper_3(string qName)
 //таймер завален ли каспер от Армо
 void LSC_checkCasperDead(string qName)
 {
-	pchar.quest.LSC_KillOneCasper.over = "yes"; 
+	pchar.quest.LSC_KillOneCasper.over = "yes";
 	iTemp = sti(pchar.quest.(qName).casperIdx);
 	if (!LAi_IsDead(&characters[iTemp]))
 	{
@@ -4721,16 +4721,16 @@ void LSC_underwaterDeathTimer(string qName)
 void LSC_SmallStormIsBegin()
 {
 	for(i=0; i<MAX_LOCATIONS; i++)
-	{				
+	{
 		if (CheckAttribute(&locations[i], "fastreload") && locations[i].fastreload == "LostShipsCity")
-		{			
+		{
 			locations[i].alwaysStorm = true; //живем в штормах
 			if (locations[i].id == "LostShipsCity_town")
 			{
 				locations[i].alwaysStorm.WaveHeigh = true; //поднять уровень воды до 2.5 для низкого волнения
 			}
 			locations[i].storm = true;
-			locations[i].tornado = true;			
+			locations[i].tornado = true;
 		}
 	}
 	//пустим слух о шторме
@@ -4742,17 +4742,17 @@ void LSC_SmallStormIsBegin()
 	//расставим нпс на свои места, штормовые. ограничиваем хождение по городу
 	LAi_group_Delete("EnemyFight");
 	for(i=0; i<MAX_CHARACTERS; i++)
-	{	
+	{
 		makeref(sld, characters[i]);
 		if (CheckAttribute(sld, "city") && sld.city == "LostShipsCity")
-		{	
+		{
 			if (sld.cityTape == "mayor")
 			{
 				//LAi_SetImmortal(sld, false);
 				DeleteAttribute(sld, "location.going");
 				sld.cityTape = "notMove";  //не перемещаться более
 				LAi_SetHuberType(sld); //садим за стол
-				LAi_group_MoveCharacter(sld, "EnemyFight");	
+				LAi_group_MoveCharacter(sld, "EnemyFight");
 				ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "sit", "sit1");
 			}
 			if (sld.cityTape == "ment")
@@ -4776,7 +4776,7 @@ void LSC_SmallStormIsBegin()
 					LAi_SetWarriorType(sld);
 					LAi_group_MoveCharacter(sld, "EnemyFight");
 					ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "goto", sTemp);
-				}				
+				}
 			}
 			if (sld.cityTape == "citizenHome")
 			{
@@ -4797,7 +4797,7 @@ void LSC_SmallStormIsBegin()
 void LSC_afterArestMachanic(string qName)
 {
 	sld = &characters[sti(pchar.questTemp.LSC.lastManId)];
-	LAi_SetStayTypeNoGroup(sld);			
+	LAi_SetStayTypeNoGroup(sld);
 	ChangeCharacterAddressGroup(sld, "SanGabrielMechanic", "barmen",  "stay");
 	sld = characterFromId("Mechanic");
 	ChangeCharacterAddress(sld, "none", "");
@@ -4844,7 +4844,7 @@ void LSC_fightEnterResidence(string qName)
 	if (iTemp != -1)
 	{
 		sld = &characters[iTemp];
-		LAi_SetWarriorTypeNoGroup(sld); 
+		LAi_SetWarriorTypeNoGroup(sld);
 		LAi_warrior_DialogEnable(sld, false);
 		LAi_warrior_SetStay(sld, true);
 		ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "goto", "goto2");
@@ -4853,15 +4853,15 @@ void LSC_fightEnterResidence(string qName)
 	if (iTemp != -1)
 	{
 		sld = &characters[iTemp];
-		LAi_SetWarriorTypeNoGroup(sld); 
+		LAi_SetWarriorTypeNoGroup(sld);
 		LAi_warrior_DialogEnable(sld, false);
 		LAi_warrior_SetStay(sld, true);
 		ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "goto", "goto3");
-	}	
+	}
 	sld = characterFromId("LSCMayor");
 	sld.dialog.currentnode = "fightTalking";
 	LAi_SetImmortal(sld, false);
-	LAi_SetActorTypeNoGroup(sld); 
+	LAi_SetActorTypeNoGroup(sld);
 	ChangeCharacterAddressGroup(sld, "SanAugustineResidence", "goto", "goto10");
 	LAi_ActorDialog(sld, pchar, "", -1.0, 0);
 }
@@ -4889,7 +4889,7 @@ void LSC_figtInResidence_1(string qName)
 	if (!CharacterIsDead(sld))
 	{
 		sld.dialog.currentnode = "MentOffIsLife";
-		LAi_SetActorTypeNoGroup(sld); 
+		LAi_SetActorTypeNoGroup(sld);
 		LAi_ActorDialog(sld, pchar, "", -1.0, 0);
 	}
 	else
@@ -4916,29 +4916,29 @@ void LSC_enterToPrison(string qName)
 //начать большой шторм
 void LSC_BigStormIsBegin()
 {
-	bDisableFastReload = true; 
+	bDisableFastReload = true;
 	for(i=0; i<MAX_LOCATIONS; i++)
-	{				
+	{
 		if (locations[i].id == "LostShipsCity_town")
 		{	//закрываем релоады
 			locations[i].notCrateFoam = true; //не рисовать пену
 			DeleteAttribute(&locations[i], "reload.l2.disable"); //открываем выход с ГПК
 			locations[i].reload.l231.disable = true;
 			for(int n=3; n<=73; n++)
-			{	
+			{
 				sTemp = "l" + n;
-				locations[i].reload.(sTemp).disable = true; 
+				locations[i].reload.(sTemp).disable = true;
 			}
 			DeleteAttribute(&locations[i], "reload.l2.disable"); //откроем выход из ГПК
 			locations[i].locators_radius.reload.reload2_back = 16.0;
 			pchar.location.from_sea = "LostShipsCity_town";
 			//второй патч ГПК
 			locations[i].models.day.charactersPatch = "LostShipsCity_patch_end";
-			locations[i].models.night.charactersPatch = "LostShipsCity_patch_end";	
+			locations[i].models.night.charactersPatch = "LostShipsCity_patch_end";
 			//погода
-			DeleteAttribute(&locations[i], "alwaysStorm");	
+			DeleteAttribute(&locations[i], "alwaysStorm");
 			DeleteAttribute(&locations[i], "QuestlockWeather");
-			DeleteAttribute(&locations[i], "MaxWaveHeigh");		
+			DeleteAttribute(&locations[i], "MaxWaveHeigh");
 			locations[i].alwaysStorm_2 = true; //живем в штормах
 			locations[i].alwaysStorm_2.WaveHeigh = true; //поднять уровень воды до 2.5 для низкого волнения
 			locations[i].storm = true;
@@ -4971,26 +4971,26 @@ void LSC_closeLine(string qName)
 	CloseQuestHeader("ISS_takeStoreMoney");
 	CloseQuestHeader("ISS_takeCandles");
 	bQuestDisableMapEnter = false;
-	bDisableFastReload = false; 
+	bDisableFastReload = false;
 	TakeItemFromCharacter(pchar, "keyPanama");
 	//проверим наличие займа у банкира ГПК
 	sld = characterFromId("LSC_Usurer");
 	if (CheckAttribute(sld, "quest.loan.qtyMoney") && sti(sld.quest.loan.qtyMoney) > 0)
-	{	
+	{
 		SetTimerFunction("LSC_climeUsurer", 0, 3 + rand(3), 0);
 		pchar.questTemp.LSC_climeUsurer.qtyMoney = sti(sld.quest.loan.qtyMoney) * 5; //сколько денег к возврату
 	}
 	//убираем жителей ГПК из игры
 	for(i=0; i<MAX_LOCATIONS; i++)
-	{	
+	{
 		sld = &characters[i];
 		if (CheckAttribute(sld, "city") && sld.city == "LostShipsCity")
-			sld.lifeDay = 0;	
+			sld.lifeDay = 0;
 	}
 }
 
 void LSC_takeStormIsland(string qName)
-{	
+{
 	i = FindIsland("LostShipsCity");
 	Islands[i].reload_enable = false;
 	Islands[i].visible = false;
@@ -5021,7 +5021,7 @@ void LSC_PedroRunOpenDoor()
 }
 
 void LSC_Click(string qName)
-{	
+{
 	PlaySound("interface\key.wav");
 	LocatorReloadEnterDisable("LostShipsCity_town", "reload48", false);
 	chrDisableReloadToLocation = true;
@@ -5042,7 +5042,7 @@ void LSC_PedroGoWaiting()
 }
 
 void LSC_EnterStoreBig(string qName)
-{	
+{
 	//охрана
 	chrDisableReloadToLocation = true;
 	LAi_group_Delete("EnemyFight");
@@ -5051,8 +5051,8 @@ void LSC_EnterStoreBig(string qName)
     {
         sld = GetCharacter(NPC_GenerateCharacter("LSCStBandit"+i, "officer_"+(i+10), "man", "man", iTemp, PIRATE, 0, true));
         FantomMakeCoolFighter(sld, iTemp, 80, 80, "topor2", "pistol6", 50);
-        LAi_SetWarriorType(sld);			
-        LAi_group_MoveCharacter(sld, "EnemyFight");				
+        LAi_SetWarriorType(sld);
+        LAi_group_MoveCharacter(sld, "EnemyFight");
 		ChangeCharacterAddressGroup(sld, pchar.location, "quest",  "quest"+i);
     }
     LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -5066,7 +5066,7 @@ void LSC_EnterStoreBig(string qName)
 void LCS_HeroOutFromStory(string qName)
 {
 	LocatorReloadEnterDisable("LostShipsCity_town", "reload48", true);
-	sld = characterFromId("PedroHurtado");	
+	sld = characterFromId("PedroHurtado");
 	LAi_SetActorTypeNoGroup(sld);
 	LAi_ActorDialog(sld, pchar, "", 1.0, 0);
 	AddSimpleRumourCityTip("Говорят, что кто-то ограбил хозяина магазина Эрика Йоста...", "LostShipsCity", 10, 1, "LSC", "");
@@ -5078,7 +5078,7 @@ void LSC_climeUsurer(string qName)
 {
 	pchar.quest.LSC_climeUsurer_2.win_condition.l1 = "Location_Type";
 	pchar.quest.LSC_climeUsurer_2.win_condition.l1.location_type = "shop";
-	pchar.quest.LSC_climeUsurer_2.function = "LSC_climeUsurer_2";	
+	pchar.quest.LSC_climeUsurer_2.function = "LSC_climeUsurer_2";
 }
 
 void LSC_climeUsurer_2(string qName)
@@ -5097,7 +5097,7 @@ void LSC_climeUsurer_2(string qName)
 void LSC_climeUsurer_3(string qName)
 {
  	//перемещаем ГГ
-	DoQuestReloadToLocation("Temple_Skulls", "goto", "goto1", "");	
+	DoQuestReloadToLocation("Temple_Skulls", "goto", "goto1", "");
 	DoQuestFunctionDelay("LSC_climeUsurer_4", 10.0);
 	//вернем хозяину магазина возможность диалога
 	sld = characterFromId(pchar.questTemp.LSC_climeUsurer.idx);
@@ -5106,7 +5106,7 @@ void LSC_climeUsurer_3(string qName)
 
 void LSC_climeUsurer_4(string qName)
 {
-	//ставим бога мертвых	
+	//ставим бога мертвых
 	LAi_LockFightMode(Pchar, false);
 	LAi_LocationFightDisable(loadedLocation, true);
 	sld = GetCharacter(NPC_GenerateCharacter("DeadmansGod", "mictlantecuhtli", "skeleton", "man", 100, PIRATE, 0, true));
@@ -5118,19 +5118,19 @@ void LSC_climeUsurer_4(string qName)
 	LAi_SetImmortal(sld, true);
 	ChangeCharacterAddressGroup(sld, "Temple_Skulls", "goto", "goto2");
 	LAi_SetActorType(sld);
-	LAi_ActorDialog(sld, pchar, "", 5.0, 0);	
+	LAi_ActorDialog(sld, pchar, "", 5.0, 0);
 }
 
 void ClimeUsurer_haveMoney()
 {
-	DoQuestFunctionDelay("ClimeUsurer_haveMoney_1", 1.0);	
+	DoQuestFunctionDelay("ClimeUsurer_haveMoney_1", 1.0);
 }
 
 void ClimeUsurer_haveMoney_1(string qName)
 {
 	chrDisableReloadToLocation = false;
 	LAi_LocationFightDisable(&locations[FindLocation("Temple_Skulls")], false);
-	DoQuestReloadToLocation(pchar.questTemp.LSC_climeUsurer.location, pchar.questTemp.LSC_climeUsurer.group, pchar.questTemp.LSC_climeUsurer.locator, "");	
+	DoQuestReloadToLocation(pchar.questTemp.LSC_climeUsurer.location, pchar.questTemp.LSC_climeUsurer.group, pchar.questTemp.LSC_climeUsurer.locator, "");
 	DeleteAttribute(pchar, "questTemp.LSC_climeUsurer");
 }
 
@@ -5238,7 +5238,7 @@ void Teno_startInShore_2()
 	sld.dialog.filename   = "Quest\Tenochtitlan\Montesuma.c";
 	sld.dialog.currentnode   = "First time";
 	sld.greeting = "Gr_Montesuma";
-	sld.reactionOnFightModeOn = true; 
+	sld.reactionOnFightModeOn = true;
 	sld.BreakTmplAndFight = true;
 	sld.SaveItemsForDead = true;
 	sld.DontClearDead = true;
@@ -5276,9 +5276,9 @@ void Teno_createAztecTwin(string qName)
 	LAi_RemoveLoginTime(sld);
 	LAi_SetImmortal(sld, true);
 	LAi_SetActorType(sld);
-	LAi_group_MoveCharacter(sld, "AztecCitizenGroup");  
+	LAi_group_MoveCharacter(sld, "AztecCitizenGroup");
 	ChangeCharacterAddressGroup(sld, "Tenochtitlan", "goto", "goto23");
-	
+
 	sld = GetCharacter(NPC_GenerateCharacter("AztecCitizen_2", "AztecCitizen2", "man", "man", 15, PIRATE, -1, false));
 	sld.name = "Ауисотль";
 	sld.lastname = "";
@@ -5350,11 +5350,11 @@ void MC_startInCaracas(string qName)
 {
 	if (GetHour() > 9.0 && GetHour() < 20.0)
 	{
-		pchar.questTemp.MC = "toCaracas"; //флаг квеста	
+		pchar.questTemp.MC = "toCaracas"; //флаг квеста
 		bDisableFastReload = true;
 		iTemp = FindLocation("Caracas_town");
 		DeleteAttribute(&locations[iTemp], "citizens"); //уберем горожан
-		DeleteAttribute(&locations[iTemp], "carrier");	//уберем грузчиков 
+		DeleteAttribute(&locations[iTemp], "carrier");	//уберем грузчиков
 		DeleteAttribute(&locations[iTemp], "questSeekCap");	//уберем квестодателя
 		//закроем выходы из города
 		locations[iTemp].reload.l1.disable = true;
@@ -5374,18 +5374,18 @@ void MC_startInCaracas(string qName)
 		locations[iTemp].reload.l1.disable = true;
 		locations[iTemp].reload.l4.disable = true;
 		sld = characterFromId("Caracas_waitress"); //официантку тоже
-		ChangeCharacterAddress(sld, "none", "");	
+		ChangeCharacterAddress(sld, "none", "");
 		//ставим горожан
 		for (i=1; i<=12; i++)
 		{
 			sld = GetCharacter(NPC_GenerateCharacter("CaracasCit_"+i, "citiz_"+i, "man", "man", 10, SPAIN, -1, true));
 			sld.dialog.filename = "Quest\MagicCity.c";
-			sld.dialog.currentnode = "CaracasMan"; 
+			sld.dialog.currentnode = "CaracasMan";
 			sld.greeting = "cit_common";
 			sld.BreakTmplAndFightGroup = true;
 			LAi_SetActorType(sld);
 			LAi_ActorWaitDialog(sld, pchar);
-			LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");	
+			LAi_group_MoveCharacter(sld, "SPAIN_CITIZENS");
 			ChangeCharacterAddressGroup(sld, "Caracas_town", "quest", "MCquest"+i);
 		}
 	}
@@ -5406,13 +5406,13 @@ void MC_startAgain(string qName)
 void MC_endCaracas()
 {
 	bDisableFastReload = false;
-	pchar.questTemp.MC = "toMaracaibo"; //флаг квеста	
+	pchar.questTemp.MC = "toMaracaibo"; //флаг квеста
 	//вернем город
 	iTemp = FindLocation("Caracas_town");
-	locations[iTemp].citizens = true; 
-	locations[iTemp].carrier = true; 
-	locations[iTemp].questSeekCap = 8; 
-	DeleteAttribute(&locations[iTemp], "reload.l1.disable");	
+	locations[iTemp].citizens = true;
+	locations[iTemp].carrier = true;
+	locations[iTemp].questSeekCap = 8;
+	DeleteAttribute(&locations[iTemp], "reload.l1.disable");
 	DeleteAttribute(&locations[iTemp], "reload.l2.disable");
 	DeleteAttribute(&locations[iTemp], "reload.l3.disable");
 	DeleteAttribute(&locations[iTemp], "reload.l4.disable");
@@ -5451,10 +5451,10 @@ void MC_DesMoinesInShore(string qName)
         FantomMakeCoolFighter(sld, 20, 70, 70, "topor2", "pistol3", 50);
 		sld.dialog.filename = "Quest\MagicCity.c";
 		sld.dialog.currentnode = "ShoreGuard";
-		sld.BreakTmplAndFightGroup = true; 
-		sld.reactionOnFightModeOn = true; 
-        LAi_SetActorType(sld);			
-        LAi_group_MoveCharacter(sld, "EnemyFight");				
+		sld.BreakTmplAndFightGroup = true;
+		sld.reactionOnFightModeOn = true;
+        LAi_SetActorType(sld);
+        LAi_group_MoveCharacter(sld, "EnemyFight");
 		PlaceCharacter(sld, "goto", "random_free");
 		LAi_ActorDialog(sld, pchar, "", -1.0, 0);
     }
@@ -5503,7 +5503,7 @@ void Blood_StartGame(string qName)
     TakeNItems(Pchar, "potion2", 3);
     TakeNItems(Pchar, "potion1", 4);
     SetCharacterPerk(Pchar, "Doctor1");
-	
+
 	//Эндрю Бэйнс
     sld = GetCharacter(NPC_GenerateCharacter("Beyns", "trader_8", "man", "man", 7, ENGLAND, 1, false));
     sld.name = "Эндрю";
@@ -5517,7 +5517,7 @@ void Blood_StartGame(string qName)
    	LAi_SetImmortal(sld, true);
 	sld.talker = 10;
 	ChangeCharacterAddressGroup(sld, "Estate", "goto", "goto12");
-	
+
     //==============//Джереми Питт//==============
    	sld = GetCharacter(NPC_GenerateCharacter("Pitt", "Pitt", "man", "man", 1, ENGLAND, -1, false)); //TO_DO анимацию вернуть по готовности модельки
     sld.name 	= "Джереми";
@@ -5544,7 +5544,7 @@ void Blood_StartGame(string qName)
 	//SetCharacterPerk(sld, "LongRangeShoot");
     //SetCharacterPerk(sld, "CannonProfessional");
 	//SetCharacterPerk(sld, "ShipDefenseProfessional");
-	
+
 	SetCharacterPerk(sld, "ShipSpeedUp");
 	SetCharacterPerk(sld, "ShipTurnRateUp");
 	SetCharacterPerk(sld, "StormProfessional");
@@ -5552,7 +5552,7 @@ void Blood_StartGame(string qName)
 	SetCharacterPerk(sld, "SailsMan");
 	SetCharacterPerk(sld, "SandbankManeuver");
 
-	
+
 	//SetCharacterPerk(sld, "SwordplayProfessional");
 	//SetCharacterPerk(sld, "AdvancedDefense");
 	//SetCharacterPerk(sld, "CriticalHit");
@@ -5563,7 +5563,7 @@ void Blood_StartGame(string qName)
     LAi_SetActorType(sld);
 	LAi_ActorDialog(sld, pchar, "", 2.0, 0);
 	ChangeCharacterAddressGroup(sld, "Estate", "goto", "goto1");
-	
+
 	pchar.quest.CureLordMovie.win_condition.l1 = "locator";
 	pchar.quest.CureLordMovie.win_condition.l1.location = "EstateBadroom1";
 	pchar.quest.CureLordMovie.win_condition.l1.locator_group = "quest";
@@ -5684,7 +5684,7 @@ void DragunInvansion3(string qName)
     {
     	// генерим c сопровождение
 		sTemp = "SoldierEnglish_1";
-		if (i == 1) sTemp = "Dragoon_1"; 
+		if (i == 1) sTemp = "Dragoon_1";
         sld = GetCharacter(NPC_GenerateCharacter(("Dragun_"+i), sTemp, "man", "man", 2, ENGLAND, 0, false));
         sld.location = "none";
         sld.BreakTmplAndFightGroup = true;
@@ -5720,7 +5720,7 @@ void DragunInvansion3(string qName)
 void DragunInvansion4()
 {
  	StartQuestMovie(true, true, true);
-	locCameraToPos(18.241, 13, 0.35, false); 
+	locCameraToPos(18.241, 13, 0.35, false);
 	ref ch, sld;
     LAi_LockFightMode(pchar, false);
     LAi_LocationFightDisable(loadedLocation, false);
@@ -5728,7 +5728,7 @@ void DragunInvansion4()
     ChangeCharacterAddressGroup(ch, "Estate", "reload", "reload5");
     LAi_SetActorType(ch);
     LAi_ActorGoToLocator(ch, "goto", "goto5", "", -1);
-    
+
     sld = &characters[GetCharacterIndex("Beyns")];
     ChangeCharacterAddressGroup(sld, "Estate", "reload", "reload5");
     LAi_SetActorType(sld);
@@ -5834,7 +5834,7 @@ void CapBloodLineInit(string qName)
 }
 
 void CapBloodLine_firstEnterHome(string qName)
-{	
+{
 	sld = characterFromID("Pitt");
 	sld.Dialog.CurrentNode = "PStep_7";
 	sld.dialog.filename = "Quest\CapBloodLine\Bishop.c";
@@ -5843,7 +5843,7 @@ void CapBloodLine_firstEnterHome(string qName)
 	ChangeCharacterAddressGroup(sld, "Plantation_S1", "reload", "reload1");
 	LAi_SetActorType(sld);
 	LAi_ActorDialog(sld, pchar, "", 3, 0);
-	Pchar.questTemp.CapBloodLine.statcrew = "";	
+	Pchar.questTemp.CapBloodLine.statcrew = "";
 }
 
 
@@ -5959,7 +5959,7 @@ void CapBloodLine_q1(string qName)
     SetFantomHP(sld);
    	LAi_SetImmortal(sld, true);
    	ChangeCharacterAddressGroup(sld, "BridgeTown_Plantation", "officers", "houseS2_1");
-   	
+
     //==============//Николас Дайк//==============
    	sld = GetCharacter(NPC_GenerateCharacter("Dieke", "officer_19", "man", "man", 10, ENGLAND, -1, false));
     sld.name 	= "Николас";
@@ -5988,10 +5988,10 @@ void CapBloodLine_q1(string qName)
     SetFantomHP(sld);
    	LAi_SetImmortal(sld, true);
 	ChangeCharacterAddressGroup(sld, "BridgeTown_Plantation", "officers", "houseF1_1");
-	
-	
+
+
     //==============//Нед Огл//==============
-   	sld = GetCharacter(NPC_GenerateCharacter("Ogl", "Chard3a", "man", "man", 10, ENGLAND, -1, false)); 
+   	sld = GetCharacter(NPC_GenerateCharacter("Ogl", "Chard3a", "man", "man", 10, ENGLAND, -1, false));
     sld.name 	= "Нед";
     sld.lastname 	= "Огл";
     sld.Dialog.CurrentNode = "First time";
@@ -6023,7 +6023,7 @@ void CapBloodLine_q1(string qName)
     SetFantomHP(sld);
    	LAi_SetImmortal(sld, true);
 	ChangeCharacterAddressGroup(sld, "Plantation_S2", "barmen", "stay");
-	
+
     //==============//Кинжал для Блада//==============
     sld = GetCharacter(NPC_GenerateCharacter("Slave_Quest", "shipowner_6", "man", "man", 7, ENGLAND, 2, false));
     sld.dialog.filename = "Quest\CapBloodLine\questNPC.c";
@@ -6097,7 +6097,7 @@ void DetectBlades()
             pchar.quest.CapBloodDetectBlades1.win_condition.l1          = "location";
             pchar.quest.CapBloodDetectBlades1.win_condition.l1.location = "Bridgetown_town";
             pchar.quest.CapBloodDetectBlades1.function                  = "TakeBlades";
-            
+
             pchar.quest.CapBloodDetectBlades2.win_condition.l1          = "location";
             pchar.quest.CapBloodDetectBlades2.win_condition.l1.location = "BridgeTown_Plantation";
             pchar.quest.CapBloodDetectBlades2.function                  = "TakeBlades";
@@ -6282,7 +6282,7 @@ void CapBloodLine_q1_Complited(string qName)
     sld.location = "none";
     sld = &characters[GetCharacterIndex("Bridgetown_Mayor")];
     sld.Dialog.CurrentNode = "First time";
-    
+
     int n= FindLocation("Bridgetown_town");
     locations[n].reload.l3.close_for_night = true;//закрываем резиденцию
     AddQuestRecord("CapBloodLine_q1", "7");
@@ -6309,7 +6309,7 @@ void CapBloodLine_q2()
     LAi_ActorDialog(sld, pchar, "", 2.0, 0);
     AddQuestRecord("CapBloodLine_q2", "2");
     AddQuestRecord("CapBloodLine_q2", "3");
-    
+
     //сроки 10 часов
     PChar.quest.CapBloodLineTimer_2.win_condition.l1            = "Timer";
     PChar.quest.CapBloodLineTimer_2.win_condition.l1.date.hour  = 17;
@@ -6402,7 +6402,7 @@ void LoginWinterwood()
     sld.SaveItemsForDead = true; // сохранять на трупе вещи
     sld.DontClearDead = true;
     LAi_SetCitizenType(sld);
-    
+
     string sQuest = "WinterwoodDuel";
     pchar.quest.(sQuest).win_condition.l1 = "NPC_Death";
     pchar.quest.(sQuest).win_condition.l1.character = sld.id;
@@ -6417,17 +6417,17 @@ void LoginWinterwood()
     {
    	    LAi_SetStayTypeNoGroup(sld);
         ChangeCharacterAddressGroup(sld, "Bridgetown_Brothel_room", "goto","goto3");
-        
+
 		ch = GetCharacter(NPC_GenerateCharacter("Qhorse", "horse07", "woman", "towngirl", 10, ENGLAND, 1, false));
 		sTemp = GetNationNameByType(ENGLAND) + "_citizens";
         LAi_group_MoveCharacter(ch, sTemp);
         LAi_SetActorTypeNoGroup(ch);
 		LAi_ActorAfraid(ch, Pchar, false);
 		ChangeCharacterAddressGroup(ch, "Bridgetown_Brothel_room", "goto","goto1");
-		
+
         int n= FindLocation("Bridgetown_Brothel");
         locations[n].reload.l2.disable = false;
-        
+
     }
 }
 
@@ -6557,13 +6557,13 @@ void CapBloodLine_q2_Complited()
     sld = &characters[GetCharacterIndex("Waker")];
     sld.Dialog.CurrentNode = "WStep_11";
     LAi_SetStayTypeNoGroup(sld);
-    
+
     bQuestCheckProcessFreeze = true;
     WaitDate("",0,0,0, 12, 0); // прошло время
     Environment.date.day = 3;
     SetCurrentTime(7, 0); // должно быть 3-е число 7 часов
     bQuestCheckProcessFreeze = false;
-    
+
     //Шпион
     sld = GetCharacter(NPC_GenerateCharacter("MoneySpy", "shipowner_5", "man", "man", 10, ENGLAND, 1, false));
     sld.dialog.filename = "Quest\CapBloodLine\questNPC.c";
@@ -6575,7 +6575,7 @@ void CapBloodLine_q2_Complited()
     LAi_group_MoveCharacter(sld, sTemp);
     sld.talker = 10; //fix
    	ChangeCharacterAddressGroup(sld, "CommonDoubleFlourHouse_1", "barmen", "stay");
-    
+
     //Властелин рыб
     sld = GetCharacter(NPC_GenerateCharacter("Fisherman", "shipowner_8", "man", "man", 10, ENGLAND, 1, false));
     sld.dialog.filename = "Quest\CapBloodLine\questNPC.c";
@@ -6589,7 +6589,7 @@ void CapBloodLine_q2_Complited()
 	LAi_SetSitType(sld);
     LAi_group_MoveCharacter(sld, sTemp);
     ChangeCharacterAddressGroup(sld, "Bridgetown_tavern", "sit","sit_base4"); //fix
-    
+
     //Жак Соловей
     sld = GetCharacter(NPC_GenerateCharacter("Jack", "pirate_5", "man", "man", 10, ENGLAND, 1, false));
     sld.name = "Жак";
@@ -6606,7 +6606,7 @@ void CapBloodLine_q2_Complited()
    	ChangeCharacterAddressGroup(sld, "Bridgetown_Store", "goto", "goto1");
    	sld = characterFromID("Bridgetown_trader");
    	LAi_SetLoginTime(sld, 0.0, 1.0);
-   	
+
     //сроки
     PChar.quest.CapBloodLineTimer_2.win_condition.l1            = "Timer";
     PChar.quest.CapBloodLineTimer_2.win_condition.l1.date.hour  = 15;
@@ -6671,7 +6671,7 @@ void ReturnToPlantation1(string qName)
     SetFantomParamHunter(sld); //крутые парни
 	LAi_SetCitizenType(sld);
 	sTemp = GetNationNameByType(ENGLAND) + "_citizens";
-	
+
     LAi_SetActorType(sld);
 	LAi_group_MoveCharacter(sld, sTemp);
     PlaceCharacter(sld, "goto", "random_must_be_near"));
@@ -6686,7 +6686,7 @@ void ReturnToPlantation2(string qName)
     sld = characterFromID("Hugtorp");
     LAi_SetActorType(sld);
 	LAi_ActorDialog(sld, pchar, "",  -1.0, 0);
-	
+
     sld = characterFromID("Pitt");
     ChangeCharacterAddressGroup(sld, "None", "", "");
 	chrDisableReloadToLocation = true;
@@ -6735,7 +6735,7 @@ void ReturnToPlantation3()
     TakeNItems(sld, "potion1", 5);
     LAi_SetImmortal(sld, false);
     ChangeCharacterAddressGroup(sld, "Bridgetown_town", "quest", "quest5");
-    
+
     sld = characterFromID("Pitt");
     LAi_LoginInCaptureTown(sld, true);
     LAi_SetActorType(sld);
@@ -6749,10 +6749,10 @@ void ReturnToPlantation3()
     int n = FindLocation("BridgeTown_Plantation");
     DeleteAttribute(&locations[n], "citizens");
     DeleteAttribute(&locations[n], "carrier");
-    
+
     DoReloadCharacterToLocation("BridgeTown_Plantation", "reload", "reload1_back");
     SetNationRelation2MainCharacter(ENGLAND, RELATION_ENEMY);
-    
+
     for (int i=0; i < 7; i++)
 	{
         if(i < 2)
@@ -6789,13 +6789,13 @@ void ReturnToPlantation3()
     //pchar.GenQuestBox.BridgeTown_Plantation.stay = true; fix
     pchar.GenQuestBox.BridgeTown_Plantation.box1.items.blade7 = 1;
     pchar.GenQuestBox.BridgeTown_Plantation.box1.items.potion1 = 3;
-    
+
    	pchar.quest.CapBloodEscape3.win_condition.l1 = "locator";
 	pchar.quest.CapBloodEscape3.win_condition.l1.location = "BridgeTown_Plantation";
 	pchar.quest.CapBloodEscape3.win_condition.l1.locator_group = "quest";
 	pchar.quest.CapBloodEscape3.win_condition.l1.locator = "detector1";
 	pchar.quest.CapBloodEscape3.function = "ReturnToPlantation4";
-    
+
     chrDisableReloadToLocation = true;
 
     //int n = FindLocation("BridgeTown_Plantation");
@@ -6840,7 +6840,7 @@ void StillShip(string qName)
    	LAi_group_SetLookRadius(slai_group, LAI_GROUP_GRD_LOOK - 1);
    	//LAi_group_SetRelation(slai_group, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
     LAi_group_SetAlarm(sTemp, LAI_GROUP_PLAYER, 0);
-    
+
 	for (i=0; i < 11; i++)
 	{
         chr = GetCharacter(NPC_GenerateCharacter("SpaSolder_"+i, "sold_spa_"+(rand(7)+1), "man", "man", sti(pchar.rank)+rand(2)+1, SPAIN, 1, false));
@@ -6877,12 +6877,12 @@ void StillShip(string qName)
 	sld.City = "Bridgetown";
     sld.CityType = "soldier";
     ChangeCharacterAddressGroup(sld, "Bridgetown_town", "reload", "houseF2");
-    
+
     string sQuest = "SaveArabelaService";
     pchar.quest.(sQuest).win_condition.l1 = "NPC_Death";
     pchar.quest.(sQuest).win_condition.l1.character = sld.id;
     pchar.quest.(sQuest).function= "SaveArabelaService";
-    
+
 	chr = GetCharacter(NPC_GenerateCharacter("ArabelaService", "Girl_8", "woman", "towngirl", 10, ENGLAND, 1, false));
 	chr.greeting = "Enc_RapersGirl_1";
     chr.dialog.filename = "Quest\CapBloodLine\questNPC.c";
@@ -6893,24 +6893,24 @@ void StillShip(string qName)
     LAi_SetLoginTime(chr, 0.0, 24.0);
     ChangeCharacterAddressGroup(chr, "Bridgetown_town", "officers", "houseH1_2");
 
-    
+
 	LAi_ActorRunToLocator(chr, "officers", "gate1_3", "SaveArabelaServiceAfraid", 5);
     LAi_ActorFollow(sld, chr, "", -1);
-    
+
    	pchar.quest.CapBloodEscape5.win_condition.l1 = "locator";
 	pchar.quest.CapBloodEscape5.win_condition.l1.location = "Bridgetown_town";
 	pchar.quest.CapBloodEscape5.win_condition.l1.locator_group = "quest";
 	pchar.quest.CapBloodEscape5.win_condition.l1.locator = "quest11";
 	pchar.quest.CapBloodEscape5.function = "ShipGuardsAlarm";
-	
+
 	ShipGuards();
-	
+
 	Pchar.questTemp.CapBloodLine.SpainInBridgetown = false;
 	Pchar.questTemp.CapBloodLine.withCrew = false;
-	
+
 	LocatorReloadEnterDisable("BridgeTown_town", "reload5_back", true);
 	LocatorReloadEnterDisable("BridgeTown_town", "reloadShip", true);
-	
+
     Colonies[FindColony("Bridgetown")].DontSetShipInPort = true;
     sld = characterFromID("Bridgetown Fort Commander");
     sld.Fort.Mode = FORT_DEAD;
@@ -7005,11 +7005,11 @@ void CapBloodOfficers()
             case 1:
                 offName ="Hugtorp";
             break;
-            
+
             case 2:
                 offName ="Dieke";
             break;
-            
+
             case 3:
                 offName ="Ogl";
             break;
@@ -7023,7 +7023,7 @@ void CapBloodOfficers()
         LAi_group_MoveCharacter(sld, LAI_GROUP_PLAYER);
         sld.Dialog.CurrentNode = "HTStep_22b";  //
 
-        
+
     }
 }
 void ShipGuardsDie()
@@ -7074,7 +7074,7 @@ void AttakShip(string qName)
     }
     LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
     LAi_group_SetRelation("TmpEnemy", LAI_GROUP_PLAYER, LAI_GROUP_NEITRAL); // Чтобы не кидались назад в город
-    
+
 }
 
 void SpaFirstMateDie(string qName)
@@ -7126,7 +7126,7 @@ void QOfficersRecruit(string qName)
                 offName ="Pitt";
                 sNode = "PStep_16";
             break;
-            
+
             case 1:
                 offName ="Hugtorp";
                 sNode = "HTStep_24";
@@ -7170,7 +7170,7 @@ void SpaCrewAtack()
 {
     int hcrew,iChar,i;
     ref chref;
-    
+
     chref = characterFromID("Pitt");
     chref.Dialog.CurrentNode = "hired";
    	chref.Dialog.FileName = "Enc_Officer_dialog.c";
@@ -7194,7 +7194,7 @@ void SpaCrewAtack()
         chref.Ship.Type = GenerateShip(SHIP_LUGGER, 1);
         SetRandomNameToCharacter(chref);
         SetRandomNameToShip(chref);
-        
+
 
         SetBaseShipData(chref);
         hcrew = GetMaxCrewQuantity(chref);
@@ -7263,15 +7263,15 @@ void RestoreBridgetown()
     	LocatorReloadEnterDisable("BridgeTown_town", "reload5_back", false);
     	LocatorReloadEnterDisable("BridgeTown_town", "reload1_back", false);
 	    LocatorReloadEnterDisable("BridgeTown_fort", "reload2", false); //fix
-	    
+
         LocatorReloadEnterDisable("BridgeTown_town", "reload3_back", false);//fix полностью открываем резиденцию
         LocatorReloadEnterDisable("Bridgetown_Townhall", "reload3", false);
         LocatorReloadEnterDisable("BridgeTown_town", "reloadR1", false);
-	    
+
     	//Торговца вернуть
     	sld = characterFromID("Bridgetown_trader");
    	    LAi_RemoveLoginTime(sld);
-    	
+
         makeref(rColony, Colonies[FindColony("Bridgetown")]);
         DeleteAttribute(rColony, "DontSetShipInPort"); //возвращаем жизнь
         RemoveShipFromBridgetown();

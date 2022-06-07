@@ -15,11 +15,11 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.text = "Задавайте свои вопросы, сеньор.";
 			link.l1 = "Я слышал, недавно вы сумели захватить Рока Бразильца, того самого пирата!";
 			link.l1.go = "Step_F7_1";
-		}	
+		}
 		break;
 //******************** Фр.линейка, квест №7. Спасение Рока Бразильца ******************
  	 	case "Step_F7_1":
-			dialog.text = NPCStringReactionRepeat("Да, верно, было дело. Неслыханная удача, скажу я вам, сеньор.", "Вы уже спрашивали меня о Бризильце.", 
+			dialog.text = NPCStringReactionRepeat("Да, верно, было дело. Неслыханная удача, скажу я вам, сеньор.", "Вы уже спрашивали меня о Бризильце.",
 				          "Опять о Бразильце?", "Ну сколько можно об этих пиратах, давайте о другом поговорим...", "block", 0, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Что верно - то верно... И что с ним сделали? Небось удавили тут же.", "Спрашивал? Ну да, наверное...", "Да, точно, спрашивал, извини...", "Можно и о другом...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("Step_F7_2", "none", "none", "none", npchar, Dialog.CurrentNode);

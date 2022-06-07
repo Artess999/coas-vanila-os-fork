@@ -86,7 +86,7 @@ void locCameraSetSpecialMode(bool isEnable)
 int locCameraGetSpecialMode()
 {
 	return false;
-}   
+}
 void LoadTrackCamera(string sTrackName,float fTrackTime,aref arTrackPause)
 {
 	SendMessage(&locCamera, "lsfa", -2, sTrackName, fTrackTime, arTrackPause);
@@ -101,8 +101,8 @@ void locCameraTarget(ref _char)
 {
     SendMessage(&locCamera, "li", MSG_CAMERA_SETTARGET, _char);
 }
-// boal <--	 
-// to_do нет в ядре  
+// boal <--
+// to_do нет в ядре
 bool locCameraFromToPos(float from_x,float from_y,float from_z, bool isTeleport, float to_x,float to_y,float to_z)
 {
 	if(IsEntity(&locCamera) == 0)

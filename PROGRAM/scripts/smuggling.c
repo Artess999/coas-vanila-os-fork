@@ -5,7 +5,7 @@ int ChangeContrabandRelation(ref pchar, int _val)
    pchar.questTemp.Contraband.relation = makeint(pchar.questTemp.Contraband.relation) + _val;
    if (makeint(pchar.questTemp.Contraband.relation) > 99) pchar.questTemp.Contraband.relation = 99;
    if (makeint(pchar.questTemp.Contraband.relation) < 0) pchar.questTemp.Contraband.relation = 0;
-   
+
    return makeint(pchar.questTemp.Contraband.relation);
 }
 
@@ -13,7 +13,7 @@ int ChangeContrabandRelation(ref pchar, int _val)
 int FindFirstContrabandGoods(ref _refCharacter)
 {
 	int i;
-	int curStoreIdx = GetCharacterCurrentStore(_refCharacter); 
+	int curStoreIdx = GetCharacterCurrentStore(_refCharacter);
 	if(curStoreIdx>=0)
 	{
 		_refCharacter.FindContrabandGoods.StoreIdx = curStoreIdx;
@@ -148,9 +148,9 @@ string SelectSmugglingLocation()
     ref CurIsland;
 	int n;
 	string TargetLocation
-	
+
 	n = GetCharacterCurrentIsland(Pchar);
-	if (n < 0) 
+	if (n < 0)
 	{
 		TargetLocation = "None";
 	}
@@ -171,14 +171,14 @@ void PlaceSmugglersOnShore(string LocationId)
 	ref Smuggler, player;
 	int RandCounter;
 	int i;
-	
+
 	player = GetMainCharacter();
 
 	string Model;
-	
+
 	player.GenQuest.Smugglers_Group = "Smugglers_1";
     LAi_group_Register(player.GenQuest.Smugglers_Group);
-    
+
 	for (i = 1; i <= 3; i++)
     {
         Model = "pirate_" + (rand(9)+1);
@@ -193,9 +193,9 @@ void PlaceSmugglersOnShore(string LocationId)
 		LAi_group_MoveCharacter(Smuggler, player.GenQuest.Smugglers_Group);
 		ChangeCharacterAddressGroup(Smuggler, LocationID, "Smugglers", "Smuggler0" + i);
     }
-	
+
 	AddGeometryToLocation(LocationID, "smg");
-	
+
 	LAi_group_SetRelation(LAI_GROUP_PLAYER, player.GenQuest.Smugglers_Group, LAI_GROUP_NEITRAL);
 	LAi_group_SetRelation(player.GenQuest.Smugglers_Group, "CoastalGuards", LAI_GROUP_NEITRAL); // патруль на берегу
 
@@ -221,7 +221,7 @@ void RemoveSmugglersFromShore()
 	string sLoc;
 
 	DeleteAttribute(pchar, "quest.Contraband.Active");
-	CloseQuestHeader("Gen_Contraband"); 
+	CloseQuestHeader("Gen_Contraband");
 
 	if (CheckAttribute(pchar, "Quest.SelectedSmugglingLocation"))
 	{
@@ -268,7 +268,7 @@ void SetCoastalGuardPursuit()
 	int i;
 	int iNation = sti(pchar.GenQuest.Contraband.GuardNation);// Нация патруля
 	string Model;
-	
+
 	for (i = 1; i <= 3; i++)
     {
         Model = "off_" + NationShortName(iNation) + "_" + (rand(1) + 1);
@@ -297,7 +297,7 @@ void StopCoastalGuardPursuit()
 {
 	ref rCap;
 	int i, cn;
-	
+
 	for (i = 1; i <= 3; i++)
 	{
 		cn = GetCharacterIndex("Coastal_Captain0" + i);

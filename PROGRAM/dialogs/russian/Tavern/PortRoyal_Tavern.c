@@ -42,7 +42,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//********************** Французская линейка **********************
         case "Step_F8_1":
-			dialog.text = NPCStringReactionRepeat("Капитана Гея? Нет ничего проще. Он снимает у меня комнату, и сегодня еще не выходил, так что вы его там обязательно увидите.", 
+			dialog.text = NPCStringReactionRepeat("Капитана Гея? Нет ничего проще. Он снимает у меня комнату, и сегодня еще не выходил, так что вы его там обязательно увидите.",
 				          "Я уже все сказал...", "Не о чем говорить...", "Сэр, дайте мне возможность заниматься своими делами!", "block", 0, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Спасибо, дружище...", "Понял, извини...", "Хм, ну да...", "Да, да, извини, приятель...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";

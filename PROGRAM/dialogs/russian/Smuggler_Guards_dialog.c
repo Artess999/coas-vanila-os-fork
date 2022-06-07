@@ -1,15 +1,15 @@
-void ProcessDialogEvent() 
+void ProcessDialogEvent()
 {
 	ref NPChar;
 	aref Link, Diag;
 	string NPC_Meeting;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(Diag, NPChar.Dialog);
-	
+
     int iTemp, i; // нужно для вычислений любых целых (нации)
 	string attrName; // любые строки для вычислений
 	ref sld;
@@ -24,7 +24,7 @@ void ProcessDialogEvent()
 			LAi_SetPlayerType(Pchar);
 		break;
 
-		case "First time":			
+		case "First time":
 			chrDisableReloadToLocation = false;
    			LAi_LockFightMode(pchar, false);
 			dialog.text = RandPhraseSimple("Кажется, здесь происходит что-то незаконное.",
@@ -60,23 +60,23 @@ void ProcessDialogEvent()
 		break;
 
 		case "ThisTimeFree":
-			dialog.snd = "Voice\COGU\COGU002";		
+			dialog.snd = "Voice\COGU\COGU002";
 			dialog.text = "Не морочьте нам голову, капитан " + Pchar.name + "! И кто мог подумать, что такой положительный и уважаемый всеми человек, как вы, займется контрабандой!";
 			Link.l1 = "Увы, все совершают ошибки. Но я уже раскаиваюсь!";
 			Link.l1.go = "ThisTimeFree_1";
 			Link.l2 = "Сейчас я отрежу тебе голову!";
-			Link.l2.go = "ThisTimeFree_fight";				
+			Link.l2.go = "ThisTimeFree_fight";
 		break;
 
-		case "ThisTimeFree_1":	
-			dialog.snd = "Voice\COGU\COGU003";	
+		case "ThisTimeFree_1":
+			dialog.snd = "Voice\COGU\COGU003";
 			ChangeCharacterReputation(pchar, -40);
 			dialog.text = "Поскольку я слышал о вас только хорошее, в этот раз я отпускаю вас. А этих мерзавцев мы прихватим!";
 			Link.l1 = "Благодарю вас, офицер. Всего вам хорошего!";
 			Link.l1.go = "ThisTimeFree_exit";
 		break;
 
-		case "ThisTimeFree_fight":			
+		case "ThisTimeFree_fight":
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = NPC_Meeting;
 			DialogExit();
@@ -87,7 +87,7 @@ void ProcessDialogEvent()
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "CoastalGuards");
             }
-			
+
 			LAi_group_SetRelation(pchar.GenQuest.Smugglers_Group, "CoastalGuards", LAI_GROUP_ENEMY);
 			LAi_group_SetHearRadius("CoastalGuards", 100.0);
 			LAi_group_SetHearRadius(pchar.GenQuest.Smugglers_Group, 100.0);
@@ -103,7 +103,7 @@ void ProcessDialogEvent()
 		case "ThisTimeFree_exit":
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = NPC_Meeting;
-			
+
             DialogExit();
 			StopCoastalGuardPursuit();
 			ChangeContrabandRelation(pchar, -30);
@@ -114,7 +114,7 @@ void ProcessDialogEvent()
 				LAi_SetWarriorType(sld);
 				LAi_group_MoveCharacter(sld, "CoastalGuards");
             }
-			LAi_group_SetRelation(pchar.GenQuest.Smugglers_Group, "CoastalGuards", LAI_GROUP_ENEMY);			
+			LAi_group_SetRelation(pchar.GenQuest.Smugglers_Group, "CoastalGuards", LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(pchar.GenQuest.Smugglers_Group, "CoastalGuards", true);
 			LAi_SetPlayerType(Pchar);
 		break;
@@ -126,8 +126,8 @@ void ProcessDialogEvent()
 			Link.l1.go = "ThisTimeFree_fight";
 		break;
 
-		case "GiveMeSomeMoneyToo":	
-			dialog.snd = "Voice\COGU\COGU005";		
+		case "GiveMeSomeMoneyToo":
+			dialog.snd = "Voice\COGU\COGU005";
 			dialog.text = "Вот как? Нет, конечно, это занятие совершенно правомочно... Если нам, конечно, тоже достанется. А по сколько вы раздаете?";
 			Link.l1 = "Думаю, что " + makeint(sti(Pchar.money)/10) + " пиастров будет достаточно.";
 			if(makeint(Pchar.rank)*1000 <= makeint(sti(Pchar.money)/10))
@@ -174,7 +174,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "GettingLostFromHere_exit";
 			AddMoneyToCharacter(pchar, -makeint(sti(Pchar.money)/10));
 		break;
-		
+
 		case "MoneyAccepted5":
 			dialog.snd = "Voice\COGU\COGU007";
 			dialog.text = "С радостью приму ваше пожертвование. Раз уж вы занимаетесь благотворительностью.";
@@ -182,7 +182,7 @@ void ProcessDialogEvent()
 			Link.l1.go = "GettingLostFromHere_exit";
 			AddMoneyToCharacter(pchar, -makeint(sti(Pchar.money)/5));
 		break;
-		
+
 		case "MoneyAccepted2":
 			dialog.snd = "Voice\COGU\COGU007";
 			dialog.text = "С радостью приму ваше пожертвование. Раз уж вы занимаетесь благотворительностью.";
@@ -211,7 +211,7 @@ void ProcessDialogEvent()
 			Diag.CurrentNode = Diag.TempNode;
 			NPChar.quest.meeting = NPC_Meeting;
             DialogExit();
-            
+
 			StopCoastalGuardPursuit();
 			for (i = 1; i <= sti(Pchar.quest.contraband.SoldierQty); i++)
 			{

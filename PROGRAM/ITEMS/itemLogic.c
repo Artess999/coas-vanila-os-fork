@@ -203,7 +203,7 @@ void Item_OnPickItem()
 
 		displayItemName = LanguageConvertString(langFile, Items[activeItem].name);
 		Log_SetStringToLog(youvegotString+" "+displayItemName+"!");
-		// ===> перехват взятия предметов из локатора item на метод обрабоки для квестовых нужд 
+		// ===> перехват взятия предметов из локатора item на метод обрабоки для квестовых нужд
 		QuestCheckTakeItem(activeLocation, Items[activeItem].id);
 		// <===
 	}
@@ -255,7 +255,7 @@ void Item_OnUseItem()
     QuestCheckUseButton(activeLocation, chr.activeLocator, Items[activeItem].id);
     // <===
 	DeleteAttribute(chr,"activeItem");
-	
+
 	CompleteQuestName("OnUse_"+Items[activeItem].id, "");
 }
 
@@ -476,9 +476,9 @@ void RandItems_SpawnRandItem(int _index, aref _location, aref al)
 		lastSpawnTimeString = "LastSpawnTime"+_index;
 		_location.(lastSpawnTimeString) = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear());
 	}
-	
+
     if (GetCharacterSkillToOld(GetMainCharacter(), SKILL_FORTUNE) < rand(15)) return; // boal fix
-    
+
 	if (!CheckAttribute(randItem, "model") || randItem.model == "")
 	{
 		Trace("ItemLogic: no model for item "+_location.id+"."+randItem.id);
@@ -496,15 +496,15 @@ void RandItems_DrawRandItem(int _index, aref _location, aref al)
 {
 	string randItemTypeString = "RandItemType"+_index;
 	int n = sti(_location.(randItemTypeString));
-	
+
     if (GetCharacterSkillToOld(GetMainCharacter(), SKILL_FORTUNE) < rand(15)) return; // boal fix
-    
+
 	if (Items[n].model == "")
 	{
 		Trace("ItemLogic: no model for item "+_location.id+"."+Items[n].id);
 		return;
 	}
-	
+
 	Items_LoadModel(&randItemModels[_index],  &Items[n]);
 	SendMessage(&randItemModels[_index], "lffffffffffff", MSG_MODEL_SET_POSITION, makeFloat(al.x), makeFloat(al.y), makeFloat(al.z), makeFloat(al.vx.x), makeFloat(al.vx.y), -makeFloat(al.vx.z), makeFloat(al.vy.x), makeFloat(al.vy.y), -makeFloat(al.vy.z), makeFloat(al.vz.x), makeFloat(al.vz.y), -makeFloat(al.vz.z));
 }
@@ -533,13 +533,13 @@ void RandItem_OnEnterLocator(aref _location, string _locator)
 // ****************** BOXES ********************
 void Box_EnterToLocator(aref loc, string locName)
 {
-	bool bOk = true;	
+	bool bOk = true;
 	if(!CheckAttribute(loc,locName)) return;
 	if (findsubstr(locName, "private", 0) != -1)
 	{ // check if private box opened
 		if (!CheckAttribute(loc, locName+".opened"))
 		{
-			if (CheckAttribute(loc, locName+".key")) 
+			if (CheckAttribute(loc, locName+".key"))
 			{
 				if (CheckCharacterItem(pchar, loc.(locName).key)) //проверяем ключ
 				{
@@ -550,15 +550,15 @@ void Box_EnterToLocator(aref loc, string locName)
 						TakeItemFromCharacter(pchar, loc.(locName).key); //забрать ключ
 					}
 				}
-				else 
+				else
 				{
-					bOk = false;	
+					bOk = false;
 					Log_SetStringToLog(XI_ConvertString("You have not need key"));
 					PlaySound("interface\box_locked.wav");
 				}
 			}
 			else
-			{	
+			{
 				if (CheckAttribute(loc, locName+".closed")) //проверяем, не закрыт ли сундук
 				{
 					bOk = false;
@@ -569,7 +569,7 @@ void Box_EnterToLocator(aref loc, string locName)
 		}
 	}
 	if (bOk)
-	{	
+	{
 		pchar.boxname = locName;
 		Log_SetActiveAction("OpenBox");
 		BLI_RefreshCommandMenu();
@@ -632,7 +632,7 @@ void Box_OnLoadLocation(ref _location)
 		}
 	}
 
-       
+
 	// private box
 	for (i=1; i < MAX_HANDLED_BOXES; i++)
 	{
@@ -703,7 +703,7 @@ void Box_OnLoadLocation(ref _location)
     			}
             }
 			// <--
-            
+
     		//respawn items in box
     		if (needRespawn || isAbordageBox)
     		{

@@ -40,7 +40,7 @@ void LAi_type_merchant_CharacterUpdate(aref chr, float dltTime)
 		if(num > 0)
 		{
 			if(LAi_type_merchant_FindEnemy(chr, num) < 0)
-			{				
+			{
 				int ichr = sti(chrFindNearCharacters[0].index);
 				//Трепимся с подошедшим
 				time = time + dltTime;
@@ -69,8 +69,8 @@ void LAi_type_merchant_CharacterUpdate(aref chr, float dltTime)
 					LAi_type_merchant_RestoreAngle(chr);
 					if(time > 200.0)
 					{
-						chr.chr_ai.type.time = "0";					
-					}				
+						chr.chr_ai.type.time = "0";
+					}
 				}
 			}else{
 				//Боимся
@@ -179,7 +179,7 @@ void LAi_type_merchant_Fire(aref attack, aref enemy, float kDist, bool isFindedE
 //Персонаж атакован
 void LAi_type_merchant_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 //Проиграть анимацию зазывания покупанелей

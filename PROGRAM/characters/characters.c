@@ -9,7 +9,7 @@
 #include "characters\GeneratorUtilite.c" //boal
 #include "characters\TravelMap.c" //navy
 #include "characters\QuestsUtilite.c" //boal
-#include "characters\LSC_Q2Utilite.c" 
+#include "characters\LSC_Q2Utilite.c"
 
 
 object chrFindNearCharacters[MAX_CHARS_IN_LOC];
@@ -27,21 +27,21 @@ void CharactersInit()
 
 	string sPath = "characters\";
 	// + LanguageGetLanguage() + "\";
-	
+
 	LoadSegment(sPath + "init\Antigua.c");			ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\Barbados.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\Jamaica.c");				ReloadProgressUpdate();
 
 	LoadSegment(sPath + "init\Curacao.c");		ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\Guadeloupe.c");			ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\Santiago.c");				ReloadProgressUpdate();
 
 	LoadSegment(sPath + "init\Panama.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\PuertoPrincipe.c");				ReloadProgressUpdate();
 
 	LoadSegment(sPath + "init\Martinique.c");				ReloadProgressUpdate();
@@ -49,23 +49,23 @@ void CharactersInit()
 	LoadSegment(sPath + "init\Havana.c");	ReloadProgressUpdate();
 
 	LoadSegment(sPath + "init\Bermudes.c");		ReloadProgressUpdate();
-		
+
 	LoadSegment(sPath + "init\Nevis.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\PuertoRico.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\LaVega.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\SantoDomingo.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\PortPax.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\PortoBello.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\Trinidad.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\SentMartin.c");				ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\Tortuga.c");				ReloadProgressUpdate();
 
 	LoadSegment(sPath + "init\Cartahena.c");				ReloadProgressUpdate();
@@ -81,16 +81,16 @@ void CharactersInit()
 	LoadSegment(sPath + "init\SantaCatalina.c");				ReloadProgressUpdate();
 
 	LoadSegment(sPath + "init\StoryCharacters.c");		ReloadProgressUpdate();
-	
+
 	LoadSegment(sPath + "init\Other.c");				ReloadProgressUpdate();
-	
+
  	if(LoadSegment("characters\characters_init.c"))
 	{
 		CreateCharacters();
 		UnloadSegment("characters\characters_init.c");
 	}
 
-	ReloadProgressUpdate();	   
+	ReloadProgressUpdate();
 	sPath = "characters\";
 	UnloadSegment(sPath + "init\Antigua.c");
 	UnloadSegment(sPath + "init\Barbados.c");
@@ -139,7 +139,7 @@ bool CreateCharacter(ref character)
 
 	float fCurCharge = 1000.0;
 	if ( actLoadFlag == 1 && //fix
-		CheckAttribute(character,"chr_ai.charge") ) 
+		CheckAttribute(character,"chr_ai.charge") )
 	{
 		fCurCharge = stf(character.chr_ai.charge);
 	}
@@ -280,7 +280,7 @@ void SetDefaultStayIdle(ref character)
 
 //Character is sit where play idle animation
 void SetDefaultSitIdle(ref character)
-{		
+{
 	character.actions.idle.i1 = "Sit_Look_Around";
 	character.actions.idle.i2 = "Sit_Lower_head";
 	character.actions.idle.i3 = "Sit_Idle01";
@@ -293,7 +293,7 @@ void SetDefaultSitIdle(ref character)
 }
 
 void SetDefaultSit2Idle(ref character)
-{		
+{
 	character.actions.idle.i1 = "Sit2_Idle01";
 	character.actions.idle.i2 = "Sit2_Idle02";
 	character.actions.idle.i3 = "Sit2_Idle03";
@@ -373,7 +373,7 @@ void CheckAndSetOverloadMode(ref character)
 // boal <--
 void SetDefaultNormWalk(ref character)
 {
-	
+
 //	if( character.id == pchar.id && CheckAttribute(&InterfaceStates,"alwaysrun") && sti(InterfaceStates.alwaysrun) )
 //	{
 		character.actions.walk = "walk";
@@ -408,7 +408,7 @@ void SetDefaultNormWalk(ref character)
     // boal 21.01.2004 -->
 	SetOverloadNormWalk(character);
 	// boal 21.01.2004 <--
-	
+
 	character.actions.turnLeft = "turn left";
 	character.actions.turnRight = "turn right";
 	character.actions.swim = "swim";
@@ -419,7 +419,7 @@ void SetDefaultNormWalk(ref character)
 
 void SetDefaultFight(ref character)
 {
-	
+
 	//if( character.id == pchar.id && CheckAttribute(&InterfaceStates,"alwaysrun") && sti(InterfaceStates.alwaysrun) )
 	//{
 		character.actions.fightwalk = "fight walk";
@@ -434,11 +434,11 @@ void SetDefaultFight(ref character)
 		character.actions.fightbackwalk = "fight back run";
 		character.actions.fightbackrun = "fight back walk";
 	}*/
-	
+
 	// boal 21.01.2004 -->
     SetOverloadFight(character);
     // boal 21.01.2004 <--
-    
+
 	//Действия в режиме боя
 	//Fast (max 3) --------------------------------------------------
 	character.actions.attack_fast.a1 = "attack_fast_1";

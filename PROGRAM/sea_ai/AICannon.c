@@ -90,7 +90,7 @@ float Cannon_GetFireHeight()
 {
 	aref aCharacter = GetEventData();
 	aref aEnemy = GetEventData();
-	
+
 	ref rBallType = GetGoodByType(sti(aCharacter.Ship.Cannons.Charge.Type));
 	ref rEnemyShip = GetRealShip(sti(aEnemy.Ship.Type));
 
@@ -143,7 +143,7 @@ float Cannon_GetRechargeTime()
 	float fMultiply = 1.0;
 	// boal -->
     fMultiply = AIShip_isPerksUse(aCharacter.TmpPerks.FastReload, 1.0, 0.9);
-	fMultiply = AIShip_isPerksUse(aCharacter.TmpPerks.ImmediateReload, fMultiply, 0.5); 
+	fMultiply = AIShip_isPerksUse(aCharacter.TmpPerks.ImmediateReload, fMultiply, 0.5);
 
 	ref refBaseShip = GetRealShip(sti(aCharacter.ship.Type));
 	if (sti(refBaseShip.BaseType) != SHIP_FORT)
@@ -155,10 +155,10 @@ float Cannon_GetRechargeTime()
 		}
 		// boal <--
 		float crewQty  = GetCrewQuantity(aCharacter);
-	    float OptCrew  = GetOptCrewQuantity(aCharacter); 
-	    float MaxCrew  = GetMaxCrewQuantity(aCharacter); 
-	    float fMorale  = GetCharacterCrewMorale(aCharacter); 
-	    
+	    float OptCrew  = GetOptCrewQuantity(aCharacter);
+	    float MaxCrew  = GetMaxCrewQuantity(aCharacter);
+	    float fMorale  = GetCharacterCrewMorale(aCharacter);
+
 	    if (crewQty > MaxCrew) crewQty = MaxCrew; // fix 14/03/05
 	    if (OptCrew > 0)
 	    {
@@ -168,11 +168,11 @@ float Cannon_GetRechargeTime()
 			fReloadTime = fReloadTime * (1.0 + (1.0 - fExp) * 3.0);
         }
 	    fReloadTime = fReloadTime * (1.0 + (1.0 - fMorale / MORALE_NORMAL) * 0.2);
-	    
+
         if (crewQty <= (GetMinCrewQuantity(aCharacter)))
         {
             fReloadTime = fReloadTime * 3.0; //меньше команды - тормозим
-        } 
+        }
     // boal  корректный учет команды <--
     }
 	return  fMultiply * fReloadTime * fCannonSkill;
@@ -193,22 +193,22 @@ float Cannon_GetFireTime()
 	//fFireTime = fFireTime * Bring2RangeNoCheck(3.0, 1.0, 0.0, 1.0, stf(aCharacter.Ship.Crew.MinRatio));
 	fFireTime = frnd() * fFireTime * 6.0;
 	if (iArcadeSails) { fFireTime = fFireTime * 0.5; }
-				   
+
 	float crewQ   = GetCrewQuantity(aCharacter);
  	float crewMax = stf(refBaseShip.MaxCrew);
  	float crewOpt = stf(refBaseShip.OptCrew);
- 	if (crewMax < crewQ) crewQ  = crewMax; 
- 	
+ 	if (crewMax < crewQ) crewQ  = crewMax;
+
 	float fCrewMorale = GetCharacterCrewMorale(aCharacter);
 
     float  fExp;
 	fExp = 0.05 + stf(GetCrewExp(aCharacter, "Cannoners") * crewQ) / stf(crewOpt * GetCrewExpRate());
 	if (fExp > 1) fExp = 1;
-	
+
 	fFireTime = fFireTime * (2.0 - fExp);
 	fFireTime = fFireTime * (1 + (1 - fCrewMorale/MORALE_NORMAL)/5.0);
-	
-	return fFireTime;  
+
+	return fFireTime;
 }
 
 void Cannon_FireCannon()
@@ -252,13 +252,13 @@ float Cannon_DamageEvent()
 	}
 
 	ref	rCannon = GetCannonByType(sti(aCharacter.Ship.Cannons.Type));
-	
+
 	float fMaxCHP = stf(rCannon.hp);
 	//fCurDamage = (fCurDamage * fMaxCHP + fBallDamage * (1.0 - fDistance / MAX_CANNON_DAMAGE_DISTANCE)) / fMaxCHP;
     //Log_TestInfo("fBallDamage "  + fBallDamage + " fCurDamage " +fCurDamage + " fMaxCHP " + fMaxCHP + " fDistance " +fDistance);
     fBallDamage *= 0.1 / fDistance;
     fCurDamage =  fCurDamage  + fBallDamage / fMaxCHP;  // TO_DO
-    
+
 	//fCurDamage = fCurDamage - fCurDamage/100*(sti(aCharacter.ship.upgrades.cannons)-1)*20;
 	if (fCurDamage >= 1.0)
 	{

@@ -11,13 +11,13 @@ void ProcessDialogEvent()
 	makearef(NextDiag, NPChar.Dialog);
 
 	int iTemp;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
 			dialog.text = "Не о чем говорить.";
 			link.l1 = "Ладно...";
-			link.l1.go = "exit";			
+			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 
@@ -26,7 +26,7 @@ void ProcessDialogEvent()
 			DialogExit();
 		break;
 
-		case "exit_orient":			
+		case "exit_orient":
 			for (i=1; i<=12; i++)
 			{
 				sld = characterFromId("CaracasCit_"+i);
@@ -98,7 +98,7 @@ void ProcessDialogEvent()
 			for (i=1; i<=12; i++)
 			{
 				sld = characterFromId("CaracasCit_"+i);
-				sld.dialog.currentnode = "CaracasMan2";  
+				sld.dialog.currentnode = "CaracasMan2";
 				LAi_SetActorTypeNoGroup(sld);
 				LAi_ActorWaitDialog(sld, pchar);
 			}
@@ -254,13 +254,13 @@ void ProcessDialogEvent()
 		break;
 
 		case "FoundLiz":
-			dialog.text = NPCStringReactionRepeat("Отлично! И что вы выяснили?", 
-				"Мы уже говорили об этом, капитан.", 
+			dialog.text = NPCStringReactionRepeat("Отлично! И что вы выяснили?",
+				"Мы уже говорили об этом, капитан.",
 				"Капитан, мы уже говорили об этом.",
                 "Капитан, ну сколько можно?", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Элизабет не знает, как и почему было наложено это проклятие. Но ей стало известно, как его снять.", 
+			link.l1 = HeroStringReactionRepeat("Элизабет не знает, как и почему было наложено это проклятие. Но ей стало известно, как его снять.",
 				"Да, я помню.",
-                "Да, конечно...", 
+                "Да, конечно...",
 				"Я такой, настойчивый. Вот думаю, буду одно и то же спрашивать - авось случится чудо! Заклятие спадет, или еще чего-нибудь...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("FoundLiz_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -371,7 +371,7 @@ void ProcessDialogEvent()
 		case "DMSkelHead_7":
 			dialog.text = "Пожалуй, что так\nВпрочем, силком вас держать никто не будет. Все равно вашим рассказам никто не поверит, а если поверят, пришлют Инквизицию с сотней солдат... и жизнь целого города будет на вашей совести. Впрочем, видно, вам-то не привыкать...";
 			link.l1 = "Черт, вы правы. Может, я смогу чем-то помочь?";
-			link.l1.go = "DMSkelHead_8";		
+			link.l1.go = "DMSkelHead_8";
 			link.l2 = "Вы абсолютно правы, господин мэр. Какое мне дело до вас и вашего городишки? Приятных снов!";
 			link.l2.go = "DMSkelHead_bye";
 			LocatorReloadEnterDisable("DesMoines_town", "reload1_back", false); //выпускаем из города
@@ -383,7 +383,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			ChangeCharacterReputation(pchar, -20);
 			AddQuestRecord("MagicCity", "4");
-			pchar.questTemp.MC = "toByeBye"; //флаг квеста	
+			pchar.questTemp.MC = "toByeBye"; //флаг квеста
 		break;
 
 		case "DMSkelHead_8":
@@ -412,16 +412,16 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			ChangeCharacterReputation(pchar, 5);
 			AddQuestRecord("MagicCity", "5");
-			pchar.questTemp.MC = "toSeekSister"; //флаг квеста	
+			pchar.questTemp.MC = "toSeekSister"; //флаг квеста
 			LocatorReloadEnterDisable("Charles_town", "housePirate", false);
 			//ставим Лиз Шеппард
 			sld = GetCharacter(NPC_GenerateCharacter("LizSheppard", "BaynesDaughter", "woman", "towngirl", 10, ENGLAND, -1, false));
 			sld.name = "Элизабет";
-			sld.lastname = "Шеппард";		
+			sld.lastname = "Шеппард";
 			sld.dialog.filename = "Quest\MagicCity.c";
-			sld.dialog.currentnode = "LizBegin"; 
+			sld.dialog.currentnode = "LizBegin";
 			LAi_SetCitizenType(sld);
-			LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");	
+			LAi_group_MoveCharacter(sld, "ENGLAND_CITIZENS");
 			ChangeCharacterAddressGroup(sld, "Charles_PirateHouse", "goto", "goto1");
 		break;
 		//Элизабет Шеппард
@@ -513,7 +513,7 @@ void ProcessDialogEvent()
 				link.l1.go = "LizBegin_seekSkull";
 			}
 		break;
-		
+
 		case "LizBegin_SeekSkull":
 			dialog.text = "Именно так. В заброшенной столице ацтеков Теночтитлане.";
 			link.l1 = "Понятно. Если мне удасться раздобыть этот череп, то я первым делом отправлюсь сюда, в Чарльзтаун.";
@@ -525,7 +525,7 @@ void ProcessDialogEvent()
 			link.l1 = "Да не за что...";
 			link.l1.go = "exit";
 			AddQuestRecord("MagicCity", "6");
-			pchar.questTemp.MC = "toSeekSkull"; //флаг квеста	
+			pchar.questTemp.MC = "toSeekSkull"; //флаг квеста
 			NextDiag.TempNode = "LizCheckSkull";
 		break;
 
@@ -569,7 +569,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 			SetDanielleInWorld();
 			AddQuestRecord("MagicCity", "7");
-			pchar.questTemp.MC = "toSeekQueen"; //флаг квеста	
+			pchar.questTemp.MC = "toSeekQueen"; //флаг квеста
 			NextDiag.TempNode = "LizSeekQueen";
 		break;
 		case "LizSeekQueen":
@@ -599,7 +599,7 @@ void ProcessDialogEvent()
 			link.l1 = "Ну, я постараюсь.";
 			link.l1.go = "exit";
 			npchar.lifeDay = 30;
-			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");	
+			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 			NextDiag.TempNode = "LizOver_end";
 		break;
 		case "LizOver_end":
@@ -710,9 +710,9 @@ void ProcessDialogEvent()
 			sld.OfficerWantToGo.DontGo = true; //не пытаться уйти
 			sld.loyality = MAX_LOYALITY;
 			AddDialogExitQuestFunction("LandEnc_OfficerHired");
-			QuestAboardCabinDialogNotBattle(); 
+			QuestAboardCabinDialogNotBattle();
             DialogExit();
-		break;	
+		break;
 	}
 }
 
@@ -725,9 +725,9 @@ void SetDanielleInWorld()
 	sld.dialog.filename   = "Quest\MagicCity.c";
 	sld.dialog.currentnode   = "DanAbordage";
 	sld.greeting = "";
-	sld.GenQuest.CrewSkelMode = true; //команда - скелеты 
+	sld.GenQuest.CrewSkelMode = true; //команда - скелеты
 	FantomMakeCoolSailor(sld, SHIP_BRIGQEEN, "Королева", CANNON_TYPE_CANNON_LBS24, 90, 90, 90);
-	sld.Ship.Mode = "pirate";	
+	sld.Ship.Mode = "pirate";
 
 	DeleteAttribute(sld, "SinkTenPercent");
 	DeleteAttribute(sld, "SaveItemsForDead");
@@ -763,7 +763,7 @@ void SetDanielleInWorld()
 	Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, sld.id);
 	Group_SetGroupCommander(sGroup, sld.id);
-	SetRandGeraldSail(sld, sti(sld.Nation)); 
+	SetRandGeraldSail(sld, sti(sld.Nation));
 	sld.quest = "InMap"; //личный флаг искомого кэпа
 	sld.city = "SantaCatalina"; //определим колонию, из бухты которой с мушкетом выйдет
 	sld.cityShore = GetIslandRandomShoreId(GetArealByCityName(sld.city));

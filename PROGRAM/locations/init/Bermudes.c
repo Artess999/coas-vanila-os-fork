@@ -1,18 +1,18 @@
 
 int LocationInitBermudes(int n)
 {
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// ГОРОД
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	locations[n].id = "Pirates_town";
 	locations[n].id.label = "Street";
 	locations[n].worldmap = "Pirates_town";
-	
+
 	locations[n].townsack = "Pirates";
 	locations[n].fastreload = "Pirates";
  	locations[n].islandId = "Bermudes";
-	
+
 	locations[n].filespath.models = "locations\Town_IslaMona\Town\";
 	locations[n].image = "loading\towns\pearl1.tga";
 	locations[n].citizens = true;
@@ -29,7 +29,7 @@ int LocationInitBermudes(int n)
 	locations[n].models.always.locators = "IslaMona_locators";
 	locations[n].models.always.grassPatch = "IslaMona_grass";
 	locations[n].models.always.seabed = "IslaMona_sb";
-	
+
 	locations[n].models.always.plan = "IslaMona_plan";
 	locations[n].models.always.plan.level = 9;
 
@@ -39,7 +39,7 @@ int LocationInitBermudes(int n)
     locations[n].models.always.Waterfall1.uvslide.v1 = 0.0;
 	locations[n].models.always.Waterfall1.tech = "LocationWaterFall";
 	locations[n].models.always.Waterfall1.level = 50;
-	
+
 	locations[n].models.always.Waterfall2 = "Islamona_river2";
 	locations[n].models.always.Waterfall2.uvslide.v0 = -0.3;
     locations[n].models.always.Waterfall2.uvslide.v1 = 0.0;
@@ -111,7 +111,7 @@ int LocationInitBermudes(int n)
 	locations[n].reload.l20.emerge = "reload1";
 	locations[n].reload.l20.autoreload = "0";
 	locations[n].reload.l20.label = "House";
-	
+
 	locations[n].reload.l21.name = "houseSp1";
 	locations[n].reload.l21.go = "CommonFlamHouse";
 	locations[n].reload.l21.emerge = "reload1";
@@ -316,7 +316,7 @@ int LocationInitBermudes(int n)
 	locations[n].models.always.l1.level = 65538;
 	locations[n].models.always.window = "residence05_window";
 	locations[n].models.always.window.tech = "LocationWindows";
-	locations[n].models.always.window.level = 65539;	
+	locations[n].models.always.window.level = 65539;
 	locations[n].models.always.back = "..\inside_back";
 	locations[n].models.always.back.level = 65529;
 	//Day
@@ -332,7 +332,7 @@ int LocationInitBermudes(int n)
 	locations[n].reload.l1.emerge = "reload3";
 	locations[n].reload.l1.autoreload = "0";
 	locations[n].reload.l1.label = "Street";
-	
+
 	locations[n].reload.l2.name = "reload2";
 	locations[n].reload.l2.go = "CommonPirateResidence";
 	locations[n].reload.l2.emerge = "reload1";
@@ -451,15 +451,15 @@ int LocationInitBermudes(int n)
 	locations[n].filespath.models = "locations\inside\DungeonVault1";
 	locations[n].models.always.DungeonVault1 = "DungeonVault1";
 	locations[n].models.always.InquisitionDungeonVault1Fonars = "DungeonVault1_fonars";
-	locations[n].models.always.locators = "DungeonVault1_locators";	
+	locations[n].models.always.locators = "DungeonVault1_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "DungeonVault1_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
 	Locations[n].models.always.rays.uvslide.u1 = -0.03;
-	Locations[n].models.always.rays.uvslide.v1 = -0.03;	
+	Locations[n].models.always.rays.uvslide.v1 = -0.03;
 	//Day
 	locations[n].models.day.charactersPatch = "DungeonVault1_patch";
 	//Night
@@ -501,10 +501,10 @@ int LocationInitBermudes(int n)
 	locations[n].models.always.shore04.sea_reflection = 1;
 	Locations[n].models.always.shore04seabed = "shore04_sb";
 	Locations[n].models.always.locators = "shore04_locators";
-		
+
 	Locations[n].models.always.grassPatch = "shore04_grass";
 	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
-	
+
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -513,11 +513,11 @@ int LocationInitBermudes(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shore04_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shore04_patch";		
+	locations[n].models.night.charactersPatch = "shore04_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -556,10 +556,10 @@ int LocationInitBermudes(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\jungle8\";
-	Locations[n].models.always.jungle = "jungle8";	
-	Locations[n].models.always.locators = "jungle8_locators";		
+	Locations[n].models.always.jungle = "jungle8";
+	Locations[n].models.always.locators = "jungle8_locators";
 	Locations[n].models.always.grassPatch = "jungle8_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -568,11 +568,11 @@ int LocationInitBermudes(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "jungle8_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "jungle8_patch";	
+	locations[n].models.night.charactersPatch = "jungle8_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
@@ -604,10 +604,10 @@ int LocationInitBermudes(int n)
 	//Models
 	//Always
 	locations[n].filespath.models = "locations\Outside\Jungles\CaveEnt1";
-	Locations[n].models.always.caveEnt1 = "caveEnt1";	
-	Locations[n].models.always.locators = "caveEnt1_locators";		
+	Locations[n].models.always.caveEnt1 = "caveEnt1";
+	Locations[n].models.always.locators = "caveEnt1_locators";
 	Locations[n].models.always.grassPatch = "caveEnt1_grass";
-	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";	
+	Locations[n].models.always.grassPatch.texture = "grass\grassshore.tga.tx";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -616,12 +616,12 @@ int LocationInitBermudes(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "caveEnt1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "caveEnt1_patch";	
-	//Environment	
+	locations[n].models.night.charactersPatch = "caveEnt1_patch";
+	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "false";
 	//Reload map
@@ -643,7 +643,7 @@ int LocationInitBermudes(int n)
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Сковозная пещера
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	locations[n].id = "Bermudes_Cavern";
 	locations[n].id.label = "Cave";
 	locations[n].image = "loading\inside\cave.tga";
@@ -654,12 +654,12 @@ int LocationInitBermudes(int n)
 	//Always
 	locations[n].filespath.models = "locations\inside\cavernLow1";
 	locations[n].models.always.cavernLow1 = "cavernLow1";
-		
+
 	locations[n].models.always.cavernLow1Lamps = "cavernLow1_lamps";
 	locations[n].models.always.cavernLow1Crystals = "cavernLow1_crystals";
 	locations[n].models.always.cavernLow1Crystals.tech = "EnvironmentShader";
 	locations[n].models.always.cavernLow1Crystals.reflection = 0.25;
-	
+
 	locations[n].models.always.Waterfall = "water";
 	locations[n].models.always.Waterfall.uvslide.v0 = 0.0;
 	locations[n].models.always.Waterfall.uvslide.v1 = 0.0;
@@ -671,17 +671,17 @@ int LocationInitBermudes(int n)
     	locations[n].models.always.Cfall.uvslide.v1 = 0.0;
 	locations[n].models.always.Cfall.tech = "LocationWaterFall";
 	locations[n].models.always.Cfall.level = 50;
-	
+
 	locations[n].models.always.locators = "cavernLow1_locators";
 
 	locations[n].locators_radius.item.duhi1 = 1.3;
-	
+
 	Locations[n].models.always.rays = "cavernLow1_rays";
 	Locations[n].models.always.rays.level = 49;
 	Locations[n].models.always.rays.tech= "LocVisRays";
 	Locations[n].models.always.rays.uvslide.u1 = -0.03;
 	Locations[n].models.always.rays.uvslide.v1 = -0.03;
-	
+
 	//Day
 	locations[n].models.day.charactersPatch = "cavernLow1_patch";
 	//Night
@@ -722,7 +722,7 @@ int LocationInitBermudes(int n)
 	Locations[n].models.always.shore = "shoreShip1";
 	locations[n].models.always.shore.sea_reflection = 1;
 	Locations[n].models.always.shoreShip1seabed = "shoreShip1_sb";
-	Locations[n].models.always.locators = "shoreShip1_locators";		
+	Locations[n].models.always.locators = "shoreShip1_locators";
 	Locations[n].models.always.l1 = "plan1";
 	Locations[n].models.always.l1.level = 9;
 	Locations[n].models.always.l1.tech = "LocationModelBlend";
@@ -731,11 +731,11 @@ int LocationInitBermudes(int n)
 	Locations[n].models.always.l2.tech = "LocationModelBlend";
 	Locations[n].models.always.l3 = "plan3";
 	Locations[n].models.always.l3.level = 7;
-	Locations[n].models.always.l3.tech = "LocationModelBlend";	
+	Locations[n].models.always.l3.tech = "LocationModelBlend";
 	//Day
 	locations[n].models.day.charactersPatch = "shoreShip1_patch";
 	//Night
-	locations[n].models.night.charactersPatch = "shoreShip1_patch";		
+	locations[n].models.night.charactersPatch = "shoreShip1_patch";
 	//Environment
 	locations[n].environment.weather = "true";
 	locations[n].environment.sea = "true";
@@ -754,6 +754,6 @@ int LocationInitBermudes(int n)
 	locations[n].reload.l2.label = "Sea";
 	locations[n].locators_radius.reload.boat = 9.0;
 	n = n + 1;
-	
+
 	return n;
 }

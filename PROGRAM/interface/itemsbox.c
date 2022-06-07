@@ -21,14 +21,14 @@ int idLngFile;
 void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 {
 	int i, skel;
-	
+
 	ref mchref = GetMainCharacter();
 
     LAi_SetActorTypeNoGroup(pchar);
-    
+
     DelBakSkillAttr(GetMainCharacter()); // boal оптимизация скилов
     ClearCharacterExpRate(GetMainCharacter());
-    
+
 	StartAboveForm(false);
 
     if(faceID=="")
@@ -39,7 +39,7 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 	else
 	{
         // boal -->
-        if (faceID=="666") 
+        if (faceID=="666")
 		{
 			GameInterface.title = "titleDeadItems";
 			//navy -- Убрать тело ;)
@@ -70,12 +70,12 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 	SortItems(mchref);
 	SortItems(itemsRef);
 	// сортировка boal -->
-	
+
 	FillScroll();
 	SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
 	// navy -->
     SetNodeUsing("DELBODY_BUTTON", false);
-    if (faceID=="666") 
+    if (faceID=="666")
 	{
 		SetNodeUsing("DELBODY_BUTTON", true);
 	}
@@ -84,13 +84,13 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 	GameInterface.pictures.OtherPic.tex = "";
 	GameInterface.pictures.OtherPic.pic = "";
 	//SetNodeUsing( "FACEPICT", faceID!="" );
-	
+
 	SetNodeUsing("SKULL_BUTTON", false);
 	if (CheckCharacterItem(pchar, "SkullAztec") && IsAztecSkullOfficer(g_refItems) && LAi_IsDead(characters[sti(g_refItems.index)]) && CheckNPCQuestDate(pchar, "AztecSkull"))
 	{
 		SetNodeUsing("SKULL_BUTTON", true);
 	}
-	
+
 	if(faceID=="")
 	{
 		g_bIBoxUsed = true;
@@ -101,12 +101,12 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 		g_bIBoxUsed = false;
 		SetNewPicture("FACEPICT", "interfaces\portraits\128\face_" + faceID + ".tga");
 	}
-	
+
     // boal 19.01.2004 -->
     CreateString(true,"MainWeight","",FONT_NORMAL,COLOR_NORMAL,215,265,SCRIPT_ALIGN_LEFT,1.0);
     CreateString(true,"BoxWeight","",FONT_NORMAL,COLOR_NORMAL,215,302,SCRIPT_ALIGN_LEFT,1.0);
     // boal 19.01.2004 <--
-    
+
 	SetEventHandler("InterfaceBreak","ProcessCancelExit",0);
 	SetEventHandler("exitCancel","ProcessCancelExit",0);
 	SetEventHandler("frame","FrameProcess",1);
@@ -226,9 +226,9 @@ void FillScroll()
 			//fix eddy. золото не шло в деньги, arItem - структура предмета! -->
 			if( arItem.id == "gold" )
 			{
-				g_refItems.Money = makeint(g_refItems.Money) + makeint(rootItems.Gold); 
+				g_refItems.Money = makeint(g_refItems.Money) + makeint(rootItems.Gold);
 				DeleteAttribute(rootItems, "Gold");
-				j--; 
+				j--;
 				q--;
 			}
 			//<-- fix eddy. золото не шло в деньги
@@ -311,7 +311,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("ievnt_command","ProcInterfaceCommand");
 	DelEventHandler("MouseRClickUP","EndTooltip");
 	DelEventHandler("ShowItemInfo", "ShowItemInfo");
-	
+
     EndAboveForm(true);//  шел сброс времени на х10 false);
 	//AllControlsFreeze(false);
     interfaceResultCommand = exitCode;
@@ -621,7 +621,7 @@ void TakeItemsCollection()
     ref  rItem1;
 	float w1 = 0;
 	ref   mainCh = GetMainCharacter();
-	
+
 	if (itm2=="Money")
 	{
 		mainCh.Money = sti(mainCh.Money)+iq2;
@@ -631,7 +631,7 @@ void TakeItemsCollection()
 	{
         rItem1 = ItemsFromID(itm2);
     	w1 = stf(rItem1.Weight);
-    
+
 		if ((GetItemsWeight(mainCh) + iq2 *w1) > GetMaxItemsWeight(mainCh))
         {
             iq2 = makeint((GetMaxItemsWeight(mainCh) - GetItemsWeight(mainCh)) / w1);
@@ -666,12 +666,12 @@ void GiveItemsCollection()
 	{
         rItem1 = ItemsFromID(itm1);
     	w1 = stf(rItem1.Weight);
-    
+
 		if ((GetItemsWeight(g_refItems) + iq1 *w1) > GetMaxItemsWeight(g_refItems))
         {
             iq1 = makeint((GetMaxItemsWeight(g_refItems) - GetItemsWeight(g_refItems)) / w1);
         }
-        
+
 		mchref.Items.(itm1) = sti(mchref.Items.(itm1)) - iq1;
 		if (sti(mchref.Items.(itm1))<=0 ) DeleteAttribute(mchref, "Items."+itm1);
 
@@ -770,7 +770,7 @@ void SetUpDownUsed()
 	float w1 = 0;
     float w2 = 0;
     ref   mainCh = GetMainCharacter();
-    
+
     bYes1 = GetItemRefByOrder(true,nCurScroll1,&arItem1);
     bYes2 = GetItemRefByOrder(false,nCurScroll2,&arItem2);
     if (bYes1)
@@ -783,7 +783,7 @@ void SetUpDownUsed()
     }
     SetSelectable("ONEDOWN_BUTTON",false);
 	SetSelectable("ALLDOWN_BUTTON",false);
-	
+
 	if(iq1>0 && (GetItemsWeight(g_refItems) + w1) <= GetMaxItemsWeight(g_refItems))
 	{
 		SetSelectable("ONEDOWN_BUTTON",true);
@@ -807,9 +807,9 @@ void SetUpDownUsed()
 			} */
 		}
 	}
-	
+
 	SetSelectable("SWAP_BUTTON",false);
-	
+
 	if(itmName2=="" || itmName2=="Money" || GetAttributesNum(iref)<MAX_ITEM_TAKE)
 	{
 		SetSelectable("SWAP_BUTTON",true);
@@ -958,7 +958,7 @@ void GoToBottomScroll()
 void SetWeightToChar()
 {
         ref mchref = GetMainCharacter();
-     
+
         GameInterface.strings.MainWeight = "" +GetItemsWeight(mchref) + " / "+GetMaxItemsWeight(mchref);
 		if (CheckAttribute(g_refItems, "Skill.Fencing"))// критерий трупа и сундука
 		{
@@ -1013,7 +1013,7 @@ void ShowItemInfo()
 		sHeader = Items[iItem].name;
 		sText1 = GetItemDescribe(iItem);
 		sHeader = LanguageConvertString(idLngFile,sHeader);
-		
+
 		/*if (CheckAttribute(&Items[iItem], "groupID"))
 		{
 			string sGroupID = Items[iItem].groupID;
@@ -1031,7 +1031,7 @@ void ShowItemInfo()
 			{
 				ShowSpyglassInfo(iItem, &sHeader, &sText1, &sText2, &sText3);
 			}
-		}	
+		}
 		// boal 19.01.2004 -->
 		sText1 += NewStr()+"Вес: " + FloatToString(stf(Items[iItem].Weight), 1);
 		// boal 19.01.2004 <--
@@ -1050,7 +1050,7 @@ void ShowBladeInfo(int iItem, aref sHeader, aref sText1, aref sText2, aref sText
     //boal 16.08.05 -->
     sText2 = "";
     ref arItem = &Items[iItem];
-    
+
 	if (CheckAttribute(arItem,"FencingType"))
 	{
 		arItem.FencingTypeName = XI_ConvertString(arItem.FencingType);
@@ -1155,7 +1155,7 @@ void ShowGunInfo(int iItem, aref sHeader, aref sText1, aref sText2, aref sText3)
 	//LanguageCloseFile(idLngFile);
 }
 
-			
+
 void OfficerReincarnation(ref rPassanger);
 {
 	ref rOff = GetCharacter(NPC_GenerateCharacter("Clon", "none", rPassanger.sex, rPassanger.model.animation, 1, sti(rPassanger.nation), -1, false));
@@ -1173,5 +1173,5 @@ void OfficerReincarnation(ref rPassanger);
 	DeleteAttribute(rOff, "isMusketer.weapon");
 	DeleteAttribute(pchar, "items.mushket2x2");
 	AddPassenger(pchar, rOff, false);
-	Log_Info("Абордажник " + GetFullName(rOff) + " реанимирован.");		
+	Log_Info("Абордажник " + GetFullName(rOff) + " реанимирован.");
 }

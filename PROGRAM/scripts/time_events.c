@@ -13,7 +13,7 @@ void SalaryNextDayUpdate()
         int nPaymentQ = 0;
         int i, cn;
         ref chref;
-        
+
 		for (i=0; i<COMPANION_MAX; i++)
 		{
 			cn = GetCompanionIndex(pchar, i);
@@ -31,7 +31,7 @@ void SalaryNextDayUpdate()
 		if (nPaymentQ > 0)
         {
 			LaunchMoneyGraphCollect();
-	
+
 			if (!dialogRun && !bQuestCheckProcessFreeze && !bAbordageStarted) // можно показать
 			{
 	      		LaunchSalaryScreen("");
@@ -71,10 +71,10 @@ void WorldSituationsUpdate()
 		case 1:
 			UpdateFame();   // это теперь известность репутации
 			GenerateRumour() //homo 05/07/06
-			
+
 		break;
 		case 2:
-			// ушло в переходы локаций PGG_DailyUpdate(); // navy 
+			// ушло в переходы локаций PGG_DailyUpdate(); // navy
 			ProcessDayRepair();
 		break;
 		case 3:
@@ -85,7 +85,7 @@ void WorldSituationsUpdate()
 			QuestActions(); //eddy
 		break;
 		case 5:
-		//	UpdateColonyProfit();  
+		//	UpdateColonyProfit();
 			wdmEmptyAllOldEncounter();// homo чистка энкоутеров
 		break;
 		case 6:
@@ -150,7 +150,7 @@ void Tut_Continue()
     LAi_LocationFightDisable(loadedLocation, false);
     LAi_SetFightMode(Pchar, false);
     LAi_LockFightMode(pchar, true);
-    
+
 	sld = GetCharacter(NPC_GenerateCharacter("Sailor_1", "Pirate_9", "man", "man", 1, PIRATE, 0, false));
     sld.name 	= "Сандро";
     sld.lastname 	= "Торн";
@@ -188,43 +188,43 @@ void Tut_Continue()
 	// лечилок нет
     sld.location = "Ship_deck_Low";  // чтоб не терся, пока его нет
 	//раскидаем квестовых нпс по локациям
-	SetQuestsCharacters();	
+	SetQuestsCharacters();
 }
 
 void Tut_RestoreState()
 {
 	ref sld;
-	
+
 	pchar.Health.Damg = 0.0; // здоровье бережем
 	pchar.Health.weekDamg = 0.0;
 
 	LAi_SetCurHPMax(pchar);
 	LAi_SetCheckMinHP(pchar, 1, true, "Tut_StartGame_CheckMinHP_Hero");
 	LAi_SetImmortal(pchar, false);
-	
+
 	sld = characterFromID("Sailor_1");
 	LAi_SetCurHPMax(sld);
 	LAi_SetCheckMinHP(sld, 1, true, "Tut_StartGame_CheckMinHP_1");
 	LAi_SetImmortal(sld, false);
-	
+
 	sld = characterFromID("Sailor_2");
 	LAi_SetCurHPMax(sld);
 	LAi_SetCheckMinHP(sld, 1, true, "Tut_StartGame_CheckMinHP_2");
 	LAi_SetImmortal(sld, false);
-	
+
 	DeleteAttribute(pchar, "HeroParam.Teach_beat");
 }
 
 void Tut_TeachBattle()
 {
 	ref sld;
-	
+
 	LAi_SetPlayerType(pchar);
 	LAi_SetFightMode(Pchar, true);
 	sld = characterFromID("Sailor_1");
 	LAi_SetWarriorType(sld);
     LAi_group_MoveCharacter(sld, "TmpEnemy");
-	
+
 	if (sti(pchar.HeroParam.Teach_battle) == 2)
 	{
         sld = characterFromID("Sailor_2");
@@ -243,7 +243,7 @@ void Tut_TeachBattle()
 void Tut_StartDialog()
 {
 	ref sld = characterFromID("Sailor_1");
-	
+
 	if (CheckAttribute(pchar, "HeroParam.Teach_beat"))
 	{ // признак, что выиграл
 		if (sti(pchar.HeroParam.Teach_beat) == 3)
@@ -281,8 +281,8 @@ void SetQuestsCharacters()
 		case 1: sTown = "Tortuga";	break;
 		case 2:	sTown = "Havana";	break;
 		case 3:	sTown = "Villemstad"; break;
-		case 4:	
-			sTown = "PortRoyal"; 
+		case 4:
+			sTown = "PortRoyal";
 			iNation = ENGLAND;
 		break;
 	}

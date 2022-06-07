@@ -37,7 +37,7 @@ bool LoadMainCharacterInFirstLocation(string location_id, string emerge_locator,
 	aref reload_group;
 	aref locator_ref;
 	makearef(reload_group, Locations[lindex].reload);
-	
+
 	int num = GetAttributesNum(reload_group);
 	if(num == 0)
 	{
@@ -85,7 +85,7 @@ bool LoadMainCharacterInFirstLocation(string location_id, string emerge_locator,
 bool LoadMainCharacterInFirstLocationGroup(string location_id, string sGroup, string emerge_locator)
 {
 	int lindex;
-	
+
 	//Find location
 	lindex = FindLocation(location_id);
 	if(lindex < 0)
@@ -115,7 +115,7 @@ void SetPlayerShipLocation(int location_index)
 		Trace("SetPlayerShipLocation - incorrect location index");
 		return;
 	}
-	ref mc = GetMainCharacter();	
+	ref mc = GetMainCharacter();
 	mc.location.from_sea = Locations[location_index].id;
 }
 
@@ -172,7 +172,7 @@ int Reload(aref reload_group, string locator_name, string current_location)
 	reload_cur_island_index = -1;
 	reload_cur_location_index = -1;
 	if(current_location != "")
-	{		
+	{
 		reload_cur_island_index = FindIsland(current_location);
 		if(reload_cur_island_index < 0)
 		{
@@ -198,7 +198,7 @@ int Reload(aref reload_group, string locator_name, string current_location)
 			return 0;
 		}
 	}
-	
+
 	//Main character
 	ref mc = GetMainCharacter();
 	//Trace("reload_cur_island_index = " + reload_cur_island_index);
@@ -219,7 +219,7 @@ int Reload(aref reload_group, string locator_name, string current_location)
 			}
 		}
 	}
-	
+
 	//Start fader
 	SetEventHandler("FaderEvent_StartFade", "ReloadStartFade", 0);
 	SetEventHandler("FaderEvent_EndFade", "ReloadEndFade", 0);
@@ -240,7 +240,7 @@ int Reload(aref reload_group, string locator_name, string current_location)
 		int loc_pict_index = reload_location_index;
 		if(loc_pict_index < 0) loc_pict_index = reload_cur_location_index;
 		if(loc_pict_index >= 0)
-		{		
+		{
 			if(CheckAttribute(&Locations[loc_pict_index],"image"))
 			{
 				if (sGlobalTemp == "afterFDsink")
@@ -252,7 +252,7 @@ int Reload(aref reload_group, string locator_name, string current_location)
 					SendMessage(&reload_fader, "ls", FADER_PICTURE, Locations[loc_pict_index].image);
 			}
 		}
-	}		
+	}
 
 	bool IsMakeShot = true;
 	float fadeOutTime = RELOAD_TIME_FADE_OUT;
@@ -284,7 +284,7 @@ int Reload(aref reload_group, string locator_name, string current_location)
 			lockedReloadLocator = reload_locator_ref.emerge;
 		}
 		else
-		{	//To sea			
+		{	//To sea
 			lockedReloadLocator = "";
 		}
 	}
@@ -314,7 +314,7 @@ void ReloadStartFade()
 			if(reload_cur_location_index >= 0)
 			{
 				UnloadLocation(&Locations[reload_cur_location_index]);
-			}else mc.location.from_sea = "";			
+			}else mc.location.from_sea = "";
 			DeleteClass(&chrAnimationKipper);
 			return;
 		}
@@ -391,7 +391,7 @@ string FindEmergeLocator(ref rObject, string emerge_str)
 	{
 		aref arLoc;
 		arLoc = GetAttributeN(arReload,i);
-		if (arLoc.name == emerge_str) 
+		if (arLoc.name == emerge_str)
 		{
 			string loc_name = GetAttributeName(arLoc);
 			return loc_name;
@@ -495,9 +495,9 @@ int ReloadToLocation(int location_index, aref reload_data)
 		mc.location.locator = reload_xaddress.locator;
 	}
 	//сменить анимацию перед загрузкой локации, нужно для подводных храмов.
-	if (CheckAttribute(&locations[location_index], "changeAnimation")) 
+	if (CheckAttribute(&locations[location_index], "changeAnimation"))
 	{
-		mc.model.animation = locations[location_index].changeAnimation;	
+		mc.model.animation = locations[location_index].changeAnimation;
 	}
 	if(IsEntity(&chrAnimationKipper) == false) CreateEntity(&chrAnimationKipper, "CharacterAnimationKipper");
 
@@ -522,7 +522,7 @@ int ReloadToLocation(int location_index, aref reload_data)
 						arDis.disable = false;
 						DeleteAttribute(arDis, "canEnter"); //автосъем флага на открытую дверь
 					}
-					else arDis.disable = rand(1); 
+					else arDis.disable = rand(1);
     			}
     		}
     	}
@@ -547,8 +547,8 @@ int ReloadToLocationEx(int location_index, string sLocator)
 		mc.location.locator = reload_xaddress.locator;
 	}
 	*/
-	
-	if(IsEntity(&chrAnimationKipper) == false) 
+
+	if(IsEntity(&chrAnimationKipper) == false)
 	{
 		CreateEntity(&chrAnimationKipper, "CharacterAnimationKipper");
 	}
@@ -557,7 +557,7 @@ int ReloadToLocationEx(int location_index, string sLocator)
 
 int ReloadToSea(int island_index, aref reload_data)
 {
-	
+
 	object Login;
 
 	ref rPlayer = GetMainCharacter();
@@ -579,12 +579,12 @@ int ReloadToSea(int island_index, aref reload_data)
 
 	string sLoc = FindEmergeLocator(rIsland,reload_data.emerge);
 	Login.PlayerGroup.x = rIsland.reload.(sLoc).ships.l0.x;	// FIX-ME
-	Login.PlayerGroup.z = rIsland.reload.(sLoc).ships.l0.z; 
+	Login.PlayerGroup.z = rIsland.reload.(sLoc).ships.l0.z;
 	Login.PlayerGroup.ay = rIsland.reload.(sLoc).ships.l0.ay;
 	Login.FromCoast = true;
 
 	Trace("Load from location to sea sLoc = " + sLoc + ", x = " + Login.PlayerGroup.x + ",z = " + Login.PlayerGroup.z);
-		
+
 	SeaLogin(Login);
 	return 1;
 
@@ -641,7 +641,7 @@ int BOAL_ReloadToLoc(aref reload_group, string locator_name)
 	Pchar.quest.SetNPCInShipDeck.win_condition.l1          = "location";
 	Pchar.quest.SetNPCInShipDeck.win_condition.l1.location = "My_Deck";
 	Pchar.quest.SetNPCInShipDeck.win_condition             = "SetNPCInShipDeck";
-	
+
 	Pchar.quest.SetNPCInShipCampus.win_condition.l1          = "location";
 	Pchar.quest.SetNPCInShipCampus.win_condition.l1.location = "My_Campus";
 	Pchar.quest.SetNPCInShipCampus.win_condition             = "SetNPCInShipDeck";

@@ -37,9 +37,9 @@ void Map_CreateTrader(string beginlocator, string endLocator, string characterID
 // boal 04/10/06
 //военный (догоняющий). TimeOut в днях, если -1, то неиспользуеться.
 //торговец - в случае успешного достижения пункта назначения придёт эвент Map_TraderSucces
-void Map_CreateTraderXZ(float x1, float z1, float x2, float z2, string characterID, int TimeOut)  
+void Map_CreateTraderXZ(float x1, float z1, float x2, float z2, string characterID, int TimeOut)
 {
-	aref encField = wdmFindOrCreateQuestEncounter(characterID); 
+	aref encField = wdmFindOrCreateQuestEncounter(characterID);
 	encField.type = "trader";
 	encField.XZGoto = true;
 	encField.characterID = characterID;
@@ -184,7 +184,7 @@ bool wdmCreateMerchantShipByIndex(float kSpeed, int index, ref encID, string fro
 	//Создадим ссылку на атрибуты
 	ref mapEncSlotRef = GetMapEncounterRef(index);
 	// boal правки в ядре -->
-	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
+	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec);
 	float timeOutInSec = daysPerSec*timeOutInDays;
 	//Создаём реального энкоунтера
 	bool res = SendMessage(&worldMap, "lsssff", MSG_WORLDMAP_CREATEENC_MER, nationShipName, from, to, kSpeed, timeOutInSec);
@@ -196,13 +196,13 @@ bool wdmCreateMerchantShipByIndex(float kSpeed, int index, ref encID, string fro
 	return res;
 }
 // boal 04/10/06
-bool wdmCreateMerchantShipXZByIndex(float kSpeed, int index, ref encID, float x1, float z1, float x2, float z2, int timeOutInDays)  
+bool wdmCreateMerchantShipXZByIndex(float kSpeed, int index, ref encID, float x1, float z1, float x2, float z2, int timeOutInDays)
 {
 	//Нация энкоунтера (моделька)
 	string nationShipName = wdmEncounterModelName(index);
 	//Создадим ссылку на атрибуты
 	ref mapEncSlotRef = GetMapEncounterRef(index);
-	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec); 
+	float daysPerSec = 24.0/stf(worldMap.date.hourPerSec);
 	float timeOutInSec = daysPerSec*timeOutInDays;
 	//Создаём реального энкоунтера
 	bool res = SendMessage(&worldMap, "lsffffff", MSG_WORLDMAP_CREATEENC_MER_XZ, nationShipName, x1, z1, x2, z2, kSpeed, timeOutInSec);
@@ -301,7 +301,7 @@ bool wdmCreateWarringShips()
 	//Получим описание энкоунтера в море
 	int i1 = -1;
 	int i2 = -1;
-	if(GenerateMapEncounter(WDM_ETYPE_WARRING, worldMap.island, &i1, &i2) == false) 
+	if(GenerateMapEncounter(WDM_ETYPE_WARRING, worldMap.island, &i1, &i2) == false)
 	{
 		ReleaseMapEncounters();
 		return false;
@@ -391,7 +391,7 @@ aref wdmCreateNewQuestEncDescription()
 	makearef(encs, worldMap.addQuestEncounters);
 	int num = GetAttributesNum(encs);
 	for(int cnt = 0; cnt < num + 10; cnt++)
-	{	
+	{
 		gname = "e" + cnt;
 		for(int i = 0; i < num; i++)
 		{
@@ -418,7 +418,7 @@ void  wdmEmptyAllDeadQuestEncounter()
     aref encs;
     string sdel,aname;
 	bool isWMap = IsEntity(worldMap);
-	
+
     makearef(encs, worldMap.encounters);
 
     int num = GetAttributesNum(encs);
@@ -477,7 +477,7 @@ void  wdmEmptyAllOldEncounter()
     int num = GetAttributesNum(encs);
     aref enc;
     int  i;
-    
+
     for (i = 0; i < num; i++)
     {
         enc = GetAttributeN(encs, i);

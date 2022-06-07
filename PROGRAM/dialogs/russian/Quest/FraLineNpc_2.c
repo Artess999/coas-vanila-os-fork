@@ -12,7 +12,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -22,7 +22,7 @@ void ProcessDialogEvent()
 
 //>>>>>>>>>>>>========= Разброс диалогов по персонажам =====================
             //Квест №1, сопровождение Леграна.
-            if (pchar.questTemp.State == "Fr1Legran_toLeMaren")// квест №1, базар с бандиами 
+            if (pchar.questTemp.State == "Fr1Legran_toLeMaren")// квест №1, базар с бандиами
             {
     			dialog.text = "Эй, приятель! Нам нужно потолковать с твоим дружком. Отойди-ка в сторонку и не мешай - здоровее будешь...";
     			link.l1 = "Хм, полагаю, что лучше именно вам убраться с дороги. И поберегите свои уши!";
@@ -83,7 +83,7 @@ void ProcessDialogEvent()
     			link.l1 = "Хм, кто же не знает Франсуа Олоне? Известный флибустьер...";
     			link.l1.go = "exit";
             }
-			if (npchar.id == "RockBrasilian" && pchar.questTemp.State == "Fr7RockBras_toSeekPlace")//квест №7, базар с Бразильцем. 
+			if (npchar.id == "RockBrasilian" && pchar.questTemp.State == "Fr7RockBras_toSeekPlace")//квест №7, базар с Бразильцем.
             {
     			dialog.text = NPCStringReactionRepeat("Вот это да! Кто это осмелился на такое?!", "Ну, давай продолжим наш разговор. Так кто же ты такой, герой нашего времени?", "Продолжим? Так кто ты такой?", "Хм, давай закончим наш разговор. Кто ты такой?", "block", 0, npchar, Dialog.CurrentNode);
     			if (LAi_group_GetTarget(pchar) <= 0)
@@ -106,18 +106,18 @@ void ProcessDialogEvent()
 				else SaveCurrentQuestDateParam("questTemp"); //чтобы не глюкнуло во время боя
 				// <-- типа опоздал...
             }
-			if (npchar.id == "RockBrasilian" && pchar.questTemp.State == "empty")//квест №7, базар с Бразильцем в резиденции дОжерона. 
+			if (npchar.id == "RockBrasilian" && pchar.questTemp.State == "empty")//квест №7, базар с Бразильцем в резиденции дОжерона.
             {
     			dialog.text = "Капитан, я еще не имел возможности поблагодарить тебя.";
     			link.l1 = "Все в порядке, капитан Рок...";
     			link.l1.go = "Step_F7_5";
             }
-			if (npchar.id == "CaptainGay")//квест №8, базар с кэпом Геем. 
+			if (npchar.id == "CaptainGay")//квест №8, базар с кэпом Геем.
             {
     			dialog.text = "Ты кто такой?";
     			link.l1 = "Неважно, кто я. Тебе привет от Джона Морриса. Он очень хочет познакомиться с твоим судовым журналом.";
     			link.l1.go = "Step_F8_1";
-            }			
+            }
 		break;
 //<<<<<<<<<<<<===== Разброс диалогов по персонажам =====================
         case "Exit":
@@ -184,21 +184,21 @@ void ProcessDialogEvent()
 				          "Ну а несколько кругляшков мой тесть сам возьмет из твоей утвари. Не возражаешь?";
 			link.l1 = "Конечно, нет! Ну, не теряй времени, друг мой.";
 			link.l1.go = "Step_F2_7";
-		break;	
+		break;
  		case "Step_F2_7":
 			LAi_SetPlayerType(pchar);
 			LAi_SetActorType(npchar);
 			LAi_ActorGoToLocation(npchar, "reload", "reload1", "none", "", "", "", 10);
             DialogExit();
 			DoQuestCheckDelay("Fr2Letter_intoPrison_3", 10);
-		break;	
+		break;
  		case "Step_F2_8":
 			dialog.text = "Не ёрничайте, капитан, все разъяснилось.\n"+
 				          "Один из моих офицеров решил проверить вашу каюту. Мы нашли французский каперский патент, прочли судовой журнал и все встало на свои места.\n"+
 						  "Все верно, вы действительно флибустьер на службе Франции. Я не извиняюсь, ибо таков порядок. Вы свободны, капитан.";
 			link.l1 = "Очень рад. Глупо было бы умереть ни за что.";
 			link.l1.go = "Step_F2_9";
-		break;		
+		break;
  		case "Step_F2_9":
 			dialog.text = "Вам вернут все, что было у вас конфисковано. Передавайте мои наилучшие пожелания Бертрану. И будьте осторожны на обратном пути - в последнее время близ острова творится черт знает что.";
 			link.l1 = "Что именно, сударь?";
@@ -255,7 +255,7 @@ void ProcessDialogEvent()
 			link.l1 = "Надо успеть перехватить их в джунглях! Если они успеют вернуться в город, мне придется воевать со всем испанским гарнизоном. Спасибо вам, уважаемая Инес. Я никогда не верил в женскую дружбу, но вы, отважная женщина, убедили меня в обратном. Прощайте.";
     		link.l1.go = "exit";
 			pchar.questTemp.State = "Fr5AnnaHant_SeekHoseBrothers";
-			AddQuestRecord("Fra_Line_5_KillAnnaHanters", "3");			
+			AddQuestRecord("Fra_Line_5_KillAnnaHanters", "3");
 			npchar.LifeDay = 1; // уберем нпс
 			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 			locations[FindLocation("Mayak10")].DisableEncounters = true; //энкаутеры закроем

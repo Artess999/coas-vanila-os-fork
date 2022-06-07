@@ -100,7 +100,7 @@ bool CheckQuestRecordEx(aref qref,string textId,string RefQuestID)
 		{
 			arCurText = GetAttributeN(arTextList,n);
 			GetDateAndText( GetAttributeValue(arCurText), &str_date,&str_text,&str_refquest );
-			if(textId==str_text && RefQuestID==str_refquest) 
+			if(textId==str_text && RefQuestID==str_refquest)
 			{
 				trace("Text found again");
 				return true;
@@ -207,7 +207,7 @@ string GetQuestBookData()
 	string sResult = sData + " " + GetTimeString();
 	return sResult;
 }
-// boal -->	  
+// boal -->
 void ReOpenQuestHeader(string idQuest)
 {
 	ref mainCh = GetMainCharacter();
@@ -218,11 +218,11 @@ void ReOpenQuestHeader(string idQuest)
 
         refNewAttr.(idQuest) = "";
         makearef(curQ, refNewAttr.(idQuest));
-        
+
         CopyAttributes(curQ, GetQuestData(idQuest));
     	refNewAttr.(idQuest).Complete = false;
     	DeleteAttribute(mainCh,"QuestInfo."+idQuest);
-    	
+
 		aref refOldAttr; makearef(refOldAttr, mainCh.QuestInfo);
 		string qName;
 		int iMax  = GetAttributesNum(refOldAttr);
@@ -422,7 +422,7 @@ void SetQuestHeaderInfo(string idQuest)
 void AddQuestRecordInfo(string idQuest, string idText)
 {
     string idReferenceQuest = idQuest;
-    
+
 	if(CheckAttribute(pchar,"QuestInfo."+idQuest)==false)
 	{
 		SetQuestHeaderInfo(idQuest);
@@ -791,7 +791,7 @@ void DoQuestDelayExit()
 {
 	string stmp = GetEventData();
 	bool deleteOldQuest = GetEventData();
-	
+
 	if (CheckAttribute(pchar, "PostEventQuest.questDelay."+stmp)) //fix boal, возможность удалить обработку
 	{
 		if(stmp!="")
@@ -1056,7 +1056,7 @@ bool DoReloadFromWorldMapToLocation(string idLocation, string idGroup, string id
 
 	WdmPrepareMapForAbordage(arOldMapPos);
 	// новые фичи к3 <--
-	
+
 	if(FindLocation(idLocation)==-1) return false;
 	pchar.tmpWDMtoLand.location = idLocation;
 	pchar.tmpWDMtoLand.group = idGroup;
@@ -1086,7 +1086,7 @@ void ReloadFromWMtoL_complete()
 //-------------------------------------------------------------------------------
 bool DoReloadFromSeaToLocation(string idLocation, string idGroup, string idLocator)
 {
-	
+
 	if(bSeaActive)	{ DeleteSeaEnvironment(); }
 	else {bSkipSeaLogin = true;}
 
@@ -1120,10 +1120,10 @@ void DoReloadFromDeckToLocation(string idLocation, string idGroup, string idLoca
 		//Настроим интерфейс
 		Log_SetActiveAction("Nothing");
 		EndBattleLandInterface();
-		
+
 		//Выгружаемся в интерфейс
 		LAi_boarding_process = false;
-	
+
 		Go2LocationAfterAbordage();
         DoReloadFromSeaToLocation(idLocation, idGroup, idLocator);
 	}
@@ -1134,7 +1134,7 @@ void DoReloadFromDeckToLocation(string idLocation, string idGroup, string idLoca
 void DeleteQuestCheck(string sQuestName)
 {
 	if(sQuestName=="") return;
-	if( CheckAttribute(pchar,"quest."+sQuestName+".win_condition") )	
+	if( CheckAttribute(pchar,"quest."+sQuestName+".win_condition") )
 	{
 		pchar.quest.(sQuestName).over = "yes";
 	}
@@ -1154,7 +1154,7 @@ string GetCharacterFullName(string idCharacter)
 string GetFullName(ref chref)
 {
 	string retStr = "";
-	
+
 	if(CheckAttribute(chref,"name"))
 	{
 		if (chref.name != "") retStr = chref.name;
@@ -1167,7 +1167,7 @@ string GetFullName(ref chref)
 	{
 	    if (chref.lastname != "") retStr = retStr + " " + chref.lastname;
 	}
-	
+
 	return retStr;
 }
 // boal <--
@@ -1613,10 +1613,10 @@ bool isLocationFreeForQuests(string loc_id)
 	int  i, nQuestsNum;
 	bool bEnableEncounters = true;
 	ref  chr;
-	
+
 	makearef(quests, PChar.Quest);
 	nQuestsNum = GetAttributesNum(quests);
-	
+
 	for (i = 0; i < nQuestsNum; i++)
 	{
         quest = GetAttributeN(quests, i);
@@ -1643,10 +1643,10 @@ bool isLocationFreeForQuests(string loc_id)
 				if (!IsOfficer(chr))
 				{   // это не ГГ и офы
 					bEnableEncounters = false;
-					break;	
+					break;
 				}
 			}
-		}			
+		}
 	}
 	return bEnableEncounters;
 }

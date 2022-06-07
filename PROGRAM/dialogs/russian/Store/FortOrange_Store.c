@@ -30,7 +30,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                       "Двайте...", "Эх, не надо иронизировать, прошу вас. Самому надоело уже все это до смерти..." , npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
-		
+
          case "DefenceOrange": //Голландская линейка, квест №4, защита форта Оранж.
             dialog.text = "Кхе-кхе, рад вас видеть в добром здравии, капитан. Да еще после такой бойни!";
             link.l2 = "Хм, да уж, заварушка была что надо...";
@@ -43,8 +43,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
-		
-		
+
+
 	}
 	UnloadSegment(NPChar.FileDialog2);
 }

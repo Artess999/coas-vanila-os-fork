@@ -25,7 +25,7 @@ void LAi_type_huber_Init(aref chr)
 
 //Процессирование типа персонажа
 void LAi_type_huber_CharacterUpdate(aref chr, float dltTime)
-{	
+{
 	int num;
 	float locx, locy, locz;
 	if (CheckAttribute(chr, "standUp") && !LAi_IsCapturedLocation) //не при захвате колонии
@@ -34,7 +34,7 @@ void LAi_type_huber_CharacterUpdate(aref chr, float dltTime)
 		int iNumEnemy = LAi_type_huber_FindEnemy(chr, num);
 		if (iNumEnemy > 0) //есть враги
 		{
-			GetCharacterPos(chr, &locx, &locy, &locz);			
+			GetCharacterPos(chr, &locx, &locy, &locz);
             Pchar.quest.MayorSitBack.win_condition.l1 = "ExitFromLocation";
             Pchar.quest.MayorSitBack.win_condition.l1.location = pchar.location;
             Pchar.quest.MayorSitBack.function = "MayorSitBack";
@@ -50,18 +50,18 @@ void LAi_type_huber_CharacterUpdate(aref chr, float dltTime)
 		}
 	}
 	//слежение залезания ГГ в боксы
-	if (CheckAttribute(chr, "watchBoxes")&& chr.chr_ai.tmpl != LAI_TMPL_DIALOG) 
+	if (CheckAttribute(chr, "watchBoxes")&& chr.chr_ai.tmpl != LAI_TMPL_DIALOG)
 	{
 		num = FindNearCharacters(chr, 10.0, -1.0, 180.0, 0.01, true, true);
 		for(int i = 0; i < num; i++)
 		{
 			if(nMainCharacterIndex == sti(chrFindNearCharacters[i].index))
-			{					
-				//нашли ГГ, проверяем, не в сундуке ли.						
+			{
+				//нашли ГГ, проверяем, не в сундуке ли.
 				if (bMainCharacterInBox)
 				{
 					//Нападаем на новую цель
-					GetCharacterPos(chr, &locx, &locy, &locz);	
+					GetCharacterPos(chr, &locx, &locy, &locz);
 					LAi_SetWarriorTypeNoGroup(chr); //ребрендинг и вперед на врага
 					ChangeCharacterAddressGroup(chr, chr.location, "goto", LAi_FindNearestFreeLocator("goto", locx, locy, locz));
 					LAi_group_Attack(chr, pchar);
@@ -137,7 +137,7 @@ void LAi_type_huber_Fire(aref attack, aref enemy, float kDist, bool isFindedEnem
 //Персонаж атакован
 void LAi_type_huber_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 //Найти врага
@@ -154,7 +154,7 @@ int LAi_type_huber_FindEnemy(aref chr, int num)
 		}
 	}
 	else
-	{		
+	{
 		for(i = 0; i < num; i++)
 		{
 			idx = sti(chrFindNearCharacters[i].index);

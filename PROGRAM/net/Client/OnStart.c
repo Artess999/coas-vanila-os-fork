@@ -57,11 +57,11 @@ void NetClient_DeleteShipFoamEnvironment()
 void NetClient_CreateShipFoamEnvironment(int iMsg)
 {
 	Seafoam.Server = false;
-	CreateEntity(&Seafoam, "Seafoam");				
-	
+	CreateEntity(&Seafoam, "Seafoam");
+
 	LayerAddObject("net_execute", &Seafoam, -1);
 	LayerAddObject("net_realize", &Seafoam, -1);
-	
+
 	if (NetClient_WhrIsStorm()) { Seafoam.storm = "true"; }
 }
 
@@ -139,7 +139,7 @@ void NetClient_OnGameOver(int iMsg)
 void NetClient_ControlActivation()
 {
 	string sControl = GetEventData();
-	
+
 	switch (sControl)
 	{
 		case "Net_Menu":

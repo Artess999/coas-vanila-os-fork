@@ -27,20 +27,20 @@ void ProcessDialogEvent()
 	{
 		rColony = GetColonyByIndex(iTest);
 	}
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "fight":
             LAi_group_Attack(NPChar, Pchar);
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "First time":
             /*if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY && sti(NPChar.nation) != PIRATE)
 			{
@@ -49,7 +49,7 @@ void ProcessDialogEvent()
 				link.l1.go = "fight";
 				break;
 			}*/
-			
+
 			if (sti(NPChar.nation) == PIRATE)
 			{
 				if (sti(rColony.HeroOwn) == true) // наш горожанин
@@ -127,11 +127,11 @@ void ProcessDialogEvent()
 				// --> квестовый генератор мэра, поиск шпиёна на улице. eddy
 				if (CheckAttribute(pchar, "GenQuest.SeekSpy.City") && pchar.location == (npchar.city + "_town"))
 	            {
-					link.l4 = NPCharSexPhrase(npchar, LinkRandPhrase("Стойте! Немедленно скажите мне, кто вы такой?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!", 
-						"Немедленно стой! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.", 
-						"Стоять, приятель! Местный губернатор " + characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].lastname + " очень хочет разыскать шпиона в городе."), 
-						LinkRandPhrase("Женщина, стойте! Немедленно скажите мне, кто вы такая?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!", 
-						"Женщина, я должен вас задержать! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.", 
+					link.l4 = NPCharSexPhrase(npchar, LinkRandPhrase("Стойте! Немедленно скажите мне, кто вы такой?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!",
+						"Немедленно стой! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.",
+						"Стоять, приятель! Местный губернатор " + characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].lastname + " очень хочет разыскать шпиона в городе."),
+						LinkRandPhrase("Женщина, стойте! Немедленно скажите мне, кто вы такая?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!",
+						"Женщина, я должен вас задержать! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.",
 						"Постой, красавица! Местный губернатор " + characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].lastname + " очень хочет разыскать шпиона в городе..."));
 					link.l4.go = "SitySpy";
 				}
@@ -147,7 +147,7 @@ void ProcessDialogEvent()
                                         +LinkRandPhrase(". Что может быть нужно такому почтенному человеку, как вы, от меня?", ". Зачем вы пришли?", ". Что на этот раз вы хотите узнать?")
 
                                         ),
-                                        
+
                         PCharRepPhrase(LinkRandPhrase("Здравствуйте, капитан ", "Приветствую, ах это вы "+GetAddress_Form(NPChar)+" ", "А, капитан ")
                                         +GetFullName(Pchar)
                                         +LinkRandPhrase(", я думал"+NPCharSexPhrase(NPChar, " ", "а ")+"мы больше с вами не встретимся,",
@@ -156,14 +156,14 @@ void ProcessDialogEvent()
                                         LinkRandPhrase(TimeGreeting() + ", капитан " + GetFullName(Pchar) + ". Чем могу помочь?",
                                         "О, да это же сам капитан " + GetFullName(Pchar) + "! Что вы хотите узнать на этот раз?",
                                         "Здравствуйте, " + GetAddress_Form(NPChar) + " " + Pchar.lastname + ". Вы что-то хотели?"))
-                                        );                         
+                                        );
 	   			link.l5 = PCharRepPhrase(RandPhraseSimple("Тебе послышалось, я пойду.", "Нет, ничего - просто шел в таверну."),
                                         RandPhraseSimple("Ладно, ничего. Удачи!", "Просто осматриваю город. До свидания."));
 				link.l5.go = "exit";
 			}
 			NextDiag.TempNode = "First time";
 		break;
-		
+
 		case "Meeting":
 		    dialog.Text  = NPCharRepPhrase(npchar, LinkRandPhrase("А ты не врешь, капитан " + GetFullName(Pchar)+"?",
                                                                     "И что с того " + PChar.name+"?",
@@ -188,11 +188,11 @@ void ProcessDialogEvent()
 			// --> квестовый генератор мэра, поиск шпиёна на улице. eddy
 			if (CheckAttribute(pchar, "GenQuest.SeekSpy.City") && pchar.location == (npchar.city + "_town"))
 	        {
-				link.l4 = NPCharSexPhrase(npchar, LinkRandPhrase("Стойте! Немедленно скажите мне, кто вы такой?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!", 
-					"Немедленно стой! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.", 
-					"Стоять, приятель! Местный губернатор " + characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].lastname + " очень хочет разыскать шпиона в городе."), 
-					LinkRandPhrase("Женщина, стойте! Немедленно скажите мне, кто вы такая?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!", 
-					"Женщина, я должен вас задержать! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.", 
+				link.l4 = NPCharSexPhrase(npchar, LinkRandPhrase("Стойте! Немедленно скажите мне, кто вы такой?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!",
+					"Немедленно стой! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.",
+					"Стоять, приятель! Местный губернатор " + characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].lastname + " очень хочет разыскать шпиона в городе."),
+					LinkRandPhrase("Женщина, стойте! Немедленно скажите мне, кто вы такая?! Я ищу вражеского лазутчика по поручению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + "!",
+					"Женщина, я должен вас задержать! Я действую в интересах города " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].city+"Gen") + " по поручению губернатора. Ищу в городе вражеского агента.",
 					"Постой, красавица! Местный губернатор " + characters[GetCharacterIndex(pchar.GenQuest.SeekSpy.MayorId)].lastname + " очень хочет разыскать шпиона в городе..."));
 				link.l4.go = "SitySpy";
 			}
@@ -201,7 +201,7 @@ void ProcessDialogEvent()
                                         RandPhraseSimple("Ладно, ничего. Удачи!", "Просто осматриваю город. До свидания."));
 			Link.l5.go = "exit";
 		break;
-		
+
 		case "new question":
             dialog.text = NPCharRepPhrase(npchar,
 		                PCharRepPhrase(LinkRandPhrase("О, да я рад"+NPCharSexPhrase(NPChar, " ", "а ")+" тебе, как выпивке, спрашивай, чего хочешь.", "Любишь поболтать, капитан? Что ж, я тоже... Особенно за кружечкой рома.", "Да, " + PChar.name + "?"),
@@ -235,7 +235,7 @@ void ProcessDialogEvent()
                                         RandPhraseSimple("Ладно, ничего. Удачи!", "Просто осматриваю город. До свидания."));
 			link.l5.go = "exit";
 		break;
-		
+
 		case "colony":
 			dialog.text = LinkRandPhrase("Честно говоря, я не слишком-то разбираюсь в этом. Но кое-что могу рассказать.",
                            "Что же вас интересует в нашей колонии?", "Всегда пожалуйста. О чем вы хотите услышать?");
@@ -260,7 +260,7 @@ void ProcessDialogEvent()
 			link.l1 = "Точно, туплю.";
 		    link.l1.go = "exit";
 		break;
-		
+
 		case "fort":
             dialog.text = "Ничего про это не знаю.";
 			link.l1 = "Жаль.";
@@ -268,9 +268,9 @@ void ProcessDialogEvent()
 		break;
 		//============================ Генератор мэра. Квест по розыску шпиона на улице ============================
 		case "SitySpy":
-			dialog.text = NPCStringReactionRepeat(NPCharSexPhrase(npchar, "Ну, а я здесь при чем? Я местный житель!", "Ну, а я то здесь при чем? Я живу в этом городе, и знать ничего такого не желаю!"), 
-				NPCharSexPhrase(npchar, "Что опять вам от меня нужно? Говорил вам уже, что я не шпион!", "Я же говорила вам уже, что я местная!"), 
-				NPCharSexPhrase(npchar, "Ну, сколько можно? Отстаньте от меня, я местный житель!", "Ну что вы опять ко мне пристаете со своими дурацкими расспросами?"), 
+			dialog.text = NPCStringReactionRepeat(NPCharSexPhrase(npchar, "Ну, а я здесь при чем? Я местный житель!", "Ну, а я то здесь при чем? Я живу в этом городе, и знать ничего такого не желаю!"),
+				NPCharSexPhrase(npchar, "Что опять вам от меня нужно? Говорил вам уже, что я не шпион!", "Я же говорила вам уже, что я местная!"),
+				NPCharSexPhrase(npchar, "Ну, сколько можно? Отстаньте от меня, я местный житель!", "Ну что вы опять ко мне пристаете со своими дурацкими расспросами?"),
 				NPCharSexPhrase(npchar, "Что, опять?! Ну это ни в какие ворота не лезет!!!", "Послушайте, отстаньте от меня наконец, прошу вас!!"), "block", 0, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Кто может подтвердить твои слова?", "Ой, извините, я вас уже опрашивал...",
                       "Простите, столько народа...", "Хорошо, хорошо...", npchar, Dialog.CurrentNode);
@@ -304,7 +304,7 @@ void ProcessDialogEvent()
 				break;
 			}
 			dialog.text = "Кто угодно в этом городе! " + NPCharSexPhrase(npchar, GetFullName(&characters[sti(pchar.GenQuest.SeekSpy.Idx)]) + " может без проблем, благо " + NPCharSexPhrase(&characters[sti(pchar.GenQuest.SeekSpy.Idx)], "он", "она") + " в двух шагах.",
-				"Ой, Господи, да вот, хотя бы " + NPCharSexPhrase(&characters[sti(pchar.GenQuest.SeekSpy.Idx)], GetAddress_Form(NPChar) + " " + characters[sti(pchar.GenQuest.SeekSpy.Idx)].lastname, GetFullName(&characters[sti(pchar.GenQuest.SeekSpy.Idx)])) + " может.");				
+				"Ой, Господи, да вот, хотя бы " + NPCharSexPhrase(&characters[sti(pchar.GenQuest.SeekSpy.Idx)], GetAddress_Form(NPChar) + " " + characters[sti(pchar.GenQuest.SeekSpy.Idx)].lastname, GetFullName(&characters[sti(pchar.GenQuest.SeekSpy.Idx)])) + " может.");
 			link.l1 = "Что ж, давайте послушаем...";
 		    link.l1.go = "SitySpy_2";
 			sld = &characters[sti(pchar.GenQuest.SeekSpy.Idx)];
@@ -317,7 +317,7 @@ void ProcessDialogEvent()
 			sld = &characters[sti(pchar.GenQuest.SeekSpy.Idx)];
 			LAi_SetActorTypeNoGroup(npchar);
 			LAi_ActorTurnToCharacter(npchar, sld);
-			LAi_ActorDialog(sld, pchar, "", stf(pchar.GenQuest.SeekSpy.time), 0); 
+			LAi_ActorDialog(sld, pchar, "", stf(pchar.GenQuest.SeekSpy.time), 0);
 			DialogExit();
 		break;
 		//=================== ноды квеста мэра. поиск шпиона на улице, опрос свидетеля ==================

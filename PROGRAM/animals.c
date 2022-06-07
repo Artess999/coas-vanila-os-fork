@@ -13,7 +13,7 @@ void CreateAnimals(ref Location)
 	aref locator;
 	int n;
 	int num;
-	
+
 	//DumpAttributes(Location);
 
 	SendMessage(Animals, "l", MSG_ANIMALS_BUTTERFLIES_HIDE);

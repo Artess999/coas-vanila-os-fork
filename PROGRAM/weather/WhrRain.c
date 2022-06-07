@@ -91,7 +91,7 @@ void FillRainData(int nw1, int nw2)
 		Rain.WindSpeedJitter = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1,"WindSpeedJitter"), Whr_GetFloat(aRain2,"WindSpeedJitter") );
 		Rain.TimeBlend = Whr_BlendLong( fBlend, Whr_GetLong(aRain1,"TimeBlend"), Whr_GetLong(aRain2,"TimeBlend") );
 		Rain.MaxBlend = Whr_BlendLong( fBlend, Whr_GetLong(aRain1,"MaxBlend"), Whr_GetLong(aRain2,"MaxBlend") );
-		
+
 		Rain.RainDrops.DropsNearNum = Whr_BlendLong( fBlend, Whr_GetLong(aRain1, "DropsNearNum"), Whr_GetLong(aRain2, "DropsNearNum"));
 		Rain.RainDrops.DropsFarNum = Whr_BlendLong( fBlend, Whr_GetLong(aRain1, "DropsFarNum"), Whr_GetLong(aRain2, "DropsFarNum"));
 		Rain.RainDrops.DropsNearRadius = Whr_BlendFloat( fBlend, Whr_GetFloat(aRain1, "DropsNearRadius"), Whr_GetFloat(aRain2, "DropsNearRadius"));

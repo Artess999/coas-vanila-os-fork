@@ -41,7 +41,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             Statistic_AddValue(Pchar, NationShortName(sti(NPChar.nation)) + "_TakeTown", 1);
             SetReturn_Gover_Dialog_Exit(NPChar);
             chrDisableReloadToLocation = false;
-            AddDialogExitQuestFunction("LaunchColonyInfoScreen"); // табличка 
+            AddDialogExitQuestFunction("LaunchColonyInfoScreen"); // табличка
         break;
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод

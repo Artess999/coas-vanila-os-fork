@@ -2,7 +2,7 @@
 int CreateJamaicaCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -193,7 +193,7 @@ int CreateJamaicaCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
    //=============== форт Оранж ===============
 
 	makeref(ch,Characters[n]);			//Губернатор
@@ -288,6 +288,6 @@ int CreateJamaicaCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

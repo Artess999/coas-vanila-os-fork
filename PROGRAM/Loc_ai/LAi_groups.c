@@ -33,11 +33,11 @@ bool LAi_group_Init()
 	LAi_group_SetHearRadius(LAI_GROUP_PLAYER_OWN, LAI_GROUP_PLA_HEAR);
 	LAi_group_SetSayRadius(LAI_GROUP_PLAYER_OWN, LAI_GROUP_PLA_SAY);
 	LAi_group_SetPriority(LAI_GROUP_PLAYER_OWN, LAI_GROUP_PPLAYER);
-	
+
 	LAi_group_Register("ENGLAND_CITIZENS");
 	LAi_group_SetLookRadius("ENGLAND_CITIZENS", LAI_GROUP_GRD_LOOK);
 	LAi_group_SetHearRadius("ENGLAND_CITIZENS", LAI_GROUP_GRD_HEAR);
-	LAi_group_SetSayRadius("ENGLAND_CITIZENS", LAI_GROUP_GRD_SAY);	
+	LAi_group_SetSayRadius("ENGLAND_CITIZENS", LAI_GROUP_GRD_SAY);
 	LAi_group_SetPriority("ENGLAND_CITIZENS", LAI_GROUP_PGUARDS);
 	LAi_group_SetAlarmReaction("ENGLAND_CITIZENS", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY, LAI_GROUP_NEITRAL);
 	LAi_group_SetAlarmDown("ENGLAND_CITIZENS", LAI_GROUP_PLAYER, 0.02);
@@ -93,7 +93,7 @@ bool LAi_group_Init()
 	LAi_group_SetHearRadius(LAI_GROUP_GUARDS, LAI_GROUP_HUB_HEAR);
 	LAi_group_SetSayRadius(LAI_GROUP_GUARDS, LAI_GROUP_HUB_SAY);
 	LAi_group_SetPriority(LAI_GROUP_PLAYER, LAI_GROUP_PCITIZENS);*/
-	
+
 	//Группа монстров
 	LAi_group_Register(LAI_GROUP_MONSTERS);
 	LAi_group_SetRelation(LAI_GROUP_MONSTERS, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
@@ -101,7 +101,7 @@ bool LAi_group_Init()
 	LAi_group_SetHearRadius(LAI_GROUP_MONSTERS, LAI_GROUP_MNS_HEAR);
 	LAi_group_SetSayRadius(LAI_GROUP_MONSTERS, LAI_GROUP_MNS_SAY);
 	LAi_group_SetPriority(LAI_GROUP_PLAYER, 0);
-	//Отношения	
+	//Отношения
 	//giards
 	//LAi_group_SetRelation(LAI_GROUP_GUARDS, LAI_DEFAULT_GROUP, LAI_GROUP_FRIEND);
 	//LAi_group_SetAlarmReaction(LAI_GROUP_GUARDS, LAI_DEFAULT_GROUP, LAI_GROUP_FRIEND, LAI_GROUP_FRIEND);
@@ -213,7 +213,7 @@ void LAi_group_SetAlarmDown(string group1, string group2, float down)
 void LAi_group_MoveCharacter(aref chr, string groupName)
 {
 	chr.chr_ai.group = groupName;
-	SendMessage(&LAi_grp_relations, "sis", "MoveChr", chr, groupName);	
+	SendMessage(&LAi_grp_relations, "sis", "MoveChr", chr, groupName);
 }
 
 //------------------------------------------------------------------------------------------
@@ -316,7 +316,7 @@ void LAi_group_FightGroupsEx(string group1, string group2, bool asignWarriarType
 	LAi_group_SetRelation(group1, group2, LAI_GROUP_ENEMY);
 	LAi_group_SetHearRadius(group1, 40000000.0);
 	LAi_group_SetSayRadius(group1, 40000000.0);
-	LAi_group_SetHearRadius(group2, 40000000.0);	
+	LAi_group_SetHearRadius(group2, 40000000.0);
 	LAi_group_SetSayRadius(group2, 40000000.0);
 }
 
@@ -324,7 +324,7 @@ void LAi_group_NotFightPlayerVSGroup(string group2)
 {
 	LAi_group_SetHearRadius(LAI_GROUP_PLAYER, LAI_GROUP_PLA_HEAR);
 	LAi_group_SetSayRadius(LAI_GROUP_PLAYER, LAI_GROUP_PLA_SAY);
-	LAi_group_SetHearRadius(group2, LAI_GROUP_DEF_HEAR);	
+	LAi_group_SetHearRadius(group2, LAI_GROUP_DEF_HEAR);
 	LAi_group_SetSayRadius(group2, LAI_GROUP_DEF_SAY);
 }
 
@@ -364,7 +364,7 @@ int LAi_group_GetTarget(aref chr)
 
 //Проверить цель
 bool LAi_group_ValidateTarget(aref chr, aref trg)
-{	
+{
 	return (SendMessage(&LAi_grp_relations, "sii", "VldTrg", chr, trg) != 0);
 }
 
@@ -480,7 +480,7 @@ void LAi_group_RemoveCheck(string groupName)
 			DeleteAttribute(&quests, GetAttributeName(GetAttributeN(&quests, i)));
 			i = -1;
 			num = GetAttributesNum(&quests);
-		}		
+		}
 	}
 }
 

@@ -50,7 +50,7 @@ void WhrSetSeaPreset(int iCurWeatherNum, string sPreset)
 
 				Whr.Sea2.Reflection = 0.8;//0.8;
 				Whr.Sea2.Transparency = 0.6;//0.6;
-				Whr.Sea2.Frenel = 0.3;//0.6; 
+				Whr.Sea2.Frenel = 0.3;//0.6;
 				Whr.Sea2.Attenuation = 0.3;//0.2;
 				Whr.Sea2.WaterColor = argb(0, 10, 30, 50);
 			break;
@@ -76,7 +76,7 @@ void WhrSetSeaPreset(int iCurWeatherNum, string sPreset)
 
 				Whr.Sea2.Reflection = 0.8;//0.8;
 				Whr.Sea2.Transparency = 0.6;//0.6;
-				Whr.Sea2.Frenel = 0.3;//0.6; 
+				Whr.Sea2.Frenel = 0.3;//0.6;
 				Whr.Sea2.Attenuation = 0.3;//0.2;
 				Whr.Sea2.WaterColor = argb(0, 10, 30, 50);
 			break;
@@ -102,7 +102,7 @@ void WhrSetSeaPreset(int iCurWeatherNum, string sPreset)
 
 				Whr.Sea2.Reflection = 0.8;//0.8;
 				Whr.Sea2.Transparency = 0.6;//0.6;
-				Whr.Sea2.Frenel = 0.3;//0.6; 
+				Whr.Sea2.Frenel = 0.3;//0.6;
 				Whr.Sea2.Attenuation = 0.3;//0.2;
 				Whr.Sea2.WaterColor = argb(0, 10, 30, 50);
 			break;
@@ -128,7 +128,7 @@ void WhrSetSeaPreset(int iCurWeatherNum, string sPreset)
 
 				Whr.Sea2.Reflection = 0.8;//0.8;
 				Whr.Sea2.Transparency = 0.6;//0.6;
-				Whr.Sea2.Frenel = 0.3;//0.6; 
+				Whr.Sea2.Frenel = 0.3;//0.6;
 				Whr.Sea2.Attenuation = 0.3;//0.2;
 				Whr.Sea2.WaterColor = argb(0, 10, 30, 50);
 			break;
@@ -154,7 +154,7 @@ void WhrSetSeaPreset(int iCurWeatherNum, string sPreset)
 
 				Whr.Sea2.Reflection = 0.8;//0.8;
 				Whr.Sea2.Transparency = 0.6;//0.6;
-				Whr.Sea2.Frenel = 0.3;//0.6; 
+				Whr.Sea2.Frenel = 0.3;//0.6;
 				Whr.Sea2.Attenuation = 0.3;//0.2;
 				Whr.Sea2.WaterColor = argb(0, 10, 30, 50);
 			break;

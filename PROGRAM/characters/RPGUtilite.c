@@ -171,7 +171,7 @@ int ApplayNavyPenalty(ref _refCharacter, string skillName, int sumSkill)
         int sailSkill;
         // общее умение навигации
         sailSkill = GetSummonSkillFromNameSimple(_refCharacter, SKILL_SAILING);
-        
+
         int shipClass = GetCharacterShipClass(_refCharacter);
         int needSkill = GetShipClassNavySkill(shipClass);
 
@@ -190,7 +190,7 @@ int ApplayNavyPenaltyToSkill(ref _refCharacter, string skillName, int sumSkill)
     if (IsCompanion(_refCharacter) && GetRemovable(_refCharacter))//пусть будет для компаньонов тоже sti(_refCharacter.index) == GetMainCharacterIndex()) // только для главного, чтоб не тормозить всю игру
     {
         int sailSkill;
-        
+
         /*if (skillName == SKILL_SAILING)
         {
             sailSkill = sumSkill;
@@ -267,7 +267,7 @@ void InitRPGType()
     NullCharacter.SPECIALType.Intellect = true;
     NullCharacter.SPECIALType.Agility = true;
     NullCharacter.SPECIALType.Luck = true;
-    
+
     NullCharacter.SelfType.Leadership = true;
 	NullCharacter.SelfType.FencingLight = true;
     NullCharacter.SelfType.Fencing = true;
@@ -315,7 +315,7 @@ string GetRPGText(string _param)
 string GetSkillNameByIdx(int idx)
 {
     string ret = "";
-    
+
     switch (idx)
     {
         case 1:    ret = SKILL_F_LIGHT;   break;
@@ -323,7 +323,7 @@ string GetSkillNameByIdx(int idx)
         case 3:    ret = SKILL_F_HEAVY;   break;
         case 4:    ret = SKILL_PISTOL;    break;
         case 5:    ret = SKILL_FORTUNE;   break;
-        
+
         case 6:    ret = SKILL_LEADERSHIP; break;
         case 7:    ret = SKILL_COMMERCE;   break;
         case 8:    ret = SKILL_ACCURACY;   break;
@@ -333,7 +333,7 @@ string GetSkillNameByIdx(int idx)
         case 12:   ret = SKILL_GRAPPLING;  break;
         case 13:   ret = SKILL_DEFENCE;    break;
         case 14:   ret = SKILL_SNEAK;      break;
-        
+
         case 15:   ret = SPECIAL_S;   break;
         case 16:   ret = SPECIAL_P;   break;
         case 17:   ret = SPECIAL_A;   break;
@@ -363,7 +363,7 @@ string GetSkillNameByTRIdx(string _type, int idx)
                 case 7:    ret = SKILL_SNEAK;      break;
 		    }
 		break;
-		
+
 		case "ShipType" :
 		    switch (idx)
 		    {
@@ -376,7 +376,7 @@ string GetSkillNameByTRIdx(string _type, int idx)
                 case 7:    ret = SKILL_COMMERCE;      break;
 		    }
 		break;
-		
+
 		case "SPECIALType" :
 		    switch (idx)
 		    {
@@ -414,7 +414,7 @@ float GetSkillValueExp(ref _refCharacter, string _skillName)
 int AddSPECIALValue(ref _refCharacter, string _skillName, int _add)
 {
     string _type = SPECIAL_TYPE;
-    
+
     if (CheckAttribute(_refCharacter, _type + "." + _skillName))
     {
         _refCharacter.(_type).(_skillName) = sti(_refCharacter.(_type).(_skillName)) + _add;
@@ -425,7 +425,7 @@ int AddSPECIALValue(ref _refCharacter, string _skillName, int _add)
     }
     if (sti(_refCharacter.(_type).(_skillName)) < 1) {_refCharacter.(_type).(_skillName) = 1;}
     if (sti(_refCharacter.(_type).(_skillName)) > SPECIAL_MAX) {_refCharacter.(_type).(_skillName) = SPECIAL_MAX;}
-    
+
     return sti(_refCharacter.(_type).(_skillName));
 }
 
@@ -487,7 +487,7 @@ void ApplayNewSkill(ref _chref, string _skill, int _addValue)
 {
     // трем кэш
     CheckAttribute(_chref, "BakSkill." + _skill);
-    
+
 	// boal 05.05.04 разделение по группам -->
     if (isSelfTypeSkill(_skill))
     {
@@ -579,9 +579,9 @@ void InitStartParam(ref _chref)
 {
     int i;
     string  skillName;
-    
+
     ClearCharacterExpRate(_chref);
-    
+
     for (i=1; i<15; i++)
     {
         skillName = GetSkillNameByIdx(i);
@@ -615,7 +615,7 @@ float GetCharacterExpRate(ref _chref, string _skill)
             case SKILL_FORTUNE:
                 divBy = GetCharacterSPECIAL(_chref, SPECIAL_L);
             break;
-            
+
             case SKILL_LEADERSHIP:
                 divBy = GetCharacterSPECIAL(_chref, SPECIAL_I)*0.1 + GetCharacterSPECIAL(_chref, SPECIAL_C)*0.9;
             break;
@@ -806,7 +806,7 @@ int GetCharacterSkillSimple(ref _refCharacter, string skillName)
 	int skillN = sti(_refCharacter.Skill.(skillName));
 
 	bool   bHero = (sti(_refCharacter.index) == GetMainCharacterIndex());
-	
+
     // boal учет вещей -->
     if (bHero || CheckAttribute(_refCharacter, "Payment")) //IsCompanion(_refCharacter) || IsOfficer(_refCharacter))
     {
@@ -839,8 +839,8 @@ int GetCharacterSkillSimple(ref _refCharacter, string skillName)
     	skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_LEADERSHIP, "Totem_6", 2);
     	skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_FENCING, "Totem_7", 2);
     	skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_F_LIGHT, "Totem_8", 2);
-    	skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_F_HEAVY, "Totem_9", 2); 
-		skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_COMMERCE, "Totem_10", 2); 
+    	skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_F_HEAVY, "Totem_9", 2);
+		skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_COMMERCE, "Totem_10", 2);
 		skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_SAILING, "Totem_12", 2);
 		skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_REPAIR, "Totem_15", 2);
 		skillN = skillN + SetCharacterSkillByItem(_refCharacter, skillName, SKILL_FORTUNE, "SkullAztec", -2);
@@ -1147,7 +1147,7 @@ void AddCharacterExpToSkill(ref _chref, string _skill, float _addValue)
     {
         _chref.skill.(_skill_exp) = 0;
     }
-	
+
     if (bExpLogShow && _addValue > 0)
     {
 	   if (IsOfficer(_chref))  Log_Info(_chref.id + " take " + FloatToString(_addValue, 2) + " exp to " + _skill);
@@ -1328,7 +1328,7 @@ int Statistic_AddValue(ref _chref, string _attrName, int _add) // set and get(_a
     // Warrior_s  Warrior_g
     // Fort
     if (sti(_chref.index) != GetMainCharacterIndex()) return 0; // оптимизация
-    
+
     if( !CheckAttribute(_chref,"Statistic." + _attrName) )
     {
         _chref.Statistic.(_attrName) = 0;
@@ -1749,7 +1749,7 @@ void setWDMPointXZ(string _location)
     aref arFromChar;
     int  idx;
     string sID, sDial, sDNode;
-    
+
     idx    = sti(CopyChref.index);
     sID    = CopyChref.id;
     sDial  = "";
@@ -1761,10 +1761,10 @@ void setWDMPointXZ(string _location)
 	}
 	DeleteAttribute(CopyChref, "");
 	CopyAttributes(CopyChref, PastChref);  // точное копирование структур НПС
-	
+
 	CopyChref.index = idx;
 	CopyChref.id    = sID;
-	
+
 	if (!_dialogCopy)
 	{
 	    CopyChref.Dialog.Filename     = sDial;
@@ -1789,7 +1789,7 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
 
     CopyChref.rank             = PastChref.rank;
     CopyChref.reputation       = makeint(PastChref.reputation);
-	
+
 	CopyChref.baseCapIdx       = PastChref.index; //Id оригинального в структуру клона
 
     if (CheckAttribute(PastChref, "loyality"))
@@ -1810,7 +1810,7 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
 
     LAi_SetHP(CopyChref, makeint(PastChref.chr_ai.hp_max), makeint(PastChref.chr_ai.hp_max));
 	LAi_SetCurHPMax(CopyChref);
-	
+
 	//копируем структуру quest от оригинального кэпа, очень нужно по квестам :)
 	if (CheckAttribute(PastChref, "quest"))
     {
@@ -1820,7 +1820,7 @@ void ChangeAttributesFromCharacter(ref CopyChref, ref PastChref, bool _dialogCop
 		DeleteAttribute(arToCharQuest, "");
 		CopyAttributes(arToCharQuest, arFromCharQuest);
 	}
-	
+
 	if (CheckAttribute(PastChref, "quest.officertype"))
     {
         CopyChref.quest.officertype     =   PastChref.quest.officertype;
@@ -2025,12 +2025,12 @@ void initNewMainCharacter()
     // контроль версий <--
     ch.nation     = NullCharacter.HeroParam.nation;
     ch.BaseNation = NullCharacter.HeroParam.nation;
-    
+
     //MOD_EXP_RATE =  10;  задаем в начале игры (выбор, от 5 до 15, 10 - середина по умолчанию)
     //MOD_EXP_RATE =  MOD_EXP_RATE + (MOD_SKILL_ENEMY_RATE)*6; // разные уровни для всех
     MOD_EXP_RATE =  makeint(MOD_EXP_RATE + MOD_SKILL_ENEMY_RATE * MOD_EXP_RATE / 1.666666666); // разные уровни для всех
     if (MOD_EXP_RATE < 10) MOD_EXP_RATE = 10; // иначе будет развал целостности данных, порог релиховой версии бля всех сложностей.
-    
+
     // куда плывем
     if (rand(10) != 4)
     {
@@ -2050,11 +2050,11 @@ void initNewMainCharacter()
 	ch.HeroParam.Locator  = "reload1";
 	setCharacterShipLocation(ch, ch.HeroParam.Location);
     setWDMPointXZ(ch.HeroParam.Location);  // коорд на карте
-    
+
 	SetTimerCondition("Move_Govenour", 0, 0, 25 + rand(10), true); // to_do перенести в один метод инициации
 	//Запускаем проверку на падение здоровья раз в 5 дней
     SetTimerCondition("CheckMaxHealthQuest", 0, 0, 5, true);
-    
+
     SetTimerCondition("Nation_Legend", 0, 0, 25 + rand(10), true);
 
 	///  рассадим губернаторов
@@ -2086,7 +2086,7 @@ void initNewMainCharacter()
  	SetNationRelations();
  	// от кого драпаем
 	ch.HeroParam.EnemyNation  = FindEnemyNation2Nation(sti(ch.nation));
-	
+
     // boal вешаем прерывание на охотников навечно (для моря и земли) -->
     SetTimerCondition("SeaHunterCheck", 0, 0, 6, true);
     SaveCurrentQuestDateParam("Land_HunterTimerEng");

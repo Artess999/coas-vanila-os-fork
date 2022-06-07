@@ -20,7 +20,7 @@ void ProcessDialogEvent()
 	}
     // вызов диалога по городам <--
 	ProcessCommonDialogRumors(NPChar, Link, NextDiag);//homo 16/06/06
-    
+
     string iDay, iMonth, lastspeak_date;
     string sTemp, sTitle;
 
@@ -46,25 +46,25 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		
+
 		case "First time":
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("Сын мой, к сожалению, я не могу дать тебе убежища. Беги!", "Вся городская стража рыщет по городу в поисках тебя, сын мой. Церковь открыта для страждущих, но я не могу предоставить тебе убежища...", "Сын мой, тебе надо бежать! Прошу тебя, поторопись!"), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("Сын мой, к сожалению, я не могу дать тебе убежища. Беги!", "Вся городская стража рыщет по городу в поисках тебя, сын мой. Церковь открыта для страждущих, но я не могу предоставить тебе убежища...", "Сын мой, тебе надо бежать! Прошу тебя, поторопись!"),
 					LinkRandPhrase("Что ты делаешь в церкви, падшая душа? Я требую, чтобы ты удалился немедленно, пока солдаты не ворвались и не устроили здесь резню!", "Немедленно покинь храм, безбожник! Я не заступлюсь за такого, как ты!", "Немедленно покинь храм Божий, еретик! Мне не нужны убийства здесь!!"));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Да ладно тебе, падре...", "Хех, мне не нужна мне твоя помощь..."), 
+					RandPhraseSimple("Да ладно тебе, падре...", "Хех, мне не нужна мне твоя помощь..."),
 					RandPhraseSimple("Хех, святой отец, лучше заткнись...", "Уйду, не бойся, падре..."));
 				link.l1.go = "fight";
 				break;
-			} 
+			}
             if (npchar.quest.BadMeeting != lastspeak_date)
 			{
 				Dialog.Text = "Добро пожаловать в лоно церкви, сын мой.";
@@ -81,7 +81,7 @@ void ProcessDialogEvent()
 			}
 			NextDiag.TempNode = "First time";
 		break;
-		
+
 		case "node_2":
 			dialog.text = "Ах ты, богохульник! А ну прочь отсюда, дабы не осквернять своим присутствием дом Бога!";
 			link.l1 = "Да я и так не собирался здесь задерживаться.";
@@ -106,7 +106,7 @@ void ProcessDialogEvent()
 				link.l1.go = "exit";
 				break;
 			}
-			//<-- зачарованный город 
+			//<-- зачарованный город
 			//homo Линейка Блада
             if (Pchar.questTemp.CapBloodLine != true)
             {
@@ -326,7 +326,7 @@ void ProcessDialogEvent()
 				case "пещера": sTemp = "Дело в том, что пещера, находящаяся возле нашего города, стала прибежищем нечисти!"; break;
 				case "грот": sTemp = "Дело в том, что грот, находящийся возле нашего города, стал прибежищем нечисти!"; break;
 				case "подземелье": sTemp = "Дело в том, что подземелье, находящееся возле нашего города, стало прибежищем нечисти!"; break;
-			}			
+			}
 			dialog.text = "Все больше и больше людей рассказывают о страшных происшествиях. " + sTemp + " Оттуда на свет Божий лезут такие твари, что и в страшном сне не приснятся. Люди напуганы, страх проникает в их сердца...";
 			link.l1 = "Чем я могу вам помочь, святой отец?";
 			link.l1.go = "DestroyGhost_2";
@@ -350,10 +350,10 @@ void ProcessDialogEvent()
 			link.l1 = "Все будет в порядке, святой отец.";
 			link.l1.go = "exit";
 			pchar.questTemp.different = "DestroyGhost";
-			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты 
+			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты
 			//флаг квеста на локацию, сюда же пишем индекс дающего священника
 			sld = &locations[FindLocation(npchar.quest.DestroyGhost.locationId)];
-			sld.DestroyGhost = npchar.index; 
+			sld.DestroyGhost = npchar.index;
 			sTitle = sld.id + "Church_DestroyGhost";
 			ReOpenQuestHeader(sTitle);
 			AddQuestRecordEx(sTitle, "Church_DestroyGhost", "1");
@@ -378,8 +378,8 @@ void ProcessDialogEvent()
 				case "грот": sTemp = "грот"; break;
 				case "подземелье": sTemp = "подземелье"; break;
 			}
-			AddSimpleRumourCity(LinkRandPhrase("Наш святой отец, " + GetFullName(npchar) + ", рассказал о том, что вы очистили от нечисти " + sTemp + " близ нашего города. Богоугодное дело, скажу я вам...", 
-				"Вы слышали, некий капитан по просьбе нашего святого отца очистил от демонов " + sTemp + " рядом с нашим городом. Каков храбрец!", 
+			AddSimpleRumourCity(LinkRandPhrase("Наш святой отец, " + GetFullName(npchar) + ", рассказал о том, что вы очистили от нечисти " + sTemp + " близ нашего города. Богоугодное дело, скажу я вам...",
+				"Вы слышали, некий капитан по просьбе нашего святого отца очистил от демонов " + sTemp + " рядом с нашим городом. Каков храбрец!",
 				"Капитан, это вы очистили " + sTemp + " рядом с нашим городом от нечисти? Знайте, что мы все вам очень благодарны!"), npchar.city, 10, 1, "");
 			ChangeCharacterReputation(pchar, 5);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 15);
@@ -409,7 +409,7 @@ void ProcessDialogEvent()
 			link.l1 = "Ясно, святой отец. Три ночи можете быть спокойны за свою утварь.";
 			link.l1.go = "exit";
 			pchar.questTemp.different = "Church_NightGuard";
-			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты 
+			SetTimerFunction("SmallQuests_free", 0, 0, 1); //освобождаем разрешалку на миниквесты
 			pchar.questTemp.different.Church_NightGuard = npchar.location; //флаг срабатывания нуля часов
 			pchar.questTemp.different.Church_NightGuard.NightQty = 0; //кол-вот отработанных ночей
 			pchar.questTemp.different.Church_NightGuard.chance = rand(3); //рендом на появление грабителей
@@ -460,8 +460,8 @@ void ProcessDialogEvent()
 			CloseQuestHeader(sTitle);
 			DeleteAttribute(pchar, "questTemp.different.Church_NightGuard");
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 5);
-			AddSimpleRumourCity(LinkRandPhrase("Говорят, что вы дежурите в нашей церкви по ночам...", 
-				"Ночное дежурство в церкви - дело богоугодное. Спасибо вам.", 
+			AddSimpleRumourCity(LinkRandPhrase("Говорят, что вы дежурите в нашей церкви по ночам...",
+				"Ночное дежурство в церкви - дело богоугодное. Спасибо вам.",
 				"Наш святой отец, " + GetFullName(npchar) + ", упомянул, что вы несли караул по ночам в нашей церкви."), npchar.city, 10, 1, "");
 		break;
 		case "NightGuard_fight":
@@ -473,8 +473,8 @@ void ProcessDialogEvent()
 			DeleteAttribute(pchar, "questTemp.different.Church_NightGuard");
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 5);
 			AddCharacterMaxHealth(pchar, 2);
-			AddSimpleRumourCity(LinkRandPhrase("Говорят, что вы ночью вы поймали бандитов в нашей церкви! Огромное вам спасибо!", 
-				"Вы знаете, все жители города благодарны вам за то, что вы не допустили разорение нашей церкви. Спасибо вам!", 
+			AddSimpleRumourCity(LinkRandPhrase("Говорят, что вы ночью вы поймали бандитов в нашей церкви! Огромное вам спасибо!",
+				"Вы знаете, все жители города благодарны вам за то, что вы не допустили разорение нашей церкви. Спасибо вам!",
 				"Наш святой отец, " + GetFullName(npchar) + ", только о том и говорит, как вы спасли нашу церковную утварь той ночью..."), npchar.city, 10, 1, "");
 		break;
 
@@ -621,7 +621,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.different = "HostessChurch_return"; //флаг на возвращение
 		break;
 		case "HostessChurch_call":
-			if (isBadReputation(pchar, 5)) 
+			if (isBadReputation(pchar, 5))
 			{
 				if (rand(100) < GetCharacterSkill(pchar, "Fortune")) //рендом вешаем на удачу
 				{

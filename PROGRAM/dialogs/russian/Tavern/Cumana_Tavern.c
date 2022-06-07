@@ -31,7 +31,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.text = "Да, появляется тут этот капитан, уже какой день чинит свой корабль. Но сейчас его нет. В городе поищите.";
 			link.l1 = "Спасибо!";
 			link.l1.go = "exit";
-		break;		
+		break;
 		case "RomanticQuest_2":
 			dialog.text = "Вон за круглым столиком сидит, вином горе заливает.";
 			link.l1 = "Спасибо!";
@@ -40,13 +40,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 
 		case "PL_Q3_1":
-			dialog.text = NPCStringReactionRepeat("Нет. Первый раз это имя слышу.", 
-				"Я уже отвечал вам на этот вопрос.", 
+			dialog.text = NPCStringReactionRepeat("Нет. Первый раз это имя слышу.",
+				"Я уже отвечал вам на этот вопрос.",
 				"Говорили мы уже об этом Лоу...",
                 "Последний раз говорю, что ничего об Эдварде Лоу не слышал!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Спасибо, приятель.", 
+			link.l1 = HeroStringReactionRepeat("Спасибо, приятель.",
 				"Да-да, я помню...",
-                "Да, конечно...", 
+                "Да, конечно...",
 				"Понял.", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("exit", "", "", "", npchar, Dialog.CurrentNode);
 		break;

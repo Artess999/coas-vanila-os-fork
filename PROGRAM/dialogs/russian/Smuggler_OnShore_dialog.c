@@ -2,16 +2,16 @@ void ProcessDialogEvent()
 {
 	ref NPChar;
 	aref Link, Diag;
-	string NPC_Meeting;	
+	string NPC_Meeting;
 	int Shit, i;
 	ref refStore;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(Diag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
         case "exit":
@@ -38,7 +38,7 @@ void ProcessDialogEvent()
 					Link.l1.go = "No_Ship";
 				}
 				//по заданию губернатора, истребление контры, только эта ветка.
-				if (CheckAttribute(pchar, "GenQuest.KillSmugglers") && pchar.GenQuest.KillSmugglers == "" && pchar.GenQuest.KillSmugglers.Areal == GiveArealByLocation(&locations[FindLocation(pchar.location)]))				
+				if (CheckAttribute(pchar, "GenQuest.KillSmugglers") && pchar.GenQuest.KillSmugglers == "" && pchar.GenQuest.KillSmugglers.Areal == GiveArealByLocation(&locations[FindLocation(pchar.location)]))
 				{
 					Link.l2 = "Я здесь по распоряжению губернатора " + XI_ConvertString("Colony"+characters[GetCharacterIndex(pchar.GenQuest.KillSmugglers.MayorId)].city+"Gen") + "! Приказываю вам сложить оружие и следовать за мной - вы арестованы!";
 					Link.l2.go = "GenQuestKillContraband_1";
@@ -74,7 +74,7 @@ void ProcessDialogEvent()
 						Link.l1.go = "Exit";
 						break;
 					}
-					//типа помог отбиться, свой парень... 
+					//типа помог отбиться, свой парень...
 					if (CheckAttribute(PChar, "GenQuest.contraTravel.PatrolFight") && sti(PChar.GenQuest.contraTravel.PatrolFight) == true)
 					{
 						if (chrDisableReloadToLocation) // еще бой идет
@@ -92,13 +92,13 @@ void ProcessDialogEvent()
 					//тут все ок, отправляемся.
 					Link.l2 = "Уже иду.";
 					Link.l2.go = "Exit";
-					//а это патруль... 
+					//а это патруль...
 					if (GetSummonSkillFromNameToOld(Pchar, SKILL_SNEAK) < frandSmall(13.0*(1.0 - pow(0.9, sti(PChar.rank)))) && !CheckAttribute(PChar, "GenQuest.contraTravel.PatrolFight"))
 					{
 						AddDialogExitQuest("Rand_ContrabandInterruption");
 						PChar.GenQuest.contraTravel.PatrolFight = true;
 					}
-					else 
+					else
 					{
 						//поместим Грея в локацию.
 						refStore = CharacterFromID("Abracham_Gray");
@@ -108,7 +108,7 @@ void ProcessDialogEvent()
 						//поплыл, иначе RemoveTravelSmugglers грохнет всю ветку
 						PChar.GenQuest.contraTravel.ship = true;
 						PChar.quest.Munity = "";  // признак выхода с палубы
-						
+
 						SetLaunchFrameFormParam("Прошло " + sti(Pchar.GenQuest.contraTravel.destination.days) + " дней." + NewStr() + "Палуба корабля контрабандистов.",
 						                        "Reload_To_Location", 0.1, 5.0);
                         bQuestCheckProcessFreeze = true;
@@ -157,7 +157,7 @@ void ProcessDialogEvent()
 			Link.l1 = "Хорошо. Ждите меня здесь.";
 			Link.l1.go = "Exit";
 		break;
-		
+
 		case "Exit_fight":
             //DeleteAttribute(Pchar, "quest.Contraband");
             DeleteAttribute(Pchar, "quest.Contraband.active");
@@ -201,7 +201,7 @@ void ProcessDialogEvent()
 			NPChar.quest.meeting = NPC_Meeting;
 			DialogExit();
 		break;
-		
+
 		case "Cancellation":
             if (sti(Pchar.quest.Contraband.Counter) == 0)
             {
@@ -226,7 +226,7 @@ void ProcessDialogEvent()
 					Dialog.snd = "voice\SMSH\SMSH006";
 					dialog.Text = "Паршивец! Ты не можешь нас так дурачить! Поплатишься за это своей головой!";
 					Link.l1 = "А вот это вряд ли!";
-					Link.l1.go = "Exit_fight";			
+					Link.l1.go = "Exit_fight";
 				}
 				else
 				{
@@ -236,17 +236,17 @@ void ProcessDialogEvent()
 					Link.l1 = "Отправляйтесь гавкать куда-нибудь еще, псы!";
 					Link.l1.go = "Exit_cancel";
 				}
-			}	
+			}
 			else
 			{
 				ChangeContrabandRelation(pchar, -10);
 				Dialog.snd = "voice\SMSH\SMSH008";
 				dialog.Text = "Ты об этом еще пожалеешь!";
 				Link.l1 = "Ну-ну!";
-				Link.l1.go = "Exit_cancel";			
-			}	
+				Link.l1.go = "Exit_cancel";
+			}
 		break;
-		
+
         case "GenQuestKillContraband_1":
 			//счетчик подстав по "метро"...
 			if(CheckAttribute(PChar, "GenQuest.contraTravel.active") && sti(PChar.GenQuest.contraTravel.active) == true)
@@ -258,7 +258,7 @@ void ProcessDialogEvent()
 			Link.l1 = "Тогда вы все умрете. У меня четкий приказ - в случае сопротивления живых не брать!";
 			Link.l1.go = "Exit_fight";
 		break;
-		
+
 		case "Exchange":
 			// сама торговля -->
             if(FindFirstContrabandGoods(Pchar) == -1 && sti(Pchar.quest.Contraband.Counter) == 0)
@@ -286,7 +286,7 @@ void ProcessDialogEvent()
         			}
         			// при убегании от патруля на карту - корабли трем
         			SetTimerCondition("Rand_ContrabandInterruptionAtSeaEnded", 0, 0, 2, false);// если в порту сидим, спим, то 2 день
-        			
+
                     Pchar.quest.Rand_ContrabandAtSeaEnded.win_condition.l1 = "MapEnter";
         			Pchar.quest.Rand_ContrabandAtSeaEnded.win_condition = "Rand_ContrabandAtSeaEnded";
     			}
@@ -371,7 +371,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l2.go = "Cancellation";
 		break;
-		
+
 		case "goodsIDX2":
             Pchar.quest.Contraband.ChooseGoodsID    = Pchar.quest.Contraband.goodsIDX2;
             Pchar.quest.Contraband.ChooseGoodsPrice = sti(Pchar.quest.Contraband.price2);
@@ -383,7 +383,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l2.go = "Cancellation";
 		break;
-		
+
 		case "goodsIDX3":
             Pchar.quest.Contraband.ChooseGoodsID    = Pchar.quest.Contraband.goodsIDX3;
             Pchar.quest.Contraband.ChooseGoodsPrice = sti(Pchar.quest.Contraband.price3);
@@ -395,7 +395,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l2.go = "Cancellation";
 		break;
-		
+
 		case "goodsIDX4":
             Pchar.quest.Contraband.ChooseGoodsID    = Pchar.quest.Contraband.goodsIDX4;
             Pchar.quest.Contraband.ChooseGoodsPrice = sti(Pchar.quest.Contraband.price4);
@@ -407,7 +407,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l2.go = "Cancellation";
 		break;
-		
+
 		case "goodsIDX5":
             Pchar.quest.Contraband.ChooseGoodsID    = Pchar.quest.Contraband.goodsIDX5;
             Pchar.quest.Contraband.ChooseGoodsPrice = sti(Pchar.quest.Contraband.price5);
@@ -419,7 +419,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l2.go = "Cancellation";
 		break;
-		
+
 		case "goodsIDX6":
             Pchar.quest.Contraband.ChooseGoodsID    = Pchar.quest.Contraband.goodsIDX6;
             Pchar.quest.Contraband.ChooseGoodsPrice = sti(Pchar.quest.Contraband.price6);
@@ -431,7 +431,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l2.go = "Cancellation";
 		break;
-		
+
 		case "goodsIDX7":
             Pchar.quest.Contraband.ChooseGoodsID    = Pchar.quest.Contraband.goodsIDX7;
             Pchar.quest.Contraband.ChooseGoodsPrice = sti(Pchar.quest.Contraband.price7);
@@ -443,7 +443,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l2.go = "Cancellation";
 		break;
-		
+
 		case "Make_trade_1":
 			dialog.Text = "Груз '"+XI_ConvertString(Goods[sti(Pchar.quest.Contraband.ChooseGoodsID)].name) + "', количество "+
                      GetSquadronGoods(Pchar, sti(Pchar.quest.Contraband.ChooseGoodsID)) + " шт. Цена " + Pchar.quest.Contraband.ChooseGoodsPrice +" за "+Pchar.quest.Contraband.ChooseGoodsUnit+" шт. Сколько продаешь?";
@@ -456,18 +456,18 @@ void ProcessDialogEvent()
 			Link.l9 = "Нет. Пожалуй, поищу другого покупателя. Сделка отменяется!";
 			Link.l9.go = "Cancellation";
 		break;
-		
+
 		case "Make_trade_Sell_All":
             Pchar.quest.Contraband.ChooseGoodsQty =  GetSquadronGoods(Pchar, sti(Pchar.quest.Contraband.ChooseGoodsID));
             pchar.quest.contraband.sum = makeint(stf(Pchar.quest.Contraband.ChooseGoodsQty) * stf(Pchar.quest.Contraband.ChooseGoodsPrice) / stf(Pchar.quest.Contraband.ChooseGoodsUnit));
-            
+
 			dialog.Text = "Итого: " + Pchar.quest.Contraband.ChooseGoodsQty + " шт. за "+ pchar.quest.contraband.sum + " золотых. Идет?";
 			Link.l1 = "Да, вполне.";
 			Link.l1.go = "Make_trade_End";
 			Link.l9 = "Нет. Сделка отменяется!";
 			Link.l9.go = "Cancellation";
 		break;
-		
+
 		case "Make_trade_Sell_Half":
             Pchar.quest.Contraband.ChooseGoodsQty =  makeint(GetSquadronGoods(Pchar, sti(Pchar.quest.Contraband.ChooseGoodsID)) / 2);
             pchar.quest.contraband.sum = makeint(stf(Pchar.quest.Contraband.ChooseGoodsQty) * stf(Pchar.quest.Contraband.ChooseGoodsPrice) / stf(Pchar.quest.Contraband.ChooseGoodsUnit));
@@ -478,7 +478,7 @@ void ProcessDialogEvent()
 			Link.l9 = "Нет. Сделка отменяется!";
 			Link.l9.go = "Cancellation";
 		break;
-		
+
 		case "Make_trade_Sell_10th":
             Pchar.quest.Contraband.ChooseGoodsQty =  makeint(GetSquadronGoods(Pchar, sti(Pchar.quest.Contraband.ChooseGoodsID)) / 10);
             pchar.quest.contraband.sum = makeint(stf(Pchar.quest.Contraband.ChooseGoodsQty) * stf(Pchar.quest.Contraband.ChooseGoodsPrice) / stf(Pchar.quest.Contraband.ChooseGoodsUnit));
@@ -495,9 +495,9 @@ void ProcessDialogEvent()
 			ChangeContrabandRelation(pchar, -10);
 			dialog.Text = "Не повезло? Ты договариваешься о встрече, а потом просто говоришь 'Не повезло'? Проваливай отсюда. Не знаю даже, захотим ли мы иметь с тобой дело в будущем!";
 			Link.l1 = "Посмотрим, захочу ли я иметь дело с вами!";
-			Link.l1.go = "Exit_Cancel";				
-		break; 
-			
+			Link.l1.go = "Exit_Cancel";
+		break;
+
 		case "Make_trade_End":
             RemoveCharacterGoods(Pchar, makeint(Pchar.quest.contraband.ChooseGoodsID), makeint(Pchar.quest.contraband.ChooseGoodsQty));
             // засунуть товар в магазин, иначе не работает затаривание 031104 boal -->
@@ -517,7 +517,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Нет. Спасибо, хватит.";
 			Link.l2.go = "Finish_exit";
 		break;
-		
+
 		case "Finish_exit":
             // таможня на суше
             if(GetSummonSkillFromNameToOld(Pchar, SKILL_SNEAK) < Rand(12))
@@ -535,9 +535,9 @@ void ProcessDialogEvent()
 			ChangeContrabandRelation(pchar, 15);
             OfficersReaction("bad");
             ChangeCharacterReputation(pchar, -1);
-            
+
             CloseQuestHeader("Gen_Contraband");
-            
+
 			DeleteAttribute(Pchar, "quest.Contraband.active");
 			DeleteAttribute(Pchar, "quest.Contraband.counter");
 			DeleteAttribute(Pchar, "quest.Contraband.price1");

@@ -135,7 +135,7 @@ void NetBuy_SelectTeamUpdate()
 		if (i > sti(NCServer.NumTeams) - 1)
 		{
 			SendMessage(&GameInterface, "lslll", MSG_INTERFACE_MSG_TO_NODE, "PICTURES_SELECTTEAM", 3, i, argb(255, 30, 30, 30));
-			//SendMessage(&GameInterface, "lslss", MSG_INTERFACE_MSG_TO_NODE, "PICTURES_SELECTTEAM", 3, argb(0,0,0,0));	
+			//SendMessage(&GameInterface, "lslss", MSG_INTERFACE_MSG_TO_NODE, "PICTURES_SELECTTEAM", 3, argb(0,0,0,0));
 			iFrameColor = argb(255, 28, 28, 28);
 		}
 
@@ -156,7 +156,7 @@ void NetBuy_SelectTeamOk()
 	NMAddByte(iSMsg, iSelectedTeam);
 	NetClient_SendMessage(iSMsg, true);
 	NMDelete(iSMsg);
-	
+
 	NetBuy_SelectTeamCancel();
 }
 
@@ -216,7 +216,7 @@ void NetBuy_OnFrame()
 	if (iMinutes < 10) { sMinutes = "0" + iMinutes; } else { sMinutes = iMinutes; }
 	if (iSeconds < 10) { sSeconds = "0" + iSeconds; } else { sSeconds = iSeconds; }
 	string sValue = "#" + XI_ConvertString("btnNetBuy_Start") + " " + sMinutes + ":" + sSeconds;
-	
+
 	Button_SetText("BTN_START", sValue);
 
 	// set selectteam button
@@ -225,7 +225,7 @@ void NetBuy_OnFrame()
 
 	// update team count
 	for (i=0; i<4; i++) { iTeamQuantity[i] = 0;	}
-	for (i=0; i<NET_MAXCLIENTS; i++) 
+	for (i=0; i<NET_MAXCLIENTS; i++)
 	{
 		if ( sti(NCClients[i].Use) )
 		{
@@ -234,11 +234,11 @@ void NetBuy_OnFrame()
 		}
 	}
 
-	for (i=0; i<4; i++) 
-	{ 
-		if (i >= sti(NCServer.NumTeams)) 
+	for (i=0; i<4; i++)
+	{
+		if (i >= sti(NCServer.NumTeams))
 			{ StringCollection_SetText("STRINGS_SELECTTEAM_QUANTITY", i + 1, "#"); }
-		else 
+		else
 			{ StringCollection_SetTextValue("STRINGS_SELECTTEAM_QUANTITY", i + 1, iTeamQuantity[i]); }
 	}
 }
@@ -322,7 +322,7 @@ void Buy_OnServerInfo()
 {
 	int i;
 	int iCode = GetEventData();
-	
+
 	fServerInfoPiecesLoaded = fServerInfoPiecesLoaded + 1.0;
 	float fMaxPieces = 5.0 + stf(NCServer.NumClients) + stf(Net_GetShipsNum());
 
@@ -342,27 +342,27 @@ void Buy_OnServerInfo()
 		XI_WindowShow("WND_NETBUY_WAITINFO", false);
 		XI_WindowDisable("WND_NETBUY_WAITINFO", true);
 
-		// update skills costs 
-		for (i=0; i<5; i++)	
-		{ 
+		// update skills costs
+		for (i=0; i<5; i++)
+		{
 			iSkillsQuantity[i] = 1;
-			StringCollection_SetTextValue("STRINGS_SKILLS_QUANTITY", i + 1, iSkillsQuantity[i]); 
-			StringCollection_SetTextValue("STRINGS_SKILLS_MONEY", i + 1, Net_GetSkillCost(i, 1)); 
+			StringCollection_SetTextValue("STRINGS_SKILLS_QUANTITY", i + 1, iSkillsQuantity[i]);
+			StringCollection_SetTextValue("STRINGS_SKILLS_MONEY", i + 1, Net_GetSkillCost(i, 1));
 		}
 
-		// update perks costs 
-		for (i=0; i<6; i++)	
-		{ 
-			iPerks[i] = 0; 
-			StringCollection_SetTextValue("STRINGS_PERKS_MONEY", i + 1, Net_GetPerkCost(i)); 
+		// update perks costs
+		for (i=0; i<6; i++)
+		{
+			iPerks[i] = 0;
+			StringCollection_SetTextValue("STRINGS_PERKS_MONEY", i + 1, Net_GetPerkCost(i));
 		}
 
-		// update goods costs 
-		for (i=0; i<6; i++)	
-		{ 
+		// update goods costs
+		for (i=0; i<6; i++)
+		{
 			iNetGoodsQuantity[i] = 0;
-			StringCollection_SetTextValue("STRINGS_AMMO_MONEY", i + 1, Net_GetGoodCost(i, sti(NetGoods[i].Units))); 
-			StringCollection_SetTextValue("STRINGS_AMMO_QUANTITY", i + 1, iNetGoodsQuantity[i]); 
+			StringCollection_SetTextValue("STRINGS_AMMO_MONEY", i + 1, Net_GetGoodCost(i, sti(NetGoods[i].Units)));
+			StringCollection_SetTextValue("STRINGS_AMMO_QUANTITY", i + 1, iNetGoodsQuantity[i]);
 		}
 
 		Buy_SetShip(1);
@@ -468,7 +468,7 @@ void Buy_SetShip(int iDirection)
 		iNextShipType = iNextShipType + iDirection;
 		if (iNextShipType >= iNumShips) { return; }//iNextShipType = 0;
 		if (iNextShipType < 0) { return; }//iNextShipType = iNumShips - 1;
-		
+
 		ref rShip = Net_GetShipByIndex(iNextShipType);
 		if (sti(rShip.TradeOff)) { continue; }
 		if (sti(rShip.Class) < iMaxShipClass) { continue; }
@@ -513,7 +513,7 @@ void Buy_SetShip(int iDirection)
 
 			string sGroup = "SHIPS_" + rShip.Name;
 			Picture_SetGroupPicture("PICTURE_SHIP", sGroup, "ship");
-			
+
 			// buy new cannons
 			iCurrentCannonType = -1; Buy_SetCannon(1);
 			// set price of cannons
@@ -537,7 +537,7 @@ void Buy_ShipRight() { Buy_SetShip(1); }
 void Buy_SetCannonUpgrade(int iNewCannonUpgrade, bool bSetRadioButton)
 {
 	int iNumShipCannons = Net_GetShipCannonsNum(iCurrentShipType);
-	
+
 	int iOldPrice = iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, iCurrentCannonUpgrade);
 	int iNewPrice = iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, iNewCannonUpgrade);
 
@@ -560,7 +560,7 @@ void Buy_SetCannonUpgrade(int iNewCannonUpgrade, bool bSetRadioButton)
 void Buy_SetCannon(int iDirection)
 {
 	if (iDirection == 0) { return; }
-	iDirection = Clampi(iDirection, -1, 1);	
+	iDirection = Clampi(iDirection, -1, 1);
 
 	int iNumShipCannons = Net_GetShipCannonsNum(iCurrentShipType);
 
@@ -592,7 +592,7 @@ void Buy_SetCannon(int iDirection)
 			iCurrentCannonType = iNextType;
 			iCurrentCredit = iCurrentCredit - iOldPrice + iNewPrice;
 			Picture_SetGroupPicture("PICTURE_CANNON", "CANNONS_UPGRADE_1", rCannon.picture);
-			
+
 			// set price of ship
 			StringCollection_SetTextValue("STRINGS_SHIPCANNONS_MONEY", 2, iNewPrice);
 
@@ -603,7 +603,7 @@ void Buy_SetCannon(int iDirection)
 			StringCollection_SetText("STRINGS_CANNON_UPGRADE_MONEY", 1, "#" + iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, 0));
 			StringCollection_SetText("STRINGS_CANNON_UPGRADE_MONEY", 2, "#" + iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, 1));
 			StringCollection_SetText("STRINGS_CANNON_UPGRADE_MONEY", 3, "#" + iNumShipCannons * Net_GetCannonUpgradeCost(iCurrentCannonType, 2));
-			
+
 			// set new cannon upgrade = Copper
 			Buy_SetCannonUpgrade(0, true);
 			Picture_SetGroupPicture("PICTURE_CANNON_UPGRADE_COPPER", "CANNONS_UPGRADE_1", rCannon.picture);
@@ -648,7 +648,7 @@ void Buy_SortPlayers()
 	iNumClients = 0;
 
 	// create list
-	for (i=0; i<NET_MAXCLIENTS; i++) 
+	for (i=0; i<NET_MAXCLIENTS; i++)
 	{
 		if (!sti(NCClients[i].Use)) { continue; }
 		if (iThisClientID == sti(NCClients[i].ID))
@@ -660,9 +660,9 @@ void Buy_SortPlayers()
 	}
 
 	// sort BuyClients
-	for (i=0; i<iNumClients; i++) 
+	for (i=0; i<iNumClients; i++)
 	{
-		for (j=i + 1; j<iNumClients; j++) 
+		for (j=i + 1; j<iNumClients; j++)
 		{
 			bool bSwap = false;
 
@@ -746,14 +746,14 @@ void Buy_FillPlayersTable(string sTable)
 
 		GameInterface.(sTable).(sRow).td6.icon.group = "NET_BUYCHECKICONS";
 		string sReady = "check_empty";
-		if (bHimself) 
-		{ 
-			sReady = "check_no"; 
+		if (bHimself)
+		{
+			sReady = "check_no";
 			if (sti(rClient.BuyReady)) { sReady = "check_yes"; }
 		}
-		else 
-		{ 
-			if (sti(rClient.BuyReady)) { sReady = "check_yes_no_choice"; } 
+		else
+		{
+			if (sti(rClient.BuyReady)) { sReady = "check_yes_no_choice"; }
 		}
 		GameInterface.(sTable).(sRow).td6.icon.image = sReady;
 		GameInterface.(sTable).(sRow).td6.icon.cellsize = true;
@@ -783,8 +783,8 @@ void Buy_OnTableClick()
 	int iRow = GetEventData();
 	int iColumn = GetEventData();
 
-	if (sControl != "TABLE_PLAYERS") { return; } 
-	//if (iRow == 0) { return; } 
+	if (sControl != "TABLE_PLAYERS") { return; }
+	//if (iRow == 0) { return; }
 
 	string sRow = "tr" + (iRow + 1);
 	int wNetClientID = sti(GameInterface.TABLE_PLAYERS.(sRow).ClientID);

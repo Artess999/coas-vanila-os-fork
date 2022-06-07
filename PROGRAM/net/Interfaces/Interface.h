@@ -48,7 +48,7 @@ void Table_Clear(string sTableControl, bool bClearHeader, bool bClearContent, bo
 
 	if (bClearContent)
 	{
-		for (int i=1; i<2000; i++) 
+		for (int i=1; i<2000; i++)
 		{
 			string sA = sTableControl + "." + "tr" + i;
 			if (!CheckAttribute(&GameInterface, sA)) { break; }
@@ -64,7 +64,7 @@ void Table_Clear(string sTableControl, bool bClearHeader, bool bClearContent, bo
 
 void Button_SetText(string sButtonControl, string sText)
 {
-	SendMessage( &GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, sButtonControl, 0, sText); 
+	SendMessage( &GameInterface, "lsls", MSG_INTERFACE_MSG_TO_NODE, sButtonControl, 0, sText);
 }
 
 void Button_SetEnable(string sButtonControl, bool bEnable)

@@ -13,13 +13,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 				dialog.text = "Кто вы и что вам нужно?";
 				link.l1 = "Меня зовут " + GetFullName(pchar) + ", прошу ознакомиться с данным документом. Это верительное письмо на мое имя за подписью генерал-губернатора Франсиско Орегон-и-Гаскона.";
-				link.l1.go = "Step_S10_1";			
+				link.l1.go = "Step_S10_1";
 			}
 			if (pchar.questTemp.State == "Sp9SaveCumana_toCompOut")//квест №9 испанки, после того, как 0 компаньонов.
 			{
 				dialog.text = "Та-а-ак, капитан, рад вас видеть. Что скажете?";
 				link.l1 = "Я по поводу задания. Вы готовы передать в мое распоряжение названные галеоны?";
-				link.l1.go = "Step_S10_5";			
+				link.l1.go = "Step_S10_5";
 			}
 			if (pchar.questTemp.piratesLine == "Panama_toPortoBello")//пиратка, штурм Панамы
 			{
@@ -90,7 +90,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				sld.Ship.Cargo.Goods.Food = 300;
 				sld.Ship.Cargo.Goods.Gold= 1250;
 				SetCharacterRemovable(sld, false);
-				sld.CompanionEnemyEnable = false; 
+				sld.CompanionEnemyEnable = false;
 				sld.Abordage.Enable = false; // НЕЛЬЗЯ!
                 SetCompanionIndex(pchar, -1, sti(sld.index));
                 Pchar.quest.Sp9SaveCumana_toCaimanBattle.win_condition.l1 = "location";

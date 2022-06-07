@@ -11,13 +11,13 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
 			dialog.text = "Не о чем говорить.";
 			link.l1 = "Ладно...";
-			link.l1.go = "exit";	
+			link.l1.go = "exit";
 			NextDiag.TempNode = "First time";
 		break;
 
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		//воришка ключа 
+		//воришка ключа
 		case "GiveKeyMan":
 			dialog.text = "Что?";
 			link.l1 = "Хм, послушай, это ты Мастер Ключей?";
@@ -293,7 +293,7 @@ void ProcessDialogEvent()
 			link.l1 = "Ну-ну...";
 			link.l1.go = "exit";
 			npchar.lifeDay = 0;
-			AddDialogExitQuestFunction("LSC_enterSoldiers");			
+			AddDialogExitQuestFunction("LSC_enterSoldiers");
 		break;
 		//арестовывающий офицер
 		case "MK_HollOfficer":
@@ -363,7 +363,7 @@ void ProcessDialogEvent()
 			link.l1.go = "PKInMarigo_9";
 		break;
 		case "PKInMarigo_9":
-			chrDisableReloadToLocation = true; 
+			chrDisableReloadToLocation = true;
 			LAi_LocationFightDisable(loadedLocation, false);
 			LAi_group_Attack(npchar, pchar);
 			pchar.quest.PQ8_afterFight.win_condition.l1 = "NPC_Death";
@@ -457,13 +457,13 @@ void ProcessDialogEvent()
 			dialog.text = "Не твое дело, каррамба! За небольшую передышку тебе спасибо, а теперь продолжим!";
 			link.l1 = "Ну, хорошо...";
 			link.l1.go = "BlueBirdCapitain_4";
-		break;		
+		break;
 		case "BlueBirdCapitain_4":
 			LAi_SetCurHPMax(npchar);
-			QuestAboardCabinDialogExitWithBattle(""); 
+			QuestAboardCabinDialogExitWithBattle("");
             DialogExit();
 			AddDialogExitQuest("MainHeroFightModeOn");
-		break;	
+		break;
 		//капитаны флейтов торговцев
 		case "BlueBirdTrader":
 			dialog.text = "Черт возьми, почему вы напали на нас?!!";
@@ -481,9 +481,9 @@ void ProcessDialogEvent()
 			link.l1.go = "BlueBirdTrader_3";
 		break;
 		case "BlueBirdTrader_3":
-			QuestAboardCabinDialogNotBattle(); 
+			QuestAboardCabinDialogNotBattle();
             DialogExit();
-		break;	
+		break;
 		//--------------------------- жемчужный промысел, Шарп --------------------------------
 		//капитан Шарп, первый базар на палубе
 		case "DeckSharp":	//на палубе
@@ -524,7 +524,7 @@ void ProcessDialogEvent()
 			dialog.text = "Да чего уж там, не стоит благодарностей\nВ общем, слушай стратегию нашего дела. Итак, ловцы жемчуга ведут себя очень аккуратно, промышляют только у необитаемых островов или подальше от любопытных, так сказать\nПоэтому приходится брать их тепленькими, как раз, когда они в море и находятся!";
 			link.l1 = "Слушай, а как ты узнаешь, где они ловят в данный момент?";
 			link.l1.go = "DeckSharp_5";
-		break;		
+		break;
 		case "DeckSharp_5":
 			dialog.text = "Это мой большой секрет. Не скажу никому, даже не проси!";
 			link.l1 = "Хм, ну ладно, как знаешь...";
@@ -533,7 +533,7 @@ void ProcessDialogEvent()
 		case "DeckSharp_6":
 			GetPerlShore(); //где промысел ведется
 			sTemp = "";
-			if (CheckAttribute(pchar, "questTemp.Sharp.PearlAreal.add")) sTemp = pchar.questTemp.Sharp.PearlAreal.add; 
+			if (CheckAttribute(pchar, "questTemp.Sharp.PearlAreal.add")) sTemp = pchar.questTemp.Sharp.PearlAreal.add;
 			dialog.text = "Значит, слушай. Есть на " + XI_ConvertString(pchar.questTemp.Sharp.PearlAreal + "Dat") + " место, под названием " + GetConvertStr(pchar.questTemp.Sharp.PearlAreal.Shore, "LocLables.txt") +
 				sTemp + ". Если ты успеешь туда за " + FindRussianDaysString(sti(pchar.questTemp.Sharp.PearlAreal.terms)) + ", то ловцы жемчуга будут там.";
 			link.l1 = "Понял. Спасибо тебе, Бартоломью...";
@@ -548,10 +548,10 @@ void ProcessDialogEvent()
 			dialog.text = RandPhraseSimple("Да не за что, приятель, ежели что - обращайся...", "Помогать коллегам - священный долг, так сказать... Заходи еще, чем смогу - помогу!");
 			link.l1 = "Всенепременно, капитан Шарп!!";
 			link.l1.go = "DeckSharp_8exit";
-		break;	
+		break;
 		case "DeckSharp_8exit":
 			sTemp = "";
-			if (CheckAttribute(pchar, "questTemp.Sharp.PearlAreal.add")) sTemp = pchar.questTemp.Sharp.PearlAreal.add; 
+			if (CheckAttribute(pchar, "questTemp.Sharp.PearlAreal.add")) sTemp = pchar.questTemp.Sharp.PearlAreal.add;
 			NextDiag.TempNode = "DeckSharp_over";
 			npchar.DeckDialogNode = "NewDeckSharp"; //новая нода на палубу
 			pchar.questTemp.Sharp = "toPearl"; //флаг квеста - на промысел!!!
@@ -638,7 +638,7 @@ void ProcessDialogEvent()
 			if ((sti(pchar.questTemp.Sharp.price)*10) < sti(pchar.money))
 			{
 				if (pchar.location == "Deck_Near_Ship")
-				{			
+				{
 					dialog.text = "Алле Хагель! Ты чего, " + pchar.name + ", лоха нашел?! Я те не сявка лямой, а КАПИТАН ШАРП!! Звучит гордо, понял?! Думаешь, я не знаю, что денег у тебя прилично имеется? Знаю, приятель, это мне прекрасно известно. Так что, давай, раскошеливайся или вали с моей палубы на все четыре стороны относительно зюйд-веста!..";
 					link.l1 = "Бартоломью, ты чего завелся?! Скрипишь, как рангоут... Я к тебе не клотик пришел швабрить и не якорь точить. Так что ты аккуратней в выражениях. Помни, с кем разговариваешь...";
 				}
@@ -873,7 +873,7 @@ void ProcessDialogEvent()
 		//--------------------------- догнать кэпа, потерявшего судовой журнал --------------------------------
 		//встретил в городе
 		case "PortmansCap":
-			dialog.text = "Здравствуйте. Меня зовут " + GetFullName(npchar) + ". Я капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(npchar.Ship.Type)].BaseName + "Acc")) + " '" + npchar.Ship.name + "'."; 
+			dialog.text = "Здравствуйте. Меня зовут " + GetFullName(npchar) + ". Я капитан " + GetStrSmallRegister(XI_ConvertString(RealShips[sti(npchar.Ship.Type)].BaseName + "Acc")) + " '" + npchar.Ship.name + "'.";
 			link.l1 = "Отлично! Наконец-то я тебя нашел...";
 			link.l1.go = "PortmansCap_1";
 		break;
@@ -918,7 +918,7 @@ void ProcessDialogEvent()
 			sTemp = "Timer_" + npchar.id;
 			pchar.quest.(sTemp).over = "yes"; //снимаем таймер на выход в море
 			npchar.LifeDay = 2; // через пару дней снимаем кэпа
-			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");			
+			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 			group_DeleteGroup("PorpmansShip_" + npchar.index); //чистим группу, на всякий случай
 			sld = characterFromId(npchar.quest.firstCity + "_PortMan");
 			sTitle = sld.id + "PortmansBook_Delivery";
@@ -942,7 +942,7 @@ void ProcessDialogEvent()
 			sTemp = "Timer_" + npchar.id;
 			pchar.quest.(sTemp).over = "yes"; //снимаем таймер на выход в море
 			npchar.LifeDay = 2; // через пару дней снимаем кэпа
-			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");			
+			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 			group_DeleteGroup("PorpmansShip_" + npchar.index); //чистим группу, на всякий случай
 			sld = characterFromId(npchar.quest.firstCity + "_PortMan");
 			sTitle = sld.id + "PortmansBook_Delivery";
@@ -1008,7 +1008,7 @@ void ProcessDialogEvent()
 			link.l1 = "И тебе здоровья.";
 			link.l1.go = "exit";
 			npchar.LifeDay = 30; // через десять дней снимаем кэпа
-			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");	
+			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 			npchar.quest = "over"; //флаг кэпа квест закончен. энкаутер доплывет до назначения и исчезнет
 			sld = characterFromId(npchar.quest.firstCity + "_PortMan");
 			sTitle = sld.id + "PortmansBook_Delivery";
@@ -1031,7 +1031,7 @@ void ProcessDialogEvent()
 			link.l1 = "Хех, нужно было не терять журнала, тогда и я бы не мотался без толку. Ну да ладно, забирай свой журнал даром, мне он тоже не нужен.";
 			link.l1.go = "exit";
 			npchar.LifeDay = 30; // через десять дней снимаем кэпа
-			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");	
+			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
 			npchar.quest = "over"; //флаг кэпа квест закончен. энкаутер доплывет до назначения и исчезнет
 			sld = characterFromId(npchar.quest.firstCity + "_PortMan");
 			sTitle = sld.id + "PortmansBook_Delivery";
@@ -1092,10 +1092,10 @@ void ProcessDialogEvent()
 		break;
 		case "SeekCap_3":
 			LAi_SetCurHPMax(npchar);
-			QuestAboardCabinDialogExitWithBattle(""); 
+			QuestAboardCabinDialogExitWithBattle("");
             DialogExit();
 			AddDialogExitQuest("MainHeroFightModeOn");
-		break;	
+		break;
 		//--------------------------- ночное бдение в церкви --------------------------------
 		case "ChurchBerglar":
 			dialog.text = "Вот это да! Ты чего это тут делаешь?!";
@@ -1123,8 +1123,8 @@ void ProcessDialogEvent()
 		//--------------------------- поиск кэпов, дача квеста горожанином --------------------------------
 		//========= квесты мужиков ===========
 		case "SCQ_man":
-			dialog.text = LinkRandPhrase("Здравствуйте, капитан. Хочу просить вас помочь мне.", 
-				"Капитан! Не окажете мне услугу? Дело в том, что я нуждаюсь в помощи.", 
+			dialog.text = LinkRandPhrase("Здравствуйте, капитан. Хочу просить вас помочь мне.",
+				"Капитан! Не окажете мне услугу? Дело в том, что я нуждаюсь в помощи.",
 				"Капитан, я прошу вас о помощи!");
 			link.l1 = RandPhraseSimple("Я занят, не сегодня!", "В данный момент у меня нет времени вас выслушивать.");
 			link.l1.go = "SCQ_exit";
@@ -1143,7 +1143,7 @@ void ProcessDialogEvent()
 			//минус один шанс, что следующий квестодатель сам заговорит
 			sld = &locations[FindLocation(npchar.location)];
 			if (sti(sld.questSeekCap) > 0) sld.questSeekCap = sti(sld.questSeekCap)-1;
-			sld = characterFromId(npchar.quest.SeekCap.capId); //капитан	
+			sld = characterFromId(npchar.quest.SeekCap.capId); //капитан
 			sld.lifeDay = 0;
 			Map_ReleaseQuestEncounter(sld.id);
 			string sGroup = "SeekCapShip_" + sld.index;
@@ -1206,7 +1206,7 @@ void ProcessDialogEvent()
 			//==> ставим квестодателя в церковь
 			pchar.quest.SeekShip_Stay.win_condition.l1 = "ExitFromLocation";
 			npchar.location = npchar.city + "_church";
-			npchar.location.locator = "goto2";			
+			npchar.location.locator = "goto2";
             pchar.quest.SeekShip_Stay.win_condition.l1.location = pchar.location;
 			pchar.quest.SeekShip_Stay.function = "SeekShip_Stay";
 			pchar.quest.SeekShip_Stay.Idx = npchar.index;
@@ -1260,7 +1260,7 @@ void ProcessDialogEvent()
 			//==> ставим квестодателя в церковь
 			pchar.quest.SeekShip_Stay.win_condition.l1 = "ExitFromLocation";
 			npchar.location = npchar.city + "_church";
-			npchar.location.locator = "goto2";			
+			npchar.location.locator = "goto2";
             pchar.quest.SeekShip_Stay.win_condition.l1.location = pchar.location;
 			pchar.quest.SeekShip_Stay.function = "SeekShip_Stay";
 			pchar.quest.SeekShip_Stay.Idx = npchar.index;
@@ -1308,7 +1308,7 @@ void ProcessDialogEvent()
 			//==> ставим квестодателя в церковь
 			pchar.quest.SeekShip_Stay.win_condition.l1 = "ExitFromLocation";
 			npchar.location = npchar.city + "_church";
-			npchar.location.locator = "goto2";			
+			npchar.location.locator = "goto2";
             pchar.quest.SeekShip_Stay.win_condition.l1.location = pchar.location;
 			pchar.quest.SeekShip_Stay.function = "SeekShip_Stay";
 			pchar.quest.SeekShip_Stay.Idx = npchar.index;
@@ -1404,8 +1404,8 @@ void ProcessDialogEvent()
 		break;
 		//========= квесты баб ===========
 		case "SCQ_woman":
-			dialog.text = LinkRandPhrase("Здравствуйте, капитан. Я хотела попросить вас об одном одолжении.", 
-				"Капитан! Помогите женщине, будьте так добры...", 
+			dialog.text = LinkRandPhrase("Здравствуйте, капитан. Я хотела попросить вас об одном одолжении.",
+				"Капитан! Помогите женщине, будьте так добры...",
 				"Капитан, не откажите даме в помощи.");
 			link.l1 = RandPhraseSimple("Я занят, красавица, не сегодня!", "Прошу прощения, " + GetAddress_FormToNPC(NPChar) + ", но в данный момент я не имею времени...");
 			link.l1.go = "SCQ_exit";
@@ -1433,7 +1433,7 @@ void ProcessDialogEvent()
 				break;
 			}
 		break;
-		
+
 		//жещина разыскивает мужа-торговца
 		case "SCQ_Hasband":
 			dialog.text = "Не знаю, но очень надеюсь, что он просто занят по работе. Хотя мог бы отправить весточку, знает ведь, что я волнуюсь!";
@@ -1456,7 +1456,7 @@ void ProcessDialogEvent()
 			//==> ставим квестодателя в церковь
 			pchar.quest.SeekShip_Stay.win_condition.l1 = "ExitFromLocation";
 			npchar.location = npchar.city + "_church";
-			npchar.location.locator = "goto2";			
+			npchar.location.locator = "goto2";
             pchar.quest.SeekShip_Stay.win_condition.l1.location = pchar.location;
 			pchar.quest.SeekShip_Stay.function = "SeekShip_Stay";
 			pchar.quest.SeekShip_Stay.Idx = npchar.index;
@@ -1523,7 +1523,7 @@ void ProcessDialogEvent()
 			//==> ставим квестодателя в церковь
 			pchar.quest.SeekShip_Stay.win_condition.l1 = "ExitFromLocation";
 			npchar.location = npchar.city + "_church";
-			npchar.location.locator = "goto2";			
+			npchar.location.locator = "goto2";
             pchar.quest.SeekShip_Stay.win_condition.l1.location = pchar.location;
 			pchar.quest.SeekShip_Stay.function = "SeekShip_Stay";
 			pchar.quest.SeekShip_Stay.Idx = npchar.index;
@@ -1592,7 +1592,7 @@ void ProcessDialogEvent()
 			//==> ставим квестодателя в церковь
 			pchar.quest.SeekShip_Stay.win_condition.l1 = "ExitFromLocation";
 			npchar.location = npchar.city + "_church";
-			npchar.location.locator = "goto2";			
+			npchar.location.locator = "goto2";
             pchar.quest.SeekShip_Stay.win_condition.l1.location = pchar.location;
 			pchar.quest.SeekShip_Stay.function = "SeekShip_Stay";
 			pchar.quest.SeekShip_Stay.Idx = npchar.index;
@@ -2125,7 +2125,7 @@ void ProcessDialogEvent()
 		case "RevengeCap_board_3":
 			LAi_SetCurHPMax(npchar);
 			//==> флаг квеста сменим у оригинального кэпа
-			characters[sti(npchar.baseCapIdx)].quest.SeekCap = "womanRevengeFight"; 
+			characters[sti(npchar.baseCapIdx)].quest.SeekCap = "womanRevengeFight";
 			QuestAboardCabinDialogFree(); // важный метод
 			LAi_group_SetRelation(LAI_GROUP_BRDENEMY, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(LAI_GROUP_BRDENEMY, LAI_GROUP_PLAYER, true);
@@ -2298,7 +2298,7 @@ void ProcessDialogEvent()
 			SetMushketCapitainInWorld();
 			pchar.questTemp.mushket2x2 = true;
 			AddQuestRecord("SeekDoubleMushket", "1");
-			NextDiag.TempNode = "OffM_result";	
+			NextDiag.TempNode = "OffM_result";
 		break;
 
 		case "OffM_result":
@@ -2403,7 +2403,7 @@ void ProcessDialogEvent()
 
 
 void GetPerlShore()
-{	
+{
 	switch (rand(4))
 	{
 		case 0:
@@ -2453,42 +2453,42 @@ void SetSeekCapCitizenParam(ref npchar, int iNation)
 	ref sld = GetCharacter(NPC_GenerateCharacter("SeekCitizCap_" + npchar.index, "", "man", "man", Rank, iNation, -1, true));
 	switch (npchar.quest.SeekCap)
 	{
-		case "manSlave": 
+		case "manSlave":
 			SetCaptanModelByEncType(sld, "pirate");
 			SetShipToFantom(sld, "pirate", true);
 			sld.Ship.Mode = "pirate";
 			sld.dialog.currentnode = "CitizCap";
 			sld.DeckDialogNode = "CitizCap_inDeck";
 		break;
-		case "manRapeWife": 
+		case "manRapeWife":
 			SetCaptanModelByEncType(sld, "pirate");
 			SetShipToFantom(sld, "pirate", true);
 			sld.Ship.Mode = "pirate";
 			sld.dialog.currentnode = "RapeWifeCap";
 			sld.DeckDialogNode = "RapeWifeCap_inDeck";
 		break;
-		case "manFriend": 
+		case "manFriend":
 			SetCaptanModelByEncType(sld, "trade");
 			SetShipToFantom(sld, "trade", true);
 			sld.Ship.Mode = "trade";
 			sld.dialog.currentnode = "FriendCap";
 			sld.DeckDialogNode = "FriendCap_inDeck";
 		break;
-		case "womanHasband": 
+		case "womanHasband":
 			SetCaptanModelByEncType(sld, "trade");
 			SetShipToFantom(sld, "trade", true);
 			sld.Ship.Mode = "trade";
 			sld.dialog.currentnode = "HasbandCap";
 			sld.DeckDialogNode = "HasbandCap_inDeck";
 		break;
-		case "womanRevenge": 
+		case "womanRevenge":
 			SetCaptanModelByEncType(sld, "pirate");
 			SetShipToFantom(sld, "pirate", true);
 			sld.Ship.Mode = "pirate";
 			sld.dialog.currentnode = "RevengeCap";
 			sld.DeckDialogNode = "RevengeCap_inDeck";
 		break;
-		case "womanPirates": 
+		case "womanPirates":
 			SetCaptanModelByEncType(sld, "pirate");
 			SetShipToFantom(sld, "pirate", true);
 			sld.Ship.Mode = "pirate";
@@ -2531,7 +2531,7 @@ void SetSeekCapCitizenParam(ref npchar, int iNation)
 	Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, sld.id);
 	Group_SetGroupCommander(sGroup, sld.id);
-	SetRandGeraldSail(sld, sti(sld.Nation)); 
+	SetRandGeraldSail(sld, sti(sld.Nation));
 	//записываем данные в структуры портмана и кэпа
 	npchar.quest.SeekCap.capId = sld.id //Id искомого кэпа
 	npchar.quest.SeekCap.capName = GetFullName(sld); //имя искомого кэпа
@@ -2595,7 +2595,7 @@ void SetMushketCapitainInWorld()
 	sld.lastname = "Зиверт";
  	SetCaptanModelByEncType(sld, "pirate");
 	FantomMakeCoolSailor(sld, SHIP_BRIGANTINE, "Стрела", CANNON_TYPE_CANNON_LBS24, 90, 90, 90);
-	sld.Ship.Mode = "pirate";	
+	sld.Ship.Mode = "pirate";
 
 	DeleteAttribute(sld, "SinkTenPercent");
 	DeleteAttribute(sld, "SaveItemsForDead");
@@ -2631,7 +2631,7 @@ void SetMushketCapitainInWorld()
 	Group_LockTask(sGroup);
 	Group_AddCharacter(sGroup, sld.id);
 	Group_SetGroupCommander(sGroup, sld.id);
-	SetRandGeraldSail(sld, sti(sld.Nation)); 
+	SetRandGeraldSail(sld, sti(sld.Nation));
 	sld.quest = "InMap"; //личный флаг искомого кэпа
 	sld.city = "Bridgetown"; //определим колонию, из бухты которой с мушкетом выйдет
 	sld.cityShore = GetIslandRandomShoreId(GetArealByCityName(sld.city));

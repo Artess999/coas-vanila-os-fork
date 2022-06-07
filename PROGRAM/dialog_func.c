@@ -10,7 +10,7 @@
 object Address_Form;
 
 void Set_inDialog_Attributes()
-{ 
+{
 	ref The_Character_is;
 
 	The_Character_is = GetMainCharacter();
@@ -41,7 +41,7 @@ void Set_inDialog_Attributes()
 	Address_Form.Eng.Title2 = "Коммандер";
 	Address_Form.Hol.Title2 = "Коммандер";
 	Address_Form.Pir.Title2 = "Коммандер";
-	
+
 	Address_Form.Spa.Title3 = "Капитан";
 	Address_Form.Fra.Title3 = "Капитан";
 	Address_Form.Eng.Title3 = "Капитан";
@@ -72,9 +72,9 @@ void Set_inDialog_Attributes()
 	Address_Form.Hol.man = "минхер";
 	Address_Form.Pir.man = "сэр";
 	/*switch (The_Character_is.id)
-	{	
+	{
 		case "Blaze":
-			
+
 			Address_Form.Spa = GlobalStringConvert("Address_Form_Spa");
 			Address_Form.Fra = GlobalStringConvert("Address_Form_Fra");
 			Address_Form.Eng = GlobalStringConvert("Address_Form_Eng");
@@ -133,8 +133,8 @@ string RandSwear()
 
 		case 7:
 			return "Тысяча чертей! ";
-		break;	 
-		
+		break;
+
 		case 8:
 			return "Алле Хагель! ";	// стандартное пиратское "твою мать"
 		break;
@@ -411,10 +411,10 @@ string GetCityName(string city) // имена городов по аттрибу
 {
     string ret;
     int nFile = LanguageOpenFile("LocLables.txt");
-    
+
 	ret = LanguageConvertString(nFile, city + " Town")
 	LanguageCloseFile( nFile );
-	
+
 	return  ret;
 }
 
@@ -708,19 +708,19 @@ string GiveArealByLocation(ref location)
 {
 	string sAreal;
 	if (CheckAttribute(location, "MustSetReloadBack")) return "none";
-	if (CheckAttribute(location, "fastreload")) 
+	if (CheckAttribute(location, "fastreload"))
 	{
-		sAreal = GetArealByCityName(location.fastreload); 
+		sAreal = GetArealByCityName(location.fastreload);
 		return sAreal;
 	}
-	if (CheckAttribute(location, "parent_colony")) 
+	if (CheckAttribute(location, "parent_colony"))
 	{
-		sAreal = GetArealByCityName(location.parent_colony); 
+		sAreal = GetArealByCityName(location.parent_colony);
 		return sAreal;
 	}
 	if (!CheckAttribute(location, "islandId")) return "none";
-	if (location.islandId == "Cuba" || location.islandId == "Hispaniola" || location.islandId == "Mein") 
-	{			
+	if (location.islandId == "Cuba" || location.islandId == "Hispaniola" || location.islandId == "Mein")
+	{
 		if (!CheckAttribute(location, "islandIdAreal")) return "none";
 		sAreal = location.islandIdAreal;
 	}
@@ -826,7 +826,7 @@ string GetCityNameByIsland(string CurIslandId)
 		break;
 	}
     return TargetLocation;
-} 
+}
 
 string TimeGreeting()
 {
@@ -916,7 +916,7 @@ int GetCharIDXForTownAttack(string attrPresent1)
 			{
 			    return  -1;
 			}
-			
+
 			return GetFortCommanderIdx(rColony.id);
 		}
     }
@@ -982,7 +982,7 @@ string GetWorkTypeOfMan(ref NPChar, string sPrefix)
 {
 	string sCity, sTemp;
 	sTemp = "unknown";
-	if (CheckAttribute(NPChar, "City")) 
+	if (CheckAttribute(NPChar, "City"))
 	{
 		sCity = NPChar.City;
 		sTemp = NPChar.id;

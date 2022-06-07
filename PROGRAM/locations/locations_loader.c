@@ -33,9 +33,9 @@ int FindLocation(string id)
 
 	return -1;
 	*/
-	
+
 	return NativeFindLocation(&locations, id);
-	
+
 }
 
 void SetCamShuttle(ref loc) // boal вынес в метод
@@ -70,14 +70,14 @@ bool LoadLocation(ref loc)
 
 	int i;
 	bool res;
-	
+
 	//Time update==========================================================================
 	locTmpTime += 5;
 	CalcLocalTime(3);
 	//Environment==========================================================================
 	chrWaitReloadLocator = ""; // fix перехода в таверну при клики на диалог
 	chrWaitReloadIsNoLink = false;
-		
+
     loadedLocation = loc; // первое присвоение boal
 	//Environment==========================================================================
 
@@ -129,9 +129,9 @@ bool LoadLocation(ref loc)
 		}
 	}
 	//
-	
+
 	if(CheckAttribute(loc, "QuestlockWeather"))
-	{		
+	{
 		if (CheckAttribute(loc, "QuestlockWeather.hours") && CheckAttribute(loc, "QuestlockWeather.minutes"))
 		{
 			SetCurrentTime(sti(loc.QuestlockWeather.hours), sti(loc.QuestlockWeather.minutes));
@@ -141,7 +141,7 @@ bool LoadLocation(ref loc)
 		//SetNextWeather(loc.QuestlockWeather);
 	}
 
-	
+
 	bool isNoBoarding = true;
 	bool isFort = false;
 	if(CheckAttribute(loc, "boarding") == true)
@@ -156,7 +156,7 @@ bool LoadLocation(ref loc)
 	if(isNoBoarding)
 	{
 		//Sea
-		if(loc.environment.sea == "true") 
+		if(loc.environment.sea == "true")
 		{
 			CreateSea(EXECUTE, REALIZE);
 			if (!CheckAttribute(loc, "notCrateFoam"))
@@ -165,7 +165,7 @@ bool LoadLocation(ref loc)
 			}
 		}
 		//Weather
-		if(loc.environment.weather == "true") 
+		if(loc.environment.weather == "true")
 			CreateWeather(EXECUTE, REALIZE);//CreateEntity(&locWeather, "weather");
 		//Ship env
 		CreateShipEnvironment();
@@ -176,7 +176,7 @@ bool LoadLocation(ref loc)
 		if(loc.environment.sea == "true")
 			CreateSea(EXECUTE, REALIZE);//CreateEntity(&locSea, "sea");
 		//Weather
-		if(loc.environment.weather == "true") 
+		if(loc.environment.weather == "true")
 			CreateWeather(EXECUTE, REALIZE);//CreateEntity(&locWeather, "weather");
 	}
 
@@ -187,7 +187,7 @@ bool LoadLocation(ref loc)
 	if(CreateEntity(&loc, "location") == 0) return 0;
 	//Set models path
 	if(CheckAttribute(loc, "filespath.models"))
-	{		
+	{
 		SendMessage(loc, "ls", MSG_LOCATION_MODELSPATH, loc.filespath.models);
 	}
 	//Set textures path
@@ -228,7 +228,7 @@ bool LoadLocation(ref loc)
 		if(LocLoadModel(loc, "models.back", Whr_GetInsideBack()) == 0)
 		{
 			Trace("LocationLoader: not loaded back model location." + sat + ", id = " + loc.id);
-		}		
+		}
 	}
 
 	ReloadProgressUpdate();
@@ -236,19 +236,19 @@ bool LoadLocation(ref loc)
 	//Loading day/night models=============================================================
 	//--> проверяем наличие контры для установки нужного патча
 	string smg = "";
-	if (loc.type == "seashore" || loc.type == "mayak") 
+	if (loc.type == "seashore" || loc.type == "mayak")
 	{
 		makearef(st, loc.models.always);
 		num = GetAttributesNum(st);
 		for(i = 0; i < num; i++)
 		{
-			at = GetAttributeN(st, i);	
+			at = GetAttributeN(st, i);
 			sat = GetAttributeName(at);
 			if(st.(sat) == "smg")
 			{
 				smg = "smg";
 			}
-		}			
+		}
 	}
 	//<-- проверяем наличие контры для установки нужного патча
 	if(Whr_IsDay() != 0)
@@ -321,10 +321,10 @@ bool LoadLocation(ref loc)
 				}
 			}
 		}
-		
+
 		//Loading patches
 		if(CheckAttribute(loc, "models.night.charactersPatch") != 0)
-		{			
+		{
 			res = SendMessage(loc, "ls", MSG_LOCATION_SET_CHRS_PATCH, loc.models.night.charactersPatch + smg);
 			if(res == 0)
 			{
@@ -394,7 +394,7 @@ bool LoadLocation(ref loc)
 		{
 			//Group radius
 			aref rdgrp = GetAttributeN(locator_rad, j);
-			string rdgname = GetAttributeName(rdgrp);			
+			string rdgname = GetAttributeName(rdgrp);
 			float rad = MakeFloat("" + rdgrp);
 			SetLocatorGroupRadius(loc, rdgname, rad);
 			//Some locators radius
@@ -431,7 +431,7 @@ bool LoadLocation(ref loc)
 	{
 		Trace("Main character not loaded!");
 		UnloadLocation(loc);
-		return 0;		
+		return 0;
 	}
 	AddCharacterLocatorGroup(mainCharacter, "reload");
 	AddCharacterLocatorGroup(mainCharacter, "camdetector");
@@ -453,7 +453,7 @@ bool LoadLocation(ref loc)
 		if(lockCamAngle < -1.5) lockCamAngle = -1.5;
 		if(lockCamAngle > 1.5) lockCamAngle = 1.5;
 		SendMessage(&locCamera, "lf", MSG_CAMERA_MOVE, lockCamAngle);
-	}	
+	}
     SetCamShuttle(loc);
 
 	SetEventHandler("Control Activation","locCameraSwitch",1);
@@ -556,23 +556,23 @@ bool LoadLocation(ref loc)
         ShowAllLocators();
     }
     // boal debug info <--
-    
+
 	//DumpAttributes(loc);
 	//SendMessage(Sound,"lf",MSG_SOUND_SET_MASTER_VOLUME,1.0);
-	
+
 	//VisibleLocatorsGroup("torchlightes_o", 0.1, 15.0, 55, 0, 0, 255);
 	/*
 	VisibleLocatorsGroup("candles", 1.0, 15.0, 255, 255, 255, 55);
 	VisibleLocatorsGroup("candles_medium", 1.0, 15.0, 255, 255, 255, 55);
 	VisibleLocatorsGroup("chandeliers", 1.0, 15.0, 255, 128, 0, 128);
 	VisibleLocatorsGroup("torchlightes", 1.0, 15.0, 255, 255, 155, 0);
-	VisibleLocatorsGroup("outside", 1.0, 15.0, 255, 155, 155, 255);	
+	VisibleLocatorsGroup("outside", 1.0, 15.0, 255, 155, 155, 255);
 	VisibleLocatorsGroup("fonar", 1.0, 15.0, 255, 155, 255, 155);
 	VisibleLocatorsGroup("heaters", 1.0, 15.0, 255, 155, 255, 155);
 	VisibleLocatorsGroup("incas_light", 1.0, 15.0, 255, 155, 255, 255);
 	VisibleLocatorsGroup("incas_sky", 1.0, 15.0, 255, 0, 255, 255);
 	*/
-	
+
 	Item_OnLoadLocation(loc.id);
 
 	ReloadProgressUpdate();
@@ -636,7 +636,7 @@ bool LoadLocation(ref loc)
 			Loc.Caustic.distance = 30.0;
 			Loc.Caustic.color = argb(128, 255, 255, 255);
 			Loc.Caustic.speed = 10.0;
-			
+
 			SendMessage(loc, "ls", MSG_LOCATION_EX_MSG, "LoadCaustic");
 			SendMessage(loc, "lsl", MSG_LOCATION_EX_MSG, "EnableCaustic", 1);
 		}
@@ -677,7 +677,7 @@ void LocationSetLights(ref loc)
 			if(CheckAttribute(loc, sat) != 0)
 			{
 				makearef(lit, loc.(sat));
-				lnum = GetAttributesNum(lit);					
+				lnum = GetAttributesNum(lit);
 				for(j = 0; j < lnum; j++)
 				{
 					lit1 = GetAttributeN(lit, j);
@@ -742,7 +742,7 @@ bool UnloadLocation(aref loc)
 		DeleteAnimals();
 		DeleteSea();
 		DeleteWeather();
-		DeleteShipEnvironment(); 
+		DeleteShipEnvironment();
 		for(n = 0; n < locNumShips; n++) {DeleteClass(locShips[n]);}
 		locNumShips = 0;
 	}
@@ -830,7 +830,7 @@ bool LocLoadModel(aref loc, string sat, string addition)
 		{
 			res = SendMessage(loc, "lss", MSG_LOCATION_MODEL_SET_POS, loc.(attr), loc.(attr1));
 		}
-		if(res == 0) 
+		if(res == 0)
 		{
 			Trace("Can't set locator modifier to model: " + loc.(sat));
 		}
@@ -848,7 +848,7 @@ bool LocLoadModel(aref loc, string sat, string addition)
 		if(CheckAttribute(loc, attr1) != 0) z = MakeFloat(loc.(attr1));
 		res = SendMessage(loc, "lfff", MSG_LOCATION_MODEL_SET_ROT, x, y, z);
 		if(res == 0) Trace("Can't set rotate modifier to model: " + loc.(sat));
-	}	
+	}
 	//uvslide
 	attr = sat + ".uvslide";
 	if(CheckAttribute(loc, attr) != 0)
@@ -909,8 +909,8 @@ void LocLoadShips(ref Location)
 	bool bMainCharacterHere = LocIsEntryLocation(Location);
 
 	ref rPlayer = GetMainCharacter();
-	
-	if (!CheckAttribute(Location, "locators")) 
+
+	if (!CheckAttribute(Location, "locators"))
 	{
 		//Trace("LocLoadShips: Can't find Location.locators in location: " + Location.id);
 		return;
@@ -956,9 +956,9 @@ void LocLoadShips(ref Location)
 		if (locNumShips >= MAX_SHIPS_IN_LOCATION) continue;
 		if (!Character_LocIsEntryLocation(&Characters[i],Location)) continue;
 		bool bExist = false;
-		for (j=0;j<locNumShips;j++) 
+		for (j=0;j<locNumShips;j++)
 		{
-			if (i == iShips[j]) 
+			if (i == iShips[j])
 			{
 				bExist = true; break;
 			}
@@ -981,19 +981,19 @@ void LocLoadShips(ref Location)
 		switch(iShipsType[locNumShips])
 		{
 			case 0:
-				if (iCurNumShips >= iNumShips) 
-				{ 
+				if (iCurNumShips >= iNumShips)
+				{
 					Trace("LocLoadShips: need (ships): " + iCurNumShips + ", but max_num_ships: " + iNumShips);
-					bContinue = true; 
+					bContinue = true;
 				}
 				locator = GetAttributeN(locator_ships, iCurNumShips);
 				iCurNumShips++;
 			break;
 			case 1:
-				if (iCurNumOtherShips >= iNumOtherShips) 
-				{ 
+				if (iCurNumOtherShips >= iNumOtherShips)
+				{
 					Trace("LocLoadShips: need (ships_other): " + iCurNumOtherShips + ", but max_num_ships_other: " + iNumOtherShips);
-					bContinue = true; 
+					bContinue = true;
 				}
 				locator = GetAttributeN(locator_otherships, iCurNumOtherShips);
 				iCurNumOtherShips++;
@@ -1040,14 +1040,14 @@ void LocLoadShips(ref Location)
 			}
 		}
 	}
-	else 
+	else
 	{
 		if (bMainCharacterHere)
 		{
 			Trace("LocLoadShips: Can't find boat locator in location: " + Location.id);
 		}
 	}
-	
+
 }
 
 bool Character_LocIsEntryLocation(ref rCharacter, ref rLocation)
@@ -1204,7 +1204,7 @@ HideLocatorsGroup("candles");
     HideLocatorsGroup("rld");
     HideLocatorsGroup("reload");
     HideLocatorsGroup("goto");
-    
+
     HideLocatorsGroup("sit");
     HideLocatorsGroup("item");
     HideLocatorsGroup("randitem");

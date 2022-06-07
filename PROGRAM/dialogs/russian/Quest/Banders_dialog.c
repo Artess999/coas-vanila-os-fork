@@ -9,7 +9,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "Exit":
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 		case "First time":
 			dialog.text = "Ты кто такой?!";
 			link.l1 = "Тихо, фраер, кипиша не поднимай. Меня послал к тебе твой кореш, что на киче томится. " + pchar.questTemp.jailCanMove.Deliver.name + ", знаешь такого?";
-			link.l1.go = "Step_1";			
+			link.l1.go = "Step_1";
 			NextDiag.TempNode = "Second time";
 		break;
 		case "Step_1":
@@ -88,7 +88,7 @@ void ProcessDialogEvent()
 		case "Second time":
 			dialog.text = "Не о чем базарить, вали отсюда по-тихому.";
 			link.l1 = "Ладно, ладно...";
-			link.l1.go = "exit";			
+			link.l1.go = "exit";
 			NextDiag.TempNode = "Second time";
 		break;
 	}

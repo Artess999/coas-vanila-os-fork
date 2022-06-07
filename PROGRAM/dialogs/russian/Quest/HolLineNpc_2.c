@@ -10,7 +10,7 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	float locx, locy, locz;
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
 			pchar.quest.SeekBible_DeGrafToTavern.win_condition.l1 = "MapEnter";
             pchar.quest.SeekBible_DeGrafToTavern.win_condition = "SeekBible_DeGrafToTavern";
     	break;
-    	
-    	
+
+
     }
 }

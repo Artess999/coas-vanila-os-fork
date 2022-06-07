@@ -24,10 +24,10 @@
 
 object  Cannon[CANNON_TYPES_QUANTITY];
 
-ref GetCannonByType(int iCannonType) 
-{ 
+ref GetCannonByType(int iCannonType)
+{
 	if (iCannonType == CANNON_TYPE_NONECANNON) return &NullCharacter; // fix для тартант boal
-	return &Cannon[iCannonType]; 
+	return &Cannon[iCannonType];
 }
 
 int GetCannonCaliber(int nCannon)

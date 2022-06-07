@@ -34,7 +34,7 @@ void PrepareDefaultOption(ref optref)
 	optref.alwaysrun = true;
 	optref.video.grassquantity = 0;
 	optref.seadetails = 1.0;
-	
+
 	SeaParametrs.MaxVertices = MaxVertices;
 	SeaParametrs.MaxIndices = MaxIndices;
 	SeaParametrs.GridStepX = GridStepX;
@@ -138,7 +138,7 @@ void GetRealOptions(ref optref)
 	} else {
 		optref.video.brightness = 0.0;
 	}
-	
+
 	SeaParametrs.MaxVertices = MaxVertices;
 	SeaParametrs.MaxIndices = MaxIndices;
 	SeaParametrs.GridStepX = GridStepX;
@@ -168,7 +168,7 @@ void SetCurentOptions(ref optref)
 	bArcadeSailTo = sti(optref.arcademode.bArcadeSailTo);
 	*/
 	locCameraEnableSpecialMode = !sti(optref.cameramode.follow_on);
-	
+
 	/*
 	SeaMaxVertices
 	SeaMaxIndices
@@ -238,7 +238,7 @@ void SetCurentOptions(ref optref)
 	} else {
 		InterfaceStates.video.brightness = 0.0;
 	}
-	
+
 	if( CheckAttribute(optref,"video.grassquantity") ) {
 		iGrassQuality = sti(optref.video.grassquantity);
 	}

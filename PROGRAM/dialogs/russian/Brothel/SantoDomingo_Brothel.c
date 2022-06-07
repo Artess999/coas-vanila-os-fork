@@ -1,7 +1,7 @@
 // диалог по городам
 void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 {
-    ref sld; 
+    ref sld;
 	switch (Dialog.CurrentNode)
 	{
 		case "quests":

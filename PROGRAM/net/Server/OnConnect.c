@@ -65,7 +65,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 
 	if (bLocal && !sti(NetServer.LanServer)) { bError = true; }
 	if (bInet && !sti(NetServer.InetServer)) { bError = true; }
-	
+
 	if (bError)
 	{
 		iSMsg = NMCreate();
@@ -152,7 +152,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 		NMDelete(iSMsg);
 		return;
 	}
-	
+
 	// if find client in NSPlayers, check password
 	if (CheckAttribute(NSPlayers, "Players." + sNickName))
 	{
@@ -240,7 +240,7 @@ void NetServer_OnConnect(int dwIP, int wPort, int iMsg)
 	NMDelete(iSMsg);
 
 	// send to new client all other clients
-	for (i=0; i<NET_MAXCLIENTS; i++) 
+	for (i=0; i<NET_MAXCLIENTS; i++)
 	{
 		ref rOldClient = &NSClients[i];
 		if (!sti(rOldClient.Use)) { continue; }

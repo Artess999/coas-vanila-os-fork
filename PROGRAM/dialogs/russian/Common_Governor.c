@@ -18,7 +18,7 @@ void ProcessDialogEvent()
 		UnloadSegment(NPChar.FileDialog2);
 	}
     // вызов диалога по городам <--
-    
+
     ref offref, sld;
     int i, cn;
     int qty;
@@ -34,7 +34,7 @@ void ProcessDialogEvent()
         k = (300 - sti(Nations[sti(NPChar.nation)].Fort)*10);
     }
 	bool ok;
-	
+
 	attrLoc = Dialog.CurrentNode;
 	if (findsubstr(attrLoc, "CityGive_" , 0) != -1)
  	{
@@ -42,7 +42,7 @@ void ProcessDialogEvent()
 	 	NPChar.quest.CityIdx = strcut(attrLoc, i+1, strlen(attrLoc)-1); // индех в конце
  	    Dialog.CurrentNode = "ColonyGive";
  	}
- 	
+
 	switch (Dialog.CurrentNode)
 	{
 		case "Exit":
@@ -50,26 +50,26 @@ void ProcessDialogEvent()
 			DialogExit();
 			AddDialogExitQuest("MainHeroFightModeOff");
 		break;
-		
+
 		case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		
+
 		case "First time":
             NextDiag.TempNode = "First time";
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("Вы посмели явиться к генерал-губернатору?! Смелый шаг...", "Как эти бездельники допустили, чтобы ко мне ворвался враг?! Уму непостижимо...", "Да уж, моя охрана немногого стоит, раз какой-то бездельник бегает в моей резиденции..."), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("Вы посмели явиться к генерал-губернатору?! Смелый шаг...", "Как эти бездельники допустили, чтобы ко мне ворвался враг?! Уму непостижимо...", "Да уж, моя охрана немногого стоит, раз какой-то бездельник бегает в моей резиденции..."),
 					LinkRandPhrase("Что тебе нужно, негодяй?! Мои солдаты уже взяла твой след, далеко тебе не уйти, грязный пират!", "Грязный убийца, вон из моей резиденции! Стража!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Солдатня мало чего стоит...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Солдатня мало чего стоит...", "Им меня ни за что не поймать."),
 					RandPhraseSimple("Заткни свою пасть, приятель, а не то вырву твой поганый язык!", "Вот что я тебе скажу, приятель: сиди тихо, и будешь жить..."));
 				link.l1.go = "fight";
 				break;
-			} 
+			}
 			if (npchar.quest.meeting == "0")
 			{
 				dialog.text = "Я слышал, что вы очень настойчиво просили аудиенции. Меня зовут " + GetFullName(npchar) +
@@ -91,7 +91,7 @@ void ProcessDialogEvent()
 				link.l10.go = "exit";
 			}
 		break;
-		
+
 		case "node_1":
 			dialog.text = "Так какая причина заставила вас прийти сюда и отвлекать меня от важных государственных дел?";
 			link.l1 = "Я хочу поговорить о работе на благо короны " + NationNameGenitive(sti(NPChar.nation));
@@ -107,7 +107,7 @@ void ProcessDialogEvent()
 			link.l1 = "Да, да, конечно, извините, что потревожил вас.";
 			link.l1.go = "exit";
 		break;
-		
+
 		case "work":
             if (!CheckCharacterItem(Pchar, "patent_" + NationShortName(sti(NPChar.nation))) || !CheckAttribute(pchar, "EquipedPatentId"))
 			{
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
     			link.l9.go = "exit";
 			}
 		break;
-		
+
 		case "onlyGenWork_1":
 			dialog.text = "Хм... Я слышал, что вы выполняли тайные задания для "+ NationNameGenitive(sti(pchar.questTemp.NationQuest)) +", поэтому ничего секретного я вам поручить уже не смогу.";
 			link.l1 = "Очень жаль.";
@@ -214,7 +214,7 @@ void ProcessDialogEvent()
 			link.l99 = "Я ошибся, речь шла о другом.";
 			link.l99.go = "exit";
 		break;
-		
+
         case "ColonyGive":
             i = sti(NPChar.quest.CityIdx);
             sld = GetFortCommander(colonies[i].id);
@@ -231,7 +231,7 @@ void ProcessDialogEvent()
 		    AddQuestRecord("Gen_CityCapture", "t8");
 			AddQuestUserData("Gen_CityCapture", "sCity", GetCityName(colonies[i].id));
 			AddQuestUserData("Gen_CityCapture", "sNation", XI_ConvertString(GetNationNameByType(sti(NPChar.nation)) + "Gen"));
-		
+
             AddMoneyToCharacter(PChar, colony_money);
             AddTitleNextRate(sti(NPChar.nation), 1);  // счетчик звания
             ChangeCharacterNationReputation(Pchar, sti(NPChar.nation), 10);

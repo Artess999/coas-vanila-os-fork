@@ -6,7 +6,7 @@ void OfficersReaction(string alignment)
 	int iPassenger;
 	int i, cn;
 	ref sld;
-	
+
 	for (int io = 0; io<GetPassengersQuantity(pchar); io++)
 	{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе
 		iPassenger = GetPassenger(pchar, io);
@@ -44,7 +44,7 @@ void OfficersReaction(string alignment)
 					// специально не далею приведение к 0 и мах. потому чтоб был запас минусов для проверок
 					if (CheckAttribute(sld, "PGGAi")) PGG_ChangeRelation2MainCharacter(sld, -1); //navy
 				}
-			}									
+			}
 		}
 	}
 }
@@ -55,10 +55,10 @@ void OfficersReactionResult()
 	int iPassenger;
 	int i;
 	ref sld;
-	
+
 	if (LAi_IsCapturedLocation) return;
 	if (chrDisableReloadToLocation) return; // идет некий другой квест с запретом выхода
-	
+
 	for (i = 0; i<GetPassengersQuantity(pchar); i++)
 	{   // любой пассажир у кого есть пристрастие может свалить если наши дела ему не по душе
 		iPassenger = GetPassenger(pchar, i);
@@ -75,21 +75,21 @@ void OfficersReactionResult()
 						sld.dialog.currentnode = "WantToRemove";
 	                    sld.greeting           = "Gr_Officer_Fired";
 						DeleteAttribute(sld, "quest.officertype");
-	
+
 						LAi_SetActorType(sld);
 						LAi_ActorDialog(sld, pchar, "", 2.0, 0);
 						//SetActorDialogAny2Pchar(sld.id, "pchar_back_to_player", 0.0, 0.0);
 			    		//LAi_ActorFollow(sld, pchar, "ActorDialog_Any2Pchar", 2.0);
 			    		chrDisableReloadToLocation = true;
 			    		DoQuestCheckDelay("OpenTheDoors", 5.0);
-						break; 
+						break;
 					}
 				}
 			}
 		}
 	}
 	if (chrDisableReloadToLocation) return; // уже увольняется
-	
+
 	if (CheckNPCQuestDate(pchar, "OfficerWantToGo") && rand(1) == 1) // только раз в день
 	{
 		SetNPCQuestDate(pchar, "OfficerWantToGo");
@@ -107,14 +107,14 @@ void OfficersReactionResult()
 						{
 							sld.dialog.currentnode = "WantToGo";
 		                    sld.greeting           = "Gr_Officer_Salary";
-		
+
 							LAi_SetActorType(sld);
 							LAi_ActorDialog(sld, pchar, "", 2.0, 0);
 							//SetActorDialogAny2Pchar(sld.id, "pchar_back_to_player", 0.0, 0.0);
 				    		//LAi_ActorFollow(sld, pchar, "ActorDialog_Any2Pchar", 2.0);
 				    		chrDisableReloadToLocation = true;
 				    		DoQuestCheckDelay("OpenTheDoors", 5.0);
-							break; 
+							break;
 						}
 					}
 				}
@@ -191,13 +191,13 @@ void CheckForReleaseOfficer(int iCharIndex)
 		pchar.Fellows.Passengers.carpenter = -1;
 		DeleteAttribute(&characters[iCharIndex], "carpenter"); // совместитель дожности
 	}
-	
+
     if(sti(pchar.Fellows.Passengers.treasurer) == iCharIndex)
 	{
 		pchar.Fellows.Passengers.treasurer = -1;
 		DeleteAttribute(&characters[iCharIndex], "treasurer"); // совместитель дожности
 	}
-	
+
 	//if (IsOfficer(&characters[iCharIndex]) == true)
 	//{
 		// все проверки внутри,  иначе не работает на трупе
@@ -211,7 +211,7 @@ void CheckForReleaseOfficer(int iCharIndex)
 void SetOfficerParam(ref Npchar, int _type)
 {
 	float upSkill = 0.7;
-	
+
 	ClearCharacterExpRate(Npchar); // трем все пороги экспы на всяк сулчай
 
     Npchar.quest.LeadershipModify  = 0;
@@ -238,7 +238,7 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.GrapplingModify   = frandSmall(2.0) + 2;
 			Npchar.quest.DefenseModify     = frandSmall(2.0) + 2;
 			Npchar.quest.SneakModify       = Rand(1);
-			
+
 			//Npchar.skill.Grappling_rate = makeint(MOD_EXP_RATE * upSkill);
             //Npchar.skill.Defence_rate   = makeint(MOD_EXP_RATE * upSkill);
 		break;
@@ -248,7 +248,7 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.AccuracyModify      = frandSmall(2.0) + 2;
 			Npchar.quest.CannonsModify       = frandSmall(2.0) + 2;
 			Npchar.quest.SneakModify         = Rand(1);
-			
+
 			//Npchar.skill.Cannons_rate = makeint(MOD_EXP_RATE * upSkill);
             //Npchar.skill.Accuracy_rate   = makeint(MOD_EXP_RATE * upSkill);
 		break;
@@ -259,7 +259,7 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.RepairModify        = frandSmall(2.0) + 3;
 			Npchar.quest.CommerceModify      = frandSmall(2.0) + 2;
 			Npchar.quest.SneakModify         = frandSmall(2.0) + 2;
-			
+
 			//Npchar.skill.Repair_rate = makeint(MOD_EXP_RATE * upSkill);
             //Npchar.skill.Commerce_rate   = makeint(MOD_EXP_RATE * upSkill);
 		break;
@@ -270,7 +270,7 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.SailingModify        = frandSmall(2.0) + 2;
 			Npchar.quest.DefenseModify        = frandSmall(2.0) + 1.3;
 			Npchar.quest.SneakModify          = frandSmall(2.0);
-			
+
 			//Npchar.skill.Sailing_rate = makeint(MOD_EXP_RATE * upSkill);
 		break;
 
@@ -278,7 +278,7 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.officertype = "fighter";
 			Npchar.quest.FencingModify         = frandSmall(2.0) + 2;
 			Npchar.quest.PistolModify          = frandSmall(2.0) + 2;
-			
+
 			//Npchar.skill.Fencing_rate = makeint(MOD_EXP_RATE * upSkill);
             //Npchar.skill.Pistol_rate   = makeint(MOD_EXP_RATE * upSkill);
 		break;
@@ -288,11 +288,11 @@ void SetOfficerParam(ref Npchar, int _type)
 			Npchar.quest.LeadershipModify     = frandSmall(3.0) + 2;
 			Npchar.quest.SailingModify        = frandSmall(1.0) + 1;
 			Npchar.quest.SneakModify          = Rand(3) + 1;
-			
+
 			//Npchar.skill.Leadership_rate = makeint(MOD_EXP_RATE * upSkill);
             //Npchar.skill.Sneak_rate   = makeint(MOD_EXP_RATE * upSkill);
 		break;
-		
+
 		case 6:
 			//Npchar.quest.officertype = OFFIC_TYPE_DOCTOR;
 			Npchar.quest.DefenseModify       = Rand(3) + 3;
@@ -361,9 +361,9 @@ void SetOfficerParam(ref Npchar, int _type)
     SetRankFromSkill(Npchar);
 
     LAi_NPC_Equip(Npchar, sti(Npchar.rank), true, true); // fix 101104 выдадим все заново!!!!
-    
+
     SetFantomHP(Npchar);
-    
+
     Npchar.quest.OfficerPrice    = (11 + 2*sti(Npchar.rank))*(150 + MOD_SKILL_ENEMY_RATE*20) + rand(5)*10;
     Npchar.quest.OfficerLowPrice = makeint(sti(Npchar.quest.OfficerPrice)/1.5 + 0.5);
 }
@@ -389,7 +389,7 @@ void LandEnc_OfficerHired()
 	/*if (sld.sex == "man") sld.greeting = "Gr_officer";
 	else sld.greeting = "Gr_Danielle";*/
 	// boal новый учет зп -->
-	sld.Payment = true;  // признак офицера для +1 предметов  
+	sld.Payment = true;  // признак офицера для +1 предметов
 	sld.DontClearDead = true;  // не убирать труп
 	// boal новый учет зп <--
 	DeleteAttribute(Pchar, "questTemp.HiringOfficerIDX");
@@ -402,7 +402,7 @@ void LandEnc_OfficerStay()
     SetCharacterTask_Stay(Characters[makeint(Pchar.questTemp.HiringOfficerIDX)]);
     Characters[makeint(Pchar.questTemp.HiringOfficerIDX)].chr_ai.tmpl = LAI_TMPL_STAY;
     DeleteAttribute(Pchar, "questTemp.HiringOfficerIDX");
-}   
+}
 
 void LandEnc_OfficerFired()
 {
@@ -414,6 +414,6 @@ void LandEnc_OfficerFired()
 	sld.location = "none";
     sld.greeting = "Gr_Officer_Fired";
     sld.LifeDay = 0; // стереть при выходе
-    DeleteAttribute(sld, "Payment"); // признак офицера для +1 предметов  
+    DeleteAttribute(sld, "Payment"); // признак офицера для +1 предметов
 	DeleteAttribute(Pchar, "questTemp.FiringOfficerIDX");
-}			
+}

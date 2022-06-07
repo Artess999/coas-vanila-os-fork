@@ -26,17 +26,17 @@ bool LAi_CharacterLogin(aref chr, string locID)
 			if(CheckAttribute(chr, "location.etime") != false)
 			{
 				//Проверям время логина
-				if(LAi_login_CheckTime(stf(chr.location.stime), stf(chr.location.etime))) 
+				if(LAi_login_CheckTime(stf(chr.location.stime), stf(chr.location.etime)))
 				{
 					isLogin = true;
 				}
 			}
-			else 
+			else
 			{
 				isLogin = true;
 			}
 		}
-		else 
+		else
 		{
 			isLogin = true;
 		}
@@ -122,7 +122,7 @@ bool LAi_CharacterLogin(aref chr, string locID)
 		chr.chr_ai.energy = LAI_DEFAULT_ENERGY; // to_do to max
 	}*/
 	SetEnergyToCharacter(chr);  // boal
-	
+
 	//Проверяем хитпойнты
 	float hp = stf(chr.chr_ai.hp);
 	float hpmax = stf(chr.chr_ai.hp_max);
@@ -161,7 +161,7 @@ bool LAi_CharacterLogin(aref chr, string locID)
 	if(LAi_CheckCharacter(chr, "LAi_CharacterLogin") == false) return false;
 	//Выставляем скилл для сражения
 	//LAi_AdjustFencingSkill(chr);
-	
+
 	//Логиним персонажа
 	func = chr.chr_ai.type;
 	bool res = true;
@@ -267,7 +267,7 @@ void LAi_CharacterPostLogin(ref location)
 
 bool LAi_CharacterLogoff(aref chr)
 {
-	chr.chr_ai.login = false;	
+	chr.chr_ai.login = false;
 	//chr.location = "none";
 	if(LAi_CheckCharacter(chr, "LAi_CharacterLogoff") == false) return false;
 	LAi_DelLoginedCharacter(chr);
@@ -298,7 +298,7 @@ void LAi_DelLoginedCharacter(aref chr)
 		{
 			LAi_loginedcharacters[i] = LAi_loginedcharacters[LAi_numloginedcharacters - 1];
 			LAi_numloginedcharacters = LAi_numloginedcharacters - 1;
-		}		
+		}
 	}
 	if(LAi_numloginedcharacters < 0) LAi_numloginedcharacters = 0;
 }

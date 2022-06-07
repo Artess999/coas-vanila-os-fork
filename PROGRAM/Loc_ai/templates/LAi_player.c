@@ -89,7 +89,7 @@ void LAi_tmpl_player_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_player_IsFire(aref chr)
-{	
+{
 	return LAi_CharacterCanFrie(chr);
 }
 

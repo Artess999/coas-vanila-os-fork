@@ -130,7 +130,7 @@ void TL_PlayerStatistic()
 	GameInterface.TABLE_LIST.(sRow).td9.icon2.height = 27;
 	GameInterface.TABLE_LIST.(sRow).td9.icon2.group = sRewardsGroup;
 	GameInterface.TABLE_LIST.(sRow).td9.icon2.icon = "cannons2";
-	
+
 	GameInterface.TABLE_LIST.(sRow).td9.icon3.offset = "59,2";
 	GameInterface.TABLE_LIST.(sRow).td9.icon3.width = 27;
 	GameInterface.TABLE_LIST.(sRow).td9.icon3.height = 27;

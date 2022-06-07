@@ -149,7 +149,7 @@ void Net_CreateServer(ref rSrvParams)
 	NetServer.GameSpeed = sti(rSrvParams.GameSpeed);
 
 	NetServer.GameOver = false;
-	
+
 	NetServer.ConvoyShipID = DST_INVALID;
 	NetServer.ConvoyPoint.x = 0.0;
 	NetServer.ConvoyPoint.z = 0.0;
@@ -159,7 +159,7 @@ void Net_CreateServer(ref rSrvParams)
 
 	Net_LoadFile(true, &NSBanList, "BanList.nsv");
 	Net_LoadFile(true, &NSPlayers, "Players.nsv");
-	
+
 	SetEventHandler("NetServer_OnNetMessage", "NetServer_OnNetMessage", 0);
 	SetEventHandler("ExitApplication", "NetServer_ExitApplication", 0);
 	SetEventHandler("frame", "NetServer_OneSecondTick", 0);
@@ -212,7 +212,7 @@ void NetServer_OneSecondTick()
 			for (int i=0; i<NET_MAXCLIENTS; i++)
 			{
 				if (!sti(NSClients[i].Use)) { continue; }
-				
+
 				if (iPingTime - sti(NSClients[i].LastPingTime) >= 15 * 1000)
 				{
 					NetServer_DropClient(sti(NSClients[i].ID));
@@ -246,7 +246,7 @@ void NetServer_SortPlayers()
 	int i;
 	aref arPlayers; makearef(arPlayers, NSPlayers.Players);
 	int iNumPlayers = GetAttributesNum(arPlayers);
-	
+
 	int iRealDays = iRealYear * (iRealMonth * 31 + iRealDay);
 
 	// kill players who offline > 30 days, fake counting ofcourse, but who care?
@@ -257,7 +257,7 @@ void NetServer_SortPlayers()
 		int iYear = sti(arPlayer.LastLogin.Year);
 		int iMonth = sti(arPlayer.LastLogin.Month);
 		int iDay = sti(arPlayer.LastLogin.Day);
-		
+
 		if (iYear * (iMonth * 31 + iDay) - iRealDays > 31)
 		{
 			DeleteAttribute(arPlayers, GetAttributeName(arPlayer));
@@ -267,10 +267,10 @@ void NetServer_SortPlayers()
 	}
 
 	iNumPlayers = GetAttributesNum(arPlayers);
-	for (i=0; i<iNumPlayers; i++) 
-	{ 
+	for (i=0; i<iNumPlayers; i++)
+	{
 		if (i >= MAX_TOPPLAYERS) { break; }
-		NSSortedPlayers[i] = i; 
+		NSSortedPlayers[i] = i;
 	}
 
 	// sort players using rank and (second condition) Ship Sunks
@@ -285,11 +285,11 @@ void NetServer_UpdateGlobalPlayerStatistics(ref rPlayer)
 
 	string sNickName = rPlayer.NickName;
 	string sNickPassword = rPlayer.NickPassword;
-	
+
 	// add new player if not exist
-	if (!CheckAttribute(arPlayers, sNickName)) 
-	{ 
-		arPlayers.(sNickName) = ""; 
+	if (!CheckAttribute(arPlayers, sNickName))
+	{
+		arPlayers.(sNickName) = "";
 
 		arPlayers.(sNickName).Nickname = sNickName;
 		arPlayers.(sNickName).NickPassword = sNickPassword;
@@ -317,15 +317,15 @@ void NetServer_UpdateGlobalPlayerStatistics(ref rPlayer)
 	arPlayer.Lost = iLost;
 	arPlayer.Shipwrecks = iWrecks;
 	arPlayer.ShipsSunk = iSunks;
-	arPlayer.TotalDamage = sti(arPlayer.TotalDamage) + sti(rPlayer.Stat.DamageInflicted); 
+	arPlayer.TotalDamage = sti(arPlayer.TotalDamage) + sti(rPlayer.Stat.DamageInflicted);
 
 	arPlayer.LastLogin.Year = iRealYear;
 	arPlayer.LastLogin.Month = iRealMonth;
 	arPlayer.LastLogin.Day = iRealDay;
 
-	if (iHits + iMisses > 0) 
+	if (iHits + iMisses > 0)
 		{ arPlayer.Accuracy = makeint((iHits * 100) / (iHits + iMisses)); }
-	else 
+	else
 		{ arPlayer.Accuracy = 0; }
 
 	arPlayer.Rank = Net_GetRankNum(iSunks, iWon);

@@ -9,7 +9,7 @@ void InitInterface(string iniName)
     	wdmLockReload            = true;
     }
     StartAboveForm(true);
-    
+
     GameInterface.title = "titleNationLegend";
 
     SendMessage(&GameInterface,"ls",MSG_INTERFACE_INIT,iniName);
@@ -38,7 +38,7 @@ void ProcessCancelExit()
 void IDoExit(int exitCode)
 {
     EndAboveForm(true);
-    
+
 	DelEventHandler("InterfaceBreak","ProcessBreakExit");
 	DelEventHandler("exitCancel","ProcessCancelExit");
 	DelEventHandler("ievnt_command","ProcCommand");
@@ -72,7 +72,7 @@ void CalculateNationRelat()
 
     // boal 04.04.04 навел марафет в коде - красота :)
     bool ok1, ok2;
-    
+
     Nation1 = 1;
     Nation2 = 1;
     while (Nation1 == Nation2)

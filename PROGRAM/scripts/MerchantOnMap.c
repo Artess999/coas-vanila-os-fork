@@ -14,7 +14,7 @@ string CreateMerchant(int ination)
         //Map_ReleaseQuestEncounter( NationShortName(sti(MerPrm.nation))+"_QuestMerchant");
         //Group_DeleteGroup("Sea_"+NationShortName(sti(MerPrm.nation))+"_QuestMerchant");
     //}
-    
+
     int iChar = NPC_GenerateCharacter(NationShortName(sti(MerPrm.nation))+"_QuestMerchant", "off_spa_2", "man", "man", 5, sti(MerPrm.nation), 6, true));
     makeref(chref, Characters[iChar]);
     SetMerchantShip(chref, sti(MerPrm.QuestGoodsIdx));
@@ -24,11 +24,11 @@ string CreateMerchant(int ination)
 	Group_FindOrCreateGroup(sGroup);
     Group_SetType(sGroup,"trade");
     //Group_SetTaskAttackInMap(sGroup, PLAYER_GROUP);
-    
+
     ref rGroup = Group_GetGroupByID(sGroup);
     rGroup.Task = AITASK_MOVE;
     Group_LockTask(sGroup);
-    
+
     Group_AddCharacter(sGroup, chref.id);
     Group_SetGroupCommander(sGroup, chref.id);
 
@@ -39,25 +39,25 @@ string CreateMerchant(int ination)
 
     Map_CreateTrader(MerPrm.sColony, MerPrm.sNextColony, chref.id, 5);
     MerPrm.CapIndex = iChar;
-    
+
     string sQuest = NationShortName(sti(MerPrm.nation))+"_QuestMerchant_1";
 	pchar.quest.(sQuest).win_condition.l1 = "Character_sink";
     pchar.quest.(sQuest).win_condition.l1.character = chref.id;
     pchar.quest.(sQuest).function= "KillMerchant";
-    
+
     sQuest = NationShortName(sti(MerPrm.nation))+"_QuestMerchant_2";
 
 	pchar.quest.(sQuest).win_condition.l1 = "Character_Capture";
     pchar.quest.(sQuest).win_condition.l1.character = chref.id;
     pchar.quest.(sQuest).function= "CaptureMerchant";
-    
-    
-    
-    
-    
+
+
+
+
+
     int gcount = rand(3)-1;
     if (gcount < 0 || makeint(pchar.rank) < 5) gcount = 0;
-    
+
     for (int i = 0; i<gcount; i++)
     {
         iChar = NPC_GenerateCharacter(NationShortName(sti(MerPrm.nation))+"_QuestMerchantGuard_"+i, "off_spa_2", "man", "man", 5, sti(MerPrm.nation), 20, true));
@@ -70,8 +70,8 @@ string CreateMerchant(int ination)
 
     }
     MerPrm.gcount = gcount;
-    
-    
+
+
     return chref.Ship.Name;
 }
 
@@ -94,7 +94,7 @@ bool MerchantPrepare(int Mnation)
     {
         MerPrm.nation = PIRATE;
     }
-    
+
      // goods
     switch (rand(12))
     {
@@ -144,7 +144,7 @@ bool MerchantPrepare(int Mnation)
 
     if (HomeColony!="none" && iFColony != -1 )
     {
-    
+
         if (rand(1)==1)
         {
             MerPrm.sColony = "none";
@@ -260,7 +260,7 @@ int SetShipTypeMerchant(ref Cap)
 
     hcrew = GetMaxCrewQuantity(Cap);
     SetCrewQuantity(Cap, hcrew);
-    
+
     DeleteAttribute(Cap,"ship.sails");
     DeleteAttribute(Cap,"ship.masts");
     DeleteAttribute(Cap,"ship.blots");
@@ -275,7 +275,7 @@ int SetShipTypeMerchant(ref Cap)
         Fantom_SetCannons(Cap, "trade");
         Fantom_SetBalls(Cap, "trade");
     }
-    
+
     return irank;
 }
 
@@ -323,7 +323,7 @@ void SetMerchantShip(ref Cap, int igoods)
     if (!trap)
     {
         int iSpace = GetCharacterFreeSpace(Cap, igoods);
-    
+
         Log_TestInfo("irank = "+irank);
         float del = makefloat(7-irank+rand(1))/10; //eddy. товаров меньше
         if (del > 1.0 ) del = 1;
@@ -461,7 +461,7 @@ string GenerateMerchant()
     		AddQuestUserData("MerchantOnMap", "sColony", MerPrm.sColony);
     		AddQuestUserData("MerchantOnMap", "sNextColony", MerPrm.sNextColony);
     		AddQuestUserData("MerchantOnMap", "sShipName", MerPrm.ShipName);
-    		
+
             string sQuest = "ClearMerchant";
             SetTimerCondition(sQuest, 0, 0, 6, false);
             pchar.quest.(sQuest).win_condition = "ClearMerchant";

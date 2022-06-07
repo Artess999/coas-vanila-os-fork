@@ -2,7 +2,7 @@
 int CreateBarbadosCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -15,11 +15,11 @@ int CreateBarbadosCharacters(int n)
 	ch.location = "Bridgetown_townhall";
 	ch.location.group = "sit";
 	ch.location.locator = "sit1";
-	
+
 	ch.Default	= "Bridgetown_townhall";
 	ch.Default.group = "sit";
 	ch.Default.locator = "sit1";
-	
+
 	ch.Dialog.Filename = "Common_Mayor.c";
 	ch.nation = ENGLAND;
 	ch.quest.type = "hovernor";
@@ -198,6 +198,6 @@ int CreateBarbadosCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

@@ -222,7 +222,7 @@ void LAi_CharacterAttack()
 	call func(enemy, attack);
 	func = "LAi_type_" + enemy.chr_ai.type + "_CharacterUpdate";
 	call func(enemy, 0.0001);
-	
+
 }
 
 void LAi_CharacterFire()
@@ -369,7 +369,7 @@ void LAi_Character_Dead_Process(aref chr)
             PostEvent("LAi_event_Character_Dead", MOD_DEAD_CLEAR_TIME * 1000, "i", chr);
         }
         // убираем совместителя в CharacterDeadProcess
-        
+
 		//Реинкарнируем
 		LAi_GenerateFantomFromMe(chr);
 		//Посмотрим группу

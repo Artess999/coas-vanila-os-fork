@@ -66,7 +66,7 @@ bool CheckQuestColonyList(string sColony)
 
     if (CheckAttribute(pchar, "GenQuest.Intelligence.MayorId") &&
         characters[GetCharacterIndex(pchar.GenQuest.Intelligence.MayorId)].City == sColony) return false;
-        
+
     //fix не осаждать Барбадос по линейке Блада
     if (CheckAttribute(pchar, "questTemp.CapBloodLine") &&  Pchar.questTemp.CapBloodLine == true && sColony == "Bridgetown") return false;
 
@@ -175,7 +175,7 @@ int SelectColonyForSiege(int ination)  // выбираем колонию для
     int i = 0;
     int j = 0;
     bool bb, aa;
-    
+
     while (i < 20)
     {
         j = rand(MAX_COLONIES-1);
@@ -202,7 +202,7 @@ int SelectColonyForSiege(int ination)  // выбираем колонию для
         }
         else return -1;
     }
-    
+
     return itemp;  */
 
 }
@@ -239,7 +239,7 @@ float GetDistanceToColony(string sColony);
         int iCnum = FindColony(sColony);
 		string sIsland = Colonies[iCnum].island;
 		string sTemp = sColony+"_town";
-		
+
         return GetDistance2D(stf(worldMap.playerShipX), stf(worldMap.playerShipZ),
                             stf(worldMap.islands.(sIsland).(sTemp).position.x),
                             stf(worldMap.islands.(sIsland).(sTemp).position.z));
@@ -298,7 +298,7 @@ int MakeSiegeSquadron(int ination)
     makearef(aData, NullCharacter.Siege);
     aData.iSquadronPower = 0;
     int itmp = 0;
-    
+
     Group_DeleteGroup(sGroup);
 	Group_FindOrCreateGroup(sGroup);
 
@@ -327,7 +327,7 @@ int MakeSiegeSquadron(int ination)
     aData.iSquadronPower = sti(aData.iSquadronPower) - 19;
     Log_TestInfo("Squadron Power: "+aData.iSquadronPower+"%");
     Log_TestInfo("Colony Power: "+sti(colonies[FindColony(aData.colony)].FortValue)+"%");
-    
+
     Group_SetGroupCommander(sGroup, sCapId+ "1");
     ref rGroup = Group_GetGroupByID(sGroup);
     rGroup.Task = AITASK_MOVE;
@@ -395,14 +395,14 @@ void CreateSiege(string tmp)
     ref rColony;
     aref aData;
     makearef(aData, NullCharacter.Siege);
-    
+
     if (PrepareSiege())
     {
        // aData.nation = 3;//rand(3);//2
        // aData.conation = 0;
        // aData.colony = "SentJons";
        // aData.island = "Antigua";
-        
+
         aData.progress = 0;
         DeleteAttribute(aData, "loot");
         DeleteAttribute(aData, "PlayerHelpMayor");
@@ -427,18 +427,18 @@ void SiegeProgress()
     aref aData;
     makearef(aData, NullCharacter.Siege);
     int i = sti(aData.progress);
-    
+
     switch (i)
     {
         case 0:
 	        Log_TestInfo("По карте!");
 	        BattleOfTheColony("");
         break;
-        
+
         case 1:
         	SiegeClear("");
         break
-        
+
     }
     i++;
     aData.progress = i;
@@ -485,7 +485,7 @@ void LeaveTown(string tmp)
     string sCap = NationShortName(sti(aData.nation))+"SiegeCap_";
     string sGroup = "Sea_"+sCap+"1";
     ref NPChar = Group_GetGroupCommander(sGroup);
-    
+
     AfterTownBattle();  // все, все свободны
     LAi_LoginInCaptureTown(NPChar, false);
     aData.win = 1;
@@ -504,7 +504,7 @@ void SiegeResult(string tmp)
     Log_TestInfo("SquadronDamage: "+ SquadronDamage);
     aData.win =((ifortPower)*fortDamage < sti(aData.iSquadronPower)*SquadronDamage );
     Log_TestInfo(" Win: "+aData.win);
-    
+
     string sQuest = "LeaveBattle";
     pchar.quest.(sQuest).win_condition.l1 = "location";
     pchar.quest.(sQuest).win_condition.l1.location = aData.island;
@@ -521,11 +521,11 @@ void CheckGroupCommander(string tmp)
     string sGroup = "Sea_"+sCap+"1";
     ref rchar = Group_GetGroupCommander(sGroup);
     bool bhasCom = false;
-    
+
     if ( !CharacterIsDead(rchar)) return;
-    
+
     int CapNum = sti(aData.ishipcount) + sti(aData.imanofwars);
-    
+
     for(int k = 1; k <= CapNum ; k++)
     {
        if (GetCharacterIndex(sCap+k) != -1 && !CharacterIsDead(CharacterFromID(sCap+k)))
@@ -549,15 +549,15 @@ void BattleOfTheColony(string tmp)
     ref rColony;
     makearef(aData, NullCharacter.Siege);
     string sGroup = "Sea_"+NationShortName(sti(aData.nation))+"SiegeCap_1";
-    
+
     if (CheckAttribute(PChar, "quest.BattleOfTheColony")) Pchar.quest.BattleOfTheColony.over = "yes";
     CheckGroupCommander("");
-    
+
     makeref(rColony, Colonies[FindColony(aData.Colony)]);
     rColony.DontSetShipInPort = true;
     rColony.Siege = true;
     //Group_SetTaskNone(sGroup);
-    
+
     ref FC = GetFortCommander(aData.colony);
     Group_SetTaskMove(sGroup, stf(FC.ship.pos.x), stf(FC.ship.pos.z));
     //Group_SetAddress(sGroup, aData.island, "IslandShips1", "ship_4");
@@ -574,17 +574,17 @@ void BattleOfTheColony(string tmp)
     SetTimerCondition(sQuest, 0, 0, SiegeTime, false);
     pchar.quest.(sQuest).win_condition = "EndOfTheSiege";
     pchar.quest.(sQuest).function= "EndOfTheSiege";
-    
+
     sQuest = "LeaveBattle";
     pchar.quest.(sQuest).win_condition.l1 = "location";
     pchar.quest.(sQuest).win_condition.l1.location = aData.island;
     pchar.quest.(sQuest).function= "LeaveBattle";
-    
+
     sQuest = "PlayerKillSquadron";
     pchar.quest.(sQuest).win_condition.l1 = "Group_Death";
     pchar.quest.(sQuest).win_condition.l1.group = sGroup;
     pchar.quest.(sQuest).function= "PlayerKillSquadron";
-    
+
     SaveCurrentQuestDateParam("Siege_Start");
     aData.tmpID1 = SiegeRumourEx("Вы что не слышали? В нашей гавани "+NationNameSK(sti(aData.nation))+"ие корабли ведут бой с фортом. Форт может пасть в любой момент и тогда начнется самое страшное.", aData.Colony, sti(aData.nation)+10, -1, sti(aData.SiegeTime)-2, 3, "citizen,habitue,trader,tavern");
     aData.tmpID2 = SiegeRumour("OnSiege_1", "", sti(aData.conation)+10, sti(aData.nation)+10, sti(aData.SiegeTime)-2, 3);
@@ -607,19 +607,19 @@ void  EndOfTheSiege(string tmp)
     ref sld;
     int l, f;
     string tmpName;
-    
+
 	Log_TestInfo("Siege End");
-	
+
     bool bcapt = false;
     aref aData;
-    
+
     makearef(aData, NullCharacter.Siege);
-    
+
     string sGroup = "Sea_"+NationShortName(sti(aData.nation))+"SiegeCap_1";
     ref rColony = GetColonyByIndex(FindColony(aData.colony));
     int ifortPower = sti(rColony.FortValue);
     int idist = makeint(GetDistanceToColony(aData.Colony));
-    
+
     if(idist == -1 || idist > 60 || tmp != "")
     {
         // чистим слухи
@@ -645,7 +645,7 @@ void  EndOfTheSiege(string tmp)
         }
         // возвращаем мэру обычный диалог
         DeleteAttribute(rColony, "Siege"); //снимаем осаду
-        
+
         if (CheckAttribute(PChar, "quest.EndOfTheSiegeLater.again"))
         {
             DeleteAttribute(Pchar, "quest.EndOfTheSiegeLater.again");
@@ -663,7 +663,7 @@ void  EndOfTheSiege(string tmp)
                 ref rgrp = Group_GetGroupByID(sGroup);
                 int i, j;
                 int qrew;
-                
+
                 for (i =0; i < icon; i++)
                 {
                     j = Group_GetCharacterIndexR(rgrp, i);
@@ -703,18 +703,18 @@ void  EndOfTheSiege(string tmp)
             if (!bWorldAlivePause && bcapt && !CheckAttribute(rColony, "notCaptured"))
             {
                 SetCaptureTownByNation(aData.colony, sti(aData.nation))
-                
+
                 SiegeRumour("Сегодня славный день для "+ NationNameGenitive(sti(aData.nation))+" - нам удалось захватить такую важную колонию как "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+"! Весь "+NationNameSK(sti(aData.conation))+"ий гарнизон был перебит, а форт занят нашими войсками и уже снова укреплен!", aData.Colony, sti(aData.nation), -1, 15, 3);
                 SiegeRumour("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра, после длительной осады, захватила "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Теперь "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" - "+NationNameSK(sti(aData.nation))+"ая колония!", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
                 SiegeRumour("Поговаривают, что "+NationNamePeople(sti(aData.nation))+" подло напали на нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" и захватили город!", "", sti(aData.conation), -1, 30, 3);
                 SiegeRumour("Вы слышали новость? Наш доблестный флот отбил у "+ NationNameGenitive(sti(aData.conation))+" богатую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". ", ("!"+aData.Colony), sti(aData.nation), -1, 30, 3);
-                
+
             }
             else
             {
                 SetNull2StoreMan(rColony)// нулим магазин при захвате города эскадрой
                 SetNull2Deposit(aData.colony);// нулим ростовщиков
-                
+
                 SiegeRumourEx("Печальные вести для "+ NationNameGenitive(sti(aData.conation))+" - нам не удалось отстоять нашу колонию! Форт был разрушен "+NationNameSK(sti(aData.nation))+"ими кораблями, а город разграблен. После чего враг покинул воды колонии.", aData.Colony, sti(aData.conation), -1, 15, 3, "citizen,habitue,trader,tavern");
                 SiegeRumour("Говорят, что "+NationNameSK(sti(aData.nation))+"ая эскадра, после длительной осады, захватила "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". После того, как город был разграблен - "+NationNameSK(sti(aData.nation))+"ая эскадра покинула воды колонии.", "", sti(aData.conation)+10, sti(aData.nation)+10, 30, 3);
                 SiegeRumour("Поговаривают, что "+NationNamePeople(sti(aData.nation))+" внезапно атаковали нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+" и разграбили город, до того как подоспело подкрепление! Затем "+NationNamePeople(sti(aData.nation))+" постыдно ретировались с награбленным.", "!"+aData.Colony, sti(aData.conation), -1, 30, 3);
@@ -722,7 +722,7 @@ void  EndOfTheSiege(string tmp)
             }
             FortDestroy();// уничтожаем форт
             Group_SetAddressNone(sGroup);
-            
+
             Log_TestInfo("Siege Finish - Squadron win!");
         }
         else
@@ -743,7 +743,7 @@ void  EndOfTheSiege(string tmp)
         pchar.quest.(sQuest).win_condition = "EndOfTheSiegeLater";
         pchar.quest.(sQuest).function= "EndOfTheSiege";
     }
-    
+
 
 }
 void FortDestroy()
@@ -752,7 +752,7 @@ void FortDestroy()
     makearef(aData, NullCharacter.Siege);
     int ind = GetCharacterIndex(aData.colony + " Fort Commander");
     ref FC;
-    
+
 	if (ind == -1) return;
 
     FC = &Characters[ind];
@@ -810,7 +810,7 @@ int SiegeRumour(string stext, string sCity, int nation1, int nation2, int terms,
 int SiegeRumourEX(string stext, string sCity, int nation1, int nation2, int terms, int qty, string tip)
 {
     object tmp;
-    
+
     if (findsubstr(stext, "OnSiege_" , 0) != -1)
 	{
 		tmp.event = stext;
@@ -819,7 +819,7 @@ int SiegeRumourEX(string stext, string sCity, int nation1, int nation2, int term
 	{
 		tmp.event = "none";
 	}
-    
+
     tmp.text = stext;
     tmp.state = qty;//кол-во раз
     tmp.tip = tip;
@@ -837,10 +837,10 @@ int SiegeRumourEX(string stext, string sCity, int nation1, int nation2, int term
 			tmp.onlynation = nation1; //локализация
 		}
 	}
-	
+
 	if (nation2 != -1 && nation2 > 5)
 	tmp.nonation.n2 = nation2 - 10;
-	
+
     tmp.starttime = 0;
     tmp.actualtime = terms; //сроки
     tmp.next = "none";
@@ -854,15 +854,15 @@ string NationNameSK(int nat)
         case ENGLAND:
         	return "английск";
         break;
-        
+
         case FRANCE:
         	return "французск";
         break;
-        
+
         case SPAIN:
         	return "испанск";
         break;
-        
+
         case HOLLAND:
         	return "голландск";
         break;
@@ -873,15 +873,15 @@ string SiegeRumourText(int inum)
 {
     aref aData;
     string sDays;
-    
+
     makearef(aData, NullCharacter.Siege);
-    
+
     int iDays = sti(aData.SiegeTime) - GetQuestPastDayParam("Siege_Start");
     sDays = iDays+" дней";
-    
+
     if (iDays < 5) sDays = iDays+" дня";
     if (iDays <= 1 ) sDays = "несколько часов";
-    
+
     switch (inum)
     {
         case 1:
@@ -891,7 +891,7 @@ string SiegeRumourText(int inum)
         case 2:
         	return "Ходят слухи, что наш несокрушимый флот напал на "+NationNameSK(sti(aData.conation))+"ую колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Враг отчаянно обороняется, но, скорее всего исход сражения решится в ближайшие "+sDays+".";
         break;
-        
+
         case 3:
         	return "Поговаривают, что "+NationNamePeople(sti(aData.nation))+" напали на нашу колонию "+GetConvertStr(aData.Colony+" Town", "LocLables.txt")+". Защитники колонии храбро сражаются с врагом, но провизии и медикаментов у них осталось меньше чем на "+sDays+".";
         break;

@@ -79,11 +79,11 @@ void InitBattleInterface()
 	BattleInterface.blindSpeed = 0.003;
 	BattleInterface.MaxWind = 30.0;
 	BattleInterface.MaxShipSpeed = 20.0;
-	if (iArcadeSails == 1) 
+	if (iArcadeSails == 1)
 	{
 		BattleInterface.ShipSpeedScaler = (1.0 / 2.5);
-	} 
-	else 
+	}
+	else
 	{
 		BattleInterface.ShipSpeedScaler = (1.0 / 1.0);
 	}
@@ -303,13 +303,13 @@ void RefreshBattleInterface()
 void DeleteBattleInterface()
 {
     ResetTimeScale(); // boal
-    
+
 	Log_SetActiveAction("Nothing");
 	InterfaceSpyGlassRelease();
 
     DeleteClass(&BattleInterface);
 	DeleteClass(&objShipPointer);
-	
+
 	DelEventHandler(SHIP_DELETE, "BI_DeleteShip");
 	DelEventHandler(SHIP_DEAD,"BI_DeadShip");
 	DelEventHandler("BI_CommandEndChecking", "BI_CommandEndChecking");
@@ -429,7 +429,7 @@ ref BI_CommandEndChecking()
 	case "BI_CompanionCommand":
 		BI_retComValue = BI_COMMODE_MY_SHIP_SELECT+BI_COMMODE_ALLLOCATOR_SELECT;
 		break;
-		
+
 	case "BI_Brander":
 		BI_retComValue = BI_COMMODE_ENEMY_SHIP_SELECT+BI_COMMODE_ALLLOCATOR_SELECT;
 		break;
@@ -448,7 +448,7 @@ ref BI_CommandEndChecking()
 	case "BI_SandbankManeuver":
 		BI_retComValue = 0;
 		break;
-		
+
 	case "BI_Ability":
 		BI_retComValue = BI_COMMODE_ABILITY_ICONS;
 		break;
@@ -467,7 +467,7 @@ ref BI_CommandEndChecking()
 		BI_retComValue = BI_COMMODE_NEUTRAL_SHIP_SELECT+BI_COMMODE_FRIEND_SHIP_SELECT+BI_COMMODE_ENEMY_SHIP_SELECT;
 		BattleInterface.Commands.Speak.EffectRadius	= 300;
 	break;*/
-	
+
 	/*case "BI_Sneak":
 		BI_retComValue = BI_COMMODE_ENEMY_TOWN;
 		BattleInterface.Commands.Sneak.EffectRadius	= 1000; //boal
@@ -729,7 +729,7 @@ void BI_LaunchCommand()
 	case "BI_UseItemAbilitie":
 		CompleteQuestName( BattleInterface.AbilityIcons.(alternativeCommand).quest, "");
 	break;
-	
+
 	/*case "BI_Ability":
   		Event("evntSetUsingAbility","l", charIdx);
 	break;*/
@@ -896,7 +896,7 @@ void BI_SetPossibleCommands()
 		BattleInterface.Commands.InstantBoarding.enable	= bBettaTestMode; // boal cheat
 		//BattleInterface.Commands.Speak.enable			= bCanSpeak;
 		//BattleInterface.Commands.Sneak.enable			= bCanSneak;
-		
+
 		BattleInterface.Commands.Moor.enable			= bCanEnterToLand;
 		BattleInterface.Commands.Board.enable			= bAbordageShipCanBe;
 		BattleInterface.Commands.SailAway.enable		= false;
@@ -1070,21 +1070,21 @@ void BI_InitializeCommands()
 	BattleInterface.Commands.Ability.event			= "BI_Ability";
 	BattleInterface.Commands.Ability.note			= LanguageConvertString(idLngFile, "sea_Ability");
 	//
-	
+
 	BattleInterface.Commands.Boat.enable	= false;
 	BattleInterface.Commands.Boat.picNum	= 26;
 	BattleInterface.Commands.Boat.selPicNum	= 10;
 	BattleInterface.Commands.Boat.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Boat.event	= "BI_Boat";
 	BattleInterface.Commands.Boat.note	= LanguageConvertString(idLngFile, "sea_Boat");
-	
+
 	BattleInterface.Commands.Cabin.enable	= false;
 	BattleInterface.Commands.Cabin.picNum	= 27;
 	BattleInterface.Commands.Cabin.selPicNum	= 11;
 	BattleInterface.Commands.Cabin.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Cabin.event	= "BI_Cabin";
 	BattleInterface.Commands.Cabin.note	    = LanguageConvertString(idLngFile, "sea_Cabin");
-	
+
 	BattleInterface.Commands.ImmediateDeath.enable	= false;
 	BattleInterface.Commands.ImmediateDeath.picNum	= 43;    // это чит
 	BattleInterface.Commands.ImmediateDeath.selPicNum	= 43;
@@ -1098,42 +1098,42 @@ void BI_InitializeCommands()
 	BattleInterface.Commands.Brander.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Brander.event			= "BI_Brander";
     BattleInterface.Commands.Brander.note	= GetConvertStr("Brander", "AbilityDescribe.txt");
-    
+
 	BattleInterface.Commands.ImmediateReload.enable			= false;
 	BattleInterface.Commands.ImmediateReload.picNum			= 53;
 	BattleInterface.Commands.ImmediateReload.selPicNum		= 37;
 	BattleInterface.Commands.ImmediateReload.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.ImmediateReload.event			= "BI_ImmediateReload";
     BattleInterface.Commands.ImmediateReload.note	= GetConvertStr("ImmediateReload", "AbilityDescribe.txt");
-    
+
 	BattleInterface.Commands.InstantBoarding.enable			= false;
 	BattleInterface.Commands.InstantBoarding.picNum			= 30;   // это чит
 	BattleInterface.Commands.InstantBoarding.selPicNum		= 14;
 	BattleInterface.Commands.InstantBoarding.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.InstantBoarding.event			= "BI_InstantBoarding";
     BattleInterface.Commands.InstantBoarding.note	= GetConvertStr("InstantBoarding", "AbilityDescribe.txt");
-    
+
 	BattleInterface.Commands.LightRepair.enable			= false;
 	BattleInterface.Commands.LightRepair.picNum			= 54;
 	BattleInterface.Commands.LightRepair.selPicNum		= 38;
 	BattleInterface.Commands.LightRepair.texNum			= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.LightRepair.event			= "BI_LightRepair";
 	BattleInterface.Commands.LightRepair.note	= GetConvertStr("LightRepair", "AbilityDescribe.txt");
-	
+
 	BattleInterface.Commands.InstantRepair.enable		= false;
 	BattleInterface.Commands.InstantRepair.picNum		= 55;
 	BattleInterface.Commands.InstantRepair.selPicNum	= 39;
 	BattleInterface.Commands.InstantRepair.texNum		= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.InstantRepair.event		= "BI_InstantRepair";
 	BattleInterface.Commands.InstantRepair.note	= GetConvertStr("InstantRepair", "AbilityDescribe.txt");
-	
+
 	BattleInterface.Commands.Turn180.enable				= false;
 	BattleInterface.Commands.Turn180.picNum				= 56;
 	BattleInterface.Commands.Turn180.selPicNum			= 40;
 	BattleInterface.Commands.Turn180.texNum				= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Turn180.event				= "BI_Turn180";
 	BattleInterface.Commands.Turn180.note	= GetConvertStr("Turn180", "AbilityDescribe.txt");
-	
+
 	BattleInterface.Commands.SandbankManeuver.enable	= false;
 	BattleInterface.Commands.SandbankManeuver.picNum	= 57;
 	BattleInterface.Commands.SandbankManeuver.selPicNum	= 41;
@@ -1436,14 +1436,14 @@ ref BI_GetData()
 			BI_intNRetValue[0] = 8;
 			switch( SeaAI_GetRelation(chrIdx,nMainCharacterIndex) )
 			{
-				case RELATION_FRIEND:	
-					BI_intNRetValue[1] = 7; 
+				case RELATION_FRIEND:
+					BI_intNRetValue[1] = 7;
 				break;
-				case RELATION_NEUTRAL:	
-					BI_intNRetValue[1] = -1; 
+				case RELATION_NEUTRAL:
+					BI_intNRetValue[1] = -1;
 				break;
-				case RELATION_ENEMY:	
-					BI_intNRetValue[1] = 6; 
+				case RELATION_ENEMY:
+					BI_intNRetValue[1] = 6;
 				break;
 			}
 			BI_intNRetValue[2] = 8;
@@ -1452,20 +1452,20 @@ ref BI_GetData()
 				//case SMUGGLER:
 				//	BI_intNRetValue[3] = 1;
 				//break;
-				case ENGLAND:		
-					BI_intNRetValue[3] = 3; 
+				case ENGLAND:
+					BI_intNRetValue[3] = 3;
 				break;
-				case FRANCE:		
-					BI_intNRetValue[3] = 2; 
+				case FRANCE:
+					BI_intNRetValue[3] = 2;
 				break;
-				case SPAIN:			
-					BI_intNRetValue[3] = 0; 
+				case SPAIN:
+					BI_intNRetValue[3] = 0;
 				break;
-				case HOLLAND:		
-					BI_intNRetValue[3] = 4; 
+				case HOLLAND:
+					BI_intNRetValue[3] = 4;
 				break;
-				case PIRATE:		
-					BI_intNRetValue[3] = 5; 
+				case PIRATE:
+					BI_intNRetValue[3] = 5;
 				break;
 			}
 
@@ -1833,8 +1833,8 @@ ref ProcessSailDamage()
 
 	ref chref = GetCharacter(chrIdx);
 
-	if (LAi_IsImmortal(chref)) 
-	{ 
+	if (LAi_IsImmortal(chref))
+	{
 		BI_g_fRetVal = 0;
 		return &BI_g_fRetVal;
 	}
@@ -1870,7 +1870,7 @@ ref ProcessSailDamage()
 		if(sMastName!="#")	{ arSail.mastFall = sMastName; }
 		sailDmg = sailDmgMax;
 	}
-	
+
 	/*if (sailDmg < 0.5)
 	{
 		Log_SetStringtoLog("MUST DIE!!! " + sailDmg);
@@ -1902,7 +1902,7 @@ void ProcessDayRepair()
 			cn = GetCompanionIndex(mchar,i);
 			if(cn==-1) continue;
 			chref = GetCharacter(cn);
-	
+
 			// расчет починки корпуса
 			if (GetHullPercent(chref)<100.0 )
 			{
@@ -1911,7 +1911,7 @@ void ProcessDayRepair()
 				tmpf = GetRepairGoods(true,chref);
 				if (tmpf > 0)
 				{
-					if (tmpf < matQ)	{ repPercent = tmpf/GetHullPPP(chref); }  
+					if (tmpf < matQ)	{ repPercent = tmpf/GetHullPPP(chref); }
 					repPercent = ProcessHullRepair(chref, repPercent);
 					matQ = repPercent*GetHullPPP(chref);
 					RemoveRepairGoods(true,chref,matQ);
@@ -1920,7 +1920,7 @@ void ProcessDayRepair()
 		            // boal <--
 	            }
 			}
-	
+
 			// расчет починки парусов
 			if (GetSailPercent(chref)<100.0 )
 			{
@@ -1964,7 +1964,7 @@ ref procGetSailTextureData()
 		case 1:
 			sUpgrade = "common";
 		break;
-		case 2: 
+		case 2:
 			sUpgrade = "pat";
 		break;
 		case 3:
@@ -1994,21 +1994,21 @@ ref procGetSailTextureData()
 		/*
 		switch(sti(Characters[chrIdx].nation))  // Не работает это :(
 		{
-			case ENGLAND:	
-				nationFileName = "ships\parus_" + sUpgrade + "_england.tga";		
+			case ENGLAND:
+				nationFileName = "ships\parus_" + sUpgrade + "_england.tga";
 			break;
-			case FRANCE:	
-				nationFileName = "ships\parus_" + sUpgrade + "_france.tga";		
+			case FRANCE:
+				nationFileName = "ships\parus_" + sUpgrade + "_france.tga";
 			break;
-			case SPAIN:		
-				nationFileName = "ships\parus_" + sUpgrade + "_spain.tga";	
+			case SPAIN:
+				nationFileName = "ships\parus_" + sUpgrade + "_spain.tga";
 			break;
 			case PIRATE:
 				nationFileName = "ships\parus_" + sUpgrade + "_pirate.tga";
 				//BI_objRetValue.normalTex = "ships\sail_Pirates.tga";
 			break;
-			case HOLLAND:	
-				nationFileName = "ships\parus_" + sUpgrade + "_holland.tga";	
+			case HOLLAND:
+				nationFileName = "ships\parus_" + sUpgrade + "_holland.tga";
 			break;
 		}
 		*/
@@ -2023,12 +2023,12 @@ ref procGetSailTextureData()
                 BI_objRetValue.normalTex = shref.EmblemedSails.normalTex;
                 nationFileName           = shref.EmblemedSails.normalTex;
             }
-			if( CheckAttribute(&Characters[chrIdx],"Features.GeraldSails") && sti(Characters[chrIdx].Features.GeraldSails)==true) 
+			if( CheckAttribute(&Characters[chrIdx],"Features.GeraldSails") && sti(Characters[chrIdx].Features.GeraldSails)==true)
 			{
 				makearef(arEmbl,shref.GeraldSails);
 			} else {
 				makearef(arEmbl,shref.EmblemedSails);
-			} 
+			}
 			/*if (CheckAttribute(shref, "GeraldSails"))
             {
                 makearef(arEmbl, shref.GeraldSails);  */
@@ -2046,7 +2046,7 @@ ref procGetSailTextureData()
 						BI_objRetValue.(attrName).vscale = arSail.vscale;
 					}
 					if(tmpStr=="1") {
-						//BI_objRetValue.(attrName).Gerald = nationFileName;  
+						//BI_objRetValue.(attrName).Gerald = nationFileName;
 						BI_objRetValue.(attrName) = nationFileName;
 					} else {
 						BI_objRetValue.(attrName).Gerald = tmpStr;
@@ -2190,7 +2190,7 @@ float GetRepairGoods(bool bIsHull, ref chref)
 	{
 		fGoodsQ = GetCargoGoods(chref,GOOD_PLANKS);
 		if( CheckAttribute(chref,"RepairMaterials.forHull") )   // погрешность округления списания колва досок за процент
-		{	
+		{
 			fGoodsQ += stf(chref.RepairMaterials.forHull);
 		}
 	}
@@ -2198,7 +2198,7 @@ float GetRepairGoods(bool bIsHull, ref chref)
 	{
 		fGoodsQ = GetCargoGoods(chref,GOOD_SAILCLOTH);
 		if( CheckAttribute(chref,"RepairMaterials.forSails") )
-		{	
+		{
 			fGoodsQ += stf(chref.RepairMaterials.forSails);
 		}
 	}
@@ -2465,7 +2465,7 @@ ref procCheckEnableShip()
 		case "BI_InstantBoarding":
 			BI_intRetValue = true;
 		break;
-		
+
 		/*case "BI_Speak":
 			BI_intRetValue = true;
 		break;*/
@@ -2486,23 +2486,23 @@ void BI_ProcessControlPress()
 			PlaySound("interface\_balls.wav");
 			Ship_ChangeCharge(pchar, GOOD_BALLS);
 		break;
-	
+
 		case "hk_charge2":
 			PlaySound("interface\_grapes.wav");
 			Ship_ChangeCharge(pchar, GOOD_GRAPES);
 		break;
-	
+
 		case "hk_charge3":
 			PlaySound("interface\_chain.wav");
 			Ship_ChangeCharge(pchar, GOOD_KNIPPELS);
 		break;
-	
+
 		case "hk_charge4":
 			PlaySound("interface\_bombs.wav");
 			Ship_ChangeCharge(pchar, GOOD_BOMBS);
 		break;
-		
-		case "BICommandsActivate": 
+
+		case "BICommandsActivate":
 			PlaySound("interface\ok.wav"); // boal даешь звуки!
 		break;
 	}
@@ -2520,7 +2520,7 @@ float GetRSRollSpeed(ref chref)
 {
 	int iShip = sti(chref.ship.type);
 	if( iShip<0 || iShip>=REAL_SHIPS_QUANTITY ) {return 0.0;}
-	
+
 	float fRollSpeed = 0.5 + 0.05 * makefloat( GetSummonSkillFromNameToOld(chref,SKILL_SAILING) ); //fix skill
 	int crewQ = GetCrewQuantity(chref);
 	//int crewMin = sti(RealShips[iShip].MinCrew);
@@ -2535,11 +2535,11 @@ float GetRSRollSpeed(ref chref)
 	//if(crewQ < crewMin) fRollSpeed *= makefloat(crewQ)/makefloat(2*crewMin);
 	//fRollSpeed = fRollSpeed * (0.5 + makefloat(crewQ)/makefloat(2*crewMax)); // уменьшение скорости разворота от команды
 	//fRollSpeed = fRollSpeed * makefloat(crewQ)/makefloat(crewMax);
-	// опыт матросов 
+	// опыт матросов
 	float  fExp;
-	
+
 	if (crewOpt <= 0) crewOpt = 0; // fix для профилактики деления на ноль
-	
+
 	fExp = 0.05 + stf(GetCrewExp(chref, "Sailors") * crewQ) / stf(crewOpt * GetCrewExpRate());
 	if (fExp > 1) fExp = 1;
 	fRollSpeed = fRollSpeed * fExp;
@@ -2682,7 +2682,7 @@ bool CheckSuccesfullBoard(ref rBoarderChr, ref rSieger)
 void SetRandGeraldSail(ref chr, int nation)
 {
 	string ret = "";
-	
+
 	switch (nation)
 	{
 	    case ENGLAND:

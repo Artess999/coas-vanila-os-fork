@@ -29,7 +29,7 @@ void SaveCurrentQuestDateParam(string _quest)
 { // запись даты получения квеста
     aref  arQ;
     makearef(arQ, PChar.(_quest));
-    
+
     arQ.control_day = GetDataDay();
     arQ.control_month = GetDataMonth();
     arQ.control_year = GetDataYear();
@@ -49,8 +49,8 @@ int GetQuestPastDayParam(string _quest)
     if (CheckAttribute(PChar, _quest + ".control_year"))
     {
     	return GetPastTime("day", sti(arQ.control_year), sti(arQ.control_month), sti(arQ.control_day), stf(arQ.control_time),GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());
-	} 
-	return 0;   	
+	}
+	return 0;
 }
 int GetQuestPastTimeParam(string _quest)
 {
@@ -59,7 +59,7 @@ int GetQuestPastTimeParam(string _quest)
     if (CheckAttribute(PChar, _quest + ".control_year"))
     {
     	return GetPastTime("hour", sti(arQ.control_year), sti(arQ.control_month), sti(arQ.control_day), stf(arQ.control_time), GetDataYear(), GetDataMonth(), GetDataDay(), GetTime());
-	}  
+	}
 	return 0;
 }
 //navy -->
@@ -233,8 +233,8 @@ void AzzyCheckSumControl()
         pchar.questTemp.Azzy.Immortal.CurBalance = Result;
         DeleteQuestHeader("Azzy_HellSign");
 		if (sti(pchar.questTemp.Azzy.Immortal.Penalty) > 0)
-		{		
-			AddQuestRecord("Azzy_HellSign", "2");	
+		{
+			AddQuestRecord("Azzy_HellSign", "2");
 			AddQuestUserData("Azzy_HellSign", "Penalty", pchar.questTemp.Azzy.Immortal.Penalty);
 		}
 		AddQuestRecord("Azzy_HellSign", "1");
@@ -261,10 +261,10 @@ void FillAboardCabinBox(ref _location, ref _npchar)
 {
     int     iTemp;
     bool    ok;
-	
+
 	_location.box1 = Items_MakeTime(GetTime(), GetDataDay(), GetDataMonth(), GetDataYear()); // нужно, чтоб не перетерлось
 	// нужно отметить, что в сундуке сгенерятся рандомные вещи, этот код срабатывает потом и правит токо деньги
-	
+
 	ok = true;
 	// заготовка под квест
 	if (_npchar.id == "GhostCapt" && CheckAttribute(pchar , "GenQuest.GhostShip.LastBattle"))
@@ -379,7 +379,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
             ok = false;
         }
 	}
-	// Осады  homo 22/10/06	 
+	// Осады  homo 22/10/06
 	if (findsubstr(_npchar.id, "SiegeCap_" , 0) != -1)
 	{
 	    aref aData, itm;
@@ -413,7 +413,7 @@ void FillAboardCabinBox(ref _location, ref _npchar)
             ok = false;
         }
     }
-    
+
     if (_npchar.id == "Head_of_Gold_Squadron" )
     {
 
@@ -470,7 +470,7 @@ void FantomMakeCoolSailor(ref _Character, int _ShipType, string _ShipName, int _
 	_Character.skill.Sailing  = GetCoffDiff(_Sailing, SKILL_MAX);
 	_Character.skill.Accuracy = GetCoffDiff(_Accuracy, SKILL_MAX);
 	_Character.skill.Cannons  = GetCoffDiff(_Cannons, SKILL_MAX);
-    
+
     _Character.DontRansackCaptain = true; //квестовые не сдаются
     _Character.SinkTenPercent     = false; // не тонуть при 10%, не убегать в бою
     _Character.AboardToFinalDeck  = true; // абордаж всегда
@@ -510,7 +510,7 @@ void FantomMakeCoolFighter(ref _Character, int _Rank, int _Fencing, int _Pistol,
     _Character.rank = GetCoffDiff(_Rank, 1000);
     _Character.skill.Fencing = GetCoffDiff(_Fencing, SKILL_MAX);
     _Character.Skill.FencingLight  = GetCoffDiff(sti(_Character.skill.Fencing), SKILL_MAX);
-    _Character.Skill.FencingHeavy  = GetCoffDiff(sti(_Character.skill.Fencing), SKILL_MAX); 
+    _Character.Skill.FencingHeavy  = GetCoffDiff(sti(_Character.skill.Fencing), SKILL_MAX);
     _Character.skill.Pistol = GetCoffDiff(_Pistol, SKILL_MAX);
 	_Character.chr_ai.hp = stf(_Character.chr_ai.hp) + GetCoffDiff(_AddHP, 5000);
 	_Character.chr_ai.hp_max = stf(_Character.chr_ai.hp_max) + GetCoffDiff(_AddHP, 5000);
@@ -568,11 +568,11 @@ bool SetLocationQuestRandItem(int _index, aref _location, string _locatorName, a
     pchar.GenQuestRandItem.QC_Port.randitem1 = "pistol6";
     // если нужно чтоб было всегда
 	pchar.GenQuestRandItem.QC_Port.stay = true; - тереть потом эту ветку самому по квесту
-	
+
     QC_Port - локация где
     randitem1 - локатор
     pistol6 - предмет
-    
+
     если нужно сразу несколько локаторов, то
     pchar.GenQuestRandItem.QC_Port.randitem1 = "pistol6";
     pchar.GenQuestRandItem.QC_Port.randitem2 = "pistol1";
@@ -600,7 +600,7 @@ bool SetLocationQuestRandItem(int _index, aref _location, string _locatorName, a
             return true;
         }
     }
-    
+
     return false;
 }
 // загрузить модель
@@ -608,7 +608,7 @@ int SetRandItemShow(int _index, aref al, string _itemId)
 {
     int     n;
     aref    randItem;
-    
+
     n = Items_FindItem(_itemId, &randItem);
 	if (n != -1)
 	{
@@ -644,7 +644,7 @@ bool SetLocationQuestBox(ref _location, string _locatorName)
     Havanna_town_04 - локация где
     box1 - локатор
     items - список предметов
-    
+
     если нужно сразу несколько локаторов, то
     pchar.GenQuestBox.Havanna_town_04.box2.items.jewelry1 = 34;
  	*/
@@ -967,7 +967,7 @@ string GetSexPhrase(string StrMan, string StrWoman)
 bool SetTempRemoveParam(ref _refCharacter, string _param)
 {
     string sParam = "TmpRemember" + _param;
-    
+
 	if( CheckAttribute(_refCharacter, sParam) ) return false;
 	if( !CheckAttribute(_refCharacter, _param) ) return false;
 
@@ -983,7 +983,7 @@ bool SetTempRemoveParam(ref _refCharacter, string _param)
 bool RestoreTempRemoveParam(ref _refCharacter, string _param)
 {
     string sParam = "TmpRemember" + _param;
-    
+
 	if( !CheckAttribute(_refCharacter, sParam) ) return false;
 
 	aref dstRef; makearef(dstRef, _refCharacter.(_param));
@@ -1195,7 +1195,7 @@ void SetQuestGoodsToStore(ref refStore)
 
 		    goodName = Goods[GOOD_SANDAL].Name;
 			refStore.Goods.(goodName).RndPriceModify = GetStoreGoodsRndPriceModify(refStore, GOOD_SANDAL, PRICE_TYPE_BUY, pchar, 11);
-		}		
+		}
 		if (CheckAttribute(pchar, "GenQuest.StoreGoods.HL2_QtyPriceIsBack")) //Голл.линейка, квест №2, возврат цен и кол-ва после квеста.
 		{
             DeleteAttribute(pchar, "GenQuest.StoreGoods"); // одноразовая операция, трем обе ветки
@@ -1414,7 +1414,7 @@ void QuestAboardCabinDialogSurrender()
 	Lai_SetPlayerType(pchar);
 	LAi_RemoveCheckMinHP(sld);
 	LAi_SetImmortal(sld, false);
-	//на форме убиваем LAi_SetCurHP(characterFromId(sld.CaptanId), 0.0); 
+	//на форме убиваем LAi_SetCurHP(characterFromId(sld.CaptanId), 0.0);
 	//sld.LifeDay = 0;    это не фантом многодневка, а фантом локации, трется он сам при закрузке локации, но не при выгрузке
 	DoQuestCheckDelay("LAi_ReloadBoarding", 1.0);
 }
@@ -1427,7 +1427,7 @@ void QuestAboardCabinDialogQuestSurrender()
 	Lai_SetPlayerType(pchar);
 	LAi_RemoveCheckMinHP(sld);
 	LAi_SetImmortal(sld, false);
-	//на форме убиваем LAi_SetCurHP(characterFromId(sld.CaptanId), 0.0); 
+	//на форме убиваем LAi_SetCurHP(characterFromId(sld.CaptanId), 0.0);
 	//sld.LifeDay = 0;
 	pchar.GenQuest.LastQuestPrisonerIdx = SetCharToPrisoner(sld);
 	SetCharacterRemovable(&characters[sti(pchar.GenQuest.LastQuestPrisonerIdx)], false);
@@ -1438,29 +1438,29 @@ void QuestAboardCabinDialogQuestSurrender()
 //дать лицензию
 void GiveNationLicence(int _nation, int _validity)
 {
-	string sTemp; 
+	string sTemp;
 	ref rItem;
 	for(int i=0; i<4; i++)
 	{
 		if (CheckNationLicence(i) && GetDaysContinueNationLicence(i) == -1) TakeNationLicence(i);
 	}
-	if (_nation != PIRATE) 
+	if (_nation != PIRATE)
 	{
 		if (CheckNationLicence(_nation)) TakeNationLicence(_nation);
 		sTemp = NationShortName(_nation)+"TradeLicence";
 		GiveItem2Character(pchar, sTemp);
 		rItem = ItemsFromID(sTemp);
 		SaveCurrentNpcQuestDateParam(rItem, "Action_date");
-		rItem.Action_date = GetCurrentDate(); 
+		rItem.Action_date = GetCurrentDate();
 		rItem.Validity = FindRussianDaysString(_validity); //строка для дескрайба
 		rItem.Validity.QtyDays = _validity; //время действия лицензии в днях для расчетов
 	}
 }
-//забрать лицензию 
+//забрать лицензию
 void TakeNationLicence(int _nation)
 {
-	string sTemp; 
-	if (_nation != PIRATE && CheckNationLicence(_nation)) 
+	string sTemp;
+	if (_nation != PIRATE && CheckNationLicence(_nation))
 	{
 		sTemp = NationShortName(_nation)+"TradeLicence";
 		TakeItemFromCharacter(pchar, sTemp);
@@ -1471,9 +1471,9 @@ void TakeNationLicence(int _nation)
 //проверить наличие лицензии
 bool CheckNationLicence(int _nation)
 {
-	if (_nation != PIRATE) 
+	if (_nation != PIRATE)
 	{
-		if (CheckCharacterItem(pchar, NationShortName(_nation)+"TradeLicence")) return true; 
+		if (CheckCharacterItem(pchar, NationShortName(_nation)+"TradeLicence")) return true;
 	}
 	return false;
 }
@@ -1482,7 +1482,7 @@ int GetDaysContinueNationLicence(int _nation)
 {
 	int iTerms = -1;
 	ref rItem;
-	if (_nation != PIRATE) 
+	if (_nation != PIRATE)
 	{
 		if (CheckNationLicence(_nation))
 		{
@@ -1500,7 +1500,7 @@ string GetRusNameNationLicence(int _nation)
 {
 	string sTemp, itmTitle;
 	int lngFileID;
-	if (_nation != PIRATE) 
+	if (_nation != PIRATE)
 	{
 		if (CheckNationLicence(_nation))
 		{
@@ -1515,7 +1515,7 @@ string GetRusNameNationLicence(int _nation)
 
 //--> eddy. квест Изабеллы, методы для контроля семейной жизни
 //запишем текущие показтели статистики. записать так же не все, а один из показателей.
-// если _TypeOfCheck == "all", то обнулить все. _TypeOfCheck может быть "KillFort", "TakeTown", 
+// если _TypeOfCheck == "all", то обнулить все. _TypeOfCheck может быть "KillFort", "TakeTown",
 void IsabellaSetCurrentState(string _TypeOfCheck)
 {
 	if (_TypeOfCheck == "all" || _TypeOfCheck == "KillFort")
@@ -1556,7 +1556,7 @@ void IsabellaSetCurrentState(string _TypeOfCheck)
 	}
 	if (_TypeOfCheck == "all" || _TypeOfCheck == "KillShip")
 	{
-		DeleteAttribute(pchar, "RomanticQuest.Cheking.KillShip");	
+		DeleteAttribute(pchar, "RomanticQuest.Cheking.KillShip");
 		pchar.RomanticQuest.State.KillShip = Statistic_AddValue(PChar, "pir_KillShip", 0) +
 											Statistic_AddValue(PChar, "eng_KillShip", 0) +
 											Statistic_AddValue(PChar, "fra_KillShip", 0) +
@@ -1597,7 +1597,7 @@ void IsabellaCheckBreachState()
 			Statistic_AddValue(PChar, "fra_KillShip", 0) +
 			Statistic_AddValue(PChar, "spa_KillShip", 0) +
 			Statistic_AddValue(PChar, "hol_KillShip", 0);
-	if (iTemp > sti(pchar.RomanticQuest.State.KillShip)) pchar.RomanticQuest.Cheking.KillShip = iTemp - sti(pchar.RomanticQuest.State.KillShip);		
+	if (iTemp > sti(pchar.RomanticQuest.State.KillShip)) pchar.RomanticQuest.Cheking.KillShip = iTemp - sti(pchar.RomanticQuest.State.KillShip);
 	return;
 }
 //сбросить счетчик по семейному бюджету
@@ -1629,9 +1629,9 @@ void SelectAscoldRendom()
 		int storeArray[MAX_COLONIES];
 		int howStore = 0;
 		for(n=0; n<MAX_COLONIES; n++)
-		{			
+		{
 			if (colonies[n].nation != "none" && sti(colonies[n].nation) != PIRATE && colonies[n].id != "FortOrange")
-			{           
+			{
 				storeArray[howStore] = n;
 				howStore++;
 			}
@@ -1639,13 +1639,13 @@ void SelectAscoldRendom()
 		nation = storeArray[rand(howStore-1)];
 		pchar.questTemp.Ascold.TraderId = colonies[nation].id + "_trader";
 		nation = storeArray[rand(howStore-1)];
-		pchar.questTemp.Ascold.MerchantColony = colonies[nation].id; 
+		pchar.questTemp.Ascold.MerchantColony = colonies[nation].id;
 		nation = storeArray[rand(howStore-1)];
 		while (colonies[nation].id == "Panama")
 		{
 			nation = storeArray[rand(howStore-1)];
 		}
-		pchar.questTemp.Ascold.ShipyarderId = colonies[nation].id + "_shipyarder"; 
+		pchar.questTemp.Ascold.ShipyarderId = colonies[nation].id + "_shipyarder";
 		pchar.questTemp.Ascold.ShipyarderColony = colonies[nation].id;
 		items[GetItemIndex("Azzy_bottle")].useLocation = colonies[nation].id + "_Shipyard";
 	}
@@ -1673,7 +1673,7 @@ void IsabellaInit()
 	ch.reputation = "30";
 	ch.talker = 5; //начать диалог
 	ch.TiedItems.itm1.model = "HandsItems\meet";
-	ch.TiedItems.itm1.locator = "Saber_hand";	
+	ch.TiedItems.itm1.locator = "Saber_hand";
 	ch.TiedItems.itm2.model = "HandsItems\cup";
 	ch.TiedItems.itm2.locator = "Saber_hand";
     SetRandSPECIAL(ch);
@@ -1688,7 +1688,7 @@ void IsabellaInit()
 	ch.DontClearDead = true;  // не убирать труп
 	ch.greeting = "Gr_Atilla";
 	// Злой муж :)
-	ch = GetCharacter(NPC_GenerateCharacter("Husband", "Usurer_7", "man", "man", 22, PIRATE, -1, false));	
+	ch = GetCharacter(NPC_GenerateCharacter("Husband", "Usurer_7", "man", "man", 22, PIRATE, -1, false));
 	ch.name 	= "Сальватор";
 	ch.lastname = "Олеварес";
 	ch.location	= "SanJuan_houseSp6";
@@ -1802,7 +1802,7 @@ void HouseEnc_TimerGoUot(string qName)
 
 //удаления группы с задержкой
 void Delay_DeleteGroup(string GroupName)
-{	
+{
 	DoQuestCheckDelay("DeleteGroupOnExitLocation", 2.0);
 	pchar.quest.DeleteGroupOnExitLocation.GroupName = GroupName;
 }
@@ -1818,7 +1818,7 @@ void SetSkeletonsToLocation(aref _location)
 	{
 		iStep = 0;
 		_location.Monsters_step = sti(MOD_SKILL_ENEMY_RATE / 1.5 + 0.5);
-		SaveCurrentNpcQuestDateParam(_location, "Monsters_step"); //запись даты 
+		SaveCurrentNpcQuestDateParam(_location, "Monsters_step"); //запись даты
 	}
 	else
 	{
@@ -1826,7 +1826,7 @@ void SetSkeletonsToLocation(aref _location)
 		{
 			iStep = 0;
 			_location.Monsters_step = sti(MOD_SKILL_ENEMY_RATE / 1.5 + 0.5);
-			SaveCurrentNpcQuestDateParam(_location, "Monsters_step"); //запись даты 
+			SaveCurrentNpcQuestDateParam(_location, "Monsters_step"); //запись даты
 		}
 		else
 		{
@@ -1836,8 +1836,8 @@ void SetSkeletonsToLocation(aref _location)
 	}
 	LAi_group_Delete("EnemyFight");
 	//<-- генерим инкремент к рангу
-	//--> генерим ранг 
-	if (sti(pchar.rank) > 6) 
+	//--> генерим ранг
+	if (sti(pchar.rank) > 6)
 	{
 		if (sti(pchar.rank) > 20) iRank = sti(pchar.rank) + MOD_SKILL_ENEMY_RATE;
 		else iRank = sti(pchar.rank) + sti(MOD_SKILL_ENEMY_RATE/2);
@@ -1847,7 +1847,7 @@ void SetSkeletonsToLocation(aref _location)
 		iRank = sti(pchar.rank);
 	}
 	iRank += iStep;
-	//<-- генерим ранг 
+	//<-- генерим ранг
 	aref grp;
 	makearef(grp, _location.locators.monsters);
 	int num = GetAttributesNum(grp);
@@ -1878,7 +1878,7 @@ void SetSkeletonsToLocation(aref _location)
 	}
 	//проверяем, есть ли на локацию квест по очистке от нечисти
 	if (CheckAttribute(_location, "DestroyGhost"))
-	{	
+	{
 		chrDisableReloadToLocation = true;
 		characters[sti(_location.DestroyGhost)].quest.DestroyGhost = "GoodResult";
 		DeleteAttribute(_location, "DestroyGhost");
@@ -1889,8 +1889,8 @@ void SetSkeletonsToLocation(aref _location)
 }
 
 //Перехват всех попыток ГГ залезть в боксы
-void QuestCheckTakeBoxes(ref itemsRef) 
-{	
+void QuestCheckTakeBoxes(ref itemsRef)
+{
 	ref locLoad = &locations[reload_location_index];
     ref sld;
 	int i, num;
@@ -1911,7 +1911,7 @@ void QuestCheckTakeBoxes(ref itemsRef)
 		}
 	}
 	//<<<<<<<<<<---------- КЛАДЫ --------------------------
-	//-->> Генератор грабежа жемчуга, у главы поселения 
+	//-->> Генератор грабежа жемчуга, у главы поселения
 	if (GetCharacterIndex("HeadMan_2") != -1 && locLoad.id == "PearlTown2_Townhall")
 	{
 		if (pchar.questTemp.Sharp.SeekSpy != "begin" && pchar.questTemp.Sharp.SeekSpy != "over")
@@ -1938,7 +1938,7 @@ void QuestCheckTakeBoxes(ref itemsRef)
 			CloseQuestHeader("SharpPearl_SeekSpy");
     		ChangeCharacterReputation(pchar, -10);
 			ChangeCharacterNationReputation(pchar, SPAIN, -10);
-		}		
+		}
 		ChangeCharacterReputation(pchar, -20);
 		SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY);
 		LAi_group_Attack(characterFromId("HeadMan_1"), Pchar);
@@ -1948,10 +1948,10 @@ void QuestCheckTakeBoxes(ref itemsRef)
 		pchar.quest.PearlGen_HeadMan_1_death.win_condition = "OpenTheDoors";
 		return;
 	}
-	//<<-- Генератор грабежа жемчуга, у главы поселения 
+	//<<-- Генератор грабежа жемчуга, у главы поселения
 	//-->> Квест Изабеллы.
 	if (GetCharacterIndex("Husband") != -1  && locLoad.id == "SanJuan_houseSp6" && characters[GetCharacterIndex("Isabella")].location != "SanJuan_houseSp6" && characters[GetCharacterIndex("Husband")].location == "SanJuan_houseSp6")
-	{		
+	{
 		ChangeCharacterReputation(pchar, -3);
 		SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY);
 		sld = characterFromId("Husband");
@@ -1959,7 +1959,7 @@ void QuestCheckTakeBoxes(ref itemsRef)
 		//LAi_SetImmortal(sld, false);
 		LAi_group_Attack(sld, Pchar);
 		chrDisableReloadToLocation = true;
-		LAi_LocationFightDisable(locLoad, false); 
+		LAi_LocationFightDisable(locLoad, false);
 		LocatorReloadEnterDisable(locLoad.id, "reload2", true);
 		pchar.quest.Husband_death.win_condition.l1 = "NPC_Death";
 		pchar.quest.Husband_death.win_condition.l1.character = "Husband";
@@ -1985,7 +1985,7 @@ void SetOpenDoorCommonLoc(string City, string locationId)
 			return;
     	}
 		if (arDis.label != "Sea")
-		{	
+		{
 			makearef(arRld2, Locations[FindLocation(LocId)].reload);
 			Qty2 = GetAttributesNum(arRld2);
 			for (n=0; n<Qty2; n++)
@@ -1996,7 +1996,7 @@ void SetOpenDoorCommonLoc(string City, string locationId)
     			{
 					arDis.disable = false;
 					arDis.canEnter = true;
-					return;					
+					return;
 				}
 			}
 		}

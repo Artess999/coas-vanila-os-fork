@@ -38,7 +38,7 @@ void Abordage_ReloadStartFade()
 	MoveWeatherToLayers(EXECUTE, REALIZE);
 	MoveSeaToLayers(EXECUTE, REALIZE);
     HideGrass();
-    
+
 	SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 
 	DelEventHandler("FaderEvent_StartFade", "Abordage_ReloadStartFade");
@@ -57,7 +57,7 @@ void Go2LocationAfterAbordage()
 	// boal <--
 	bSeaReloadStarted = false;
 	Sea.AbordageMode = false;
-	
+
     SendMessage(&Particles,"l", PS_CLEAR_CAPTURED); // boal
 	PauseParticles(false);
 	LayerFreeze(SEA_REFLECTION2, false);
@@ -78,7 +78,7 @@ void Return2SeaAfterAbordage()
 	MoveWeatherToLayers(SEA_EXECUTE, SEA_REALIZE);
 	MoveSeaToLayers(SEA_EXECUTE, SEA_REALIZE);
     ShowGrass();
-    
+
 	Sea.MaxSeaHeight = fOldMaxSeaHeight;		// restore old MaxSeaHeight
 	bAbordageStarted = false;
 	Sea.AbordageMode = false;
@@ -106,7 +106,7 @@ void Abordage_ReloadEndFade()
 	AIBalls.Clear = "";
 
     ResetSound(); // new
-    
+
 	if (bAbordagePlaceShipNear)
 	{
 		SendMessage(AISea, "laff", AI_MESSAGE_SAIL_2_CHARACTER, &Characters[iAbordageCharacter], 40.0 + frnd() * 60.0, frnd() * PIm2);
@@ -190,7 +190,7 @@ void Sea_AbordageLoad(int _iAbordageMode, bool _bMCAbordageInitiator)
 			}
 		}
 	}
-	
+
 	//PostEvent("Continue_Sea_AbordageLoad", 1, "ll", _iAbordageMode, _bMCAbordageInitiator)
 }
 
@@ -221,20 +221,20 @@ void Continue_Sea_AbordageLoad()
 {
 	int _iAbordageMode = sti(pchar.boarding_info.mode);
 	int _bMCAbordageInitiator = sti(pchar.boarding_info.indicator);
-	
+
 	DelEventHandler("frame","Continue_Sea_AbordageLoad");
 
-	if (bSeaActive == false) 
-	{ 
-		return; 
+	if (bSeaActive == false)
+	{
+		return;
 	}
 
 	int _iAbordageCharacter = iAbordageShipEnemyCharacter;
 	if (_iAbordageMode == FORT_ABORDAGE)
-	{ 
-		_iAbordageCharacter = iAbordageFortEnemyCharacter; 
+	{
+		_iAbordageCharacter = iAbordageFortEnemyCharacter;
 	}
-	
+
 	if (!CheckAttribute(&characters[_iAbordageCharacter], "abordage_twice") || _iAbordageMode == FORT_ABORDAGE)
 	{
 		Sea_AbordageStartNow(_iAbordageMode, _iAbordageCharacter, false, _bMCAbordageInitiator);

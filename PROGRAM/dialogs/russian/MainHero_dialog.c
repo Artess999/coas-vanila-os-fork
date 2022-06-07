@@ -12,14 +12,14 @@ void ProcessDialogEvent()
     ref chr;
     float  fTemp;
     bool bOk;
-    
+
 	switch(Dialog.CurrentNode)
 	{
         case "Exit":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit_Self();
 		break;
-		
+
 		case "First time":
 	      	NextDiag.TempNode = "First time";
 
@@ -123,7 +123,7 @@ void ProcessDialogEvent()
 					link.l2.go = "TalkSelf_room_day";
 	    		}
 			}
-			else 
+			else
 			{   //исп.линейка, квест №6, возможность переночевать в оплаченной комнате
 				if (CheckAttribute(pchar, "questTemp.State.Open") && pchar.location == "Tortuga_tavern_upstairs")
 				{
@@ -163,7 +163,7 @@ void ProcessDialogEvent()
 			Link.l10 = RandPhraseSimple("Не сейчас. Нет времени.", "Некогда. Дела ждут.");
 			Link.l10.go = "exit";
 		break;
-		
+
 		case "TalkSelf_room_night":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			//AddDialogExitQuestFunction("TavernWaitDate_Night");
@@ -279,16 +279,16 @@ void ProcessDialogEvent()
 	        }
 	        // падение опыта -->
 	        fTemp =  stf(GetCrewQuantity(pchar) + sti(pchar.GenQuest.SlavesToCrew));
-	        pchar.Ship.Crew.Exp.Sailors   = (stf(pchar.Ship.Crew.Exp.Sailors)*GetCrewQuantity(pchar) + 
+	        pchar.Ship.Crew.Exp.Sailors   = (stf(pchar.Ship.Crew.Exp.Sailors)*GetCrewQuantity(pchar) +
 			                                        stf(pchar.Ship.Crew.Exp.Sailors)*0.3*sti(pchar.GenQuest.SlavesToCrew)) / fTemp;
-			pchar.Ship.Crew.Exp.Cannoners   = (stf(pchar.Ship.Crew.Exp.Cannoners)*GetCrewQuantity(pchar) + 
+			pchar.Ship.Crew.Exp.Cannoners   = (stf(pchar.Ship.Crew.Exp.Cannoners)*GetCrewQuantity(pchar) +
 			                                        stf(pchar.Ship.Crew.Exp.Cannoners)*0.3*sti(pchar.GenQuest.SlavesToCrew)) / fTemp;
-			pchar.Ship.Crew.Exp.Soldiers   = (stf(pchar.Ship.Crew.Exp.Soldiers)*GetCrewQuantity(pchar) + 
+			pchar.Ship.Crew.Exp.Soldiers   = (stf(pchar.Ship.Crew.Exp.Soldiers)*GetCrewQuantity(pchar) +
 			                                        stf(pchar.Ship.Crew.Exp.Soldiers)*0.3*sti(pchar.GenQuest.SlavesToCrew)) / fTemp;
-			// падение опыта <-- 
-			pchar.Ship.Crew.Quantity = sti(pchar.Ship.Crew.Quantity) + sti(pchar.GenQuest.SlavesToCrew); 
-	        RemoveCharacterGoodsSelf(pchar, GOOD_SLAVES, sti(pchar.GenQuest.SlavesToCrew));       
-			                            
+			// падение опыта <--
+			pchar.Ship.Crew.Quantity = sti(pchar.Ship.Crew.Quantity) + sti(pchar.GenQuest.SlavesToCrew);
+	        RemoveCharacterGoodsSelf(pchar, GOOD_SLAVES, sti(pchar.GenQuest.SlavesToCrew));
+
 	        NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit_Self();
 		break;
@@ -311,7 +311,7 @@ void ProcessDialogEvent()
 			SetAnyReloadToLocation(pchar.GenQuest.contraTravel.destination.loc, pchar.GenQuest.contraTravel.destination.group, pchar.GenQuest.contraTravel.destination.locator, "", 0, 0, 0, 0);
 			AddDialogExitQuest("AnyReloadToLocation");
             chrDisableReloadToLocation = false;
-            
+
 			CloseQuestHeader("Gen_ContrabandTravel");
 			setCharacterShipLocation(PChar, pchar.GenQuest.contraTravel.destination.loc);
 			setWDMPointXZ(pchar.GenQuest.contraTravel.destination.loc);
@@ -342,7 +342,7 @@ void ProcessDialogEvent()
 			DoQuestCheckDelay("Ascold_AzzyIsFree", 4.0);
 			pchar.questTemp.Azzy = "Azzy_Freedom";
 			DialogExit();
-		break;	
+		break;
 	}
 }
 

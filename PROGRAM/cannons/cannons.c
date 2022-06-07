@@ -137,7 +137,7 @@ float GetCannonReloadTime(ref rCannon)
 int GetCannonGoodsIdxByType(int iCannon)
 {
 	int i;
-	
+
 	for (i = 0; i< GOODS_QUANTITY; i++)
 	{
 		if (CheckAttribute(&Goods[i], "CannonIdx"))
@@ -145,5 +145,5 @@ int GetCannonGoodsIdxByType(int iCannon)
 			if (sti(Goods[i].CannonIdx) == iCannon) return i;
 		}
 	}
-	return -1;	
+	return -1;
 }

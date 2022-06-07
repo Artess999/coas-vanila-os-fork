@@ -8,7 +8,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l1 = RandPhraseSimple("Я передумал...", "Сейчас мне не о чем говорить");
 		    link.l1.go = "exit";
 		break;
-		
+
 		case "info":
         // заменить на описание неких НПС, по квестам
 			dialog.text = "Я что, работаю на тайную агентурную сеть для "+NationNameGenitive(sti(NPChar.nation))+"?";
@@ -17,7 +17,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l2 = "Тогда другой вопрос";
 			link.l2.go = "new question";
 		break;
-		
+
 		case "town":
         // заменить на описание как пройти, по квестам
 			dialog.text = "Я вам что справочная? Не знаю. Ничего не ведаю.";

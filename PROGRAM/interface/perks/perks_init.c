@@ -4,7 +4,7 @@ void extrnInitPerks()
     DeleteAttribute(&ChrPerksList, "list");
     // NPCOnly - только НПС  PlayerOnly - только ГГ, Hiden - скрыт для всех, кодерские трюки Боссов-НПС
     // navigator  boatswain  cannoner doctor carpenter treasurer fighter  - офицеры  для  .OfficerType
-    
+
     // список из ВМЛ -->
     //	Personal Skills Group
 	//==========================================================
@@ -21,17 +21,17 @@ void extrnInitPerks()
 
     ChrPerksList.list.CriticalHit.descr = "perkCriticalHit";
     ChrPerksList.list.CriticalHit.BaseType = "self";
-    
+
 	ChrPerksList.list.HPPlus.descr = "perkHPPlus";
 	ChrPerksList.list.HPPlus.BaseType = "self";
 	ChrPerksList.list.HPPlus.condition.AdvancedDefense = true;
-	
+
 	ChrPerksList.list.HardHitter.descr = "perkHardHitter";
 	ChrPerksList.list.HardHitter.BaseType = "self";
-	
+
 	ChrPerksList.list.Tireless.descr = "perkTireless";
 	ChrPerksList.list.Tireless.BaseType = "self";
-	
+
 	ChrPerksList.list.Rush.descr = "perkRush";
 	ChrPerksList.list.Rush.TimeDelay    = 70; // 10+60
 	ChrPerksList.list.Rush.TimeDuration = 10;
@@ -39,26 +39,26 @@ void extrnInitPerks()
 	ChrPerksList.list.Rush.condition.Tireless     = true;
 	ChrPerksList.list.Rush.condition.BasicDefense = true;
 	ChrPerksList.list.Rush.PlayerOnly = true;
-	
+
 	ChrPerksList.list.EnergyPlus.descr = "perkEnergyPlus";
 	ChrPerksList.list.EnergyPlus.BaseType = "self";
 	ChrPerksList.list.EnergyPlus.condition.Tireless = true;
-	
+
 	ChrPerksList.list.Sliding.descr = "perkSliding";
 	ChrPerksList.list.Sliding.condition.AdvancedDefense = true;
 	ChrPerksList.list.Sliding.BaseType = "self";
-	
+
 	ChrPerksList.list.BladeDancer.descr = "perkBladeDancer";
 	ChrPerksList.list.BladeDancer.condition.CriticalHit = true;
 	ChrPerksList.list.BladeDancer.condition.AdvancedDefense = true;
 	ChrPerksList.list.BladeDancer.BaseType = "self";
-	
+
 	ChrPerksList.list.SwordplayProfessional.descr = "perkSwordplayProfessional";
 	ChrPerksList.list.SwordplayProfessional.condition.CriticalHit = true;
 	ChrPerksList.list.SwordplayProfessional.condition.AdvancedDefense = true;
 	ChrPerksList.list.SwordplayProfessional.condition.Tireless = true;
 	ChrPerksList.list.SwordplayProfessional.BaseType = "self";
-	
+
 	ChrPerksList.list.Gunman.descr = "perkGunman";
 	ChrPerksList.list.Gunman.BaseType = "self";
 
@@ -73,11 +73,11 @@ void extrnInitPerks()
 	ChrPerksList.list.Medic.condition.AdvancedDefense = true;
 	ChrPerksList.list.Medic.BaseType = "self";
 	ChrPerksList.list.Medic.PlayerOnly = true;
-	
+
 	ChrPerksList.list.ByWorker.descr = "perkByWorker";
 	ChrPerksList.list.ByWorker.BaseType = "self";
 	ChrPerksList.list.ByWorker.NPCOnly = true;
-	
+
 	ChrPerksList.list.ByWorker2.descr = "perkByWorker2";
 	ChrPerksList.list.ByWorker2.BaseType = "self";
 	ChrPerksList.list.ByWorker2.condition.ByWorker = true;
@@ -100,7 +100,7 @@ void extrnInitPerks()
 	ChrPerksList.list.Trustworthy.condition.IronWill = true;
 	ChrPerksList.list.Trustworthy.BaseType = "self";
 	ChrPerksList.list.Trustworthy.PlayerOnly = true;
-	
+
 	/////////////////////////  КОРАБЕЛЬНЫЕ /////////////////////////////////////
     /////////////////////////////////////////////////////////////
 	/// Перки для ГГ
@@ -124,7 +124,7 @@ void extrnInitPerks()
     ChrPerksList.list.FlagHol.descr = "perkFlagHol";
     ChrPerksList.list.FlagHol.BaseType = "ship";
     ChrPerksList.list.FlagHol.PlayerOnly = true;
-    
+
 	/////////////////////////////////////////////////////////////
 	/// Перки для боцман
 	/////////////////////////////////////////////////////////////
@@ -139,17 +139,17 @@ void extrnInitPerks()
 	ChrPerksList.list.Troopers.descr = "perkTroopers";  // боцман
 	ChrPerksList.list.Troopers.BaseType = "ship";
 	ChrPerksList.list.Troopers.OfficerType = "boatswain";
-	
+
 	ChrPerksList.list.LongRangeGrappling.descr = "perkLongRangeGrappling";  // боцман
 	ChrPerksList.list.LongRangeGrappling.BaseType = "ship";
     ChrPerksList.list.LongRangeGrappling.OfficerType = "boatswain";
-    
+
 	ChrPerksList.list.GrapplingProfessional.descr = "perkGrapplingProfessional";   // боцман
 	ChrPerksList.list.GrapplingProfessional.condition.LongRangeGrappling = true;
 	ChrPerksList.list.GrapplingProfessional.condition.MusketsShoot = true;
 	ChrPerksList.list.GrapplingProfessional.BaseType = "ship";
 	ChrPerksList.list.GrapplingProfessional.OfficerType = "boatswain";
-	
+
 	ChrPerksList.list.MusketsShoot.descr = "perkMusketsShoot";     // боцман
 	ChrPerksList.list.MusketsShoot.condition.CrewDamageUp = true;
 	ChrPerksList.list.MusketsShoot.BaseType = "ship";
@@ -158,7 +158,7 @@ void extrnInitPerks()
     /////////////////////////////////////////////////////////////
 	/// Перки для казначе
 	/////////////////////////////////////////////////////////////
-	
+
 	ChrPerksList.list.BasicCommerce.descr = "perkBasicCommerce";  // казначей
 	ChrPerksList.list.BasicCommerce.BaseType = "ship";
 	ChrPerksList.list.BasicCommerce.OfficerType = "treasurer";
@@ -222,12 +222,12 @@ void extrnInitPerks()
 	ChrPerksList.list.Carpenter.descr = "perkCarpenter";
     ChrPerksList.list.Carpenter.OfficerType = "carpenter";
     ChrPerksList.list.Carpenter.BaseType = "ship";
-    
+
 	ChrPerksList.list.Builder.descr = "perkBuilder";
 	ChrPerksList.list.Builder.condition.Carpenter = true;
     ChrPerksList.list.Builder.OfficerType = "carpenter";
     ChrPerksList.list.Builder.BaseType = "ship";
-    
+
 	ChrPerksList.list.LightRepair.descr = "perkLightRepair";   // плотник
 	ChrPerksList.list.LightRepair.TimeDelay = 240;
 	ChrPerksList.list.LightRepair.TimeDuration = 60;
@@ -244,7 +244,7 @@ void extrnInitPerks()
     	ChrPerksList.list.InstantRepair.BaseType = "ship";
     	ChrPerksList.list.InstantRepair.OfficerType = "carpenter";
     }
-    
+
     ChrPerksList.list.BasicBattleState.descr = "perkBasicBattleState";   // плотник разделить с доктором корпус и команду
     ChrPerksList.list.BasicBattleState.OfficerType = "carpenter";
 	ChrPerksList.list.BasicBattleState.BaseType = "ship";
@@ -280,7 +280,7 @@ void extrnInitPerks()
 	ChrPerksList.list.SailsMan.descr = "perkSailsMan";
 	ChrPerksList.list.SailsMan.BaseType = "ship";
 	ChrPerksList.list.SailsMan.OfficerType = "navigator";
-	
+
 	ChrPerksList.list.Turn180.descr = "perkTurn180";           // штурман
 	ChrPerksList.list.Turn180.condition.ShipSpeedUp = true;
 	ChrPerksList.list.Turn180.condition.ShipTurnRateUp = true;
@@ -313,12 +313,12 @@ void extrnInitPerks()
 	ChrPerksList.list.Doctor1.descr = "perkDoctor1";
     ChrPerksList.list.Doctor1.BaseType = "ship";
 	ChrPerksList.list.Doctor1.OfficerType = "doctor";
-	
+
 	ChrPerksList.list.Doctor2.descr = "perkDoctor2";
 	ChrPerksList.list.Doctor2.condition.Doctor1 = true;
     ChrPerksList.list.Doctor2.BaseType = "ship";
 	ChrPerksList.list.Doctor2.OfficerType = "doctor";
-	
+
 	/////////////////////////////////////////////////////////////
 	/// Перки для контрабанды
 	/////////////////////////////////////////////////////////////
@@ -327,7 +327,7 @@ void extrnInitPerks()
 	/////////////////////////////////////////////////////////////
 	/// Скрытые перки
 	/////////////////////////////////////////////////////////////
-	
+
 	// скрытый перк дает 1.5 к приросту энергии, дается ГГ и боссам уровней
 	ChrPerksList.list.Energaiser.descr = "perkEnergaiser";
 	ChrPerksList.list.Energaiser.Hiden = true;

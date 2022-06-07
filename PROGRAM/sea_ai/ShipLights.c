@@ -22,7 +22,7 @@ void InitShipLights()
 	rlights.default.light.Attenuation0 = 0.0;
 	rlights.default.light.Attenuation1 = 0.3;
 	rlights.default.light.Attenuation2 = 0.0;
-	
+
 	rlights.default.Oscillator1.Flicker = 0.15;
 	rlights.default.Oscillator1.Freq = 5.0;
 
@@ -45,7 +45,7 @@ void InitShipLights()
 
 	rlights.cannondefault.light.Attenuation0 = 0.0;
 	rlights.cannondefault.light.Attenuation1 = 0.3;
-	rlights.cannondefault.light.Attenuation2 = 0.0;	
+	rlights.cannondefault.light.Attenuation2 = 0.0;
 
 	rlights.cannondefault.LifeTime = 0.2;
 	rlights.cannondefault.UpTime = 0.1;

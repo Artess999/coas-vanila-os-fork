@@ -28,7 +28,7 @@ void NMAddClientID(int iSMsg, int iClientID)
 	NMAddByte(iSMsg, iClientID);
 }
 
-bool IsNetActive() 
+bool IsNetActive()
 {
 	return bNetActive;
 }
@@ -53,7 +53,7 @@ void Net_Init()
 
 	// First interface parameters init
 	iCurrentServersList = NET_FG_LAN;
-	
+
 	iNumLanServers = 0;
 	iNumInternetServers = 0;
 
@@ -82,17 +82,17 @@ void Net_Init()
 
 void Net_Start()
 {
-	if (bNetActive) 
-	{ 
+	if (bNetActive)
+	{
 		if (!IsEntity(&NetClient)) { Net_CreateClient(); }
-		return; 
+		return;
 	}
 
 	bNetActive = true;
 
-	LayerCreate("net_realize", 1);	
+	LayerCreate("net_realize", 1);
 	LayerSetRealize("net_realize", 1);
-	LayerCreate("net_execute", 1);	
+	LayerCreate("net_execute", 1);
 	LayerSetExecute("net_execute", 1);
 
 	LayerFreeze("net_realize", false);

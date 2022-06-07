@@ -37,9 +37,9 @@ void Cabin_ReloadEndFade()
 	// start Cabin location
  	int a = GetEventData();
 	aref reload_fader = GetEventData();
-	
+
 	Cabin_Start();
-	
+
 	DelEventHandler("FaderEvent_EndFade", "Cabin_ReloadEndFade");
 	SendMessage(&reload_fader, "lfl", FADER_IN, RELOAD_TIME_FADE_IN, true);
 }
@@ -51,7 +51,7 @@ void Sea_CabinStartNow()
         bSeaReloadStarted = true;
 
         Set_My_Cabin();
-        
+
     	object reload_fader;
     	CreateEntity(&reload_fader, "fader");
     	SetEventHandler("FaderEvent_StartFade", "Cabin_ReloadStartFade", 0);
@@ -86,12 +86,12 @@ void Cabin_Start()
 	//Настроим интерфейс
 	DeleteBattleInterface();
 	InitBattleLandInterface();
-	
+
 	ref mchr = GetMainCharacter();
-	
+
 	string deckID = "";
 	deckID = Get_My_Cabin();
-	
+
 	int locID = -1;
 	locID = FindLocation(deckID);
 	if(locID < 0)
@@ -104,7 +104,7 @@ void Cabin_Start()
 	boarding_adr[0].location = mchr.location;
 	boarding_adr[0].group = mchr.location.group;
 	boarding_adr[0].locator = mchr.location.locator;
-	
+
 	//Стартуем
 	LAi_boarding_process = false;
 	Cabin_LoadLocation(deckID);
@@ -152,7 +152,7 @@ void SetOfficersInCabin()
     ref chr, mchr;
     int i;
     int idx;
-    
+
     mchr = GetMainCharacter();
 	for (i = 1; i < 4; i++)
 	{
@@ -182,7 +182,7 @@ void SetOfficersLocationToNone()
 void Return2SeaAfterCabin()
 {
 	Log_testInfo("Return2SeaAfterCabin");
-	
+
  	Return2SeaClearNPC();
 
     //Установить хендлеры для обработки
@@ -224,7 +224,7 @@ void Cabin_ReloadStartFadeAfter()
  //ResetSoundScheme();
 	ResetSound(); // new
 	PauseAllSounds();
-	
+
 	DelEventHandler("FaderEvent_StartFade", "Cabin_ReloadStartFadeAfter");
 	if(boarding_location >= 0) UnloadLocation(&Locations[boarding_location]);
 }
@@ -250,8 +250,8 @@ void Cabin_ReloadEndFadeAfter()
 	    if (stf(mchr.Ship.HP) < 0) mchr.Ship.HP = 0;
 	} */
 	// если бой, то ломаем корпус <--
-	
-	//Выгружаемся в интерфейс		
+
+	//Выгружаемся в интерфейс
 	LAi_boarding_process = false;
 
  	LayerFreeze(EXECUTE, true);
@@ -329,7 +329,7 @@ void Cabin_ReloadEndFadeAfter()
 		DoQuestCheckDelay("NationUpdate", 0.1);
 	}
 	// boal 24.04.04 ругаем группы тут <--
-	
+
 	// fix огней
 	DeleteParticles();
 	CreateParticleEntity();
@@ -475,7 +475,7 @@ void Sea_DeckBoatLoad(int ShipsCharacter)
 	ref rCharacter = GetCharacter(ShipsCharacter);
 
 	if (LAi_IsDead(rCharacter)) return;  // нефиг, а то в списке есть трупы
-	
+
 	Sea_DeckBoatStartNow(rCharacter);
 }
 
@@ -484,22 +484,22 @@ void SetSailorDeck_Ships(ref Chref)
 	if (Chref.id == "MQPirate") // to_do заменить на флаг, чтоб было всем квестовым
 	{  // клон для квестов
 	    ref CopyChref;
-	    
+
 		CopyChref = GetCharacter(NPC_GenerateCharacter("FantomDeckCap", "none", "man", "man", 1, PIRATE, 0, false));
-		
+
 	    int NewCapIdx = sti(CopyChref.index);
 		aref arToChar, arFromChar;
-		
+
 		DeleteAttribute(CopyChref, "");
-		
+
 	    makearef(arToChar, CopyChref);
 	    makearef(arFromChar, Chref);
 	    CopyAttributes(arToChar, arFromChar);
-	    
+
 		CopyChref.index = NewCapIdx;
 		CopyChref.id = "FantomDeckCap";
 		CopyChref.lifeDay = 0;
-		
+
 	    LAi_SetWarriorType(CopyChref);
 		LAi_warrior_DialogEnable(CopyChref, true);
 		LAi_SetLoginTime(CopyChref, 0.0, 24.0); // фикс, чтоб были всегда
@@ -561,7 +561,7 @@ void SetSailorDeck_Ships(ref Chref)
     ref sld;
     string  ani, model;
     int cn;
-    
+
     for (int i=1; i<5; i++)
     {
         model = LAi_GetBoardingModel(Chref, &ani);

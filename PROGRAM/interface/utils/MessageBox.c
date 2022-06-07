@@ -4,7 +4,7 @@ string sMBOkFunc, sMBCancelFunc, sMBRetry;
 void CreateMessageBox(string sCaptionID, string sMessageID, string sIconID, string sOkFunc, string sCancelFunc, string sRetryFunc)
 {
 	string sIni = "resource\ini\interfaces\Utils\MessageBox.ini";
-	
+
 	XI_MakeNode(sIni, "RECTANGLE", "MB_MAIN_BACK", 60000);
 	XI_MakeNode(sIni, "FORMATEDTEXT", "MB_MESSAGE", 60003);
 

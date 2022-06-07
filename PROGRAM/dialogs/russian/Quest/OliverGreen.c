@@ -11,7 +11,7 @@ void ProcessDialogEvent()
 	makearef(NextDiag, NPChar.Dialog);
 
     sld = characterFromID("Henry Morgan");
-    
+
 	switch(Dialog.CurrentNode)
 	{
 		// ----------------------------------- Диалог первый - первая встреча
@@ -103,11 +103,11 @@ void ProcessDialogEvent()
         break;
 		//********************* Французская линейка *********************
  	 	case "Step_F8_1":
-			dialog.text = NPCStringReactionRepeat("Кто вы такой, сэр?", "Я уже ответил вам...", 
+			dialog.text = NPCStringReactionRepeat("Кто вы такой, сэр?", "Я уже ответил вам...",
 				          "Повторяю, я уже ответил вам на этот вопрос.", "Вам не стоит надоедать мне, я более ничего не скажу.", "block", 0, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Меня зовут " + GetFullName(pchar) + ", я действую по поручения французского правительства.", "Да, верно...", "Да, я помню...", "Хорошо.", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("Step_F8_2", "none", "none", "none", npchar, Dialog.CurrentNode);
-        break;  
+        break;
         case "Step_F8_2":
             dialog.text = "А по какому делу французскому правительству понадобился Генри Морган?";
             link.l1 = "Послушай, милейший, тебе не кажется, что для секретаря ты слишком разговорчив?";
@@ -195,7 +195,7 @@ void ProcessDialogEvent()
     			link.l2 = "Они мне очень нужны, но таких денег у меня нет...";
     			link.l2.go = "exit";
             }
-		break;		
+		break;
    		case "Step_As_10":
 			dialog.text = GetFullName(pchar) + ", с тобой приятно иметь дело. Получай свои бесценные артефакты!";
 			link.l1 = "Спасибо, Оливер! Ты мне буквально жизнь спас...";

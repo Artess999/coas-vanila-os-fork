@@ -2,7 +2,7 @@
 void NetClient_OnConnect(int iMsg)
 {
 	int iSubCode = NMGetByte(iMsg);
-	
+
 	switch (iSubCode)
 	{
 		case NSC_CONNECT_ACCEPTED:

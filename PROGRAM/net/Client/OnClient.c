@@ -5,10 +5,10 @@ void NetClient_OnClient(int iMsg)
 
 	switch (iSubCode)
 	{
-		case NSC_CLIENT_CONNECTED: 
+		case NSC_CLIENT_CONNECTED:
 			NetClient_Connect(iMsg);
 		break;
-		case NSC_CLIENT_LOAD: 
+		case NSC_CLIENT_LOAD:
 			NetClient_Load(iMsg);
 		break;
 		case NSC_CLIENT_DROP:
@@ -139,7 +139,7 @@ void NetClient_Load(int iMsg)
 
 		rClient.Ship.Goods.(sGoodName) = NMGetWord(iMsg);
 	}
-	
+
 	rClient.Ship.SailState = 0.0;
 
 	rClient.Ship.Cannons.Charge.Type = 0;
@@ -201,7 +201,7 @@ void NetClient_Load(int iMsg)
 	if (sti(rClient.Ship.Sounds.TurnID) > 0) { Sound_SetVolume(sti(rClient.Ship.Sounds.TurnID), 0.0); }
 	rClient.Ship.Sounds.TurnSpeed = 0.05;
 
-	// 
+	//
 	LayerAddObject("net_execute", rClient, iClientShipPriorityExecute);
 	LayerAddObject("net_realize", rClient, iClientShipPriorityRealize);
 	LayerAddObject("sea_reflection", rClient, 100);
@@ -211,7 +211,7 @@ void NetClient_Load(int iMsg)
 
 	RefreshBattleInterface();
 
-	// add ship to foam 
+	// add ship to foam
 	SeaFoam.AddNetShip = wNetClientID;
 
 	NetBI_SelectShipPointer(wNetClientID);

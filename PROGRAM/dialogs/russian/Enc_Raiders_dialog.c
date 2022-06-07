@@ -4,7 +4,7 @@ void ProcessDialogEvent()
 	aref Link, Diag;
 	int i;
 	string sGroup;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
@@ -17,7 +17,7 @@ void ProcessDialogEvent()
 	{
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;
-			DialogExit();			
+			DialogExit();
 		break;
 
 		case "exit_Robbed":
@@ -27,8 +27,8 @@ void ProcessDialogEvent()
 			AddMoneyToCharacter(npchar, iMoney);
 			npchar.SaveItemsForDead   = true; // сохранять на трупе вещи
 			npchar.DontClearDead = true;  // не убирать труп через 200с
-			AddSimpleRumour(LinkRandPhrase("Вы слышали, у известного местного грабителя по имени " + GetFullName(npchar) + " появилась очередная жертва - некий капитан. И этот кэп струсил и откупился. По слухам, остегнул " + FindRussianMoneyString(iMoney) + ", хи-хи... ", 
-				"Вы знаете, капитан " + GetFullName(pchar) + " отдал " + FindRussianMoneyString(iMoney) + ", чтобы откупиться от бандита по имени " + GetFullName(npchar) + " А-а, это же вы тот капитан! Ну, что я могу сказть - не повезло! Ха-ха-ха!", 
+			AddSimpleRumour(LinkRandPhrase("Вы слышали, у известного местного грабителя по имени " + GetFullName(npchar) + " появилась очередная жертва - некий капитан. И этот кэп струсил и откупился. По слухам, остегнул " + FindRussianMoneyString(iMoney) + ", хи-хи... ",
+				"Вы знаете, капитан " + GetFullName(pchar) + " отдал " + FindRussianMoneyString(iMoney) + ", чтобы откупиться от бандита по имени " + GetFullName(npchar) + " А-а, это же вы тот капитан! Ну, что я могу сказть - не повезло! Ха-ха-ха!",
 				"Вы не слышали о том, местные грабители напали на капитана " + GetMainCharacterNameGen() + "? Так вот, его оргабили на целых " + FindRussianMoneyString(iMoney) + "!"), sti(npchar.nation), 5, 1);
 			for(i = 0; i < iTemp; i++)
 			{
@@ -37,7 +37,7 @@ void ProcessDialogEvent()
 				sld.Dialog.CurrentNode = "OnceAgain";
 				LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, true, "LandEnc_RaidersBeforeDialog");
 			}
-			DialogExit();			
+			DialogExit();
 		break;
 
 		case "exit_fight":
@@ -53,13 +53,13 @@ void ProcessDialogEvent()
 			LAi_group_SetRelation(sGroup, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(sGroup, LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck(sGroup, "LandEnc_RaidersAfrer");
-			DialogExit();	
+			DialogExit();
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 
 		case "exit_RunFight":
-			AddSimpleRumour(LinkRandPhrase("Вы слышали, какой-то капитан наконец-то образумил бандита по имени " + GetFullName(npchar) + ". Они хотели его ограбить, а в итоге сами наложили в штаны, ха-ха!", 
-				"Вы знаете, капитан " + GetFullName(pchar) + " разогнал шайку бандита по имени " + GetFullName(npchar) + " А-а, это же вы тот капитан! Прекрасная работа...", 
+			AddSimpleRumour(LinkRandPhrase("Вы слышали, какой-то капитан наконец-то образумил бандита по имени " + GetFullName(npchar) + ". Они хотели его ограбить, а в итоге сами наложили в штаны, ха-ха!",
+				"Вы знаете, капитан " + GetFullName(pchar) + " разогнал шайку бандита по имени " + GetFullName(npchar) + " А-а, это же вы тот капитан! Прекрасная работа...",
 				"Вы не слышали о том, что местный бандит по имени " + GetFullName(npchar) + " пытался ограбить капитана " + GetMainCharacterNameGen() + "? Так вот, они попытались его ограбить, но не тут то было, капитан - крепкий орешек. Бандиты разбежались кто куда!"), sti(npchar.nation), 5, 1);
 			for(i = 0; i < iTemp; i++)
 			{
@@ -78,8 +78,8 @@ void ProcessDialogEvent()
 				LAi_SetCitizenTypeNoGroup(sld);
 				sld.Dialog.CurrentNode = "GetTheHellOut";
 				LAi_SetCheckMinHP(sld, LAi_GetCharacterHP(sld)-1, true, "LandEnc_RaidersBeforeDialog");
-			}		
-			DialogExit();			
+			}
+			DialogExit();
 		break;
 
 		case "First Time":
@@ -98,9 +98,9 @@ void ProcessDialogEvent()
 			Link.l2 = LinkRandPhrase("А-а, разбойники! Преступность надо искоренять. К бою!",
 				"Терпеть не могу нахалов, да еще немытых. Приготовься к смерти!",
 				"За подобную дерзость я вырежу твое сердце из груди!");
-			Link.l2.go = "CheckSkills";	
+			Link.l2.go = "CheckSkills";
 		break;
-		
+
 		case "Node_2":
 			dialog.text = LinkRandPhrase("О, да он не понимает! Гони все золото, что у тебя есть! Тогда еще подумаю, может, отпущу тебя!",
 				"Слышал о дорожных издержках? Так вот это они и есть! Не расстанешься со своим золотом - расстанешься с головой!",
@@ -108,7 +108,7 @@ void ProcessDialogEvent()
 			Link.l1 = "Проклятье! Мерзавец! У меня с собой только " + makeint(makeint(Pchar.money)/20)*10 + " пиастров.";
 			Link.l1.go = "CheckMoney";
 			Link.l2 = "Я не отдам свои деньги без боя!";
-			Link.l2.go = "CheckSkills";			
+			Link.l2.go = "CheckSkills";
 		break;
 
 		case "CheckSkills":
@@ -127,7 +127,7 @@ void ProcessDialogEvent()
 					"Никуда я пойду, пока не закончу это дело.");
 				Link.l99.go = "Exit_RunFight";
 			}
-			else 
+			else
 			{
 				dialog.text = LinkRandPhrase("А ведь мог бы уйти с миром! А теперь умрешь!",
 					"Зря ты это затеял, каналья! Умри!",
@@ -145,14 +145,14 @@ void ProcessDialogEvent()
 					"Негусто, но лучше, чем ничего. Приятно иметь дело со сговорчивыми людьми! Ты можешь идти.",
 					"В благодарность за твое золото дам тебе совет - не стоит шляться по джунглям, если ты такой слабак! Сиди в порту, в таверне, и пей свой ром - целее будешь.");
 				Link.l1 = "Проклятье на ваши головы!";
-				Link.l1.go = "Exit_Robbed";				
+				Link.l1.go = "Exit_Robbed";
 			}
 			else
 			{
 				dialog.text = "Сдается мне, ты хочешь меня надуть! Но ничего, сейчас я тебя пощекочу. А с трупа и золотишко удобнее подобрать.";
 				Link.l1 = "Проклятье!";
-				Link.l1.go = "Exit_Fight";				
-			}				
+				Link.l1.go = "Exit_Fight";
+			}
 		break;
 
 		case "OnceAgain":
@@ -165,7 +165,7 @@ void ProcessDialogEvent()
 			Link.l2 = "Я подумал, и вернулся воздать вам по заслугам!";
 			Link.l2.go = "Exit_Fight";
 		break;
-				
+
 		case "GetLost":
 			Diag.TempNode = "GetLost";
 			dialog.text = LinkRandPhrase("Что тебе нужно? Мы же договорились, что ты уходишь!",
@@ -183,7 +183,7 @@ void ProcessDialogEvent()
 				"Помогите! Он маньяк! Не убивай меня!",
 				"Пощади! Я всего лишь скромный разбойник! Я слишком молод, чтобы умереть!");
 			Link.l1 = "Сидел бы ты дома - жил бы ты дольше!";
-			Link.l1.go = "Exit";			
+			Link.l1.go = "Exit";
 		break;
 	}
 }

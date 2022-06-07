@@ -3,7 +3,7 @@
 
 string NationShortName(int iNation) - краткое название нации (используется для всего!!! :) - в основном охотники, губеры и тд (т.е. return "eng"; "spa";  и тд)
 
-int ChangeCharacterHunterScore(ref chref, string _huntName, int incr) // увеличение счетчика награды за голову 
+int ChangeCharacterHunterScore(ref chref, string _huntName, int incr) // увеличение счетчика награды за голову
 (пример  ChangeCharacterHunterScore(GetMainCharacter(), NationShortName(sti(rMainGroupCharacter.nation)) + "hunter", 5);)
 
 string GetAddress_Form(ref NPChar) - обращение, зависит от нации (сэр и тп)
@@ -77,7 +77,7 @@ int GetSquadronGoods(ref _refCharacter,int _Goods) - колво груза на 
 int GetSquadronFreeSpace(ref _refCharacter,int _Goods) - свободное место (таже хрень - берем сопровождать торговца, продаем его товар, грузимся в магазине в него, довозим - денег куча - ЯВНЫЙ ЧИТ)
 
 bool GetRemovable(ref _refCharacter)  - наш это перс или квестовый - это как раз то, что не достает методам выше :)
-void SetCharacterRemovable(ref _refCharacter,bool removable) - ставим признак 
+void SetCharacterRemovable(ref _refCharacter,bool removable) - ставим признак
 
 int GetCargoGoods(ref _refCharacter,int _Goods) - груз данного перса
 
@@ -133,7 +133,7 @@ GetConvertStr(worldMap.island, "LocLables.txt") это аналог
     idLngFile = LanguageOpenFile("LocLables.txt");
     totalInfo = LanguageConvertString(idLngFile, _param);
     LanguageCloseFile(idLngFile);
-    
+
 //Запретить или разрешить генерации монстров
 void LAi_LocationDisableMonstersGen(string locationId, bool isDisable);
 

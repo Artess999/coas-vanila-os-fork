@@ -39,7 +39,7 @@ void LAi_type_barman_Init(aref chr)
 
 //Процессирование типа персонажа
 void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
-{	
+{
 	float time, tw;
 	chr.chr_ai.type.wait = stf(chr.chr_ai.type.wait) - dltTime;
 	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG)
@@ -111,8 +111,8 @@ void LAi_type_barman_CharacterUpdate(aref chr, float dltTime)
 						LAi_type_barman_PlayWaitAni(chr);
 						if(time > 200.0)
 						{
-							chr.chr_ai.type.time = "0";					
-						}				
+							chr.chr_ai.type.time = "0";
+						}
 					}
 				}else{
 					if(rand(100) < 10) LAi_type_barman_PlayWaitAni(chr);
@@ -243,7 +243,7 @@ void LAi_type_barman_Fire(aref attack, aref enemy, float kDist, bool isFindedEne
 //Персонаж атакован
 void LAi_type_barman_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 //Проиграть анимацию зазывания покупанелей

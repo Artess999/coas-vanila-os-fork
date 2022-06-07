@@ -97,7 +97,7 @@ void WhrFillSunGlowData(int nw1, int nw2)
 		}
 	}
 	else
-	{	
+	{
 		if (sti(aSun1.Glow.Enable) != false)
 		{
 			SunGlow.Glow.Dist = Whr_GetFloat(aGlow1,"Dist");

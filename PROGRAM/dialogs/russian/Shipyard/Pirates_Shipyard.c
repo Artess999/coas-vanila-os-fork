@@ -13,41 +13,41 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		int   shipMaxCrew   = sti(RealShips[sti(Pchar.Ship.Type)].MaxCrew);
 		int   shipHP        = sti(RealShips[sti(Pchar.Ship.Type)].HP);
 		float shipTurnRate  = stf(RealShips[sti(Pchar.Ship.Type)].TurnRate);
-		
+
 	    int  cannonMatherial1 = makeint(cannonQ * (cannonMax/shipClass));
 	    int	 cannonMatherial2 = makeint(cannonQ * (30/shipClass));
 	    int  cannonWorkPrice  = makeint(30*(10-shipClass)/(0.5*shipClass) * cannonQ * cannonMax);
 	    //int  cannonWorkPrice  = makeint(shipPrice * cannonQ * cannonMax / 2000);
-	    
+
 	    int  сapacityMatherial1 = makeint(shipCapacity /(shipClass*2));
 	    int	 сapacityMatherial2 = makeint(cannonQ *10 /shipClass);
 	    int  сapacityWorkPrice  = makeint(shipCapacity/5 * 200);
-	    
+
 	    int  SpeedRateMatherial1 = makeint(shipSpeedRate*18 / shipClass);
 	    int	 SpeedRateMatherial2 = makeint(shipSpeedRate*24 / shipClass);
 	    int  SpeedRateWorkPrice  = makeint(shipSpeedRate/5 * 10000*6/shipClass);
-	    
+
 	    int  MaxCrewMatherial1 = makeint(shipMaxCrew*10 / shipClass);
 	    int	 MaxCrewMatherial2 = makeint(shipMaxCrew*12 / shipClass);
 	    int  MaxCrewWorkPrice  = makeint(shipMaxCrew/5 * 500*6/shipClass);
-	    
+
 	    int  TurnRateMatherial1 = makeint(shipTurnRate*8 / shipClass);
 	    int	 TurnRateMatherial2 = makeint(shipTurnRate*10 / shipClass);
 	    int  TurnRateWorkPrice  = makeint(shipTurnRate/5 * 3350*6/shipClass);
-	    
+
 	    int  HPMatherial1 = makeint(shipHP / (5*shipClass));
 	    int	 HPMatherial2 = makeint(shipHP / (7*shipClass));
 	    int  HPWorkPrice  = makeint(shipHP/5 * 70*6/shipClass);
-	
+
 	}
 	int amount;
 	ref shTo;
     string sTemp;
     string s1;
-    
+
 	switch (Dialog.CurrentNode)
 	{
-		
+
 		// -----------------------------------Диалог первый - первая встреча
 		case "First time":  // перехват основного диалога, только один раз
 			if(NPChar.quest.meeting == "0")
@@ -71,7 +71,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			NextDiag.TempNode = "Master_Ship";
 			Dialog.CurrentNode = "Master_Ship";
 		break;
-		
+
 		case "Master_Ship":
 			dialog.text = "А, это опять вы, опять со своими проблемами... кха... кха.";
 			link.l1 = pcharrepphrase("Ты прав, это опять я, а ты, я смотрю, все так же недоволен жизнью, но давай поговорим о делах.",
@@ -116,7 +116,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			link.l9.go = "exit";
 			NextDiag.TempNode = "Master_Ship";
 		break;
-		
+
 		case "shipyard_dlg":
 			dialog.Text = "Могу предложить работу со штучными заказами - доводку до ума лоханки, которые нонче плавают по морю!";
 			Link.l1 = "Замечательно! Это то, что мне нужно. У меня как раз есть такой кораблик. Может взглянете?";
@@ -128,7 +128,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l9 = "О.. извините. Я уже ухожу.";
 			Link.l9.go = "ship_tunning_not_now";
 		break;
-		
+
 		case "ship_tunning_again":
 			dialog.Text = RandPhraseSimple("А.. это снова ты... Решил кораблик свой достроить?",
                                            RandPhraseSimple("Приветствую известного мореплавателя. Что кораблик не устраивает?",
@@ -150,13 +150,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l9 = "Нет. Думаю меня устроит то, что есть";
 			Link.l9.go = "ship_tunning_not_now_2";
 		break;
-		
+
         case "ship_tunning_not_now_2":
 			dialog.Text = "Да ты, я погляжу, еще и думаешь! Далеко пойдешь! Приходи, когда решишься достроить кораблик.";
 			Link.l1 = RandPhraseSimple("Спасибо! Всего хорошего.", "Пока, мастер. Можно и без сарказма.");
 			Link.l1.go = "ship_tunning_not_now";
 		break;
-        		
+
         case "ship_tunning_start":
             if ( sti(Pchar.Ship.Type) == SHIP_NOTUSED || Pchar.location.from_sea != "Pirates_town")
             {
@@ -224,10 +224,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    }
 			}
 		break;
-		
+
 		case "ship_tunning_cannon":
 			s1 = "Давай прикинем, что нужно сделать. Пушек у тебя " + cannonQ + ", калибр максимальный " + cannonMax + "ф. ";
-			
+
 			s1 = s1 + " Мне понадобится "+ cannonMatherial1 + " черного дерева для усиления портиков и "+ cannonMatherial2+" кожи для системы отката больших орудий.";
 			s1 = s1 + " За работу я попрошу " + cannonWorkPrice + " золотых. Половину вперед.";
             dialog.Text = s1;
@@ -236,7 +236,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l2 = "Нет. Меня это не устраивает.";
 			Link.l2.go = "ship_tunning_not_now";
 		break;
-		
+
 		case "ship_tunning_cannon_start":
 		    amount = cannonWorkPrice;
 		    if(makeint(Pchar.money) >= makeint(amount / 2 +0.5))
@@ -248,12 +248,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    NPChar.Tuning.Matherial2 = cannonMatherial2; // кожа
 			    NPChar.Tuning.ShipType       = Pchar.Ship.Type;
 			    NPChar.Tuning.ShipName       = RealShips[sti(Pchar.Ship.Type)].BaseName;
-			    
+
 				NextDiag.TempNode = "ship_tunning_cannon_again";
                 dialog.text = "Вот и славно. Жду материал для работы";
 			    link.l1 = "Побежал за ним...";
 			    link.l1.go = "Exit";
-			    
+
 			    ReOpenQuestHeader("ShipTuning");
 			    AddQuestRecord("ShipTuning", "t1");
 				AddQuestUserData("ShipTuning", "sText", "Для увеличения калибра орудий на корабле " + XI_ConvertString(RealShips[sti(Pchar.Ship.Type)].BaseName) +
@@ -264,10 +264,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				NextDiag.TempNode = "ship_tunning_not_now";
                 dialog.text = "Не вижу задатка...";
 				link.l1 = "Я позже зайду";
-				link.l1.go = "Exit";								
+				link.l1.go = "Exit";
 			}
 		break;
-		
+
 		case "ship_tunning_cannon_again":
 		    if (sti(NPChar.Tuning.ShipType) == sti(Pchar.Ship.Type) && NPChar.Tuning.ShipName      == RealShips[sti(Pchar.Ship.Type)].BaseName)
 		    {
@@ -289,7 +289,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    CloseQuestHeader("ShipTuning");
 			}
 		break;
-		
+
 		case "ship_tunning_cannon_again_2":
 		    amount = makeint(Pchar.money) - sti(NPChar.Tuning.Money);
 		    if (amount < 0)
@@ -302,7 +302,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		    }
 		    AddMoneyToCharacter(Pchar, -amount);
 		    NPChar.Tuning.Money = makeint(sti(NPChar.Tuning.Money) - amount);
-		    
+
 		    amount = GetSquadronGoods(Pchar, GOOD_EBONY) - sti(NPChar.Tuning.Matherial1);
 		    if (amount < 0)
 		    {
@@ -314,7 +314,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		    }
 		    RemoveCharacterGoods(Pchar, GOOD_EBONY, amount);
 		    NPChar.Tuning.Matherial1 = sti(NPChar.Tuning.Matherial1) - amount;
-		    
+
 		    amount = GetSquadronGoods(Pchar, GOOD_LEATHER) - sti(NPChar.Tuning.Matherial2);
 		    if (amount < 0)
 		    {
@@ -326,7 +326,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		    }
 		    RemoveCharacterGoods(Pchar, GOOD_LEATHER, amount);
 		    NPChar.Tuning.Matherial2 = sti(NPChar.Tuning.Matherial2) - amount;
-		    
+
 		    if(sti(NPChar.Tuning.Matherial2) < 1 && sti(NPChar.Tuning.Matherial1) < 1 && sti(NPChar.Tuning.Money) < 1)
 			{
 				DeleteAttribute(NPChar, "Tuning");
@@ -346,7 +346,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				AddQuestUserData("ShipTuning", "sText", "Мне осталось довезти еще " +  sti(NPChar.Tuning.Matherial1)+ " шт. черного дерева, "+ sti(NPChar.Tuning.Matherial2)+" шт. кожи и "+ sti(NPChar.Tuning.Money) + " золотых.");
 			}
 		break;
-		
+
 		case "ship_tunning_cannon_complite":
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
@@ -392,14 +392,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.Text = "... Вроде бы все... Можешь идти на верфь и менять калибр на побольше.";
 			Link.l1 = "Спасибо! Проверю обязательно.";
 			Link.l1.go = "Exit";
-			
+
 			AddQuestRecord("ShipTuning", "End");
 			CloseQuestHeader("ShipTuning");
 		break;
 		////////////////////////////////////////// трюм ////////////////////////////////////////////////////
 		case "ship_tunning_Capacity":
 			s1 = "Давай прикинем, что нужно сделать. Трюм у тебя " + shipCapacity;
-			
+
 			s1 = s1 + " Мне понадобится "+ сapacityMatherial1 + " красного дерева для уменьшения объема переборок и "+ сapacityMatherial2+" масла для пропитки швов.";
 			s1 = s1 + " За работу я попрошу " + сapacityWorkPrice + " золотых. Половину вперед.";
             dialog.Text = s1;
@@ -408,7 +408,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l2 = "Нет. Меня это не устраивает.";
 			Link.l2.go = "ship_tunning_not_now";
 		break;
-		
+
 		case "ship_tunning_Capacity_start":
 		    amount = сapacityWorkPrice;
 		    if(makeint(Pchar.money) >= makeint(amount / 2 +0.5))
@@ -419,12 +419,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    NPChar.Tuning.Matherial2 = сapacityMatherial2; //  GOOD_OIL
 			    NPChar.Tuning.ShipType       = Pchar.Ship.Type;
 			    NPChar.Tuning.ShipName       = RealShips[sti(Pchar.Ship.Type)].BaseName;
-			
+
 				NextDiag.TempNode = "ship_tunning_Capacity_again";
                 dialog.text = "Вот и славно. Жду материал для работы";
 			    link.l1 = "Побежал за ним...";
 			    link.l1.go = "Exit";
-			    
+
 			    ReOpenQuestHeader("ShipTuning");
 			    AddQuestRecord("ShipTuning", "t1");
 				AddQuestUserData("ShipTuning", "sText", "Для увеличения трюма на корабле " + XI_ConvertString(RealShips[sti(Pchar.Ship.Type)].BaseName) +
@@ -435,10 +435,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				NextDiag.TempNode = "ship_tunning_not_now";
                 dialog.text = "Не вижу задатка...";
 				link.l1 = "Я позже зайду";
-				link.l1.go = "Exit";								
+				link.l1.go = "Exit";
 			}
 		break;
-		
+
 		case "ship_tunning_Capacity_again":
 		    if (sti(NPChar.Tuning.ShipType) == sti(Pchar.Ship.Type) && NPChar.Tuning.ShipName      == RealShips[sti(Pchar.Ship.Type)].BaseName)
 		    {
@@ -456,15 +456,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    dialog.Text = "Сдается мне, сударь, что Вы поменяли корабль со времени нашего уговора. Придеться все заново расчитывать..";
 			    Link.l1 = "Было дело. Обидно, что задаток пропал...";
 			    Link.l1.go = "Exit";
-			    
+
 			    AddQuestRecord("ShipTuning", "Lose");
 			    CloseQuestHeader("ShipTuning");
 			}
 		break;
-		
+
 		case "ship_tunning_Capacity_again_2":
 		    checkMatherial(Pchar, NPChar, GOOD_MAHOGANY, GOOD_OIL);
-		
+
 		    if(sti(NPChar.Tuning.Matherial2) < 1 && sti(NPChar.Tuning.Matherial1) < 1 && sti(NPChar.Tuning.Money) < 1)
 			{
 				DeleteAttribute(NPChar, "Tuning");
@@ -484,7 +484,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				AddQuestUserData("ShipTuning", "sText", "Мне осталось довезти еще " +  sti(NPChar.Tuning.Matherial1)+ " шт. красного дерева, "+ sti(NPChar.Tuning.Matherial2)+" шт. масла и "+ sti(NPChar.Tuning.Money) + " золотых.");
 			}
 		break;
-		
+
 		case "ship_tunning_Capacity_complite":
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
@@ -497,15 +497,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.Text = "... Вроде бы все... Можешь идти к купцам и грузиться по полной";
 			Link.l1 = "Спасибо! Проверю обязательно";
 			Link.l1.go = "Exit";
-			
+
 			AddQuestRecord("ShipTuning", "End");
 			CloseQuestHeader("ShipTuning");
 		break;
-		
+
 		////////////////////////////////////////// SpeedRate ////////////////////////////////////////////////////
 		case "ship_tunning_SpeedRate":
 			s1 = "Давай прикинем, что нужно сделать. Скорость у тебя " + shipSpeedRate;
-			
+
 			s1 = s1 + " Мне понадобится "+ SpeedRateMatherial1 + " парусины и "+ SpeedRateMatherial2+" шелка";
 			s1 = s1 + " За работу я попрошу " + SpeedRateWorkPrice + " золотых. Половину вперед.";
             dialog.Text = s1;
@@ -514,7 +514,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l2 = "Нет. Меня это не устраивает.";
 			Link.l2.go = "ship_tunning_not_now";
 		break;
-		
+
 		case "ship_tunning_SpeedRate_start":
 		    amount = SpeedRateWorkPrice;
 		    if(makeint(Pchar.money) >= makeint(amount / 2 +0.5))
@@ -525,12 +525,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    NPChar.Tuning.Matherial2 = SpeedRateMatherial2; //  GOOD_SILK
 			    NPChar.Tuning.ShipType       = Pchar.Ship.Type;
 			    NPChar.Tuning.ShipName       = RealShips[sti(Pchar.Ship.Type)].BaseName;
-			
+
 				NextDiag.TempNode = "ship_tunning_SpeedRate_again";
                 dialog.text = "Вот и славно. Жду материал для работы";
 			    link.l1 = "Побежал за ним...";
 			    link.l1.go = "Exit";
-			    
+
 			    ReOpenQuestHeader("ShipTuning");
 			    AddQuestRecord("ShipTuning", "t1");
 				AddQuestUserData("ShipTuning", "sText", "Для увеличения скорости на корабле " + XI_ConvertString(RealShips[sti(Pchar.Ship.Type)].BaseName) +
@@ -541,10 +541,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				NextDiag.TempNode = "ship_tunning_not_now";
                 dialog.text = "Не вижу задатка...";
 				link.l1 = "Я позже зайду";
-				link.l1.go = "Exit";								
+				link.l1.go = "Exit";
 			}
 		break;
-		
+
 		case "ship_tunning_SpeedRate_again":
 		    if (sti(NPChar.Tuning.ShipType) == sti(Pchar.Ship.Type) && NPChar.Tuning.ShipName      == RealShips[sti(Pchar.Ship.Type)].BaseName)
 		    {
@@ -562,15 +562,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    dialog.Text = "Сдается мне, сударь, что Вы поменяли корабль со времени нашего уговора. Придеться все заново расчитывать..";
 			    Link.l1 = "Было дело. Обидно, что задаток пропал...";
 			    Link.l1.go = "Exit";
-			    
+
 			    AddQuestRecord("ShipTuning", "Lose");
 			    CloseQuestHeader("ShipTuning");
 			}
 		break;
-		
+
 		case "ship_tunning_SpeedRate_again_2":
 		    checkMatherial(Pchar, NPChar, GOOD_SAILCLOTH, GOOD_SILK);
-		    
+
 		    if(sti(NPChar.Tuning.Matherial2) < 1 && sti(NPChar.Tuning.Matherial1) < 1 && sti(NPChar.Tuning.Money) < 1)
 			{
 				DeleteAttribute(NPChar, "Tuning");
@@ -590,7 +590,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				AddQuestUserData("ShipTuning", "sText",  "Мне осталось довезти еще " +  sti(NPChar.Tuning.Matherial1)+ " шт. парусины, "+ sti(NPChar.Tuning.Matherial2)+" шт. шелка и "+ sti(NPChar.Tuning.Money) + " золотых.");
 			}
 		break;
-		
+
 		case "ship_tunning_SpeedRate_complite":
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
@@ -603,14 +603,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.Text = "... Вроде бы все... Можешь ловить ветер полными парусами";
 			Link.l1 = "Спасибо! Проверю обязательно";
 			Link.l1.go = "Exit";
-			
+
 			AddQuestRecord("ShipTuning", "End");
 			CloseQuestHeader("ShipTuning");
 		break;
 		////////////////////////////////////////// MaxCrew ////////////////////////////////////////////////////
 		case "ship_tunning_MaxCrew":
 			s1 = "Давай прикинем, что нужно сделать. Максимальный экипаж твой с учетом перегруза " + shipMaxCrew + " матросов";
-			
+
 			s1 = s1 + " Мне понадобится "+ MaxCrewMatherial1 + " фруктов и "+ MaxCrewMatherial2+" одежды";
 			s1 = s1 + " За работу я попрошу " + MaxCrewWorkPrice + " золотых. Половину вперед.";
             dialog.Text = s1;
@@ -619,7 +619,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l2 = "Нет. Меня это не устраивает.";
 			Link.l2.go = "ship_tunning_not_now";
 		break;
-		
+
 		case "ship_tunning_MaxCrew_start":
 		    amount = MaxCrewWorkPrice;
 		    if(makeint(Pchar.money) >= makeint(amount / 2 +0.5))
@@ -630,12 +630,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    NPChar.Tuning.Matherial2 = MaxCrewMatherial2; //  GOOD_CLOTHES
 			    NPChar.Tuning.ShipType       = Pchar.Ship.Type;
 			    NPChar.Tuning.ShipName       = RealShips[sti(Pchar.Ship.Type)].BaseName;
-			
+
 				NextDiag.TempNode = "ship_tunning_MaxCrew_again";
                 dialog.text = "Вот и славно. Жду материал для работы";
 			    link.l1 = "Побежал за ним...";
 			    link.l1.go = "Exit";
-			    
+
 			    ReOpenQuestHeader("ShipTuning");
 			    AddQuestRecord("ShipTuning", "t1");
 				AddQuestUserData("ShipTuning", "sText",  "Для увеличения экипажа на корабле " + XI_ConvertString(RealShips[sti(Pchar.Ship.Type)].BaseName) +
@@ -646,10 +646,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				NextDiag.TempNode = "ship_tunning_not_now";
                 dialog.text = "Не вижу задатка...";
 				link.l1 = "Я позже зайду";
-				link.l1.go = "Exit";								
+				link.l1.go = "Exit";
 			}
 		break;
-		
+
 		case "ship_tunning_MaxCrew_again":
 		    if (sti(NPChar.Tuning.ShipType) == sti(Pchar.Ship.Type) && NPChar.Tuning.ShipName      == RealShips[sti(Pchar.Ship.Type)].BaseName)
 		    {
@@ -667,15 +667,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    dialog.Text = "Сдается мне, сударь, что Вы поменяли корабль со времени нашего уговора. Придеться все заново расчитывать..";
 			    Link.l1 = "Было дело. Обидно, что задаток пропал...";
 			    Link.l1.go = "Exit";
-			    
+
 			    AddQuestRecord("ShipTuning", "Lose");
 			    CloseQuestHeader("ShipTuning");
 			}
 		break;
-		
+
 		case "ship_tunning_MaxCrew_again_2":
 		    checkMatherial(Pchar, NPChar, GOOD_FRUITS, GOOD_CLOTHES);
-		    
+
 		    if(sti(NPChar.Tuning.Matherial2) < 1 && sti(NPChar.Tuning.Matherial1) < 1 && sti(NPChar.Tuning.Money) < 1)
 			{
 				DeleteAttribute(NPChar, "Tuning");
@@ -695,7 +695,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				AddQuestUserData("ShipTuning", "sText",  "Мне осталось довезти еще " +  sti(NPChar.Tuning.Matherial1)+ " шт. фруктов, "+ sti(NPChar.Tuning.Matherial2)+" шт. одежды и "+ sti(NPChar.Tuning.Money) + " золотых.");
 			}
 		break;
-		
+
 		case "ship_tunning_MaxCrew_complite":
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
@@ -708,15 +708,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.Text = "... Вроде бы все... Набирай новый экипаж";
 			Link.l1 = "Спасибо! Проверю обязательно";
 			Link.l1.go = "Exit";
-			
+
 			AddQuestRecord("ShipTuning", "End");
 			CloseQuestHeader("ShipTuning");
 		break;
-		
+
 		////////////////////////////////////////// TurnRate ////////////////////////////////////////////////////
 		case "ship_tunning_TurnRate":
 			s1 = "Давай прикинем, что нужно сделать. Маневренность " + shipTurnRate;
-			
+
 			s1 = s1 + " Мне понадобится "+ TurnRateMatherial1 + " досок и "+ TurnRateMatherial2+" полотна";
 			s1 = s1 + " За работу я попрошу " + TurnRateWorkPrice + " золотых. Половину вперед.";
             dialog.Text = s1;
@@ -725,7 +725,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l2 = "Нет. Меня это не устраивает.";
 			Link.l2.go = "ship_tunning_not_now";
 		break;
-		
+
 		case "ship_tunning_TurnRate_start":
 		    amount = TurnRateWorkPrice;
 		    if(makeint(Pchar.money) >= makeint(amount / 2 +0.5))
@@ -736,12 +736,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    NPChar.Tuning.Matherial2 = TurnRateMatherial2; //  GOOD_LINEN
 			    NPChar.Tuning.ShipType       = Pchar.Ship.Type;
 			    NPChar.Tuning.ShipName       = RealShips[sti(Pchar.Ship.Type)].BaseName;
-			
+
 				NextDiag.TempNode = "ship_tunning_TurnRate_again";
                 dialog.text = "Вот и славно. Жду материал для работы";
 			    link.l1 = "Побежал за ним...";
 			    link.l1.go = "Exit";
-			    
+
 			    ReOpenQuestHeader("ShipTuning");
 			    AddQuestRecord("ShipTuning", "t1");
 				AddQuestUserData("ShipTuning", "sText",  "Для увеличения маневренности на корабле " + XI_ConvertString(RealShips[sti(Pchar.Ship.Type)].BaseName) +
@@ -752,10 +752,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				NextDiag.TempNode = "ship_tunning_not_now";
                 dialog.text = "Не вижу задатка...";
 				link.l1 = "Я позже зайду";
-				link.l1.go = "Exit";								
+				link.l1.go = "Exit";
 			}
 		break;
-		
+
 		case "ship_tunning_TurnRate_again":
 		    if (sti(NPChar.Tuning.ShipType) == sti(Pchar.Ship.Type) && NPChar.Tuning.ShipName      == RealShips[sti(Pchar.Ship.Type)].BaseName)
 		    {
@@ -773,15 +773,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    dialog.Text = "Сдается мне, сударь, что Вы поменяли корабль со времени нашего уговора. Придеться все заново расчитывать..";
 			    Link.l1 = "Было дело. Обидно, что задаток пропал...";
 			    Link.l1.go = "Exit";
-			    
+
 			    AddQuestRecord("ShipTuning", "Lose");
 			    CloseQuestHeader("ShipTuning");
 			}
 		break;
-		
+
 		case "ship_tunning_TurnRate_again_2":
 		    checkMatherial(Pchar, NPChar, GOOD_PLANKS, GOOD_LINEN);
-		
+
 		    if(sti(NPChar.Tuning.Matherial2) < 1 && sti(NPChar.Tuning.Matherial1) < 1 && sti(NPChar.Tuning.Money) < 1)
 			{
 				DeleteAttribute(NPChar, "Tuning");
@@ -801,7 +801,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				AddQuestUserData("ShipTuning", "sText",  "Мне осталось довезти еще " +  sti(NPChar.Tuning.Matherial1)+ " шт. досок, "+ sti(NPChar.Tuning.Matherial2)+" шт. полотна и "+ sti(NPChar.Tuning.Money) + " золотых.");
 			}
 		break;
-		
+
 		case "ship_tunning_TurnRate_complite":
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
@@ -814,14 +814,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.Text = "... Вроде бы все... Можешь крутить штурвал";
 			Link.l1 = "Спасибо! Проверю обязательно";
 			Link.l1.go = "Exit";
-			
+
 			AddQuestRecord("ShipTuning", "End");
 			CloseQuestHeader("ShipTuning");
 		break;
 		////////////////////////////////////////// HP ////////////////////////////////////////////////////
 		case "ship_tunning_HP":
 			s1 = "Давай прикинем, что нужно сделать. Корпус сейчас " + shipHP;
-			
+
 			s1 = s1 + " Мне понадобится "+ HPMatherial1 + " черного дерева и "+ HPMatherial2+" сандала";
 			s1 = s1 + " За работу я попрошу " + HPWorkPrice + " золотых. Половину вперед.";
             dialog.Text = s1;
@@ -830,7 +830,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			Link.l2 = "Нет. Меня это не устраивает.";
 			Link.l2.go = "ship_tunning_not_now";
 		break;
-		
+
 		case "ship_tunning_HP_start":
 		    amount = HPWorkPrice;
 		    if(makeint(Pchar.money) >= makeint(amount / 2 +0.5))
@@ -841,12 +841,12 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    NPChar.Tuning.Matherial2 = HPMatherial2; //  GOOD_SANDAL
 			    NPChar.Tuning.ShipType       = Pchar.Ship.Type;
 			    NPChar.Tuning.ShipName       = RealShips[sti(Pchar.Ship.Type)].BaseName;
-			
+
 				NextDiag.TempNode = "ship_tunning_HP_again";
                 dialog.text = "Вот и славно. Жду материал для работы";
 			    link.l1 = "Побежал за ним...";
 			    link.l1.go = "Exit";
-			    
+
 			    ReOpenQuestHeader("ShipTuning");
 			    AddQuestRecord("ShipTuning", "t1");
 				AddQuestUserData("ShipTuning", "sText",  "Для увеличения прочности корпуса на корабле " + XI_ConvertString(RealShips[sti(Pchar.Ship.Type)].BaseName) +
@@ -857,10 +857,10 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				NextDiag.TempNode = "ship_tunning_not_now";
                 dialog.text = "Не вижу задатка...";
 				link.l1 = "Я позже зайду";
-				link.l1.go = "Exit";								
+				link.l1.go = "Exit";
 			}
 		break;
-		
+
 		case "ship_tunning_HP_again":
 		    if (sti(NPChar.Tuning.ShipType) == sti(Pchar.Ship.Type) && NPChar.Tuning.ShipName      == RealShips[sti(Pchar.Ship.Type)].BaseName)
 		    {
@@ -878,15 +878,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			    dialog.Text = "Сдается мне, сударь, что Вы поменяли корабль со времени нашего уговора. Придеться все заново расчитывать..";
 			    Link.l1 = "Было дело. Обидно, что задаток пропал...";
 			    Link.l1.go = "Exit";
-			    
+
 			    AddQuestRecord("ShipTuning", "Lose");
 			    CloseQuestHeader("ShipTuning");
 			}
 		break;
-		
+
 		case "ship_tunning_HP_again_2":
 		    checkMatherial(Pchar, NPChar, GOOD_EBONY, GOOD_SANDAL);
-		
+
 		    if(sti(NPChar.Tuning.Matherial2) < 1 && sti(NPChar.Tuning.Matherial1) < 1 && sti(NPChar.Tuning.Money) < 1)
 			{
 				DeleteAttribute(NPChar, "Tuning");
@@ -906,7 +906,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 				AddQuestUserData("ShipTuning", "sText",  "Мне осталось довезти еще " +  sti(NPChar.Tuning.Matherial1)+ " шт. черного дерева, "+ sti(NPChar.Tuning.Matherial2)+" шт. сандала и "+ sti(NPChar.Tuning.Money) + " золотых.");
 			}
 		break;
-		
+
 		case "ship_tunning_HP_complite":
 		    AddTimeToCurrent(6, 30);
 		    shTo = &RealShips[sti(Pchar.Ship.Type)];
@@ -919,7 +919,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			dialog.Text = "... Вроде бы все... Пару лишних взрывов бомб выдержит точно";
 			Link.l1 = "Спасибо! Проверю обязательно";
 			Link.l1.go = "Exit";
-			
+
 			AddQuestRecord("ShipTuning", "End");
 			CloseQuestHeader("ShipTuning");
 		break;
@@ -1068,7 +1068,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.quest.BlueBird_inCavern.function = "BlueBird_inCavern";
 			LAi_LocationDisableMonstersGen("Bermudes_Cavern", true); //монстров не генерить
 			LAi_LocationDisableOfficersGen("Bermudes_Cavern", true); //офицеров не пускать
-		break;	
+		break;
 //*************************** Открывание двери ***************************
  		case "Step_Door_1":
 			dialog.text = "Все верно. Чтобы здесь пройти, тебе надо заплатить мне 20000 монет. Не заплатишь - не открою, у меня здесь не проходной двор. Да и тебе там шляться не советую - не к добру...";

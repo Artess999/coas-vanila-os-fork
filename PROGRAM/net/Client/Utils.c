@@ -7,7 +7,7 @@ bool NetClient_IsTeam(int wOurCharacterID, int wOtherCharacterID)
 bool NetClient_IsCLient(int wOurCharacterID)
 {
 	if (wOurCharacterID == DST_INVALID) { return false; }
-	if (sti(NCClients[wOurCharacterID].Use)) { return true; } 
+	if (sti(NCClients[wOurCharacterID].Use)) { return true; }
 	return false;
 }
 

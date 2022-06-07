@@ -76,7 +76,7 @@ int Net_GetRankNum(int iSunk, int iWon)
 	{
 		int iThisSunk = sti(NetRanks[i].Sunk);
 		int iThisWon = sti(NetRanks[i].Won);
-		
+
 		if (iSunk < iThisSunk || iWon < iThisWon) { return i; }
 	}
 

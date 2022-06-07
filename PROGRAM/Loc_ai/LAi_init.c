@@ -156,7 +156,7 @@ void LocAi_Release()
 	DelEventHandler("Location_CharacterIsFight", "LAi_CharacterIsFight");
 	DelEventHandler("Location_CharacterEscapeSlide", "LAi_CharacterEscapeSlide");
 	DelEventHandler("Location_CharacterColThreshold", "LAi_CharacterColThreshold");
-	DelEventHandler("Location_Character_EndAction", "LAi_Character_EndAction");	
+	DelEventHandler("Location_Character_EndAction", "LAi_Character_EndAction");
 	DelEventHandler("Location_CharacterItemAction", "LAi_CharacterItemAction");
 	//Очистим фантомных персонажей
 	for(i = 0; i < MAX_CHARS_IN_LOC; i++)

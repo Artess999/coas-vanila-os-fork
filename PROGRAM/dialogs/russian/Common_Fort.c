@@ -2,7 +2,7 @@
 void ProcessDialogEvent()
 {
 	ref NPChar;
-	aref Link, NextDiag;	
+	aref Link, NextDiag;
 
 	DeleteAttribute(&Dialog,"Links");
 
@@ -34,7 +34,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -42,14 +42,14 @@ void ProcessDialogEvent()
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
-		
-		case "First time":			
+
+		case "First time":
             NextDiag.TempNode = "First time";
 			if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY && sti(NPChar.nation) != PIRATE)
 			{
 				dialog.text = RandPhraseSimple("Шпион? Сдать оружие!! Следовать за мной!", "Вражеский агент!! Немедленно схватить его!");
 				link.l1 = RandPhraseSimple("Заткнись, малахольный!", "Как бы не так!");
-				link.l1.go = "fight"; 
+				link.l1.go = "fight";
 			}
 			else
 			{
@@ -71,7 +71,7 @@ void ProcessDialogEvent()
 						{
     						dialog.text = RandPhraseSimple("Пираты в форте?! Держи его!!", "Это пират, он вынюхивает здесь что-то!! Держи его!!!");
 							link.l1 = RandPhraseSimple("Да, пират, ну и что?..", "Хех, попробуйте схватить...");
-							link.l1.go = "fight"; 
+							link.l1.go = "fight";
 							break;
 						}
 						if (findsubstr(pchar.location.from_sea, "_town" , 0) != -1) //если причалил в городе
@@ -263,7 +263,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Ваша лицензия подлежит изъятию, так как просрочена и поэтому недействительна. Сдайте оружие и следуйте за мной для последующих разбирательств!";
 				link.l1 = RandPhraseSimple("Как бы не так!", "После дождичка, в четверг...");
-				link.l1.go = "fight";	
+				link.l1.go = "fight";
 				TakeNationLicence(sti(npchar.nation));
 				AddCharacterExpToSkill(pchar, SKILL_SNEAK, 20); // враг, которого узнали - потом будет умнее - бонус в скрытность
 			}
@@ -271,13 +271,13 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Хм, все верно. Однако позволю себе заметить, что срок действия вашей лицензии сегодня истекает. Я пропущу вас сейчас, но вам нужно будет получить новую лицензию.";
 				link.l1 = "Спасибо, я сделаю это при первой же возможности.";
-				link.l1.go = "exit";			
+				link.l1.go = "exit";
 			}
 			if (iTemp > 0 && iTemp <= 10)
 			{
 				dialog.text = "Хм, все верно. Однако позволю себе заметить, что срок действия вашей лицензии вскоре истекает - она действительна еще только " + FindRussianDaysString(iTemp) + ". Так что имейте в виду, " + GetAddress_Form(npchar) + ".";
 				link.l1 = "Спасибо, я обзаведусь новой при первой же возможности.";
-				link.l1.go = "exit";			
+				link.l1.go = "exit";
 			}
 			if (iTemp > 10)
 			{

@@ -118,7 +118,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     			link.l1 = "Хорошо, я все сделаю.";
     			link.l1.go = "exit";
             }
-		break;	
+		break;
  		case "Step_F4_2":
     		pchar.questTemp.State = "Fr4SoleiRoyal_toBasTer";
 			SaveCurrentQuestDateParam("questTemp");
@@ -128,8 +128,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sld.Ship.Name = "Солей Руаяль";
 			SetBaseShipData(sld);
 			SetCrewQuantityFull(sld);
-			Fantom_SetBalls(sld, "pirate");	
-			FantomMakeCoolFighter(sld, 35, 80, 70, BLADE_LONG, "pistol3", 100);	
+			Fantom_SetBalls(sld, "pirate");
+			FantomMakeCoolFighter(sld, 35, 80, 70, BLADE_LONG, "pistol3", 100);
 			sld.CompanionEnemyEnable = false;
 			sld.Abordage.Enable = false; // НЕЛЬЗЯ!
 			SetCompanionIndex(pchar, -1, sti(sld.index));
@@ -138,7 +138,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             Pchar.quest.Fr4SoleiRoyal_Fight.win_condition.l1.location = "Dominica";
             Pchar.quest.Fr4SoleiRoyal_Fight.win_condition = "Fr4SoleiRoyal_Fight";
 			DialogExit();
-		break;	
+		break;
 
 	}
 	UnloadSegment(NPChar.FileDialog2);  // если где-то выход внутри switch  по return не забыть сделать анлод

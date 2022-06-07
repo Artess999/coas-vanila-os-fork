@@ -4,10 +4,10 @@
 #define SEA_EXECUTE					"sea_execute"
 #define SEA_REALIZE					"sea_realize"
 
-// 
+//
 #define SEA_GET_LAYERS				"SeaGetLayers"
 
-// 
+//
 #define EVENT_SEA_LOGIN				"EventSeaLogin"
 
 // Abordage Section

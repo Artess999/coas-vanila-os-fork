@@ -319,13 +319,13 @@ void LAi_ApplyCharacterDamage(aref chr, int dmg)
 	chr.chr_ai.hp = hp;
 	//Проверим квест
 	LAi_ProcessCheckMinHP(chr);
-	
+
 	bool bloodSize = false;
 	if (damage > 30.0) bloodSize = true;
 	float fRange = 1.0 + frand(0.6);
 	LaunchBlood(chr, fRange, bloodSize);
 
-	if(sti(pchar.index) == sti(chr.index)) 
+	if(sti(pchar.index) == sti(chr.index))
 	{
 		// здоровье -->
         pchar.Health.Damg      = stf(pchar.Health.Damg) + damage;
@@ -361,10 +361,10 @@ void LAi_CheckKillCharacter(aref chr)
 			}
 		}
 
-		
+
 		DeleteAttribute(chr, "quest.questflag");
 
-		chr.chr_ai.hp = 0.0;		
+		chr.chr_ai.hp = 0.0;
 		// boal dead can be searched 14.12.2003 -->
 		Dead_AddLoginedCharacter(chr); // записали еще живого в список трупов
 		// boal dead can be searched 14.12.2003 <--
@@ -478,7 +478,7 @@ ref LAi_CreateFantomCharacterEx(string model, string ani, string group, string l
 	}
 	//name
 	SetRandomNameToCharacter(chr);
-	
+
 	//Логинем персонажа в локацию
 	chr.chr_ai.type    = LAI_DEFAULT_TYPE;
 	chr.chr_ai.tmpl    = LAI_DEFAULT_TEMPLATE;
@@ -529,7 +529,7 @@ string LAi_FindNPCLocator(string group)
 	//Выбираем дальний локатор
 	float posX, posY, posZ;
 	posX = 0.0; posY = 0.0; posZ = 0.0;
-	
+
 	ref  MnChar = GetMainCharacter();
 
 	if(GetCharacterPos(MnChar, &posX, &posY, &posZ))
@@ -576,7 +576,7 @@ string LAi_QuestDelay(string quest, float delayTime)
 	}
 	lai_questdelays.(atr) = delayTime;
 	lai_questdelays.(atr).quest = quest;
-	
+
 	return atr; //boal
 }
 //boal -->
@@ -696,7 +696,7 @@ void LAi_SetHuberSitAnimation(aref chr)
 	if(IsEntity(chr))
 	{
 		BeginChangeCharacterActions(chr);
-		SetHuberAnimation(chr);	
+		SetHuberAnimation(chr);
 		SetDefaultSitDead(chr);
 		EndChangeCharacterActions(chr);
 	}
@@ -709,7 +709,7 @@ void LAi_Fade(string questFadeOut, string questFadeIn)
 {
 	if(questFadeOut != "") LAi_QuestDelay(questFadeOut, 0.55);
 	if(questFadeIn != "") LAi_QuestDelay(questFadeIn, 1.10);
-	
+
 	if(IsEntity(&LAi_QuestFader))
 	{
 		Trace("LAi_Fade -> previous fade operation not ended!");
@@ -814,7 +814,7 @@ bool LAi_CanNearEnemy(aref chr, float radius)
 			}
 		}	  */
 		if(LAi_group_IsEnemy(chr, &Characters[idx])) return true;
-	}	
+	}
 	return false;
 }
 // boal dead can be searched 14.12.2003 -->
@@ -832,14 +832,14 @@ void Dead_AddLoginedCharacter(aref chr)
     int     value;
     aref    typeRef;
 	//trace("Dead_AddLoginedCharacter nLuck = " + nLuck);
-	
+
 	if(GetCharacterPos(chr, &x, &y, &z) == true && Dead_Char_num < (100))
 	{
 		Dead_Characters[Dead_Char_num].id = chr.id;
 		Dead_Characters[Dead_Char_num].index = chr.index;
 		Dead_Characters[Dead_Char_num].name     = chr.name;
 		Dead_Characters[Dead_Char_num].lastname = chr.lastname;
-		if (CheckAttribute(chr, "faceid")) 
+		if (CheckAttribute(chr, "faceid"))
 		{
 			Dead_Characters[Dead_Char_num].faceid   = chr.faceid;
 		}
@@ -958,7 +958,7 @@ void Dead_DelLoginedCharacter(aref chr)
 		{
             Dead_Characters[i].px = 30000; // локация -2000 до 2000
 			Dead_Characters[i].pz = 30000;
-		}		
+		}
 	}
 	if(Dead_Char_num < 0) Dead_Char_num = 0;
 }
@@ -970,7 +970,7 @@ int Dead_FindCloseBody()
 	float x, y, z;
 	float x1, y1, z1, rd, min_rd = 100; // 100 - is super max
 	GetCharacterPos(mainChr, &x, &y, &z);
-	
+
     for(int i = 0; i < Dead_Char_num; i++)
 	{
 	    x1 = Dead_Characters[i].px;
@@ -994,9 +994,9 @@ void Dead_OpenBoxProcedure()
     ref deadCh;
     dchr_index = Dead_FindCloseBody();
     if (dchr_index == -1) return;
-    
+
 	deadCh = &Dead_Characters[dchr_index];
-	
+
 	Dead_LaunchCharacterItemChange(deadCh);
 }
 void Dead_LaunchCharacterItemChange(ref chref)
@@ -1068,7 +1068,7 @@ string LAi_FindFreeRandomLocator(string group)
 
 bool LAi_CheckLocatorFree(string _group, string _locator)
 {
-	if(!IsEntity(loadedLocation)) return false;	
+	if(!IsEntity(loadedLocation)) return false;
 	string at = "locators." + _group + "." + _locator;
 	if(!CheckAttribute(loadedLocation, at)) return false;
 	aref grp;

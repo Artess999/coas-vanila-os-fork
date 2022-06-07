@@ -21,7 +21,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 
 		case "ELOpenKey_1":
-			
+
 			if (dialogEditStrings[7] == KEY_ENG_LINE)
 			{
 				dialog.text = "Ты знаешь, о чем речь, твой ключ принят. Я замолвлю за тебя словечко Мэдифорду...";
@@ -34,7 +34,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			{
 				dialog.text = "Ты не знаешь, о чем речь. Уходи, не мешай мне нести службу.";
 				Link.l1 = "Хм, ну ладно...";
-				Link.l1.go = "exit";	
+				Link.l1.go = "exit";
 			}
 		break;
 	}

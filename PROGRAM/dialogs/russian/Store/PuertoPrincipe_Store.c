@@ -18,15 +18,15 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		case "BlueBird_1":
-			if (isBadReputation(pchar, 5)) 
+			if (isBadReputation(pchar, 5))
 			{
-				dialog.text = NPCStringReactionRepeat("Я не буду разговаривать о Паскале с человеком, имеющим репутацию, подобную вашей. Я готов заниматься с вами торговлей, не более.", 
-					"Я уже все вам сказал.", 
+				dialog.text = NPCStringReactionRepeat("Я не буду разговаривать о Паскале с человеком, имеющим репутацию, подобную вашей. Я готов заниматься с вами торговлей, не более.",
+					"Я уже все вам сказал.",
 					"Мы уже говорили на эту тему.",
 					"Мне нечего добавить к сказанному.", "block", 1, npchar, Dialog.CurrentNode);
-				link.l1 = HeroStringReactionRepeat("Но мне очень нужен разговор с тобой, постарайся это понять...", 
+				link.l1 = HeroStringReactionRepeat("Но мне очень нужен разговор с тобой, постарайся это понять...",
 					"Хм...",
-					"Да, точно...", 
+					"Да, точно...",
 					"Понятно...", npchar, Dialog.CurrentNode);
 				link.l1.go = DialogGoNodeRepeat("BlueBird_close", "", "", "", npchar, Dialog.CurrentNode);
 			}

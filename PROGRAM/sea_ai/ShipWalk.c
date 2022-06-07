@@ -23,7 +23,7 @@ void Ship_Walk_Create()
 {
 	int charIndex = GetEventData();
 	aref ship = GetEventData();
-	
+
 	ref ch = GetCharacter(charIndex);
 
 	if (!CheckAttribute(ch, "ship.type"))
@@ -51,7 +51,7 @@ void Ship_Walk_Hull_Damage()
 	int		iBallCharacterIndex = GetEventData();
 	int		iOurCharacterIndex = GetEventData();
 
-	ref		rBallCharacter = GetCharacter(iBallCharacterIndex);	
+	ref		rBallCharacter = GetCharacter(iBallCharacterIndex);
 	ref		rCharacter = GetCharacter(iOurCharacterIndex);
 
 	rCharacter.Ship.LastBallCharacter = iBallCharacterIndex;

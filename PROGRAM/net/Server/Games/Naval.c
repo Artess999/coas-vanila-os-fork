@@ -6,14 +6,14 @@ bool NetServer_CheckGameOver_Naval()
 	for (i=0; i<4; i++) { iTeams[i] = 0; iTeamsDamage[i] = 0; }
 
 	// return true if only one team alive - so they win the battle
-	for (i=0; i<NET_MAXCLIENTS; i++) 
-	{ 
-		if (!sti(NSClients[i].Use)) { continue; } 
+	for (i=0; i<NET_MAXCLIENTS; i++)
+	{
+		if (!sti(NSClients[i].Use)) { continue; }
 		int iTeam = sti(NSClients[i].Team);
 
 		iTeamsDamage[iTeam] = iTeamsDamage[iTeam] + sti(NSClients[i].Stat.DamageInflicted);
 
-		if (stf(NSClients[i].Ship.hp) <= 0.0) { continue; } 
+		if (stf(NSClients[i].Ship.hp) <= 0.0) { continue; }
 
 		iTeams[iTeam] = iTeams[iTeam] + 1;
 	}
@@ -22,8 +22,8 @@ bool NetServer_CheckGameOver_Naval()
 	int iBestDamageTeam = 0;
 	int iBestDamage = -1;
 	int iNumAliveTeams = 0;
-	for (i=0; i<4; i++) 
-	{ 
+	for (i=0; i<4; i++)
+	{
 		if (iBestDamage < iTeamsDamage[iTeam])
 		{
 			iBestDamage = iTeamsDamage[iTeam];

@@ -9,7 +9,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-    
+
 // ============================================================================
 // ============================= блок angry ==========>>>>>>>>>>>>>>>>>>>>>>>>>
     if (CheckAttribute(npchar, "angry") && !CheckAttribute(npchar, "angry.ok"))
@@ -51,7 +51,7 @@ void ProcessDialogEvent()
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
 		break;
-		
+
 		//********************* Английская линейка *********************
  		case "EngLine_quests":
 			dialog.text = "Я слушаю вас, капитан.";

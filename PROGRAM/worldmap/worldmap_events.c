@@ -39,7 +39,7 @@ void wdmEvent_ShipEncounter()
 	float playerShipX = GetEventData();
 	float playerShipZ = GetEventData();
 	float playerShipAY = GetEventData();
-	int eshipIndex = GetEventData();	
+	int eshipIndex = GetEventData();
 	if (CheckAttribute(pchar, "SkipEshipIndex") && pchar.SkipEshipIndex == eshipIndex) return; // boal
 	pchar.eshipIndex = eshipIndex;
 	LaunchMapScreen();
@@ -49,7 +49,7 @@ void wdmEvent_ShipEncounter()
 void wdmEvent_UpdateDate()
 {
 	Environment.date.day = worldMap.date.day;
-	Environment.date.month = worldMap.date.month;	
+	Environment.date.month = worldMap.date.month;
 	Environment.date.year = worldMap.date.year;
 	Environment.date.hour = worldMap.date.hour;
 	Environment.date.min = worldMap.date.min;
@@ -70,7 +70,7 @@ void wdmEvent_AddQuestEncounters()
 	for(int i = 0; i < num; i++)
 	{
 		at = GetAttributeN(encs, i);
-		
+
 		if (CheckAttribute(at, "characterID")) // boal fix 14.09.06
 		{
 			if(at.type == "trader")
@@ -105,7 +105,7 @@ void wdmEvent_AddQuestEncounters()
 				worldMap.(encPath).quest.chrID = at.characterID;
 			}
 			if(at.type == "warrior")
-			{			
+			{
 				if(!GenerateMapEncounter_Alone(at.characterID, &idx))
 				{
 					PostEvent("Map_WarriorEnd", 100, "s", at.characterID);
@@ -186,7 +186,7 @@ ref wdmEncounterDelete()
 			float fDeltaX = (stf(enc.x) - stf(enc.Gotox));
 			float fDeltaZ = (stf(enc.z) - stf(enc.Gotoz));
 			float fRadSqr = fDeltaX*fDeltaX + fDeltaZ*fDeltaZ;
-			if( fRadSqr > 100.0 && stf(enc.livetime) > 1.0) 
+			if( fRadSqr > 100.0 && stf(enc.livetime) > 1.0)
 			{
 				BI_intRetValue = false;
 				//return &BI_intRetValue;   убрал
@@ -249,7 +249,7 @@ float wdmGetFood()
 void wdmEnterSeaQuest(string _chrId)
 {
 	ref NPChar = characterFromID(_chrId);
-	
+
 	if (findsubstr(_chrId, "Hunter0" , 0) != -1) // ОЗГи
 	{
 		AddQuestRecord("HeadHunter", "HeadHunter_Sea");
@@ -273,7 +273,7 @@ void wdmEnterSeaQuest(string _chrId)
         SiegeSquadronOnMap(_chrId);
 	}
 	//пиратка, квест №7. фрегат Леон
-	if (_chrId == "LeonCapitain") 
+	if (_chrId == "LeonCapitain")
 	{
 		AddQuestRecord("Pir_Line_7_Soukins", "15");
 	}

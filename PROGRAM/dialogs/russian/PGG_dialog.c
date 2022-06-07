@@ -34,19 +34,19 @@ void ProcessDialogEvent()
 			break;
 		}
 //		Dialog.Text = "Добрый день, меня зовут " + GetFullName(NPChar) + ", а вас?";
-		Dialog.Text = LinkRandPhrase("... только я и дьявол знаем это место, и последний, кто останется в живых, заберет себе все!..", 
-			 "... а Мейнард ответил: 'Я не жду от тебя пощады, и ты тоже не дождешься ее от меня'.", 
-			 "... однажды в море, будучи немного пьяным, он предложил: 'Давайте здесь сейчас устроим себе сами ад и посмотрим, кто дольше выдержит'.") + 
+		Dialog.Text = LinkRandPhrase("... только я и дьявол знаем это место, и последний, кто останется в живых, заберет себе все!..",
+			 "... а Мейнард ответил: 'Я не жду от тебя пощады, и ты тоже не дождешься ее от меня'.",
+			 "... однажды в море, будучи немного пьяным, он предложил: 'Давайте здесь сейчас устроим себе сами ад и посмотрим, кто дольше выдержит'.") +
 			 PCharRepPhrase(LinkRandPhrase(" А вот и еще один пират!",
 					" Господа, у нашего стола джентльмен удачи, я полагаю.",
-					" Запахло порохом и кровью, флибустьер справа по борту!"), 
+					" Запахло порохом и кровью, флибустьер справа по борту!"),
 				LinkRandPhrase(" Редко встретишь порядочного капитана в этих морях.",
 					" Благородство не в моде в наше время.",
 					" А вот и честный капитан, не чета вам, головорезы! Хе-хе!"));
 //		link.l1 = "А меня " + GetFullName(pchar) + ".";
-		link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Всем налить! Я капитан " + GetFullName(pchar) + ".", 
-					"Я капитан посудины '" + PChar.Ship.Name + "' и пары сотен настоящих чертей! Хе-хе! Мое имя " + GetFullName(pchar) + "."), 
-				RandPhraseSimple("Позвольте представиться, джентльмены. Я капитан " + GetFullName(pchar) + ".", 
+		link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Всем налить! Я капитан " + GetFullName(pchar) + ".",
+					"Я капитан посудины '" + PChar.Ship.Name + "' и пары сотен настоящих чертей! Хе-хе! Мое имя " + GetFullName(pchar) + "."),
+				RandPhraseSimple("Позвольте представиться, джентльмены. Я капитан " + GetFullName(pchar) + ".",
 					"Не имею чести быть вам представленным. Я капитан корабля '" + PChar.Ship.Name + "' под флагом " + NationNameGenitive(sti(PChar.nation)) + ". Мое имя " + GetFullName(pchar) + "."));
 		link.l1.go = "Meeting";
 		break;
@@ -58,7 +58,7 @@ void ProcessDialogEvent()
 		if (sti(pchar.Ship.Type) != SHIP_NOTUSED && sti(NPChar.Ship.Type) != SHIP_NOTUSED)
 		{
 			sld = GetRealShip(sti(NPChar.Ship.Type));
-			
+
 			Dialog.Text = "Ну, а меня здесь все знают! Я - " + GetFullName(NPChar) + ", капитан " + xiStr(sld.BaseName + "Acc") + " " + NPChar.Ship.Name + ".";
 			link.l2 = "Я тут подумал, не хочешь ко мне присоединиться? С двумя кораблями мы сможем хорошие дела провернуть.";
 			link.l2.go = "companion";
@@ -107,12 +107,12 @@ void ProcessDialogEvent()
 		if (PGG_ChangeRelation2MainCharacter(NPChar, 0) > 49)
 		{
 //			Dialog.Text = RandPhraseSimple("Кого я вижу?!! Да это же " + GetFullName(pchar) + ". Что новенького?", "Как поживаете? Могу я быть чем-нибудь полезен?");
-			Dialog.Text = LinkRandPhrase("... только я и дьявол знаем это место, и последний, кто останется в живых, заберет себе все!...", 
-				 "... а Мейнард ответил: 'Я не жду от тебя пощады, и ты тоже не дождешься ее от меня'", 
-				 "... однажды в море, будучи немного пьяным, он предложил: 'Давайте здесь сейчас устроим себе сами ад и посмотрим, кто дольше выдержит'.") + 
+			Dialog.Text = LinkRandPhrase("... только я и дьявол знаем это место, и последний, кто останется в живых, заберет себе все!...",
+				 "... а Мейнард ответил: 'Я не жду от тебя пощады, и ты тоже не дождешься ее от меня'",
+				 "... однажды в море, будучи немного пьяным, он предложил: 'Давайте здесь сейчас устроим себе сами ад и посмотрим, кто дольше выдержит'.") +
 				 PCharRepPhrase(LinkRandPhrase(" Редко встретишь порядочного капитана в этих морях.",
 						" Благородство не в моде в наше время.",
-						" А вот и честный капитан, не чета вам, головорезы! Хе-хе!") + " Какие вести?", 
+						" А вот и честный капитан, не чета вам, головорезы! Хе-хе!") + " Какие вести?",
 					LinkRandPhrase(" А вот и еще один пират!",
 						" Джентльмены, у нашего стола джентльмен удачи, я полагаю.",
 						" Запахло порохом и кровью, флибустьер справа по борту!") + " Что нового творится на архипелаге?");
@@ -149,7 +149,7 @@ void ProcessDialogEvent()
 		break;
 
 //==================================================
-// Officer 
+// Officer
 //==================================================
 	case "officer":
 		//раз в день.
@@ -189,16 +189,16 @@ void ProcessDialogEvent()
 		{
 			NPChar.Quest.Officer.Price = 10000 + sti(NPChar.rank)*500*MOD_SKILL_ENEMY_RATE - MakeInt(GetSummonSkillFromNameToOld(pchar, SKILL_COMMERCE)*1000);
 		}
-		Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() + 
-				RandPhraseSimple("Это - то, что нужно! Наши клинки напьются вражеской крови! Одна проблемка, мне нужно " + NPChar.Quest.Officer.Price + " пиастров, чтобы расплатиться с долгами.", 
-								"Ты выглядишь настоящим морским волком. И если ты готов заплатить " + NPChar.Quest.Officer.Price + " пиастров, то, пожалуй, мы сработаемся."), 
-				LinkRandPhrase("Ваше предложение весьма лестно для меня. Я согласен за весьма умеренную плату в размере " + NPChar.Quest.Officer.Price + " пиастров.", 
-							"Хм... Вы выглядите бывалым моряком. Возможно, мне стоит принять предложение, если вы согласны заплатить мне " + NPChar.Quest.Officer.Price + " пиастров.", 
+		Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() +
+				RandPhraseSimple("Это - то, что нужно! Наши клинки напьются вражеской крови! Одна проблемка, мне нужно " + NPChar.Quest.Officer.Price + " пиастров, чтобы расплатиться с долгами.",
+								"Ты выглядишь настоящим морским волком. И если ты готов заплатить " + NPChar.Quest.Officer.Price + " пиастров, то, пожалуй, мы сработаемся."),
+				LinkRandPhrase("Ваше предложение весьма лестно для меня. Я согласен за весьма умеренную плату в размере " + NPChar.Quest.Officer.Price + " пиастров.",
+							"Хм... Вы выглядите бывалым моряком. Возможно, мне стоит принять предложение, если вы согласны заплатить мне " + NPChar.Quest.Officer.Price + " пиастров.",
 							"Думаю, мы сработаемся капитан. Всего " + NPChar.Quest.Officer.Price + " пиастров и мы ударим по рукам."));
 
-		MakeRandomLinkOrderTwo(link, PCharRepPhrase(RandSwear() + RandPhraseSimple("Меня это устраивает. Но, надеюсь, ты не каждый день будешь требовать столько.", "Это чертовски дорого, но, думаю, ты того стоишь."), 
+		MakeRandomLinkOrderTwo(link, PCharRepPhrase(RandSwear() + RandPhraseSimple("Меня это устраивает. Но, надеюсь, ты не каждый день будешь требовать столько.", "Это чертовски дорого, но, думаю, ты того стоишь."),
 				LinkRandPhrase("Я согласен. Считай себя зачисленным в команду.", "Хм... Пожалуй, я готов расстаться с этой суммой.", "Похоже, ты стоишь этих денег. Держи!")), "officer_hired",
-									PCharRepPhrase(RandSwear() + RandPhraseSimple("Ты не стоишь столько. Бывай...", "Это чертовски дорого, я не готов выкидывать столько денег."), 
+									PCharRepPhrase(RandSwear() + RandPhraseSimple("Ты не стоишь столько. Бывай...", "Это чертовски дорого, я не готов выкидывать столько денег."),
 				LinkRandPhrase("Да... жадность не порок...", "Да ты смеешься надо мной? За такие деньги я могу купить десяток таких, как ты.", "Это грабеж... где я возьму тебе такую сумму?")), "exit");
 		link.l3 = "Хм... а что ты представляешь из себя?";
 		link.l3.go = "Exit_ShowParam";
@@ -227,7 +227,7 @@ void ProcessDialogEvent()
 		break;
 
 //==================================================
-// Companion 
+// Companion
 //==================================================
 	case "companion":
 		Dialog.Text = "Если вы читаете это, значит, вы поймали баг ;) Сообщите об этом Navy, подробно, как вы его поймали :)";
@@ -262,9 +262,9 @@ void ProcessDialogEvent()
 		//есть ли место для компаньона.
 		if (SetCompanionIndex(pchar, -1, sti(NPChar.index)) != -1)
 		{
-			Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() + 
-					RandPhraseSimple("Ты мне нравишься! По рукам! Я уже слышу звон пиастров в наших карманах!", "А ты парень не промах... Думаю, мы сработаемся!"), 
-					LinkRandPhrase("Ваше предложение мне нравится. Я соглас" + GetSexPhrase("ен","на") + ".", 
+			Dialog.Text = NPCharRepPhrase(NPChar, RandSwear() +
+					RandPhraseSimple("Ты мне нравишься! По рукам! Я уже слышу звон пиастров в наших карманах!", "А ты парень не промах... Думаю, мы сработаемся!"),
+					LinkRandPhrase("Ваше предложение мне нравится. Я соглас" + GetSexPhrase("ен","на") + ".",
 					"Это интересно. Я тоже думаю, что вместе мы сможем больше!", "Пожалуй, это будет занятно. По рукам."));
 			link.l1 = RandPhraseSimple("Отлично, жду тебя в море!", "По рукам! Мы будем отличной командой.");
 			link.l1.go = "exit";
@@ -274,15 +274,15 @@ void ProcessDialogEvent()
 			NPChar.Dialog.FileName = "Enc_Officer_dialog.c";
             NPChar.Payment = true;
             NPChar.Money   = 0;
-            
+
             SetBaseShipData(NPChar);
             DeleteAttribute(NPChar,"ship.sails");
 			DeleteAttribute(NPChar,"ship.masts");
 			DeleteAttribute(NPChar,"ship.blots");
-			
+
 			Fantom_SetCannons(NPChar, "pirate");
 			Fantom_SetBalls(NPChar, "pirate");
-    
+
 			DeleteAttribute(NPChar, "PGGAi.Task");
 			DeleteAttribute(NPChar, "PGGAi.LockService");
 			SetCharacterRemovable(NPChar, true);
@@ -298,7 +298,7 @@ void ProcessDialogEvent()
 
 	case "companion_leave":
 		Dialog.Text = RandSwear() + " " + NPCharRepPhrase(NPChar,
-					RandPhraseSimple("Ты мне надоел!!! Я выхожу из состава эскадры!", "Мое терпенье лопнуло! Я отчаливаю."), 
+					RandPhraseSimple("Ты мне надоел!!! Я выхожу из состава эскадры!", "Мое терпенье лопнуло! Я отчаливаю."),
 					RandPhraseSimple("Я устал от ваших выходок, 'адмирал'... Разрешите откланяться.", "Хватит с меня вашего командования. Я выхожу из состава эскадры."));
 		link.l1 = PCharRepPhrase(RandPhraseSimple("Ну и проваливай на здоровье.", "Можешь катиться ко всем чертям."),
 					RandPhraseSimple("Что ж, держать не буду.", "Вольному воля. Попутного ветра в паруса."));
@@ -318,8 +318,8 @@ void ProcessDialogEvent()
 		}
 		NPChar.Quest.Companion.Price = 2*GetSalaryForShip(NPChar);
 		Dialog.Text = RandSwear() + " " + NPCharRepPhrase(NPChar,
-					RandPhraseSimple("Премия? Отлично! Сумма в " + NPChar.Quest.Companion.Price + " пиастров, меня устроит.", 
-						"Пожалуй, если ты выплатишь моей команде " + NPChar.Quest.Companion.Price + " пиастров, я уговорю их остаться."), 
+					RandPhraseSimple("Премия? Отлично! Сумма в " + NPChar.Quest.Companion.Price + " пиастров, меня устроит.",
+						"Пожалуй, если ты выплатишь моей команде " + NPChar.Quest.Companion.Price + " пиастров, я уговорю их остаться."),
 					RandPhraseSimple("Хорошо! Я готов остаться за скромную премию в размере " + NPChar.Quest.Companion.Price + " пиастров!",
 						NPChar.Quest.Companion.Price + " пиастров устроят на некоторое время меня и мою команду."));
 		link.l1 = PCharRepPhrase(RandPhraseSimple("Да ты смеешься надо мной! Проваливай ко всем чертям.", "Ха... да я лучше потрачу эти деньги на что-то более полезное!"),
@@ -425,12 +425,12 @@ void ProcessDialogEvent()
 					{
 						Log_TestInfo("Пошло тестовое предложение самого ГГ");
 
-						Dialog.Text = LinkRandPhrase("... только я и дьявол знаем это место и последний, кто останется в живых, заберет себе все!...", 
-							 "... а Мейнард ответил: 'Я не жду от тебя пощады, и ты тоже не дождешься ее от меня'", 
-							 "... однажды в море, будучи немного пьяным, он предложил: 'Давайте здесь сейчас устроим себе сами ад и посмотрим, кто дольше выдержит'.") + 
+						Dialog.Text = LinkRandPhrase("... только я и дьявол знаем это место и последний, кто останется в живых, заберет себе все!...",
+							 "... а Мейнард ответил: 'Я не жду от тебя пощады, и ты тоже не дождешься ее от меня'",
+							 "... однажды в море, будучи немного пьяным, он предложил: 'Давайте здесь сейчас устроим себе сами ад и посмотрим, кто дольше выдержит'.") +
 							 PCharRepPhrase(LinkRandPhrase("А вот и еще один пират!",
 									"Джентльмены, у нашего стола джентльмен удачи, я полагаю.",
-									"Запахло порохом и кровью, флибустьер справа по борту!"), 
+									"Запахло порохом и кровью, флибустьер справа по борту!"),
 								LinkRandPhrase("Редко встретишь порядочного капитана в этих морях.",
 									"Благородство не в моде в наше время.",
 									"А вот и честный капитан, не чета вам, головорезы! Хе-хе!"));
@@ -449,9 +449,9 @@ void ProcessDialogEvent()
 		Dialog.Text = "Поосторожнее!!! Ба! Да я тебя знаю, ты " + GetFullName(PChar) + ". Наслышан, наслышан.";
 		if (!CheckAttribute(NPChar, "meeting") || !sti(NPChar.meeting))
 		{
-			link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Я капитан " + GetFullName(pchar) + ".", 
-						"Я капитан посудины '" + PChar.Ship.Name + "' и пары сотен настоящих чертей! Хе-хе! Мое имя " + GetFullName(pchar) + ".") + " А тебя я что-то не помню.", 
-					RandPhraseSimple("Позвольте представиться, джентльмены. Я капитан " + GetFullName(pchar) + ".", 
+			link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Я капитан " + GetFullName(pchar) + ".",
+						"Я капитан посудины '" + PChar.Ship.Name + "' и пары сотен настоящих чертей! Хе-хе! Мое имя " + GetFullName(pchar) + ".") + " А тебя я что-то не помню.",
+					RandPhraseSimple("Позвольте представиться, джентльмены. Я капитан " + GetFullName(pchar) + ".",
 						"Не имею чести быть вам представленным. Я капитан корабля '" + PChar.Ship.Name + "' под флагом " + NationNameGenitive(sti(PChar.nation)) + ". Мое имя " + GetFullName(pchar) + ".") + " А Вас я что-то не помню.");
 //			link.l1 = "Хм... а ты кто, что-то я тебя не помню.";
 			link.l1.go = "Quest_1_Meeting";
@@ -492,7 +492,7 @@ void ProcessDialogEvent()
 		{
 			PChar.GenQuest.PGG_Quest.Island = GetRandomIslandId();
 			PChar.GenQuest.PGG_Quest.Island.Shore = GetIslandRandomShoreId(PChar.GenQuest.PGG_Quest.Island);
-			if (sti(PChar.GenQuest.PGG_Quest.Template)) 
+			if (sti(PChar.GenQuest.PGG_Quest.Template))
 			{
 				if (!isLocationFreeForQuests(PChar.GenQuest.PGG_Quest.Island)) PChar.GenQuest.PGG_Quest.Island.Shore = "";
 			}
@@ -508,14 +508,14 @@ void ProcessDialogEvent()
 		{
 //			Dialog.Text = "Дело у меня к тебе, приятель. Знаю, можно тебе довериться, но в таверне обсуждать не возьмусь, ушей много лишних. Жду тебя у меня на борту. Помнишь, моя посудина зовется '" + NPChar.Ship.Name + "'.";
 //			link.l1 = "Выкладывай сейчас, некогда мне по гостям расхаживать.";
-			Dialog.Text = PCharRepPhrase(RandPhraseSimple("У меня есть остренькое дельце для Вас и ваших головорезов.", 
-								"Объединим силы и  мы сможем взять отличный куш! Ну, конечно, придется кое-кого убить. Хе-хе."), 
-							RandPhraseSimple("У меня есть к вам деловое предложение, капитан.", 
-							"Капитан, ваша репутация хорошо известна и, поэтому, я хочу вам предложить участие в одном заманчивом деле.")) + 
+			Dialog.Text = PCharRepPhrase(RandPhraseSimple("У меня есть остренькое дельце для Вас и ваших головорезов.",
+								"Объединим силы и  мы сможем взять отличный куш! Ну, конечно, придется кое-кого убить. Хе-хе."),
+							RandPhraseSimple("У меня есть к вам деловое предложение, капитан.",
+							"Капитан, ваша репутация хорошо известна и, поэтому, я хочу вам предложить участие в одном заманчивом деле.")) +
 						RandPhraseSimple("Только между нами. Давай-ка, обсудим все у меня в кают-компании на '" + NPChar.Ship.Name + "' за бочонком отличного эля. Сегодня.", "Здесь говорить об этом не резон, потолкуем у меня на судне '" + NPChar.Ship.Name + "' в тишине да в спокойствии. Не затягивай.");
-			link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("К черту проволочки! Хорошее хочу знать быстро, а плохое еще быстрее!", 
-								"Незачем откладывать! В таверне есть комната, там и обсудим!"), 
-							RandPhraseSimple("Почему бы не обсудить ваше предложение прямо сейчас, в комнате таверны?", 
+			link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("К черту проволочки! Хорошее хочу знать быстро, а плохое еще быстрее!",
+								"Незачем откладывать! В таверне есть комната, там и обсудим!"),
+							RandPhraseSimple("Почему бы не обсудить ваше предложение прямо сейчас, в комнате таверны?",
 								"Боюсь, у меня нет желания посещать ваше судно. Если вам что-то нужно, выкладывайте здесь!"));
 		}
 		else
@@ -525,34 +525,34 @@ void ProcessDialogEvent()
 			link.l1 = "Некогда мне, да и бегать я не люблю.";
 		}
 		link.l1.go = "Quest_1_Work_1";
-		link.l2 = PCharRepPhrase(RandPhraseSimple("Я приду! Но, если ты попусту потратишь мое время, я вырву тебе язык!", 
-					RandSwear() + "Жди, надеюсь, дело стоящее. И не вздумай шутить со мной!"), 
-				RandPhraseSimple("Я с удовольствием принимаю ваше приглашение, капитан.", 
+		link.l2 = PCharRepPhrase(RandPhraseSimple("Я приду! Но, если ты попусту потратишь мое время, я вырву тебе язык!",
+					RandSwear() + "Жди, надеюсь, дело стоящее. И не вздумай шутить со мной!"),
+				RandPhraseSimple("Я с удовольствием принимаю ваше приглашение, капитан.",
 					"Вы меня заинтриговали. Разумеется, я приду."));
 		link.l2.go = "Exit_Quest_1_AfterTavernTalk";
 		break;
 
 	case "Quest_1_Work_1":
-		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Да тебя, небось, от качки тошнит! Иди, найди себе мамашу с соской!!!", 
-					"Что, приятель, в штаны наложил от страха?!! Вали! Ты мне не пара."), 
-				RandPhraseSimple("Нет - так нет. Неволить не буду, значит, неинтересно тебе золото.", 
+		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Да тебя, небось, от качки тошнит! Иди, найди себе мамашу с соской!!!",
+					"Что, приятель, в штаны наложил от страха?!! Вали! Ты мне не пара."),
+				RandPhraseSimple("Нет - так нет. Неволить не буду, значит, неинтересно тебе золото.",
 					"Или так, или никак. Тебе решать. На золото много охотников."));
-		link.l1 = PCharRepPhrase(RandPhraseSimple("Ха! А ты с перчиком! И не боишься... Приду!", 
-					"Умеешь настоять на своем, капитан. Жди."), 
-				RandPhraseSimple("Хорошо, я согласен.", 
+		link.l1 = PCharRepPhrase(RandPhraseSimple("Ха! А ты с перчиком! И не боишься... Приду!",
+					"Умеешь настоять на своем, капитан. Жди."),
+				RandPhraseSimple("Хорошо, я согласен.",
 					"Вы очень убедительны. Я готов обсудить дела на вашем судне."));
 		link.l1.go = "Exit_Quest_1_AfterTavernTalk";
-		link.l2 = PCharRepPhrase(RandPhraseSimple("Ха! Думал заманить меня на свой корабль и убить? Не выйдет!", 
-					"Слова твои не стоят и пенни! Ни к чему мне с тобой дела иметь!"), 
-				RandPhraseSimple("Сомнительное предложение. Я вынужден отказаться.", 
+		link.l2 = PCharRepPhrase(RandPhraseSimple("Ха! Думал заманить меня на свой корабль и убить? Не выйдет!",
+					"Слова твои не стоят и пенни! Ни к чему мне с тобой дела иметь!"),
+				RandPhraseSimple("Сомнительное предложение. Я вынужден отказаться.",
 					"Приятно было познакомиться, капитан " + GetFullName(NPChar) + ". Прощайте."));
 		link.l2.go = "Quest_1_NotWork";
 		break;
 
 	case "Quest_1_NotWork":
-		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Рому мне! А ты убирайся с глаз моих!", 
-					"Мы уже все обсудили, не так ли?"), 
-				RandPhraseSimple("Идите своей дорогой, я занят.", 
+		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Рому мне! А ты убирайся с глаз моих!",
+					"Мы уже все обсудили, не так ли?"),
+				RandPhraseSimple("Идите своей дорогой, я занят.",
 					"Полагаю, у нас с вами нет общих тем."));
 		link.l1 = RandSwear();
 		link.l1.go = "exit_2";
@@ -606,9 +606,9 @@ void ProcessDialogEvent()
 		PChar.Quest.PGGQuest1_RemoveShip_Timer.Over = "yes";
 		if (GetCompanionQuantity(PChar) == COMPANION_MAX)
 		{
-			Dialog.Text = RandPhraseSimple("Э, нет... Так дело не пойдет... Не много ли тебе кораблей, приятель?", 
+			Dialog.Text = RandPhraseSimple("Э, нет... Так дело не пойдет... Не много ли тебе кораблей, приятель?",
 					"Ха! В такой большой компании секрета не удержишь! Проваливай.");
-			link.l1 = RandPhraseSimple("Ну, как хочешь!", 
+			link.l1 = RandPhraseSimple("Ну, как хочешь!",
 					"Что ж, не очень-то и хотелось.");
 			link.l1.go = "Exit";
 			PChar.Quest.PGGQuest1_RemoveEnd.win_condition.l1 = "ExitFromLocation";
@@ -621,10 +621,10 @@ void ProcessDialogEvent()
 		{
 //			Dialog.Text = "Ну, вот и славно, теперь я уверен - лишних ушей нет, мои матросы уже в курсе. Предложение такое - взять немного бесхозного добра!";
 //			link.l1 = "А что тут сложного? И почему ты делишься этим со мной?";
-			Dialog.Text = RandPhraseSimple("Добро пожаловать на борт, капитан!", 
-					"Ну, вот и славно, теперь я уверен - лишних ушей нет, мои матросы уже в курсе.") + 
+			Dialog.Text = RandPhraseSimple("Добро пожаловать на борт, капитан!",
+					"Ну, вот и славно, теперь я уверен - лишних ушей нет, мои матросы уже в курсе.") +
 					" Предложение такое – взять немного бесхозного добра.";
-			link.l1 = RandPhraseSimple("А что тут сложного? И почему ты делишься этим со мной?", 
+			link.l1 = RandPhraseSimple("А что тут сложного? И почему ты делишься этим со мной?",
 					"- Бесхозного? Да ты, приятель, шутишь!");
 		}
 		else
@@ -638,16 +638,16 @@ void ProcessDialogEvent()
 	case "Quest_1_Ship_1":
 		if (CheckAttribute(NPChar, "PGGAi.ActiveQuest"))
 		{
-			Dialog.Text = RandPhraseSimple("Ну, есть люди, которые считают его своим, а нужно убедить их в обратном.", 
+			Dialog.Text = RandPhraseSimple("Ну, есть люди, которые считают его своим, а нужно убедить их в обратном.",
 					"Ну конечно, придется кое-кого убить. Но ведь за этим дело не станет?!");
-			link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Ближе к делу!", 
-					"Это уже пахнет хорошей резней! Где они?"), 
-				RandPhraseSimple("Хотелось бы узнать подробности вашего предложения.", 
+			link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Ближе к делу!",
+					"Это уже пахнет хорошей резней! Где они?"),
+				RandPhraseSimple("Хотелось бы узнать подробности вашего предложения.",
 					"Что конкретно вы хотите мне предложить?"));
 			link.l1.go = "Quest_1_Ship_Detail";
-			link.l2 = PCharRepPhrase(RandPhraseSimple("Что-то ты темнишь. Не хочу я с тобой в это ввязываться!", 
-					"Выглядит просто, да я тебе не верю! Хочешь чужими руками жар загребать? Я не согласен!"), 
-				RandPhraseSimple("Предложение заманчивое, но вынужден отказаться.", 
+			link.l2 = PCharRepPhrase(RandPhraseSimple("Что-то ты темнишь. Не хочу я с тобой в это ввязываться!",
+					"Выглядит просто, да я тебе не верю! Хочешь чужими руками жар загребать? Я не согласен!"),
+				RandPhraseSimple("Предложение заманчивое, но вынужден отказаться.",
 					"Нет, чужое я с детства не беру, предпочитаю, что бы дарили. Я пас."));
 			link.l2.go = "Quest_1_Ship_Refuse";
 		}
@@ -681,29 +681,29 @@ void ProcessDialogEvent()
 		{
 			sLoc = XI_ConvertString("Colony" + PChar.GenQuest.PGG_Quest.Island.Town + "Gen");
 		}
-		
-		if (sti(PChar.GenQuest.PGG_Quest.Template)) 
+
+		if (sti(PChar.GenQuest.PGG_Quest.Template))
 		{
 			sTmp +=	", остановился недалеко от " + sLoc + " у бухты " + GetConvertStr(PChar.GenQuest.PGG_Quest.Island.Shore, "LocLables.txt") + " для пополнения припасов.";
 		}
 		else
 		{
-			sTmp += ", попал в шторм недалеко от " + sLoc + " и пошел на дно. Но они успели спасти часть груза и высадились в бухте " + GetConvertStr(PChar.GenQuest.PGG_Quest.Island.Shore, "LocLables.txt") + 
+			sTmp += ", попал в шторм недалеко от " + sLoc + " и пошел на дно. Но они успели спасти часть груза и высадились в бухте " + GetConvertStr(PChar.GenQuest.PGG_Quest.Island.Shore, "LocLables.txt") +
 				" Сейчас они ждут прихода своей эскадры.";
 		}
-		
+
 		Dialog.Text = sTmp;
-		link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Не тяни, выкладывай все поживее!", 
-					"Я в тебе не ошибся, что ты еще знаешь?"), 
-				RandPhraseSimple("Очень интересно, продолжайте!", 
+		link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Не тяни, выкладывай все поживее!",
+					"Я в тебе не ошибся, что ты еще знаешь?"),
+				RandPhraseSimple("Очень интересно, продолжайте!",
 					"Я весь внимание!"));
 		link.l1.go = "Quest_1_Ship_Detail_1";
 
 		if (CheckAttribute(NPChar, "PGGAi.ActiveQuest"))
 		{
-			link.l2 = PCharRepPhrase(RandPhraseSimple("Дельце неплохое, но откажусь. Не резон мне с " + NationNameAblative(sti(PChar.GenQuest.PGG_Quest.Nation)) + " ссорится.", 
-					"Караван? Бесхозное? Да там тысяча солдат при нем! Не годится. Я ухожу."), 
-				RandPhraseSimple("Нет, с " + NationNameAblative(sti(PChar.GenQuest.PGG_Quest.Nation)) + " я не воюю, не интересно.", 
+			link.l2 = PCharRepPhrase(RandPhraseSimple("Дельце неплохое, но откажусь. Не резон мне с " + NationNameAblative(sti(PChar.GenQuest.PGG_Quest.Nation)) + " ссорится.",
+					"Караван? Бесхозное? Да там тысяча солдат при нем! Не годится. Я ухожу."),
+				RandPhraseSimple("Нет, с " + NationNameAblative(sti(PChar.GenQuest.PGG_Quest.Nation)) + " я не воюю, не интересно.",
 					"Мой ответ – нет! Я не собираюсь портить отношения с " + NationNameAblative(sti(PChar.GenQuest.PGG_Quest.Nation)) + "!"));
 			link.l2.go = NPCharRepPhrase(NPChar, "Quest_1_Ship_BadWay", "Quest_1_Ship_Refuse");
 		}
@@ -712,7 +712,7 @@ void ProcessDialogEvent()
 			Dialog.Text = "Хм... Это уже пахнет хорошей резней. Детали?";
 			link.l1 = sTmp;
 		}
-		if (sti(PChar.GenQuest.PGG_Quest.Template)) 
+		if (sti(PChar.GenQuest.PGG_Quest.Template))
 		{
 			AddQuestRecord("Gen_PGGQuest1", "q1_Detail_A");
 		}
@@ -730,9 +730,9 @@ void ProcessDialogEvent()
 		if (CheckAttribute(NPChar, "PGGAi.ActiveQuest"))
 		{
 //			Dialog.Text = "У нас есть только " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + " для того, чтобы перехватить их.";
-			Dialog.Text = PCharRepPhrase(RandPhraseSimple("Через " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + " караван уйдет и нам их уже не догнать.", 
-						"У нас есть ровно " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + " дней, чтобы успеть их вырезать и забрать добычу!"), 
-					RandPhraseSimple("В нашем распоряжении " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + " дней на всю операцию.", 
+			Dialog.Text = PCharRepPhrase(RandPhraseSimple("Через " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + " караван уйдет и нам их уже не догнать.",
+						"У нас есть ровно " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + " дней, чтобы успеть их вырезать и забрать добычу!"),
+					RandPhraseSimple("В нашем распоряжении " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + " дней на всю операцию.",
 						"Нам стоит поторопиться, " + PChar.Name + ". У нас в запасе всего " + FindRussianDaysString(sti(PChar.GenQuest.PGG_Quest.Days)) + "."));
 			link.l1 = RandPhraseSimple("Мы успеем! Отплываем сегодня же.", "Не будем медлить. Прикажите отплывать сегодня же.");
 			link.l1.go = "Exit_Quest_1_Accept";
@@ -760,7 +760,7 @@ void ProcessDialogEvent()
 			PChar.GenQuest.PGG_Quest.Stage = 2;
 			PGG_Q1RemoveShip("");
 
-			if (sti(PChar.GenQuest.PGG_Quest.Template)) 
+			if (sti(PChar.GenQuest.PGG_Quest.Template))
 			{
 				PGG_Q1PlaceShipsNearIsland();
 			}
@@ -787,12 +787,12 @@ void ProcessDialogEvent()
 
 			SetCompanionIndex(PChar, -1, sti(NPChar.index));
 			SetCharacterRemovable(NPChar, false);
-			
+
 			SetBaseShipData(NPChar);
             DeleteAttribute(NPChar,"ship.sails");
 			DeleteAttribute(NPChar,"ship.masts");
 			DeleteAttribute(NPChar,"ship.blots");
-			
+
 			Fantom_SetCannons(NPChar, "pirate");
 			Fantom_SetBalls(NPChar, "pirate");
 		}
@@ -802,9 +802,9 @@ void ProcessDialogEvent()
 
 	case "Quest_1_Ship_Refuse":
 		Dialog.Text = RandSwear() + "Вы меня разочаровали, капитан. А вы думали, что я вас приглашу на "+ RandPhraseSimple("воскресную мессу?!!", "детский утренник!??"));
-		link.l1 = PCharRepPhrase(RandPhraseSimple("Это твое дело. А решать мое.", 
-					"Не хочу сушиться на солнышке из-за пары пиастров."), 
-				RandPhraseSimple("Мое решение окончательное, капитан.", 
+		link.l1 = PCharRepPhrase(RandPhraseSimple("Это твое дело. А решать мое.",
+					"Не хочу сушиться на солнышке из-за пары пиастров."),
+				RandPhraseSimple("Мое решение окончательное, капитан.",
 					"Нам не о чем больше говорить."));
 		link.l1.go = "Exit_Quest_1_Refuse";
 		break;
@@ -827,25 +827,25 @@ void ProcessDialogEvent()
 		break;
 
 	case "Quest_1_Ship_BadWay":
-		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Да брось, все пройдет как по маслу и никто не узнает. Мы всех зарежем.", 
-					"Узнал все и сам хочешь дельце провернуть? Не выйдет!"), 
-				RandPhraseSimple("Куда это вы заторопились, капитан? Уж не к властям ли?", 
+		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Да брось, все пройдет как по маслу и никто не узнает. Мы всех зарежем.",
+					"Узнал все и сам хочешь дельце провернуть? Не выйдет!"),
+				RandPhraseSimple("Куда это вы заторопились, капитан? Уж не к властям ли?",
 					"Весьма неумно влезть в логово тигра и думать, что сможешь запросто выбраться оттуда."));
-		link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Убирайся к морскому дьяволу! Я капитан " + GetFullName(PChar) + " и ты мне не указ! Я ухожу!", 
-					"Клянусь дьяволом, ты меня выводишь из себя!"), 
-				RandPhraseSimple("Ваше предложение мне неинтересно, и говорить нам более не о чем. Прощайте.", 
+		link.l1 = PCharRepPhrase(RandSwear() + RandPhraseSimple("Убирайся к морскому дьяволу! Я капитан " + GetFullName(PChar) + " и ты мне не указ! Я ухожу!",
+					"Клянусь дьяволом, ты меня выводишь из себя!"),
+				RandPhraseSimple("Ваше предложение мне неинтересно, и говорить нам более не о чем. Прощайте.",
 					"Полагаю, нам не о чем более говорить. Меня ждут дела."));
 		link.l1.go = "Quest_1_Ship_BadWay_1";
 		break;
 
 	case "Quest_1_Ship_BadWay_1":
-		Dialog.Text = RandSwear() + PCharRepPhrase(RandPhraseSimple("Схватить его! Привяжите его к пушке! Посмотрим, какого цвета у него кишки!!!", 
-					"Эй, Джонни! Хендерсон! Хватайте мерзавца! Не пускайте его к шлюпке!!!"), 
-				RandPhraseSimple("Жаль, капитан! Надеюсь, в нашем трюме тебе будет уютно. Ну, а потом решим, что с тобой делать.", 
+		Dialog.Text = RandSwear() + PCharRepPhrase(RandPhraseSimple("Схватить его! Привяжите его к пушке! Посмотрим, какого цвета у него кишки!!!",
+					"Эй, Джонни! Хендерсон! Хватайте мерзавца! Не пускайте его к шлюпке!!!"),
+				RandPhraseSimple("Жаль, капитан! Надеюсь, в нашем трюме тебе будет уютно. Ну, а потом решим, что с тобой делать.",
 					"Белые рабы долго не живут, капитан, так что решайте: или Хендс прострелит вам голову из мушкета или вы остаток жизни проведете в каменоломнях."));
-		link.l1 = PCharRepPhrase(RandPhraseSimple("Я заставлю тебя жрать твои поганые внутренности, " + GetFullName(NPChar) + "!!!", 
-					"А ну прочь с дороги! Мерзавцы! Раскрою башку, как гнилую тыкву!"), 
-				RandPhraseSimple("Ваше предложение неприемлемо... И весьма неблагоразумно!!!", 
+		link.l1 = PCharRepPhrase(RandPhraseSimple("Я заставлю тебя жрать твои поганые внутренности, " + GetFullName(NPChar) + "!!!",
+					"А ну прочь с дороги! Мерзавцы! Раскрою башку, как гнилую тыкву!"),
+				RandPhraseSimple("Ваше предложение неприемлемо... И весьма неблагоразумно!!!",
 					"А вы не очень гостеприимны... С дороги!!!"));
 		link.l1.go = "Exit_Quest_1_DeckFight";
 		break;
@@ -894,13 +894,13 @@ void ProcessDialogEvent()
 		PChar.Quest.PGGQuest1_CheckStartState.Over = "Yes";
 
 //		Dialog.Text = "Так, " + GetFullName(PChar) + ", что-то зря я с тобой связался, добыча утекла сквозь пальцы как вода. Прощай!";
-		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Гром и молния! Мы опоздали! А все из-за вас, ленивые олухи! Нечего нам с тобой теперь делить, " + GetFullName(PChar) + ". Поднять стаксель! Травить марс помалу! ", 
-					"Так, " + GetFullName(PChar) + ", что-то зря я с тобой связался, добыча утекла сквозь пальцы как вода. Прощай!"), 
-				RandPhraseSimple("Они исчезли! Виной всему ваша нерасторопность! Нам с вами не по пути " + GetFullName(PChar) + ".", 
+		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Гром и молния! Мы опоздали! А все из-за вас, ленивые олухи! Нечего нам с тобой теперь делить, " + GetFullName(PChar) + ". Поднять стаксель! Травить марс помалу! ",
+					"Так, " + GetFullName(PChar) + ", что-то зря я с тобой связался, добыча утекла сквозь пальцы как вода. Прощай!"),
+				RandPhraseSimple("Они исчезли! Виной всему ваша нерасторопность! Нам с вами не по пути " + GetFullName(PChar) + ".",
 					"Караван мы не догоним, можно сушить весла. Зря я с вами связался! Прощайте."))
-		link.l1 = PCharRepPhrase(RandPhraseSimple("Да и черт с этим караваном! Ловцы жемчуга ничуть не хуже, а риска никакого!", 
-					"Удача с нами, еще не вечер! Море изобилует жалкими торгашами, ждущими, пока мы отнимем их денежки!"), 
-				RandPhraseSimple("Действительно, жаль, что такая блестящая операция закончилась полным фиаско! Прощайте!", 
+		link.l1 = PCharRepPhrase(RandPhraseSimple("Да и черт с этим караваном! Ловцы жемчуга ничуть не хуже, а риска никакого!",
+					"Удача с нами, еще не вечер! Море изобилует жалкими торгашами, ждущими, пока мы отнимем их денежки!"),
+				RandPhraseSimple("Действительно, жаль, что такая блестящая операция закончилась полным фиаско! Прощайте!",
 					"Человек предполагает, а бог располагает... Прощайте!"));
 		link.l1.go = "Exit_Quest_1_2Late";
 
@@ -952,20 +952,20 @@ void ProcessDialogEvent()
 		{
 			PChar.GenQuest.PGG_Quest.FailedPaySum = sti(PChar.GenQuest.PGG_Quest.Days)*10000;
 //			Dialog.Text = "Н-да, связался я с тобой. Все погубил. Ты теперь мне должен неустойку в размере " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + ".";
-			Dialog.Text = PCharRepPhrase(RandPhraseSimple("Кровожадный ублюдок! Все ушло на дно к морскому дьяволу! " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + " пиастров на бочку, и я видеть тебя больше не желаю!", 
-						"Ты себя адмиралом Нельсоном вообразил? Потопил всю добычу, идиот! Отсыпь мне " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + " пиастров и проваливай!"), 
-					RandPhraseSimple("Вы здесь войну решили устроить! Это совершенно никуда не годится! Полагаю, мы все забудем, если вы уплатите нам " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + " пиастров ", 
+			Dialog.Text = PCharRepPhrase(RandPhraseSimple("Кровожадный ублюдок! Все ушло на дно к морскому дьяволу! " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + " пиастров на бочку, и я видеть тебя больше не желаю!",
+						"Ты себя адмиралом Нельсоном вообразил? Потопил всю добычу, идиот! Отсыпь мне " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + " пиастров и проваливай!"),
+					RandPhraseSimple("Вы здесь войну решили устроить! Это совершенно никуда не годится! Полагаю, мы все забудем, если вы уплатите нам " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + " пиастров ",
 						"Ваши методы недопустимы в такого рода делах! Вы провалили все дело! Немедленно уплатите нашу долю в размере " + FindRussianMoneyString(sti(PChar.GenQuest.PGG_Quest.FailedPaySum)) + " пиастров и отправляйтесь на все четыре стороны! "));
-			link.l1 = PCharRepPhrase(RandPhraseSimple("Если бы не я, ты бы сейчас крабов кормил, жадная образина!", 
-						"Лучше было позволить флагману взять на абордаж твое корыто, тогда бы ты уже болтался на рее и не отравлял воздух! "), 
-					RandPhraseSimple("Ваши требования неуместны, а намеки оскорбительны!", 
+			link.l1 = PCharRepPhrase(RandPhraseSimple("Если бы не я, ты бы сейчас крабов кормил, жадная образина!",
+						"Лучше было позволить флагману взять на абордаж твое корыто, тогда бы ты уже болтался на рее и не отравлял воздух! "),
+					RandPhraseSimple("Ваши требования неуместны, а намеки оскорбительны!",
 						"Договора о неустойке не было, стало быть, и платить я не буду!"));
 			link.l1.go = "Quest_1_NotPay";
 			if (sti(pchar.money) >= sti(PChar.GenQuest.PGG_Quest.FailedPaySum))
 			{
-				link.l2 = PCharRepPhrase(RandPhraseSimple("Я не могу тебе дать сейчас бой, и ты это знаешь! Подавись своими пиастрами! Вот!", 
-								"Пиастры!!! Что же, фортуна сейчас не на моей стороне. Я согласен."), 
-							RandPhraseSimple("Ваши требования возмутительны, но выбора у меня, похоже, нет.", 
+				link.l2 = PCharRepPhrase(RandPhraseSimple("Я не могу тебе дать сейчас бой, и ты это знаешь! Подавись своими пиастрами! Вот!",
+								"Пиастры!!! Что же, фортуна сейчас не на моей стороне. Я согласен."),
+							RandPhraseSimple("Ваши требования возмутительны, но выбора у меня, похоже, нет.",
 								"Ваши аппетиты чрезмерны, но я вынужден согласиться!"));
 				link.l2.go = "Exit_Quest_1_Failed";
 			}
@@ -983,7 +983,7 @@ void ProcessDialogEvent()
 		{
 			PChar.GenQuest.PGG_Quest.Ok = 1;
 //			Dialog.Text = "Итак, добыча составила " + PChar.GenQuest.PGG_Quest.Goods.Taken + " " + PChar.GenQuest.PGG_Quest.Goods.Text + ". Давай делить. ";
-			Dialog.Text = PCharRepPhrase("Жаркое дельце! Добыча составила " + PChar.GenQuest.PGG_Quest.Goods.Taken + " " + PChar.GenQuest.PGG_Quest.Goods.Text + ".", 
+			Dialog.Text = PCharRepPhrase("Жаркое дельце! Добыча составила " + PChar.GenQuest.PGG_Quest.Goods.Taken + " " + PChar.GenQuest.PGG_Quest.Goods.Text + ".",
 					"Отлично сработали, капитан! Добыча составила " + PChar.GenQuest.PGG_Quest.Goods.Taken + " " + PChar.GenQuest.PGG_Quest.Goods.Text + ".");
 			i = sti(PChar.GenQuest.PGG_Quest.Parts);
 			PChar.GenQuest.PGG_Quest.Goods.Part = MakeInt(sti(PChar.GenQuest.PGG_Quest.Goods.Taken) / i);
@@ -996,12 +996,12 @@ void ProcessDialogEvent()
 				Dialog.Text = Dialog.Text + " Твоя доля ";
 			}
 			Dialog.Text = Dialog.Text + PChar.GenQuest.PGG_Quest.Goods.Part + ".";
-			link.l1 = PCharRepPhrase(RandPhraseSimple("Справедливо! Уже грузят шлюпки!", "Да, все точно... Уговор дороже денег."), 
+			link.l1 = PCharRepPhrase(RandPhraseSimple("Справедливо! Уже грузят шлюпки!", "Да, все точно... Уговор дороже денег."),
 					RandPhraseSimple("Ваши расчеты правильны. Я согласен.", "В дележе вы безупречны."));
 			link.l1.go = "Exit_Quest_1_End";
-			link.l2 = PCharRepPhrase(RandPhraseSimple("И ты еще требуешь свою долю? Да тебя надо вздернуть на рее и не мешкать!", 
-						"Долю? Здесь каждый сам за себя, и если тебе ничего не досталось, то это твои проблемы!"), 
-					RandPhraseSimple("Не думаю, что вы на что-то можете рассчитывать.", 
+			link.l2 = PCharRepPhrase(RandPhraseSimple("И ты еще требуешь свою долю? Да тебя надо вздернуть на рее и не мешкать!",
+						"Долю? Здесь каждый сам за себя, и если тебе ничего не досталось, то это твои проблемы!"),
+					RandPhraseSimple("Не думаю, что вы на что-то можете рассчитывать.",
 						"Мой ответ – нет! Я не собираюсь делиться с разными проходимцами!"));
 			link.l2.go = "Quest_1_NotPay";
 		}
@@ -1012,12 +1012,12 @@ void ProcessDialogEvent()
 		break;
 
 	case "Quest_1_NotPay":
-		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Нет, так нет! Спорить не буду! Прощай!", 
-					"Не будем проливать кровь и усугублять неудачу! В другой раз повезет больше!"), 
-				RandPhraseSimple("Что же, прощайте, капитан, я не в том положении, чтобы настаивать...", 
+		Dialog.Text = PCharRepPhrase(RandPhraseSimple("Нет, так нет! Спорить не буду! Прощай!",
+					"Не будем проливать кровь и усугублять неудачу! В другой раз повезет больше!"),
+				RandPhraseSimple("Что же, прощайте, капитан, я не в том положении, чтобы настаивать...",
 					"Повреждения моего корабля и потери не позволяют мне настаивать на справедливом решении вопроса. Оставлю это на вашей совести, капитан!"));
-		link.l1 = PCharRepPhrase(RandPhraseSimple("Попутного ветра!", "Семь футов под килем!"), 
-				RandPhraseSimple("Прощайте! Полагаю, свежий морской воздух пойдет вам на пользу!", 
+		link.l1 = PCharRepPhrase(RandPhraseSimple("Попутного ветра!", "Семь футов под килем!"),
+				RandPhraseSimple("Прощайте! Полагаю, свежий морской воздух пойдет вам на пользу!",
 					"Надеюсь, что ваши неудачи не сделают ваш характер еще более несносным, прощайте!"));
 		link.l1.go = "Exit_Quest_1_Failed";
 		PChar.GenQuest.PGG_Quest.Stage = -1;
@@ -1026,13 +1026,13 @@ void ProcessDialogEvent()
 		if (bOk || CheckAttribute(PChar, "GenQuest.PGG_Quest.Ok"))
 		{
 			PChar.GenQuest.PGG_Quest.Stage = 4;
-			Dialog.Text = PCharRepPhrase(RandPhraseSimple("Ты не понял! Этим ты мог бы купить себе жизнь! Схватить ублюдка!", 
-						"Ты, наверное, думаешь, что с тобой шутят? Пропустим тебя под килем, и сразу станешь сговорчивей!"), 
-					RandPhraseSimple("Придется подсократить вашу жизнь, капитан! Не хотите по-хорошему, познакомитесь со святым Мартином!", 
+			Dialog.Text = PCharRepPhrase(RandPhraseSimple("Ты не понял! Этим ты мог бы купить себе жизнь! Схватить ублюдка!",
+						"Ты, наверное, думаешь, что с тобой шутят? Пропустим тебя под килем, и сразу станешь сговорчивей!"),
+					RandPhraseSimple("Придется подсократить вашу жизнь, капитан! Не хотите по-хорошему, познакомитесь со святым Мартином!",
 						"Вы не оставляете мне выбора, " + GetFullName(PChar) + "! Я возьму свое, хотите вы того или нет!"));
-			link.l1 = PCharRepPhrase(RandPhraseSimple("Клянусь дьяволом, ты за это заплатишь!!!", 
-						"Йхо-хо! Иди и возьми меня, капитана " + GetFullName(PChar) + "! "), 
-					RandPhraseSimple("Разрез будет глубокий и длинный! ", 
+			link.l1 = PCharRepPhrase(RandPhraseSimple("Клянусь дьяволом, ты за это заплатишь!!!",
+						"Йхо-хо! Иди и возьми меня, капитана " + GetFullName(PChar) + "! "),
+					RandPhraseSimple("Разрез будет глубокий и длинный! ",
 						"Вы хотите сразу умереть или немного помучиться?"));
 			link.l1.go = "Exit_Quest_1_FailedFight";
 		}
@@ -1092,10 +1092,10 @@ void ProcessDialogEvent()
 
 		LAi_LockFightMode(pchar, false);
 		LAi_LocationFightDisable(&Locations[FindLocation(PChar.location)], false);
-		LAi_group_SetRelation("PGGTmp", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);	
+		LAi_group_SetRelation("PGGTmp", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 		LAi_group_FightGroups(LAI_GROUP_PLAYER, "PGGTmp", true);
 		LAi_group_SetCheck("PGGTmp", "PGG_Q1AfterDeckFight");
-	
+
 		PChar.GenQuest.PGG_Quest.GrpID = "PGGTmp";
 		chrDisableReloadToLocation = true;
 
@@ -1189,25 +1189,25 @@ void ProcessDialogEvent()
 			Dialog.Text = Dialog.Text + " Твоя доля ";
 		}
 		Dialog.Text = Dialog.Text + PChar.GenQuest.PGG_Quest.Goods.Part + ".";
-		link.l1 = PCharRepPhrase(RandPhraseSimple("Справедливо, разрази меня гром!", "Да, все точно, разрази меня гром!"), 
+		link.l1 = PCharRepPhrase(RandPhraseSimple("Справедливо, разрази меня гром!", "Да, все точно, разрази меня гром!"),
 			RandPhraseSimple("Ваши расчеты правильны. Я согласен.", "В дележе вы безупречны."));
 		link.l1.go = "Exit_Quest_1_End";
 		break;
 //===================================
-//              Exits 
+//              Exits
 //===================================
 	case "Exit":
 		NextDiag.CurrentNode = NextDiag.TempNode;
 		DialogExit();
 		if (NPChar.Chr_Ai.Type == "actor") LAi_SetWarriorTypeNoGroup(NPChar);
 		break;
-		
+
 	case "Exit_2":
 		if (CheckAttribute(pchar, "GenQuest.PGG_Quest")) DeleteAttribute(pchar, "GenQuest.PGG_Quest"); //fix
 		NextDiag.CurrentNode = NextDiag.TempNode;
 		DialogExit();
 		if (NPChar.Chr_Ai.Type == "actor") LAi_SetWarriorTypeNoGroup(NPChar);
-		break;		
+		break;
 
 	case "Exit_Smugglers_Fight":
 		NextDiag.CurrentNode = NextDiag.TempNode;

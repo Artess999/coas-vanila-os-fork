@@ -78,7 +78,7 @@
 
 	Locations[n].models.night.charactersPatch = "ночной патч для персонажей";
 		Locations[n].models.night.charactersPatch = "night_patch"; //night_patch.ptc
-		
+
 
 	Locations[n].models.day.jumpPatch = "дневной патч для прыжков";
 		Locations[n].models.day.jumpPatch = "jump_day_patch"; //"jump_day_patch.gm" with BSP
@@ -94,7 +94,7 @@
 
 Инфо:
 	Патч для персонажа - специальная геометрия для опоры и перемещения персонажа (.ptc).
-						 Для создиния ptc, используемого при хождении NPC, из gm 
+						 Для создиния ptc, используемого при хождении NPC, из gm
 						 необходимо воспользоваться утилитой PatchCreator. Полученые ptc
 						 файлы размещать в папке вместе с остальными файлами локации.
 	Патч для прыжков - специальная геометрия для указания мест где при возможности можно попытаться спрыгнуть.
@@ -118,9 +118,9 @@
 		Locations[n].locators_radius.camdetector = 1.0;
 		Locations[n].locators_radius.camera = 0.3;
 		Locations[n].locators_radius.characters = 0.5;
-		Locations[n].locators_radius.goto = 0.5;		
-		Locations[n].locators_radius.sit = 0.5;		
-		Locations[n].locators_radius.item = 0.5;		
+		Locations[n].locators_radius.goto = 0.5;
+		Locations[n].locators_radius.sit = 0.5;
+		Locations[n].locators_radius.item = 0.5;
 		Locations[n].locators_radius.officers = 0.5;
 		Locations[n].locators_radius.merchant = 1.0;
 		Locations[n].locators_radius.box = 1.0;
@@ -152,10 +152,10 @@
 
 
 Инфо:
-	Если локатору установить радиус 0.0, то этот локатор обрабатываться не будет, 
+	Если локатору установить радиус 0.0, то этот локатор обрабатываться не будет,
 	т.е. его можно так запретить.
 	Если радиус локатора меньше 0, то используеться радиус группы (значение по умолчанию),
-	иначе используеться установленный радиус. Т.е. индивидуальный радиус локатора 
+	иначе используеться установленный радиус. Т.е. индивидуальный радиус локатора
 	замещает радиус группы, если он больше или равен 0.
 
 
@@ -169,7 +169,7 @@
 
 	Locations[n].models.night.lights.(имя группы локаторов) = "lightName" назначить на группу локаторов динамические источники типа lightName ночью
 		Locations[n].models.day.lights.lamp = "lamp";
-	
+
 Инфо:
 	На одну группу локаторов можно назначить один тип источника.
 	Источники описаны в Resource\Ini\lights.ini, имя секции есть имя источника lightName.
@@ -182,7 +182,7 @@
 
 	Locations[n].environment.weather = "false"; нет неба и погодных эффектов
 	Locations[n].environment.weather = "true";  наличие неба и погодных эффектов
-	
+
 	Locations[n].environment.sea = "false";    нет моря
 	Locations[n].environment.sea = "true";     наличие моря
 
@@ -251,7 +251,7 @@
 
 	Locations[n].boarding = "false";  это обячная локация
 	Locations[n].boarding = "true";	  это локация абордажа
-	
+
 	Locations[n].boarding.nextdeck	идентификатор следующей палубы
 		Locations[n].boarding.nextdeck = "next_deck_id";
 
@@ -357,7 +357,7 @@ locator
 
 	Locations[n].models..(любое уникальное имя).locator.group = группа в которой находиться локатор
 	Locations[n].models..(любое уникальное имя).locator.name = имя локатора
-		
+
 		Locations[n].models.always.somemodel = "my_model";
 		Locations[n].models.always.somemodel.locator.group = "item";
 		Locations[n].models.always.somemodel.locator.name = "good0";
@@ -420,7 +420,7 @@ reflection
 	Locations[n].reload.(любое уникальное имя для локации).disable = 1; разрешена перегрузка
 
 	Функция для управления:
-	
+
 	bool chrEnableReloadLocator(string locationID, string reloadLocatorName, bool isEnable);
 
 Инфо:
@@ -485,22 +485,22 @@ reflection
 
 	//Day----------------------------------------------------------
 	Locations[n].models.day.charactersPatch = "alcove_p";
-	
+
 	//Night----------------------------------------------------------
 	Locations[n].models.night.charactersPatch = "alcove_p";
-	
+
 	//Environment----------------------------------------------------------
 	Locations[n].environment.weather = "true";
 	Locations[n].environment.sea = "false";
 	Locations[n].lockWeather = "Alcove";
-	
-	
+
+
 	//Reload map----------------------------------------------------------
 	Locations[n].reload.l2.name = "reload1";
 	Locations[n].reload.l2.go = "labirint_3";
 	Locations[n].reload.l2.emerge = "reload30";
     Locations[n].reload.l2.autoreload = "1";
-    
+
 	n = n + 1;//increase for next location
 
 

@@ -23,10 +23,10 @@ void SetFantomParamFromRank(ref NPchar, int  rank, bool setEquip)
 void CalculateSkillsFromRank(ref NPchar, int  rank)
 {
     float  iMiddleK;
-    
+
 	// вычислим средний скил к этому рангу
 	iMiddleK = 6 + rank*GetCharacterRankRate(GetMainCharacter()) / 14.0;
-	
+
 	CalculateAppropriateSkillsParam(Npchar, iMiddleK, 5);
 }
 // расчет скилов от среднего скила
@@ -34,7 +34,7 @@ void CalculateAppropriateSkillsParam(ref NPchar, float  MiddleK, int _complex)
 {
     //trace("CalculateAppropriateSkillsParam " + NPchar.id);
     float  fValue;
-    
+
     fValue = (20 * _complex / 4.0);
     Npchar.skill.FencingLight = makeint(MiddleK + (frandSmall(fValue) + frandSmall((20* _complex / 3.2)) - 24));
     Npchar.skill.Fencing      = makeint(MiddleK + (frandSmall(fValue) + frandSmall((20* _complex / 3.0)) - 20));
@@ -62,7 +62,7 @@ void CalculateAppropriateSkills(ref NPchar)
     bool    ok;
     int     rank, i, j, k, sum, rank_bonus, base_rank;
     string  sTemp;
-    
+
     SetRandSPECIAL(Npchar);
     if (false)
     {
@@ -83,15 +83,15 @@ void CalculateAppropriateSkills(ref NPchar)
 
 		base_rank = 0;
 		if (CheckAttribute(NPchar, "BaseRank"))
-		{       
+		{
 			base_rank = sti(NPchar.BaseRank);
 			sTemp += " BaseRank: " + base_rank;
 		}
 
 		if (sti(Pchar.rank) > base_rank) base_rank = sti(Pchar.rank);
-		
+
 		MiddleK = base_rank;
-		
+
         ok =  (MOD_SKILL_ENEMY_RATE > 5) && (bNewCodeOn);
         if (!ok)
         {
@@ -123,7 +123,7 @@ void CalculateAppropriateSkills(ref NPchar)
         {
     	   //Log_TestInfo("Fantom_gen: " + sTemp);
     	}
-    	
+
     	if (rank > (1400 / GetCharacterRankRate(Npchar)))
 		{
             SetSelfSkill(Npchar, SKILL_MAX, SKILL_MAX, SKILL_MAX, SKILL_MAX, SKILL_MAX);
@@ -171,7 +171,7 @@ int GetSkillSum(ref Npchar)
 {
     int i, sum;
     string  skillName;
-    
+
 	sum = 0;
     for (i=1; i<15; i++)
     {
@@ -334,7 +334,7 @@ bool GetBoardingHP(ref mchr, ref echr, ref float_boarding_player_hp, ref float_b
 	float moral;
 	float exp;
 	b_p_hp = LAi_GetCharacterMaxHP(mchr) / 3.0;  // треть от НР кэпа идет в базу бонуса
-	
+
 	exp = GetCrewExp(mchr, "Soldiers") / GetCrewExpRate() - 0.7;
 	moral = 0;
 	if(CheckAttribute(mchr, "ship.crew.morale"))
@@ -344,8 +344,8 @@ bool GetBoardingHP(ref mchr, ref echr, ref float_boarding_player_hp, ref float_b
 		if(moral > 0.5) moral = 0.5;
 	}
 	exp = exp + moral;  // может быть минус
-	b_p_hp = b_p_hp*exp; 
-	
+	b_p_hp = b_p_hp*exp;
+
 	b_e_hp = 0;  // не будем рандом городить рандомом, опыт и еще скилы кэпа, все это не зависит от ГГ, а вот ГГ бонус от опыта даем
 	/*
 	b_e_hp = LAi_GetCharacterMaxHP(echr) / 3.0;
@@ -362,7 +362,7 @@ bool GetBoardingHP(ref mchr, ref echr, ref float_boarding_player_hp, ref float_b
 	 */
 	float_boarding_player_hp   =  b_p_hp;
 	float_boarding_enemy_hp    =  b_e_hp;
-	
+
 	return true;
 }
 void AddCharHP(ref _pchar, int _bonus)

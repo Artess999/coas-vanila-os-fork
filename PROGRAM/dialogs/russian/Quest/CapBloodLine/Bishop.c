@@ -19,15 +19,15 @@ void ProcessDialogEvent()
   		case "1":
             Dialog.CurrentNode = "First Bishop";
 		break;
-		
+
 		case "2":
             Dialog.CurrentNode = "First Guard";
 		break;
-		
+
 		case "3":
             Dialog.CurrentNode = "First Stid";
 		break;
-		
+
 		case "4":
             Dialog.CurrentNode = "First MsStid";
 		break;
@@ -44,15 +44,15 @@ void ProcessDialogEvent()
             NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
         case "Exit_Away":
-            
+
             LAi_SetActorTypeNoGroup(npchar);
             LAi_ActorGoToLocation(npchar, "reload", Pchar.questTemp.CapBloodLine.sLocator, "none", "", "", "", sti(Pchar.questTemp.CapBloodLine.iTime));
             NextDiag.CurrentNode = NextDiag.TempNode;
             DialogExit();
         break;
-        
+
         case "Exit_RunAway":
 
             LAi_SetActorTypeNoGroup(npchar);
@@ -60,7 +60,7 @@ void ProcessDialogEvent()
             NextDiag.CurrentNode = NextDiag.TempNode;
             DialogExit();
         break;
-        
+
         case "GFight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -79,7 +79,7 @@ void ProcessDialogEvent()
 			LAi_ActorGoToLocator(NPChar, "goto", "goto6", "", -1);
 
 		break;
-        
+
         case "fight1":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -89,9 +89,9 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 			Spain_spyDie("");
 			AddQuestRecord("WeaponsForEscape", "5");
-			
+
 		break;
-		
+
         case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -101,7 +101,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 
 		break;
-		
+
 		case "Finish":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
@@ -125,7 +125,7 @@ void ProcessDialogEvent()
             SetCharacterGoods(mc,GOOD_WEAPON,2000);//2000);
             DoReloadCharacterToLocation(Pchar.HeroParam.Location, Pchar.HeroParam.Group, Pchar.HeroParam.Locator);
 		break;
-		
+
         case "Man_FackYou":
 			dialog.text = LinkRandPhrase("Грабеж среди бела дня!!! Это что же такое делается?! Ну, погоди, приятель...", "Эй, ты чего это там копаешься?! Никак, вздумал ограбить меня? Ну, тогда тебе конец...", "Постой, ты куда это полез? Да ты вор, оказывается! Ну, считай, что ты приплыл, родной...");
 			link.l1 = LinkRandPhrase("Дьявол!!", "Каррамба!!", "А-ать, черт!");
@@ -138,7 +138,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "NextQuest":
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
@@ -147,16 +147,16 @@ void ProcessDialogEvent()
 		break;
 
 
-          
 
 
-		
+
+
 		case "First time":
         	dialog.text = "Ошибка";
             link.l1 = "...";
             link.l1.go = "Exit";
             npchar.quest.meeting = "1";
-            
+
             if (npchar.id == "Pitt")
             {
      			if (bBettaTestMode)
@@ -164,7 +164,7 @@ void ProcessDialogEvent()
 			        link.l0 = "BetaTest - пропустить и начать игру.";
 			        link.l0.go = "Finish";
                 }
-                
+
                 if (Pchar.questTemp.CapBloodLine.stat == "Begining")
                 {
                     dialog.text = "Лорд Гилдой тяжело ранен... он здесь, в доме... я перетащил его туда... он послал меня за вами... Скорее к нему! Скорей!";
@@ -179,7 +179,7 @@ void ProcessDialogEvent()
                     }
             		break;
         		}
-        		
+
                 if (Pchar.questTemp.CapBloodLine.stat == "CureMisStid")
                 {
                     dialog.text = "Питер, полковник Бишоп разыскивает тебя весь вечер, у жены губернатора опять приступ. Тебе нужно срочно идти в резиденцию губернатора Стида.";
@@ -194,20 +194,20 @@ void ProcessDialogEvent()
             		link.l1.go = "PStep_0";
             		break;
         		}
-        		
+
                 dialog.text = "Извини, Питер, мне нужно идти работать.";
         		link.l1 = "Хорошо, иди.";
         		link.l1.go = "Exit";
 
     		}
-    		
+
             if (npchar.id == "Beyns")
             {
                 dialog.text = "О, здравствуйте, доктор Блад, как хорошо, что вы пришли. Лорд Гилдой тяжело ранен... Он лежит сейчас в спальне на втором этаже, в западном крыле дома...";
         		link.l1 = "Я прибыл, как только смог. Я немедленно поднимусь к нему, а вы пока приготовьте горячей воды и чистого полотна.";
         		link.l1.go = "EBStep_0";
     		}
-    		
+
             if (npchar.id == "CapGobart")
             {
                 dialog.text = "Я - капитан Гобарт из драгун полковника Кирка. Вы укрываете мятежников? Что за калека лежит на втором этаже?";
@@ -215,7 +215,7 @@ void ProcessDialogEvent()
         		link.l1.go = "CGStep_1";
         		DragunInvansion4();
     		}
-            
+
             if (npchar.id == "Bridgetown_Mayor" )
             {
                 if( Pchar.questTemp.CapBloodLine.stat == "CureMisStid" )
@@ -227,7 +227,7 @@ void ProcessDialogEvent()
             		link.l2.go = "SStep_1";
             		break;
                 }
-                
+
                 if( Pchar.questTemp.CapBloodLine.stat == "PrepareToEscape3" )
                 {
                     dialog.text = "Приветствую, доктор Блад. Чему обязан за ваш визит?";
@@ -240,14 +240,14 @@ void ProcessDialogEvent()
           		link.l1.go = "Exit";
  		         NextDiag.TempNode = "First time";
     		}
-    		
+
     		if (npchar.id == "MisStid" && Pchar.questTemp.CapBloodLine.stat == "CureMisStid")
     		{
             	dialog.text = "О, доктор Блад! Наконец-то... пожалуйста, помогите мне!";
         		link.l1 = "Добрый вечер, миссис Стид. Не волнуйтесь, вы должны успокоиться и перестать жмуриться - потерпите и посмотрите на меня, мне нужно видеть ваши глаза.";
         		link.l1.go = "MSStep_0";
     		}
-    		
+
     		if (npchar.id == "Nettl" ) // && Pchar.questTemp.CapBloodLine.stat == "CureMisStid"
     		{
             	dialog.text = "Эй, парень... я в добром уме и... и... здравии. Каком здра... здравии? Ах да, трезвом... да, трезвом. Не знаешь ли, как можно исч... исчезнуть где-то, а... а потом появится где-то... где-то совсем не там, где... не там, где исчез?";
@@ -262,7 +262,7 @@ void ProcessDialogEvent()
             		link.l1.go = "NStep_0";
                 }
     		}
-    		
+
     		if (npchar.id == "Waker")
     		{
                 if(Pchar.questTemp.CapBloodLine.stat == "CureMisStid")
@@ -273,7 +273,7 @@ void ProcessDialogEvent()
             		link.l2 = "Добрый вечер. Где я могу найти мистера Дэна?";
             		link.l2.go = "WStep_1";
                 }
-                
+
                 if(Pchar.questTemp.CapBloodLine.stat == "WakerOffer")
                 {
                 	dialog.text = "Я слышал, миссис Стид отнимает у Вас уйму времени. Что ж, молодость и привлекательная внешность, доктор Блад! Молодость и красота! Это дает врачу огромное преимущество, особенно когда он лечит дам!";
@@ -282,7 +282,7 @@ void ProcessDialogEvent()
 
                 }
     		}
-    		
+
     		if (npchar.id == "Den")
     		{
             	dialog.text = "Вечер добрый, доктор Блад. Могу я узнать, что вы делали у меня дома?";
@@ -296,7 +296,7 @@ void ProcessDialogEvent()
         		link.l3 = "Я просто зашел передать, что вас разыскивал доктор Вакер, мистер Дэн.";
         		link.l3.go = "DStep_2";
     		}
-    		
+
 
     		if (npchar.id == "Griffin")
     		{
@@ -307,7 +307,7 @@ void ProcessDialogEvent()
             		link.l1.go = "GRStep_0";
             		break;
                 }
-                
+
                 if(Pchar.questTemp.CapBloodLine.stat == "PrepareToEscape")
                 {
 
@@ -317,12 +317,12 @@ void ProcessDialogEvent()
             		break;
 
                 }
-                
+
                 dialog.text = "Что ты здесь забыл, дьявол тебя разбери?!";
                 link.l1 = "Я доктор Блад, уже ухожу." ;
                 link.l1.go = "Exit";
     		}
-    		
+
     		if (npchar.id == "Hells")
     		{
                 if(Pchar.questTemp.CapBloodLine.stat == "PrepareToEscape1_1")
@@ -334,7 +334,7 @@ void ProcessDialogEvent()
             		link.l2.go = "fight1";
             		break;
                 }
-                
+
                 if(Pchar.questTemp.CapBloodLine.stat == "needMoney" && !CheckAttribute(Pchar, "questTemp.CapBloodLine.fishplace"))
                 {
                 	dialog.text = "О, как хорошо, что ты здесь...";
@@ -347,7 +347,7 @@ void ProcessDialogEvent()
                 link.l1 = "Я доктор Блад, уже ухожу." ;
                 link.l1.go = "Exit";
     		}
-    		
+
     		if (npchar.id == "Quest_Smuggler")
     		{
                 if(Pchar.questTemp.CapBloodLine.stat == "PrepareToEscape" && sti(Pchar.reputation) >= 50)
@@ -362,14 +362,14 @@ void ProcessDialogEvent()
                 link.l1 = "Меня могу запороть до смерти и без этого... Хотя вы правы - мне пора." ;
                 link.l1.go = "Exit";
     		}
-    		
+
     		if (npchar.id == "Spain_spy" )
     		{
             	dialog.text = "Эй, ты! Подожди...";
         		link.l1 = "Чем могу помочь?";
         		link.l1.go = "SSStep_0";
     		}
-    		
+
     		 if(npchar.id == "Hugtorp")
     		 {
                 if(Pchar.questTemp.CapBloodLine.statcrew == "find")
@@ -382,9 +382,9 @@ void ProcessDialogEvent()
                 dialog.text = "Приветствую, Питер. Рука, которую ты мне обработал - совсем зажила, спасибо.";
                 link.l1 = "Я рад, что ты поправился.";
                 link.l1.go = "Exit";
-                
+
     		 }
-    		 
+
     		 if(npchar.id == "Dieke")
     		 {
                 if(Pchar.questTemp.CapBloodLine.statcrew == "find")
@@ -398,7 +398,7 @@ void ProcessDialogEvent()
                 link.l1 = "Нет, ничего, просто шел мимо.";
                 link.l1.go = "Exit";
     		 }
-    		 
+
     		 if(npchar.id == "Ogl")
     		 {
                 if(Pchar.questTemp.CapBloodLine.statcrew == "find")
@@ -414,10 +414,10 @@ void ProcessDialogEvent()
     		 }
 
 
-            
+
 		break;
-		
-		
+
+
 		case "First Bishop":
             if(NPChar.quest.meeting == "0")
             {
@@ -433,7 +433,7 @@ void ProcessDialogEvent()
                 link.l1.go = "Exit";
             }
 		break;
-		
+
 		case "BStep_0":
         	dialog.text = "Не указывай мне, пес!\nЛечи скорее знатное семейство Стидов, или снисходительное отношение к тебе больного человека сменится холодным равнодушием политика.\nТогда посмотрим, как тебе понравится мотыжить землю на плантации вместо того, чтобы свободно шататься по городу! Помни свое место, раб.";
     		link.l1 = "Полагаю, вы многим рискуете, задерживая меня, когда миссис Стид нуждается в скорой помощи.";
@@ -453,33 +453,33 @@ void ProcessDialogEvent()
             AddQuestRecord("CapBloodLine_q1", "1");
 
 		break;
-		
+
 		case "BStep_1":
         	dialog.text = "Если ты будешь совать свой нос в мои дела, мне придется кое-что предпринять, красавец, чтобы ты не лодырничал и не злоупотреблял предоставленной тебе свободой. Не забывай, что ты осужденный бунтовщик!";
             link.l1 = "Мне все время об этом напоминают.";
             link.l1.go = "Exit";
             NextDiag.TempNode = "BStep_1";
 		break;
-		
+
 		case "BStep_2":
         	dialog.text = "Ты шляешься без дела целыми днями! Насколько мне известно, у губернатора и его супруги все в порядке. Уж не закрыть ли тебе доступ в город до поры?";
             link.l1 = "Вы собираетесь продать Николаса Дайка?";
             link.l1.go = "BStep_3";
 		break;
-		
+
 		case "BStep_3":
         	dialog.text = "...а то про тебя уже слухи ходят... что? Какое тебе дело до этого несчастного, пес?";
             link.l1 = "Дело в том, что у него... хм, у него первые признаки проказы...";
             link.l1.go = "BStep_4";
 		break;
-		
-		
+
+
 		case "BStep_4":
         	dialog.text = "Что ты несешь? Не смей соваться в мои дела, иначе я отправлю тебя мотыжить, предварительно выпоров до полусмерти!..";
             link.l1 = "Ответственность за продажу ляжет на...";
             link.l1.go = "BStep_5";
 		break;
-		
+
 		case "BStep_5":
         	dialog.text = "Молчать! Я в долгу перед мистером Вестеном, и эта сделка состоится! Убирайся с глаз долой!";
             link.l1 = "Ладно.";
@@ -488,9 +488,9 @@ void ProcessDialogEvent()
             sld = characterFromID("Quest_Habitue");
             sld.Dialog.CurrentNode = "QHStep_0";
             AddQuestRecord("DiekeQuest", "2");
-            
+
 		break;
-		
+
 		case "Bishop_Away":
 
             LAi_SetActorTypeNoGroup(npchar);
@@ -498,7 +498,7 @@ void ProcessDialogEvent()
             NextDiag.CurrentNode = NextDiag.TempNode;
             DialogExit()
 		break;
-		
+
 		// -->Эндрю Бейнс
 
 		case "EBStep_0":
@@ -509,9 +509,9 @@ void ProcessDialogEvent()
             DeleteAttribute(npchar, "talker");
             Pchar.questTemp.CapBloodLine.sLocator = "Reload5";
             Pchar.questTemp.CapBloodLine.iTime = -1;
-            
+
 		break;
-		
+
 		case "EBStep_1":
 
             dialog.text = "Доктор, я подготовил все, что вы просили.";
@@ -521,7 +521,7 @@ void ProcessDialogEvent()
             AddDialogExitQuestFunction("CureLordMovie");
 
 		break;
-		
+
 		case "EBStep_2":
 
             dialog.text = "Что с лордом Гилдоем? Он выживет?";
@@ -531,7 +531,7 @@ void ProcessDialogEvent()
             AddDialogExitQuestFunction("DragunInvansion");
 
 		break;
-		
+
 		case "EBStep_3":
 
             dialog.text = "Мне кажется, вам следует воспользоваться советом Джереми Питта и раздобыть себе оружие.";
@@ -540,7 +540,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "EBStep_3";
 
 		break;
-		
+
 		//--> капитан Гобард
 
 		case "CGStep_1":
@@ -549,28 +549,28 @@ void ProcessDialogEvent()
     		link.l1.go = "CGStep_2";
 
 		break;
-		
+
 		case "CGStep_2":
         	dialog.text = "Ах, так я еще должен заботиться о здоровье мятежников! Черт побери! Вы думаете, что мы будем его лечить? Вдоль всей дороги от Вестона до Бриджуотера расставлены виселицы, и он подойдет для любой из них. Полковник Кирк научит этих дураков-протестантов кое-чему такому, о чем будут помнить их дети, внуки и правнуки!";
     		link.l1 = "Прекрасно, но если вы это сделаете, боюсь, что завтра могут повесить вас. Он не принадлежит к категории людей, которых вы можете вздернуть, не задавая вопросов. Он имеет право требовать суда, суда пэров.";
     		link.l1.go = "CGStep_3";
 
 		break;
-		
+
 		case "CGStep_3":
         	dialog.text = "Суда пэров?";
     		link.l1 = "Разумеется. Любой человек, если он не идиот или не дикарь, прежде чем посылать человека на виселицу, спросил бы его фамилию. Этот человек - лорд Гилдой.";
     		link.l1.go = "CGStep_4";
 
 		break;
-		
+
 		case "CGStep_4":
         	dialog.text = "Этот человек - мятежник, и его доставят в Бриджуотер, в тюрьму.";
     		link.l1 = "Он не перенесет этого пути. Его нельзя сейчас трогать.";
     		link.l1.go = "CGStep_5";
 
 		break;
-		
+
 		case "CGStep_5":
         	dialog.text = "Тем хуже для него. Мое дело - арестовывать мятежников!\nА это что за тип, который прятался в камине? Еще один вельможа? Его-то я уж точно повешу собственными руками.";
     		link.l1 = "Вы угадали, капитан. Это виконт Питт, двоюродный брат сэра Томаса Вернона, женатого на красотке Молли Кирк - сестре вашего полковника.";
@@ -589,15 +589,15 @@ void ProcessDialogEvent()
     		link.l1 = "Мое имя Питер Блад, я врач, и меня привезли сюда для оказания помощи раненому.";
     		link.l1.go = "CGStep_8";
 		break;
-		
+
 		case "CGStep_8":
         	dialog.text = "Ну и кто же тебя пригласил? Мятежники?\nВзять его! Свяжите и этих тоже. Мы покажем вам, как укрывать мятежников!";
     		link.l1 = "Ну, уж нет. Этого я допустить не могу!";
     		link.l1.go = "GFight";
     		NextDiag.TempNode = "CGStep_9";
-			EndQuestMovie(); 
+			EndQuestMovie();
 		break;
-		
+
         case "CGStep_9":
 			dialog.text = LinkRandPhrase("Вот он - держи его!", "Хватай его ребята!", "А ну стой!");
 			link.l1 = LinkRandPhrase("Дьявол!!", "Как бы не так!", "А-ать, черт!");
@@ -605,17 +605,17 @@ void ProcessDialogEvent()
 			AddDialogExitQuestFunction("CapGobartAttack");
             NextDiag.TempNode = "CGStep_9";
 		break;
-		
-		
+
+
 		// -->Стражник на входе
-		
+
 		case "First Guard":
         	dialog.text = "Ты куда собрался?";
     		link.l1 = "Мое имя Питер Блад, я здесь по распоряжению полковника Бишопа - мне приказано явиться для осмотра и лечения супруги губернатора.";
     		link.l1.go = "GStep_0";
 
 		break;
-		
+
 		case "GStep_0":
 
             dialog.text = "Да, припоминаю тебя. Ты лечил моего брата и прочих с ''Прайд оф Девон'', а также всю эту испанскую мразь, что чудом уцелела.\nБронсон мой друг... а ты его разоряешь, равно как и Вакера, успевая все и везде. Такие ловкачи среди рабов - редкость, и долго они не живут.";
@@ -631,7 +631,7 @@ void ProcessDialogEvent()
             npchar.dialog.filename = "Quest\CapBloodLine\questNPC.c";
 
 		break;
-		
+
 		case "GStep_1":
 
             dialog.text = "О, доктор Блад! На этот раз я что-то не в курсе, чтобы губернатор Стид посылал за вами. Что вам нужно?";
@@ -655,7 +655,7 @@ void ProcessDialogEvent()
             }
 
 		break;
-		
+
  		case "GStep_2":
 
             dialog.text = "Вон оно как. Но раз уж я вас остановил, логично будет заключить, что в эту дверь вам войти не удастся, пока я не узнаю о соответствующем распоряжении, отданном губернатором Стидом.";
@@ -664,7 +664,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "GStep_3";
             AddQuestRecord("WeaponsForEscape", "12");
 		break;
-		
+
 		case "GStep_3":
 
             dialog.text = "Ну что еще?";
@@ -701,7 +701,7 @@ void ProcessDialogEvent()
         	link.l1 = "Могу я увидеть ее?";
             link.l1.go = "SStep_2";
 		break;
-		
+
  		case "SStep_1":
 
             dialog.text = "Как бы там ни было, сейчас главное - моя жена. У нее опять приступ мигрени, она перевозбуждена и отвергает все попытки уложить ее в постель!";
@@ -726,8 +726,8 @@ void ProcessDialogEvent()
 			ChangeCharacterAddressGroup(sld, "CommonBedroom", "goto","goto5");
 			AddQuestRecord("CapBloodLine_q1", "2");
 		break;
-		
-		
+
+
 		case "SStep_3":
 
             sld = &characters[GetCharacterIndex("MisStid")];
@@ -742,12 +742,12 @@ void ProcessDialogEvent()
                 dialog.text = "Как она, доктор? Вы...";
                 link.l1 = "Все будет в порядке, губернатор Стид, но мне необходимо немедленно отправиться за нужными лекарствами домой к аптекарю. Просто решил поставить вас в известность.";
                 link.l1.go = "SStep_4";
-                
+
                 link.l2 = "Все будет в порядке, губернатор Стид, если мне удастся застать дома мистера Дэна и разбудить его. Срочно нужны лекарства, и я прошу вас выдать мне средства для их покупки.";
                 link.l2.go = "SStep_5";
             }
 		break;
-		
+
 		case "SStep_4":
 
             dialog.text = "Прошу вас, поторопитесь!";
@@ -756,7 +756,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "SStep_4";
 
 		break;
-		
+
 		case "SStep_5":
 
             dialog.text = "О, конечно, разумеется... сколько вам нужно?";
@@ -768,7 +768,7 @@ void ProcessDialogEvent()
             link.l3.go = "SStep_8";
 
 		break;
-		
+
 		case "SStep_6":
 
             AddMoneyToCharacter(pchar, 500);
@@ -780,7 +780,7 @@ void ProcessDialogEvent()
             AddQuestUserData("CapBloodLine_q1", "iMoney", 500);
 
 		break;
-		
+
 		case "SStep_7":
 
             AddMoneyToCharacter(pchar, 1000);
@@ -792,7 +792,7 @@ void ProcessDialogEvent()
             AddQuestUserData("CapBloodLine_q1", "iMoney", 1000);
 
 		break;
-		
+
 		case "SStep_8":
 
             AddMoneyToCharacter(pchar, 2500);
@@ -804,7 +804,7 @@ void ProcessDialogEvent()
 
 
 		break;
-		
+
 		case "SStep_9":
 
             dialog.text = "Право слово, конечно, я даю вам такую возможность. Вы считаете, следует опасаться нового приступа?";
@@ -825,7 +825,7 @@ void ProcessDialogEvent()
         	link.l1 = "Похоже, никак не обойтись без лекарств, но аптека давно закрыта. Мне придется пойти к мистеру Дэну домой, чтобы получить все необходимое. Попейте теплой воды и ждите меня, я вернусь так скоро, как только смогу!";
             link.l1.go = "Exit";
             NextDiag.TempNode = "MSStep_1";
-            
+
             sld = GetCharacter(NPC_GenerateCharacter("Waker", "usurer_5", "man", "man", 7, ENGLAND, 3, false));
             sld.dialog.filename = "Quest\CapBloodLine\Bishop.c";
             sld.name = "доктор";
@@ -836,21 +836,21 @@ void ProcessDialogEvent()
 			ChangeCharacterAddressGroup(sld, "CommonPirateHouse", "goto","goto6");
             LAi_SetActorTypeNoGroup(sld);
             LAi_ActorDialog(sld, pchar, "", 2.0, 0);
-            
+
             pchar.quest.CureMisStid.win_condition.l1 = "item";
 			pchar.quest.CureMisStid.win_condition.l1.item= "migraine_potion";
 			pchar.quest.CureMisStid.function = "CapBloodLine_q1_End";
-			
+
 			sld = ItemsFromID("migraine_potion");
 			sld.shown = true;
 			sld.startLocation = "CommonPirateHouse";
 			sld.startLocator = "item1";
-			
+
 			AddQuestRecord("CapBloodLine_q1", "3");
 
 
 		break;
-		
+
         case "MSStep_1":
 
             dialog.text = "Вы принесли лекарства, доктор?";
@@ -868,9 +868,9 @@ void ProcessDialogEvent()
             }
 
 		break;
-		
+
         case "MSStep_2":
-        
+
         NextDiag.CurrentNode = NextDiag.TempNode;
 		DialogExit();
 		//Вывести экран в темноту, выполнить квест questFadeOut, вернуть всё обратно, выполнить квест questFadeIn
@@ -878,7 +878,7 @@ void ProcessDialogEvent()
         CapBloodLine_q1_Complited("");
 
 		break;
-		
+
         case "MSStep_3":
 
             dialog.text = "Здравствуйте, доктор Блад. Мне значительно лучше и, похоже, я действительно пошла на поправку - все благодаря вам.";
@@ -887,7 +887,7 @@ void ProcessDialogEvent()
             DeleteAttribute(npchar, "talker");
 
 		break;
-		
+
         case "MSStep_4":
 
             dialog.text = "Я вижу, вы не сводите глаз с этого колечка... быть может, оно Ваше?";
@@ -897,7 +897,7 @@ void ProcessDialogEvent()
             link.l1.go = "MSStep_5";
 
 		break;
-		
+
         case "MSStep_5":
 
             dialog.text = "Дело в том, что оно и не мое. Буквально вчера подобного кольца у меня не было, но сегодня утром я обнаружила его там, где оно находится сейчас. Эх, если бы мой муж не был уверен в том, что во время появления кольца он был со мной, и никто появиться здесь просто не мог, он бы...";
@@ -905,7 +905,7 @@ void ProcessDialogEvent()
             link.l1.go = "MSStep_6";
 
 		break;
-		
+
         case "MSStep_6":
 
             dialog.text = "Колечко простенькое, без изысков. Не мой стиль, да и… забирайте его, доктор Блад. Чье бы оно ни было, мне оно ни к чему.";
@@ -913,7 +913,7 @@ void ProcessDialogEvent()
             link.l1.go = "MSStep_7";
 
 		break;
-		
+
         case "MSStep_7":
 
             dialog.text = "Пусть будет так. А теперь я вынуждена просить вас покинуть меня.";
@@ -925,7 +925,7 @@ void ProcessDialogEvent()
 
 
 		break;
-		
+
         case "MSStep_8":
 
             dialog.text = "До свидания, доктор Блад.";
@@ -933,9 +933,9 @@ void ProcessDialogEvent()
             link.l1.go = "Exit";
             NextDiag.TempNode = "MSStep_8";
 		break;
-		
 
-		
+
+
         //--> Нэтталл
 
         case "NStep_0":
@@ -946,7 +946,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "NStep_1";
             Pchar.questTemp.CapBloodLine.TalkWithNettl = true;
 		break;
-		
+
         case "NStep_1":
 
             dialog.text = "Твое здоровье, доктор! Эх-х-х!";
@@ -962,7 +962,7 @@ void ProcessDialogEvent()
                 NextDiag.TempNode = "NStep_1";
             }
 		break;
-		
+
         case "NStep_2":
 
             dialog.text = "Я в курсе, Джереми Питт уже прожужжал...";
@@ -978,7 +978,7 @@ void ProcessDialogEvent()
                 NextDiag.TempNode = "NStep_5";
             }
 		break;
-		
+
         case "NStep_3":
 
             AddMoneyToCharacter(pchar, -25000);
@@ -989,9 +989,9 @@ void ProcessDialogEvent()
             NPChar.lifeDay = 0;
        		CloseQuestHeader("CapBloodLine_q2");
             CapBloodLine_q3_Complited();
-            
+
 		break;
-		
+
         case "NStep_4":
 
             dialog.text = "Вот сейчас допью свой ром и пойду на верфь.";
@@ -999,7 +999,7 @@ void ProcessDialogEvent()
             link.l1.go = "Exit";
             NextDiag.TempNode = "NStep_4";
 		break;
-		
+
         case "NStep_5":
 
             dialog.text = "Ты принес деньги?";
@@ -1015,7 +1015,7 @@ void ProcessDialogEvent()
                 NextDiag.TempNode = "NStep_5";
             }
 		break;
-		
+
 		case "Nettl_Away":
 
             LAi_SetActorTypeNoGroup(npchar);
@@ -1023,7 +1023,7 @@ void ProcessDialogEvent()
             NextDiag.CurrentNode = NextDiag.TempNode;
             DialogExit();
 		break;
-		
+
         case "NStep_6":
 
             dialog.text = "Ик... Силы небесные! И как это можно сделать?";
@@ -1032,18 +1032,18 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "NStep_5";
             Pchar.questTemp.CapBloodLine.TalkWithNettl = true;
 		break;
-		
+
         //--> Вакер
 
         case "WStep_0":
-        
+
             AddCharacterExpToSkill(pchar, "Sneak", 50);
             dialog.text = "Я бы и сам рад узнать, где он. Жду его здесь уже битый час, а его все нет и нет. Уж не сгинул ли бедняга с перепоя?\nА меж тем, у меня к вам разговор...";
         	link.l1 = "Я очень тороплюсь, доктор Вакер, мне необходимо найти мистера Дэна как можно скорее. Разговор придётся отложить.";
             link.l1.go = "WStep_2";
 
 		break;
-		
+
         case "WStep_1":
 
             dialog.text = "Я бы и сам рад узнать, где он. Жду его здесь уже битый час, а его все нет и нет. Уж не сгинул ли бедняга с перепоя?\nА меж тем, у меня к вам разговор...";
@@ -1051,7 +1051,7 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_2";
 
 		break;
-		
+
         case "WStep_2":
 
             dialog.text = "Что ж, я и сам не в настроении обсуждать все то, что обсудить необходимо, именно здесь и сейчас. Я, пожалуй, пойду, а вы, если угодно, дождитесь Дэна. Поговорим завтра. Как только найдете свободную минуту, приходите в таверну. Очень на вас надеюсь.";
@@ -1081,7 +1081,7 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_4";
 
 		break;
-		
+
         case "WStep_4":
 
             dialog.text = "Я не дурак, дорогой коллега. Я вижу человека насквозь и могу даже сказать, что он думает.";
@@ -1089,7 +1089,7 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_5";
 
 		break;
-		
+
         case "WStep_5":
 
             dialog.text = "Не раз наблюдал я за вами, когда вы тоскливо всматривались в морскую даль. И вы полагаете, что я не знаю ваших мыслей?\nЕсли бы вам удалось спастись из этого ада, вы могли бы, как свободный человек, с удовольствием и выгодой для себя всецело отдаться своей профессии, украшением которой вы являетесь.\nМир велик, и, кроме Англии, есть еще много стран, где такого человека, как вы, всегда тепло встретят. Помимо английских колоний, есть и другие.\nОтсюда совсем недалеко до голландской колонии Кюрасао. В это время года туда вполне можно добраться даже на небольшой лодке. Кюрасао может стать мостиком в огромный мир. Он откроется перед вами, как только вы освободитесь от цепей.\nЧто вы на это скажете?";
@@ -1097,7 +1097,7 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_6";
 
 		break
-		
+
         case "WStep_6":
 
             dialog.text = "Разве я не сказал, что хочу быть вашим другом?";
@@ -1105,9 +1105,9 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_7";
            	link.l2 = "Это очень благородно с вашей стороны, коллега. Именно так поступил бы и я, если бы мне представился подобный случай.";
             link.l2.go = "WStep_8";
-            
+
 		break;
-		
+
         case "WStep_7":
 
             dialog.text = "Вы себе не представляете, как обливается кровью мое сердце при виде коллеги, изнывающего в рабстве и лишенного возможности применить на деле свои чудесные способности! К чему вам томиться в оковах, хоть и невидимых глазу, когда вы можете отправиться к горизонту, сделать этот мир хоть капельку лучше...\nДа и нам оставить нашу работу в Бриджтауне... н-да?..";
@@ -1115,7 +1115,7 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_9";
 
 		break;
-		
+
         case "WStep_8":
 
             dialog.text = "Значит, вы согласны?";
@@ -1123,7 +1123,7 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_9";
 
 		break;
-		
+
         case "WStep_9":
 
             dialog.text = "Деньги вы получите! Это будет заем, который вы нам вернёте... вернете мне, когда сможете.";
@@ -1136,7 +1136,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "WStep_10";
 
 		break;
-		
+
         case "WStep_10":
 
             dialog.text = "До завтра, коллега.";
@@ -1145,9 +1145,9 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "WStep_10";
 
 		break;
-		
+
 		//Предложение Вакера - заключение
-		
+
         case "WStep_11":
 
             dialog.text = "Доброе утро, доктор Блад. Я ждал вас.";
@@ -1155,7 +1155,7 @@ void ProcessDialogEvent()
             link.l1.go = "WStep_12";
 
 		break;
-		
+
         case "WStep_12":
 
             dialog.text = "Все дело в том, что у меня на руках только 18 000 пиастров, а вам понадобится примерно 25 000. Тем не менее, я уверен, вы сможете раздобыть оставшуюся сумму.";
@@ -1164,7 +1164,7 @@ void ProcessDialogEvent()
             AddMoneyToCharacter(pchar, 18000);
 
 		break;
-		
+
         case "WStep_13":
 
             dialog.text = "Хм, вы, как всегда, правы, доктор. Об этом я не подумал...";
@@ -1180,7 +1180,7 @@ void ProcessDialogEvent()
             }
 
 		break;
-		
+
         case "WStep_14":
 
             dialog.text = "На острове есть не только невольники, но и ссыльные, люди, отбывающие ссылку за долги. Они будут счастливы расправить свои крылья. Я думаю, любой из них с радостью воспользуется возможностью уехать.";
@@ -1193,7 +1193,7 @@ void ProcessDialogEvent()
             AddQuestRecord("CapBloodLine_q2", "7");
 
 		break;
-		
+
         case "WStep_15":
 
             dialog.text = "Нэтталл... да, корабельный плотник может оказать содействие. Вряд ли у него найдутся причины вам отказать. Что ж, дерзайте, доктор Блад. И удачи вам!";
@@ -1206,7 +1206,7 @@ void ProcessDialogEvent()
             AddQuestRecord("CapBloodLine_q2", "7");
 
 		break;
-		
+
         case "WStep_16":
 
             dialog.text = "Удачи Вам!";
@@ -1215,7 +1215,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "WStep_16";
 
 		break;
-		
+
         //--> Мистер Дэн
 
         case "DStep_0":
@@ -1239,7 +1239,7 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.iTime = -1;
 
 		break;
-		
+
         case "DStep_2":
 
             dialog.text = "Хм... ясно.";
@@ -1249,7 +1249,7 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.iTime = -1;
 
 		break;
-		
+
         case "DStep_3":
 
             dialog.text = "Здравствуйте, доктор Блад. Чем могу вам помочь?";
@@ -1257,7 +1257,7 @@ void ProcessDialogEvent()
             link.l1.go = "DStep_4";
 
 		break;
-		
+
         case "DStep_4":
 
             dialog.text = "О, конечно, вот возьмите - у меня немного осталось. Передайте поклон от меня губернатору.";
@@ -1268,7 +1268,7 @@ void ProcessDialogEvent()
             AddQuestRecord("WeaponsForEscape", "13");
 
 		break;
-		
+
         case "DStep_5":
 
             dialog.text = "Вам что-то необходимо?";
@@ -1277,7 +1277,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "DStep_5";
 
 		break;
-		
+
 		//--> Джереми Питт
 
 		 case "PStep_0":
@@ -1312,7 +1312,7 @@ void ProcessDialogEvent()
             AddQuestRecord("WeaponsForEscape", "1");
 
 		break;
-		
+
         case "PStep_3":
 
             dialog.text = "Хорошо, я понял, я все понял. Сделаю все, что в моих силах, чтобы помочь...";
@@ -1324,7 +1324,7 @@ void ProcessDialogEvent()
             AddQuestRecord("CapBloodLine_q2", "5");
             AddQuestRecord("WeaponsForEscape", "1");
 		break;
-		
+
         case "PStep_4":
 
             if(CheckAttribute(Pchar, "questTemp.CapBloodLine.Officer") && Pchar.questTemp.CapBloodLine.Officer == 3 && Pchar.questTemp.CapBloodLine.stat == "ReadyToEscape")
@@ -1347,16 +1347,16 @@ void ProcessDialogEvent()
             link.l1.go = "Exit";
             NextDiag.TempNode = "PStep_4";
 		break;
-		
+
         case "PStep_5":
 
             dialog.text = "Питер, сюда скачут драгуны Танжерского полка, они ищут участников восстания...";
         	link.l1 = "Думаю, нам нечего бояться, ведь мы живем в христианской стране, а христиане не воюют с ранеными и с теми, кто их приютил. А вот Питту лучше куда-нибудь исчезнуть.";
             link.l1.go = "PStep_6";
             //NextDiag.TempNode = "SStep_4";
-            
+
 		break;
-		
+
         case "PStep_6":
 
             dialog.text = "Хорошо, я спрячусь в каминную трубу, но ты плохо знаешь полковника Кирка, он сущий дьявол. А у тебя нет даже шпаги, чтобы постоять за себя.\nВозьми мою, я спрятал ее на балконе в сундуке. И поспеши, драгуны вот-вот ворвутся в усадьбу.";
@@ -1371,16 +1371,16 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.sLocator = "reload2";
             Pchar.questTemp.CapBloodLine.iTime = 5;
             AddDialogExitQuestFunction("DragunInvansion2");
-            
+
 		break;
-		
+
         case "PStep_7":
 
             dialog.text = "Здравствуй, Питер. Сегодня исполняется ровно месяц, как мы работаем на сахарных плантациях полковника Бишопа. Порой мне кажется, что уж лучше бы нас казнили - так тяжело нам приходится. Все настолько истощены, что просто валятся с ног\nТолько вчера бывший кузнец из Бриджуотера в назидание остальным был насмерть запорот плетьми, а он всего лишь возмутился строгостью надсмотрщика Кента. Нужно что-то делать Питер, иначе мы не доживем и до зимы.";
         	link.l1 = "Я постоянно  думаю об этом, но просто бежать отсюда, без какой-либо поддержки извне слишком рискованно, взять хотя бы того беднягу, который осмелился  бежать две недели назад и был пойман.  Его выпороли, а после выжгли на  лбу буквы ''Б.К.'', чтобы до конца жизни все знали, что это беглый каторжник.";
             link.l1.go = "PStep_8";
         break;
-        
+
         case "PStep_8":
             dialog.text = "К счастью для страдальца, он умер от побоев\nНо я пришел к тебе не жаловаться на тяготы, а чтобы сообщить, что тебя зачем-то разыскивает Бишоп. Постарайся не злить его, а то мы рискуем остаться без твоей врачебной помощи.";
         	link.l1 = "Спасибо, Питт, тогда я пойду к нему, и обещаю, что буду кроток, как овечка.";
@@ -1392,7 +1392,7 @@ void ProcessDialogEvent()
             chrDisableReloadToLocation = false;
             AddDialogExitQuestFunction("ChangePIRATES");
 		break;
-		
+
         case "PStep_9":
 
             NextDiag.CurrentNode = NextDiag.TempNode;
@@ -1400,16 +1400,16 @@ void ProcessDialogEvent()
             CapBloodLine_q2_Complited();
 
 		break;
-		
+
         case "PStep_10":
-        
+
             dialog.text = "Питер, тебе удалось купить шлюп?";
         	link.l1 = "Еще нет.";
             link.l1.go = "Exit";
             NextDiag.TempNode = "PStep_10";
-            
+
 		break;
-		
+
         case "PStep_11":
 
             dialog.text = "Прости, Питер, они... они выследили меня...";
@@ -1417,7 +1417,7 @@ void ProcessDialogEvent()
             link.l1.go = "PStep_12";
 
 		break;
-		
+
         case "PStep_12":
 
             dialog.text = "Не думаю, Питер, что штурман вообще понадобится.";
@@ -1425,7 +1425,7 @@ void ProcessDialogEvent()
             link.l1.go = "PStep_13";
 
 		break;
-		
+
         case "PStep_13":
 
             dialog.text = "Нэтталл сбежал.";
@@ -1433,7 +1433,7 @@ void ProcessDialogEvent()
             link.l1.go = "PStep_14";
 
 		break;
-		
+
         case "PStep_14":
 
             dialog.text = "Тогда беги в город и предупреди остальных, за мной вы можете вернуться позже.";
@@ -1447,7 +1447,7 @@ void ProcessDialogEvent()
             AddQuestRecord("EscapeFormBarbados", "2");
 
 		break;
-		
+
         case "PStep_15":
 
             dialog.text = "Беги в город!";
@@ -1456,7 +1456,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "PStep_15";
 
 		break;
-		
+
         case "PStep_16":
 
             dialog.text = "Поздравляю, Питер, ребята рассказали мне про бой с испанцами. Жаль, что меня с вами не было! Но главное что мы вырвались с этого проклятого острова!";
@@ -1464,7 +1464,7 @@ void ProcessDialogEvent()
             link.l1.go = "PStep_17";
 
 		break;
-		
+
         case "PStep_17":
 
             dialog.text = "Да, в Англию нам нет возврата - там нас сразу же повесят. В Испании или Голландии мы будем не в большей безопасности. То же касается и всех колоний. Остаются только французские колонии, или к пиратам.";
@@ -1472,7 +1472,7 @@ void ProcessDialogEvent()
             link.l1.go = "PStep_18";
 
 		break;
-		
+
         case "PStep_18":
 
             dialog.text = "Да что тут выбирать! Все хотят, чтоб ты был нашим капитаном, Питер.";
@@ -1480,7 +1480,7 @@ void ProcessDialogEvent()
             link.l1.go = "PStep_19";
 
 		break;
-		
+
         case "PStep_19":
 
             dialog.text = "Есть, капитан.";
@@ -1488,13 +1488,13 @@ void ProcessDialogEvent()
             link.l1.go = "Exit_RunAway";
             Pchar.questTemp.CapBloodLine.sLocator = "reloadShip";
             Pchar.questTemp.CapBloodLine.iTime = 3;
-            
+
         	NPChar.Money   = 0;
         	NPChar.Payment = true;
        		NPChar.DontClearDead = true;
-       		
+
             AddPassenger(pchar, NPChar, false);
-       		
+
             Pchar.Ship.Type = GenerateShip(SHIP_ARABELLA, true);
             Pchar.Ship.name="Синко Льягас";
             SetBaseShipData(Pchar);
@@ -1510,28 +1510,28 @@ void ProcessDialogEvent()
 //            SetCharacterGoods(Pchar,GOOD_PLANKS,10);
 //            SetCharacterGoods(Pchar,GOOD_RUM,40);//600);
             SetCharacterGoods(Pchar,GOOD_WEAPON,50);//2000);
-            
+
             n = FindLocation("Bridgetown_town");
-            
+
             locations[n].reload.ship1.name = "reloadShip";
             locations[n].reload.ship1.go = "Barbados";
             locations[n].reload.ship1.emerge = "reload_1";
             locations[n].reload.ship1.autoreload = "1";
             locations[n].reload.ship1.label = "Sea";
-            
+
             Pchar.location.from_sea = "Bridgetown_town";
             setWDMPointXZ("Bridgetown_town");
-            
+
             string sQuest = "CapBloodLaspEpisode";
             pchar.quest.(sQuest).win_condition.l1 = "EnterToSea";
             pchar.quest.(sQuest).win_condition = "CapBloodLaspEpisode";
             pchar.quest.(sQuest).function = "CapBloodLaspEpisode";
-            
+
             AddDialogExitQuestFunction("SpaCrewAtack");
 
 
 		break;
-		
+
 		//-->оружейние Гриффин
 
         case "GRStep_0":
@@ -1541,7 +1541,7 @@ void ProcessDialogEvent()
             link.l1.go = "GRStep_1";
 
 		break;
-		
+
         case "GRStep_1":
 
             dialog.text = "Помочь мне? Вы?! Чем может своевольный раб помочь...";
@@ -1550,7 +1550,7 @@ void ProcessDialogEvent()
         	link.l2 = "Почему нет? Я нуждаюсь в вашей помощи и, похоже, предложить могу в данной ситуации разве что помощь взаимную.";
             link.l2.go = "GRStep_3";
 		break;
-		
+
         case "GRStep_2":
 
             AddQuestRecord("WeaponsForEscape", "4");
@@ -1579,7 +1579,7 @@ void ProcessDialogEvent()
             link.l1.go = "GRStep_5";
 
 		break;
-		
+
         case "GRStep_5":
 
             dialog.text = "Оружие с моим именем на клинке у испанца или раба... да какая, к дьяволу, разница?! Мы вместе будем висеть на центральной площади завтра к рассвету!";
@@ -1587,7 +1587,7 @@ void ProcessDialogEvent()
             link.l1.go = "GRStep_6";
 
 		break;
-		
+
         case "GRStep_6":
 
             dialog.text = "Испанский головорез выпотрошит тебя, доктор. Но меня это не касается. Верни мне образчики, и я сделаю для тебя то, что ты просишь. За полторы тысячи пиастров. Он отправился в порт к рыбаку Хелльсу, чей дом неподалеку от дома аптекаря Дэна.";
@@ -1607,13 +1607,13 @@ void ProcessDialogEvent()
             LAi_ActorSetLayMode(sld);
             LAi_SetImmortal(sld, true);
 			ChangeCharacterAddressGroup(sld, "CommonRoom_MH2", "goto","goto2");
-			
+
             sld = &characters[GetCharacterIndex("Hells")];
             LAi_SetActorTypeNoGroup(sld);
             LAi_ActorDialog(sld, pchar, "", 1.0, 0);
 
 		break;
-		
+
         case "GRStep_7_1":
 
             dialog.text = "Хорошо, поторопитесь.";
@@ -1626,7 +1626,7 @@ void ProcessDialogEvent()
             AddQuestUserData("WeaponsForEscape", "iMoney", 1500);
 
 		break;
-		
+
         case "GRStep_7_2":
 
             dialog.text = "Хорошо, поторопитесь.";
@@ -1639,7 +1639,7 @@ void ProcessDialogEvent()
             AddQuestUserData("WeaponsForEscape", "iMoney", 1000);
 
 		break;
-		
+
         case "GRStep_8":
 
             dialog.text = "Вы пришли раньше, чем я ожидал вас увидеть. Что произошло?";
@@ -1657,7 +1657,7 @@ void ProcessDialogEvent()
             }
 
 		break;
-		
+
         case "GRStep_9":
 
             dialog.text = "Хм... что ж, меня даже не интересует, как вам это удалось и многих ли вы убили в процессе. Сегодня через час точно такой же сверток будет готов для вас. А теперь попрошу меня оставить, предварительно, конечно, оплатив мой труд.";
@@ -1680,7 +1680,7 @@ void ProcessDialogEvent()
             AddQuestRecord("WeaponsForEscape", "6");
 
 		break;
-		
+
         case "GRStep_10":
 
             dialog.text = "Да, что-то припоминаю. Но какого якоря тебе здесь надо?";
@@ -1688,7 +1688,7 @@ void ProcessDialogEvent()
             link.l1.go = "GRStep_11";
 
 		break;
-		
+
         case "GRStep_11":
 
             dialog.text = "Что?! Оружие... тебе?! Ты сошел с ума, морской дьявол! Убирайся!";
@@ -1701,7 +1701,7 @@ void ProcessDialogEvent()
 
 
 		break;
-		
+
         case "GRStep_12":
 
             if (Pchar.questTemp.CapBloodLine.stat == "PrepareToEscape1_3" && GetQuestPastTimeParam("questTemp.CapBloodLine.GriffinTime") >= 1)
@@ -1720,11 +1720,11 @@ void ProcessDialogEvent()
                 link.l1 = "Хорошо.";
                 link.l1.go = "Exit";
                 NextDiag.TempNode = "GRStep_12";
-            
+
             }
 
 		break;
-		
+
         case "GRStep_13":
 
             dialog.text = "Вы принесли деньги?";
@@ -1745,7 +1745,7 @@ void ProcessDialogEvent()
 
 
 		break;
-		
+
         case "GRStep_14":
 
             dialog.text = "Боже правый!..";
@@ -1753,7 +1753,7 @@ void ProcessDialogEvent()
             link.l1.go = "GRStep_15";
 
 		break;
-		
+
         case "GRStep_15":
 
             dialog.text = "П-пе... передумал?";
@@ -1769,13 +1769,13 @@ void ProcessDialogEvent()
             link.l1.go = "GRStep_17";
 
 		break;
-		
+
         case "GRStep_17":
 
             dialog.text = "Ммм... ладно, хорошо. У меня есть все это, вот - возьмите. Надеюсь, этого достаточно.";
         	link.l1 = "Более чем. Премного благодарен.";
             link.l1.go = "Exit";
-            
+
             GiveItem2Character(Pchar, "Weapon_for_escape");
             AddQuestRecord("WeaponsForEscape", "9");
        		CloseQuestHeader("WeaponsForEscape");
@@ -1786,7 +1786,7 @@ void ProcessDialogEvent()
 
 
         //-->рыбак Хелльс
-		
+
         case "HStep_0":
 
             dialog.text = "Врач... что тебе здесь надо?";
@@ -1794,7 +1794,7 @@ void ProcessDialogEvent()
             link.l1.go = "HStep_1";
 
 		break;
-		
+
         case "HStep_1":
 
             dialog.text = "Желаешь отомстить за ублюдка-дружка? Давай, щенок!";
@@ -1802,7 +1802,7 @@ void ProcessDialogEvent()
             link.l1.go = "HStep_2";
 
 		break;
-		
+
         case "HStep_2":
 
             dialog.text = "Я не отдам эти деньги! Ублюдок напал на меня, а вы просто хотите...";
@@ -1810,7 +1810,7 @@ void ProcessDialogEvent()
             link.l1.go = "HStep_3";
 
 		break;
-		
+
         case "HStep_3":
 
             dialog.text = "Можешь забрать, ему, я думаю, оно больше не к чему.";
@@ -1819,9 +1819,9 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "First time";
             Pchar.questTemp.CapBloodLine.stat = "PrepareToEscape1_2";
 		break;
-		
+
         case "HStep_4":
-        
+
             NextDiag.CurrentNode = NextDiag.TempNode;
             sTemp = GetNationNameByType(ENGLAND) + "_citizens";
             LAi_group_MoveCharacter(NPChar, sTemp);
@@ -1829,7 +1829,7 @@ void ProcessDialogEvent()
             DialogExit();
             Spain_spyDie("");
 		break;
-		
+
         case "HStep_5":
 
             dialog.text = "У меня найдется для тебя кое-какая работа, если тебе интересно. Хотя, уверен, что это вопрос глупый. Вам всем нужны деньги.";
@@ -1837,7 +1837,7 @@ void ProcessDialogEvent()
             link.l1.go = "HStep_6";
 
 		break;
-		
+
         case "HStep_6":
 
             dialog.text = "Я готов заплатить тебе две тысячи за кое-какую информацию. Дело в том, что Арнольд Саммерлайт - мой конкурент - нашел какое-то место… очень рыбное место. Он разоряет меня! Узнай любой ценой, где он добывает свой улов, и я с радостью расстанусь с двумя тысячами. Идет?";
@@ -1847,9 +1847,9 @@ void ProcessDialogEvent()
             link.l2.go = "Exit";
             NextDiag.TempNode = "HStep_8";
 		break;
-		
+
         case "HStep_7":
-        
+
             AddQuestRecord("FishermanQuest", "1");
             sld = &characters[GetCharacterIndex("Fisherman")];
             sld.dialog.currentnode = "FStep_1";
@@ -1858,7 +1858,7 @@ void ProcessDialogEvent()
 			DialogExit();
 
 		break;
-		
+
         case "HStep_8":
 
             dialog.text = "Так ты не поможешь мне?";
@@ -1869,7 +1869,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "HStep_8";
 
 		break;
-		
+
         case "HStep_9":
 
             dialog.text = "Итак?";
@@ -1886,7 +1886,7 @@ void ProcessDialogEvent()
             }
 
 		break;
-		
+
         case "HStep_10":
 
             dialog.text = "Не может быть! Где? Где он добывает рыбу?";
@@ -1894,7 +1894,7 @@ void ProcessDialogEvent()
             link.l1.go = "HStep_11";
 
 		break;
-		
+
         case "HStep_11":
 
             dialog.text = "Дьявол, как же я раньше не додумался!.. Ладно, вот твои деньги.";
@@ -1904,12 +1904,12 @@ void ProcessDialogEvent()
             AddMoneyToCharacter(pchar, 2000);
        		CloseQuestHeader("FishermanQuest");
 		break;
-		
-		
+
+
         //-->Испанский шпион
-        
+
         case "SSStep_0":
-        
+
             dialog.text = "Мне нужен оружейник. Где оружейник?";
         	link.l1 = "Его дом тут неподалеку. Во-о-он там.";
             link.l1.go = "SSStep_1";
@@ -1918,9 +1918,9 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.stat = "PrepareToEscape2_1";
             chrDisableReloadToLocation = false;
             LocatorReloadEnterDisable("BridgeTown_town", "houseSp2", true);
-            
+
 		break;
-		
+
         case "SSStep_1":
 
             dialog.text = "*хриплый смех*";
@@ -1931,7 +1931,7 @@ void ProcessDialogEvent()
             AddQuestRecord("WeaponsForEscape", "7");
 
 		break;
-		
+
         case "SSStep_2":
 
             dialog.text = "Тогда проваливай, пока я тебя не выпотрошил.";
@@ -1942,14 +1942,14 @@ void ProcessDialogEvent()
             AddQuestRecord("WeaponsForEscape", "7");
 
 		break;
-		
+
         case "SSStep_3":
 
             dialog.text = "(Гриффину): Английская собака!.. Я убью каждого в этом городе, а начну с тебя, упертый старик! Ты не понимаешь, вот-вот ''Синко Льягас''... А ТЫ что тут делаешь?!";
         	link.l1 = "Позвольте вас прервать.";
             link.l1.go = "SSStep_4";
 		break;
-		
+
         case "SSStep_4":
 
             dialog.text = "Что ж, раз уж ты пришел... ты следующий!";
@@ -1959,23 +1959,23 @@ void ProcessDialogEvent()
             sld.dialog.currentnode = "GRStep_14";
 
 		break;
-		
+
 		//--> Контрабандист
-		
+
         case "QSStep_0":
 
             dialog.text = "Стоп, стоп, стоп... просить о такой услуге немногим лучше, чем просить меня увезти вас отсюда. Причем, увозить вас с этих земель я не рискну и под страхом смерти, ибо если об этом узнают, я умру куда как более мучительно… но оружие! Надо быть человеком достаточно дерзким и немного безумным, чтобы об этом попросить в таверне, будучи привилегированным рабом. И еще большим безумцем нужно быть, чтобы согласиться помочь вам в этом...";
         	link.l1 = "Раз уж вы столь многословны, значит, интерес ваш в этом есть, осталось лишь договориться о цене.";
             link.l1.go = "QSStep_1";
 		break;
-		
+
         case "QSStep_1":
 
             dialog.text = "Вы очень проницательны, доктор. Что ж, не буду скрывать - вы правы. Меня интересует кое-что, но, боюсь, вы рискнуть не осмелитесь...";
         	link.l1 = "О чем же речь?";
             link.l1.go = "QSStep_2";
 		break;
-		
+
         case "QSStep_2":
 
             dialog.text = "Я знаю, что у вас есть доступ в усадьбу губернатора...";
@@ -1983,7 +1983,7 @@ void ProcessDialogEvent()
             link.l1.go = "QSStep_3";
 
 		break;
-		
+
         case "QSStep_3":
 
             dialog.text = "Уверен, ради десятка абордажных сабель и нескольких мушкетов, что имеются у меня по счастливой случайности прямо при себе, а также, скажем, трех тысяч всегда блестящих денег, вы найдете способ попасть к губернатору.";
@@ -1991,7 +1991,7 @@ void ProcessDialogEvent()
             link.l1.go = "QSStep_4";
 
 		break;
-		
+
         case "QSStep_4":
 
             dialog.text = "Небольшое колечко. Всего лишь.";
@@ -1999,14 +1999,14 @@ void ProcessDialogEvent()
             link.l1.go = "QSStep_5";
 
 		break;
-		
+
         case "QSStep_5":
 
             dialog.text = "Вряд ли она носит его, мой дорогой доктор. Тем не менее, оно у нее. Маленькое золотое колечко - простое, как три пиастра, но чертовски для меня важное. Скупщик даст вам за него едва ли пятую долю того, что предлагаю я. Только не спрашивайте, почему. Просто ответьте.";
         	link.l1 = "Вернусь так быстро, как только смогу. Приготовьте деньги и товар.";
             link.l1.go = "Exit";
             NextDiag.TempNode = "QSStep_6";
-            
+
             sld = &characters[GetCharacterbyLocation("Bridgetown_town", "soldiers", "soldier2")];
             sld.dialog.filename = "Quest\CapBloodLine\Bishop.c";
             sld.Dialog.CurrentNode = "GStep_1";
@@ -2015,24 +2015,24 @@ void ProcessDialogEvent()
             LocatorReloadEnterDisable("BridgeTown_town", "reload3_back", true);
             LocatorReloadEnterDisable("Bridgetown_Townhall", "reload3", true);
             LocatorReloadEnterDisable("BridgeTown_town", "reloadR1", true);
-            
+
             sld = characterFromID("MisStid");
             sld.Dialog.CurrentNode = "MSStep_3";
         	sld.talker = 10;
             ChangeCharacterAddressGroup(sld, "Bridgetown_TownhallRoom", "barmen","bar1");
-            
+
             sld = characterFromID("Den");
             LAi_SetCitizenTypeNoGroup(sld);
             //LAi_SetStayTypeNoGroup(sld);
             LAi_SetOwnerTypeNoGroup(sld);
             sld.Dialog.CurrentNode = "DStep_3";
 			ChangeCharacterAddressGroup(sld, "CommonPirateHouse", "goto","goto6");
-            
+
             sld = ItemsFromID("MsStid_ring");
 			sld.shown = true;
 			sld.startLocation = "Bridgetown_TownhallRoom";
 			sld.startLocator = "item1";
-			
+
             pchar.quest.PrepareToEscape3.win_condition.l1          = "location";
             pchar.quest.PrepareToEscape3.win_condition.l1.location = "Bridgetown_TownhallRoom";
             pchar.quest.PrepareToEscape3.function                  = "FindMsStid_ring";
@@ -2040,8 +2040,8 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.stat = "PrepareToEscape3";
 
 		break;
-		
-		
+
+
         case "QSStep_6":
 
             if (GetCharacterItem(pchar,"MsStid_ring") > 0)
@@ -2061,7 +2061,7 @@ void ProcessDialogEvent()
             }
 
 		break;
-		
+
         case "QSStep_7":
 
             dialog.text = "Узнал? Дорогой доктор, я о нем ни малейшего понятия не имел.";
@@ -2069,7 +2069,7 @@ void ProcessDialogEvent()
             link.l1.go = "QSStep_8";
 
 		break;
-		
+
         case "QSStep_8":
 
             dialog.text = "Это колечко крайне важное для меня, но вам от него никакого толку. Мне повезло вновь обрести его, а потому я готов выполнить свою часть сделки и отдать вам все то, что обещал.";
@@ -2077,7 +2077,7 @@ void ProcessDialogEvent()
             link.l1.go = "QSStep_10";
 
 		break;
-		
+
         case "QSStep_10":
 
             dialog.text = "*смеётся* Презабавный капитан Блад уже почуял вкус к жизни с новой силой... дай сюда!";
@@ -2086,7 +2086,7 @@ void ProcessDialogEvent()
             TakeItemFromCharacter(Pchar, "MsStid_ring");
 
 		break;
-		
+
         case "QSStep_11":
 
             dialog.text = "Не трать на это свое драгоценное время, Питер Блад. Вот твои деньги и оружие - поторопись. Кто знает, быть может, судьба свела нас неслучайно.";
@@ -2102,7 +2102,7 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.stat = "ReadyToEscape";
 
 		break;
-		
+
         case "QSStep_12":
 
             dialog.text = "Премного благодарен. Вот ваши деньги и все необходимое. Прощайте.";
@@ -2129,7 +2129,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_1";
 
 		break;
-		
+
         case "HTStep_1":
 
             dialog.text = "У меня здесь... осталось незаконченное дело, друг.";
@@ -2171,7 +2171,7 @@ void ProcessDialogEvent()
         	link.l2 = "Ты уверен, что хочешь этого, Хагторп? Его смерть не облегчит твоих мук.";
             link.l2.go = "HTStep_6";
 		break;
-		
+
         case "HTStep_6":
 
             dialog.text = "Если бы я хоть на миг засомневался, что хочу его смерти, я бы не стал так уверенно о ней говорить.";
@@ -2179,7 +2179,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_7";
 
 		break;
-		
+
         case "HTStep_7":
 
             dialog.text = "Дьявол тебя разбери, Блад! Это дело чести, я же сказал! Боишься рисковать, не осмелишься помочь мне - не надо! Уплывешь к морскому дьяволу и без меня!";
@@ -2190,7 +2190,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "HTStep_10";
 
 		break;
-		
+
         case "HTStep_8":
 
             dialog.text = "Ты... ты пытаешься отговорить меня, когда этот урод у меня под носом?!";
@@ -2207,7 +2207,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_13";
 
 		break;
-		
+
         case "HTStep_9":
 
             dialog.text = "Ладно, я согласен! К черту Уинтервуда до некоторых пор. Я присоединюсь к тебе.";
@@ -2242,7 +2242,7 @@ void ProcessDialogEvent()
                 NextDiag.TempNode = "HTStep_10";
             }
 		break;
-		
+
         case "HTStep_11":
 
             dialog.text = "Что ж... наконец-то... я присоединюсь к твоему побегу, Блад. И спасибо тебе.";
@@ -2255,7 +2255,7 @@ void ProcessDialogEvent()
             CloseQuestHeader("HugtorpTrouble");
 
 		break;
-		
+
         case "HTStep_12":
 
             dialog.text = "Все готово? Что от меня требуется?";
@@ -2264,7 +2264,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "HTStep_12";
 
 		break;
-		
+
         case "HTStep_13":
 
             LoginWinterwood();
@@ -2273,7 +2273,7 @@ void ProcessDialogEvent()
 			DialogExit();
 
 		break;
-		
+
         case "HTStep_14":
 
             dialog.text = "Питер, дурные вести - люди полковника Бишопа выследили Джереми Питта, как раз в тот момент, когда он прятал припасы для побега. Он едва успел передать, мне, что ему удалось припрятать кое-какое оружие в сундуке между досками - на краю плантации.";
@@ -2282,7 +2282,7 @@ void ProcessDialogEvent()
             chrDisableReloadToLocation = false;
 
 		break;
-		
+
         case "HTStep_15":
 
             dialog.text = "Эта свинья, Бишоп, высек его до полусмерти и велел не давать ему пищи и воды, пока он не выдаст сообщников.";
@@ -2292,7 +2292,7 @@ void ProcessDialogEvent()
 
 
 		break;
-		
+
         case "HTStep_16":
 
             dialog.text = "Питт держится, но тебе лучше не ходить к полковнику, он может приказать запереть тебя под замок. Лучше сейчас ничего не предпринимать - дождемся темноты. А как стемнеет, достанем оружие и освободим Джереми.";
@@ -2300,7 +2300,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_17";
 
 		break;
-		
+
         case "HTStep_17":
 
             dialog.text = "Да, Питер, мы будем ждать тебя на верфи. И остерегайся патрулей - люди Бишопа сейчас хватают всех без разбора.";
@@ -2310,7 +2310,7 @@ void ProcessDialogEvent()
             AddQuestRecord("EscapeFormBarbados", "1");
 
 		break;
-		
+
         case "HTStep_18":
 
             dialog.text = "Плохие новости, Питер...";
@@ -2334,7 +2334,7 @@ void ProcessDialogEvent()
             AddQuestRecord("EscapeFormBarbados", "3");
 
 		break;
-		
+
         case "HTStep_20":
 
             dialog.text = "А как же наш план побега? Нэттал сбежал, шлюп теперь недостать...";
@@ -2342,7 +2342,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_21";
 
 		break;
-		
+
         case "HTStep_21":
 
             dialog.text = "Какой другой?";
@@ -2350,7 +2350,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_22";
 
 		break;
-		
+
         case "HTStep_22":
 
             dialog.text = "Тогда лучше погибнем в бою с испанцами, чем будем гнить на плантациях Бишопа! Веди нас, Питер!";
@@ -2361,7 +2361,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "HTStep_22b";
 
 		break;
-		
+
         case "HTStep_22b":
 
             dialog.text = "Какие приказания, Питер?";
@@ -2371,7 +2371,7 @@ void ProcessDialogEvent()
             AddDialogExitQuestFunction("CapBloodOfficers");
 
 		break;
-		
+
         case "HTStep_23":
 
             dialog.text = "Какой другой?";
@@ -2379,7 +2379,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_22";
 
 		break;
-		
+
         case "HTStep_24":
 
             dialog.text = "Ты был прав, Питер. Все вышло, как ты и сказал, мы овладели этим прекрасным кораблем почти без потерь.";
@@ -2387,7 +2387,7 @@ void ProcessDialogEvent()
             link.l1.go = "HTStep_25";
 
 		break;
-		
+
         case "HTStep_25":
 
             dialog.text = "К сожалению, нет, Питер, я не властен над собой. Мое прошлое не отпускает меня. Отправившись с тобой, я навсегда покину Англию, а у меня там еще остались незаконченные дела. Мне жаль, но по-другому я не могу.";
@@ -2397,7 +2397,7 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.iTime = 3;
 
 		break;
-		
+
         //--> Николас Дайк
 
         case "DKStep_0":
@@ -2418,7 +2418,7 @@ void ProcessDialogEvent()
             sld.Dialog.CurrentNode = "BStep_2";
             AddQuestRecord("DiekeQuest", "1");
 		break;
-		
+
         case "DKStep_2":
 
             dialog.text = "Я сожалею, что так вышло.";
@@ -2438,16 +2438,16 @@ void ProcessDialogEvent()
             CloseQuestHeader("DiekeQuest");
 
 		break;
-		
+
         case "DKStep_4":
 
             dialog.text = "Я жду, не дождусь завтрашней ночи!";
         	link.l1 = "Я тоже, Ник.";
             link.l1.go = "exit";
             NextDiag.TempNode = "DKStep_4";
-            
+
 		break;
-		
+
         case "DKStep_5":
 
             dialog.text = "Не думал, что на пути к свободе придется пролить столько крови.";
@@ -2455,7 +2455,7 @@ void ProcessDialogEvent()
             link.l1.go = "DKStep_6";
 
 		break;
-		
+
         case "DKStep_6":
 
             dialog.text = "Боюсь, Питер нам не по пути. Я думал, что мы пойдем на Кюрасао, а оттуда я хотел отправиться в Голландию, где у меня невеста. Поэтому-то я и не могу принять твоего приглашения.";
@@ -2465,7 +2465,7 @@ void ProcessDialogEvent()
             Pchar.questTemp.CapBloodLine.iTime = 3;
 
 		break;
-		
+
         //--> Нед Огл
 
         case "OGLStep_0":
@@ -2489,36 +2489,36 @@ void ProcessDialogEvent()
         	link.l1 = "Не унывай, мой одноглазый друг. Я здесь, чтобы предложить тебе отправиться с нами.";
             link.l1.go = "OGLStep_3";
 		break;
-		
+
         case "OGLStep_3":
 
             dialog.text = "Питер, как бы мне этого ни хотелось, я не могу.";
         	link.l1 = "В чем проблема?";
             link.l1.go = "OGLStep_4";
 		break;
-		
+
         case "OGLStep_4":
 
             dialog.text = "Эх-х-х... проблема в деньгах.";
         	link.l1 = "Деньги? Но...";
             link.l1.go = "OGLStep_5";
 		break;
-		
+
         case "OGLStep_5":
 
             dialog.text = "Я взял заем некоторое время назад. Ростовщик сжалился надо мной, а мне это было очень нужно. Он помог мне, а я уже не в том возрасте, чтобы быть таким равнодушным\nНе хочу иметь за спиной долги.";
         	link.l1 = "Но как ты выбрался с территории?";
             link.l1.go = "OGLStep_6";
 		break;
-		
-		
+
+
         case "OGLStep_6":
 
             dialog.text = "Я не выбирался, он был здесь - приходил зачем-то к полковнику.";
         	link.l1 = "Ладно, ладно... я не могу уйти без канонира, а кроме тебя, я никого тут не найду. Сколько ты должен?";
             link.l1.go = "OGLStep_7";
 		break;
-		
+
         case "OGLStep_7":
 
             dialog.text = "Я должен пять тысяч, так что забудь, друг. Чтобы добраться до Кюрасао, тебе не понадобится канонир.";
@@ -2527,9 +2527,9 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "OGLStep_8";
             Pchar.questTemp.CapBloodLine.Ogl = false;
             AddQuestRecord("OglQuest", "1");
-            
+
 		break;
-		
+
         case "OGLStep_8":
 
             if(CheckAttribute(Pchar, "questTemp.CapBloodLine.Ogl") && Pchar.questTemp.CapBloodLine.Ogl == true)
@@ -2569,7 +2569,7 @@ void ProcessDialogEvent()
             NextDiag.TempNode = "OGLStep_10";
 
 		break;
-		
+
         case "OGLStep_11":
 
             dialog.text = "Жаркая была схватка, капитан. Давно уже я так не рубился, как сегодня.";
@@ -2577,7 +2577,7 @@ void ProcessDialogEvent()
             link.l1.go = "OGLStep_12";
 
 		break;
-		
+
         case "OGLStep_12":
 
             dialog.text = "В течение пятнадцати лет я был лучшим канониром на всем флоте его величества!";
@@ -2585,7 +2585,7 @@ void ProcessDialogEvent()
             link.l1.go = "OGLStep_13";
 
 		break;
-		
+
         case "OGLStep_13":
 
             dialog.text = "Я уже немолод, Питер, и перспектива умереть на чужбине или стать пиратом меня не прельщает. Но с другой стороны, мне нечего терять, и я все еще тоскую по тем славным временам, когда служил на флоте. В общем, я согласен послужить у тебя.";

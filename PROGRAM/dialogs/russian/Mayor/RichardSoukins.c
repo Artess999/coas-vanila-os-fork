@@ -127,8 +127,8 @@ void ProcessDialogEvent()
 			link.l1.go = "Shore48_1";
 		break;
 		case "Shore48_1":
-			LAi_LocationFightDisable(&Locations[FindLocation("Shore48")], false); 
-			chrDisableReloadToLocation = false; 
+			LAi_LocationFightDisable(&Locations[FindLocation("Shore48")], false);
+			chrDisableReloadToLocation = false;
 			LAi_SetWarriorTypeNoGroup(npchar);
 			NextDiag.TempNode = "Shore48_over";
             NextDiag.CurrentNode = NextDiag.TempNode;

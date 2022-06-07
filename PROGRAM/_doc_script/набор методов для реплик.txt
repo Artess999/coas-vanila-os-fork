@@ -118,8 +118,8 @@ string GetCityName(string city) // имена городов по аттрибу
 типа case "Jamayka":
             return "Порт Рояль";
 		break;
-		
-		
+
+
 string GetPortByCityName(string city) // имена портов по городов по аттрибуту char.city
 типа	case "FortBucaniers":
             return "Gaity_shore_01";
@@ -133,7 +133,7 @@ string GetIslandByCityName(string city) // имена острова по гор
 типа case "Havana":
             return "Cuba";
 		break;
-		
+
 // выбор куда идти  по острову даем город (главный город острова с портом)
 string GetCityNameByIsland(string CurIslandId)
 	switch (CurIslandId)
@@ -141,7 +141,7 @@ string GetCityNameByIsland(string CurIslandId)
 		case "FalaiseDeFleur":
 			TargetLocation = "FortFrance";
 		break;
-		
+
 string RandSwear() - восклицание
 типа "Карамба! " (пробел в конце уже ЕСТЬ)
 
@@ -184,7 +184,7 @@ case "tavern_keeper":
 			string id = GetCharIDByParam("TavernMan", "location", pchar.location);
 
 			characters[GetCharacterIndex(id)].dialog.currentnode = "tavern_keeper";
-			
+
 
 
 PChar.GenQuest.ToPrisonCmdIdx = GetCharIDXByParam("PrisonCommander", "nation", NPChar.nation);

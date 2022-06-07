@@ -209,7 +209,7 @@ void LAi_type_huberstay_Fire(aref attack, aref enemy, float kDist, bool isFinded
 //Персонаж атакован
 void LAi_type_huberstay_Attacked(aref chr, aref by)
 {
-	
+
 }
 
 //------------------------------------------------------------------------------------------

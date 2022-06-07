@@ -6,10 +6,10 @@ bool NetServer_CheckGameOver_Convoy()
 	// calculate survived ppl
 	int iSurvivedTeams[2];
 	for (i=0; i<2; i++) { iSurvivedTeams[i] = 0; }
-	for (i=0; i<NET_MAXCLIENTS; i++) 
-	{ 
-		if (!sti(NSClients[i].Use)) { continue; } 
-		if (stf(NSClients[i].Ship.hp) <= 0.0) { continue; } 
+	for (i=0; i<NET_MAXCLIENTS; i++)
+	{
+		if (!sti(NSClients[i].Use)) { continue; }
+		if (stf(NSClients[i].Ship.hp) <= 0.0) { continue; }
 
 		int iTeam = sti(NSClients[i].Team);
 		iSurvivedTeams[iTeam] = iSurvivedTeams[iTeam] + 1;
@@ -18,9 +18,9 @@ bool NetServer_CheckGameOver_Convoy()
 	if (sti(NetServer.ConvoyShipID) != DST_INVALID)
 	{
 		ref rConvoyClient = NetServer_GetClient(sti(NetServer.ConvoyShipID));
-		if (stf(rConvoyClient.Ship.hp) > 0.0) { bFlagCarrierAlive = true;	} 
+		if (stf(rConvoyClient.Ship.hp) > 0.0) { bFlagCarrierAlive = true;	}
 	}
-	
+
 	// check if flag carrier dead
 	if (!bFlagCarrierAlive)
 	{
@@ -33,7 +33,7 @@ bool NetServer_CheckGameOver_Convoy()
 	if (sti(NetServer.ConvoyShipID) != DST_INVALID)
 	{
 		ref rClient = NetServer_GetClient(sti(NetServer.ConvoyShipID));
-		
+
 		float x = stf(rClient.Ship.Pos.x);
 		float z = stf(rClient.Ship.Pos.z);
 

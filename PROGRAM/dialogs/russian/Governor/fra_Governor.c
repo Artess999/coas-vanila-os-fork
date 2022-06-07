@@ -247,7 +247,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 					{
 						dialog.text = "Барон, мне уже известно о вашей победе. Что я могу сказать? Прекрасно, друг мой, просто великолепно!";
 						link.l1 = "Первая военная операция выполнена, месье генерал-губернатор...";
-						link.l1.go = "Step_9_2";					
+						link.l1.go = "Step_9_2";
 					}
                 break;
                 case "Fr9GuardPP_SoleiRoyalSunk":
@@ -296,7 +296,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
                     link.l1 = "...";
                     link.l1.go = "exit";
                     bWorldAlivePause   = false; // Конец линейки
-                break;	
+                break;
                 case "EndOfQuestLine":
                     dialog.text = "Действуйте самостоятельно в интересах Франции, о флибустьерах тоже не забывайте. Война закончилась, пора обустроить свою жизнь, барон...";
                     link.l1 = "Хорошо, сударь.";
@@ -387,7 +387,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			FreeSitLocator("Tortuga_tavern", "sit3");
             LAi_SetSitType(sld);
             ChangeCharacterAddressGroup(sld, "Tortuga_tavern", "sit", "sit3");
-        break;		
+        break;
 		case "Step_1_2":
             dialog.text = "Ну что же, в данный момент я вас не задерживаю, но прошу не пропадать надолго из поля моего зрения - для флибустьера у меня частенько бывает работа.";
             link.l1 = "Хорошо, месье генерал-губернатор, я буду наведываться к вам время от времени.";
@@ -421,7 +421,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			bWorldAlivePause   = false; // Конец линейки
 			ChangeCharacterReputation(pchar, -10);
 			AddCharacterExpToSkill(pchar, "Sneak", -170);
-			//слухи			
+			//слухи
 			AddSimpleRumour("Вы слышали, капитана " + GetMainCharacterNameGen() + " наш генерал-губернатор выставил из резиденции за какую-то темную историю, связанную с Леграном... Теперь у него 'волчий билет.'", FRANCE, 5, 1);
         break;
         case "Step_1_5":
@@ -445,7 +445,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             link.l1.go = "Step_1_9";
         break;
         case "Step_1_9":
-            dialog.text = "Потому что я знаю, сколько денег было у Леграна."; 
+            dialog.text = "Потому что я знаю, сколько денег было у Леграна.";
 			link.l1 = "И что же теперь мне делать?";
 			link.l1.go = "Step_1_10";
         break;
@@ -467,7 +467,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
         break;
 
 		case "Step_1_11":
-            dialog.text = "Ну что же, мы в расчете. Вы можете теперь бывать у меня, я буду давать вам работу время от времени, сударь."; 
+            dialog.text = "Ну что же, мы в расчете. Вы можете теперь бывать у меня, я буду давать вам работу время от времени, сударь.";
 			link.l1 = "Очень хорошо, господин генерал-губернатор.";
 			link.l1.go = "exit";
             pchar.questTemp.State = "empty";
@@ -499,7 +499,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             AddQuestRecord("Fra_Line_2_DelivLetter", "1");
             ChangeItemDescribe("letter_1", "itmdescr_letter_1_FraLineQ1");
             GiveItem2Character(pchar,"letter_1");
-        break;	
+        break;
         case "Step_2_3":
             dialog.text = "Все прошло нормально, без неприятностей?";
 			link.l1 = "Ну, как вам сказать, не совсем. Меня сначала арестовали непонятно почему, потом выпустили...";
@@ -639,7 +639,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//==> вешаем прерывание на узнавание в таверне.
 			Pchar.quest.Fr3_AfterAnna_IKnowYou.win_condition.l1 = "location";
 			Pchar.quest.Fr3_AfterAnna_IKnowYou.win_condition.l1.location = "Havana_tavern";
-			Pchar.quest.Fr3_AfterAnna_IKnowYou.win_condition = "Fr3_AfterAnna_IKnowYou";			
+			Pchar.quest.Fr3_AfterAnna_IKnowYou.win_condition = "Fr3_AfterAnna_IKnowYou";
 			AddTitleNextRate(sti(NPChar.nation), 3);
 			ChangeCharacterReputation(pchar, 5);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 1);
@@ -651,7 +651,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddSimpleRumour("Ходят слухи, что именно капитан " + GetFullName(pchar) + " проявил чудеса храбрости и находчивости, и сумел доставить сюда испанскую пассию д'Ожерона - донну Анну...", FRANCE, 5, 1);
 		break;
 
-        //********************** Квест №4  Солей Руаяль ************************		
+        //********************** Квест №4  Солей Руаяль ************************
 		case "Step_4_1":
             dialog.text = "Да, я знаю, что вы моряк, а не любитель альковных тайн. Но я вас успокою: нынешнее дело в вашем вкусе. Недавно в метрополии спущен на воду самый мощный и прекрасный корабль мира - 'Солей Руаяль'. Его Величество заинтересован в безопасности французских колоний в Вест-Индии, и для нас большая честь, что этот корабль направлен именно к нам.";
 			link.l1 = "Когда же он прибудет?";
@@ -738,7 +738,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Я прошу вас быть у меня в резиденции через неделю-другую, возможно, у меня найдется для вас новое дело.";
 			link.l1 = "Хорошо, сударь. Буду у вас всенепременно.";
             link.l1.go = "Step_4_check";
-			AddMoneyToCharacter(pchar, 28000);  
+			AddMoneyToCharacter(pchar, 28000);
             pchar.questTemp.Waiting_time = "8";
         break;
 		case "Step_4_check":
@@ -763,7 +763,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			AddSimpleRumour("Ходят слухи, что при сопровождении 'Солей Руаяля' на вас напали испанцы! Позвольте выразить вам свое восхищение - вы прекрасный моряк и настоящий воин!", FRANCE, 5, 1);
 			DialogExit();
         break;
-        //********************** Квест №6. Доставка письма Олоне ************************	
+        //********************** Квест №6. Доставка письма Олоне ************************
 		case "Step_6_1":
             dialog.text = "Именно он. И учтите, что это письмо ни при каких обстоятельствах не должно оказаться в чужих руках. Если вы попадете в переделку, то даже погибнуть не имеете права прежде, чем уничтожите пакет.";
 			link.l1 = "Вы полагаете, найдутся желающие посмотреть, что в этом письме?";
@@ -788,7 +788,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sld.name = "Франсуа";
 			sld.lastname = "Олоне";
             sld.Dialog.Filename = "Quest\FraLineNpc_1.c";
-			sld.CompanionEnemyEnable = false; 
+			sld.CompanionEnemyEnable = false;
 			sld.Abordage.Enable = false; // НЕЛЬЗЯ!
 			sld.RebirthPhantom = true;
 			sld.greeting = "Gr_EvilPirate";
@@ -871,14 +871,14 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             pchar.questTemp.CurQuestNumber = "7";
             pchar.questTemp.Waiting_time = "15";
 			CloseQuestHeader("Fra_Line_6_Olone");
-			AddTitleNextRate(sti(NPChar.nation), 2);	
+			AddTitleNextRate(sti(NPChar.nation), 2);
 			ChangeCharacterReputation(pchar, 2);
 			AddCharacterExpToSkill(pchar, "Sneak", 190);
 			AddCharacterExpToSkill(pchar, "Defence", 150);
 			AddCharacterExpToSkill(pchar, "Accuracy", 220);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 1);
         break;
-        //********************** Квест №7. Вызволение из тюрьмы Рока Бральзильца ************************	
+        //********************** Квест №7. Вызволение из тюрьмы Рока Бральзильца ************************
 		case "Step_7_1":
             dialog.text = "К испанцам в лапы попал известный флибустьер Рок Бразилец. Милости ему ждать не приходится, поскольку он преизрядно пощипал испанцев. Разумеется, прежде чем познакомить Рока с конопляной тетушкой, они захотят выяснить, где он припрятал отобранное у них золото. Но это даже не самое главное.";
 			link.l1 = "Золото - не главное?! А что же тогда?";
@@ -909,7 +909,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
     		pchar.questTemp.State = "Fr7RockBras_toSeekPlace";
             AddQuestRecord("Fra_Line_7_RockBras", "1");
 			SaveCurrentQuestDateParam("questTemp");
-			//==> Бразильца - в инквизицию. 
+			//==> Бразильца - в инквизицию.
             sld = GetCharacter(NPC_GenerateCharacter("RockBrasilian", "bocman", "man", "man", 30, PIRATE, -1, false));
 			FantomMakeCoolFighter(sld, 30, 90, 90, "", "", 80);
             sld.Dialog.Filename    = "Quest\FraLineNpc_2.c";
@@ -927,7 +927,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             dialog.text = "Хм, бесполезно в вашем исполнении, месье. Не говорите за весь Новый Свет.\n"+
 				          "Очень жаль, сударь, что вы не сумели выполнить задания, очень жаль... Пожалуй, вы мне больше не нужны. Вы можете заглядывать ко мне в резиденцию периодически, возможно, и для вас найдется работа...";
 			link.l1 = "Хорошо, месье генерал-губернатор.";
-            link.l1.go = "Step_7_exit";	
+            link.l1.go = "Step_7_exit";
 			ChangeCharacterReputation(pchar, -10);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), -1);
 			AddCharacterExpToSkill(pchar, "Repair", -170);
@@ -979,7 +979,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             pchar.questTemp.CurQuestNumber = "8";
 			CloseQuestHeader("Fra_Line_7_RockBras");
             TakeNationLicence(SPAIN);
-			SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY);	
+			SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY);
 			AddTitleNextRate(sti(NPChar.nation), 2);
 			ChangeCharacterReputation(pchar, 6);
 			ChangeCharacterNationReputation(pchar, sti(NPChar.nation), 1);
@@ -998,7 +998,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			LAi_ActorDialog(sld, pchar, "", 0, 0);
 			DialogExit();
         break;
-        //********************** Квест №8. Встреча с тремя корсарами ************************	
+        //********************** Квест №8. Встреча с тремя корсарами ************************
 		case "Step_8_1":
             dialog.text = "Пока только в том, чтобы как можно скорее явиться к маркизу. Подробности мне неизвестны, судя по всему, дело будет весьма секретным.";
 			link.l1 = "Что ж, мне не в первой. Никаких проблем, я отправляюсь...";
@@ -1038,7 +1038,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Говорят, что капитану " + GetMainCharacterNameDat() + " пожалован дворянский титул барона! Ну, дела...", FRANCE, 5, 1);
         break;
-        //********************** Квест №9. Отбить нападение на Порт-о-Принс ************************	
+        //********************** Квест №9. Отбить нападение на Порт-о-Принс ************************
 		case "Step_9_1":
             dialog.text = "Это так, барон. Они уже напали на поселение буканьеров Ла Вега, теперь, по всей видимости, очередь за Порт-о-Принсом.";
 			link.l1 = "Я понял, сударь. Я могу приступать к выполнению задачи?";
@@ -1056,8 +1056,8 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			sld.Ship.Name = "Солей Руаяль";
 			SetBaseShipData(sld);
 			SetCrewQuantityFull(sld);
-			Fantom_SetBalls(sld, "pirate");	
-			FantomMakeCoolFighter(sld, 35, 80, 70, BLADE_LONG, "pistol3", 100);	
+			Fantom_SetBalls(sld, "pirate");
+			FantomMakeCoolFighter(sld, 35, 80, 70, BLADE_LONG, "pistol3", 100);
 			sld.CompanionEnemyEnable = false;
 			sld.Abordage.Enable = false; // НЕЛЬЗЯ!
 			SetCompanionIndex(pchar, -1, sti(sld.index));
@@ -1158,7 +1158,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			//слухи
 			AddSimpleRumour("Ходят слухи, что наш генерал-губернатор выставил вас из резиденции за то, что вы не сумели вовремя прибыть к Порт-о-Принсу и город был разорен испанцами. Поделом вам!", FRANCE, 5, 1);
         break;
-        //********************** Квест №10. Захват Санто-Доминго ************************	
+        //********************** Квест №10. Захват Санто-Доминго ************************
 		case "Step_10_1":
             dialog.text = "Настало время дать адекватный ответ на попытку захвата Порт-о-Принса. И, как мне кажется, лучшим ответом будет воплощение испанского плана захвата Эспаньолы, только в зеркальном отображении...";
 			link.l1 = "Месье генерал-губернатор, прошу вас говорить менее витиевато.";

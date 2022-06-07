@@ -52,7 +52,7 @@ void SelectAction(ref rid) //CASE с действиями для слухов
 			///////////////////////////////////////////
 		}
 		break;
-		
+
 		case "OnMerchantDie":
 		{
 			//////////////////////////////////////////
@@ -60,7 +60,7 @@ void SelectAction(ref rid) //CASE с действиями для слухов
 			///////////////////////////////////////////
 		}
 		break;
-		
+
 		case "GetPrices":
 		{
 			//////////////////////////////////////////
@@ -79,7 +79,7 @@ void SelectAction(ref rid) //CASE с действиями для слухов
                 rid.text = GetAssembledString( rid.text, rtmp);
             }
             else  rid.text = NO_RUMOUR_TEXT[rand(4)]; // нету слухов
-            
+
 			///////////////////////////////////////////
 		}
 		break;
@@ -89,20 +89,20 @@ void SelectAction(ref rid) //CASE с действиями для слухов
 		rid.text = SiegeRumourText(1);
 		///////////////////////////////////////////
 		break;
-		
+
 		case "OnSiege_2":
 		//////////////////////////////////////////
 		rid.text = SiegeRumourText(2);
 		///////////////////////////////////////////
 		break;
-		
+
 		case "OnSiege_3":
 		//////////////////////////////////////////
 		rid.text = SiegeRumourText(3);
 		///////////////////////////////////////////
 		break;
-		
-		
+
+
 //============ Дуэли ===============
 		case "DuelHero":
 			rid.text = Event_DuelHero(rid);
@@ -165,17 +165,17 @@ void AddRumourLogInfo(int rid)
         if(CheckAttribute(CurrentRumour, "loginfo.begin"))
         {
             AddQuestRecord(CurrentRumour.loginfo.begin, CurrentRumour.loginfo.textnum);
-            
+
         }
         if(CheckAttribute(CurrentRumour, "loginfo.end"))
         {
             AddQuestRecord(CurrentRumour.loginfo.end, CurrentRumour.loginfo.textnum)
-            
+
             CloseQuestHeader(CurrentRumour.loginfo.end);
         }
 
         DeleteAttribute(CurrentRumour, "loginfo");
-        
+
     }
 
 }
@@ -313,13 +313,13 @@ string SelectRumourEx(string key, aref arChr) // Получить рандомн
         rnd=rand(i - 1);
         //-> homo чтоб одинаковые слухи подряд не выпадали
         int it =0;
-        
+
         while (it < 7 && CheckAttribute(&TEMP[rnd], "LastNPC") && TEMP[rnd].LastNPC == arChr.id)
         {
             rnd=rand(i - 1);
             it++;
         }
-        if (it == 7) 
+        if (it == 7)
 		{
 			if (key == "LSC")
 				return NO_RUMOUR_LSC_TEXT[rand(4)];// нету слухов
@@ -356,7 +356,7 @@ string SelectRumourExSpecial(string key, aref arChr) // Получить ран�
         st =  CurrentRumour.state;
 
         //15/09/06 homo теперь можно перечислять несколько типажей через запятую
-        if( findsubstr(tip, key , 0) != -1)  // слух только специальный 
+        if( findsubstr(tip, key , 0) != -1)  // слух только специальный
         {
             if (sti(CurrentRumour.actualtime) >= DateToInt(0) && st > 0 && CurrentRumour.text != "" )  // непросроченный
             {
@@ -380,13 +380,13 @@ string SelectRumourExSpecial(string key, aref arChr) // Получить ран�
         rnd=rand(i - 1);
         //-> homo чтоб одинаковые слухи подряд не выпадали
         int it =0;
-        
+
         while (it < 7 && CheckAttribute(&TEMP[rnd], "LastNPC") && TEMP[rnd].LastNPC == arChr.id)
         {
             rnd=rand(i - 1);
             it++;
         }
-        if (it == 7) 
+        if (it == 7)
 		{
 			if (key == "LSC")
 				return NO_RUMOUR_LSC_TEXT[rand(4)];// нету слухов
@@ -459,16 +459,16 @@ int AddRumorR(ref rum)
 		nextORevent = (CurrentRumour.next != "none")||(CurrentRumour.event != "none");
 
 		// если слух с продолжением или с действием и на вылет, то выполняем (!!!!)
-		if (nextORevent == true &&	CheckAttribute(CurrentRumour, "care") && 
-			sti(CurrentRumour.care) > 0 && Rumour_Index == ( MAX_RUMOURS - 1 )) 
+		if (nextORevent == true &&	CheckAttribute(CurrentRumour, "care") &&
+			sti(CurrentRumour.care) > 0 && Rumour_Index == ( MAX_RUMOURS - 1 ))
 			//navy -- CurrentRumour.care > 0, тоже не стработает, т.к. строка с целым.. приводим типы!
 		{
-			SelectAction(sti(CurrentRumour.id)); 
+			SelectAction(sti(CurrentRumour.id));
 		}
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
 		//navy -- а вот это не понял? .tip строка!!! никогда не сработает
-		if (sti(CurrentRumour.tip) != 0  &&				//если слух специальный 
-			sti(tmp1.tip) > sti(CurrentRumour.tip) &&	//и свежий 
+		if (sti(CurrentRumour.tip) != 0  &&				//если слух специальный
+			sti(tmp1.tip) > sti(CurrentRumour.tip) &&	//и свежий
 			Rumour_Index == ( MAX_RUMOURS-1 ) )			//и на вылет
 		{
 			tmp1 = CurrentRumour;  //то один специальный слух оставляем
@@ -673,8 +673,8 @@ int AddSimpleRumour(string stext, int nation, int terms, int qty)
     tmp.state = qty;//кол-во раз
     tmp.tip = "all";
     tmp.rep = "none";
-	//10, 11, 12, 13 - исключить эти нации из слухов 
-	if (nation > 5) tmp.nonation = nation - 10; 
+	//10, 11, 12, 13 - исключить эти нации из слухов
+	if (nation > 5) tmp.nonation = nation - 10;
 	else tmp.onlynation = nation; //локализация
     tmp.starttime = 0;
     tmp.actualtime = terms; //сроки
@@ -751,4 +751,4 @@ bool RumourHasInformation(string RumText)
     }
     else return true;
 }
-            
+

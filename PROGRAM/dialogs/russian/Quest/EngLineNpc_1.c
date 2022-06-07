@@ -10,7 +10,7 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	float locx, locy, locz;
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -46,7 +46,7 @@ void ProcessDialogEvent()
                 dialog.text = "Будь проклят тот день, когда ты вошел ко мне на палубу...";
                 link.l1 = "Хм, зря ты так...";
                 link.l1.go = "exit";
-            }  
+            }
             if (pchar.questTemp.State == "MorrisWillams_GoToMorrisBegin" && npchar.id == "Morris_Willams")
             {
     			dialog.text = "Приветствую! Какими судьбами у меня на палубе?";
@@ -230,7 +230,7 @@ void ProcessDialogEvent()
             EquipCharacterbyItem(pchar, "blade1");
             pchar.questTemp.State = "Intelligence_Curacao_OutPrison";
 			pchar.questTemp.jailCanMove = false; //на всякий случай
-			//==> делаем солдат поменьше, а то хрен выберешься 
+			//==> делаем солдат поменьше, а то хрен выберешься
 			for (int i=1; i<=4; i++)
 			{
 				sld = characterFromId("VillemstadJailSold_"+i);
@@ -305,7 +305,7 @@ void ProcessDialogEvent()
             link.l3 = "Я верну твой товар.";
             link.l3.go = "Willams_BackGoods";
         break;
-        
+
         case "Willams_GoogBye":
             dialog.text = "И тебе здоровья, дорогой друг (с иронией).";
             link.l1 = "Да будем мы все здоровы, аминь... Прощай.";
@@ -314,7 +314,7 @@ void ProcessDialogEvent()
             pchar.questTemp.State = "empty";
             pchar.questTemp.Waiting_time = "10";
             pchar.questTemp.CurQuestNumber = "7";
-            ChangeCharacterReputation(pchar, -100); 
+            ChangeCharacterReputation(pchar, -100);
             AddCharacterExpToSkill(pchar, "Leadership", -350);
             AddCharacterExpToSkill(pchar, "Accuracy", -50);
             AddCharacterExpToSkill(pchar, "Commerce", -150);
@@ -377,7 +377,7 @@ void ProcessDialogEvent()
             link.l1 = "По-твоему, кто может это знать?";
             link.l1.go = "Step_E6_8";
         break;
-        
+
         case "Step_E6_8":
             dialog.text = "Твой друг Мэдифорд в первую очередь, кто же еще!\n"+
                           "А так не знаю, поспрашивай в таверне, в борделе, в порту, а может и на улице встретишь нужного человека.";
@@ -596,7 +596,7 @@ void ProcessDialogEvent()
             link.l1.go = "Step_E12_9";
 
         break;
-        
+
         case "Step_E12_9":
             dialog.text = "Дело в том, что Мэдифорд подлежит аресту. Однако сделать это так просто не удастся.\n"+
                           "Для находящегося в Порт Рояле английского гарнизона он остается губернатором Ямайки. По сути, мы можем спровоцировать кровопролитие между англичанами, чего допускать я не намерен. К тому же гарнизон Порт Рояля очень силен.\n"+
@@ -618,13 +618,13 @@ void ProcessDialogEvent()
             link.l1 = "В последнее время я был довольно близок Мэдифорду, и я хочу снисходительного отношения ко мне новой английской власти на Карибах.";
             link.l1.go = "Step_E12_12";
         break;
-        
+
          case "Step_E12_12":
             dialog.text = "Мне не в чем вас обвинять, вы действовали на основании каперского свидетельства. В случае успешного задержания Мэдифорда я гарантирую вам не снисходительное, а лояльное отношение английских властей к вашей персоне.";
 			link.l1 = "Великолепно! И второе: я хочу получить половину от доходов, которые Мэдифорд незаконно нажил.";
             link.l1.go = "Step_E12_13";
         break;
-        
+
         case "Step_E12_13":
             dialog.text = "Гм... А вы весьма хваткий человек, " + GetFullName(pchar) + ".";
             link.l1 = "Поверьте, я по праву претендую на эти деньги - мой вклад в эту копилку весьма и весьма солиден...";

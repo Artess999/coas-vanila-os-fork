@@ -3,21 +3,21 @@ void ProcessDialogEvent()
 	ref NPChar, sld;
 	aref Link, Diag;
 	int i;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(Diag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "exit_1":
 			AddDialogExitQuest("LandEnc_RapersTalk");
 			Diag.CurrentNode = Diag.TempNode;
-			DialogExit();			
+			DialogExit();
 		break;
-		
+
 		case "exit":
 			LAi_SetCitizenTypeNoGroup(npchar);
 			Diag.CurrentNode = Diag.TempNode;
@@ -38,15 +38,15 @@ void ProcessDialogEvent()
 			Link.l1 = LinkRandPhrase("Что происходит?",
 				"В чем дело?",
 				"Что случилось?");
-			Link.l1.go = "Node_2";			
-		break;        
+			Link.l1.go = "Node_2";
+		break;
 
 		case "Node_2":
 			dialog.text = LinkRandPhrase("Они... они хотят надругаться надо мной! Умоляю вас, не позволяйте им этого! Спасите меня!",
 				"Эти звери... они хотят сделать что-то ужасное... Защитите меня от них, пожалуйста!",
 				"Во имя Господа нашего - защитите меня от этих похотливых чудовищ! Они хотят обесчестить меня!");
 			Link.l1 = "Так, сейчас разберемся.";
-			Link.l1.go = "exit_1";			
+			Link.l1.go = "exit_1";
 		break;
 
 		case "ThanksForHelp":
@@ -54,9 +54,9 @@ void ProcessDialogEvent()
 				"Вы спасли меня! Я так вам благодарна!",
 				"Вы настоящий рыцарь! Спасибо вам!");
 			Link.l1 = "Только так и надлежит поступать с такими мерзавцами!";
-			Link.l1.go = "ThanksForHelp_1";			
+			Link.l1.go = "ThanksForHelp_1";
 		break;
-		
+
 		case "ThanksForHelp_1":
 			Diag.TempNode = "ThanksAgain";
 			if(makeint(Pchar.reputation) >= 80)
@@ -65,7 +65,7 @@ void ProcessDialogEvent()
 				Link.l1 = "Спасибо. Будьте осторожнее в следующий раз.";
 				Link.l1.go = "exit";
 			}
-			else 
+			else
 			{
 				if(Rand(1) == 0)
 				{

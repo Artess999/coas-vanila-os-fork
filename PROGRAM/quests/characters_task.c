@@ -151,11 +151,11 @@ void ExecuteAfterDialogTask(ref _refCharacter)
 bool SetEnterLocationQuest(string locationID, string ActivityCheckName, bool expendable)
 {
 	int idx = FindLocation(locationID);
-	if(idx==-1) 
+	if(idx==-1)
 	{
 		return false;
 	}
-	if(CheckAttribute(&Locations[idx],"QuestStack."+ActivityCheckName)) 
+	if(CheckAttribute(&Locations[idx],"QuestStack."+ActivityCheckName))
 	{
 		return false;
 	}

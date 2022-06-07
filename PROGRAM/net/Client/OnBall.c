@@ -53,7 +53,7 @@ void NetClient_OnBall(int iMsg)
 	int iSubCode = NMGetByte(iMsg);
 	int iBallIndex = NMGetWord(iMsg);
 
-	switch (iSubCode) 
+	switch (iSubCode)
 	{
 		case NSC_BALL_ADD:
 			NetClient_OnBallAdd(iMsg, iBallIndex);
@@ -114,11 +114,11 @@ void NetClient_OnBallAdd(int iMsg, int iBallIndex)
 
 void NetClient_OnBallHitWater(int iMsg, int iBallIndex)
 {
-	float x = NMGetFloat(iMsg); 
-	float y = NMGetFloat(iMsg);	
+	float x = NMGetFloat(iMsg);
+	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 
-	CreateParticleSystem("splash", x, y, z, 0.0, 0.0, 0.0, 5);	
+	CreateParticleSystem("splash", x, y, z, 0.0, 0.0, 0.0, 5);
 	Play3DSound("ball_splash", x, y, z);
 
 	NCBalls.ClientDel = iBallIndex;
@@ -128,8 +128,8 @@ void NetClient_OnBallHitSail(int iMsg, int iBallIndex)
 {
 	int wHitID = NMGetWord(iMsg);	// FIX-ME
 	int bSailIdx = NMGetByte(iMsg);
-	float x = NMGetFloat(iMsg); 
-	float y = NMGetFloat(iMsg);	
+	float x = NMGetFloat(iMsg);
+	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 	// SendMessage 2 sail
 	Play3DSound("sail_damage", x, y, z);
@@ -142,8 +142,8 @@ void NetClient_OnBallHitIsland(int iMsg, int iBallIndex)
 
 void NetClient_OnBallHitFort(int iMsg, int iBallIndex)
 {
-	float x = NMGetFloat(iMsg); 
-	float y = NMGetFloat(iMsg);	
+	float x = NMGetFloat(iMsg);
+	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 
 	CreateBlast(x, y, z);
@@ -161,7 +161,7 @@ void NetClient_OnBallHitMast(int iMsg, int iBallIndex)
 	float z = NMGetFloat(iMsg);
 	int iDamageType = NMGetByte(iMsg);
 	int iMastNum = NMGetByte(iMsg);
-	
+
 	NCBalls.ClientDel = iBallIndex;
 }
 
@@ -173,8 +173,8 @@ void NetClient_OnBallHitHull(int iMsg, int iBallIndex)
 	int iBallType = NMGetByte(iMsg);
 	ref rGood = Net_GetGoodByIndex(iBallType);
 
-	float x = NMGetFloat(iMsg); 
-	float y = NMGetFloat(iMsg);	
+	float x = NMGetFloat(iMsg);
+	float y = NMGetFloat(iMsg);
 	float z = NMGetFloat(iMsg);
 
 	switch (rGood.Name)

@@ -68,10 +68,10 @@ int GetStoreGoodsPrice(ref _refStore, int _Goods, int _PriceType, ref chref, int
 		case TRADE_TYPE_AMMUNITION:
 			//return basePrice; делаю все тоже, что и для нормального товара, а тип нужен, чтоб на корабле не скупали лишнее.
 			tradeModify = 0.85 + stf(refGoods.RndPriceModify);
-			break;  
+			break;
 		case TRADE_TYPE_CANNONS:
 			tradeModify = 0.85 + stf(refGoods.RndPriceModify); //0.8
-			break;	
+			break;
 	}
 
 	float skillModify;
@@ -125,7 +125,7 @@ float GetStoreGoodsRndPriceModify(ref _refStore, int _Goods, int _PriceType, ref
 		if(CheckOfficersPerk(chref,"AdvancedCommerce"))	skillModify += 0.05;
 	}
 	tradeModify = makefloat(_price) / (basePrice*skillModify);
-	
+
 	switch (tradeType)
 	{
 		case TRADE_TYPE_NORMAL:
@@ -145,7 +145,7 @@ float GetStoreGoodsRndPriceModify(ref _refStore, int _Goods, int _PriceType, ref
 			break;
 		case TRADE_TYPE_CANNONS:
 			tradeModify = tradeModify - 0.85;
-			break;	
+			break;
 	}
 	 // может быть минусом, а что делать :(
     return tradeModify;
@@ -178,7 +178,7 @@ string GetStoreGoodsType(ref _refStore,int _Goods)
 		break;
 	case TRADE_TYPE_CANNONS:   //new boal
 		return TRADE_TYPE_CANNONS_NAME;
-		break;		
+		break;
 	}
 	Trace("Missing trade type");
 	return TRADE_TYPE_NORMAL_NAME;
@@ -203,7 +203,7 @@ void SetStoresTradeUsed(int StoreNum,int GoodsNum,bool goodsUsed)
 
 int storeDayUpdateCnt = -1;
 void StoreDayUpdateStart()
-{	
+{
 	if(storeDayUpdateCnt >= 0) return;
 	storeDayUpdateCnt = 0;
 	PostEvent("EvStoreDayUpdate", 30);
@@ -308,11 +308,11 @@ float AddPriceModify(float curModify, int tradeType, int currentQuantity, int go
 		     fMinModify = -1.9;
 		     rateInc = currentQuantity / 400; // при затаривании цена падает ниже экспорта :)
              break;
-             
+
 		case TRADE_TYPE_CANNONS:
 			 fMaxModify = 0.45;
-		     rateInc = currentQuantity / 80; 
-             break;           
+		     rateInc = currentQuantity / 80;
+             break;
 	}
 	if (rateInc <= 1.0)
 	{
@@ -395,10 +395,10 @@ void FillShipStore( ref chr)
 	// boal все лишнее убрал, просто сбросить RndPriceModify   в 1 и все, тк иначе затаривание будет
 	int iQuantity = 0;
 	string goodName;
-	
+
 	for(int i = 0; i<GOODS_QUANTITY; i++)
 	{
-		iQuantity = GetCargoGoods(chr, i); 
+		iQuantity = GetCargoGoods(chr, i);
 		SetStoreGoods(pref, i, iQuantity);
 
 		goodName = Goods[i].name;

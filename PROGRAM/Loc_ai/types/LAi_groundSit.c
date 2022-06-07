@@ -120,6 +120,6 @@ void LAi_type_GroundSit_Fire(aref attack, aref enemy, float kDist, bool isFinded
 //Персонаж атакован
 void LAi_type_GroundSit_Attacked(aref chr, aref by)
 {
-	
+
 }
 

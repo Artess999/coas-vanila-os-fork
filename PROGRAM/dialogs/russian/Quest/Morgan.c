@@ -120,19 +120,19 @@ void ProcessDialogEvent()
 			link.l1 = "Я его посланник.";
 			link.l1.go = "Step_1_2";
   		break;
-  		
+
  		case "Step_1_2":
 			dialog.text = "Хм, хорошо. И чем же я могу помочь сэру Томасу Мэдифорду?";
 			link.l1 = "Вы должны напасть на голландский город Кюрасао.";
 			link.l1.go = "Step_1_3";
   		break;
-  		
+
  		case "Step_1_3":
 			dialog.text = "Не думаю, что это возможно в данный момент. Я не имею сейчас достаточно сил для такой операции. Передайте это Мэдифорду.";
 			link.l1 = "Сэр Томас Мэдифорд рассчитывает на вас в этом деле.";
 			link.l1.go = "Step_1_4";
   		break;
-  		
+
  		case "Step_1_4":
 			dialog.text = "Мне кажется, я ясно выразился, что не могу провести сейчас данную операцию. Однако если вы найдете меня несколько позже в моем доме на Ямайке, то, возможно, я смогу предложить лично вам горячее дело. Дело для настоящего корсара. А пока всего хорошего.";
 			link.l1 = "Я запомню ваши слова. Думаю, нам будет о чем поговорить, как только я освобожусь. Всего наилучшего.";
@@ -180,7 +180,7 @@ void ProcessDialogEvent()
 			link.l1 = "Поясни, что за душок?";
 			link.l1.go = "Step_3_3";
   		break;
-  		
+
 	 	case "Step_3_3":
 			dialog.text = "Дело в том, что Мэдифорд прекрасно знает, что мы, как правило, не нападаем на голландцев даже в море, не говоря уже о захвате поселений. Голландцы - самые активные торговцы, на них держится изобилие товаров в архипелаге. Если мы отвадим их от торговли, то лишимся многих вещей, которые сейчас продаются везде.\n"+
                           "К тому же, среди корсаров довольно много голландцев, это тоже фактор. Так что Мэдифорд дал тебе практически невыполнимое задание.";
@@ -230,9 +230,9 @@ void ProcessDialogEvent()
                           "Такого предложения от меня больше не последует. Всего хорошего.";
 			link.l1 = "Бывай, Морган. Извини...";
 			link.l1.go = "exit";
-			ChangeCharacterReputation(pchar, -10); 
+			ChangeCharacterReputation(pchar, -10);
             AddCharacterSkill(pchar, SKILL_LEADERSHIP, 0);
-            
+
             AddQuestRecord("Eng_Line_3_Morgan", "2");
             CloseQuestHeader("Eng_Line_3_Morgan");
             pchar.questTemp.Waiting_time = "2";       // 2 так, для проформы, чтоб поддержать стандарт
@@ -292,7 +292,7 @@ void ProcessDialogEvent()
                 questToSeaLoginer.FromCoast = false;
             }
             QuestToSeaLogin_Launch();
-            
+
             Log_SetStringToLog("Корабли известных корсаров вышли из состава эскадры.");
             // ==> Возвращаем на место Моргана
             ChangeCharacterAddressGroup(npchar, "PortRoyal_houseS1", "sit", "sit2");
@@ -314,11 +314,11 @@ void ProcessDialogEvent()
                 characters[GetCharacterIndex("John Morris")].dialog.currentnode = "First time";
             }
             AddMoneyToCharacter(pchar, -50000);
-            ChangeCharacterReputation(pchar, -20); 
+            ChangeCharacterReputation(pchar, -20);
             // нулим опыт в авторитете и удаче
             AddCharacterSkill(pchar, SKILL_LEADERSHIP, 0);
             AddCharacterSkill(pchar, SKILL_SNEAK, 0);
-            
+
             AddQuestRecord("Eng_Line_3_Morgan", "6");
             CloseQuestHeader("Eng_Line_3_Morgan");
             pchar.questTemp.Waiting_time = "2";
@@ -336,7 +336,7 @@ void ProcessDialogEvent()
 			link.l1 = "Спасибо.";
 			link.l1.go = "Step_3_9";
         break;
-        
+
 	 	case "Step_3_9":
             if (!IsCompanion(characterFromID("Henry Morgan")))
             {
@@ -395,7 +395,7 @@ void ProcessDialogEvent()
 			link.l5 = "Извини Морган, я передумал... Прощай.";
 			link.l5.go = "out_fort";
         break;
-        
+
 	 	case "sale_gold_25_persent":
 			dialog.text = "Хорошо, ты продал четверть своей доли. Что ж, выгодная сделка для нас обоих. Прощай.";
 			link.l1 = "Бывай, Морган. Еще увидимся.";
@@ -432,7 +432,7 @@ void ProcessDialogEvent()
 			pchar.quest.time_over_Beliz_attack_Map_01.over = "yes"; // сброс, если уже откладывали
 	        pchar.quest.time_over_Beliz_attack_Map_02.over = "yes";
 	        pchar.quest.time_over_Beliz_attack.over = "yes";
-	        		
+
 			if(IsCompanion(characterFromID("Jackman")))  {RemoveCharacterCompanion(pchar, characterFromID("Jackman"));}
             if(IsCompanion(characterFromID("John Morris")))  {RemoveCharacterCompanion(pchar, characterFromID("John Morris"));}
             AddQuestRecord("Eng_Line_3_Morgan", "7");
@@ -462,7 +462,7 @@ void ProcessDialogEvent()
             {
                characters[GetCharacterIndex("John Morris")].dialog.currentnode = "First time";
             }
-            ChangeCharacterReputation(pchar, 1); 
+            ChangeCharacterReputation(pchar, 1);
             AddCharacterExpToSkill(pchar, "Leadership", 20);
             AddCharacterExpToSkill(pchar, "Fencing", 500);
             AddCharacterExpToSkill(pchar, "Pistol", 550);
@@ -491,14 +491,14 @@ void ProcessDialogEvent()
 			link.l1 = "Я видел Мэнсфилда только несколько раз и близко с ним не общался. Но мне он показался честным и благородным человеком.";
 			link.l1.go = "Step_9_1";
         break;
-        
+
 	 	case "Step_9_1":
 			dialog.text = "И это действительно так.\n"+
                           "В награду за такое дело прошу принять от меня подарок - мою рапиру. Этому клинку нет равных на Карибах.";
 			link.l1 = "Спасибо, Морган. Этот подарок делает мне честь. Прощай.";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "I_know_you_good";
-			
+
             GiveItem2Character(pchar, "blade27");
             RemoveCharacterEquip(NPChar, BLADE_ITEM_TYPE);
             TakeItemFromCharacter(NPChar, "blade27");
@@ -979,7 +979,7 @@ void ProcessDialogEvent()
 			dialog.text = "Не горячись?!! Да уж, наглости тебе не занимать. Вот что, крыса, тебе конец. Собственными руками прикончу... Закрыть двери!";
 			link.l1 = "Генри, Генри!..";
 			link.l1.go = "fight";
-			chrDisableReloadToLocation = true; 
+			chrDisableReloadToLocation = true;
 			pchar.questTemp.piratesLine = "over";
 		break;
 
@@ -1010,7 +1010,7 @@ void ProcessDialogEvent()
 			dialog.text = "А вот я так не думаю. Сведения мои исключительно верны. Ты прикарманил жемчуг. Наказание за это одно - смерть. А ну, закройте двери, сейчас крысу давить буду...";
 			link.l1 = "Генри, ты чего это?!..";
 			link.l1.go = "fight";
-			chrDisableReloadToLocation = true; 
+			chrDisableReloadToLocation = true;
 			pchar.questTemp.piratesLine = "over";
 		break;
 
@@ -1130,7 +1130,7 @@ void ProcessDialogEvent()
 		break;
 		case "PL_Q5_afterFight_2":
 			dialog.text = "Ну, а этот инцидент считаю исчерпанным...";
-			link.l1 = "Я понял, адмирал. Спасибо, что поверил мне...";			
+			link.l1 = "Я понял, адмирал. Спасибо, что поверил мне...";
 			link.l1.go = "exit";
 			NextDiag.TempNode = "I_know_you_good";
 			pchar.questTemp.piratesLine = "waiting_Q6";
@@ -1477,7 +1477,7 @@ void ProcessDialogEvent()
 			link.l1.go = "PL_Q8_ready_4";
 		break;
 		case "PL_Q8_ready_4":
-			pchar.quest.PQ8_timeOver.over = "yes"; //снимаем таймер 
+			pchar.quest.PQ8_timeOver.over = "yes"; //снимаем таймер
 			SetTimerFunction("PQ8_PanamaTimerOver", 0, 0, 20); //ставим новый таймер
 			pchar.Quest.PQ8_EnterPortoBello.win_condition.l1 = "location";
 			pchar.Quest.PQ8_EnterPortoBello.win_condition.l1.location = "PortoBello";
@@ -1494,7 +1494,7 @@ void ProcessDialogEvent()
 			//LAi_SetImmortal(NPChar, false);
 			NPChar.Ship.Cargo.Goods.Food = 1000;
             LAi_NoRebirthDisable(NPChar);
-			LAi_RebirthOldName(NPChar); 
+			LAi_RebirthOldName(NPChar);
 			npchar.DeckDialogNode = "PL_Q8_deck"; //ноду на палубу
             ChangeCharacterAddressGroup(NPChar, "PortRoyal_houseS1", "goto", "goto7");
             CharacterIntoCompanionAndGoOut(pchar, npchar, "reload", "reload1", 8.5, false);
@@ -1527,14 +1527,14 @@ void ProcessDialogEvent()
 			{
 				sld = characterFromId("John Morris");
 			}
-			FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Лагуна", CANNON_TYPE_CANNON_LBS32, 90, 90, 90);	
+			FantomMakeCoolSailor(sld, SHIP_FRIGATE, "Лагуна", CANNON_TYPE_CANNON_LBS32, 90, 90, 90);
 			sld.CompanionEnemyEnable = false;  // нет отпора при обстреле
 			LAi_SetImmortal(sld, false);
 			SetCharacterRemovable(sld, false);
 			sld.Ship.Cargo.Goods.Food = 1000;
             LAi_NoRebirthDisable(sld);
 			LAi_RebirthOldName(sld);
-			sld.RebirthPhantom = true; //не тереть фантома после смерти.  
+			sld.RebirthPhantom = true; //не тереть фантома после смерти.
 			sld.DeckDialogNode = "PL_Q8_deck"; //ноду на палубу
 			SetCompanionIndex(pchar, -1, sti(sld.index));
 			//Ричард Соукинс
@@ -1583,10 +1583,10 @@ void ProcessDialogEvent()
 			iTemp = GetCharacterIndex("Jackman");
 			if (iTemp != -1)
 			{
-				if(IsCompanion(&characters[iTemp]))  
+				if(IsCompanion(&characters[iTemp]))
 				{
 					RemoveCharacterCompanion(pchar, &characters[iTemp]);
-				}               
+				}
 				LAi_SetHuberType(&characters[iTemp]);
 				LAi_group_MoveCharacter(&characters[iTemp], "PIRATE_CITIZENS");
                 ChangeCharacterAddressGroup(&characters[iTemp], "Pirates_townhall", "sit", "sit1");
@@ -1596,10 +1596,10 @@ void ProcessDialogEvent()
 			iTemp = GetCharacterIndex("John Morris");
 			if (iTemp != -1)
 			{
-				if(IsCompanion(&characters[iTemp]))  
+				if(IsCompanion(&characters[iTemp]))
 				{
 					RemoveCharacterCompanion(pchar, &characters[iTemp]);
-				}   				
+				}
 				sld = &characters[iTemp];
 				sld.lifeDay = 0;
 			}
@@ -1607,10 +1607,10 @@ void ProcessDialogEvent()
 			iTemp = GetCharacterIndex("Richard_Soukins");
 			if (iTemp != -1)
 			{
-				if(IsCompanion(&characters[iTemp]))  
+				if(IsCompanion(&characters[iTemp]))
 				{
 					RemoveCharacterCompanion(pchar, &characters[iTemp]);
-				}                   
+				}
 				LAi_SetHuberType(&characters[iTemp]);
 				LAi_group_MoveCharacter(&characters[iTemp], "PIRATE_CITIZENS");
                 ChangeCharacterAddressGroup(&characters[iTemp], "PuertoPrincipe_townhall", "sit", "sit1");
@@ -1703,11 +1703,11 @@ void ProcessDialogEvent()
 		case "PL_Q8_PBResidence_13":
 			dialog.text = "Ну, вот и отлично! В общем, бери своих людей и двигай к указанному месту. Не более, чем через два дня ты должен быть там.";
 			link.l1 = "Уже бегу, Генри.";
-			link.l1.go = "PL_Q8_PBResidence_14";		
+			link.l1.go = "PL_Q8_PBResidence_14";
 		break;
 		case "PL_Q8_PBResidence_14":
 			LAi_SetWarriorTypeNoGroup(npchar);
-			chrDisableReloadToLocation = false; 
+			chrDisableReloadToLocation = false;
 			//bQuestDisableMapEnter = false;
 			LocatorReloadEnterDisable("Shore48", "reload1_back", false); //открываем проход в джанглы через бухту
             Pchar.quest.PQ8_PBExitResidence.win_condition.l1 = "ExitFromLocation";
@@ -1727,7 +1727,7 @@ void ProcessDialogEvent()
 		case "PL_Q8_ExTPanama":
 			if (pchar.questTemp.piratesLine == "Panama_RichardBadWork")
 			{
-				iTemp = GetCharacterIndex("Richard_Soukins");				
+				iTemp = GetCharacterIndex("Richard_Soukins");
 				if (!LAi_IsDead(&characters[iTemp]))
 				{
 					dialog.text = "Я видел Соукинса среди сражающихся в последнем бою. Похоже, что ты оплошал в джунглях...";
@@ -1855,7 +1855,7 @@ void ProcessDialogEvent()
 			npchar.quest.locInd = FindLocation(pchar.location);
 			sld = &locations[sti(npchar.quest.locInd)];
 			if (CheckAttribute(sld, "private1.money")) sld.private1.money = 0;
-			if (CheckAttribute(sld, "private2.money")) sld.private2.money = 0;	
+			if (CheckAttribute(sld, "private2.money")) sld.private2.money = 0;
 			dialog.text = "Я вижу, ты справился с задачей. Нашел все-таки ключ!";
 			link.l1 = "Да, Генри, я нашел его! А где губернатор?";
 			link.l1.go = "PL_Q8_Panama2_1";
@@ -1996,11 +1996,11 @@ void ProcessDialogEvent()
             DeleteAttribute(npchar, "angry.ok");
 			if (Pchar.location == "SentJons_HouseF3")
 			{
-				DoReloadCharacterToLocation("SentJons_town","reload","houseF3");	
+				DoReloadCharacterToLocation("SentJons_town","reload","houseF3");
 			}
 			else
 			{
-				DoReloadCharacterToLocation("PortRoyal_town","reload","houseS1");	
+				DoReloadCharacterToLocation("PortRoyal_town","reload","houseS1");
 			}
 		break;
 // <<<<<<<<<<<<============= блок нод angry =============================

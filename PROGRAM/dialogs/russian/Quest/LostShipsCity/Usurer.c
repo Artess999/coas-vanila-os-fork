@@ -11,10 +11,10 @@ void ProcessDialogEvent()
 	makearef(NextDiag, NPChar.Dialog);
 
 	int iTemp;
-	
+
 	switch(Dialog.CurrentNode)
 	{
-		case "First time":			
+		case "First time":
 			if (npchar.quest.meeting == "0")
 			{
 				dialog.text = "Ага, так это ты у нас из последнего пополнения граждан? Ну, что же, добро пожаловать.";
@@ -36,7 +36,7 @@ void ProcessDialogEvent()
 					link.l8.go = "SeekCrew";
 				}
 			}
-			
+
 			NextDiag.TempNode = "First time";
 		break;
 
@@ -86,7 +86,7 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
-		break;		
+		break;
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -104,13 +104,13 @@ void ProcessDialogEvent()
 
 		//найм команды
 		case "SeekCrew":
-			dialog.text = NPCStringReactionRepeat("Я знаю.", 
-				"Мы уже говорили об этом.", 
+			dialog.text = NPCStringReactionRepeat("Я знаю.",
+				"Мы уже говорили об этом.",
 				"Это уже обсуждено, второй раз повторяю.",
                 "Хватит, утомил...", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Знаешь? Откуда?", 
+			link.l1 = HeroStringReactionRepeat("Знаешь? Откуда?",
 				"Да... Извини, запамятовал.",
-                "Как знаешь...", 
+                "Как знаешь...",
 				"Ну, ладно...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekCrew_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;

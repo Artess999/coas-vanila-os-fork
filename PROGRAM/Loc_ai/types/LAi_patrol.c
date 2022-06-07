@@ -52,9 +52,9 @@ void LAi_type_patrol_Init(aref chr)
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
         }
         while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-        {             
+        {
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
-        }		
+        }
 		GiveItem2Character(chr, "unarmed");
 		EquipCharacterbyItem(chr, "unarmed");
 		string sMush = "mushket";
@@ -79,7 +79,7 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 	int trg = -1;
 	//Если болтаем, то ничего пока не меняем
 	if(chr.chr_ai.tmpl == LAI_TMPL_DIALOG) return;
-	
+
     // boal  лечимся -->
 	float fCheck = stf(chr.chr_ai.type.bottle) - dltTime;
 	if(fCheck < 0)
@@ -87,7 +87,7 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 		chr.chr_ai.type.bottle = 5.0;
 		if (!LAi_IsBottleWork(chr) && MOD_SKILL_ENEMY_RATE > 2)
 		{
-			string btl = "";		
+			string btl = "";
 			float dhlt;
 			if(LAi_GetCharacterRelHP(chr) < 0.75)
 			{
@@ -121,7 +121,7 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 					for(int i = 0; i < num; i++)
 					{
 						if(nMainCharacterIndex == sti(chrFindNearCharacters[i].index))
-						{							
+						{
 							break;
 						}
 					}
@@ -139,7 +139,7 @@ void LAi_type_patrol_CharacterUpdate(aref chr, float dltTime)
 						trg = sti(chrFindNearCharacters[0].index);
 					}
 				}
-			}			
+			}
 			//Анализируем состояние ходьбы
 			if(chr.chr_ai.tmpl == LAI_TMPL_GOTO)
 			{
@@ -319,7 +319,7 @@ void LAi_type_patrol_Attacked(aref chr, aref by)
 	if(!LAi_group_IsEnemy(chr, by)) return;
     //boal fix ai -->
     float dist = -1.0;
-	
+
 	if(!GetCharacterDistByChr3D(chr, by, &dist)) return;
 	if(dist < 0.0) return;
 	if(dist > 20.0) return;
@@ -343,7 +343,7 @@ void LAi_type_patrol_Goto(aref chr)
 	//Идём в новую точку
 	string newloc;
 	if (!CheckAttribute(chr, "CityType")) Log_SetStringToLog("Ghf: " + chr.id);
-	if (chr.CityType == "fortPatrol") 
+	if (chr.CityType == "fortPatrol")
 	{
 		string sTemp = chr.location.locator;
 		newloc = "goto" + rand(6) + GetSymbol(sTemp, 7);
@@ -366,13 +366,13 @@ void LAi_type_patrol_TestControl(aref chr)
 	bool bFightMode = LAi_CheckFightMode(pchar);
 	if (GetNationRelation2MainCharacter(sti(chr.nation)) == RELATION_ENEMY) iRand = 2;
 	else iRand = GetRelation2BaseNation(sti(chr.nation)); // 0- друг 1- нейтрал 2- враг
-	if (isDay()) 
+	if (isDay())
 	{
 		// в друж. городе не цепляемся
-		if (rand(iRand) < 1) 
+		if (rand(iRand) < 1)
 		{
 			//проверяем, нет ли обнаженки оружия
-			if (bFightMode)	
+			if (bFightMode)
 			{	//Пытаемся начать диалог
 				LAi_SetFightMode(pchar, false);
 				if(LAi_Character_CanDialog(chr, pchar))
@@ -384,7 +384,7 @@ void LAi_type_patrol_TestControl(aref chr)
 					LAi_tmpl_SetDialog(chr, pchar, -1.0);
 				}
 			}
-			return;  
+			return;
 		}
 		if (CheckNationLicence(sti(chr.nation))) iRand = 10;
 		else
@@ -392,7 +392,7 @@ void LAi_type_patrol_TestControl(aref chr)
 			if (iRand == RELATION_NEUTRAL)
 			{
 				//проверяем, нет ли обнаженки оружия
-				if (bFightMode)	
+				if (bFightMode)
 				{	//Пытаемся начать диалог
 					LAi_SetFightMode(pchar, false);
 					if(LAi_Character_CanDialog(chr, pchar))
@@ -403,23 +403,23 @@ void LAi_type_patrol_TestControl(aref chr)
 					}
 					chr.chr_ai.type.player = 100;
 					return;
-				}					
+				}
 				chr.chr_ai.type.player = 100;
 				iRand = 60;
 			}
-			else 
+			else
 			{	//враждебный
 				if (bFightMode)	iRand = 500;
 				else iRand = 120;
 			}
 		}
 	}
-	else 
-	{		
-		if (iRand == RELATION_FRIEND) 
+	else
+	{
+		if (iRand == RELATION_FRIEND)
 		{
 			//проверяем, нет ли обнаженки оружия
-			if (bFightMode)	
+			if (bFightMode)
 			{	//Пытаемся начать диалог
 				LAi_SetFightMode(pchar, false);
 				if(LAi_Character_CanDialog(chr, pchar))
@@ -428,19 +428,19 @@ void LAi_type_patrol_TestControl(aref chr)
 					chr.Dialog.CurrentNode = "SoldierNotBlade";
 					LAi_tmpl_SetDialog(chr, pchar, -1.0);
 				}
-			}			
+			}
 			return; // в друж. городе не цепляемся
 		}
 		//eddy. ночной враг цепляется только так и шансов скрыться мало даже при супер прокачке скрытности.
-		if (iRand == RELATION_ENEMY) 
+		if (iRand == RELATION_ENEMY)
 		{
 			if (bFightMode)	iRand = 500;
 			else iRand = 360;
 		}
-		else 
+		else
 		{
 			//проверяем, нет ли обнаженки оружия
-			if (bFightMode)	
+			if (bFightMode)
 			{	//Пытаемся начать диалог
 				LAi_SetFightMode(pchar, false);
 				if(LAi_Character_CanDialog(chr, pchar))
@@ -451,14 +451,14 @@ void LAi_type_patrol_TestControl(aref chr)
 				}
 				chr.chr_ai.type.player = 80;
 				return;
-			}			
+			}
 			chr.chr_ai.type.player = 60;
 			iRand = 80; //ночью нейтрал
 		}
 	}
 	//Проверим на начало диалога
 	float luck = 0.0;
-	
+
 	luck = GetCharacterSkill(pchar, "Sneak");
 	if (rand(iRand) <= luck)
 	{
@@ -474,7 +474,7 @@ void LAi_type_patrol_TestControl(aref chr)
 			}
 		}
 		return;
-	}		
+	}
 	//Пытаемся начать диалог
 	LAi_SetFightMode(pchar, false);
 	if(LAi_Character_CanDialog(chr, pchar))

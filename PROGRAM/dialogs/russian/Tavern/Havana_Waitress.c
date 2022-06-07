@@ -153,7 +153,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			pchar.questTemp.State = "Fr3TakeAnna_WaitMidnight";
         break;
 //========================== Тревога в таверне Гаваны ==================================
-		case "Allarm": 
+		case "Allarm":
     		dialog.text = "Я узнала его! Стража! Кто-нибудь, позовите стражу, этого ладрона нужно задержать!";
     		link.l1 = "А-ть, каррамба!!";
     		link.l1.go = "Step_F_Allarm";
@@ -174,7 +174,7 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
             LAi_group_SetRelation("EnemyFight", LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
             LAi_group_FightGroups("EnemyFight", LAI_GROUP_PLAYER, true);
             LAi_group_SetCheck("EnemyFight", "CannotFightCurLocation");
-			SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY); //на всякий случай	
+			SetNationRelation2MainCharacter(SPAIN, RELATION_ENEMY); //на всякий случай
 			LAi_SetWaitressType(npchar);
 			LAi_group_MoveCharacter(npchar, "SPAIN_CITIZENS");
 			LAi_group_Attack(NPChar, Pchar);

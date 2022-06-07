@@ -2,7 +2,7 @@
 int CreateCumanaCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
@@ -125,7 +125,7 @@ int CreateCumanaCharacters(int n)
 	LAi_group_MoveCharacter(ch, "SPAIN_CITIZENS");
 	LAi_SetImmortal(ch, true);
 	n = n + 1;
-	
+
 	makeref(ch,Characters[n]);			//Банкир
 	ch.id		= "Cumana_usurer";
 	ch.model	= "usurer_4";
@@ -177,6 +177,6 @@ int CreateCumanaCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

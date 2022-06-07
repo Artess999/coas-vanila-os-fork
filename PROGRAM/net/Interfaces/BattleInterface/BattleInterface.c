@@ -16,9 +16,9 @@ void NetBI_CreateShipPointer()
 	objShipPointer.Server = false;
 	objShipPointer.textures.friend = "battle_interface\Frendly.tga";
 	objShipPointer.textures.enemy = "battle_interface\Enemy.tga";
-	
+
 	CreateEntity(&objShipPointer, "shippointer");
-	
+
 	LayerAddObject("net_execute", &objShipPointer, 222222);
 	LayerAddObject("net_realize", &objShipPointer, -1);
 }
@@ -703,8 +703,8 @@ ref Net_ProcessSailDamage()
 
 	ref chref = NetServer_GetClient(wNetClientID);//NetClient_GetClient(wNetClientID);
 
-	if (LAi_IsImmortal(chref)) 
-	{ 
+	if (LAi_IsImmortal(chref))
+	{
 		BI_g_fRetVal = 0;
 		return &BI_g_fRetVal;
 	}

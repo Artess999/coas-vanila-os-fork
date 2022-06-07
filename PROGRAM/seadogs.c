@@ -82,7 +82,7 @@ native int RPrint(int x, int y, string sPrint);
 #event_handler("SeaDogs_ClearSaveData", "ClearLocationsSaveData");
 #event_handler("StopQuestCheckProcessFreeze","ProcessStopQuestCheckProcessFreeze"); // boal 240804
 
-float fHighPrecisionDeltaTime;	
+float fHighPrecisionDeltaTime;
 
 void ProcessStopQuestCheckProcessFreeze() // boal 240804
 {
@@ -106,7 +106,7 @@ void ProcessVersionCheck() // boal 271004
         bHardcoreGameStart       = bHardcoreGame;
         bPayForSaveLoadStart     = bPayForSaveLoad;
         bWorldAlivePauseStart    = bWorldAlivePause;  */
-        
+
         if (!CheckAttribute(mc, "VersionNumber"))
     	{
             Log_Info(XI_ConvertString("MSG_seadogs_1"));
@@ -134,11 +134,11 @@ void ProcessCheat()
 	{
 		case "Immortal":
 			if(LAi_IsImmortal(GetMainCharacter()))
-			{				
+			{
 				LAi_SetImmortal(GetMainCharacter(), false);
 				Log_SetStringToLog("God mode OFF");
 			}else{
-				
+
 				LAi_SetImmortal(GetMainCharacter(), true);
 				Log_SetStringToLog("God mode ON");
 			}
@@ -160,7 +160,7 @@ void ProcessCheat()
 		break;
 		case "Skill":
 			mc.skill.freeskill = 1;
-	
+
 			mc.skill.freeskill = sti(mc.skill.freeskill) + 50;
 			Log_SetStringToLog(" + 50 SP");
 		break;
@@ -179,12 +179,12 @@ void ProcessCheat()
 			}
 			else
 			{
-				if(mc.worldmapencountersoff == "1") 
+				if(mc.worldmapencountersoff == "1")
 				{
 					mc.worldmapencountersoff = "0";
 					Log_SetStringToLog("Worldmap encounters ON");
 				}
-				else 
+				else
 				{
 					mc.worldmapencountersoff = "1";
 					Log_SetStringToLog("Worldmap encounters OFF");
@@ -278,7 +278,7 @@ void Main()
 		InitBaseInterfaces();
 		UnloadSegment("Interface\BaseInterface.c");
 	}
-	
+
 	SetEventHandler("Control Activation","proc_break_video",0);
 	InterfaceStates.Launched = false;
 	SetEventHandler(EVENT_END_VIDEO,"Main_LogoVideo",0);
@@ -321,7 +321,7 @@ void Main_InitGame()
 	LAi_restoreStates          = false;
 	LAi_boarding_process       = false;
 	boarding_location          = -1;
-	
+
 	NationsInit();
 	EncountersInit();
 	CannonsInit();
@@ -345,7 +345,7 @@ void Main_InitGame()
 }
 void Main_LogoVideo()
 {
-	
+
 	int i = 4; // sti(InterfaceStates.videoIdx);
 	switch(i)
 	{
@@ -382,12 +382,12 @@ void Main_LogoVideo()
 void Main_Start()
 {
 	ReloadProgressStart();
-	
+
 	DelEventHandler("Control Activation","proc_break_video");
 	DelEventHandler("frame","Main_Start");
 
 	if( GetTargetPlatform()=="pc" )	ControlsInit(GetTargetPlatform(),false);
-    
+
 	ReloadProgressUpdate();
 	InitGame();
 	ReloadProgressUpdate();
@@ -402,7 +402,7 @@ void Main_Start()
 
 
 	InterfaceStates.Buttons.Load.enable = true;
-	
+
 	Event("DoInfoShower","sl","game prepare",false);
 
 	StartLanguageSetting(LanguageGetLanguage());
@@ -411,7 +411,7 @@ void Main_Start()
 	//LaunchNetTopListScreen();
 
 	CharacterIsDead(GetMainCharacter());
-	
+
 	ReloadProgressEnd();
 
 }
@@ -442,7 +442,7 @@ void LoadGame()
 {
     PauseParticles(true); //fix вылета у форта
     // не помогло DeleteFortEnvironment();  //fix
-    
+
 	PauseAllSounds(); // boal fix
     ResetSound();  // fix
     // вылетам у форта НЕТ -->
@@ -451,7 +451,7 @@ void LoadGame()
 		SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 	}
 	// вылетам у форта НЕТ <--
-	
+
 	string saveName = GetEventData();
 	DelEventHandler("evntLoad","LoadGame");
 
@@ -484,7 +484,7 @@ void LoadGame()
 			loadScr = "loading\rescue.tga";
 		break;
 	}
-				
+
 	CreateEntity(&LanguageObject,"obj_strservice");
 	CreateEntity(&reload_fader, "fader");
 	SendMessage(&reload_fader, "ls",FADER_PICTURE, loadScr);
@@ -562,7 +562,7 @@ void InterfaceDoExit()
 			}
 			LaunchSelectCharacter();
 		break;
-		
+
 		case RC_INTERFACE_DO_LOAD_GAME:
 			if(CheckAttribute(&InterfaceStates,"Buttons.Resume.enable") && sti(InterfaceStates.Buttons.Resume.enable) == true)
 			{
@@ -598,53 +598,53 @@ void InterfaceDoExit()
 			SetEventHandler("frame","NewGame",1);
 			InterfaceStates.doUnFreeze = false;
 		break;
-		
+
 		/*case RC_INTERFACE_SPEAK_EXIT_AND_CAPTURE:
 			string sTargetChr = pchar.speakchr;
-			
+
 			pchar.abordage = 1;
-			
+
 			Sea_AbordageStartNow(SHIP_ABORDAGE, GetCharacterIndex(sTargetChr), true, true);
-			
-			
+
+
 			SetTimeScale(1.0);
 			TimeScaleCounter = 0;
 			DelPerkFromActiveList("TimeSpeed"); //boal
-			
+
 			pchar.speakchr = 0;
 			pchar.whospeak = 0;
 		break;
-		
+
 		case RC_INTERFACE_SPEAK_EXIT_AND_TRADE:
 			LaunchStore(SHIP_STORE);
 		break;  */
-		
+
 		case RC_INTERFACE_TO_CHAR:
 			pchar = GetMainCharacter();
 			LaunchCharacter(pchar);
 		break;
-		
+
 		/*
 		case RC_INTERFACE_TO_PASS:
 			pchar = GetMainCharacter();
 			LaunchPassengers(pchar);
 		break;
 		*/
-		
+
 		case RC_INTERFACE_TO_SHIP:
 			LaunchShipState();
 		break;
-		
+
 		/*
 		case RC_INTERFACE_TO_TRADEBOOK:
 			LaunchTradeBook();
 		break;
 		*/
-		
+
 		case RC_INTERFACE_TO_LOGBOOK:
 			LaunchQuestBook();
 		break;
-		
+
 		case RC_INTERFACE_TO_ITEMS:
 			LaunchItems(); // to_do
 		break;
@@ -728,7 +728,7 @@ int actLoadFlag = 0;
 void OnLoad()
 {
 	actLoadFlag = 1;
-    
+
 	DeleteAttribute( pchar, "abordage_active_count" );
 	FreezeGroupControls(curKeyGroupName,false);
 
@@ -748,9 +748,9 @@ void OnLoad()
 		InitInterfaceTables();
 		UnloadSegment("Interface\BaseInterface.c");
 	}
-	
+
 	ReloadProgressUpdate();
-	
+
 	DialogsInit();
 	//IslandsInit();
 	//LocationInit();
@@ -762,10 +762,10 @@ void OnLoad()
 
 	QuestsInit();
 	ReloadProgressUpdate();
-	
+
 	InitTeleport();
 	ReloadProgressUpdate();
-	
+
 	InitParticles();
 	ReloadProgressUpdate();
 	//ImportFuncTest();
@@ -813,13 +813,13 @@ void OnLoad()
 	//NewGame();
 	DialogRun = false;
 	InterfaceStates.Launched = false;
-	
+
 	ReloadProgressUpdate();
 
 	PerkLoad();
 
 	ReloadProgressUpdate();
-	
+
 	LoadGameOptions();
 
 	ReloadProgressEnd();
@@ -863,16 +863,16 @@ void NewGame_continue()
 	}
 
 	InitGame();
-	
+
 	ReloadProgressUpdate();
-	
+
 	CreateColonyCommanders();
 
 	ReloadProgressUpdate();
 
 	SetNames();
 	ReloadProgressUpdate();
-	
+
 	Environment.date.hour = worldMap.date.hour;
 	Environment.date.min = worldMap.date.min;
 	Environment.date.sec = worldMap.date.sec;
@@ -885,21 +885,21 @@ void NewGame_continue()
 	InterfaceStates.Buttons.Resume.enable = true;
 	InterfaceStates.Buttons.Save.enable = true;
 	InterfaceStates.Buttons.Load.enable = true;
-	
+
 	pchar = GetMainCharacter(); //fix
 	initNewMainCharacter(); // все там
 	ReloadProgressUpdate();
-	
+
 	InitPsHeros();   // boal 05/07/06 ПГГ
 	ReloadProgressUpdate();
-	
+
     RumourInit();  //homo 23/06/06
 	ReloadProgressUpdate();
-	
+
 	ActivateTimeEvents();
-	
+
 	ReloadProgressUpdate();
-	
+
 	//LoadMainCharacterInFirstLocation(sTeleportLocName, sTeleportLocator, sTeleportLocName);
 	startGameWeather = true;
 	if (Pchar.questTemp.CapBloodLine != true)//21/07/07 homo для Блада даем другое начало
@@ -921,11 +921,11 @@ void NewGame_continue()
 		LoadMainCharacterInFirstLocationGroup("Estate", "reload", "reload1");
     }
 	ReloadProgressUpdate();
-	
+
 	//InitTowns();
 	UpdateCrewInColonies(); // пересчет наемников в городах
 	ReloadProgressUpdate();
-	
+
 	//SetQuestForMenInTavernWhoGiveUsInfo(); // to_do
 
 	//InitSmuggling();
@@ -939,7 +939,7 @@ void InitGame()
 	//LayerCreate(INTERFACE_REALIZE, 1);
 	//LayerCreate("fader_realize", 1);
 	//LayerCreate("inf_realize", 1);
-	
+
 	InitSound();
 
 	ReloadProgressUpdate();
@@ -953,19 +953,19 @@ void InitGame()
 	}
     InitPerks();
     ReloadProgressUpdate();
-    
+
 	IslandsInit();
 	ReloadProgressUpdate();
-	
+
 	LocationInit();
 	ReloadProgressUpdate();
-	
+
 	DialogsInit();
 	ReloadProgressUpdate();
-	
+
 	InitTeleport();
 	ReloadProgressUpdate();
-	
+
 	InitParticles();
 	ReloadProgressUpdate();
 
@@ -976,30 +976,30 @@ void InitGame()
 	}
 
 	ReloadProgressUpdate();
-	
+
 	CharactersInit();
 
 	ReloadProgressUpdate();
-	
+
 	ColoniesInit();
 	ReloadProgressUpdate();
-	
+
 	if(LoadSegment("store\initStore.c"))
 	{
 		InitStores();
 		UnloadSegment("store\initStore.c");
 	}
-	
+
 	QuestsInit();
 	ReloadProgressUpdate();
 
-	
+
 	SeaAIGroupsInit();
 	ReloadProgressUpdate();
-	
+
 	InitQuestMapEncounters();
 	ReloadProgressUpdate();
-	
+
 	//InitLandRandomEncounters();
 	//ReloadProgressUpdate();
 
@@ -1007,7 +1007,7 @@ void InitGame()
 
 	ResetQuestMovie();
 	ReloadProgressUpdate();
-	
+
 	LoadGameOptions();
 
 	ReloadProgressUpdate();
@@ -1031,11 +1031,11 @@ void ProcessControls()
 
     if (dialogRun) return;
 	if (sti(InterfaceStates.Launched)==true) return;
-	
+
 	if (ControlName == "WhrPrevWeather")	{ Whr_LoadNextWeather(-1); }
 	if (ControlName == "WhrNextWeather")	{ Whr_LoadNextWeather(1); }
 	if (ControlName == "WhrUpdateWeather")	{ Whr_UpdateWeather(); }
-	
+
 	//if (ControlName == "Help") RunHelpChooser();
 
 	if(bSeaActive && !bAbordageStarted)
@@ -1059,7 +1059,7 @@ void ProcessControls()
 			case "MainMenu": ProcessMainMenuKey();	break;
 			case "MainMenuDouble": ProcessMainMenuKey(); break;
 			case "Interface": ProcessInterfaceKey();break;
-			case "Tele": 
+			case "Tele":
 				StartQuickTeleport();
 				break;
 			case "TeleBack": Teleport(-1); break;
@@ -1070,8 +1070,8 @@ void ProcessControls()
 			break;
 		}
 	}
-	
-	
+
+
 
     // boal 27.11.03 time -->
   	if (ControlName=="TimeScaleFaster" || ControlName == "TimeScaleSlower")
@@ -1117,7 +1117,7 @@ void ProcessControls()
 		if (true) // MOD_SKILL_ENEMY_RATE > 1) // запрет 0.25 скорости
         {
 		   if (!bBettaTestMode && TimeScaleCounter < -2) TimeScaleCounter = -2;
-		} 
+		}
         if (bDisableMapEnter)
         {
             if (TimeScaleCounter > 20) TimeScaleCounter = 20;
@@ -1184,7 +1184,7 @@ void ProcessControls()
 				AddPerkToActiveList("TimeSpeed");
 			}
 		break;
-	
+
 		case "VK_PAUSETimePause":
 			if (!CheckAttribute(pchar, "pause"))
 			{
@@ -1196,12 +1196,12 @@ void ProcessControls()
 			else
 			{
                 DeleteAttribute(pchar, "pause");
-				SetTimeScale(1.0);	
+				SetTimeScale(1.0);
 				DelPerkFromActiveList("TimeSpeed");
 				TimeScaleCounter = 0;
 			}
 		break;
-		
+
 		case "WMapCancel":
 			if(IsEntity(&worldMap))
 			{
@@ -1209,7 +1209,7 @@ void ProcessControls()
 				DeleteAttribute(pchar, "SkipEshipIndex");// boal
 			}
 		break;
-		
+
 		case "PaperMap":
 			LaunchPaperMapScreen();
 		break;
@@ -1221,7 +1221,7 @@ void ProcessControls()
  				if (stf(pchar.chr_ai.energy) < 0) pchar.chr_ai.energy = 0;
 	        }
 		break;
-		
+
 		case "ChrStrafeLeft":
             if (bLandInterfaceStart && LAi_IsFightMode(pchar))
             {
@@ -1229,7 +1229,7 @@ void ProcessControls()
  				if (stf(pchar.chr_ai.energy) < 0) pchar.chr_ai.energy = 0;
 	        }
 		break;
-		
+
 		case "ChrStrafeRight":
             if (bLandInterfaceStart && LAi_IsFightMode(pchar))
             {
@@ -1237,7 +1237,7 @@ void ProcessControls()
  				if (stf(pchar.chr_ai.energy) < 0) pchar.chr_ai.energy = 0;
 	        }
 		break;
-		
+
 		case "BOAL_UsePotion": // boal KEY_C
             if (bLandInterfaceStart)
             {
@@ -1284,7 +1284,7 @@ void ProcessControls()
 				}
 		    }
 	    break;
-	    
+
 		case "BOAL_SetCamera":
 		    // по F10
 		    //CameraHoldPos();
@@ -1313,7 +1313,7 @@ void ProcessControls()
 		       //LaunchBoalDebugScreenSecond();
 		    }
 		break;
-        
+
         case "TeleportActive":
 		    if (MOD_BETTATESTMODE == "On")
 		    {
@@ -1324,7 +1324,7 @@ void ProcessControls()
             	}
 		    }
 		break;
-		
+
 		case "BOAL_ControF5":
 		    if (MOD_BETTATESTMODE == "On")
 		    {
@@ -1374,7 +1374,7 @@ void ProcessControls()
         break;
         // boal <--
 	}
-	
+
 }
 
 void Teleport(int step)
@@ -1382,7 +1382,7 @@ void Teleport(int step)
 	nTeleportLocation = nTeleportLocation + step;
 	if(nTeleportLocation >=	nLocationsNum) nTeleportLocation = 1;
 	if(nTeleportLocation <=	0) nTeleportLocation = nLocationsNum - 1;
-	
+
 	sTeleportLocName = Locations[nTeleportLocation].id;
 	Trace("Teleport to '" + sTeleportLocName + "'");
 
@@ -1452,9 +1452,9 @@ void GameOver(string sName)
 	PauseAllSounds();
 	ResetSound();
 	EngineLayersOffOn(false);
-	
+
 	mc = GetMainCharacter();
-	
+
 	ClearEvents();
 	ClearPostEvents();
 	DeleteEntities();
@@ -1551,15 +1551,15 @@ bool CheckSaveGameEnabled()
 {
     bool TmpBool = true;
     ref mchref = GetMainCharacter();
-	
-    if (CheckAttribute(&InterfaceStates, "Buttons.Save.enable")) 
+
+    if (CheckAttribute(&InterfaceStates, "Buttons.Save.enable"))
 	{
-		if(InterfaceStates.Buttons.Save.enable != 1) 
+		if(InterfaceStates.Buttons.Save.enable != 1)
 		{
 			TmpBool = false;
 		}
-	} 
-	else 
+	}
+	else
 	{
 		TmpBool = false;
 	}
@@ -1569,7 +1569,7 @@ bool CheckSaveGameEnabled()
 	if(LAi_IsBoardingProcess()) {TmpBool = false;}
 
 	if( CharacterIsDead(mchref) ) {TmpBool = false;}
-	
+
 	if (TmpBool)
 	{
 		int idxLoadLoc = FindLoadedLocation();

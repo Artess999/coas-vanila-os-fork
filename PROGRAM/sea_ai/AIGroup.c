@@ -158,7 +158,7 @@ ref	Group_FindOrCreateGroup(string sGroupID)
 	if (iGroupIndex < 0)
 	{
 		iGroupIndex = Group_CreateGroup(sGroupID);
-		if (iGroupIndex < 0) 
+		if (iGroupIndex < 0)
 		{
 			Trace("Group_FindOrCreateGroup sGroupID = " + sGroupID + ", can't create group ");
 			if (MOD_BETTATESTMODE == "On") Log_Info("Error: Group_FindOrCreateGroup не создалась группа " + sGroupID);
@@ -202,7 +202,7 @@ void Group_SetAddress(string sGroupID, string sLocationID, string sLocationGroup
 
 void Group_DeleteUnusedGroup()
 {
-	for (int i=0;i<MAX_SHIP_GROUPS;i++)	
+	for (int i=0;i<MAX_SHIP_GROUPS;i++)
 	{
 		ref rGroup = Group_GetGroupByIndex(i);
 		if (CheckAttribute(rGroup, "DelAtEnd"))
@@ -254,7 +254,7 @@ void Group_SetGroupCommander(string sGroupID, string sCharacterID)
 // delete character from others group, add character to new group
 void Group_ChangeCharacter(string sGroupID, string sCharacterID)
 {
-	for (int i=0;i<MAX_SHIP_GROUPS;i++)	
+	for (int i=0;i<MAX_SHIP_GROUPS;i++)
 	{
 		ref rOldGroup = Group_GetGroupByIndex(i);
 		if (CheckAttribute(rOldGroup, "id"))
@@ -270,14 +270,14 @@ void Group_ChangeCharacter(string sGroupID, string sCharacterID)
 void Group_AddCharacter(string sGroupID, string sCharacterID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
-	
+
 	// add new character to list
 	int iCharacterIndex = GetCharacterIndex(sCharacterID);
 	string sTemp = "id_" + iCharacterIndex;
 	rGroup.Quest.(sTemp) = sCharacterID;
 	rGroup.Quest.(sTemp).index = iCharacterIndex;
 
-	// DANGER 
+	// DANGER
 	Characters[iCharacterIndex].SeaAI.Group.Name = sGroupID;
 }
 // boal 03/08/06 метод числа живых в группе
@@ -304,7 +304,7 @@ int Group_GetDeadCharactersNumR(ref rGroup)
 int Group_GetCharactersNum(string sGroupID) { ref rGroup = Group_FindOrCreateGroup(sGroupID); return Group_GetCharactersNumR(rGroup); }
 int Group_GetCharactersNumR(ref rGroup)
 {
-	aref arQuest; 
+	aref arQuest;
 	if (!CheckAttribute(rGroup,"quest")) { return 0; }
 	makearef(arQuest,rGroup.Quest);
 	return GetAttributesNum(arQuest);
@@ -312,11 +312,11 @@ int Group_GetCharactersNumR(ref rGroup)
 
 int Group_GetCharacterIndexR(ref rGroup, int iIndex)
 {
-	aref arQuest, arAttr; 
+	aref arQuest, arAttr;
 	if (!CheckAttribute(rGroup,"quest")) { return -1; }
 	makearef(arQuest,rGroup.Quest);
 	int iNumAttributes = GetAttributesNum(arQuest);
-	if (iIndex >= iNumAttributes) { return -1; } 
+	if (iIndex >= iNumAttributes) { return -1; }
 	arAttr = GetAttributeN(arQuest, iIndex);
 	return sti(arAttr.index);
 }
@@ -366,7 +366,7 @@ bool Group_isDead(string sGroupID)
 void Group_SetXZ_AY(string sGroupID, float x, float z, float ay)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
-	
+
 	rGroup.Pos.x = x;
 	rGroup.Pos.z = z;
 	rGroup.Pos.ay = ay;
@@ -410,7 +410,7 @@ float Group_GetPowerHP_R(ref rGroup)
 		{
 		  // не факт что это хорошо, сам написал сам пока убрал (boal)  rGroup.DelAtEnd = true; // стереть, тк командера уже нет
 		}
-	}	
+	}
 	return fHP;
 }
 
@@ -432,7 +432,7 @@ void Group_LockTask(string sGroupID)
 	rGroup.Task.Lock = true;
 }
 
-// unlock task, group can change tasks 
+// unlock task, group can change tasks
 void Group_UnlockTask(string sGroupID)
 {
 	ref rGroup = Group_FindOrCreateGroup(sGroupID);
@@ -518,7 +518,7 @@ void Group_SetTaskNone(string sGroupID)
 	rGroup.Task = AITASK_NONE;
 	rGroup.Task.Target = "";
 	rGroup.Task.Lock = false;
-	
+
 	// boal fix!! 03/02/2005
 	int iIndex;
 	int iCharacterIndex;

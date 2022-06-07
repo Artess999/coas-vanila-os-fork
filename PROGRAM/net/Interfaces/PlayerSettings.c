@@ -15,7 +15,7 @@ void InitInterface(string iniName)
 	SetEventHandler("OnSelect", "PS_OnSelect", 0);
 	SetEventHandler("OnCancel", "PS_OnCancel", 0);
 
-	SetEventHandler("TableSelectChange", "PS_TableSelectChange", 0);	
+	SetEventHandler("TableSelectChange", "PS_TableSelectChange", 0);
 
 	SetEventHandler("frame", "PS_CheckButtons", 0);
 
@@ -126,7 +126,7 @@ void PS_OnSave()
 	NCProfiles.Profiles.(sNick).ImageFace = GameInterface.FACESLIST.(sFacePos).FileName.Name;
 
 	string sSailPos = "pic" + (sti(GameInterface.SAILSLIST.current) + 1);
-	NCProfiles.Profiles.(sNick).ImageSail = GameInterface.SAILSLIST.(sSailPos).FileName.Name; 
+	NCProfiles.Profiles.(sNick).ImageSail = GameInterface.SAILSLIST.(sSailPos).FileName.Name;
 
 	string sFlagPos = "pic" + (sti(GameInterface.FLAGSLIST.current) + 1);
 	NCProfiles.Profiles.(sNick).ImageFlag = GameInterface.FLAGSLIST.(sFlagPos).FileName.Name;
@@ -185,7 +185,7 @@ void IDoExit(int exitCode)
 	DelEventHandler("OnSelect", "PS_OnSelect");
 	DelEventHandler("OnCancel", "PS_OnCancel");
 
-	DelEventHandler("TableSelectChange", "PS_TableSelectChange");	
+	DelEventHandler("TableSelectChange", "PS_TableSelectChange");
 
 	DelEventHandler("frame", "PS_CheckButtons");
 
@@ -194,9 +194,9 @@ void IDoExit(int exitCode)
 	NFDelGroupTextures("FLAGSLIST");
 
 	interfaceResultCommand = exitCode;
-	
+
 	EndCancelInterface(true);
-	
+
 	Net_SaveFile(false, &NCProfiles, "Profiles.nsv");
 	//DeleteAttribute(&NCProfiles, "");
 }
@@ -208,6 +208,6 @@ int ScrollGetTexture()
 	string sScrollID = GetEventData();
 	int iTexture = NFGetTexture(sScrollID, sName);
 	Trace("ScrollGetTexture: " + iTexture + ", " + sName);
-	
+
 	return iTexture;
 }

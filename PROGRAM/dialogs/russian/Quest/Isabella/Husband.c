@@ -18,7 +18,7 @@ void ProcessDialogEvent()
 	iDay = environment.date.day;
 	iMonth = environment.date.month;
 	string lastspeak_date = iday + " " + iMonth;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "exit":
@@ -56,7 +56,7 @@ void ProcessDialogEvent()
 				DeleteAttribute(pchar, "quest.wasInBeedroom");
 			}
 			else
-			{				
+			{
 				dialog.text = "Приветствую вас, незнакомец! Могу я узнать, кто вы и чему обязан чести видеть вас у себя дома?";
 				link.l1 = "Мое имя - " + PChar.Name + " " + PChar.LastName +
 						", я капитан.";
@@ -65,7 +65,7 @@ void ProcessDialogEvent()
 				link.l2.go = "Good_exit";
 			}
 		break;
-		
+
         case "Next_1":
             NextDiag.TempNode = "Usual_1";
 			dialog.text = "Капитан или все-таки корсар? Судя по вашему виду, сеньор, скорее - второе. Ну что ж, в наше время не один достопочтенный дон сколотил таким образом приличное состояние. И я - не исключение.";
@@ -74,7 +74,7 @@ void ProcessDialogEvent()
 			link.l2 = "Прошу меня простить... дела!";
 			link.l2.go = "Good_exit";
 		break;
-		
+
 		case "Next_2":
 		    NextDiag.TempNode = "Usual_1";
 			dialog.text = "А что в этом удивительного? Это очень быстрый и надежный способ разбогатеть. Но после удачной женитьбы я решил остепениться, чего и вам желаю.";
@@ -82,7 +82,7 @@ void ProcessDialogEvent()
 			link.l1.go = "Good_exit";
 			NPChar.quest.NiceMeet = true;
 		break;
-		
+
 		case "Usual_1":
 			chrDisableReloadToLocation = false;
 			bDisableFastReload = false;
@@ -97,9 +97,9 @@ void ProcessDialogEvent()
 					dialog.text = "О, "+ GetFullName(pchar)+" опять у меня дома. Ну что же, приятно видеть тебя вновь. Зачем пожаловал?";
 					link.l1 = "Сальватор, я хочу пообщаться с твоей женой. Можно?";
 					link.l1.go = "Step_2";
-				}				
+				}
 				if (sti(pchar.quest.VisitStep)>2 && CheckAttribute(pchar, "quest.wasInBeedroom"))
-				{					
+				{
 					if (!CheckAttribute(pchar, "quest.already"))
 					{
 						dialog.text = "Не слишком ли ты зачастил к моей жене, приятель?";
@@ -114,7 +114,7 @@ void ProcessDialogEvent()
 						LocatorReloadEnterDisable("SanJuan_houseSp6", "reload2", true);
 					}
 					DeleteAttribute(pchar, "quest.wasInBeedroom");
-				}		
+				}
 			}
 		break;
 		case "Step_1":
@@ -136,7 +136,7 @@ void ProcessDialogEvent()
 			if (pchar.RomanticQuest == "DelivMigel")
 			{
 				dialog.text = "Ты вытащил ее братца Мигеля из Куманы, поэтому ты, вроде как, друг семьи теперь. Так что проходи, нет проблем.";
-				link.l1 = "Хм, я понял, Сальватор. Спасибо тебе.";			
+				link.l1 = "Хм, я понял, Сальватор. Спасибо тебе.";
 			}
 			LocatorReloadEnterDisable("SanJuan_houseSp6", "reload2", false);
 		break;
@@ -155,18 +155,18 @@ void ProcessDialogEvent()
 			    link.l1.go = "Romantic_Battle_in_Bedroom_1";
 			}
 		break;
-		
+
 		case "Romantic_Battle_in_Bedroom_1":
 			dialog.text = "Защищайся, глупец, сейчас ты умрешь!";
 			link.l1 = "Что??? Ну, это мы еще поглядим!";
 			link.l1.go = "Romantic_Battle_in_Bedroom_2";
 		break;
-		
+
 		case "Romantic_Battle_in_Bedroom_2":
 			DialogExit();
 			AddDialogExitQuest("Romantic_Battle_in_Bedroom_3");
 		break;
-		
+
 		case "Romantic_Battle_in_Bedroom_3":
 		    NextDiag.CurrentNode = "Usual_1";
             Pchar.RomanticQuest.TalkInShop = true;// обошлось все мирно - до встречи в магазине

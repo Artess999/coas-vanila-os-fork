@@ -45,7 +45,7 @@ int FindWarEncounter()
 			}
 		}
 	}
-	if (iNumTypes == 0) 
+	if (iNumTypes == 0)
 	{
 		//Trace("FindWarEncounter: not find any war encounters!");
 		return -1;
@@ -78,7 +78,7 @@ int FindMerchantEncounter()
 			}
 		}
 	}
-	if (iNumTypes == 0) 
+	if (iNumTypes == 0)
 	{
 		//Trace("FindMerchantEncounter: not find any merchant!");
 		return -1;
@@ -97,13 +97,13 @@ bool Encounter_GetClassesFromRank(int iEncounter, int iRank, ref rMClassMin, ref
 {
 	ref rEnc = &EncountersTypes[iEncounter];
 
-	rMClassMin = 0; rMClassMax = 0; 
+	rMClassMin = 0; rMClassMax = 0;
 	rWClassMin = 0; rWClassMax = 0;
 
 	string sRank = "Rank." + iRank;
 	if (!CheckAttribute(rEnc, sRank))
 	{
-		// find nearest rank 
+		// find nearest rank
 		if (CheckAttribute(rEnc, "Rank"))
 		{
 			int iLastRank = -1;
@@ -136,6 +136,6 @@ bool Encounter_GetClassesFromRank(int iEncounter, int iRank, ref rMClassMin, ref
 
 	rWClassMin = rEnc.(sRank).3;
 	rWClassMax = rEnc.(sRank).2;
-	
+
 	return true;
 }

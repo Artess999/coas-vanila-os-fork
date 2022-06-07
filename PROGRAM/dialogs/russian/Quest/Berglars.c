@@ -11,7 +11,7 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	if (Dialog.CurrentNode == "First time")
 	{
 		switch (pchar.questTemp.tugs.berglarState)
@@ -23,7 +23,7 @@ void ProcessDialogEvent()
 			case "6": Dialog.CurrentNode = "Sixth time";	break;
 		}
 	}
-    
+
 	switch (Dialog.CurrentNode)
     {
         //------------- первая боевка --------------
@@ -59,27 +59,27 @@ void ProcessDialogEvent()
             dialog.text = "А-а-а, пришел все-таки...";
             link.l1 = "Да, пришел. Говори скорей, что там у тебя за дело жизни и смерти?";
             link.l1.go = "FirstFight_1";
-        break;        
+        break;
 		case "FirstFight_1":
             dialog.text = "Так и есть, приятель, так и есть... Давай уточним детали - дело ТВОЕЙ смерти.";
             link.l1 = "О чем это ты?";
             link.l1.go = "FirstFight_2";
-        break;        
+        break;
 		case "FirstFight_2":
             dialog.text = "Надеюсь, ты исповедовался недавно. Сейчас ты отправишься к праотцам, хорошо бы ушел причащенным, а то я буду переживать за тебя...";
             link.l1 = "Хех, ценю заботу. Ты, вообще, знаешь, кто я такой, чтобы вот так со мной разговаривать?";
             link.l1.go = "FirstFight_3";
-        break;        
+        break;
 		case "FirstFight_3":
             dialog.text = "Капитан какой-то, а большего мне знать и не надо. Не ты первый из дурачков, что сюда приходят, здесь же и остаются навечно. Кстати, ты стоишь прямо на одном таком, хороший был парень. А красив был, как Аполлон.\nПонимаешь, я обязательно должен тебя убить, иначе никак.";
             link.l1 = "Надо же, никогда бы не подумал, что за такой внешностью может скрываться циничный убийца...";
-            link.l1.go = "FirstFight_4";        
-		break; 
+            link.l1.go = "FirstFight_4";
+		break;
 		case "FirstFight_4":
             dialog.text = "Хех, на это и расчет, приятель, внешность обманчива. Хотел сказать - запомни на будущее, но какое у тебя будущее...";
 			link.l1 = "Хочется надеяться - счастливое...";
             link.l1.go = "FirstFight_overAll";
-        break; 
+        break;
         //------------ вторая боевка ----------------
         case "Second time":
             dialog.text = "Скажите, я могу отнять минуту вашего времени?";
@@ -382,8 +382,8 @@ void ProcessDialogEvent()
 			npchar.LifeDay = 1;
 			SaveCurrentNpcQuestDateParam(npchar, "LifeTimeCreate");
             NextDiag.CurrentNode = "Fight_" + pchar.questTemp.tugs.berglarState;
-			npchar.equip.blade = FindCharacterItemByGroup(npchar, BLADE_ITEM_TYPE);  
-			npchar.equip.gun = FindCharacterItemByGroup(npchar, GUN_ITEM_TYPE); 			
+			npchar.equip.blade = FindCharacterItemByGroup(npchar, BLADE_ITEM_TYPE);
+			npchar.equip.gun = FindCharacterItemByGroup(npchar, GUN_ITEM_TYPE);
 			LAi_LocationDisableMonGenTimer(pchar.questTemp.tugs.(sTemp), 1); //монстров не генерить 1 день
 			LAi_LocationDisableOffGenTimer(pchar.questTemp.tugs.(sTemp), 1); //офицеров не пускать 1 день
 			LAi_SetActorTypeNoGroup(NPChar);
@@ -395,8 +395,8 @@ void ProcessDialogEvent()
 		case "FirstFight_overAll":
 			LAi_group_Delete("EnemyFight");
 			pchar.questTemp.tugs.berglarState = sti(pchar.questTemp.tugs.berglarState) + 1; //счетчик
-			npchar.SaveItemsForDead  = true; 
-			npchar.DontClearDead = true; 
+			npchar.SaveItemsForDead  = true;
+			npchar.DontClearDead = true;
 			SetCharacterPerk(npchar, "Energaiser"); // скрытый перк дает 1.5 к приросту энергии, дается ГГ и боссам уровней
 			sTemp = "berglar" + npchar.city;
 			LAi_SetHP(npchar, stf(pchar.questTemp.tugs.(sTemp).hp), stf(pchar.questTemp.tugs.(sTemp).hp));

@@ -15,18 +15,18 @@ void ProcessDialogEvent()
 	string NodeName = Dialog.CurrentNode;
 	string NodePrevName = "";
 	if (CheckAttribute(NextDiag, "PrevNode")) NodePrevName = NextDiag.PrevNode;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
-			NextDiag.TempNode = "First time";			
+			NextDiag.TempNode = "First time";
 			if (npchar.quest.meeting == "0")
 			{
 				npchar.quest.meeting = "1";
 				if (CheckAttribute(loadedLocation, "storm"))
 				{
 					if (npchar.location == "PlutoStoreSmall") dialog.text = "Приветствую вас, минхер, у себя дома, вы можете переждать у меня этот шторм. Меня зовут " + GetFullName(npchar) + ".";
-					else dialog.text = "Приветствую вас, минхер. Меня зовут " + GetFullName(npchar) + ".";					
+					else dialog.text = "Приветствую вас, минхер. Меня зовут " + GetFullName(npchar) + ".";
 					link.l1 = "А я - капитан " + GetFullName(pchar) + ". Переждать шторм, говорите?";
 					link.l1.go = "FS_1";
 				}
@@ -45,7 +45,7 @@ void ProcessDialogEvent()
 				link.l1.go = "SeekCitizen";
 				link.l2 = "Я хотел задать вам вопрос.";
 				link.l2.go = "int_quests";
-				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажете?", 
+				link.l3 = LinkRandPhrase("Что-нибудь интересное мне расскажете?",
 					"Что нового в Городе?", "Эх, с удовольствием послушал бы последние сплетни...");
 				link.l3.go = "rumours_LSC";
 				//квест со скелетом Декстера
@@ -126,7 +126,7 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
-		break;		
+		break;
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -156,9 +156,9 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Простите, но я совершенно не понимаю, о ком вы говорите. Чтобы вам помочь, мне нужны имя и фамилия.";
 				Link.l1 = "Хм. Давайте я попробую еще раз их назвать.";
-				Link.l1.go = "SeekCitizen_Choice_2";				
+				Link.l1.go = "SeekCitizen_Choice_2";
 				Link.l2 = "Благодарю вас, но лучше я сам поищу.";
-				Link.l2.go = "exit";	
+				Link.l2.go = "exit";
 			}
 			else
 			{
@@ -168,12 +168,12 @@ void ProcessDialogEvent()
 					link.l1 = "Надо же!";
 					link.l1.go = "exit";
 					break;
-				}				
+				}
 				if (sld.sex == "man")
 				{
 					dialog.text = GetFullName(sld) + ", вы его имеете в виду?";
 					Link.l1 = "Именно его.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, я имел в виду другого.";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -181,7 +181,7 @@ void ProcessDialogEvent()
 				{
 					dialog.text = GetFullName(sld) + ", вы о ней говорили?";
 					Link.l1 = "Точно, именно о ней.";
-					Link.l1.go = "SeekCitizen_agree";				
+					Link.l1.go = "SeekCitizen_agree";
 					Link.l2 = "Нет, не о ней. Может, я еще раз попробую назвать?";
 					Link.l2.go = "SeekCitizen_Choice_2";
 				}
@@ -219,8 +219,8 @@ void ProcessDialogEvent()
 			{
 				if (sld.sex == "man")
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str1 = npchar.location.locator;
 						string Str2 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str1, 0, 5) == strcut(Str2, 0, 5))
@@ -248,8 +248,8 @@ void ProcessDialogEvent()
 				}
 				else
 				{
-					if (sld.location == "LostShipsCity_town")  
-					{						
+					if (sld.location == "LostShipsCity_town")
+					{
 						string Str3 = npchar.location.locator;
 						string Str4 = sld.location.locator;
 						if (npchar.location == sld.location && strcut(Str3, 0, 5) == strcut(Str4, 0, 5))
@@ -276,7 +276,7 @@ void ProcessDialogEvent()
 					link.l1.go = "exit";
 				}
 			}
-		break;	
+		break;
 		//вопросы
 		case "int_quests":
 			dialog.text = "Внимательно вас слушаю.";
@@ -322,13 +322,13 @@ void ProcessDialogEvent()
 		break;
 		//поиск товаров на корвет
 		case "SeekGoods":
-			dialog.text = NPCStringReactionRepeat("И чем я могу вам помочь?", 
-				"Вы уже спрашивали об этом.", 
+			dialog.text = NPCStringReactionRepeat("И чем я могу вам помочь?",
+				"Вы уже спрашивали об этом.",
 				"Уже спрашивали...",
                 "Вы уже спрашивал меня об этих товарах. Ничего я не знаю!", "block", 0, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Я ищу ядра, бомбы, картечь, книппели, провиант, лекарства...", 
+			link.l1 = HeroStringReactionRepeat("Я ищу ядра, бомбы, картечь, книппели, провиант, лекарства...",
 				"Да... Извините, запамятовал.",
-                "А-а, ну да.", 
+                "А-а, ну да.",
 				"Понял, понял...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("SeekGoods_1", "", "", "", npchar, Dialog.CurrentNode);
 		break;
@@ -353,7 +353,7 @@ void ProcessDialogEvent()
 		case "TakeGrapes":
 			dialog.text = "Вы принесли мне десять мешочков?";
             if (CheckCharacterItem(pchar, "Mineral10") && sti(pchar.items.Mineral10) >= 10)
-            {				
+            {
 				link.l1 = "Да, они у меня, и я готов вам их вручить.";
 				link.l1.go = "TakeGrapes_yes";
 			}
@@ -454,7 +454,7 @@ void ProcessDialogEvent()
 			link.l1 = "Ясно. Спасибо вам за откровенность.";
 			link.l1.go = "exit";
 			pchar.questTemp.LSC.lostDecster = "toAdmiral";
-			AddQuestRecord("LSC_findDekster", "3");	
+			AddQuestRecord("LSC_findDekster", "3");
 		break;
 	}
 	NextDiag.PrevNode = NodeName;

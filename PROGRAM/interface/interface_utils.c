@@ -49,17 +49,17 @@ void FillScrollImageWithCompanionShips(string sNodeName, int iNotUsed)
 						GameInterface.(sNodeName).(attributeName).img1 = "ship";
 						GameInterface.(sNodeName).(attributeName).tex1 = FindFaceGroupNum(sNodeName + ".ImagesGroup","SHIPS_"+shipName);
 
-						iListSize++;		
+						iListSize++;
 					}
 				}
 			}
-			/*else 
+			/*else
 			{
 				attributeName = "pic" + (i+1);
 				GameInterface.(sNodeName).(attributeName).tex1= 0;
 			}  */
-		} 
-		/*else 
+		}
+		/*else
 		{
 			attributeName = "pic" + (i+1);
 			GameInterface.(sNodeName).(attributeName).tex1= 0;
@@ -67,7 +67,7 @@ void FillScrollImageWithCompanionShips(string sNodeName, int iNotUsed)
 	}
 
 	GameInterface.(sNodeName).ListSize = iListSize;
-	//GameInterface.(sNodeName).NotUsed = iNotUsed;	
+	//GameInterface.(sNodeName).NotUsed = iNotUsed;
 	GameInterface.SHIPS_SCROLL.NotUsed = iNotUsed - iListSize + 1;
 
 	SendMessage(&GameInterface, "lsl", MSG_INTERFACE_SCROLL_CHANGE, sNodeName, -1);
@@ -151,13 +151,13 @@ void FillScrollImageWithFaces(string sNodeName, int iNotUsed, bool bCompanions, 
 	GameInterface.(sNodeName).(attributeName).img1 = GetFacePicName(GetCharacter(cn));
 	GameInterface.(sNodeName).(attributeName).tex1 = FindFaceGroupNum(sNodeName+ ".ImagesGroup","FACE128_"+ characters[cn].FaceID);
 
-	iListSize++;		
+	iListSize++;
 	}
 	}
 	}
 	*/
 	GameInterface.(sNodeName).ListSize = iListSize;
-	GameInterface.(sNodeName).NotUsed = iNotUsed;	
+	GameInterface.(sNodeName).NotUsed = iNotUsed;
 
 	SendMessage(&GameInterface, "lsl", MSG_INTERFACE_SCROLL_CHANGE, sNodeName, -1);
 }
@@ -165,7 +165,7 @@ void FillScrollImageWithFaces(string sNodeName, int iNotUsed, bool bCompanions, 
 void StartAboveForm(bool _pauseTime)
 {
     ChangeShowIntarface();
-    
+
 	EngineLayersOffOn(true);
     if (_pauseTime)
     {
@@ -217,7 +217,7 @@ void ChangeShowIntarface()
 string GetOfficerTypeByNum(int nCurScrollNum)
 {
     string ret = "";
-    
+
 	switch (nCurScrollNum)
 	{
 		case 1:
@@ -312,13 +312,13 @@ void SetOTHERMiniTable(string _tabName, ref _chr)
 		GameInterface.(_tabName).tr4.td3.str = XI_ConvertString(GetLoyalityName(makeint(GetCharacterLoyality(_chr) * 100 / MAX_LOYALITY)));
 	}
 	GameInterface.(_tabName).tr4.td3.scale = 0.78;
-	
+
 	GameInterface.(_tabName).tr5.UserData.ID = "weight";
 	GameInterface.(_tabName).tr5.td1.icon.group = "ICONS_CHAR";
     GameInterface.(_tabName).tr5.td1.icon.image = "weight";
 	GameInterface.(_tabName).tr5.td2.str = XI_ConvertString("weight");
 	GameInterface.(_tabName).tr5.td3.str = FloatToString(GetItemsWeight(_chr), 1) + " / "+GetMaxItemsWeight(_chr);
-	
+
 	// прорисовка
 	Table_UpdateWindow(_tabName);
 }
@@ -327,7 +327,7 @@ void SetSPECIALMiniTable(string _tabName, ref _chr)
     int     i;
 	string  row, skillName, col;
     int     diff, skillVal;
-    
+
     GameInterface.(_tabName).select = 0;
 	GameInterface.(_tabName).hr.td1.str = "";
 	row = "tr1";
@@ -384,7 +384,7 @@ void SetSPECIALMiniTable(string _tabName, ref _chr)
 	{
 	    col = "td" + i;
 	    skillName = GetSkillNameByTRIdx("SelfType", i);
-        skillVal = GetSummonSkillFromName(_chr, skillName); 
+        skillVal = GetSummonSkillFromName(_chr, skillName);
 		GameInterface.(_tabName).(row).(col).fontidx = 1;
 		GameInterface.(_tabName).(row).(col).scale = 0.85;
 		GameInterface.(_tabName).(row).(col).textoffset = "-9,-4";
@@ -407,7 +407,7 @@ void SetSPECIALMiniTable(string _tabName, ref _chr)
 	       }
 		}
 	}
-	
+
 	row = "tr5";
 	for (i=1; i<=7; i++)
 	{
@@ -484,7 +484,7 @@ void SetCrewExpTable(ref _chr, string _tabName, string _bar1, string _bar2, stri
 	{
 		GameInterface.(_tabName).tr1.td3.str = "";
 	}
-	
+
 	GameInterface.(_tabName).tr2.UserData.ID = "Cannoners";
 	GameInterface.(_tabName).tr2.td1.icon.group = "ICONS_SPEC";
     GameInterface.(_tabName).tr2.td1.icon.image = "Cannons skill icon";
@@ -497,7 +497,7 @@ void SetCrewExpTable(ref _chr, string _tabName, string _bar1, string _bar2, stri
 	{
 		GameInterface.(_tabName).tr2.td3.str = "";
 	}
-	
+
     GameInterface.(_tabName).tr3.UserData.ID = "Soldiers";
 	GameInterface.(_tabName).tr3.td1.icon.group = "ICONS_SPEC";
     GameInterface.(_tabName).tr3.td1.icon.image = "grappling skill icon";
@@ -512,7 +512,7 @@ void SetCrewExpTable(ref _chr, string _tabName, string _bar1, string _bar2, stri
 	}
 	// прорисовка
 	Table_UpdateWindow(_tabName);
-	
+
 	///  прогресбары
 	GameInterface.StatusLine.(_bar1).Max   = 100;
     GameInterface.StatusLine.(_bar1).Min   = 1;
@@ -525,7 +525,7 @@ void SetCrewExpTable(ref _chr, string _tabName, string _bar1, string _bar2, stri
     	GameInterface.StatusLine.(_bar1).Value = 1;
     }
     SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE, _bar1,0);
-    
+
     GameInterface.StatusLine.(_bar2).Max   = 100;
     GameInterface.StatusLine.(_bar2).Min   = 1;
     if (GetCrewQuantity(_chr) > 0)
@@ -537,7 +537,7 @@ void SetCrewExpTable(ref _chr, string _tabName, string _bar1, string _bar2, stri
     	GameInterface.StatusLine.(_bar2).Value = 1;
     }
     SendMessage(&GameInterface,"lsl",MSG_INTERFACE_MSG_TO_NODE, _bar2,0);
-    
+
     GameInterface.StatusLine.(_bar3).Max   = 100;
     GameInterface.StatusLine.(_bar3).Min   = 1;
     if (GetCrewQuantity(_chr) > 0)
@@ -558,7 +558,7 @@ void SetShipOTHERTable(string _tabName, ref _chr)
 
     int iShip = sti(_chr.ship.type);
 	ref refBaseShip = GetRealShip(iShip);
-		
+
     GameInterface.(_tabName).select = 0;
 	GameInterface.(_tabName).hr.td1.str = "";
 	for (i=1; i<=9; i++)
@@ -617,25 +617,25 @@ void SetShipOTHERTable(string _tabName, ref _chr)
     GameInterface.(_tabName).tr5.td1.icon.image = "AgainstWind";
 	GameInterface.(_tabName).tr5.td2.str = XI_ConvertString("AgainstWind");
 	GameInterface.(_tabName).tr5.td3.str = FloatToString(stf(refBaseShip.WindAgainstSpeed),2);
-	
+
 	GameInterface.(_tabName).tr6.UserData.ID = "Capacity";
 	GameInterface.(_tabName).tr6.td1.icon.group = "ICONS_CHAR";
     GameInterface.(_tabName).tr6.td1.icon.image = "Capacity";
 	GameInterface.(_tabName).tr6.td2.str = XI_ConvertString("Capacity");
 	GameInterface.(_tabName).tr6.td3.str = GetCargoLoad(_chr) + " / " + GetCargoMaxSpace(_chr);
-	
+
 	GameInterface.(_tabName).tr7.UserData.ID = "Crew";
 	GameInterface.(_tabName).tr7.td1.icon.group = "ICONS_CHAR";
     GameInterface.(_tabName).tr7.td1.icon.image = "Crew";
 	GameInterface.(_tabName).tr7.td2.str = XI_ConvertString("Crew");
 	GameInterface.(_tabName).tr7.td3.str = GetCrewQuantity(_chr) + " : "+ sti(refBaseShip.MinCrew) +" / " + sti(refBaseShip.OptCrew);
-	
+
 	GameInterface.(_tabName).tr8.UserData.ID = "sCannons";
 	GameInterface.(_tabName).tr8.td1.icon.group = "ICONS_CHAR";
     GameInterface.(_tabName).tr8.td1.icon.image = "Caliber";
 	GameInterface.(_tabName).tr8.td2.str = XI_ConvertString("sCannons"); //XI_ConvertString("Caliber");
 	GameInterface.(_tabName).tr8.td3.str = XI_ConvertString("caliber" + refBaseShip.MaxCaliber) + " / " + sti(refBaseShip.CannonsQuantity);
-	
+
 	GameInterface.(_tabName).tr9.UserData.ID = "CannonType";
 	GameInterface.(_tabName).tr9.td1.icon.group = "ICONS_CHAR";
     GameInterface.(_tabName).tr9.td1.icon.image = "Cannons";
@@ -656,7 +656,7 @@ void SetFoodShipInfo(ref chr, string _textName)
 {
 	int iColor, iFood;
 	string sText;
-	
+
 	SetFormatedText(_textName, "");
 	if (sti(chr.ship.type) != SHIP_NOTUSED)
 	{
@@ -676,6 +676,6 @@ void SetFoodShipInfo(ref chr, string _textName)
 		{
 			iColor = argb(255,255,192,192);
 		}
-		SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE, _textName, 8,-1,iColor);	
+		SendMessage(&GameInterface,"lslll",MSG_INTERFACE_MSG_TO_NODE, _textName, 8,-1,iColor);
 	}
 }

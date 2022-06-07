@@ -18,12 +18,12 @@ void RemoveColonyMoney(string sColony)
 void CreateColonyCommanders()
 {
 	int iChar;
-	
+
 	string sColony;
 
 	int i;
 	float x, y, z;  // boal
-	
+
 	for (i=0; i<MAX_COLONIES; i++)
 	{
 		if (colonies[i].nation == "none") continue; // необитайки
@@ -78,7 +78,7 @@ void CreateColonyCommanders()
   		characters[iChar].Fort.Cannons.Charge.Type = GOOD_BOMBS;
 
         SetCrewQuantityFull(&characters[iChar]);
-        
+
 		characters[iChar].Fort.Cannons.Type.1 = CANNON_TYPE_CANNON_LBS42;
 		characters[iChar].Fort.Cannons.Type.2 = -1;
 		characters[iChar].Fort.Cannons.Type.3 = -1;
@@ -211,7 +211,7 @@ bool PrepareTownBattle()
 	if (rel > 0.5)  rel = 0.5 + rel / 5.0;
 	mcrew = makeint(mcrew * (rel * 0.3 + 1.0));
     // учет морали <--
-    
+
     // опыт солдат
     ///  to_do 29.07.06 пока не ясно как выделить долю и прикрутить опыт со всех коарблей, когдя это выжевшие после форта. rel = (GetCrewQuantity(Pchar) * GetCrewExp(Pchar, "Soldiers") / GetCrewExpRate()) / stf(Pchar.GenQuestFort.PlayerCrew_Start);
     // получается, что опыт солдат только для моря, на суше все по-старому.
@@ -437,7 +437,7 @@ ref SetFantomOurAttackForts(string group, string locator)
 void TWN_FreeCaptureForts() // уберем солдат, откроем входы (на всяк случай) при выходе на карту
 {
 	ref sld, Builder;
-	
+
 	AfterTownBattle();
     // вернем людей досрочно
     sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
@@ -454,7 +454,7 @@ void TWN_Capture_Forts()
     ref    sld, Builder;
     aref   aData;
     string sCap, sGroup;
-    
+
     sGroup = "NoGroupFind"; // чтоб не нашли в Group_FindGroup
     makearef(aData, NullCharacter.Siege);
     if (CheckAttribute(aData, "nation"))
@@ -462,7 +462,7 @@ void TWN_Capture_Forts()
         sCap = NationShortName(sti(aData.nation))+"SiegeCap_";
         sGroup = "Sea_"+sCap+"1";
     }
-    
+
 	if (PrepareTownBattle())
     {
         sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
@@ -484,10 +484,10 @@ void TWN_Capture_Forts()
 
         Builder = characterFromID(sld.City + "_Mayor");
 
-        if (!CheckQuestAttribute("Union_with_Escadra", "Yes") || 
-			!CheckAttribute(aData, "Colony") || 
-			!CheckAttribute(aData, "island") || 
-			Builder.City != aData.Colony) 
+        if (!CheckQuestAttribute("Union_with_Escadra", "Yes") ||
+			!CheckAttribute(aData, "Colony") ||
+			!CheckAttribute(aData, "island") ||
+			Builder.City != aData.Colony)
 	    { // иначе за место мэра будет сам ГЛАВА эскадры
             LAi_LoginInCaptureTown(Builder, true);
 			//homo
@@ -509,7 +509,7 @@ void TWN_Capture_Forts()
 		    LAi_SetCurHPMax(Builder); // если он умер
 		    LAi_SetImmortal(Builder, true);
 		    Builder.dialog.currentnode = "Talk_Capture_City";
-		    
+
         	string sQuest = "LeaveTown";
             pchar.quest.(sQuest).win_condition.l1 = "location";
             pchar.quest.(sQuest).win_condition.l1.location = aData.island;
@@ -527,7 +527,7 @@ void TWN_FightInTown()
     string sTemp, snCity, sModel;
     aref aData;  //  homo
     makearef(aData, NullCharacter.Siege);   // homo
-    
+
 	sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
     Log_TestInfo("Cur boarding_player_crew: " + Pchar.GenQuestFort.PlayerCrew);
     Log_TestInfo("Cur TownCrew: " + Pchar.GenQuestFort.TownCrew);
@@ -536,7 +536,7 @@ void TWN_FightInTown()
     {
 		// вернем живых на корабль -->
 		SetCrewBackAfterBattle();
-        
+
 		if (CheckQuestAttribute("Union_with_Escadra", "Yes") && CheckAttribute(aData, "Colony") && snCity == aData.Colony) //fix homo
         {
             chrDisableReloadToLocation = true;
@@ -692,7 +692,7 @@ void TWN_FightInTown()
 			if (pchar.questTemp.Ascold != "Ascold_ImMummy")
 			{
 				for (i = 0; i < MAX_TOWN_MUSHKETER; i++)
-				{				
+				{
 					if (sti(Pchar.GenQuestFort.TownCrew) < 1) break;
 					if(natEsc == PIRATE)
 					{
@@ -701,14 +701,14 @@ void TWN_FightInTown()
 					else
 					{
 						sModel = NationShortName(natEsc) + "_mush_" + i;
-					}				
+					}
 					sld = GetCharacter(NPC_GenerateCharacter("GenChar_", sModel, "man", "mushketer", 5, natEsc, 0, false));
 					sld.id = "GenChar_" + sld.index;
 					LAi_NoRebirthEnable(sld); //не показывать убитых при входе в локацию
 					LAi_LoginInCaptureTown(sld, true); // для записи игры
 					SetMushketerParamFortEnemy(sld);
 					LAi_SetWarriorType(sld);
-					LAi_group_MoveCharacter(sld, "TOWN_BATTLE_SOLDIERS");			    
+					LAi_group_MoveCharacter(sld, "TOWN_BATTLE_SOLDIERS");
 					ChangeCharacterAddressGroup(sld, loadedLocation.id, "rld", sTemp);
 					Pchar.GenQuestFort.TownCrew = sti(Pchar.GenQuestFort.TownCrew) - 1;
 				}
@@ -729,7 +729,7 @@ void TWN_FightInTown()
 				{
 					//наши мушкетеры
 					for (i = 0; i < MAX_TOWN_MUSHKETER; i++)
-					{				
+					{
 						if (sti(Pchar.GenQuestFort.PlayerCrew) < 1) break;
 						if(sti(pchar.nation) == PIRATE)
 						{
@@ -738,7 +738,7 @@ void TWN_FightInTown()
 						else
 						{
 							sModel = NationShortName(sti(pchar.nation)) + "_mush_" + i;
-						}				
+						}
 						sld = GetCharacter(NPC_GenerateCharacter("GenChar_", sModel, "man", "mushketer", 5, sti(pchar.nation), 0, false));
 						sld.id = "GenChar_" + sld.index;
 						LAi_NoRebirthEnable(sld); //не показывать убитых при входе в локацию
@@ -784,7 +784,7 @@ void TWN_FightInTown_OpenNext()
     float fTemp;
     aref aData;  //  homo
     makearef(aData, NullCharacter.Siege);   // homo
-    
+
 	sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
 	snCity = sld.City;
     if (CheckAttribute(pchar, "quest.Enemy_" + sld.City))
@@ -838,7 +838,7 @@ void TWN_Residence_Captured_Any()
     int j, i, natEsc;
     string sTemp;
     float fTemp;
-    
+
 	Lai_SetPlayerType(pchar);
     DoQuestCheckDelay("CapturedToOurCity", 1.5);
 
@@ -872,7 +872,7 @@ void TWN_Residence_Captured_Any_02()
     int j, i, natEsc;
     string sTemp;
     float fTemp;
-    
+
 	sTemp = "reload1"; //LAi_FindRandomLocator("reload");
 	LAi_ActorRunToLocation(characterFromID("OurSailorForArest"), "reload", sTemp, "none", "", "", "", 7.0);
 
@@ -895,7 +895,7 @@ void TWN_Back_Mayor_Type()
     int j, i, natEsc;
     string sTemp;
     float fTemp;
-    
+
 	sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
     Builder = characterFromID(sld.City + "_Mayor");
     chrDisableReloadToLocation = false;
@@ -909,7 +909,7 @@ void TWN_Back_Mayor_Type()
 void TWN_ExitForPay() // мэр дает откуп - табличка прибыли
 {
     ref sld, Builder;
-    
+
     sld = GetCharacter(sti(Pchar.GenQuestFort.fortCharacterIdx));
     Builder = characterFromID(sld.City + "_Mayor");
     LAi_SetImmortal(Builder, false);
@@ -959,10 +959,10 @@ void SetCaptureTownByNation(string sColony, int iNation)
     // табличка
     pchar.GenQuest.CapturedCity  = sColony;
 	pchar.GenQuest.CaptureNation = iNation;
-	
+
     string sGroup;
 	sGroup = GetNationNameByType(iNation) + "_CITIZENS";
-	
+
     for (j=0; j< MAX_CHARACTERS; j++)
     {
         rChar = GetCharacter(j);
@@ -1052,7 +1052,7 @@ void SetCaptureTownByHero(string sColony)
     // табличка
     pchar.GenQuest.CapturedCity  = sColony;
 	pchar.GenQuest.CaptureNation = iNation;
-	
+
     string sGroup;
 	sGroup = LAI_GROUP_PLAYER_OWN;
 
@@ -1130,7 +1130,7 @@ void SetTownMayor(ref Ch, int natGover)
     {
  		// eddy, не сбивать имена нужных мэров
 		if (!CheckAttribute(Ch, "name"))
-		{       
+		{
 			SetRandomNameToCharacter(Ch);
 		}
         Ch.model = rmodel;
@@ -1200,7 +1200,7 @@ void Move_Govenour_Nation(int iNation)
 
 			// добавить проверку на пиратов, у них нет фортов, нафиг им коммандер?
 			if (CheckAttribute(&colonies[i], "HasNoFort"))  continue;
-			
+
 			// проверим базовых мэров городов
 			iChar = GetCharacterIndex(colonies[i].id + "_Mayor");
 			if (iChar != -1)
@@ -1240,11 +1240,11 @@ void SetGovenourToCity(int iNation, string sCity)
 {
     ref     rChar;
     int     iChar, i2;
-    
+
     rChar = CharacterFromID(NationShortName(iNation) + "_guber");  // губер
-    
+
     iChar = GetCharacterIndex(sCity + "_Mayor");  // куда
-	
+
 	if (CheckAttribute(rChar, "CityToStay")) // где был
 	{
         i2 = GetCharacterIndex(rChar.CityToStay + "_Mayor");  // старого мэра на место
@@ -1260,7 +1260,7 @@ void SetGovenourToCity(int iNation, string sCity)
 	rChar.location.group = "sit";
 	rChar.location.locator = "sit1";
 	LAi_SetHuberTypeNoGroup(rChar);
-	
+
 	characters[iChar].location.group = "goto";
 	characters[iChar].location.locator = "governor1";
 	LAi_SetHuberStayTypeNoGroup(&characters[iChar]);
@@ -1313,7 +1313,7 @@ void TWN_Siege_Any(string city)
     string sTemp, sGroup, sCapId, sAttr;
 
     city = PChar.Quest.(city).CityId; // реальный город
-    
+
     if (!isCityHasFort(city)) // сухопутный город
     {
         TWN_SiegeLand_Any(city);
@@ -1357,21 +1357,21 @@ void TWN_Siege_Any(string city)
 	        sAttr = "l" + i;
 			Pchar.quest.(sTemp).win_condition.(sAttr) = "NPC_Death";
 	        Pchar.quest.(sTemp).win_condition.(sAttr).character = sCapId + i;
-	        
+
 	        SetRandGeraldSail(rCap, sti(rCap.Nation));
 	    }
         Pchar.quest.(sTemp).win_condition = sTemp;
 	    PChar.Quest.(sTemp).CityId   = city;
 		PChar.Quest.(sTemp).function = "TWN_End_Siege_Any";
-		
+
 	    Group_SetGroupCommander(sGroup, sCapId + "1");
 	    Group_SetAddress(sGroup, sld.Default.Island, "Quest_ships", "reload_fort1_siege");
 	    Group_SetTaskAttack(sGroup, PLAYER_GROUP);
-	    
+
 	    ClearIslandShips(city); // убрать корабли в порту
 	    makeref(rCap, Colonies[FindColony(city)]);
     	rCap.DontSetShipInPort = true;
-    	
+
     	if (!bQuestCheckProcessFreeze) // можно показать
 		{
 	        Pchar.GenQuestFort.ColonySiegeId   = city;
@@ -1434,7 +1434,7 @@ void TWN_End_Siege_Any(string city)
 	AddQuestUserData("Gen_CityCapture", "sCity", GetCityName(city));
 	AddQuestUserData("Gen_CityCapture", "sNation", XI_ConvertString(sTemp + "Gen"));
 	//  СЖ <--
-	
+
 	sTemp   = "Enemy_" + city;
     Pchar.quest.(sTemp).over = "yes";
 
@@ -1442,7 +1442,7 @@ void TWN_End_Siege_Any(string city)
     SetTimerCondition(sTemp, 0, 0, 25 + rand(70), false);
     PChar.Quest.(sTemp).CityId   = city;
 	PChar.Quest.(sTemp).function = "TWN_Siege_Any";
-			
+
     Log_Info("Осада снята!");
 }
 ///////////////////////////////
@@ -1462,7 +1462,7 @@ void TWN_SiegeLand_Any(string city)
     SetTimerCondition(sTemp, 0, 0, i, false);
     PChar.Quest.(sTemp).CityId   = city;
 	PChar.Quest.(sTemp).function = "TWN_Enemy_Any";
-	
+
 	//  СЖ -->
 	sTemp =  GetNationNameByType(sti(sld.Default.nation));
 	ReOpenQuestHeader("Gen_CityCapture");
@@ -1471,17 +1471,17 @@ void TWN_SiegeLand_Any(string city)
 	AddQuestUserData("Gen_CityCapture", "sNation", XI_ConvertString(sTemp + "Gen"));
 	AddQuestUserData("Gen_CityCapture", "sDay", FindRussianDaysString(i));
 	//  СЖ <--
-	
+
 	if (!bQuestCheckProcessFreeze) // можно показать
 	{
         Pchar.GenQuestFort.ColonySiegeId   = city;
         Pchar.GenQuestFort.ColonySiegeNation = sti(sld.Default.nation);
         Pchar.GenQuestFort.ColonySiegeTime = i;
-        
+
         PChar.GenQuest.CallFunctionParam = "LaunchColonyInfoScreen";
 		DoQuestCheckDelay("CallFunctionParam", 1.5);
 	}
-			
+
     sTemp = "LandBattleStart_For_" + city;
 	Pchar.quest.(sTemp).win_condition.l1          = "location";
     Pchar.quest.(sTemp).win_condition.l1.location = sld.Default.BoardLocation;
@@ -1497,7 +1497,7 @@ void  TWN_LandBattleStart_For_Any(string city)
     string sTemp;
 
     city = PChar.Quest.(city).CityId; // реальный город
-    
+
     sld = GetFortCommander(city);
 
 	Pchar.GenQuestFort.fortCharacterIdx = sld.index;
@@ -1555,7 +1555,7 @@ void TWN_RealeseForMoney(string city, bool _agent)
 {
     string  sTemp;
     ref     sld, rColony;
-    
+
 	sTemp = "Attack_Fort_" + city;
 	Pchar.quest.(sTemp).over               = "yes";
 	sTemp = "End_Siege_" + city;
@@ -1565,11 +1565,11 @@ void TWN_RealeseForMoney(string city, bool _agent)
     sTemp   = "Enemy_" + city;
     Pchar.quest.(sTemp).over = "yes";
     // если корабли были, то они простоят еще до конца срока и растают
-    
+
 	makeref(rColony, Colonies[FindColony(city)]);
 	rColony.isBought = true;
 	DeleteAttribute(rColony, "DontSetShipInPort"); //возвращаем жизнь
-	
+
 	if (_agent)
 	{
 		sld = GetFortCommander(city);
@@ -1602,7 +1602,7 @@ bool isHeroOwnCity(bool _isBoughtCare) // _isBoughtCare - true, то прове�
 int TWN_CityCost(string city)
 {
     ref     rColony;
-    
+
 	makeref(rColony, Colonies[FindColony(city)]);
 	int money =  1000;
 	if (CheckAttribute(rColony, "FortValue"))

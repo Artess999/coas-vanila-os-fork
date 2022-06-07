@@ -2,11 +2,11 @@
 int CreateSantaCatalinaCharacters(int n)
 {
 	ref ch;
-	
+
 	///////////////////////////////////////////////////////////////////////////////
 	// ОСНОВНЫЕ ПЕРСОНАЖИ
 	///////////////////////////////////////////////////////////////////////////////
-	
+
 	makeref(ch,Characters[n]);			//Губернатор
 	ch.id = "SantaCatalina_Mayor";
 	ch.model	= "huber_spa";
@@ -175,6 +175,6 @@ int CreateSantaCatalinaCharacters(int n)
 	LAi_SetHP(ch, 80.0, 80.0);
 	ch.greeting = "Gr_Smuggler Agent";
 	n = n + 1;
-	
+
 	return n;
 }

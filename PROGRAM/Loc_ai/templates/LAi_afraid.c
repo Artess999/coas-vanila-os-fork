@@ -140,13 +140,13 @@ void LAi_tmpl_afraid_CharacterUpdate(aref chr, float dltTime)
 				if(CheckAttribute(tmpl, "panic"))
 				{
 					if(dist < stf(tmpl.panic))
-					{						
+					{
 						//Слижком близко - паническое убегание
 						tmpl.state = "escape";
 						LAi_tmpl_afraid_updatetemplate(chr);
 					}
 				}
-			}			
+			}
 			break;
 		case "afraid":
 			if(dist > 3.5)
@@ -178,7 +178,7 @@ void LAi_tmpl_afraid_CharacterUpdate(aref chr, float dltTime)
 			//Пора начать стоять и бояться
 			if(tmpl.state != "afraid")
 			{
-				tmpl.state = "afraid";				
+				tmpl.state = "afraid";
 				if(!GetCharacterAy(chr, ay)) ay = 0.0;
 				tmpl.angle = ay;
 				LAi_tmpl_afraid_updatetemplate(chr);
@@ -277,7 +277,7 @@ void LAi_tmpl_afraid_FailureFight(aref chr)
 
 //Можно ли стрелять
 bool LAi_tmpl_afraid_IsFire(aref chr)
-{	
+{
 	return false;
 }
 

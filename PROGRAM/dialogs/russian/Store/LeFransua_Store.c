@@ -18,13 +18,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 		break;
 		//пиратка, квест №3, поиски Лоу
 		case "PL_Q3_1":
-			dialog.text = NPCStringReactionRepeat("У меня?! Вы меня с кем-то путаете, я торговец, но кораблями... Кораблями не торгую! Вам, молодой человек, на верфь нужно обратиться, к корабелам. Да, да к ним, а ко мне за всем остальным!", 
-				"Вы уже спрашивали. Нет, не приобретал.", 
+			dialog.text = NPCStringReactionRepeat("У меня?! Вы меня с кем-то путаете, я торговец, но кораблями... Кораблями не торгую! Вам, молодой человек, на верфь нужно обратиться, к корабелам. Да, да к ним, а ко мне за всем остальным!",
+				"Вы уже спрашивали. Нет, не приобретал.",
 				"Нет, молодой человек, нет...",
                 "Ох, ну и зануда же вы!!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("Да, но в вашем городишке нет верфи!", 
+			link.l1 = HeroStringReactionRepeat("Да, но в вашем городишке нет верфи!",
 				"Понятно...",
-                "Ага, ясно...", 
+                "Ага, ясно...",
 				"Хм, уже ухожу...", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("PL_Q3_2", "", "", "", npchar, Dialog.CurrentNode);
 		break;

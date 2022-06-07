@@ -10,7 +10,7 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	float locx, locy, locz;
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -104,7 +104,7 @@ void ProcessDialogEvent()
     			link.l1.go = "Step_H8_12";
     			link.l2 = "Все ищу, дерусь, топлю испанцев... Но книгу не нашел пока... Однако продолжу поиски...";
     			link.l2.go = "exit";
-			}			
+			}
 			if (npchar.id == "Chumakeiro" && pchar.questTemp.State == "SeekBible_IHaveMap")
             {
                 dialog.text = "С нетерпением ожидаю вашего доклада о поисках.";
@@ -314,7 +314,7 @@ void ProcessDialogEvent()
             QuestAboardCabinDialogSurrender();
             DialogExit();
 		break;
-		
+
 //********************************* Поиски Библии. Квест №8 **********************************
         case "Step_H8_1":
 			dialog.text = "О-о-о, это очень здорово, что именно вы будете помогать мне в поисках. Мне уже довелось видеть вас в деле.";

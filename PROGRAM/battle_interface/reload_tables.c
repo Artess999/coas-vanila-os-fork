@@ -14,11 +14,11 @@ void CreateReloadPaths(string groupID)
 	// запишем все переходы в локациях используемой группы
 	for(i=0; i<MAX_LOCATIONS; i++)
 	{
-		if( !CheckAttribute(&Locations[i],"fastreload") ) 
+		if( !CheckAttribute(&Locations[i],"fastreload") )
 		{
 			continue;
 		}
-		if( Locations[i].fastreload != groupID ) 
+		if( Locations[i].fastreload != groupID )
 		{
 			continue;
 		}
@@ -30,7 +30,7 @@ void CreateReloadPaths(string groupID)
 		{
 			curReload = GetAttributeN(reloadList,j);
 			goLocName = curReload.go;
-			if(outLocName == goLocName) 
+			if(outLocName == goLocName)
 			{
 				continue;
 			}
@@ -58,13 +58,13 @@ void CreateReloadPaths(string groupID)
 			//for(j=0; j<i; j++)
 			for(j=0; j<iMax; j++)
 			{
-				if(j==i) 
+				if(j==i)
 				{
 					continue;
 				}
 				goLoc = GetAttributeN(tbl,j);
 				goLocName = GetAttributeName(goLoc);
-				if( CheckAttribute(outLoc,goLocName) ) 
+				if( CheckAttribute(outLoc,goLocName) )
 				{
 					continue;
 				}
@@ -91,7 +91,7 @@ void CreateReloadPaths(string groupID)
 // возвращает true, если поиск пути завершен
 bool GetNextLocationForPath(string outLocName, string goLocName, ref nextLocName, ref reloadName)
 {
-	aref tbl; 
+	aref tbl;
 	makearef(tbl,objFastReloadTable.Paths.table);
 
 	string finalLocation = goLocName;
@@ -116,7 +116,7 @@ bool GetNextLocationForPath(string outLocName, string goLocName, ref nextLocName
 		}
 
 		// Обратный путь так же не прописан
-		if( !CheckAttribute(tbl,goLocName+"."+outLocName) ) 
+		if( !CheckAttribute(tbl,goLocName+"."+outLocName) )
 		{
 			break;
 		}
@@ -129,7 +129,7 @@ bool GetNextLocationForPath(string outLocName, string goLocName, ref nextLocName
 			break;
 		}
 
-		if( goLocName == tbl.(goLocName).(outLocName) ) 
+		if( goLocName == tbl.(goLocName).(outLocName) )
 		{
 			break;
 		}
@@ -137,7 +137,7 @@ bool GetNextLocationForPath(string outLocName, string goLocName, ref nextLocName
 		goLocName = tbl.(goLocName).(outLocName)
 	}
 
-	if(nextLocName=="" || nextLocName==finalLocation) 
+	if(nextLocName=="" || nextLocName==finalLocation)
 	{
 		return true;
 	}
@@ -216,7 +216,7 @@ void PlayerFastTravel(int startLocIdx, string finishLocName, string locatorname)
 	string checkLocation, nextLocName, reloadName;
 
 	checkLocation = Locations[startLocIdx].id;
-	
+
 	if(checkLocation==finishLocName)
 	{
 		Log_SetStringToLog(XI_ConvertString("You are already there"));
@@ -231,14 +231,14 @@ void PlayerFastTravel(int startLocIdx, string finishLocName, string locatorname)
 		}
 		if(GetNextLocationForPath(checkLocation, finishLocName, &nextLocName, &reloadName) )
 		{
-			if(nextLocName=="") 
+			if(nextLocName=="")
 			{
 				break;
 			}
 			checkLocation = nextLocName;
 			break;
 		}
-		if(checkLocation == nextLocName) 
+		if(checkLocation == nextLocName)
 		{
 			break;
 		}
@@ -258,12 +258,12 @@ void PlayerFastTravel(int startLocIdx, string finishLocName, string locatorname)
 		if( locatorname!="" ) {
 			reloadName = locatorname;
 		}
-		if(reloadName=="") 
+		if(reloadName=="")
 		{
 			Log_SetStringToLog(XI_ConvertString("There is no way there now"));
 			return;
-		} 
-		else 
+		}
+		else
 		{
 			DoReloadCharacterToLocation(checkLocation,"reload",reloadName);
 		}
@@ -586,11 +586,11 @@ bool CheckFastJump(string sFromLocation, string sToLocation)
 	while(bNoBreak && curLocName!=sToLocation)
 	{
 		bNoBreak = !GetNextLocationForPath(curLocName, sToLocation, &nextLocName, &reloadName);
-		if(nextLocName=="" || reloadName=="") 
+		if(nextLocName=="" || reloadName=="")
 		{
 			return false;
 		}
-		if( !IsEnableLocToLocReload(curLocName,nextLocName,reloadName) ) 
+		if( !IsEnableLocToLocReload(curLocName,nextLocName,reloadName) )
 		{
 			return false;
 		}

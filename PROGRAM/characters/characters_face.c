@@ -12,20 +12,20 @@ void SetRandomFaceToCharacter(ref rCharacter)
 	{
 		switch (sti(rCharacter.nation))
 		{
-			case ENGLAND:	
-				sFaceID = GetRandSubString(sEnManFaces); 
+			case ENGLAND:
+				sFaceID = GetRandSubString(sEnManFaces);
 			break;
-			case FRANCE:	
-				sFaceID = GetRandSubString(sFrManFaces); 
+			case FRANCE:
+				sFaceID = GetRandSubString(sFrManFaces);
 			break;
-			case SPAIN:		
-				sFaceID = GetRandSubString(sSpManFaces); 
+			case SPAIN:
+				sFaceID = GetRandSubString(sSpManFaces);
 				break;
-			case PIRATE:	
-				sFaceID = GetRandSubString(sPiManFaces); 
+			case PIRATE:
+				sFaceID = GetRandSubString(sPiManFaces);
 				break;
-			case HOLLAND:	
-				sFaceID = GetRandSubString(sHoManFaces); 
+			case HOLLAND:
+				sFaceID = GetRandSubString(sHoManFaces);
 				break;
 		}
 	}
@@ -33,7 +33,7 @@ void SetRandomFaceToCharacter(ref rCharacter)
 	{
 		sFaceID = "16";
 	}
-	
+
 	rCharacter.FaceId = sti(sFaceID);
 }
 
@@ -268,7 +268,7 @@ void FaceMaker(aref rCharacter)
 		case "Pitt":			rCharacter.FaceId = 230; break;
 		case "skeletcap":		rCharacter.FaceId = 231; break;
 		case "girl_9":			rCharacter.FaceId = 232; break;
-	    case "girl_10":			rCharacter.FaceId = 233; break;	
+	    case "girl_10":			rCharacter.FaceId = 233; break;
 	    case "Chard3a":			rCharacter.FaceId = 234; break;
 		case "Danielle":		rCharacter.FaceId = 235; break;
 	}
@@ -295,7 +295,7 @@ void SetCaptanModelByEncType(ref Chref, string sFantomType)
     string ModelPirate = "Albermal"; // значит баг
 
 	if (sti(Chref.nation) == PIRATE) sFantomType = "pirate"; // иначе баг
-	
+
     switch (sFantomType)
 	{
 		case "trade":
@@ -315,9 +315,9 @@ void SetCaptanModelByEncType(ref Chref, string sFantomType)
 void SetModelPirate(ref ChrefPirate)
 {
     string ModelPirate;
-    
+
     ModelPirate = "Pirate_" + (rand(9) + 1);
-    
+
     ChrefPirate.model = ModelPirate;
     FaceMaker(ChrefPirate);
 }

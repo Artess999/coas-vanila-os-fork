@@ -4,7 +4,7 @@
 	Используемые шаблоны:
 		stay
 		talk
-		fight		
+		fight
 		goto
 */
 
@@ -56,9 +56,9 @@ void LAi_type_guardian_Init(aref chr)
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, BLADE_ITEM_TYPE));
         }
         while (FindCharacterItemByGroup(chr, GUN_ITEM_TYPE) != "")
-        {             
+        {
             TakeItemFromCharacter(chr, FindCharacterItemByGroup(chr, GUN_ITEM_TYPE));
-        }		
+        }
 		GiveItem2Character(chr, "unarmed");
 		EquipCharacterbyItem(chr, "unarmed");
 		string sMush = "mushket";
@@ -71,7 +71,7 @@ void LAi_type_guardian_Init(aref chr)
 			chr.MusketerDistance = 5.0 + frand(5.0);
 	}
 	else
-	{	
+	{
 		LAi_SetDefaultStayAnimation(chr);
 	}
 	SendMessage(&chr, "lsl", MSG_CHARACTER_EX_MSG, "SetFightWOWeapon", false);
@@ -89,7 +89,7 @@ void LAi_type_guardian_CharacterUpdate(aref chr, float dltTime)
 	makearef(type, chr.chr_ai.type);
 	//Режим ожидания
 	if(type.wait != "") return;
-	
+
     // boal  лечимся -->
 	float fCheck = stf(chr.chr_ai.type.bottle) - dltTime;
 	if(fCheck < 0)
@@ -97,7 +97,7 @@ void LAi_type_guardian_CharacterUpdate(aref chr, float dltTime)
 		chr.chr_ai.type.bottle = 5.0;
 		if (!LAi_IsBottleWork(chr) && MOD_SKILL_ENEMY_RATE > 2)
 		{
-			string btl = "";		
+			string btl = "";
 			float dhlt;
 			if(LAi_GetCharacterRelHP(chr) < 0.75)
 			{
@@ -110,7 +110,7 @@ void LAi_type_guardian_CharacterUpdate(aref chr, float dltTime)
 	}
 	else chr.chr_ai.type.bottle = fCheck;
 	// boal  лечимся <--
-	
+
 	//Нормальная работа
 	string tmpl = chr.chr_ai.tmpl;
 	if(tmpl == LAI_TMPL_DIALOG) return;
@@ -174,7 +174,7 @@ void LAi_type_guardian_CharacterUpdate(aref chr, float dltTime)
 				if (CheckAttribute(chr, "protector") && !LAi_grp_alarmactive && sti(chr.nation) != PIRATE)
 				{
 					time = stf(chr.chr_ai.type.dlgwas) - dltTime;
-					chr.chr_ai.type.dlgwas = time;					
+					chr.chr_ai.type.dlgwas = time;
 					//Анализируем окружающих персонажей
 					int num = FindNearCharacters(chr, 4.0, -1.0, 180.0, 0.1, true, true);
 					if(num > 0)
@@ -190,7 +190,7 @@ void LAi_type_guardian_CharacterUpdate(aref chr, float dltTime)
 						{
 							//Нашли главного персонажа
 							if(stf(chr.chr_ai.type.dlgwas) <= 0.0)
-							{								
+							{
 								LAi_type_guardian_TestControl(chr);
 								return;
 							}
@@ -199,7 +199,7 @@ void LAi_type_guardian_CharacterUpdate(aref chr, float dltTime)
 						{
 							trg = sti(chrFindNearCharacters[0].index);
 						}
-					}					
+					}
 				}
 				//Проверяем дистанцию до точки охраны
 				dist = -1.0;
@@ -312,12 +312,12 @@ void LAi_type_guardian_Attacked(aref chr, aref by)
 		LAi_tmpl_dialog_StopNPC(chr);
 	}
 	//если наносящий удар уже таргет, нефиг крутить код и переназначать цель
-	if (LAi_tmpl_fight_GetTarget(chr) == sti(by.index)) return;	
+	if (LAi_tmpl_fight_GetTarget(chr) == sti(by.index)) return;
 	//Своих пропускаем
 	if(!LAi_group_IsEnemy(chr, by)) return;
     //boal fix ai -->
     float dist = -1.0;
-	
+
 	if(!GetCharacterDistByChr3D(chr, by, &dist)) return;
 	if(dist < 0.0) return;
 	if(dist > 20.0) return;
@@ -380,7 +380,7 @@ void LAi_type_guardian_Return_Event()
 {
 	aref chr = GetEventData();
 	if(!TestRef(chr)) return;
-	chr.chr_ai.type.wait = "";	
+	chr.chr_ai.type.wait = "";
 	chr.chr_ai.type.enemy = "";
 	LAi_tmpl_runto_InitTemplate(chr);
 	LAi_tmpl_runto_SetLocator(chr, chr.chr_ai.type.group, chr.chr_ai.type.locator, -1.0);
@@ -390,7 +390,7 @@ void LAi_type_guardian_Return_Event()
 void LAi_type_guardian_TestControl(aref chr)
 {
 	if (!CheckAttribute(chr, "protector.CheckAlways")) //флаг "опрашивать всегда" через паузу, не один раз.
-	{						
+	{
 		if (GetBaseHeroNation() == sti(chr.nation) && GetRelation2BaseNation(sti(chr.nation)) != RELATION_ENEMY && GetNationRelation2MainCharacter(sti(chr.nation)) != RELATION_ENEMY) return;
 		if (!CheckAttribute(pchar, "CheckStateOk")) pchar.CheckStateOk = true; //флаг "уже проверили на входе"
 		else return;

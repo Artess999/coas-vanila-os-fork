@@ -16,13 +16,13 @@ void ProcessCommonDialogEvent(ref NPChar, aref Link, aref NextDiag)
 			}
 		break;
 		case "PL_Q3_1":
-			dialog.text = NPCStringReactionRepeat("Он приходил ко мне, просил денег. Не дал. Очень скользкий тип, глазки так и бегают, явно намеревался дать деру. Я, смею заметить, в людях хорошо разбираюсь.", 
-				"Я уже все сказал на эту тему, ищите сами.", 
+			dialog.text = NPCStringReactionRepeat("Он приходил ко мне, просил денег. Не дал. Очень скользкий тип, глазки так и бегают, явно намеревался дать деру. Я, смею заметить, в людях хорошо разбираюсь.",
+				"Я уже все сказал на эту тему, ищите сами.",
 				"Опять?",
                 "Проваливай!", "block", 1, npchar, Dialog.CurrentNode);
-			link.l1 = HeroStringReactionRepeat("А куда...", 
+			link.l1 = HeroStringReactionRepeat("А куда...",
 				"Понятно.",
-                "Ага, извините...", 
+                "Ага, извините...",
 				"Понял, ухожу.", npchar, Dialog.CurrentNode);
 			link.l1.go = DialogGoNodeRepeat("PL_Q3_2", "", "", "", npchar, Dialog.CurrentNode);
 		break;

@@ -49,7 +49,7 @@ void NetServer_EndGame(bool bReconnect)
 	for (int i=0; i<NET_MAXCLIENTS; i++)
 	{
 		if (!sti(NSClients[i].Use)) { continue; }
-		
+
 		NetServer_UpdateGlobalPlayerStatistics(&NSClients[i]);
 		DeleteClass(&NSClients[i]);
 	}
@@ -82,16 +82,16 @@ void NetServer_OnCheckGameOverFrame()
 		bool bCurrentGameOver = false;
 		switch (sti(NetServer.GameType))
 		{
-			case NETGAME_DEATHMATCH:	
+			case NETGAME_DEATHMATCH:
 				bCurrentGameOver = NetServer_CheckGameOver_DeathMatch();
 			break;
-			case NETGAME_NAVAL:			
+			case NETGAME_NAVAL:
 				bCurrentGameOver = NetServer_CheckGameOver_Naval();
 			break;
-			case NETGAME_CONVOY:		
+			case NETGAME_CONVOY:
 				bCurrentGameOver = NetServer_CheckGameOver_Convoy();
 			break;
-			case NETGAME_FORT:			
+			case NETGAME_FORT:
 				bCurrentGameOver = NetServer_CheckGameOver_Fort();
 			break;
 		}
@@ -132,7 +132,7 @@ void NetServer_StartServerGame()
 {
 	int		iSMsg;
 	int		i;
-	int		iTeams[4];	// 
+	int		iTeams[4];	//
 	object	oTeams[4];	// team positions
 
 	for (i=0; i<4; i++) { iTeams[i] = 0; }
@@ -241,7 +241,7 @@ void NetServer_StartServerGame()
 	}
 
 	// load players
-	
+
 	// send message to all client's for load clients
 
 	// client
@@ -287,8 +287,8 @@ void NetServer_StartServerGame()
 		NMAddByte(iSMsg, sti(NSClients[i].Skills.Sailing));		// Skills: Sailing
 		NMAddByte(iSMsg, sti(NSClients[i].Skills.Defence));		// Skills: Defence
 		NMAddByte(iSMsg, sti(NSClients[i].Skills.Repair));		// Skills: Repair
-	
-		//NMAddBytes(iSMsg, 0);									// Perks: 
+
+		//NMAddBytes(iSMsg, 0);									// Perks:
 
 		float fRadius = 60.0;
 		if (sti(NetServer.GameType) == NETGAME_DEATHMATCH) { fRadius = 350 * (1.0 + stf(NetServer.StartPosition)); }
@@ -329,8 +329,8 @@ void NetServer_StartServerGame()
 		PostEvent("NetServer_ShipUpdateParameters", 1, "l", i);
 
 		iTeams[iTeam] = iTeams[iTeam] + 1;
-		
-		// 
+
+		//
 		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.x));		// pos.x
 		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.y));		// pos.y
 		NMAddFloat(iSMsg, stf(NSClients[i].Ship.Pos.z));		// pos.z

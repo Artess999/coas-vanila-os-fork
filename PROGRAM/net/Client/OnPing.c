@@ -16,7 +16,7 @@ void NetClient_OnPing(int iMsg)
 
 	switch (iSubCode)
 	{
-		case NSC_PING: 
+		case NSC_PING:
 			int iSMsg = NMCreate();
 			NMAddClientID(iSMsg, wClientID);
 			NMAddByte(iSMsg, NC_PING);
@@ -25,7 +25,7 @@ void NetClient_OnPing(int iMsg)
 			NetClient_SendMessage(iSMsg, false);
 			NMDelete(iSMsg);
 		break;
-		case NSC_PONG: 
+		case NSC_PONG:
 			NetClient_Pong(iMsg, iPingCode);
 		break;
 	}
@@ -54,7 +54,7 @@ void NetClient_Pong(int iMsg, int iPingCode)
 
 	if (iPingCode == iClientLastPingCode)
 	{
-		// calculate 
+		// calculate
 		iClientLastPingTime = (Net_GetTickCount() - iClientLastPingCodeTime) / 2;
 		if (iClientServerTime > 0)
 		{

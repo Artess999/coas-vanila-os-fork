@@ -10,7 +10,7 @@ void DeleteSeaGoodsEnvironment()
 void CreateSeaGoodsEnvironment()
 {
 	CreateEntity(&AISeaGoods, "AISeaGoods");
-	
+
 	LayerAddObject(SEA_EXECUTE, &AISeaGoods, -1);
 	LayerAddObject(SEA_REALIZE, &AISeaGoods, 65532);
 
@@ -36,13 +36,13 @@ void AISeaGoods_ShipDead()
 		ref	rGood = GetGoodByID(GetAttributeName(aGood));
 
 		if (!CheckAttribute(rGood, "Swim")) { continue; }
-		
+
 		iQuantity = iQuantity / sti(rGood.Units);
 		if (iQuantity <= 1) { continue; }
 
 		if (rand(100) > 90) { continue; }
 
-		int iSwimQuantity = 0; 
+		int iSwimQuantity = 0;
 		while (iSwimQuantity == 0) { iSwimQuantity = MakeInt(iQuantity / 4 + rand(MakeInt(iQuantity * 2 / 4))); }
 		float fTime = stf(rGood.Swim.Time);
 		string sModel = rGood.Swim.Model;
@@ -86,7 +86,7 @@ bool AISeaGoods_ShipEatGood()
 	int iQuantity = GetEventData();
 
 	ref rCharacter = GetCharacter(iCharacterIndex);
-	
+
 	if (sGood == "boat")   //homo 22/06/07 если подобрали шлюпку и ГГ
 	{
 
@@ -117,11 +117,11 @@ bool AISeaGoods_ShipEatGood()
 
     }
 
-	if (iGoodCharacterIndex == iCharacterIndex) 
+	if (iGoodCharacterIndex == iCharacterIndex)
 	{
 		return false;
 	}
-	if (LAi_IsDead(rCharacter)) 
+	if (LAi_IsDead(rCharacter))
 	{
 		return false;
 	}
@@ -162,7 +162,7 @@ bool AISeaGoods_ShipEatGood()
 		return false;
 	}
 
-	if (iQuantity > iMaxGoodAllow) 
+	if (iQuantity > iMaxGoodAllow)
 	{
 		iQuantity = iMaxGoodAllow;
 	}
@@ -179,6 +179,6 @@ bool AISeaGoods_ShipEatGood()
 	iQuantity = iQuantity * iGoodUnits;
 
 	AddCharacterGoods(rCharacter, iGood, iQuantity);
-	
+
 	return true;
 }

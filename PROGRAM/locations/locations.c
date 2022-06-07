@@ -60,7 +60,7 @@ bool SetLocatorRadius(ref loc, string grpName, string locName, float rad)
 
 bool VisibleLocatorsGroup(string group, float kRadius, float viewLabelsDist, int a, int r, int g, int b)
 {
-	
+
 	int i = FindLoadedLocation();
 	if(i < 0) return false;
 	int color = argb(a, r, g, b);
@@ -110,7 +110,7 @@ void LocationWaitNihgtEndFadeIn()
 			SendMessage(&Locations[i], "ll", MSG_LOCATION_PAUSE, false);
 		}
 		PostEvent("LocationWaitNihgtEnd", 1);
-	}	
+	}
 }
 
 //navy -->
@@ -130,7 +130,7 @@ void LocationMakeClone(string _locId)
 	rClone.id = "Clone_location";
 	rClone.type = "clone";
 	rClone.index = iClone;
-//а так не работает... :) проверка только на аттрибут ;)	
+//а так не работает... :) проверка только на аттрибут ;)
 //	rClone.habitues = false;
 	DeleteAttribute(rClone, "habitues");
 

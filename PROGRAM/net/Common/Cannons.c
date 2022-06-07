@@ -31,7 +31,7 @@ void Net_InitCannons()
 {
 	ref rCannon;
 	int n = 0;
-	
+
 	makeref(rCannon, NetCannons[n]); n++;
 	rCannon.name = "culverine";
 	rCannon.picture = "cannons2";
@@ -150,7 +150,7 @@ void Net_InitCannons()
 	rCannon.TradeOff = true;
 	rCannon.hp = 85.0;
 	Net_InitCannonsCalcSpeedV0(&rCannon, 750.0);
-	
+
 	makeref(rCannon, NetCannons[n]); n++;
 	rCannon.name = "special";
 	rCannon.picture = "cannons10";
@@ -168,7 +168,7 @@ void Net_InitCannons()
 	rCannon.hp = 90.0;
 	Net_InitCannonsCalcSpeedV0(&rCannon, 780.0);
 	NETCANNON_CANNON = n - 1;
-	
+
 	makeref(rCannon, NetCannons[n]); n++;
 	rCannon.name = "special";
 	rCannon.picture = "cannons11";
@@ -186,7 +186,7 @@ void Net_InitCannons()
 	rCannon.hp = 100.0;
 	Net_InitCannonsCalcSpeedV0(&rCannon, 800.0);
 	NETCANNON_CULVERINE = n - 1;
-	
+
 	makeref(rCannon, NetCannons[n]); n++;
 	rCannon.name = "special";
 	rCannon.picture = "cannons12";

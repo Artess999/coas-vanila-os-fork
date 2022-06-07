@@ -12,13 +12,13 @@ void ProcessDialogEvent()
 
 	int iTemp;
 	string sTemp;
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
 			dialog.text = "Здравствуйте! Так вы и есть тот герой, что сумел пробиться ко мне?";
 			link.l1 = "Да, это я и есть.";
-			link.l1.go = "FT_1";			
+			link.l1.go = "FT_1";
 			NextDiag.TempNode = "First time";
 		break;
 
@@ -57,7 +57,7 @@ void ProcessDialogEvent()
 			link.l1 = LinkRandPhrase("Хорошо.", "Ладно.", "Как скажешь...");
 			link.l1.go = "exit";
 			NextDiag.TempNode = "First Time";
-		break;		
+		break;
 		case "CitizenNotBlade":
 			if (loadedLocation.type == "town")
 			{
@@ -283,7 +283,7 @@ void ProcessDialogEvent()
 			dialog.text = "Сколько?";
 			link.l1 = "";
 			Link.l1.edit = 6;
-			link.l1.go = "OffM_GiveMoney_1";			
+			link.l1.go = "OffM_GiveMoney_1";
 		break;
 		case "OffM_GiveMoney_1":
 			iTemp = sti(dialogEditStrings[6]);
@@ -384,7 +384,7 @@ void ProcessDialogEvent()
 			AddSimpleRumourCityTip("Вы знаете, в Городе появился некий Механик. И говорят, что он старейший житель! Надо же...", "LostShipsCity", 10, 1, "LSC", "");
 			AddSimpleRumourCityTip("Вы слышали о Хенрике Ведекере? Вот так дела! Оказывается, его держали взаперти на 'Сан Габриэле' много лет.", "LostShipsCity", 10, 1, "LSC", "");
 			AddSimpleRumourCityTip("Говорят, что новый-старый житель Города, некий Хенрик Ведекер, очень способный человек.", "LostShipsCity", 10, 1, "LSC", "");
-			AddSimpleRumourCityTip("А я не верю, что этот Механик так важен для Города. Сколько жили без него, проживем и еще...", "LostShipsCity", 10, 1, "LSC", "");		
+			AddSimpleRumourCityTip("А я не верю, что этот Механик так важен для Города. Сколько жили без него, проживем и еще...", "LostShipsCity", 10, 1, "LSC", "");
 			// нулим предметы в каюте
 			ref loc;
 			int n;
@@ -409,7 +409,7 @@ void ProcessDialogEvent()
 				loc.(sTemp).items = "";
 				loc.(sTemp) = Items_MakeTime(0, 0, 1, 2003);
 				loc.(sTemp).money = 0;
-			}	
+			}
 		break;
 		//
 		case "takeArmor":
@@ -422,7 +422,7 @@ void ProcessDialogEvent()
 			else
 			{
 				link.l1 = "Мне нужно еще раз спуститься на дно. Не успел сделать там все, что хотел.";
-				link.l1.go = "DeepAgain";			
+				link.l1.go = "DeepAgain";
 				if (CheckCharacterItem(pchar, "Pinion"))
 				{
 					link.l2 = "Я нашел шестеренку, вот она!";
@@ -463,7 +463,7 @@ void ProcessDialogEvent()
 			else
 			{
 				link.l1 = "Я хочу еще раз спуститься на дно.";
-				link.l1.go = "DeepAgain2";			
+				link.l1.go = "DeepAgain2";
 				if (CheckCharacterItem(pchar, "Pinion"))
 				{
 					link.l2 = "Я нашел шестеренку, вот она!";
@@ -573,70 +573,70 @@ void ProcessDialogEvent()
 			iTemp = 0;
 			npchar.quest.LSC.s0 = "";
 			npchar.quest.LSC.s1 = "";
-			if (GetCargoGoods(pchar , GOOD_BALLS) >= 100) 
+			if (GetCargoGoods(pchar , GOOD_BALLS) >= 100)
 			{
 				npchar.quest.LSC.Balls = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Balls;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " ядра,";
-			if (GetCargoGoods(pchar , GOOD_GRAPES) >= 100) 
+			if (GetCargoGoods(pchar , GOOD_GRAPES) >= 100)
 			{
 				npchar.quest.LSC.Grapes = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Grapes;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " картечь,";
-			if (GetCargoGoods(pchar , GOOD_KNIPPELS) >= 100) 
+			if (GetCargoGoods(pchar , GOOD_KNIPPELS) >= 100)
 			{
 				npchar.quest.LSC.Knippels = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Knippels;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " книппели,";
-			if (GetCargoGoods(pchar , GOOD_BOMBS) >= 100) 
+			if (GetCargoGoods(pchar , GOOD_BOMBS) >= 100)
 			{
 				npchar.quest.LSC.Bombs = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Bombs;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " бомбы,";
-			if (GetCargoGoods(pchar , GOOD_SAILCLOTH) >= 50) 
+			if (GetCargoGoods(pchar , GOOD_SAILCLOTH) >= 50)
 			{
 				npchar.quest.LSC.Sailcloth = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Sailcloth;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " парусину,";
-			if (GetCargoGoods(pchar , GOOD_PLANKS) >= 50) 
+			if (GetCargoGoods(pchar , GOOD_PLANKS) >= 50)
 			{
 				npchar.quest.LSC.Planks = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Planks;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " доски,";
-			if (GetCargoGoods(pchar , GOOD_POWDER) >= 200) 
+			if (GetCargoGoods(pchar , GOOD_POWDER) >= 200)
 			{
 				npchar.quest.LSC.Powder = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Powder;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " порох,";
-			if (GetCargoGoods(pchar , GOOD_FOOD) >= 200) 
+			if (GetCargoGoods(pchar , GOOD_FOOD) >= 200)
 			{
 				npchar.quest.LSC.Food = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Food;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " провиант,";
-			if (GetCargoGoods(pchar , GOOD_WEAPON) >= 50) 
+			if (GetCargoGoods(pchar , GOOD_WEAPON) >= 50)
 			{
 				npchar.quest.LSC.Weapon = true;
 				iTemp++;
 			}
 			sTemp = "s" + npchar.quest.LSC.Weapon;
 			npchar.quest.LSC.(sTemp) = npchar.quest.LSC.(sTemp) + " оружие,";
-			if (GetCargoGoods(pchar , GOOD_MEDICAMENT) >= 50) 
+			if (GetCargoGoods(pchar , GOOD_MEDICAMENT) >= 50)
 			{
 				npchar.quest.LSC.Medicament = true;
 				iTemp++;
@@ -647,7 +647,7 @@ void ProcessDialogEvent()
 			{
 				if (iTemp == 0)
 				{
-					link.l1 = "Пока ничего не раздобыл, но я стараюсь.";			
+					link.l1 = "Пока ничего не раздобыл, но я стараюсь.";
 				}
 				else
 				{

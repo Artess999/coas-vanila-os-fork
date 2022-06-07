@@ -69,7 +69,7 @@ void InitInterface_R(string iniName, ref _shipyarder)
 
     SetNewGroupPicture("Money_PIC", "ICONS_CHAR", "Money");
     SetNewGroupPicture("REPAIR_Money_PIC", "ICONS_CHAR", "Money");
-    
+
     SetNewGroupPicture("REPAIR_Hull_PIC", "SHIP_STATE_ICONS", "Hull");
     SetNewGroupPicture("REPAIR_Sails_PIC", "SHIP_STATE_ICONS", "Sails");
 
@@ -157,14 +157,14 @@ void ProcessCommandExecute()
 			    MessageOk();
 			}
 		break;
-		
+
 		case "BUTTON_REPAIR":
 			if (comName=="click" || comName=="activate")
 			{
 			    ShowRepairMenu();
 			}
 		break;
-		
+
 		case "REPAIR_LEFT_H":
 			if (comName=="click" || comName=="activate")
 			{
@@ -175,7 +175,7 @@ void ProcessCommandExecute()
 			    ClickRepairArror("hull", -5);
 			}
 		break;
-		
+
 		case "REPAIR_RIGHT_H":
 			if (comName=="click" || comName=="activate")
 			{
@@ -186,7 +186,7 @@ void ProcessCommandExecute()
 			    ClickRepairArror("hull", 5);
 			}
 		break;
-		
+
 		case "REPAIR_LEFT_S":
 			if (comName=="click" || comName=="activate")
 			{
@@ -197,7 +197,7 @@ void ProcessCommandExecute()
 			    ClickRepairArror("sail", -5);
 			}
 		break;
-		
+
 		case "REPAIR_RIGHT_S":
 			if (comName=="click" || comName=="activate")
 			{
@@ -208,14 +208,14 @@ void ProcessCommandExecute()
 			    ClickRepairArror("sail", 5);
 			}
 		break;
-		
+
 		case "REPAIR_OK":
 			if (comName=="click" || comName=="activate")
 			{
 			    RepairOk();
 			}
 		break;
-		
+
 		case "REPAIR_ALL":
 			if (comName=="click" || comName=="activate")
 			{
@@ -1236,7 +1236,7 @@ void SetRepairData()
 void RepairMoneyShow()
 {
     int st = GetCharacterShipType(xi_refCharacter);
-    
+
 	SetFormatedText("REPAIR_WINDOW_TEXT", its(GetSailRepairCost(st, RepairSail) + GetHullRepairCost(st, RepairHull)));
 }
 
@@ -1244,7 +1244,7 @@ void RepairStatShow()
 {
     int hp = MakeInt(GetHullPercent(xi_refCharacter));
 	int sp = MakeInt(GetSailPercent(xi_refCharacter));
-	
+
 	SetFormatedText("REPAIR_QTY_H", (hp+RepairHull) + "%");
 	SetFormatedText("REPAIR_QTY_S", (sp+RepairSail) + "%");
 	RepairMoneyShow();
@@ -1256,7 +1256,7 @@ void ClickRepairArror(string _type, int add)
     int i;
     int hp = MakeInt(GetHullPercent(xi_refCharacter));
 	int sp = MakeInt(GetSailPercent(xi_refCharacter));
-	
+
 	if (_type == "hull")
 	{
 		if (add > 0)
@@ -1310,7 +1310,7 @@ void RepairOk()
     int hp = MakeInt(GetHullPercent(xi_refCharacter));
 	int sp = MakeInt(GetSailPercent(xi_refCharacter));
 	float ret;
-	
+
 	if (RepairHull > 0)
 	{
 		timeHull = timeHull + RepairHull * (8-GetCharacterShipClass(xi_refCharacter));

@@ -75,15 +75,15 @@ void GoldFleet()
 
         sld.AlwaysEnemy = true;
         sld.DontRansackCaptain = true; //квестовые не сдаются
-        
+
         sld.dialog.filename = "Capitans_dialog.c"; // homo 20/01/07
 	    sld.dialog.currentnode = "GoldSquadron";
 	    sld.DeckDialogNode = "GoldSquadron";
-	    
+
         SetRandomNameToShip(sld);
         Group_AddCharacter(sGroup, sld.id);
 	}
-	
+
 
     chref.AlwaysEnemy = true;
     chref.DontRansackCaptain = true; //квестовые не сдаются
@@ -104,7 +104,7 @@ void KillHeadGoldFleet(string temp)
 {
 	isGoldFleet = false;
 	Map_ReleaseQuestEncounter("Head_of_Gold_Squadron");
-	
+
 }
 
 void GoldFleetEncounter(string temp)
@@ -130,7 +130,7 @@ void LeaveGoldleet(string temp)
         {
             // конвой не тронули
             isGoldFleet = true;
-        
+
         }
         if ( temp == "CheckHavanaGoldFleet" )
         {
@@ -294,8 +294,8 @@ void DefeatRumour(int noall)
     ref CurrentRumour;
     string tid;
     int lngFileID = LanguageOpenFile("RumourTexts.txt");
-    
-    
+
+
 
     for(int Rumour_Index = 0; Rumour_Index < MAX_RUMOURS; Rumour_Index++)
     {
@@ -312,7 +312,7 @@ void DefeatRumour(int noall)
                 tid = "Attak_GoldFleet_t"+rand(2);
                 CurrentRumour.text = LanguageConvertString(lngFileID, tid);
 
-            
+
             }
             DeleteAttribute (CurrentRumour, "loginfo");
             return;
@@ -325,7 +325,7 @@ void DefeatRumour(int noall)
             DeleteAttribute (CurrentRumour, "loginfo");
             return;
         }
-        
+
     }
 
 }

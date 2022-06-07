@@ -11,7 +11,7 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	float locx, locy, locz;
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -103,13 +103,13 @@ void ProcessDialogEvent()
     			dialog.text = "Дьявол, ты оказался здесь как нельзя вовремя! Даже не знаю, что бы я делал без твоей помощи... Скажи мне, кому я обязан своим спасением?";
     			link.l1 = "Меня зовут " + GetFullName(pchar) +". А послал меня к тебе на выручку Франсиско Орегон-и-Гаскон. Ему стало известно, что эскадра французских бандитов вышла специально для боя с тобой.";
     			link.l1.go = "Step_S7_1";
-			}		
+			}
             if (npchar.id == "OurCaptain_1" && pchar.questTemp.State == "Sp7SavePardal_2GoodWork") //квест №7, базар с Пардалем его на корабле
             {
     			dialog.text = "Поговорили, и хватит на этом...";
     			link.l1 = "Согласен...";
     			link.l1.go = "exit";
-			}				
+			}
             if (npchar.id == "SpaTalkOfficer" && pchar.questTemp.State == "Sp10Maracaibo_TalkWithOfficer") //квест №10, базар c оффом на выходе
             {
     			dialog.text = "Дорогу!!!";
@@ -285,7 +285,7 @@ void ProcessDialogEvent()
             DialogExit();
 		break;
 		//=====>>> вестовой при попытке взять его в городе.
-		case "Step_S6_11": 
+		case "Step_S6_11":
 			dialog.text = "Хм, ну давай, попробуй...";
 			link.l1 = "Аргх!";
 			link.l1.go = "Step_S6_7";
@@ -344,7 +344,7 @@ void ProcessDialogEvent()
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 //********************************* Спасение Пардаля. Квест №7 **********************************
- 		case "Step_S7_1": 
+ 		case "Step_S7_1":
 			dialog.text = "Значит, я так же обязан ему, как и тебе. Очень хорошо, у меня будет возможность отблагодарить его.";
 			link.l1 = "Отлично. Ну что же, я должен возвращаться в Гавану к генерал-губернатору. Нужно доложить ему об удачном завершении дела.";
 			link.l1.go = "Step_S7_2";
@@ -356,22 +356,22 @@ void ProcessDialogEvent()
 			pchar.questTemp.State = "Sp7SavePardal_2GoodWork";
 		break;
 //********************************* Спасение Пардаля. Квест №7 **********************************
- 		case "Step_S10_1": 
+ 		case "Step_S10_1":
 			dialog.text = "Англичане!!";
 			link.l1 = "Что ты сказал?";
 			link.l1.go = "Step_S10_2";
 		break;
- 		case "Step_S10_2": 
+ 		case "Step_S10_2":
 			dialog.text = "Я сказал, что к городу движется эскадра английских пиратов! Дьявол, будет бой! Не зря мы готовились в последнее время...";
 			link.l1 = "Похоже, что я как нельзя вовремя...";
 			link.l1.go = "Step_S10_3";
 		break;
- 		case "Step_S10_3": 
+ 		case "Step_S10_3":
 			dialog.text = "Что?.. А-а-а, дайте дорогу сеньор, мне нужно известить генерал-губернатора...";
 			link.l1 = "Проходите, офицер.";
 			link.l1.go = "Step_S10_4";
 		break;
- 		case "Step_S10_4": 
+ 		case "Step_S10_4":
 			pchar.questTemp.State = "Sp10Maracaibo_toGovernor";
 			AddQuestRecord("Spa_Line_10_Maracaibo", "2");
 			LocatorReloadEnterDisable("Maracaibo_town", "gate_back", true);

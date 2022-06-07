@@ -3,7 +3,7 @@ void ProcessDialogEvent()
 	ref NPChar, sld;
 	aref Link, Diag;
 	int i;
-	
+
 	DeleteAttribute(&Dialog,"Links");
 
 	makeref(NPChar,CharacterRef);
@@ -17,7 +17,7 @@ void ProcessDialogEvent()
 	{
 		case "exit":
 			Diag.CurrentNode = Diag.TempNode;
-			DialogExit();			
+			DialogExit();
 		break;
 
 		case "exit_fight":
@@ -30,7 +30,7 @@ void ProcessDialogEvent()
 			LAi_group_SetRelation(sGroup, LAI_GROUP_PLAYER, LAI_GROUP_ENEMY);
 			LAi_group_FightGroups(sGroup, LAI_GROUP_PLAYER, true);
 			LAi_group_SetCheck(sGroup, "LandEnc_PatrolAfrer");
-			DialogExit();	
+			DialogExit();
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
 
@@ -42,10 +42,10 @@ void ProcessDialogEvent()
 				sld.greeting = "soldier_common";
 				LAi_SetWarriorType(sld);
 				LAi_warrior_DialogEnable(sld, true);
-				LAi_group_MoveCharacter(sld, sGroup);				
+				LAi_group_MoveCharacter(sld, sGroup);
 			}
 			LAi_group_SetCheck(sGroup, "LandEnc_PatrolAfrer");
-			DialogExit();			
+			DialogExit();
 		break;
 
 		case "First Time":
@@ -66,10 +66,10 @@ void ProcessDialogEvent()
 					dialog.text = RandPhraseSimple("Вражеский агент близ " + XI_ConvertString("Colony" + npchar.city + "Gen") + "! Взять его!!", "Смотрите-ка, " + NationNamePeople(sti(pchar.nation))+ " разгуливают чуть ли не в " + XI_ConvertString("Colony" + npchar.city + "Dat") + "! Немедленно схватить!!!");
 				}
 				link.l1 = RandPhraseSimple("Попробуйте, здесь мы в одиночестве...", "Хех, здесь вам помощи ждать неоткуда.");
-				link.l1.go = "exit_fight"; 				
+				link.l1.go = "exit_fight";
 			}
 			else
-			{				
+			{
 				dialog.text = LinkRandPhrase("Имею честь представиться! Я начальник патруля из " + XI_ConvertString("Colony" + npchar.city + "Gen") + ", мы разыскиваем беглого каторжника.",
 					"Здравствуйте, я начальник этого патруля. Мы разыскиваем сбежавшего из " + XI_ConvertString("Colony" + npchar.city + "Gen") + " раба.",
 					"Приветствую вас, " + GetAddress_Form(NPChar) + ". Мое подразделение осуществляет патрулирование территории близ " + XI_ConvertString("Colony" + npchar.city + "Gen") + ".");
@@ -79,12 +79,12 @@ void ProcessDialogEvent()
 				Link.l1.go = "Node_2";
 			}
 		break;
-		
+
 		case "Node_2":
 			dialog.text = RandPhraseSimple("Вы не видели ничего подозрительного в округе?",
 				"Встречался ли вам кто-нибудь, внушающий подозрения, " + GetAddress_Form(NPChar) + "?");
 			Link.l1 = RandPhraseSimple("Нет, ничего такого.", "Нет, офицер, все спокойно.");
-			Link.l1.go = "Node_3";		
+			Link.l1.go = "Node_3";
 		break;
 
 		case "Node_3":
@@ -101,7 +101,7 @@ void ProcessDialogEvent()
 				"Я прошу вас не мешать нам!",
 				"А, это опять вы... Идите своей дорогой, не мешайте нам.");
 			Link.l1 = "Хорошо.";
-			Link.l1.go = "Exit";			
+			Link.l1.go = "Exit";
 		break;
 	}
 }

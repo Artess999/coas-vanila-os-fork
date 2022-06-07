@@ -23,7 +23,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "First time":
             NextDiag.TempNode = "First time";
 			if (CheckAttribute(pchar, "questTemp.different.FackWaitress"))
@@ -41,13 +41,13 @@ void ProcessDialogEvent()
 					link.l1.go = "Love_IDN";
 				}
 				if (pchar.questTemp.different == "FackWaitress_facking")
-				{					
+				{
 					dialog.text = "Заходи еще, дорогой. Будет время - развлечемся еще...";
 					link.l1 = "Обязательно!";
 					link.l1.go = "exit";
 				}
 				if (pchar.questTemp.different == "FackWaitress_fackNoMoney")
-				{					
+				{
 					dialog.text = "Я вас не знаю, не приставайте ко мне...";
 					link.l1 = "Где мои деньги?!!";
 					link.l1.go = "Love_IDN_1";
@@ -92,7 +92,7 @@ void ProcessDialogEvent()
 					link.l1 = "Благодарю.";
 					link.l1.go = "exit";
 				break;
-			}			
+			}
 			if (CheckAttribute(pchar, "GenQuest.SeekSpy.City")) //квест мэра поп поиску шпиона
 			{
 				link.l4 = "Скажи мне, красавица, ты не замечала здесь никого подозрительного в последнее время?";
@@ -104,11 +104,11 @@ void ProcessDialogEvent()
 				{
 					link.l4.go = "SeekSpy_NotSeen";
 				}
-			}			
+			}
 			link.l9 = "Я хочу задать тебе пару вопросов.";
 			link.l9.go = "quests";//(перессылка в файл города)
 		break;
-		
+
         case "Love_1":
 			dialog.text = "Тогда слушай внимательно. Сними комнату у нас в таверне. Иди туда и жди меня. Я незаметно проскочу к тебе попозже...";
 			link.l1 = "Хе! Все сделаю, дорогуша! Жду!";
@@ -116,14 +116,14 @@ void ProcessDialogEvent()
 			pchar.questTemp.different = "FackWaitress_toRoom";
 			SetTimerFunction("WaitressFack_null", 0, 0, 1); //освобождаем разрешалку на миниквесты на след. день
 			//Шанс, что ограбят, если рендом выпадет на 0. он же делитель сколько она вытащит из кармана
-			pchar.questTemp.different.FackWaitress.Kick = cRand(2); 
+			pchar.questTemp.different.FackWaitress.Kick = cRand(2);
 			pchar.questTemp.different.FackWaitress.Name = GetFullName(npchar); //запомним имя официантки
 			//делаем клона официантки
 			sld = GetCharacter(NPC_GenerateCharacter("WairessQuest", npchar.model, "woman", npchar.model.animation, 5, sti(npchar.nation), 3, false));
 			sld.name = npchar.name;
 			sld.lastname = npchar.lastname;
 			sld.dialog.Filename = "Quest\ForAll_dialog.c";
-			sld.dialog.currentnode = "Waitress";	
+			sld.dialog.currentnode = "Waitress";
 			Pchar.quest.WaitressFack_inRoom.win_condition.l1 = "location";
 			Pchar.quest.WaitressFack_inRoom.win_condition.l1.location = npchar.city + "_tavern_upstairs";
 			Pchar.quest.WaitressFack_inRoom.function = "WaitressFack_inRoom";
@@ -171,14 +171,14 @@ void ProcessDialogEvent()
 		break;
 		//==> eddy. квест мэра, вопросы не замечала ли шпиона
 		case "SeekSpy_Seen":
-			dialog.text = NPCStringReactionRepeat("Не знаю даже... Подозрительного?.. Хотя, подожди, кажется, есть такой. По виду обычный горожанин, но уж больно приставучий с вопросами разными, да и не видела я его раньше в городе. Здесь ты его вряд ли застанешь, а вот в городе поищи.", 
+			dialog.text = NPCStringReactionRepeat("Не знаю даже... Подозрительного?.. Хотя, подожди, кажется, есть такой. По виду обычный горожанин, но уж больно приставучий с вопросами разными, да и не видела я его раньше в городе. Здесь ты его вряд ли застанешь, а вот в городе поищи.",
 				"Ой, ну мы же говорили про него уже! Я больше ничего сказать не могу.", "Опять то же самое... Я уже все тебе сказала.", "Сколько можно спрашивать одно и то же?! Может, тебе что-нибудь другое нужно?", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Спасибо, тебе, красавица. Что же, пойду искать этого типа.", "Да? Ну ладно...",
                       "Хм, да уж...", "Извини, красавица...", npchar, Dialog.CurrentNode);
 			link.l1.go = "exit";
 		break;
 		case "SeekSpy_NotSeen":
-			dialog.text = NPCStringReactionRepeat("Нет, никого такого не видела, чтобы подозрительный прямо был.", 
+			dialog.text = NPCStringReactionRepeat("Нет, никого такого не видела, чтобы подозрительный прямо был.",
 				"Ой, ну мы же говорили про него уже! Я больше ничего сказать не могу.", "Опять то же самое... Я уже все тебе сказала.", "Сколько можно спрашивать одно и то же?! Может тебе что-нибудь другое нужно?", "block", 1, npchar, Dialog.CurrentNode);
 			link.l1 = HeroStringReactionRepeat("Спасибо, тебе, красавица. Что же, пойду искать этого типа.", "Да? Ну ладно...",
                       "Хм, да уж...", "Извини, красавица...", npchar, Dialog.CurrentNode);
@@ -186,4 +186,4 @@ void ProcessDialogEvent()
 		break;
 	}
 }
- 
+

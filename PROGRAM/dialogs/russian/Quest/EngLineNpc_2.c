@@ -10,7 +10,7 @@ void ProcessDialogEvent()
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
 	float locx, locy, locz;
-	
+
     switch (Dialog.CurrentNode)
     {
         case "First time":
@@ -92,7 +92,7 @@ void ProcessDialogEvent()
             NextDiag.CurrentNode = NextDiag.TempNode;
             DialogExit();
         break;
-        
+
 //*************************************** Диалог боцмана Морриса Уильямса *********************************
  		case "Step_E6_1":
 			dialog.text = "Я боцман с фрегата 'Фаворит'. Совсем недавно я видел тебя у нас на палубе, ты говорил с кэпом...";
@@ -287,7 +287,7 @@ void ProcessDialogEvent()
 			pchar.questTemp.State = "ToMansfield_CatchToPardal";
 			AddQuestRecord("Eng_Line_8_ToMansfield", "2");
 		break;
-		
+
         case "You_baster":
             dialog.text = "Я и представить себе не мог, что ты со мной так поступишь...";
             link.l1 = "Процитирую вас, сэр: 'Мне нечего вам более сказать. Политика вершит судьбы государств, нечего и думать о судьбах отдельных... генерал-губернаторов.' Прощайте.";

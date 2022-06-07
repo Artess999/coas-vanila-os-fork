@@ -9,13 +9,13 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 	switch(Dialog.CurrentNode)
 	{
 		case "First time":
 			dialog.text = "О-о-о, еще один белый пожаловал. С чем ты пришел к Теночтитлану?";
 			link.l1 = "Посмотреть что к чему. Такой я человек - хочу все знать.";
-			link.l1.go = "FT_1";	
+			link.l1.go = "FT_1";
 			if (pchar.questTemp.Teno == "takeFire")
 			{
 				dialog.text = "Здраствуй, белый человек. Зачем ты пришел в Теночтитлан?";
@@ -148,7 +148,7 @@ void ProcessDialogEvent()
 			link.l1 = "Ладно, буду искать...";
 			link.l1.go = "exit";
 			npchar.location.locator = "quest1";
-			NextDiag.TempNode = "Fire";	
+			NextDiag.TempNode = "Fire";
 			AddDialogExitQuestFunction("Teno_MontesumaGoQuest1");
 		break;
 		//--------------
@@ -240,7 +240,7 @@ void ProcessDialogEvent()
 				dialog.text = "Ты сумел снять заклятие огня, это хорошо. Теперь слушай, что ты должен сделать дальше.";
 				link.l1 = "Слушаю внимательно, Монтесума.";
 				link.l1.go = "Fire_1";
-			}			
+			}
 		break;
 		case "Fire_1":
 			dialog.text = "Ты получил доступ в Теночтитлан и можешь заходить в храмы богов. Нефритовый череп, который мне нужен, находится в храме Великой Жизненной Силы. Чтобы получить туда доступ, ты должен собрать 10 тотемов богов и расставить их на жертвенные камни 10 храмов.";
@@ -287,7 +287,7 @@ void ProcessDialogEvent()
 			link.l1.go = "exit";
 		break;
 
-        //после драки с 
+        //после драки с
 		case "AfterGTemple":
 			if (CheckCharacterItem(pchar, "SkullAztec")) //череп найден
 			{

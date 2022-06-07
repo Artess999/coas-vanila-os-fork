@@ -11,19 +11,19 @@ void ProcessDialogEvent()
 	makeref(NPChar,CharacterRef);
 	makearef(Link, Dialog.Links);
 	makearef(NextDiag, NPChar.Dialog);
-	
+
 
 	string iDay, iMonth, sTemp, sMoney;
-	
+
 	iDay = environment.date.day;
 	iMonth = environment.date.month;
 	string lastspeak_date = iday + " " + iMonth;
-	
+
 	int iMoney;
 	int iQuantityGoods;
 	int iTradeGoods;
 	int iTmp;
-	
+
     bool  ok;
 
 	int iTest;
@@ -33,7 +33,7 @@ void ProcessDialogEvent()
 	{
 		rColony = GetColonyByIndex(iTest);
 	}
-	
+
     int iSeaGoods = LanguageOpenFile("ShipEatGood.txt"); // нужно заменить на GetGoodsNameAlt(idx)
 
     if (!CheckAttribute(npchar, "quest.item_date"))
@@ -44,7 +44,7 @@ void ProcessDialogEvent()
     {
         npchar.quest.trade_date = "";
     }
-    
+
     // вызов диалога по городам -->
     NPChar.FileDialog2 = "DIALOGS\" + LanguageGetLanguage() + "\Store\" + NPChar.City + "_Store.c";
     if (LoadSegment(NPChar.FileDialog2))
@@ -59,11 +59,11 @@ void ProcessDialogEvent()
 		case "First time":
 			if (LAi_grp_playeralarm > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, приятель, пока солдаты не сделали из тебя решето..."), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, приятель, пока солдаты не сделали из тебя решето..."),
 					LinkRandPhrase("Что тебе нужно, негодяй?! Городская стража уже взяла твой след, далеко тебе не уйти, грязный пират!", "Грязный убийца, вон из моего дома! Стража!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."),
 					RandPhraseSimple("Заткни свою пасть, " + GetWorkTypeOfMan(npchar, "") + ", а не то вырву твой поганый язык!", "Хех, " + GetWorkTypeOfMan(npchar, "") + ", а все туда же - пиратов ловить! Вот что я тебе скажу, приятель: сиди тихо и будешь жить..."));
 				link.l1.go = "fight";
 				break;
@@ -93,11 +93,11 @@ void ProcessDialogEvent()
 		case "second time":
 			if (LAi_group_GetPlayerAlarm() > 0)
 			{
-       			dialog.text = NPCharRepPhrase(pchar, 
-					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, приятель, пока солдаты не сделали из тебя решето..."), 
+       			dialog.text = NPCharRepPhrase(pchar,
+					LinkRandPhrase("В городе поднята тревога, тебя всюду ищут! На твоем месте я бы не стал здесь задерживаться.", "Вся городская стража рыщет по городу в поисках тебя. Я не идиот и разговаривать с тобой не буду!", "Беги, приятель, пока солдаты не сделали из тебя решето..."),
 					LinkRandPhrase("Что тебе нужно, негодяй?! Городская стража уже взяла твой след, далеко тебе не уйти, грязный пират!", "Грязный убийца, вон из моего дома! Стража!!", "Я не боюсь тебя, мерзавец! Скоро тебя повесят в нашем форте, далеко тебе не уйти..."));
 				link.l1 = NPCharRepPhrase(pchar,
-					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."), 
+					RandPhraseSimple("Хех, тревога для меня не проблема...", "Им меня ни за что не поймать."),
 					RandPhraseSimple("Заткни свою пасть, " + GetWorkTypeOfMan(npchar, "") + ", а не то вырву твой поганый язык!", "Хех, " + GetWorkTypeOfMan(npchar, "") + ", а все туда же - пиратов ловить! Вот что я тебе скажу, приятель: сиди тихо и будешь жить..."));
 				link.l1.go = "fight";
 				break;
@@ -256,11 +256,11 @@ void ProcessDialogEvent()
 											   npchar, Dialog.CurrentNode);
 			link.l3.go = "quests";
 			//--> eddy. Аскольд, базар с рендомным торговцем
-			if (pchar.questTemp.Ascold == "Seek_powder" && pchar.questTemp.Ascold.TraderId == npchar.id && !CheckAttribute(Pchar, "RomanticQuest.TalkInShop")) 
+			if (pchar.questTemp.Ascold == "Seek_powder" && pchar.questTemp.Ascold.TraderId == npchar.id && !CheckAttribute(Pchar, "RomanticQuest.TalkInShop"))
 			{
 				link.l3.go = "AscoldTrader";
 			}
-			if (pchar.questTemp.Ascold == "PowderWasSeek" && pchar.questTemp.Ascold.TraderId == npchar.id) 
+			if (pchar.questTemp.Ascold == "PowderWasSeek" && pchar.questTemp.Ascold.TraderId == npchar.id)
 			{
 				link.l3.go = "AscoldTrader_WasSeek";
 			}
@@ -359,10 +359,10 @@ void ProcessDialogEvent()
 			if (pchar.questTemp.BlueBird == "begin" && sti(npchar.nation) == GetBaseHeroNation() && sti(npchar.nation) != PIRATE && npchar.city != "Panama")
 			{
 				dialog.text = RandPhraseSimple("Капитан, прошу вас, помогите нам!!!", "Капитан, я прошу у вас помощи от имени всех торговцев!");
-				link.l1 = "Что случилось? Чем я могу вам помочь?"; 
+				link.l1 = "Что случилось? Чем я могу вам помочь?";
 				link.l1.go = "RBlueBird";
 				break;
-			}			
+			}
 //navy -->
 			//занят ПГГ
 			iTmp = CheckAvailableTaskForNPC(NPChar, PGG_TASK_WORKONSTORE);
@@ -420,16 +420,16 @@ void ProcessDialogEvent()
 	                                                          "Ну что, старый плут, давай обсудим дела наши денежные."),
 	                                        RandPhraseSimple("Я хотел бы обсудить с вами финансовые вопросы.",
 	                                                         "Давайте обсудим финансовые вопросы, нам есть о чем переговорить."));,
-	
+
 	                link.l3.go = "LoanForAll";
                 }
 				//квест мэра - на связь с нашим шпионом
-  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") 
+  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "")
 				{
-					link.l4 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
+					link.l4 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".",
 						GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " прислал меня к вам. Я должен кое-что забрать...");
 					link.l4.go = "IntelligenceForAll";
-				}	
+				}
 				// ----------------- квест получения Синей Птицы, сдаем квест -----------------
 				if (pchar.questTemp.BlueBird == "weWon" && pchar.questTemp.BlueBird.traiderId == npchar.id)
 				{
@@ -477,19 +477,19 @@ void ProcessDialogEvent()
 	                                                          "Ну что, старый плут, давай обсудим дела наши денежные."),
 	                                        RandPhraseSimple("Я хотел бы обсудить с вами финансовые вопросы.",
 	                                                         "Давайте обсудим финансовые вопросы, нам есть о чем переговорить."));,
-	
+
 	                link.l3.go = "LoanForAll";
                 }
 				//квест мэра - на связь с нашим шпионом
-  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "") 
+  				if (CheckAttribute(pchar, "GenQuest.Intelligence") && pchar.GenQuest.Intelligence.SpyId == npchar.id && pchar.GenQuest.Intelligence == "")
 				{
-					link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".", 
+					link.l7 = RandPhraseSimple("Я здесь по поручению одного человека. Его зовут губернатор " + GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + ".",
 						GetFullName(characterFromId(pchar.GenQuest.Intelligence.MayorId)) + " прислал меня к вам. Я должен кое-что забрать...");
 					link.l7.go = "IntelligenceForAll";
-				}	
+				}
 			}
 		break;
-		
+
 		case "generate_quest":
 			if (npchar.quest.trade_date != lastspeak_date || bBettaTestMode)
 			{
@@ -548,7 +548,7 @@ void ProcessDialogEvent()
     							pchar.CargoQuest.iMoney = iMoney;
     							pchar.CargoQuest.iTradeNation = iTradeNation;
     							pchar.CargoQuest.iDaysExpired = 25 + rand(5);
-    							
+
     							pchar.CargoQuest.iTradeColony = Characters[storeMan].city;
     							pchar.CargoQuest.iTradeIsland = GetIslandByCityName(Characters[storeMan].city);
     							pchar.CargoQuest.TraderID     = Characters[storeMan].id;
@@ -609,7 +609,7 @@ void ProcessDialogEvent()
 			{
                 iTradeGoods    =  makeint(pchar.CargoQuest.iTradeGoods);
                 iQuantityGoods =  makeint(pchar.CargoQuest.iQuantityGoods);
-                
+
                 dialog.text = "Точно! Я его давно ждал. Вы должны доставить мне груз " +
                 GetGoodsNameAlt(iTradeGoods) + " в количестве " + FindRussianQtyString(iQuantityGoods) + " и получить за это " +
                 FindRussianMoneyString(sti(pchar.CargoQuest.iMoney)) + ".";
@@ -617,7 +617,7 @@ void ProcessDialogEvent()
 				link.l1.go = "generate_quest_ready";
 			}
 		break;
-		
+
 		case "generate_quest_ready":
             iTradeGoods    =  makeint(pchar.CargoQuest.iTradeGoods);
             iQuantityGoods =  makeint(pchar.CargoQuest.iQuantityGoods);
@@ -637,7 +637,7 @@ void ProcessDialogEvent()
 
 				pchar.quest.generate_trade_quest_progress = "";
 				pchar.quest.generate_trade_quest.over = "yes";
-                
+
                 AddQuestRecord("DELIVERY_TRADE_QUEST", "4");
                 AddQuestUserData("DELIVERY_TRADE_QUEST", "sGoodGen", GetGoodsNameAlt(iTradeGoods));
 			    AddQuestUserData("DELIVERY_TRADE_QUEST", "sTargetColony",XI_ConvertString("Colony"+pchar.CargoQuest.iTradeColony+"Dat"));
@@ -671,16 +671,16 @@ void ProcessDialogEvent()
 				pchar.quest.generate_trade_quest_progress = "";
 				pchar.quest.generate_trade_quest.over = "yes";
 				RemoveCharacterGoods(pchar, makeint(pchar.CargoQuest.iTradeGoods), makeint(pchar.CargoQuest.iQuantityGoods));
-				
+
                 OfficersReaction("good");
-                
+
                 AddQuestRecord("DELIVERY_TRADE_QUEST", "2");
                 AddQuestUserData("DELIVERY_TRADE_QUEST", "sGoodGen", GetGoodsNameAlt(iTradeGoods));
 			    AddQuestUserData("DELIVERY_TRADE_QUEST", "sTargetColony",XI_ConvertString("Colony"+pchar.CargoQuest.iTradeColony+"Gen"));
                 CloseQuestHeader("DELIVERY_TRADE_QUEST");
 			}
 		break;
-		
+
 		case "generate_quest_failed":
             iTradeGoods    =  makeint(pchar.CargoQuest.iTradeGoods);
             iQuantityGoods =  makeint(pchar.CargoQuest.iQuantityGoods);
@@ -700,7 +700,7 @@ void ProcessDialogEvent()
     		    AddQuestUserData("DELIVERY_TRADE_QUEST", "sTargetColony",XI_ConvertString("Colony"+pchar.CargoQuest.iTradeColony+"Gen"));
             }
 		break;
-		
+
 		case "generate_quest_failed_2":
             iTradeGoods    =  makeint(pchar.CargoQuest.iTradeGoods);
             iQuantityGoods =  makeint(pchar.CargoQuest.iQuantityGoods);
@@ -723,7 +723,7 @@ void ProcessDialogEvent()
 		    AddQuestUserData("DELIVERY_TRADE_QUEST", "sTargetColony",XI_ConvertString("Colony"+pchar.CargoQuest.iTradeColony+"Gen"));
             CloseQuestHeader("DELIVERY_TRADE_QUEST");
 		break;
-		
+
 		case "generate_quest_not_closed":
             iTradeGoods    =  makeint(pchar.CargoQuest.iTradeGoods);
             iQuantityGoods =  makeint(pchar.CargoQuest.iQuantityGoods);
@@ -733,16 +733,16 @@ void ProcessDialogEvent()
 			link.l1 = "Да, точно! Вы правы!";
 			link.l1.go = "exit";
 		break;
-		
+
 		case "generate_quest_cannot_done":
             dialog.text = RandSwear() + GetAddress_Form(NPChar) +", вы подводите меня!!! Может, попытаетесь как-то решить эту проблему?";
 			link.l1 = "Хорошо. Я постараюсь доставить груз.";
 			link.l1.go = "exit";
 			link.l2 = "Нет. Не смогу. Сожалею";
 			link.l2.go = "generate_quest_cannot_done_2";
-			
+
 		break;
-		
+
 		case "generate_quest_cannot_done_2":
 		    iTradeGoods    =  makeint(pchar.CargoQuest.iTradeGoods);
             iQuantityGoods =  makeint(pchar.CargoQuest.iQuantityGoods);
@@ -764,7 +764,7 @@ void ProcessDialogEvent()
 				pchar.quest.generate_trade_quest_progress = "";
 				pchar.quest.generate_trade_quest.over = "yes";
 				RemoveCharacterGoods(pchar, makeint(pchar.CargoQuest.iTradeGoods), makeint(pchar.CargoQuest.iQuantityGoods));
-                
+
                 AddQuestRecord("DELIVERY_TRADE_QUEST", "6");
                 AddQuestUserData("DELIVERY_TRADE_QUEST", "sGoodQty", FindRussianQtyString(sti(pchar.CargoQuest.iQuantityGoods)));
                 AddQuestUserData("DELIVERY_TRADE_QUEST", "sGoodGen", GetGoodsNameAlt(iTradeGoods));
@@ -778,13 +778,13 @@ void ProcessDialogEvent()
 			link.l1 = "Очень жаль. Тогда давайте поговорим о другом.";
 			link.l1.go = "node_1";
 		break;
-		
+
         case "fight":
 			DialogExit();
             NextDiag.CurrentNode = NextDiag.TempNode;
 			LAi_group_Attack(NPChar, Pchar);
 		break;
-		
+
 		case "Exit":
 			if (pchar.questTemp.Ascold == "canTakeQuest" && pchar.questTemp.Ascold.TraderId == npchar.id)//eddy. Аскольд, начало
 			{

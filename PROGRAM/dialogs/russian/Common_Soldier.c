@@ -2,7 +2,7 @@
 void ProcessDialogEvent()
 {
 	ref NPChar;
-	aref Link, NextDiag;	
+	aref Link, NextDiag;
 
 	DeleteAttribute(&Dialog,"Links");
 
@@ -34,7 +34,7 @@ void ProcessDialogEvent()
 			NextDiag.CurrentNode = NextDiag.TempNode;
 			DialogExit();
 		break;
-		
+
 		case "fight":
 			DialogExit();
 			NextDiag.CurrentNode = NextDiag.TempNode;
@@ -42,8 +42,8 @@ void ProcessDialogEvent()
 			if (rand(3) != 1) SetNationRelation2MainCharacter(sti(npchar.nation), RELATION_ENEMY);
 			AddDialogExitQuest("MainHeroFightModeOn");
 		break;
-		
-		case "First time":			
+
+		case "First time":
             NextDiag.TempNode = "First time";
 			if (GetNationRelation2MainCharacter(sti(NPChar.nation)) == RELATION_ENEMY && sti(NPChar.nation) != PIRATE)
 			{
@@ -52,12 +52,12 @@ void ProcessDialogEvent()
 				{
     				dialog.text = RandPhraseSimple("Пираты в городе?! Ну дела... Хватай его!!", "Это пират!! Держи его!!!");
 					link.l1 = RandPhraseSimple("Пират, ну и что?..", "Хех, попробуйте схватить.");
-					link.l1.go = "fight"; 
+					link.l1.go = "fight";
 					break;
-				} 
+				}
 				dialog.text = RandPhraseSimple("Шпион? Сдать оружие!! Следовать за мной!", "Вражеский агент!! Немедленно схватить его!");
 				link.l1 = RandPhraseSimple("Заткнись, малахольный!", "Как бы не так!");
-				link.l1.go = "fight"; 
+				link.l1.go = "fight";
 				// ==> eddy. Засада, если опознали в инквизиции.
 				if (Pchar.location == "Santiago_Incquisitio") StartIncquisitioAttack();
 			}
@@ -97,7 +97,7 @@ void ProcessDialogEvent()
 						{
     						dialog.text = RandPhraseSimple("Пираты в городе?! Ну дела... Хватай его!!", "Это пират!! Держи его!!!");
 							link.l1 = RandPhraseSimple("Да, пират, ну и что?..", "Хех, попробуйте схватить...");
-							link.l1.go = "fight"; 
+							link.l1.go = "fight";
 							break;
 						}
 						if (findsubstr(pchar.location.from_sea, "_town" , 0) != -1) //если причалил в городе
@@ -214,14 +214,14 @@ void ProcessDialogEvent()
 							dialog.text = RandPhraseSimple("Вы посмотрите, каков мерзавец! Посмел явится в " + XI_ConvertString("Colony" + npchar.city)+ ". Держи его!!", "Ха, я узнал тебя, негодяй! Хватай его!!");
 							link.l1 = RandPhraseSimple("Аргх!..", "Ну, вы сами напросились...");
 							link.l1.go = "fight";
-							break;						
+							break;
 						}
 					}
 					//зачарованный город -->
 					if (pchar.questTemp.MC == "toCaracas" && npchar.city == "Caracas")
 					{
-						dialog.text = LinkRandPhrase("Видите, что творится в городе? Но мы не будем ни во что вмешиваться...", 
-							"До тех пор, пока волнения не перейдут в погромы, мы ничего не будем делать. Пусть буянят.", 
+						dialog.text = LinkRandPhrase("Видите, что творится в городе? Но мы не будем ни во что вмешиваться...",
+							"До тех пор, пока волнения не перейдут в погромы, мы ничего не будем делать. Пусть буянят.",
 							"Мы ведем себя так, как будто в городе все нормально. Нельзя поддаваться настроениям толпы, иначе волнения могут перейти в бунт!");
 						link.l1 = "Понятно...";
 						link.l1.go = "exit";
@@ -234,7 +234,7 @@ void ProcessDialogEvent()
 						link.l1.go = "exit";
 						break;
 					}
-					//<-- зачарованный город 
+					//<-- зачарованный город
 					switch (rand(10))
 					{
 						case 0: ////////////////////////////////////////
@@ -326,7 +326,7 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Ваша лицензия подлежит изъятию, так как просрочена и поэтому недействительна. Сдайте оружие и следуйте за мной для последующих разбирательств!";
 				link.l1 = RandPhraseSimple("Как бы не так!", "После дождичка, в четверг...");
-				link.l1.go = "fight";	
+				link.l1.go = "fight";
 				TakeNationLicence(sti(npchar.nation));
 				AddCharacterExpToSkill(pchar, SKILL_SNEAK, 20); // враг, которого узнали - потом будет умнее - бонус в скрытность
 			}
@@ -334,13 +334,13 @@ void ProcessDialogEvent()
 			{
 				dialog.text = "Хм, все верно. Однако позволю себе заметить, что срок действия вашей лицензии сегодня истекает. Я пропущу вас сейчас, но вам нужно будет сменить лицензию на действительную.";
 				link.l1 = "Спасибо, я обзаведусь новой при первой же возможности.";
-				link.l1.go = "exit";			
+				link.l1.go = "exit";
 			}
 			if (iTemp > 0 && iTemp <= 10)
 			{
 				dialog.text = "Хм, все верно. Однако позволю себе заметить, что срок действия вашей лицензии вскоре истекает - она действительна еще только " + FindRussianDaysString(iTemp) + ". Так что имейте в виду, " + GetAddress_Form(npchar) + ".";
 				link.l1 = "Спасибо, я обзаведусь новой при первой же возможности.";
-				link.l1.go = "exit";			
+				link.l1.go = "exit";
 			}
 			if (iTemp > 10)
 			{
