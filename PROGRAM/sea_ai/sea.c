@@ -1,4 +1,4 @@
-#include "storm-engine\sea_ai\Script_defines.h"
+#include "storm-engine\sea_ai\script_defines.h"
 #include "storm-engine\sea_ai\sea_people.h"
 
 #include "sea_ai\AIGroup.c"
