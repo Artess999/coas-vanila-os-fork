@@ -276,7 +276,7 @@ Beliz Port {порт Белиза}
 
 Duel Field	{дуэльное поле}
 
-Boarding deck {верхняя палуба} 
+Boarding deck {верхняя палуба}
 Fort inside {форт}
 Sea {море}
 Jungle {джунгли}

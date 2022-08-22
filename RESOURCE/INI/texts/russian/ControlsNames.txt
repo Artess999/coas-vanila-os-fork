@@ -293,7 +293,7 @@ Ship_SailDown
 }
 Ship_Fire
 {
-Произвести пушечный залп 
+Произвести пушечный залп
 
 }
 
@@ -414,22 +414,22 @@ Help
 
 BICommandsActivate
 {
-Вызвать командное меню 
+Вызвать командное меню
 
 }
 LICommandsActivate
 {
-Вызвать командное меню 
+Вызвать командное меню
 
 }
 BICommandsConfirm
 {
-Выбрать команду  
+Выбрать команду
 
 }
 BICommandsCancel
 {
-Отменить команду  
+Отменить команду
 
 }
 BICommandsLeft

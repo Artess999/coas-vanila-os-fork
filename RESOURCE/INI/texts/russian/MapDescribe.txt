@@ -46,8 +46,8 @@ SentJons_TownCave {в подземелье города Сент-Джонс}
 SentJons_TownCave_box1 {под досками в тупике}
 SentJons_TownCave_box2 {в тупике шахты}
 SentJons_TownCave_box3 {у завала}
- 
-Barbados_Cave	{в пещере недалеко от Бриджтауна}		
+
+Barbados_Cave	{в пещере недалеко от Бриджтауна}
 Barbados_Cave_box1	{под досками в тупике}
 
 Beliz_Cave {в пещере справа от выхода из Белиза}
@@ -55,27 +55,27 @@ Beliz_Cave_box1	{сундук рядом с каменным мостиком}
 Beliz_Cave_box2	{сундук на большом камне}
 Beliz_Cave_box3	{сундук рядом с веревкой, свисающей с потолка}
 
-Beliz_Cave_2 {в пещере напротив выхода из Белиза}		
+Beliz_Cave_2 {в пещере напротив выхода из Белиза}
 Beliz_Cave_2_box1	{под досками в тупике}
 
-Bermudes_Dungeon {в подземелье под верьфью пиратского поселения}	
+Bermudes_Dungeon {в подземелье под верьфью пиратского поселения}
 Bermudes_Dungeon_box1	{сундук за запертой дверью}
 Bermudes_Dungeon_box2	{сундук за открытой дверью}
 Bermudes_Dungeon_box3	{сундук в тупике}
 Bermudes_Dungeon_box4	{сундук за бочками}
 
-Caracas_Grot {в пещере слева от выхода из Каракаса}		
+Caracas_Grot {в пещере слева от выхода из Каракаса}
 Caracas_Grot_box1	{сундук над большим камнем}
 
-Cartahena_Cave	{в пещере напротив выхода из Картахены}		
+Cartahena_Cave	{в пещере напротив выхода из Картахены}
 Cartahena_Cave_box1	{сундук под факелом}
 Cartahena_Cave_box2	{сундук в тупике}
 Cartahena_Cave_box3	{сундук рядом с факелом}
 
-Caiman_Grot	{в пещере справа от пустынного пляжа}	
+Caiman_Grot	{в пещере справа от пустынного пляжа}
 Caiman_Grot_box1	{сундук над большим камнем}
 
-Charles_Grot	{в пещере справа от пляжа Бат}	
+Charles_Grot	{в пещере справа от пляжа Бат}
 Charles_Grot_box1	{сундук на берегу}
 
 Cuba_Grot	{в пещере справа от мыса Камагуэй}
@@ -86,25 +86,25 @@ Cumana_Cave_box1	{сундук рядом с каменным мостиком}
 Cumana_Cave_box2	{сундук на большом камне}
 Cumana_Cave_box3	{сундук рядом с веревкой, свисающей с потолка}
 
-Curacao_Cave	{в пещере справа от берега Приют контрабандиста}	
+Curacao_Cave	{в пещере справа от берега Приют контрабандиста}
 Curacao_Cave_box1	{сундук под факелом}
 Curacao_Cave_box2	{сундук в тупике}
 Curacao_Cave_box3	{сундук рядом с факелом}
 
-Dominica_Grot	{в пещере справа от пляжа Касл Брус}	
+Dominica_Grot	{в пещере справа от пляжа Касл Брус}
 Dominica_Grot_box1	{сундук на берегу}
 
-Guadeloupe_Cave	{в пещере слева от маяка Гваделупы}	
+Guadeloupe_Cave	{в пещере слева от маяка Гваделупы}
 Guadeloupe_Cave_box1	{сундук в нише с факелом}
 Guadeloupe_Cave_box2	{сундук в нише за столбом}
 Guadeloupe_Cave_box3	{сундук за камнями у стены}
 
-Hispaniola_Cave	{в пещере недалеко от города Порт-о-Принс}		
+Hispaniola_Cave	{в пещере недалеко от города Порт-о-Принс}
 Hispaniola_Cave_box1	{сундук рядом с каменным мостиком}
 Hispaniola_Cave_box2	{сундук на большом камне}
 Hispaniola_Cave_box3	{сундук рядом с веревкой, свисающей с потолка}
 
-Jamaica_Grot	{в пещере справа от маяка Порт-Рояля}	
+Jamaica_Grot	{в пещере справа от маяка Порт-Рояля}
 Jamaica_Grot_box1	{сундук над большим камнем}
 
 Maracaibo_Cave	{в пещере напротив выхода из Маракайбо}
@@ -116,17 +116,17 @@ Marigo_Cave	{в пещере напротив выхода из Мариго}
 Marigo_Cave_box1	{сундук под факелом}
 Marigo_Cave_box2	{сундук в тупике}
 Marigo_Cave_box3	{сундук рядом с факелом}
-			
+
 Panama_Cave	{в пещере справа от залива Москитос}
 Panama_Cave_box1	{под досками в тупике}
 
-Pearl_Grot	{в пещере на западном побережье между Белизом и Санта Каталиной}		
+Pearl_Grot	{в пещере на западном побережье между Белизом и Санта Каталиной}
 Pearl_Grot_box1	{сундук над большим камнем}
 
-PortoBello_Cave	{в пещере справа от выхода из города Порто Белло}		
+PortoBello_Cave	{в пещере справа от выхода из города Порто Белло}
 PortoBello_Cave_box1	{под досками в тупике}
 
-SanJuan_Cave	{в пещере недалеко от Сан-Хуана}		
+SanJuan_Cave	{в пещере недалеко от Сан-Хуана}
 SanJuan_Cave_box1	{сундук рядом с каменным мостиком}
 SanJuan_Cave_box2	{сундук на большом камне}
 SanJuan_Cave_box3	{сундук рядом с веревкой, свисающей с потолка}
