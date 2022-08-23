@@ -550,7 +550,7 @@ void BI_LaunchCommand()
         }
         else
         {
-            Log_SetStringToLog(xiStr("Map is Closes"));
+            Log_SetStringToLog("Выход на карту закрыт.");
         }
 		break;
 	case "BI_Moor":
@@ -1076,14 +1076,14 @@ void BI_InitializeCommands()
 	BattleInterface.Commands.Boat.selPicNum	= 10;
 	BattleInterface.Commands.Boat.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Boat.event	= "BI_Boat";
-	BattleInterface.Commands.Boat.note	= LanguageConvertString(idLngFile, "sea_Boat");
+	BattleInterface.Commands.Boat.note	= "Выслать шлюпку";
 
 	BattleInterface.Commands.Cabin.enable	= false;
 	BattleInterface.Commands.Cabin.picNum	= 27;
 	BattleInterface.Commands.Cabin.selPicNum	= 11;
 	BattleInterface.Commands.Cabin.texNum	= BI_ICONS_TEXTURE_COMMAND;
 	BattleInterface.Commands.Cabin.event	= "BI_Cabin";
-	BattleInterface.Commands.Cabin.note	    = LanguageConvertString(idLngFile, "sea_Cabin");
+	BattleInterface.Commands.Cabin.note	    = "Каюта";
 
 	BattleInterface.Commands.ImmediateDeath.enable	= false;
 	BattleInterface.Commands.ImmediateDeath.picNum	= 43;    // это чит

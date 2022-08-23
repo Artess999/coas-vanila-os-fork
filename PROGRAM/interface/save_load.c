@@ -296,7 +296,7 @@ void SaveLoadCurrentIntoSlot()
 		}
 	} else {
 		// чтение
-		if( g_nCurrentSaveIndex<0 || g_nCurrentSaveIndex>=g_nSaveQuantity ) { // нет такой €чейки с записью
+		if( g_nCurrentSaveIndex<0 || g_nCurrentSaveIndex>=g_nSaveQuantity ) { // нет такой ячейки с записью
 			return;
 		}
 		if( bIsGameProcessNow ) { // в данный момент уже идет игра?
@@ -481,7 +481,7 @@ bool GetMoveToOtherSave( int nNewSaveIndex, ref rLeft, ref rTop, ref rRight, ref
 		nNewSaveIndex = g_nCurrentSaveIndex;
 		if( nNewIdx == nOldIdx ) {
 			ReloadSaveInfo();
-			return false; // нельз€ перейти на новый элемент (на первый всегда можно)
+			return false; // нельзя перейти на новый элемент (на первый всегда можно)
 		}
 	}
 
@@ -628,10 +628,9 @@ void ShowDataForSave(int nSlot, string picname, int picpointer, string strdata)
 	}
 	SetSelectable( nodname, bClickable );
 
-    int idLngFile = LanguageOpenFile("save_load.txt");
-    string fileSystemTime = "";
+	string fileSystemTime = "";
 	string fileSystemDate = "";
-	string sSystemTimeString = LanguageConvertString(idLngFile, "NoTime");
+	string sSystemTimeString = "No Time";
 	if (CheckAttribute(&g_oSaveList[nSlot], "savefile") && g_oSaveList[nSlot].savefile != "" ) //fix boal
 	{
 		SendMessage(&GameInterface,"lsee",MSG_INTERFACE_GETTIME, "SAVE\"+currentProfile+"\"+g_oSaveList[nSlot].savefile, &fileSystemTime, &fileSystemDate);
@@ -648,14 +647,14 @@ void ShowDataForSave(int nSlot, string picname, int picpointer, string strdata)
 			g_oSaveList[nSlot].faceinfo = facestr;
 			g_oSaveList[nSlot].playtime = playtime;
 		} else {
-			SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+1, "#" + LanguageConvertString(idLngFile, "Unknown"));
-			SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+2, "#" + LanguageConvertString(idLngFile, "NoTime"));
+			SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+1, "#Unknown" );
+			SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+2, "#No Time" );
 			g_oSaveList[nSlot].faceinfo = "";
 			g_oSaveList[nSlot].playtime = "";
 		}
 	} else {
-		SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+1, "#" + LanguageConvertString(idLngFile, "Unknown") );
-		SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+2, "#" + LanguageConvertString(idLngFile, "NoTime") );
+		SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+1, "#Unknown" );
+		SendMessage( &GameInterface,"lslls",MSG_INTERFACE_MSG_TO_NODE, "SAVENOTES", 1, nSlot*3+2, "#No Time" );
 		g_oSaveList[nSlot].faceinfo = "";
 		g_oSaveList[nSlot].playtime = "";
 	}
@@ -877,7 +876,7 @@ void ProcessDeleteSaveFile()
 	}
 	g_oSaveContainer.listsize = g_nSaveQuantity;
 	SetClickable("SAVESCROLL",g_nSaveQuantity>10);
-	// при интерфейсе загрузки выделение об€зательно оставл€ем на реальном сейве
+	// при интерфейсе загрузки выделение обязательно оставляем на реальном сейве
 	attrDst = "s" + g_nCurrentSaveIndex;
 	if( !CheckAttribute(&g_oSaveContainer,attrDst) ) {
 		if( g_oSaveContainer > g_nFirstSaveIndex ) {

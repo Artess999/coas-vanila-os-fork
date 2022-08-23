@@ -111,15 +111,15 @@ void ProcessVersionCheck() // boal 271004
 
         if (!CheckAttribute(mc, "VersionNumber"))
     	{
-            Log_Info(XI_ConvertString("MSG_seadogs_1"));
-            Log_Info(XI_ConvertString("MSG_seadogs_2"));
+            Log_Info("Загружена старая сохраненная запись.");
+            Log_Info("Возможна нестабильная работа программы.");
     	}
         else
         {
             if (sti(mc.VersionNumberCompatibility) < VERSION_NUM_PRE && mc.VersionNumber != GetVerNum())
             {
-                Log_Info(XI_ConvertString("MSG_seadogs_3") + mc.VersionNumber +".");
-                Log_Info(XI_ConvertString("MSG_seadogs_2"));
+                Log_Info("Загружена сохраненная запись версии " + mc.VersionNumber +".");
+                Log_Info("Возможна нестабильная работа программы.");
             }
         }
     }
@@ -348,25 +348,20 @@ void Main_InitGame()
 void Main_LogoVideo()
 {
 
-	int i = 4; // sti(InterfaceStates.videoIdx);
+	int i = 3; // sti(InterfaceStates.videoIdx);
 	switch(i)
 	{
 	case 0:
 		InterfaceStates.videoIdx = 1;
-		StartPostVideo("PLogo",1);
+		StartPostVideo("AkellaLogo",1);
 	break;
 
 	case 1:
 		InterfaceStates.videoIdx = 2;
-		StartPostVideo("AkellaLogo",1);
-	break;
-
-	case 2:
-		InterfaceStates.videoIdx = 3;
 		StartPostVideo("Seaward",1);
 	break;
 
-	case 3:
+	case 2:
 		InterfaceStates.videoIdx = 4;
 		StartPostVideo("Title",1);
 	break;
@@ -1213,7 +1208,7 @@ void ProcessControls()
 		break;
 
 		case "PaperMap":
-			LaunchPaperMapScreen();
+			if (bBettaTestMode) LaunchPaperMapScreen();
 		break;
 		// boal -->
 		case "ChrBackward": //ChrStrafeLeft ChrStrafeRight
@@ -1249,8 +1244,7 @@ void ProcessControls()
 			      if( EnablePotionUsing(pchar, arItm) )
 			      {
 				     DoCharacterUsedItem(pchar, arItm.id);
-				     int idLngFile = LanguageOpenFile("save_load.txt");
-				     Log_SetStringToLog(LanguageConvertString(idLngFile, "Potion"));
+				     Log_SetStringToLog("Use potion");
 				     break;
 			      }
 			      itmIdx = FindPotionFromChr(pchar, &arItm, itmIdx+1);
@@ -1282,7 +1276,7 @@ void ProcessControls()
 				}
 				else
 				{
-                    Log_Info(XI_ConvertString("MSG_seadogs_4"));
+                    Log_Info("Некого обыскивать");
 				}
 		    }
 	    break;

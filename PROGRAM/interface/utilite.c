@@ -783,16 +783,16 @@ string GetLevelComplexity(int _Level_Complexity)
 	switch (_Level_Complexity)
 	{
 	    case 1 :
-            return XI_ConvertString("m_Complexity_1"); //Матрос
+            return XI_ConvertString("m_Complexity_1"); //Матрос "Халява";
             break;
         case 2 :
-            return XI_ConvertString("m_Complexity_2"); // Боцман
+            return XI_ConvertString("m_Complexity_2"); // Боцман "Юнга";
             break;
         case 3 :
-            return XI_ConvertString("m_Complexity_3");//Шкипер
+            return XI_ConvertString("m_Complexity_3");//Шкипер "Матрос";
             break;
         case 4 :
-            return XI_ConvertString("m_Complexity_4");//Лейтенант
+            return XI_ConvertString("m_Complexity_4");//Лейтенант "Боцман";
             break;
         case 5 :
             return XI_ConvertString("m_Complexity_5");
@@ -801,7 +801,7 @@ string GetLevelComplexity(int _Level_Complexity)
             return XI_ConvertString("m_Complexity_6");
             break;
         case 7 :
-            return XI_ConvertString("m_Complexity_7");//Командор
+            return XI_ConvertString("m_Complexity_7");//Командор "Пират";
             break;
         case 8 :
             return XI_ConvertString("m_Complexity_8");

@@ -394,27 +394,27 @@ void Sea_MapLoad()
             if (GetCargoLoad(chref) > GetCargoMaxSpace(chref))
             {
                 ok = false;
-                Log_SetStringToLog(xiStr("MSG_sea_1") +  chref.Ship.Name + xiStr("MSG_sea_2"));
+                Log_SetStringToLog("Корабль '" +  chref.Ship.Name + "' перегружен.");
             }
             if (MOD_SKILL_ENEMY_RATE > 2) // халява и юнга - послабление
     		{
 	            if (i > 0 && GetMinCrewQuantity(chref) > GetCrewQuantity(chref))
 	            {
 	                ok = false;
-	                Log_SetStringToLog(xiStr("MSG_sea_3") +  chref.Ship.Name + xiStr("MSG_sea_4"));
+	                Log_SetStringToLog("На корабле '" +  chref.Ship.Name + "' нет минимального экипажа.");
 	            }
 			}
 
             if (GetMaxCrewQuantity(chref) < GetCrewQuantity(chref))
             {
                 ok = false;
-                Log_SetStringToLog(xiStr("MSG_sea_3") +  chref.Ship.Name + xiStr("MSG_sea_5"));
+                Log_SetStringToLog("На корабле '" +  chref.Ship.Name + "' перегруз экипажа больше допустимого.");
             }
         }
     }
     if (!ok)
     {
-        Log_Info(xiStr("MSG_sea_6"));
+        Log_Info("Выход на карту невозможен.");
         PlaySound("interface\knock.wav");
         return;
     }

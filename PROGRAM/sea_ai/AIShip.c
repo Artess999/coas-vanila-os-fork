@@ -873,7 +873,7 @@ void Ship_OnBortReloaded()
 	string sBort = GetEventData();
 
 	if (!bSeaLoaded || bAbordageStarted) { return; }  // fix
-	// далее по коду была глупость, тк прерывание шло по всем НПС, звуков таких не было вовсе в ресурсах, те мина была в игре. 'Сапер boal'
+	// далее по коду была глупость, тк прерывание шло по всем НПС, звуков таких не было вовсе в ресурсах, те мина была в игре. "Сапер boal"
 	if (sti(aCharacter.index) != nMainCharacterIndex) { return; } // fix
 	/*{
 		if (sBort == "cannonl" || sBort == "cannonr") { Ship_PlaySound3D(aCharacter, "bortreloaded_" + sBort, 1.0);	}
@@ -1078,7 +1078,7 @@ void Ship_CheckSituation()
 				{
 					// fire ship
 					Ship_SetExplosion(rCharacter, rShipObject); //boal 27.09.05
-					Log_Info("" + XI_ConvertString(rBaseShip.BaseName) + " '" + rCharacter.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, xiStr("MSG_AIShip_1"), xiStr("MSG_AIShip_2")) + xiStr("MSG_AIShip_3"));
+					Log_Info("" + XI_ConvertString(rBaseShip.BaseName) + " '" + rCharacter.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "взорвал", "взорвала") + " крюйт камеру.");
 					return;
 				}
 				//Trace("test1 rCharacter2Brander = " + rCharacter2Brander.index);
@@ -1343,7 +1343,7 @@ void Ship_CheckSituation()
 							int BigPearlQty = rand(150) + 50;
 							TakeNItems(pchar, "jewelry12", SmallPearlQty);
 							TakeNItems(pchar, "jewelry11", BigPearlQty);
-							Log_SetStringToLog(xiStr("MSG_AIShip_14") + rCharacter.ship.name + xiStr("MSG_AIShip_15") + SmallPearlQty + xiStr("MSG_AIShip_16") + BigPearlQty + xiStr("MSG_AIShip_17"));
+							Log_SetStringToLog("Ловцы жемчуга на тартане " + rCharacter.ship.name + " отдали вам " + SmallPearlQty + " малых и " + BigPearlQty + " больших жемчужин.");
 							rCharacter.PearlTartane = false; //уже ограбили
 							pchar.questTemp.Sharp.PearlAreal.SmallPearlQty = sti(pchar.questTemp.Sharp.PearlAreal.SmallPearlQty) + SmallPearlQty;
 							pchar.questTemp.Sharp.PearlAreal.BigPearlQty = sti(pchar.questTemp.Sharp.PearlAreal.BigPearlQty) + BigPearlQty;
@@ -1558,7 +1558,7 @@ void Ship_CheckFlagEnemy(ref rCharacter)
 	        SetNationToOfficers(iNationToChange);
 	        SetNationRelation2MainCharacter(sti(rCharacter.nation), RELATION_ENEMY);
 	        */
-			Log_Info(xiStr("MSG_AIShip_4")+ NationNamePeople(sti(rCharacter.nation)) + xiStr("MSG_AIShip_5"));
+			Log_Info("Сойти за друга не удалось - "+ NationNamePeople(sti(rCharacter.nation)) + " распознали в нас врага.");
 			SetCharacterRelationBoth(sti(rCharacter.index), GetMainCharacterIndex(), RELATION_ENEMY);
 			DoQuestCheckDelay(NationShortName(iNationToChange) + "_flag_rise", 0.1); // применение нац отношений флага
 			AddCharacterExpToSkill(mChar, SKILL_SNEAK, 100);
@@ -1830,7 +1830,7 @@ void Ship_Ship2ShipCollision()
 }
 
 void Ship_ApplyCrewHitpoints(ref rOurCharacter, float fCrewHP)
-{         // че-то распук метод 'неподецки' - переделал 29.07.06 boal
+{         // че-то распук метод "неподецки" - переделал 29.07.06 boal
 	if (LAi_IsImmortal(rOurCharacter))
 	{
 		return;
@@ -2102,17 +2102,17 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
 		}
 		if (bCompanion && !bDeadCompanion && bRealKill)
 		{
-            sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, xiStr("MSG_AIShip_6"), xiStr("MSG_AIShip_7")) + GetFullName(rKillerCharacter);
+            sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "был потоплен ", "была потоплена ") + GetFullName(rKillerCharacter);
         }
         else
         {
             if (sKillShipName == "")
             {
-            	sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, xiStr("MSG_AIShip_8"), xiStr("MSG_AIShip_9"));
+            	sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, "был потоплен.", "была потоплена.");
             }
             else
             {
-				sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " + GetShipSexWord(rBaseShip.BaseName, xiStr("MSG_AIShip_6"), xiStr("MSG_AIShip_7")) + sKillShipType + " '" + sKillShipName + "'";
+				sSunkString = sSunkShipType + " '" + rDead.Ship.Name + "' " +GetShipSexWord(rBaseShip.BaseName, "был потоплен ", "была потоплена ") + sKillShipType + " '" + sKillShipName + "'";
 			}
         }
 		Log_SetStringToLog(sSunkString);
@@ -2167,7 +2167,7 @@ void ShipDead(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInde
             //homo 22/06/07
             AISeaGoods_AddGood(rDead, "boat", "lo_boat", 1000.0, 1);
             RemoveCharacterCompanion(pchar, rDead);
-            Log_Info(GetFullName(rDead) + xiStr("MSG_AIShip_18"));
+            Log_Info(GetFullName(rDead) + " спасся на шлюпке.");
         }
 	}
 	// спасем офицеров boal 07/02/05
@@ -2225,7 +2225,7 @@ void ShipTaken(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacterInd
 
 		if(bCompanion && !bDeadCompanion)
 		{
-            Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + xiStr("MSG_AIShip_10"));
+            Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + "был захвачен!");
         }
 	}
     if (rand(8) < 3 && !bDeadCompanion && sti(rDead.nation) != PIRATE)  // 30% повышаем награду
@@ -2272,7 +2272,7 @@ void ShipTakenFree(int iDeadCharacterIndex, int iKillStatus, int iKillerCharacte
 		string sSunkShipType = XI_ConvertString(rBaseShip.BaseName);
 		string sKillShipType = XI_ConvertString(rKillerBaseShip.BaseName);
 
-        Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + xiStr("MSG_AIShip_11"));
+        Log_SetStringToLog(sSunkShipType + " '" + rDead.Ship.Name + "' " + "был захвачен, но отпущен после грабежа.");
 	}
     if (rand(20) < 3 && sti(rDead.nation) != PIRATE)  // 14% повышаем награду
     {
@@ -2446,7 +2446,7 @@ void Ship_HullHitEvent()
 		if ((GetCargoGoods(rOurCharacter, GOOD_POWDER) / 20.0) > (GetCargoMaxSpace(rOurCharacter) * 0.25) && rand(1) == 1)
 		{
 			Ship_SetExplosion(rOurCharacter, rShipObject);
-			Log_Info(xiStr("MSG_AIShip_12") + rOurCharacter.Ship.Name + xiStr("MSG_AIShip_13"));
+			Log_Info("На корабле " + rOurCharacter.Ship.Name + " сдетонировал весь пороховой запас.");
 		}
 		//boal 27.09.05 <--
 	}

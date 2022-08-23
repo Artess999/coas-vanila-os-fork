@@ -561,7 +561,7 @@ void NetBI_SetPossibleCommands()
 {
 	int chIdx = GetEventData();
 
-	// дл€ главного персонажа
+	// для главного персонажа
 	NetBInterface.Commands.Charge.enable	= true;//CheckAttribute(mainCh,"Ship.Cannons.Charge.Type");
 	NetBInterface.Commands.Speed.enable		= true;
 	NetBInterface.Commands.Repair.enable	= true;
@@ -671,7 +671,7 @@ ref NetBI_GetData()
 
 	switch(dataType)
 	{
-		// ѕолучаем номер картинки корабл€
+		// Получаем номер картинки корабля
 	case BIDT_SHIPPICTURE:
 		wNetClientID = GetEventData();
 		chRef = NetClient_GetClient(wNetClientID);
@@ -766,7 +766,7 @@ float Net_GetRigDamage(int shootIdx, int iBallType, ref damage_chr)
 }
 
 //================================================================
-// ѕосчитать состо€ние парусов
+// Посчитать состояние парусов
 //================================================================
 float Net_CalculateShipSP(ref chref)
 {

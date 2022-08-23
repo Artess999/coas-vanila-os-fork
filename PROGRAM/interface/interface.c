@@ -2056,7 +2056,7 @@ void MakeQuickSave()
 	// boal 09.07.06 -->
 	if (!QuickSaveGameEnabledHardcore())
 	{
-        Log_Info(MsgIS("SaveLimit"));
+        Log_Info("Сохранение в данной игре возможно только в церквях.");
 		return;
 	}
 	SetTimeScale(1.0);
@@ -2215,9 +2215,9 @@ string GetPlayTime()
 
 	string sPlayTime = "";
 	if( days>0 ) {
-		sPlayTime = days + LanguageConvertString(idLngFile, "Days");
+		sPlayTime = days + "days - ";
 	}
-	sPlayTime += InterfaceStates.GameTime.hour + LanguageConvertString(idLngFile, "Hours") + InterfaceStates.GameTime.min + LanguageConvertString(idLngFile, "Min");
+	sPlayTime += InterfaceStates.GameTime.hour + " hours " + InterfaceStates.GameTime.min + " min.";
 	return sPlayTime;
 }
 

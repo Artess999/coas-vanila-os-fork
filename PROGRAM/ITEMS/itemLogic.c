@@ -601,7 +601,7 @@ void OpenBoxProcedure()
 	// токо сундуки и дома
 	if (sti(chr.GenQuest.God_hit_us) == 1 && rand(100) >= (85 + GetCharacterSkillToOld(chr, SKILL_FORTUNE)))
 	{
-		Log_Info(xiDStr("ItemLogic_2"));
+		Log_Info("Ловушка!");
 		PlaySound("people\clothes1.wav");
 		DoQuestCheckDelay("God_hit_us", 0.2);
 	}

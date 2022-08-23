@@ -1,4 +1,4 @@
-///  BOAL переделка дл€ SLib 02.07.06
+///  BOAL переделка для SLib 02.07.06
 #define DEFAULT_NAME "Player"
 #define DEFAULT_PASS ""
 
@@ -67,7 +67,7 @@ void InitInterface(string iniName)
     heroQty   = sti(GetNewMainCharacterParam("hero_qty"));
 
     if (!CheckAttribute(&NullCharacter, "HeroParam.HeroType") || !CheckAttribute(&NullCharacter, "HeroParam.nation"))
-    {   // иначе уже загружен и выбран √√, смотрим настройки и идем обратно
+    {   // иначе уже загружен и выбран ГГ, смотрим настройки и идем обратно
 		SetVariable(true);
 	}
 	else
@@ -477,7 +477,7 @@ void selectEngland()
 
 void selectFrance()
 {
-    //homo блокировка нации дл€ ѕитера Ѕлада
+    //homo блокировка нации для Питера Блада
     if (startHeroType == 1) SelectNation(ENGLAND);
 	else SelectNation(FRANCE);
 
@@ -485,7 +485,7 @@ void selectFrance()
 
 void selectSpain()
 {
-    //homo блокировка нации дл€ ѕитера Ѕлада
+    //homo блокировка нации для Питера Блада
     if (startHeroType == 1) SelectNation(ENGLAND);
 	else SelectNation(SPAIN);
 
@@ -493,7 +493,7 @@ void selectSpain()
 
 void selectHolland()
 {
-    //homo блокировка нации дл€ ѕитера Ѕлада
+    //homo блокировка нации для Питера Блада
     if (startHeroType == 1) SelectNation(ENGLAND);
 	else SelectNation(HOLLAND);
 

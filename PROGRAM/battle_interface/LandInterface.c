@@ -439,14 +439,14 @@ void BLI_SetObjectData()
 	objLandInterface.Commands.DeadBox.selPicNum		= 4;
 	objLandInterface.Commands.DeadBox.texNum		= 0;
 	objLandInterface.Commands.DeadBox.event			= "BI_DeadBox";
-	objLandInterface.Commands.DeadBox.note			= LanguageConvertString(idLngFile, "land_DeadBox");
+	objLandInterface.Commands.DeadBox.note			= "Обыск тела";
 	// диалог сам с собой -->
 	objLandInterface.Commands.TalkSelf.enable	= true;
  	objLandInterface.Commands.TalkSelf.picNum	 	= 18;
 	objLandInterface.Commands.TalkSelf.selPicNum	= 2;
 	objLandInterface.Commands.TalkSelf.texNum		= 0;
 	objLandInterface.Commands.TalkSelf.event		= "BI_TalkSelf";
-	objLandInterface.Commands.TalkSelf.note		    = LanguageConvertString(idLngFile, "land_TalkSelf");
+	objLandInterface.Commands.TalkSelf.note		= "Мысли вслух";
 	// диалог сам с собой <--
 	objLandInterface.Commands.ActivateRush.enable	= true;
 	objLandInterface.Commands.ActivateRush.picNum	= 28;

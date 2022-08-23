@@ -866,7 +866,7 @@ void Dead_AddLoginedCharacter(aref chr)
                 //TakeNItems(chref, "Coins", Rand(9) + 3);
                 // обыск скелетов давал вылет, даем сразу в ГГ
                 TakeNItems(pchar, "Coins", Rand(9) + 3);
-                Log_Info(xiDStr("LAi_utils_1"));
+                Log_Info("Собраны черные жемчужины");
 		    }
 		    else
 		    // матрос с ЧЖ <--

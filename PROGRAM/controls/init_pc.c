@@ -20,7 +20,7 @@ void ExternControlsInit(bool bFirst)
 	}
 	//
 
-	// boal Ќе подведем :) -->
+	// boal Не подведем :) -->
 	CI_CreateAndSetControls( "", "BOAL_Control", CI_GetKeyCode("VK_F11"), 0, false );
     CI_CreateAndSetControls( "", "BOAL_Control2", CI_GetKeyCode("VK_F12"), 0, false );
     CI_CreateAndSetControls( "", "BOAL_SetCamera", CI_GetKeyCode("VK_F10"), 0, false );
@@ -30,7 +30,7 @@ void ExternControlsInit(bool bFirst)
     CI_CreateAndSetControls( "", "BOAL_ControlDebug", CI_GetKeyCode("VK_INSERT"), 0, false );
 
     CI_CreateAndSetControls( "", "TimeScaleFaster", CI_GetKeyCode("VK_ADD"), 0, false );
-†   CI_CreateAndSetControls( "", "TimeScaleSlower", CI_GetKeyCode("VK_SUBTRACT"), 0, false );
+    CI_CreateAndSetControls( "", "TimeScaleSlower", CI_GetKeyCode("VK_SUBTRACT"), 0, false );
 	CI_CreateAndSetControls( "", "VK_PAUSETimePause", CI_GetKeyCode("VK_PAUSE"), 0, false );
 
 	if (MOD_BETTATESTMODE == "On")
@@ -107,7 +107,7 @@ void ExternControlsInit(bool bFirst)
 	CI_CreateAndSetControls( "", "ChrTurnH", 256, 0, false );
 	CI_CreateAndSetControls( "PrimaryLand", "ChrAction", CI_GetKeyCode("VK_LBUTTON"), 0, true );
 	CI_CreateAndSetControls( "PrimaryLand", "ChrForward", CI_GetKeyCode("KEY_W"), 0, true );
-	CI_CreateAndSetControls( "PrimaryLand", "ChrForward2", CI_GetKeyCode("VK_RBUTTON"), 0, true ); // втора€ команда
+	CI_CreateAndSetControls( "PrimaryLand", "ChrForward2", CI_GetKeyCode("VK_RBUTTON"), 0, true ); // вторая команда
 	//CI_CreateAndSetControls( "PrimaryLand", "ChrJump", CI_GetKeyCode("KEY_T"), 0, true );
 	MapControlToGroup("ChrForward","FightModeControls");
 	MapControlToGroup("ChrForward","BattleInterfaceControls");
@@ -132,7 +132,7 @@ void ExternControlsInit(bool bFirst)
     CI_CreateAndSetControls( "PrimaryLand", "BOAL_DeadSearch", CI_GetKeyCode("KEY_1"), 0, true );
 	MapControlToGroup("BOAL_DeadSearch","FightModeControls");
 
-	CI_CreateAndSetControls( "FightModeControls", "BOAL_ActivateRush", CI_GetKeyCode("KEY_F"), 0, true ); // boal €рость на суше
+	CI_CreateAndSetControls( "FightModeControls", "BOAL_ActivateRush", CI_GetKeyCode("KEY_F"), 0, true ); // boal ярость на суше
 	// boal <--
 
 	//CI_CreateContainer("", "ChrTurnH1", 15.0);

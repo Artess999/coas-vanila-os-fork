@@ -64,7 +64,7 @@ string GetRandSubString(string sStr)
     	}
     	int iSelect = rand(iNumFind - 1);
     	int	iLastPos = 0;
-    	iFindPos = 0; // вот где собака порылась!!!!! считай € убил ¬ано :) Boal
+    	iFindPos = 0; // вот где собака порылась!!!!! считай я убил Вано :) Boal
     	for (int i=0; i<iNumFind; i++)
     	{
     		//iFindPos = findSubStr(&sStr, ",", iFindPos + 1);
@@ -92,7 +92,7 @@ string GetRandSubString(string sStr)
 
 float GetDotProduct(float fA1, float fA2)
 {
-    return cos(fA2 - fA1);  // boal бешенна€ оптимизаци€ мор€
+    return cos(fA2 - fA1);  // boal бешенная оптимизация моря
 
 	/*float x1, y1, x2, y2;
 	x1 = sin(fA1);	y1 = cos(fA1);
