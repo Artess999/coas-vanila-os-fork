@@ -1332,10 +1332,10 @@ void Sea_LoadIsland(string sIslandID)
 			}
 			CreateGrass("resource\models\islands\"+ Islands[iIslandIndex].id +"\"+ Islands[iIslandIndex].jungle.patch + ".grs", "Grass\"+Islands[iIslandIndex].jungle.texture+".tga", fJungleScale, 20.0, 200.0, 100.0, 1000.0, 0.6);
 		}
-		if (MOD_BETTATESTMODE == "On")
+		/*if (MOD_BETTATESTMODE == "On")
 		{
 			CreateEntity(&SeaLighter, "lighter");  //eddy. не надо это пока коментить, это и есть Lighter. ошибку дает, если в локлайтере лоадинг == 0, т.к. в этом случае тулза не инитится в движке.
-		}
+		}*/
 		SendMessage(&SeaLighter, "ss", "ModelsPath", Islands[iIslandIndex].filespath.models);
 		SendMessage(&SeaLighter, "ss", "LightPath", GetLightingPath());
 
