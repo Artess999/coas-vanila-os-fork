@@ -2,7 +2,7 @@
 // здесь и далее ник boal - это разработческий ник ALexusB
 
 #define VERSION_NUMBER1       "Корсары: Город Потерянных Кораблей  "
-#define VERSION_NUMBER2       "ver.1.2.12"
+#define VERSION_NUMBER2       "ver.1.2.12 (OpenSource)"
 #define VERSION_NUMBER3       "Seaward.Ru" // ALexusB&Co
 
 #define VERSION_NUM      99910  // текущий номер
@@ -12,7 +12,7 @@
 #define VERSION_WWW     "http://www.seaward.ru"
 
 // Show special message for test game statment
-#define MOD_BETTATESTMODE			"Off"  // On -DEV version; Test - TST ver; Off - relize
+#define MOD_BETTATESTMODE			"On"  // On -DEV version; Test - TST ver; Off - relize
 
 // гловальная строковая переменная
 string sGlobalTemp;
@@ -56,7 +56,7 @@ bool bMainMenu = false;
 //загрузка начала игры
 bool startGameWeather = false;
 //движок проверяет эту переменную, должна равной #define ENGINE_SCRIPT_VERSION в core.h
-int iScriptVersion = 15650;
+int iScriptVersion = 54128;
 
 // Генератор фантомов - альтернатива
 bool    bNewFantomGenerator       = true;  // резерв "новый фехт"
@@ -75,7 +75,7 @@ int MOD_EXP_RATE           = 10; // это база... + (сложность)
 //int Level_Complexity       = 5; // by default только настройка
 //  complexity of fantom skill
 int MOD_SKILL_ENEMY_RATE   = 5; // 1- easy; 2; 3; 4;  5-medium; 6; 7; 8; 9;  10 - hard (please, do not set more 10 or less 1 it mays crash game
-
+#define MOD_Complexity_1_DMG  3.0
 
 // Killed body clear
 #define MOD_DEAD_CLEAR           "On"
