@@ -2069,7 +2069,7 @@ ref procGetRiggingData()
 	int retVal = 0;
 
 	string datName = GetEventData();
-	if(datName=="GetFlagTexNum")
+	if (datName=="GetFlagTexNum" || datName=="GetShipFlagTexNum" || datName=="GetTownFlagTexNum")
 	{
 		i = GetEventData();
 		n = GetEventData();
