@@ -239,34 +239,34 @@ void Main()
 	//LayerCreate("fader_realize", 1);
 	//LayerCreate("inf_realize", 1);
 
-	ReloadProgressStart();
+	//ReloadProgressStart();
 
 	ControlsInit(GetTargetPlatform(),true);
 	nTeleportLocation = 1;
 
 	NationsInit();
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	EncountersInit();
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	CannonsInit();
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	ShipsInit();
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	IslandsInit();
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	WeatherInit();
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	InitPerks();
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	// Init network, clear massives and load favorite list
-	ReloadProgressUpdate();
+	//ReloadProgressUpdate();
 
 	if(LoadSegment("store\initGoods.c"))
 	{
@@ -286,7 +286,7 @@ void Main()
 	SetEventHandler(EVENT_END_VIDEO,"Main_LogoVideo",0);
 	InterfaceStates.videoIdx = 0;
 	Event(EVENT_END_VIDEO);
-	ReloadProgressEnd();
+	//ReloadProgressEnd();
 
 	SetGlowParams(1.0, 50, 2);
 }
