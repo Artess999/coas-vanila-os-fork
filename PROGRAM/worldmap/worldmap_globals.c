@@ -483,11 +483,13 @@ void  wdmEmptyAllOldEncounter()
         enc = GetAttributeN(encs, i);
         if (CheckAttribute(enc, "needDelete") && enc.needDelete == "wdmEncounterDelete")
         {
+	        // Artess999 fix
+	        if (CheckAttribute(enc, "quest")) pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) - 1;
 	        sdel  = "encounters."+GetAttributeName(enc);
 			DeleteAttribute(&worldMap, sdel);
 	        num--; //fix
 	        i--;
-	        if (CheckAttribute(enc, "quest")) pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) - 1;
+	        // if (CheckAttribute(enc, "quest")) pchar.worldmap.shipcounter = sti(pchar.worldmap.shipcounter) - 1;
         }
     }
 }
